@@ -121,8 +121,8 @@ def write_combined(rows):
           "expected values from Pyfa (see README).", "",
           f"Bench version {bench_version()} (see CHANGELOG.md). Rows may come from different runs: see measured_at/bench_version "
           "in combined.json; perf numbers are only comparable at similar load.", "",
-          "| variant | status | cases ok | values ok | accuracy % | " + " | ".join(groups) + " | ms/fit | fits/s (batch) | cold ms | deterministic | bench | measured |",
-          "|" + "---|" * (11 + len(groups))]
+          "| variant | status | cases ok | values ok | accuracy % | " + " | ".join(groups) + " | ms/fit | fits/s (batch) | cold ms | deterministic | eft export | bench | measured |",
+          "|" + "---|" * (12 + len(groups))]
     for r in rows:
         c = r.get("card")
         if not c:

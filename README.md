@@ -92,7 +92,7 @@ metrics excluded because Pyfa's data is older than the SDE or because Pyfa disag
 
 | variant | cases | values | latency/fit | batch fits/s | cold start |
 |---|---|---|---|---|---|
-| A: eve-dogma-rs (Rust, lazy memoised dogma graph) | 289/289 | 18 591/18 591 | 1.79 ms | 615 | 158 ms |
+| A: eve-dogma-rs (Rust, lazy memoised dogma graph; 6ff616d, bench 1.4.1, load 5.7) | 289/289 | 18 591/18 591 | 0.91 ms | 912 | 123 ms |
 | Pyfa (reference, Python) | – | – | 10–31 ms | – | ~390 ms first calc + startup |
 
 ## License
