@@ -72,9 +72,9 @@ determinism (identical output for identical input), plus `failures.json` with ev
 
 226 cases: 101 dogma-engine (EVE Ship Fit) community/regression fits, 24 hand-written fits (frigates, destroyers,
 T3D modes, cruisers, HACs, T3C subsystems, battleships, marauders in bastion, logistics, command ships, interdictor,
-mining, carriers/supercarrier with fighters, structures with rigs/service modules), 101 variations (fleet command booster fits, wormhole environments C1–C6, implant sets, combat boosters, (skills 0/2/3/4,
+mining, carriers/supercarrier with fighters, structures with rigs/service modules), 101 variations (fleet command booster fits, wormhole environments C1–C6, implant sets, combat boosters, skills 0/2/3/4,
 damage patterns incl. Reactive Armor Hardener adaptation, reload, projected webs/target painters/damps/web drones,
-mutated modules and drones). See `cases/`. More (fleet boosts, implants/boosters, wormhole environments) are being added.
+mutated modules and drones). See `cases/`.
 
 Expected values come from Pyfa (eos, Pyfa client data build 3532181) via `oracle/pyfa_oracle.py`; regenerate with
 `python3 tools/make_expected.py`. Pyfa is the reference, not the truth: `expected/known_divergences.json` lists
