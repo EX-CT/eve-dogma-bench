@@ -2,3 +2,6 @@ data/
 __pycache__/
 *.pyc
 work/
+results/*
+!results/combined.md
+!results/combined.json
