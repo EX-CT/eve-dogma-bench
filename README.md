@@ -1,5 +1,8 @@
 # eve-dogma-bench
 
+> **FROZEN at bench 1.8.0 (0969967) until the 10:20 CST unified evaluation:** no new cases and no version bumps. New gaps are staged in `pending-1.9.0.md`.
+
+
 Shared, engine-agnostic test & benchmark harness for EVE Online fitting engines (EX-CT).
 Any implementation of [CONTRACT.md](CONTRACT.md) (stateless FitRequest JSON → FitStats JSON) can be scored
 on **correctness against Pyfa** (per stat, with tolerance), **speed** (cold start, per-fit latency, batch throughput)
