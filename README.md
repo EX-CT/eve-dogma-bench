@@ -79,9 +79,9 @@ determinism (identical output for identical input), plus `failures.json` with ev
 
 ## Corpus
 
-306 cases: 101 dogma-engine (EVE Ship Fit) community/regression fits, 34 hand-written fits (frigates, destroyers,
+326 cases: 101 dogma-engine (EVE Ship Fit) community/regression fits, 34 hand-written fits (frigates, destroyers,
 T3D modes, cruisers, HACs, T3C subsystems, battleships, marauders in bastion, logistics, command ships, interdictor,
-mining, carriers/supercarrier with fighters, structures with rigs/service modules, titan lance, HIC bubble, emergency hull energizer, entosis, micro jump field generator), 171 variations (fleet command booster fits, projected whole fits, incoming remote reps/neuts/nos/cap transfers, scripted projected modules, wormhole environments C1–C6, implant sets, combat boosters, skills 0/2/3/4,
+mining, carriers/supercarrier with fighters, structures with rigs/service modules, titan lance, HIC bubble, emergency hull energizer, entosis, micro jump field generator), 191 variations (fleet command booster fits, projected whole fits, incoming remote reps/neuts/nos/cap transfers, scripted projected modules, wormhole environments C1–C6, abyssal weather / AoE clouds, incursion system effects, burst projectors and Standup weapon disruptors, implant sets, combat boosters, skills 0/2/3/4,
 damage patterns incl. Reactive Armor Hardener adaptation, reload, projected webs/target painters/damps/web drones/TD drones,
 mutated modules and drones). See `cases/`.
 
@@ -93,7 +93,7 @@ metrics excluded because Pyfa's data is older than the SDE or because Pyfa disag
 
 | variant | cases | values | latency/fit | batch fits/s | cold start |
 |---|---|---|---|---|---|
-| A: eve-dogma-rs (Rust, lazy memoised dogma graph; aa46025, bench 1.7.0, load ≈10) | 306/306 | 19 621/19 621 | 0.55 ms | 1 634 | 124 ms |
+| A: eve-dogma-rs (Rust, lazy memoised dogma graph; 9f8579c, bench 1.8.0, load ≈10) | 326/326 | 21 051/21 051 | 0.51 ms | 1 429 | 147 ms |
 | Pyfa (reference, Python) | – | – | 10–31 ms | – | ~390 ms first calc + startup |
 
 ## License

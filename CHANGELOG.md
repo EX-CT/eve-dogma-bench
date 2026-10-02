@@ -4,6 +4,21 @@ Variants: compare scores only at the same bench version (`VERSION`, shown in res
 Expected values always come from the Pyfa oracle (`oracle/pyfa_oracle.py`). Re-run `python3 bench.py --only <X>` after
 pulling.
 
+## 1.8.0 (2026-10-03 06:10 CST)
+- CONTRACT.md = contract revision 1.4.3. No field changes; "Semantics" now also defines weather/cloud beacons,
+  incursion system effects and burst projectors (below).
+- +20 cases (326 cases, 21 051 values), all Pyfa-verified:
+  - Abyssal weather / AoE clouds (`weather_*`, `cloud_*`; environment type ids 47380–47392, 47436, 47441, 47472, 47620):
+    the beacon's `warfareBuff1/2` join the fleet-buff pool (strongest |value| per id). Pyfa also applies buffs 79,
+    90 and 93–99 to drones requiring Drones. Weather resist/HP/velocity buffs are unpenalised.
+  - Incursion system effects (`incursion_*`; Sansha HQ/Vanguard, Drifter defeat): Pyfa `OffensiveDefensiveReduction`.
+  - Burst projectors (`aoe_*`): web / paint / damp / weapon disruption (turrets and missiles) at full strength
+    regardless of distance; neutralization burst as a cap drain; ECM burst as a jam source.
+  - Standup weapon disruptors with range factor, and the Standup web/WD bursts (`standup_*`).
+- EFT export expected texts added for the 20 cases (326 lines).
+- Dataset: sde-3569502-r3 gives the same results as r1 for every case (only `meta.dataset_sha256` differs).
+  Scores at 1.7.0 are not comparable with 1.8.0.
+
 ## 1.7.0 (2026-10-03 06:00 CST)
 - +9 cases (306 cases), found by sweeping every published module and implant on an empty Hyperion against Pyfa:
   - `exct_avatar_lance`, `exct_hyperion_bosonic`: lance / Bosonic Field doomsdays deal their volley every

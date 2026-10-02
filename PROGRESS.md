@@ -6,5 +6,6 @@
 - 2026-10-03 04:20 CST: per-weapon application metrics (turret optimal/falloff/tracking, missile range/explosion radius/velocity; group 'application', selector pointers /offense/weapons[module_index=N]/field) → 13 812 values.
 - 2026-10-03 04:50 CST: bench 1.4.0 — 289 cases / 18 591 values (sustained tank, ECM jam, projected fighters, drone/fighter application, booster side effects).
 - 2026-10-03 05:30 CST: bench 1.5.0 — 295 cases / 18 978 values (contract 1.4.2 semantics; amount>1 projected fits; projected tracking/guidance disruptors). A: 295/295, 0.53 ms/fit, 1 368 fits/s.
+- 2026-10-03 06:10 CST: bench 1.8.0 / contract 1.4.3: 326 cases / 21 051 values (+ weather/cloud beacons, incursion effects, burst projectors, Standup WD). A: 326/326, 0.51 ms/fit, 1 429 fits/s (load ≈10). Dataset r3 = same results as r1.
 - 2026-10-03 06:00 CST: bench 1.7.0 — 306 cases / 19 621 values (+ doomsday subcycles, local special modules, cpu round(v,2), TD drones). A: 306/306, 0.55 ms/fit, 1 634 fits/s (load ≈10).
 - 2026-10-03 05:50 CST: bench 1.6.0 — 297 cases / 19 103 values (+ projected remote tracking computers). A: 297/297, 0.43 ms/fit, 1 777 fits/s.
