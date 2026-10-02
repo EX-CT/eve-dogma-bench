@@ -47,7 +47,7 @@ batch_cmd: ./target/release/engine batch --dataset {dataset} # JSONL in -> JSONL
 Optional `rpc_cmd:` (a JSONL RPC process, see CONTRACT.md) enables the informational EFT-export check
 (`tools/check_eft_export.py`, Pyfa byte-exact, shown as "eft export" in combined.md; not part of accuracy).
 
-Contract rulings in force (CONTRACT.md revision 1.4.1): calc error → exit 2 with the JSON error on stdout;
+Contract rulings in force (CONTRACT.md revision 1.4.2; precise use_gj_s / projected amount / fleet-buff precedence in its "Semantics" section): calc error → exit 2 with the JSON error on stdout;
 `options` omitted → `validate` true; `search` not scored (interim spec in CONTRACT.md); EFT export = Pyfa's exporter
 exactly (no T3D mode line, as Pyfa).
 
@@ -78,9 +78,9 @@ determinism (identical output for identical input), plus `failures.json` with ev
 
 ## Corpus
 
-289 cases: 101 dogma-engine (EVE Ship Fit) community/regression fits, 24 hand-written fits (frigates, destroyers,
+295 cases: 101 dogma-engine (EVE Ship Fit) community/regression fits, 26 hand-written fits (frigates, destroyers,
 T3D modes, cruisers, HACs, T3C subsystems, battleships, marauders in bastion, logistics, command ships, interdictor,
-mining, carriers/supercarrier with fighters, structures with rigs/service modules), 124 variations (fleet command booster fits, projected whole fits, incoming remote reps/neuts/nos/cap transfers, scripted projected modules, wormhole environments C1–C6, implant sets, combat boosters, skills 0/2/3/4,
+mining, carriers/supercarrier with fighters, structures with rigs/service modules), 168 variations (fleet command booster fits, projected whole fits, incoming remote reps/neuts/nos/cap transfers, scripted projected modules, wormhole environments C1–C6, implant sets, combat boosters, skills 0/2/3/4,
 damage patterns incl. Reactive Armor Hardener adaptation, reload, projected webs/target painters/damps/web drones,
 mutated modules and drones). See `cases/`.
 
@@ -92,7 +92,7 @@ metrics excluded because Pyfa's data is older than the SDE or because Pyfa disag
 
 | variant | cases | values | latency/fit | batch fits/s | cold start |
 |---|---|---|---|---|---|
-| A: eve-dogma-rs (Rust, lazy memoised dogma graph; 6ff616d, bench 1.4.1, load 5.7) | 289/289 | 18 591/18 591 | 0.91 ms | 912 | 123 ms |
+| A: eve-dogma-rs (Rust, lazy memoised dogma graph; e552cb9, bench 1.5.0) | 295/295 | 18 978/18 978 | 0.53 ms | 1 368 | 121 ms |
 | Pyfa (reference, Python) | – | – | 10–31 ms | – | ~390 ms first calc + startup |
 
 ## License

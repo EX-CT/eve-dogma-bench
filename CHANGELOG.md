@@ -4,6 +4,21 @@ Variants: compare scores only at the same bench version (`VERSION`, shown in res
 Expected values always come from the Pyfa oracle (`oracle/pyfa_oracle.py`). Re-run `python3 bench.py --only <X>` after
 pulling.
 
+## 1.5.0 (2026-10-03 05:30 CST)
+- CONTRACT.md = contract revision 1.4.2: precise definitions (section "Semantics") of `capacitor.use_gj_s` /
+  `injected_gj_s` / `delta_gj_s`, of `projected[].amount` (projected fits: computed once on their own; every active
+  module / active drone / active fighter squadron is projected `amount` times, each copy a separate stacking-penalised
+  modifier), and fleet-buff precedence (an explicit `fleet.buffs` entry overrides own bursts and booster fits for its
+  buff id; otherwise the strongest |value| wins).
+- +6 cases (295 cases, 18 978 values), amount > 1 projected fits: `projfit_curse_x3_on_ishtar` (3 neut/nos Curses at
+  10 km: cap drains ×3), `projfit_curse_x2_falloff_on_rifter` (neuts + tracking disruptors in falloff at 20 km),
+  `projfit_crucifier_x2_on_cerberus` (scripted guidance disruptors ×2 vs missiles), `projfit_crucifier_x3_falloff_on_rifter`
+  (TD/GD/neut ×3 at 30 km), and the source fits `exct_curse`, `exct_crucifier` on their own.
+  These need projected **Tracking Disruptor / Guidance Disruptor** effects (Pyfa Effect6424 / Effect6423: modify the
+  target's Gunnery modules' trackingSpeed/maxRange/falloff and Missile Launcher Operation charges'
+  aoeCloudSize/aoeVelocity/maxVelocity/explosionDelay, postPercent × range factor, stacking-penalised, remote resistance).
+- Scores at 1.4.x are not comparable with 1.5.0 (new cases). `expected_extra/eft_export.jsonl` also covers the new cases.
+
 ## 1.4.1 (2026-10-03 05:40 CST)
 - CONTRACT.md = eve-dogma contract revision 1.4.1 (coordinator rulings): (1) a calc error exits 2 and still prints
   the `{"error":…}` JSON on stdout; (2) `options` missing entirely → `validate` defaults to true; (3) `search` is out

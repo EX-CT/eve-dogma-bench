@@ -5,3 +5,4 @@
 - 2026-10-03 04:15 CST: +23 cases (projected fits, remote reps, neuts/nos, cap transfers, scripted projected modules) → 249 cases / 11 823 values.
 - 2026-10-03 04:20 CST: per-weapon application metrics (turret optimal/falloff/tracking, missile range/explosion radius/velocity; group 'application', selector pointers /offense/weapons[module_index=N]/field) → 13 812 values.
 - 2026-10-03 04:50 CST: bench 1.4.0 — 289 cases / 18 591 values (sustained tank, ECM jam, projected fighters, drone/fighter application, booster side effects).
+- 2026-10-03 05:30 CST: bench 1.5.0 — 295 cases / 18 978 values (contract 1.4.2 semantics; amount>1 projected fits; projected tracking/guidance disruptors). A: 295/295, 0.53 ms/fit, 1 368 fits/s.
