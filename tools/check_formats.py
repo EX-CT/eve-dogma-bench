@@ -214,17 +214,15 @@ def main():
     for line in open(os.path.join(EXP, "edge.jsonl")):
         r = json.loads(line)
         key = "edge"
-        if impl.get(key) is False:
-            stats[key]["not_implemented"] += 1
-            continue
         text = open(os.path.join(ROOT, "formats", "edge", r["file"]), encoding="utf-8").read()
         res, err = rpc.call("format_import", {"text": text, "format": "auto", "path": r["file"]})
-        if err is not None and unknown(err):
-            impl[key] = False
-            stats[key]["not_implemented"] += 1
-            continue
-        impl[key] = True
         st = stats[key]
+        if err is not None and unknown(err) and "error" not in r:
+            # per-file: one unsupported sub-format does not disable the whole edge category
+            st["not_implemented"] += 1
+            st["total"] += 1
+            fails.append({"kind": key, "file": r["file"], "error": err, "not_implemented": True})
+            continue
         st["total"] += 1
         if "error" in r:
             ok = err is not None
@@ -247,7 +245,7 @@ def main():
         im = "no" if st["not_implemented"] and not st["total"] else "yes"
         legal = "%d/%d" % (st["pass_legal"], st["total_legal"]) if st["total_legal"] else ""
         notes = ", ".join("%s %d" % (k, v) for k, v in sorted(st.items())
-                          if k.startswith(("diff_", "soft_diff_", "json_equal", "known_")))
+                          if k.startswith(("diff_", "soft_diff_", "json_equal", "known_")) or (k == "not_implemented" and st["total"]))
         lines.append("| %s | %s | %d | %d | %s | %s |" % (key, im, st["pass"], st["total"] or st["not_implemented"],
                                                          legal, notes))
     md = "\n".join(lines) + "\n"
