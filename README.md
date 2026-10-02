@@ -8,6 +8,7 @@ and **determinism**.
 ```
 cases/       FitRequest JSON files (the corpus; fully resolved type ids, no EFT needed)
 expected/    expected values per case, produced by the Pyfa oracle (+ known_divergences.json)
+expected_extra/ informational checks outside accuracy scoring (eft_export.jsonl: Pyfa exportEft texts)
 oracle/      pyfa_oracle.py (GPL-3.0 test tool: runs Pyfa's eos engine headless as a black box)
 tools/       metrics.py (metric -> JSON pointer, tolerance), make_expected.py (regenerate expected/)
 run.py       the runner / scorer
@@ -42,6 +43,13 @@ build: cargo build --release                      # run in variant-x/ (optional)
 cmd: ./target/release/engine calc --dataset {dataset}        # one request on stdin -> one response on stdout
 batch_cmd: ./target/release/engine batch --dataset {dataset} # JSONL in -> JSONL out (optional but scored)
 ```
+
+Optional `rpc_cmd:` (a JSONL RPC process, see CONTRACT.md) enables the informational EFT-export check
+(`tools/check_eft_export.py`, Pyfa byte-exact, shown as "eft export" in combined.md; not part of accuracy).
+
+Contract rulings in force (CONTRACT.md revision 1.4.1): calc error → exit 2 with the JSON error on stdout;
+`options` omitted → `validate` true; `search` not scored (interim spec in CONTRACT.md); EFT export = Pyfa's exporter
+exactly (no T3D mode line, as Pyfa).
 
 Placeholders: `{dataset}` (shared dataset path from variants.yaml), `{bench}` (bench checkout), `{dir}` (variant dir).
 bench.py clones/fetches the branch into `work/<letter>/`, builds, runs, and records status

@@ -75,6 +75,12 @@ def main():
             row["card"] = run.evaluate(args)
         except Exception as e:  # noqa: BLE001
             row.update(status="run-failed", detail=repr(e))
+        if v.get("rpc_cmd"):  # informational: EFT export vs Pyfa (contract 1.4.1), not part of accuracy
+            try:
+                import tools.check_eft_export as cee
+                row["eft_export"] = cee.check(sub(v["rpc_cmd"]), cwd=str(d))
+            except Exception as e:  # noqa: BLE001
+                row["eft_export"] = {"error": repr(e)}
         if d is not None and "git" in v:
             row["variant_commit"] = subprocess.run("git rev-parse --short HEAD", shell=True, cwd=d, capture_output=True, text=True).stdout.strip()
         rows.append(row)
@@ -102,6 +108,13 @@ def fmt(x, f="{:.2f}"):
     return "–" if x is None else f.format(x)
 
 
+def eft(r):
+    e = r.get("eft_export")
+    if not e:
+        return "–"
+    return f"{e['ok']}/{e['total']}" if "ok" in e else "error"
+
+
 def write_combined(rows):
     groups = sorted({g for r in rows if "card" in r for g in r["card"]["groups"]})
     md = ["# Combined scorecard", "", f"Generated {time.strftime('%Y-%m-%d %H:%M %Z')} — corpus: {len(list((ROOT/'cases').glob('*.json')))} cases, "
@@ -113,7 +126,7 @@ def write_combined(rows):
     for r in rows:
         c = r.get("card")
         if not c:
-            md.append(f"| {r['name']} {r['label']} | {r['status']} |" + " |" * (10 + len(groups)))
+            md.append(f"| {r['name']} {r['label']} | {r['status']} |" + " |" * (11 + len(groups)))
             continue
         p = c["perf"]
         lat = p.get("latency_one_fit", {}).get("per_calc_ms")
@@ -121,7 +134,7 @@ def write_combined(rows):
         cold = p["single_process_per_case_ms"]["median"]
         gcols = " | ".join(fmt(100 * c["groups"][g]["ok"] / c["groups"][g]["total"], "{:.1f}") if g in c["groups"] else "–" for g in groups)
         md.append(f"| {r['name']} {r['label']} | {r['status']} | {c['cases_fully_correct']}/{c['cases']} | {c['values_correct']}/{c['values_total']} | "
-                  f"{100*c['accuracy']:.2f} | {gcols} | {fmt(lat, '{:.3f}')} | {fmt(fps, '{:.0f}')} | {fmt(cold, '{:.0f}')} | {p.get('deterministic', '–')} | {r.get('bench_version', '?')} | {r.get('measured_at', '?')} |")
+                  f"{100*c['accuracy']:.2f} | {gcols} | {fmt(lat, '{:.3f}')} | {fmt(fps, '{:.0f}')} | {fmt(cold, '{:.0f}')} | {p.get('deterministic', '–')} | {eft(r)} | {r.get('bench_version', '?')} | {r.get('measured_at', '?')} |")
     notes = [f"- {r['name']}: {r['status']}: {r.get('detail', '')[:300]}" for r in rows if r["status"] != "ok"]
     if notes:
         md += ["", "Notes:", ""] + notes

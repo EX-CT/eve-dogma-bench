@@ -4,6 +4,19 @@ Variants: compare scores only at the same bench version (`VERSION`, shown in res
 Expected values always come from the Pyfa oracle (`oracle/pyfa_oracle.py`). Re-run `python3 bench.py --only <X>` after
 pulling.
 
+## 1.4.1 (2026-10-03 05:40 CST)
+- CONTRACT.md = eve-dogma contract revision 1.4.1 (coordinator rulings): (1) a calc error exits 2 and still prints
+  the `{"error":…}` JSON on stdout; (2) `options` missing entirely → `validate` defaults to true; (3) `search` is out
+  of dogma scoring, interim spec only (limit 20; kinds ship/module/charge/drone/fighter/implant/booster/subsystem/skill;
+  exact > prefix > substring; ties by typeID ascending); (4) `eft_export` must match Pyfa's exporter byte for byte
+  (Pyfa writes no T3D mode line); (5) duplicate changelog heading removed.
+- Corpus and accuracy scoring unchanged (289 cases, 18 591 values): scores from 1.4.0 remain comparable.
+- New informational check (not in accuracy): EFT export vs Pyfa `exportEft` (all options on, after GUI `fill()`),
+  `expected_extra/eft_export.jsonl` (289 fits; `oracle/pyfa_eft_export.py` generates it). Run
+  `python3 tools/check_eft_export.py --rpc-cmd "<engine serve-stdio>"`, or add `rpc_cmd:` to bench.yaml and bench.py
+  shows an "eft export" column. RPC: JSONL `{"id","method":"eft_export","params":{"fit","name"}}` →
+  `{"id","result":{"text"}}`. Accepted data divergence: T3C maxSubSystems 5 (SDE) vs 4 (Pyfa eve.db).
+
 ## 1.4.0 (2026-10-03 04:50 CST)
 - +40 cases (289): sustainable tank (factor_reload / neuted fits), ECM (racial/multispectral modules, falloff, EC drones,
   burst jammer), projected fighters (`projected[].kind = "fighter"`, `fighter`: FighterReq; web / point / neut / ECM),

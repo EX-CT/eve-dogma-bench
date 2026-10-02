@@ -8,6 +8,7 @@ variants:
     build: cargo build --release
     cmd: ./target/release/eve-dogma --dataset {dataset} calc
     batch_cmd: ./target/release/eve-dogma --dataset {dataset} batch
+    rpc_cmd: ./target/release/eve-dogma --dataset {dataset} serve-stdio
   - {name: B, label: "data-oriented Rust", git: {url: "https://github.com/EX-CT/eve-dogma-lab", branch: variant-b, subdir: variant-b}, manifest: bench.yaml}
   - {name: C, label: "Go", git: {url: "https://github.com/EX-CT/eve-dogma-lab", branch: variant-c, subdir: variant-c}, manifest: bench.yaml}
   - {name: D, label: "TypeScript", git: {url: "https://github.com/EX-CT/eve-dogma-lab", branch: variant-d, subdir: variant-d}, manifest: bench.yaml}
