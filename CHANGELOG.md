@@ -4,6 +4,19 @@ Variants: compare scores only at the same bench version (`VERSION`, shown in res
 Expected values always come from the Pyfa oracle (`oracle/pyfa_oracle.py`). Re-run `python3 bench.py --only <X>` after
 pulling.
 
+## 1.4.0 (2026-10-03 04:50 CST)
+- +40 cases (289): sustainable tank (factor_reload / neuted fits), ECM (racial/multispectral modules, falloff, EC drones,
+  burst jammer), projected fighters (`projected[].kind = "fighter"`, `fighter`: FighterReq; web / point / neut / ECM),
+  active drones (light/medium/heavy/sentry), local fighter abilities (MWD / evasive / MJD via `fighters[].abilities`),
+  booster side effects (`boosters[].side_effects` = effect IDs).
+- New metrics (18 591 values): `stank.{armor,shield,hull}` → `/defense/tank/sustained/*` (Pyfa `sustainableTank`),
+  `jam_chance` → `/targeting/jam_chance_percent` (Pyfa `jamChance`, 0 when no ECM), `warp_scramble_status` →
+  `/navigation/warp_scramble_status`, `drone_control_range` → `/drones/control_range_m`, per active damaging drone
+  `d<drone_index>.{optimal_m,falloff_m,tracking,max_velocity,signature_radius}` → `/offense/drones[drone_index=N]/…`,
+  per damaging fighter `f<fighter_index>.{max_velocity,signature_radius}` → `/offense/fighters[fighter_index=N]/…`.
+- Known divergence: Networked Sensor Array `warpScrambleStatus` (SDE +100, Pyfa omits) for Hel/Nidhoggur cases.
+- Note: `capacitor.use_gj_s` semantics (contract v1.4) not scored.
+
 ## 1.3.0 (2026-10-03 04:20 CST, b687270)
 - New metric group `application`: per weapon `w<module_index>.{optimal_m,falloff_m,tracking,range_m,explosion_radius,
   explosion_velocity}` at `/offense/weapons[module_index=N]/<field>` (array-selector pointer, see tools/metrics.py).

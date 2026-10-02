@@ -3,13 +3,40 @@
   "max_velocity": "two prop mods active at once (invalid fit); Pyfa re-reads mass per handler"
  },
  "esf_items_7": {
-  "cap_capacity": "structure module on a ship (invalid fit): Pyfa applies it, SDE structure domain does not"
+  "cap_capacity": "structure module on a ship (invalid fit): Pyfa applies it, SDE domain says no"
  },
  "esf_projection_18": {
   "align_time_s": "data drift: Pyfa eve.db (client 3532181) Paladin agility 0.858 vs SDE 3569502 0.0858"
  },
  "esf_structure_bonus_1": {
   "ehp.armor": "same as hp.armor",
-  "hp.armor": "SDE: unpowered structure zeroes armor plating bonus (ESF agrees); Pyfa handler ignores power state"
+  "hp.armor": "SDE: unpowered structure zeroes plating bonus (ESF agrees); Pyfa hand-written handler ignores power state"
+ },
+ "exct_hel": {
+  "warp_scramble_status": "SDE: Networked Sensor Array ModAdd warpScrambleStatus += warpScrambleStrength (+100); Pyfa's hand-written moduleBonusNetworkedSensorArray omits it"
+ },
+ "exct_nidhoggur": {
+  "warp_scramble_status": "SDE: Networked Sensor Array ModAdd warpScrambleStatus += warpScrambleStrength (+100); Pyfa's hand-written moduleBonusNetworkedSensorArray omits it"
+ },
+ "fighters_mwd_nidhoggur": {
+  "warp_scramble_status": "SDE: Networked Sensor Array ModAdd warpScrambleStatus += warpScrambleStrength (+100); Pyfa's hand-written moduleBonusNetworkedSensorArray omits it"
+ },
+ "skills0_hel": {
+  "warp_scramble_status": "SDE: Networked Sensor Array ModAdd warpScrambleStatus += warpScrambleStrength (+100); Pyfa's hand-written moduleBonusNetworkedSensorArray omits it"
+ },
+ "skills0_nidhoggur": {
+  "warp_scramble_status": "SDE: Networked Sensor Array ModAdd warpScrambleStatus += warpScrambleStrength (+100); Pyfa's hand-written moduleBonusNetworkedSensorArray omits it"
+ },
+ "skills2_hel": {
+  "warp_scramble_status": "SDE: Networked Sensor Array ModAdd warpScrambleStatus += warpScrambleStrength (+100); Pyfa's hand-written moduleBonusNetworkedSensorArray omits it"
+ },
+ "skills2_nidhoggur": {
+  "warp_scramble_status": "SDE: Networked Sensor Array ModAdd warpScrambleStatus += warpScrambleStrength (+100); Pyfa's hand-written moduleBonusNetworkedSensorArray omits it"
+ },
+ "skills4_hel": {
+  "warp_scramble_status": "SDE: Networked Sensor Array ModAdd warpScrambleStatus += warpScrambleStrength (+100); Pyfa's hand-written moduleBonusNetworkedSensorArray omits it"
+ },
+ "skills4_nidhoggur": {
+  "warp_scramble_status": "SDE: Networked Sensor Array ModAdd warpScrambleStatus += warpScrambleStrength (+100); Pyfa's hand-written moduleBonusNetworkedSensorArray omits it"
  }
 }

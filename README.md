@@ -70,7 +70,7 @@ determinism (identical output for identical input), plus `failures.json` with ev
 
 ## Corpus
 
-249 cases: 101 dogma-engine (EVE Ship Fit) community/regression fits, 24 hand-written fits (frigates, destroyers,
+289 cases: 101 dogma-engine (EVE Ship Fit) community/regression fits, 24 hand-written fits (frigates, destroyers,
 T3D modes, cruisers, HACs, T3C subsystems, battleships, marauders in bastion, logistics, command ships, interdictor,
 mining, carriers/supercarrier with fighters, structures with rigs/service modules), 124 variations (fleet command booster fits, projected whole fits, incoming remote reps/neuts/nos/cap transfers, scripted projected modules, wormhole environments C1–C6, implant sets, combat boosters, skills 0/2/3/4,
 damage patterns incl. Reactive Armor Hardener adaptation, reload, projected webs/target painters/damps/web drones,
@@ -84,7 +84,7 @@ metrics excluded because Pyfa's data is older than the SDE or because Pyfa disag
 
 | variant | cases | values | latency/fit | batch fits/s | cold start |
 |---|---|---|---|---|---|
-| A: eve-dogma-rs (Rust, lazy memoised dogma graph) | 249/249 | 13 812/13 812 | 1.43 ms | 460 | 216 ms |
+| A: eve-dogma-rs (Rust, lazy memoised dogma graph) | 289/289 | 18 591/18 591 | 1.79 ms | 615 | 158 ms |
 | Pyfa (reference, Python) | – | – | 10–31 ms | – | ~390 ms first calc + startup |
 
 ## License

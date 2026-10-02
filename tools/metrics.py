@@ -27,19 +27,30 @@ METRICS = {
     "warp_speed": ("/navigation/warp_speed_au_s", "navigation"),
     "max_targets": ("/targeting/max_targets", "targeting"), "max_target_range": ("/targeting/max_range_m", "targeting"),
     "scan_resolution": ("/targeting/scan_resolution", "targeting"), "scan_strength": ("/targeting/sensor_strength", "targeting"),
+    "jam_chance": ("/targeting/jam_chance_percent", "targeting"),
+    "warp_scramble_status": ("/navigation/warp_scramble_status", "navigation"),
+    "drone_control_range": ("/drones/control_range_m", "application"),
+    "stank.armor": ("/defense/tank/sustained/armor_repair", "tank"), "stank.shield": ("/defense/tank/sustained/shield_repair", "tank"),
+    "stank.hull": ("/defense/tank/sustained/hull_repair", "tank"),
 }
 
+DFIELDS = ("optimal_m", "falloff_m", "tracking", "max_velocity", "signature_radius")
+FFIELDS = ("max_velocity", "signature_radius")
 WFIELDS = ("optimal_m", "falloff_m", "tracking", "range_m", "explosion_radius", "explosion_velocity")
 
 
 class _Metrics(dict):
     """METRICS plus per-weapon metrics `w<module_index>.<field>` -> /offense/weapons[module_index=N]/<field>"""
 
+    DYN = {"w": ("weapons", "module_index", WFIELDS), "d": ("drones", "drone_index", DFIELDS),
+           "f": ("fighters", "fighter_index", FFIELDS)}
+
     def _dyn(self, k):
-        if isinstance(k, str) and k.startswith("w") and "." in k:
+        if isinstance(k, str) and k[:1] in self.DYN and "." in k:
+            arr, key, fields = self.DYN[k[0]]
             n, f = k[1:].split(".", 1)
-            if n.isdigit() and f in WFIELDS:
-                return (f"/offense/weapons[module_index={n}]/{f}", "application")
+            if n.isdigit() and f in fields:
+                return (f"/offense/{arr}[{key}={n}]/{f}", "application")
         return None
 
     def __missing__(self, k):
@@ -114,6 +125,17 @@ def from_pyfa(s):
     t = s["tank"]
     out.update({"tank.armor": t["armorRepair"], "tank.shield": t["shieldRepair"], "tank.hull": t["hullRepair"],
                 "tank.passive": t["passiveShield"]})
+    for k in ("jam_chance", "warp_scramble_status", "drone_control_range"):
+        if s.get(k) is not None:
+            out[k] = s[k]
+    st_ = s.get("sustainable_tank")
+    if st_:
+        out.update({"stank.armor": st_["armorRepair"], "stank.shield": st_["shieldRepair"], "stank.hull": st_["hullRepair"]})
+    for pre, arr, key, fields in (("d", "drones", "drone_index", DFIELDS), ("f", "fighters", "fighter_index", FFIELDS)):
+        for w in s.get(arr, []):
+            for f in fields:
+                if w.get(f) is not None:
+                    out[f"{pre}{w[key]}.{f}"] = w[f]
     for w in s.get("weapons", []):
         for f in WFIELDS:
             if w.get(f) is not None:

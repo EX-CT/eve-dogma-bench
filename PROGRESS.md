@@ -4,3 +4,4 @@
 - 2026-10-03 04:05 CST: +19 cases (fleet booster fits, WH environments, implant sets, boosters) → 226 cases / 10 732 values; oracle supports environments and booster fits.
 - 2026-10-03 04:15 CST: +23 cases (projected fits, remote reps, neuts/nos, cap transfers, scripted projected modules) → 249 cases / 11 823 values.
 - 2026-10-03 04:20 CST: per-weapon application metrics (turret optimal/falloff/tracking, missile range/explosion radius/velocity; group 'application', selector pointers /offense/weapons[module_index=N]/field) → 13 812 values.
+- 2026-10-03 04:50 CST: bench 1.4.0 — 289 cases / 18 591 values (sustained tank, ECM jam, projected fighters, drone/fighter application, booster side effects).
