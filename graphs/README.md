@@ -5,7 +5,7 @@ are untouched). Contract draft: [CONTRACT-GRAPHS.md](CONTRACT-GRAPHS.md).
 
 ```
 graphs/CONTRACT-GRAPHS.md        GraphRequest / GraphResult, 9 graph types, axes, units, semantics
-graphs/cases/*.json              100 GraphRequests (source fit embedded; most fits taken from cases/ of the 1.x corpus)
+graphs/cases/*.json              111 GraphRequests (source fit embedded; most fits taken from cases/ of the 1.x corpus)
 graphs/expected/*.json           Pyfa values at every sample point (oracle/pyfa_graph_oracle.py)
 graphs/tools/make_graph_cases.py regenerates cases/ (sample points chosen per graph)
 graphs/tools/make_graph_expected.py  regenerates expected/ with the Pyfa graph oracle (GPL test tool)
@@ -16,14 +16,14 @@ graphs/run_graphs.py             scorer: --batch-cmd | --cmd | --rpc-cmd (method
 |---|---|---|
 | `application_profile` | 10 | 120 (+120 informational charge ids) |
 | `capacitor` | 11 | 164 |
-| `damage` | 37 | 634 |
+| `damage` | 48 | 828 |
 | `ewar` | 10 | 168 |
 | `lock_time` | 6 | 78 |
 | `mobility` | 9 | 253 |
 | `remote_reps` | 6 | 87 |
 | `shield_regen` | 4 | 54 |
 | `warp_time` | 7 | 91 |
-| **total** | **100** | **1649** |
+| **total** | **111** | **1843** |
 
 ## Running
 
@@ -66,5 +66,7 @@ point. Verified: running every case in its own process gives identical numbers t
 - **Not covered:** the hidden experimental "ECM Burst + Scanres Damps" graph; `%`-of-target x axes (`tgt_speed`/
   `tgt_sig` in %) — engines get absolute axes, the GUI converts; target fits only as `damage`/`application_profile`
   targets (not as EWAR/RR targets: Pyfa's EWAR and RR graphs have no target).
-- **Fighter abilities, doomsdays, breachers, bombs** are exercised by a few cases only (Hel, Nidhoggur, Avatar lance);
-  coverage of exotic weapons is thinner than the 1.x corpus.
+- **Exotic weapons** are exercised by a few cases each: fighters (Hel, Nidhoggur, Thanatos/Templar II), doomsday
+  (Avatar lance), Entropic Disintegrator spool-up (Kikimora, distance + time), Vorton (Skybreaker), breacher pods
+  (Kestrel vs. target fit, time axis), bombs (Manticore). Target-fit cases include scram-vs-MWD (Rifter → Stiletto)
+  and web-vs-fit (Hyperion → Sabre). Coverage is still thinner than the 1.x corpus.

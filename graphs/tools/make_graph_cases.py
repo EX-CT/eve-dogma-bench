@@ -15,10 +15,13 @@ def corpus(name):
     return json.loads((ROOT / "cases" / (name + ".json")).read_text())
 
 
-def fit(ship, mods, drones=(), skills=5):
-    return {"schema_version": 1, "ship": {"type_id": ship}, "character": {"skills": {"default_level": skills}},
-            "modules": [dict({"type_id": t, "state": "active"}, **({"charge_type_id": c} if c else {})) for t, c in mods],
-            "drones": [{"type_id": t, "quantity": q, "active": a} for t, q, a in drones]}
+def fit(ship, mods, drones=(), skills=5, fighters=()):
+    r = {"schema_version": 1, "ship": {"type_id": ship}, "character": {"skills": {"default_level": skills}},
+         "modules": [dict({"type_id": t, "state": "active"}, **({"charge_type_id": c} if c else {})) for t, c in mods],
+         "drones": [{"type_id": t, "quantity": q, "active": a} for t, q, a in drones]}
+    if fighters:
+        r["fighters"] = [{"type_id": t, "quantity": q, "active": True} for t, q in fighters]
+    return r
 
 
 # inline EWAR / logistics fits (type ids from dataset-3569502)
@@ -30,6 +33,11 @@ HUGINN_WEB = fit(11961, [(527, None), (527, None), (19806, None), (19806, None)]
 BHAAL_NEUT = fit(17920, [(12271, None), (12271, None), (12271, None), (13003, None)], drones=[(23659, 5, 5)])
 ONEIROS_RR = fit(11989, [(26913, None), (26913, None), (26913, None), (41477, 28668)])
 SCIMI_RR = fit(11978, [(3608, None), (3608, None), (3608, None), (41481, 11283)])
+KIKIMORA = fit(49710, [(47914, 47924), (47911, None), (47911, None)])
+SKYBREAKER = fit(54731, [(54742, 54772), (54742, 54772)])
+KESTREL_BREACHER = fit(602, [(85084, 85088), (85084, 85088), (85084, 85088), (85084, 85088)])
+MANTICORE_BOMB = fit(12032, [(27914, 27912)])
+THANATOS_TEMPLAR = fit(23911, [(41415, None), (41415, None)], fighters=[(40556, 9), (40556, 9), (40556, 9)])
 VEXOR_EWAR_DRONES = fit(626, [(527, None)], drones=[(23707, 5, 5)])
 
 SMALL = {"profile": {"signature_radius": 35, "max_velocity": 400, "radius": 40}}
@@ -85,6 +93,18 @@ add("dmg_dist_rifter_vs_fit", "damage", corpus("exct_rifter"), "distance_m", DIS
 add("dmg_dist_hyperion_vs_fit_armor", "damage", corpus("exct_hyperion"), "distance_m", DIST_S, ["dps"], {"tgt_speed_pct": 50},
     {"fit": corpus("exct_guardian"), "resist_mode": "armor"}, {"ignore_resists": False})
 add("dmg_dist_rifter_dmg_at_t", "damage", corpus("exct_rifter"), "distance_m", DIST_S, ["damage"], {"tgt_speed_pct": 100, "time_s": 30}, SMALL)
+# special weapons
+add("dmg_dist_kikimora_disintegrator", "damage", KIKIMORA, "distance_m", DIST_S, ["dps", "volley"], {"tgt_speed_pct": 100}, SMALL)
+add("dmg_dist_skybreaker_vorton", "damage", SKYBREAKER, "distance_m", DIST_S, ["dps", "volley"], {"tgt_speed_pct": 100}, SMALL)
+add("dmg_dist_manticore_bomb", "damage", MANTICORE_BOMB, "distance_m", KM(0, 5, 10, 15, 20, 25, 30, 35, 40), ["dps", "volley"], {"tgt_speed_pct": 0}, BS)
+add("dmg_dist_thanatos_templar", "damage", THANATOS_TEMPLAR, "distance_m", DIST_L, ["dps", "volley"], {"tgt_speed_pct": 100}, CRUISER)
+add("dmg_dist_thanatos_templar_slow_tgt", "damage", THANATOS_TEMPLAR, "distance_m", DIST_L, ["dps"], {"tgt_speed_pct": 20}, BS)
+add("dmg_dist_vexor_drones_atk_follow", "damage", corpus("drones_mixed_vexor"), "distance_m", DIST_S, ["dps"],
+    {"tgt_speed_pct": 100, "atk_speed_pct": 50, "atk_angle_deg": 0}, SMALL, {"mobile_drone_mode": "follow_attacker"})
+add("dmg_dist_rifter_scram_vs_mwd_fit", "damage", corpus("exct_rifter"), "distance_m", KM(0, 2, 5, 7.5, 9, 10, 12, 15, 20), ["dps"],
+    {"tgt_speed_pct": 100}, {"fit": corpus("exct_stiletto"), "resist_mode": "auto"}, {"ignore_resists": False})
+add("dmg_dist_hyperion_web_vs_fit", "damage", corpus("exct_hyperion"), "distance_m", KM(0, 2, 5, 7.5, 10, 12.5, 15, 20, 30), ["dps"],
+    {"tgt_speed_pct": 100}, {"fit": corpus("exct_sabre"), "resist_mode": "weighted_average"}, {"ignore_resists": False})
 # ---- damage: time
 TIMES = [0, 0.5, 1, 2, 2.5, 3, 5, 7.5, 10, 15, 20, 30, 45, 60, 120]
 add("dmg_time_rifter", "damage", corpus("exct_rifter"), "time_s", TIMES, ["dps", "volley", "damage"], {"distance_m": 3000, "tgt_speed_pct": 100}, SMALL)
@@ -93,6 +113,10 @@ add("dmg_time_tengu", "damage", corpus("exct_tengu"), "time_s", TIMES, ["dps", "
 add("dmg_time_ishtar_drones", "damage", corpus("drones_heavy_ishtar"), "time_s", TIMES, ["damage"], {"distance_m": 10000, "tgt_speed_pct": 50}, CRUISER)
 add("dmg_time_avatar_lance", "damage", corpus("exct_avatar_lance"), "time_s", [0, 5, 9, 10, 11, 15, 20, 30, 60, 300, 600], ["dps", "volley", "damage"], {"distance_m": 50000}, BS)
 add("dmg_time_nidhoggur", "damage", corpus("exct_nidhoggur"), "time_s", TIMES, ["damage"], {"distance_m": 20000, "tgt_speed_pct": 50}, BS)
+add("dmg_time_kikimora_spool", "damage", KIKIMORA, "time_s", [0, 1, 3, 5, 10, 15, 20, 30, 45, 60, 90, 120], ["dps", "volley", "damage"], {"distance_m": 2000, "tgt_speed_pct": 0}, CRUISER)
+add("dmg_time_kestrel_breacher", "damage", KESTREL_BREACHER, "time_s", [0, 1, 2, 3, 5, 10, 20, 30, 60], ["dps", "damage"], {"distance_m": 5000},
+    {"fit": corpus("exct_hyperion"), "resist_mode": "auto"})
+add("dmg_time_thanatos_templar", "damage", THANATOS_TEMPLAR, "time_s", [0, 1, 5, 10, 20, 30, 60, 120], ["damage"], {"distance_m": 10000, "tgt_speed_pct": 50}, BS)
 add("dmg_time_out_of_range", "damage", corpus("exct_rifter"), "time_s", [-5, 0, 10, 2500, 3000], ["dps"], {"distance_m": 3000}, SMALL)
 # ---- damage: target speed / signature
 SPEEDS = [0, 50, 100, 200, 300, 500, 750, 1000, 1500, 2500]
