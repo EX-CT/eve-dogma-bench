@@ -4,6 +4,12 @@ Variants: compare scores only at the same bench version (`VERSION`, shown in res
 Expected values always come from the Pyfa oracle (`oracle/pyfa_oracle.py`). Re-run `python3 bench.py --only <X>` after
 pulling.
 
+## 1.6.0 (2026-10-03 05:50 CST)
+- +2 cases (297 cases, 19 103 values): `projfit_scythe_rtc_x2_on_rifter` (two Scythes with scripted Remote Tracking
+  Computers at 12 km: Pyfa `shipModuleRemoteTrackingComputer` boosts the target's Gunnery modules' trackingSpeed /
+  maxRange / falloff, postPercent × range factor, stacking-penalised, blocked by `disallowAssistance`) and its source
+  fit `exct_scythe_rtc`. Scores at 1.5.x are not comparable with 1.6.0.
+
 ## 1.5.1 (2026-10-03 05:40 CST)
 - Harness only (corpus and scoring unchanged): `results/` is no longer tracked at all (combined.md/json were tracked
   and modified by every run, so `git pull` in the shared checkout failed with "Please commit or stash").
