@@ -1,0 +1,65 @@
+{
+ "fit": {
+  "character": {
+   "skills": {
+    "default_level": 5
+   }
+  },
+  "drones": [
+   {
+    "active": 5,
+    "quantity": 5,
+    "type_id": 23659
+   }
+  ],
+  "modules": [
+   {
+    "state": "active",
+    "type_id": 12271
+   },
+   {
+    "state": "active",
+    "type_id": 12271
+   },
+   {
+    "state": "active",
+    "type_id": 12271
+   },
+   {
+    "state": "active",
+    "type_id": 13003
+   }
+  ],
+  "schema_version": 1,
+  "ship": {
+   "type_id": 17920
+  }
+ },
+ "graph": "capacitor",
+ "params": {
+  "cap_start_pct": 50
+ },
+ "schema_version": 1,
+ "x": {
+  "axis": "time_s",
+  "values": [
+   0,
+   1,
+   5,
+   10,
+   20,
+   30,
+   60,
+   90,
+   120,
+   180,
+   300,
+   600,
+   1200,
+   3600
+  ]
+ },
+ "y": [
+  "cap_gj"
+ ]
+}
