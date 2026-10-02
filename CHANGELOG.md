@@ -4,6 +4,11 @@ Variants: compare scores only at the same bench version (`VERSION`, shown in res
 Expected values always come from the Pyfa oracle (`oracle/pyfa_oracle.py`). Re-run `python3 bench.py --only <X>` after
 pulling.
 
+## 1.5.1 (2026-10-03 05:40 CST)
+- Harness only (corpus and scoring unchanged): `results/` is no longer tracked at all (combined.md/json were tracked
+  and modified by every run, so `git pull` in the shared checkout failed with "Please commit or stash").
+  The shared box keeps its local results/combined.*; the README table holds published numbers.
+
 ## 1.5.0 (2026-10-03 05:30 CST)
 - CONTRACT.md = contract revision 1.4.2: precise definitions (section "Semantics") of `capacitor.use_gj_s` /
   `injected_gj_s` / `delta_gj_s`, of `projected[].amount` (projected fits: computed once on their own; every active

@@ -33,6 +33,7 @@ A variant may convert it to any internal format, but must not use other data.
 
 ```bash
 python3 bench.py                 # all variants in variants.yaml -> results/combined.md + per-variant scorecards
+# results/ is local to the checkout (not tracked), so `git pull` never conflicts with scorecards written by other runs
 python3 bench.py --only A,C --quick --no-build
 ```
 
@@ -92,7 +93,7 @@ metrics excluded because Pyfa's data is older than the SDE or because Pyfa disag
 
 | variant | cases | values | latency/fit | batch fits/s | cold start |
 |---|---|---|---|---|---|
-| A: eve-dogma-rs (Rust, lazy memoised dogma graph; e552cb9, bench 1.5.0) | 295/295 | 18 978/18 978 | 0.53 ms | 1 368 | 121 ms |
+| A: eve-dogma-rs (Rust, lazy memoised dogma graph; 1db626a, bench 1.5.0, load ≈9) | 295/295 | 18 978/18 978 | 0.42 ms | 1 707 | 130 ms |
 | Pyfa (reference, Python) | – | – | 10–31 ms | – | ~390 ms first calc + startup |
 
 ## License
