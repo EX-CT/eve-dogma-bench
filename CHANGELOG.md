@@ -4,6 +4,23 @@ Variants: compare scores only at the same bench version (`VERSION`, shown in res
 Expected values always come from the Pyfa oracle (`oracle/pyfa_oracle.py`). Re-run `python3 bench.py --only <X>` after
 pulling.
 
+## 1.7.0 (2026-10-03 06:00 CST)
+- +9 cases (306 cases), found by sweeping every published module and implant on an empty Hyperion against Pyfa:
+  - `exct_avatar_lance`, `exct_hyperion_bosonic`: lance / Bosonic Field doomsdays deal their volley every
+    `doomsdayDamageCycleTime` for `doomsdayDamageDuration` (Pyfa `getVolleyParameters` subcycles; not the Reaper
+    slash), so DPS = subcycles × volley / cycle and volley = one tick; active superweapons also apply their
+    `speedFactor` to the ship's maxVelocity and the `siegeModeWarpStatus` to warpScrambleStatus.
+  - `exct_broadsword_bubble`: an active uncharged Warp Disruption Field Generator: unpenalised mass / signature
+    radius / propulsion-module speed boost on the HIC, `disallowAssistance` = 1.
+  - `exct_moros_ehe` (Capital Emergency Hull Energizer: hull resonances), `exct_hurricane_entosis` (Entosis Link:
+    disallowAssistance, scan strengths), `exct_hyperion_mjfg` (Micro Jump Field Generator: signature radius).
+  - `exct_hyperion_smartbomb`: `cpu_used` / `pg_used` are Python `round(v, 2)` (correct rounding of the binary value,
+    e.g. 28.125000000000004 → 28.13 but 28.12499… → 28.12), not round-half-up of v×100.
+  - `proj_td_drones_rifter`, `proj_td_drones_out_of_range_rifter`: tracking-disruptor drones
+    (`npcEntityWeaponDisruptor`): full strength inside the drone's maxRange, nothing beyond it.
+- EFT export expected texts added for the 9 cases (`expected_extra/eft_export.jsonl`, 306 lines).
+  Scores at 1.6.0 are not comparable with 1.7.0.
+
 ## 1.6.0 (2026-10-03 05:50 CST)
 - +2 cases (297 cases, 19 103 values): `projfit_scythe_rtc_x2_on_rifter` (two Scythes with scripted Remote Tracking
   Computers at 12 km: Pyfa `shipModuleRemoteTrackingComputer` boosts the target's Gunnery modules' trackingSpeed /
