@@ -1,0 +1,13 @@
+[Rifter, offline states]
+
+Damage Control II /OFFLINE
+Gyrostabilizer II /offline
+Gyrostabilizer II
+
+1MN Afterburner II /offline
+Warp Scrambler II
+Stasis Webifier II
+
+200mm AutoCannon II, Republic Fleet EMP S
+200mm AutoCannon II, Republic Fleet EMP S /offline
+Rocket Launcher II

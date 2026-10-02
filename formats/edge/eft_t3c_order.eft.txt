@@ -1,0 +1,14 @@
+[Tengu, subsystems first]
+
+Tengu Core - Augmented Graviton Reactor
+Tengu Defensive - Supplemental Screening
+Tengu Offensive - Accelerated Ejection Bay
+Tengu Propulsion - Interdiction Nullifier
+
+Ballistic Control System II
+
+10MN Afterburner II
+Large Shield Extender II
+
+Heavy Assault Missile Launcher II, Scourge Rage Heavy Assault Missile
+Heavy Assault Missile Launcher II, Scourge Rage Heavy Assault Missile

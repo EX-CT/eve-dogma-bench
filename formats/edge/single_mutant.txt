@@ -1,0 +1,3 @@
+Warp Scrambler II
+  Unstable Warp Scrambler Mutaplasmid
+  capacitorNeed 7.5, cpu 30.0, maxRange 10500.0

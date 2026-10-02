@@ -1,0 +1,9 @@
+[Fortizar, structure]
+
+Standup Multirole Missile Launcher I, Standup Cruise Missile
+Standup Heavy Energy Neutralizer I
+
+Standup Market Hub I
+Standup Manufacturing Plant I
+
+Standup Cruise Missile x1000
