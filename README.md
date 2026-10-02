@@ -60,7 +60,7 @@ python3 run.py --name variant-x \
 ```
 
 The response only needs the fields listed in [tools/metrics.py](tools/metrics.py) (JSON pointers into FitStats,
-e.g. `/defense/ehp/armor`, `/capacitor/stable_percent`; `a+b` = sum). Missing fields count as wrong.
+e.g. `/defense/ehp/armor`, `/capacitor/stable_percent`; `a+b` = sum; `name[key=value]` selects an array element, e.g. `/offense/weapons[module_index=3]/tracking`). Missing fields count as wrong.
 Tolerance: `|got-want| <= max(1e-3, 1e-4*|want|)`; booleans exact.
 
 Scorecard (`results/<name>/scorecard.md`): cases fully correct, values correct per group (fitting, defense,
@@ -84,7 +84,7 @@ metrics excluded because Pyfa's data is older than the SDE or because Pyfa disag
 
 | variant | cases | values | latency/fit | batch fits/s | cold start |
 |---|---|---|---|---|---|
-| A: eve-dogma-rs (Rust, lazy memoised dogma graph) | 249/249 | 11 823/11 823 | 1.42 ms | 587 | 182 ms |
+| A: eve-dogma-rs (Rust, lazy memoised dogma graph) | 249/249 | 13 812/13 812 | 1.43 ms | 460 | 216 ms |
 | Pyfa (reference, Python) | – | – | 10–31 ms | – | ~390 ms first calc + startup |
 
 ## License

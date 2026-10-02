@@ -48,6 +48,9 @@
   "tank.hull": 0,
   "tank.passive": 3.0,
   "tank.shield": 0,
+  "w0.falloff_m": 9675.0,
+  "w0.optimal_m": 750.0,
+  "w0.tracking": 393.75,
   "warp_speed": 5.0,
   "weapon_dps": 38.962,
   "weapon_volley": 65.74837500000001

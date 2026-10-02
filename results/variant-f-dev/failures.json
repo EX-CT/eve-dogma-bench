@@ -1,1 +1,687 @@
-{}
+{
+ "booster_strongblue": {
+  "error": null,
+  "mismatches": {
+   "w10.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w11.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w12.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w13.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w9.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   }
+  }
+ },
+ "booster_synthblue": {
+  "error": null,
+  "mismatches": {
+   "w10.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w11.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w12.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w13.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w9.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   }
+  }
+ },
+ "env_magnetar6_tengu": {
+  "error": null,
+  "mismatches": {
+   "w10.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w11.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w12.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w13.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w9.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   }
+  }
+ },
+ "env_wolfrayet3_tengu": {
+  "error": null,
+  "mismatches": {
+   "w10.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w11.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w12.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w13.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w9.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   }
+  }
+ },
+ "esf_caracal": {
+  "error": null,
+  "mismatches": {
+   "w10.range_m": {
+    "got": 30375.0,
+    "want": 30361.785369338184
+   },
+   "w11.range_m": {
+    "got": 30375.0,
+    "want": 30361.785369338184
+   },
+   "w12.range_m": {
+    "got": 30375.0,
+    "want": 30361.785369338184
+   },
+   "w13.range_m": {
+    "got": 30375.0,
+    "want": 30361.785369338184
+   },
+   "w9.range_m": {
+    "got": 30375.0,
+    "want": 30361.785369338184
+   }
+  }
+ },
+ "esf_security_status": {
+  "error": null,
+  "mismatches": {
+   "w2.range_m": {
+    "got": 30375.0,
+    "want": 30366.190162892126
+   }
+  }
+ },
+ "esf_structure_bonus_2": {
+  "error": null,
+  "mismatches": {
+   "w0.range_m": {
+    "got": 1500750.0,
+    "want": 1494225.315
+   }
+  }
+ },
+ "esf_structure_stats_1": {
+  "error": null,
+  "mismatches": {
+   "w0.range_m": {
+    "got": 1035000.0,
+    "want": 1030499.6000000001
+   }
+  }
+ },
+ "exct_damnation": {
+  "error": null,
+  "mismatches": {
+   "w10.range_m": {
+    "got": 30375.0,
+    "want": 30361.787369338184
+   },
+   "w11.range_m": {
+    "got": 30375.0,
+    "want": 30361.787369338184
+   },
+   "w9.range_m": {
+    "got": 30375.0,
+    "want": 30361.787369338184
+   }
+  }
+ },
+ "exct_raven": {
+  "error": null,
+  "mismatches": {
+   "w10.range_m": {
+    "got": 43740.0,
+    "want": 43724.15036820581
+   },
+   "w11.range_m": {
+    "got": 43740.0,
+    "want": 43724.15036820581
+   },
+   "w12.range_m": {
+    "got": 43740.0,
+    "want": 43724.15036820581
+   },
+   "w13.range_m": {
+    "got": 43740.0,
+    "want": 43724.15036820581
+   },
+   "w14.range_m": {
+    "got": 43740.0,
+    "want": 43724.15036820581
+   },
+   "w15.range_m": {
+    "got": 43740.0,
+    "want": 43724.15036820581
+   }
+  }
+ },
+ "exct_tengu": {
+  "error": null,
+  "mismatches": {
+   "w10.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w11.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w12.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w13.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w9.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   }
+  }
+ },
+ "implants_crystal_hg": {
+  "error": null,
+  "mismatches": {
+   "w10.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w11.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w12.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w13.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w9.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   }
+  }
+ },
+ "proj_ars_tengu": {
+  "error": null,
+  "mismatches": {
+   "w10.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w11.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w12.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w13.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w9.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   }
+  }
+ },
+ "proj_damp_script_tengu": {
+  "error": null,
+  "mismatches": {
+   "w10.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w11.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w12.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w13.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w9.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   }
+  }
+ },
+ "proj_drone_web_tengu": {
+  "error": null,
+  "mismatches": {
+   "w10.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w11.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w12.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w13.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w9.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   }
+  }
+ },
+ "proj_neut_tengu_stable": {
+  "error": null,
+  "mismatches": {
+   "w10.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w11.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w12.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w13.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w9.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   }
+  }
+ },
+ "proj_rsb_tengu": {
+  "error": null,
+  "mismatches": {
+   "w10.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w11.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w12.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w13.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w9.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   }
+  }
+ },
+ "projfit_proj7_on_hyperion": {
+  "error": null,
+  "mismatches": {
+   "scan_strength": {
+    "got": 27.6,
+    "want": 44.16
+   }
+  }
+ },
+ "projfit_rifter_on_tengu": {
+  "error": null,
+  "mismatches": {
+   "w10.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w11.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w12.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w13.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   },
+   "w9.range_m": {
+    "got": 30375.0,
+    "want": 30255.314706636967
+   }
+  }
+ },
+ "skills0_damnation": {
+  "error": null,
+  "mismatches": {
+   "w10.range_m": {
+    "got": 9000.0,
+    "want": 8994.127608594748
+   },
+   "w11.range_m": {
+    "got": 9000.0,
+    "want": 8994.127608594748
+   },
+   "w9.range_m": {
+    "got": 9000.0,
+    "want": 8994.127608594748
+   }
+  }
+ },
+ "skills0_raven": {
+  "error": null,
+  "mismatches": {
+   "w10.range_m": {
+    "got": 12960.0,
+    "want": 12952.953030313693
+   },
+   "w11.range_m": {
+    "got": 12960.0,
+    "want": 12952.953030313693
+   },
+   "w12.range_m": {
+    "got": 12960.0,
+    "want": 12952.953030313693
+   },
+   "w13.range_m": {
+    "got": 12960.0,
+    "want": 12952.953030313693
+   },
+   "w14.range_m": {
+    "got": 12960.0,
+    "want": 12952.953030313693
+   },
+   "w15.range_m": {
+    "got": 12960.0,
+    "want": 12952.953030313693
+   }
+  }
+ },
+ "skills0_rifter": {
+  "error": null,
+  "mismatches": {
+   "w9.range_m": {
+    "got": 3750.0,
+    "want": 3749.5099882162285
+   }
+  }
+ },
+ "skills0_stiletto": {
+  "error": null,
+  "mismatches": {
+   "w8.range_m": {
+    "got": 4500.0,
+    "want": 4499.413235859473
+   }
+  }
+ },
+ "skills0_tengu": {
+  "error": null,
+  "mismatches": {
+   "w10.range_m": {
+    "got": 9000.0,
+    "want": 8946.805980727544
+   },
+   "w11.range_m": {
+    "got": 9000.0,
+    "want": 8946.805980727544
+   },
+   "w12.range_m": {
+    "got": 9000.0,
+    "want": 8946.805980727544
+   },
+   "w13.range_m": {
+    "got": 9000.0,
+    "want": 8946.805980727544
+   },
+   "w9.range_m": {
+    "got": 9000.0,
+    "want": 8946.805980727544
+   }
+  }
+ },
+ "skills2_damnation": {
+  "error": null,
+  "mismatches": {
+   "w10.range_m": {
+    "got": 15552.0,
+    "want": 15543.543196376435
+   },
+   "w11.range_m": {
+    "got": 15552.0,
+    "want": 15543.543196376435
+   },
+   "w9.range_m": {
+    "got": 15552.0,
+    "want": 15543.543196376435
+   }
+  }
+ },
+ "skills2_raven": {
+  "error": null,
+  "mismatches": {
+   "w10.range_m": {
+    "got": 22394.88,
+    "want": 22384.73306765172
+   },
+   "w11.range_m": {
+    "got": 22394.88,
+    "want": 22384.73306765172
+   },
+   "w12.range_m": {
+    "got": 22394.88,
+    "want": 22384.73306765172
+   },
+   "w13.range_m": {
+    "got": 22394.88,
+    "want": 22384.73306765172
+   },
+   "w14.range_m": {
+    "got": 22394.88,
+    "want": 22384.73306765172
+   },
+   "w15.range_m": {
+    "got": 22394.88,
+    "want": 22384.73306765172
+   }
+  }
+ },
+ "skills2_rifter": {
+  "error": null,
+  "mismatches": {
+   "w9.range_m": {
+    "got": 5400.0,
+    "want": 5399.413235859474
+   }
+  }
+ },
+ "skills2_stiletto": {
+  "error": null,
+  "mismatches": {
+   "w8.range_m": {
+    "got": 6480.0,
+    "want": 6479.293983031368
+   }
+  }
+ },
+ "skills2_tengu": {
+  "error": null,
+  "mismatches": {
+   "w10.range_m": {
+    "got": 15552.0,
+    "want": 15475.401052247664
+   },
+   "w11.range_m": {
+    "got": 15552.0,
+    "want": 15475.401052247664
+   },
+   "w12.range_m": {
+    "got": 15552.0,
+    "want": 15475.401052247664
+   },
+   "w13.range_m": {
+    "got": 15552.0,
+    "want": 15475.401052247664
+   },
+   "w9.range_m": {
+    "got": 15552.0,
+    "want": 15475.401052247664
+   }
+  }
+ },
+ "skills3_raven": {
+  "error": null,
+  "mismatches": {
+   "w10.range_m": {
+    "got": 28473.12,
+    "want": 28461.21096923015
+   },
+   "w11.range_m": {
+    "got": 28473.12,
+    "want": 28461.21096923015
+   },
+   "w12.range_m": {
+    "got": 28473.12,
+    "want": 28461.21096923015
+   },
+   "w13.range_m": {
+    "got": 28473.12,
+    "want": 28461.21096923015
+   },
+   "w14.range_m": {
+    "got": 28473.12,
+    "want": 28461.21096923015
+   },
+   "w15.range_m": {
+    "got": 28473.12,
+    "want": 28461.21096923015
+   }
+  }
+ },
+ "skills4_damnation": {
+  "error": null,
+  "mismatches": {
+   "w10.range_m": {
+    "got": 24696.0,
+    "want": 24684.4895128457
+   },
+   "w11.range_m": {
+    "got": 24696.0,
+    "want": 24684.4895128457
+   },
+   "w9.range_m": {
+    "got": 24696.0,
+    "want": 24684.4895128457
+   }
+  }
+ },
+ "skills4_raven": {
+  "error": null,
+  "mismatches": {
+   "w10.range_m": {
+    "got": 35562.24,
+    "want": 35548.42162741484
+   },
+   "w11.range_m": {
+    "got": 35562.24,
+    "want": 35548.42162741484
+   },
+   "w12.range_m": {
+    "got": 35562.24,
+    "want": 35548.42162741484
+   },
+   "w13.range_m": {
+    "got": 35562.24,
+    "want": 35548.42162741484
+   },
+   "w14.range_m": {
+    "got": 35562.24,
+    "want": 35548.42162741484
+   },
+   "w15.range_m": {
+    "got": 35562.24,
+    "want": 35548.42162741484
+   }
+  }
+ },
+ "skills4_tengu": {
+  "error": null,
+  "mismatches": {
+   "w10.range_m": {
+    "got": 24696.0,
+    "want": 24591.742932225978
+   },
+   "w11.range_m": {
+    "got": 24696.0,
+    "want": 24591.742932225978
+   },
+   "w12.range_m": {
+    "got": 24696.0,
+    "want": 24591.742932225978
+   },
+   "w13.range_m": {
+    "got": 24696.0,
+    "want": 24591.742932225978
+   },
+   "w9.range_m": {
+    "got": 24696.0,
+    "want": 24591.742932225978
+   }
+  }
+ }
+}

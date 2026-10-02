@@ -29,6 +29,31 @@ METRICS = {
     "scan_resolution": ("/targeting/scan_resolution", "targeting"), "scan_strength": ("/targeting/sensor_strength", "targeting"),
 }
 
+WFIELDS = ("optimal_m", "falloff_m", "tracking", "range_m", "explosion_radius", "explosion_velocity")
+
+
+class _Metrics(dict):
+    """METRICS plus per-weapon metrics `w<module_index>.<field>` -> /offense/weapons[module_index=N]/<field>"""
+
+    def _dyn(self, k):
+        if isinstance(k, str) and k.startswith("w") and "." in k:
+            n, f = k[1:].split(".", 1)
+            if n.isdigit() and f in WFIELDS:
+                return (f"/offense/weapons[module_index={n}]/{f}", "application")
+        return None
+
+    def __missing__(self, k):
+        v = self._dyn(k)
+        if v is None:
+            raise KeyError(k)
+        return v
+
+    def __contains__(self, k):
+        return dict.__contains__(self, k) or self._dyn(k) is not None
+
+
+METRICS = _Metrics(METRICS)
+
 REL_TOL = 1e-4
 ABS_TOL = 1e-3
 
@@ -36,7 +61,16 @@ ABS_TOL = 1e-3
 def pointer(doc, ptr):
     cur = doc
     for part in ptr.strip("/").split("/"):
-        if isinstance(cur, dict) and part in cur:
+        if part.endswith("]") and "[" in part:  # array selector name[key=value]
+            name, sel = part[:-1].split("[", 1)
+            key, want = sel.split("=", 1)
+            arr = cur.get(name) if isinstance(cur, dict) else None
+            if not isinstance(arr, list):
+                return None
+            cur = next((e for e in arr if isinstance(e, dict) and str(e.get(key)) == want), None)
+            if cur is None:
+                return None
+        elif isinstance(cur, dict) and part in cur:
             cur = cur[part]
         elif isinstance(cur, list) and part.isdigit() and int(part) < len(cur):
             cur = cur[int(part)]
@@ -80,6 +114,10 @@ def from_pyfa(s):
     t = s["tank"]
     out.update({"tank.armor": t["armorRepair"], "tank.shield": t["shieldRepair"], "tank.hull": t["hullRepair"],
                 "tank.passive": t["passiveShield"]})
+    for w in s.get("weapons", []):
+        for f in WFIELDS:
+            if w.get(f) is not None:
+                out[f"w{w['module_index']}.{f}"] = w[f]
     if s["cap_stable"]:
         out["cap_stable_percent"] = s["cap_state"]
     return out

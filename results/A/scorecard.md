@@ -2,11 +2,12 @@
 
 - command: `./target/release/eve-dogma --dataset /workspace/exct-eve/data/dataset-3569502.json.gz calc`, batch: `./target/release/eve-dogma --dataset /workspace/exct-eve/data/dataset-3569502.json.gz batch`
 - cases fully correct: **249/249**
-- values correct: **11823/11823** (100.00 %)
+- values correct: **13812/13812** (100.00 %)
 - engine errors: 0
 
 | group | ok | total | % |
 |---|---|---|---|
+| application | 1989 | 1989 | 100.0 |
 | capacitor | 871 | 871 | 100.0 |
 | defense | 4480 | 4480 | 100.0 |
 | fitting | 2241 | 2241 | 100.0 |
@@ -17,8 +18,8 @@
 
 | perf | value |
 |---|---|
-| one process per case, median ms (cold start + calc) | 181.9 |
-| batch throughput (corpus x5) fits/s | 587 |
-| latency one fit (exct_rifter) ms/calc | 1.422 |
-| startup + one calc ms | 158.4 |
+| one process per case, median ms (cold start + calc) | 216.5 |
+| batch throughput (corpus x5) fits/s | 460 |
+| latency one fit (exct_rifter) ms/calc | 1.430 |
+| startup + one calc ms | 150.1 |
 | deterministic | True |
