@@ -1,6 +1,7 @@
 # eve-dogma-bench
 
-> **FROZEN at bench 1.8.0 (0969967) until the 10:20 CST unified evaluation:** no new cases and no version bumps. New gaps are staged in `pending-1.9.0.md`.
+> **Branch `bench-1.9.0` (staged, not released):** bench 1.9.0 is merged to main only after the 10:20 CST unified
+> evaluation, which runs on 1.8.0 (main). See CHANGELOG.md.
 
 
 Shared, engine-agnostic test & benchmark harness for EVE Online fitting engines (EX-CT).
@@ -82,9 +83,9 @@ determinism (identical output for identical input), plus `failures.json` with ev
 
 ## Corpus
 
-326 cases: 101 dogma-engine (EVE Ship Fit) community/regression fits, 34 hand-written fits (frigates, destroyers,
+331 cases: 101 dogma-engine (EVE Ship Fit) community/regression fits, 35 hand-written fits (frigates, destroyers,
 T3D modes, cruisers, HACs, T3C subsystems, battleships, marauders in bastion, logistics, command ships, interdictor,
-mining, carriers/supercarrier with fighters, structures with rigs/service modules, titan lance, HIC bubble, emergency hull energizer, entosis, micro jump field generator), 191 variations (fleet command booster fits, projected whole fits, incoming remote reps/neuts/nos/cap transfers, scripted projected modules, wormhole environments C1–C6, abyssal weather / AoE clouds, incursion system effects, burst projectors and Standup weapon disruptors, implant sets, combat boosters, skills 0/2/3/4,
+mining, carriers/supercarrier with fighters, structures with rigs/service modules, titan lance, HIC bubble, emergency hull energizer, entosis, micro jump field generator, breacher pods), 195 variations (fleet command booster fits, projected whole fits, incoming remote reps/neuts/nos/cap transfers, scripted projected modules, wormhole environments C1–C6, abyssal weather / AoE clouds, incursion system effects, burst projectors and Standup weapon disruptors, implant sets, combat boosters, overheat module order, EWAR drones, skills 0/2/3/4,
 damage patterns incl. Reactive Armor Hardener adaptation, reload, projected webs/target painters/damps/web drones/TD drones,
 mutated modules and drones). See `cases/`.
 

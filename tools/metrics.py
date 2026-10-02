@@ -18,6 +18,8 @@ METRICS = {
     "tank.armor": ("/defense/tank/raw/armor_repair", "tank"), "tank.shield": ("/defense/tank/raw/shield_repair", "tank"),
     "tank.hull": ("/defense/tank/raw/hull_repair", "tank"), "tank.passive": ("/defense/tank/raw/passive_shield", "tank"),
     "weapon_dps": ("/offense/total/weapon_dps", "offense"), "weapon_volley": ("/offense/total/weapon_volley", "offense"),
+    # breacher pod damage (Pyfa DmgTypes.pure); "?0": an absent key counts as 0 (the key is only emitted when non-zero)
+    "weapon_pure_dps": ("/offense/total/dps/pure?0", "offense"), "weapon_pure_volley": ("/offense/total/volley/pure?0", "offense"),
     "drone_dps": ("/offense/total/drone_dps+/offense/total/fighter_dps", "offense"),
     "drone_volley": ("/offense/total/drone_volley+/offense/total/fighter_volley", "offense"),
     "cap_capacity": ("/capacitor/capacity", "capacitor"), "cap_recharge_s": ("/capacitor/recharge_time_s", "capacitor"),
@@ -91,6 +93,9 @@ def pointer(doc, ptr):
 
 
 def extract(doc, expr):
+    if expr.endswith("?0"):
+        v = extract(doc, expr[:-2])
+        return 0.0 if v is None else v
     if "+" in expr:
         vals = [pointer(doc, p) for p in expr.split("+")]
         if all(v is None for v in vals):
@@ -114,7 +119,7 @@ def close(got, want):
 def from_pyfa(s):
     """Pyfa oracle stats (oracle/pyfa_oracle.py) -> {metric: value}"""
     out = {k: s[k] for k in ("cpu_used", "cpu_total", "power_used", "power_total", "calibration_used", "drone_bandwidth_used",
-                             "weapon_dps", "weapon_volley", "drone_dps", "drone_volley", "cap_capacity", "cap_recharge_s",
+                             "weapon_dps", "weapon_volley", "weapon_pure_dps", "weapon_pure_volley", "drone_dps", "drone_volley", "cap_capacity", "cap_recharge_s",
                              "cap_stable", "max_velocity", "align_time_s", "mass", "signature_radius", "warp_speed",
                              "max_targets", "max_target_range", "scan_resolution", "scan_strength", "hi_slots", "med_slots", "low_slots")}
     for l in LAYERS:

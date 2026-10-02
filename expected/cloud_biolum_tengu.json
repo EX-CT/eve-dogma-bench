@@ -71,6 +71,8 @@
   "warp_scramble_status": 0.0,
   "warp_speed": 6.0,
   "weapon_dps": 712.3828821113426,
+  "weapon_pure_dps": 0,
+  "weapon_pure_volley": 0,
   "weapon_volley": 1595.663236681364
  }
 }
