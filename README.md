@@ -28,7 +28,26 @@ Format: gzip JSON documented in eve-sde-pipeline (`types`, `attributes`, `effect
 `[func, domain, modified_attr, modifying_attr, operation, group_or_skill]`, `dbuffs`, `mutaplasmids`, …).
 A variant may convert it to any internal format, but must not use other data.
 
-## Plugging a variant in
+## Scoring all variants (A–K)
+
+```bash
+python3 bench.py                 # all variants in variants.yaml -> results/combined.md + per-variant scorecards
+python3 bench.py --only A,C --quick --no-build
+```
+
+Each lab variant (branch `variant-x` of EX-CT/eve-dogma-lab, directory `variant-x/`) ships a **`bench.yaml`**:
+
+```yaml
+build: cargo build --release                      # run in variant-x/ (optional)
+cmd: ./target/release/engine calc --dataset {dataset}        # one request on stdin -> one response on stdout
+batch_cmd: ./target/release/engine batch --dataset {dataset} # JSONL in -> JSONL out (optional but scored)
+```
+
+Placeholders: `{dataset}` (shared dataset path from variants.yaml), `{bench}` (bench checkout), `{dir}` (variant dir).
+bench.py clones/fetches the branch into `work/<letter>/`, builds, runs, and records status
+(`unavailable`, `no-manifest`, `build-failed`, `run-failed`, `ok`) in the combined table.
+
+## Plugging a variant in (single run)
 
 Provide one command that reads one FitRequest on stdin and prints one FitStats JSON on stdout, and (strongly
 recommended) a batch command that reads JSONL requests and prints JSONL responses in order:
@@ -65,7 +84,7 @@ metrics excluded because Pyfa's data is older than the SDE or because Pyfa disag
 
 | variant | cases | values | latency/fit | batch fits/s | cold start |
 |---|---|---|---|---|---|
-| A: eve-dogma-rs (Rust, lazy memoised dogma graph) | 207/207 | 9 828/9 828 | 1.07 ms | 574 | 151 ms |
+| A: eve-dogma-rs (Rust, lazy memoised dogma graph) | 207/207 | 9 827/9 827 | 1.07 ms | 574 | 151 ms |
 | Pyfa (reference, Python) | – | – | 10–31 ms | – | ~390 ms first calc + startup |
 
 ## License

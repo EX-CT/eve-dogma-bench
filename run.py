@@ -56,6 +56,13 @@ def batch_time(cmd, lines, cwd, timeout):
     return dt, outs, r.returncode
 
 
+class Args:
+    def __init__(self, **kw):
+        self.__dict__.update(dict(cwd=None, cases="cases/*.json", timeout=60, batch_repeat=5, latency_n=500,
+                                  latency_case="exct_rifter", batch_cmd=None))
+        self.__dict__.update(kw)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--name", required=True)
@@ -68,6 +75,10 @@ def main():
     ap.add_argument("--latency-n", type=int, default=500, help="repetitions of one fit for latency")
     ap.add_argument("--latency-case", default="exct_rifter")
     a = ap.parse_args()
+    evaluate(a)
+
+
+def evaluate(a):
     cases = load_cases(a.cases)
     out_dir = ROOT / "results" / a.name
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -132,6 +143,7 @@ def main():
         md += ["", "Worst metrics:", ""] + [f"- {k}: {v[0]}/{v[1]}" for k, v in worst]
     (out_dir / "scorecard.md").write_text("\n".join(md) + "\n")
     print("\n".join(md))
+    return card
 
 
 if __name__ == "__main__":
