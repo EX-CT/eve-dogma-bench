@@ -59,6 +59,18 @@ Placeholders: `{dataset}` (shared dataset path from variants.yaml), `{bench}` (b
 bench.py clones/fetches the branch into `work/<letter>/`, builds, runs, and records status
 (`unavailable`, `no-manifest`, `build-failed`, `run-failed`, `ok`) in the combined table.
 
+## Round-1 evaluation (all variants, scored)
+
+```bash
+python3 tools/evaluate.py --as-of 2026-10-03T10:15:00+08:00 --runs 3 --fresh-clones   # results/evaluation.{md,json}
+python3 tools/evaluate.py --dry-run --runs 2 --quick --only A,J                          # results/dryrun/ (labelled DRY RUN)
+```
+
+Fetches A (eve-dogma-rs main) and B–K (eve-dogma-lab variant-x) at the cutoff, builds, runs the official scorer
+`--runs` times (median, loadavg per run, hard timeouts), probes EFT/RPC/search/type, collects maintainability metrics
+and the variants' own tests, and ranks variants that pass every case. Rules and formulas: docstring of
+[tools/evaluate.py](tools/evaluate.py) (also printed in the md output).
+
 ## Plugging a variant in (single run)
 
 Provide one command that reads one FitRequest on stdin and prints one FitStats JSON on stdout, and (strongly
