@@ -62,7 +62,7 @@ bench.py clones/fetches the branch into `work/<letter>/`, builds, runs, and reco
 ## Round-1 evaluation (all variants, scored)
 
 ```bash
-python3 tools/evaluate.py --as-of 2026-10-03T10:15:00+08:00 --runs 3 --fresh-clones   # results/evaluation.{md,json}
+python3 tools/evaluate.py --as-of 2026-10-03T10:15:00+08:00 --runs 3 --fresh-clones   # results/evaluation.{md,json}; heads as of the cutoff, no fallback
 python3 tools/evaluate.py --dry-run --runs 2 --quick --only A,J                          # results/dryrun/ (labelled DRY RUN)
 ```
 

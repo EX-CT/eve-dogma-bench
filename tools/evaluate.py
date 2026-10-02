@@ -17,7 +17,8 @@ What it does, per variant (sequentially, so variants never compete for the CPU w
   2. build   the manifest's `build` command (timeout --build-timeout); wall time and fresh/incremental recorded.
   3. bench   the *official* scorer run.evaluate() (same code bench.py calls) --runs times, each in a child process
              with a hard timeout (--variant-timeout for all runs, --case-timeout per request) so a hung or broken
-             variant cannot stall the evaluation. Correctness is taken from run 1 (and checked identical in every
+             variant cannot stall the evaluation. One untimed warm-up batch over the corpus precedes run 1 (page cache,
+             dataset caches). Correctness is taken from run 1 (and checked identical in every
              run); perf numbers are the median over runs. loadavg (1/5/15 min) is recorded before and after each run.
   4. extras  EFT export check (tools/check_eft_export.py, Pyfa byte-exact) and RPC probes (eft_parse, calc via RPC,
              meta, unknown method, search, type) through the manifest's `rpc_cmd`.
@@ -50,7 +51,8 @@ SCORING RULES (round 1)
         Docs       0.4·README + 0.4·DESIGN (DESIGN.md or docs/design*/architecture*) + 0.2·LICENSE file
         Deps       1 / (1 + n/5), n = direct runtime dependencies from the manifest (Cargo/go.mod/package.json/csproj/
                    CMake find_package+FetchContent+vendored third_party/Python third-party imports)
-        Build      L(build s, best, 100) of this run's build (fresh clone => fresh build; see build_kind)
+        Build      L(build s, best, 100) of this run's build. Only meaningful for fresh builds (--fresh-clones): if any
+                   ranked variant's build was incremental, Build is dropped and the other weights are renormalised.
         (cold start and LOC per language are reported too; cold start is scored under Speed only.)
   Features = mean of 4 parts: EFT = 0.5·(export ok/total) + 0.5·(eft_parse round-trip ok / probes),
         RPC = share of probes ok (calc via serve-stdio equals calc CLI output; meta has sde_build; unknown method
@@ -295,8 +297,12 @@ def features(m, vd, a):
     def is_rifter(r):
         return isinstance(r, dict) and "error" not in r and (r.get("type_id") == 587 or r.get("id") == 587 or r.get("name") == "Rifter")
     t3 = R(5002)
+    def err_code(i):
+        o = got.get(i, {}); e = (o.get("result") or {}).get("error") if isinstance(o.get("result"), dict) else o.get("error")
+        return e.get("code") if isinstance(e, dict) else None
+    # unknown id must give an error, but "method not implemented" does not count
     t = [is_rifter(R(5000)), is_rifter(R(5001)),
-         (isinstance(t3, dict) and "error" in t3) or (5002 in got and "error" in got[5002])]
+         ((isinstance(t3, dict) and "error" in t3) or (5002 in got and "error" in got[5002])) and err_code(5002) != "UNKNOWN_METHOD"]
     res["type_checks"] = t
     res.update(eft=round(eft, 4), rpc=round(rpc_s, 4), search=round(sum(s) / len(s), 4), type=round(sum(t) / len(t), 4))
     return res
@@ -459,6 +465,9 @@ def test_command(m, vd):
     tp = [x for x in vd.rglob("*.csproj") if re.search(r"test", x.name, re.I) and not any(s in x.parts for s in SKIP_DIRS)]
     if tp:
         return f"dotnet test {tp[0].relative_to(vd)} --nologo 2>&1", "dotnet"
+    for scr in ("tests/run_tests.py", "tests/run.py", "test/run_tests.py"):
+        if (vd / scr).exists():
+            return f"{sys.executable} {scr} 2>&1", "script"
     if (vd / "tests").is_dir() and any((vd / "tests").glob("test*.py")):
         try:
             import pytest  # noqa: F401
@@ -549,6 +558,7 @@ def score_all(rows):
     b_inv = min((1 / r["fits_per_s"] for r in ranked if r.get("fits_per_s")), default=None)
     b_loc = min((r["static"]["core_loc"] for r in ranked if r["static"]["core_loc"]), default=None)
     h_min = min((r["static"]["hardcoded_effects"] for r in ranked), default=0)
+    all_fresh = all(r.get("build_kind") == "fresh" for r in ranked)
     for r in ranked:
         sp = {"latency": L(r.get("latency_ms"), b_lat, 100),
               "throughput": L(1 / r["fits_per_s"] if r.get("fits_per_s") else None, b_inv, 100),
@@ -561,11 +571,15 @@ def score_all(rows):
         mt = {"tests": ts, "data": L(r["static"]["hardcoded_effects"] + 10, h_min + 10, 10),
               "size": L(r["static"]["core_loc"], b_loc, 10), "docs": 0.4 * d["readme"] + 0.4 * d["design"] + 0.2 * d["license_file"],
               "deps": 1 / (1 + r["static"]["deps"]["n_runtime"] / 5), "build": L(r.get("build_s"), b_build, 100)}
+        mw = dict(MAINT_W)
+        if not all_fresh:
+            mt["build"] = None; mw.pop("build")
+        tot = sum(mw.values()); mw = {k: v / tot for k, v in mw.items()}
         f = r["features"]
         ft = {k: f.get(k, 0.0) for k in ("eft", "rpc", "search", "type")}
-        s = {"speed": sum(SPEED_W[k] * v for k, v in sp.items()), "maint": sum(MAINT_W[k] * v for k, v in mt.items()),
+        s = {"speed": sum(SPEED_W[k] * v for k, v in sp.items()), "maint": sum(mw[k] * mt[k] for k in mw),
              "feat": sum(ft.values()) / 4, "port": r["portability"]["score"]}
-        r["scores"] = {"speed_parts": sp, "maint_parts": mt, "feat_parts": ft, **{k: round(v, 4) for k, v in s.items()},
+        r["scores"] = {"speed_parts": sp, "maint_parts": mt, "maint_weights_used": mw, "feat_parts": ft, **{k: round(v, 4) for k, v in s.items()},
                        "total": round(sum(W[k] * s[k] for k in W), 4)}
     for i, r in enumerate(sorted(ranked, key=lambda r: -r["scores"]["total"])):
         r["rank"] = i + 1
@@ -574,6 +588,7 @@ def score_all(rows):
 RULES_MD = """## Scoring rules
 
 - **Version rule:** each variant is evaluated at its branch HEAD as of the cutoff (`--as-of`; unified scoring 2026-10-03T10:15:00+08:00). Self-reported "final" versions are reference only. A commit that fails the gate is **disqualified**; no fallback to an older commit.
+- **Runs:** one untimed warm-up batch, then `--runs` official-scorer runs per variant, one variant at a time; perf = median.
 - **Gate (correctness):** ranked only if the variant built, ran, and passed **all** bench cases (cases fully correct = cases, no engine errors) in every run.
 - **Total = 0.40·Speed + 0.35·Maintainability + 0.15·Features + 0.10·Portability** (each in [0, 1]).
 - `L(x, best, span) = clamp(1 − log10(x/best)/log10(span), 0, 1)` for lower-is-better `x` (1 = best ranked variant, 0 = `span`× worse).
@@ -581,7 +596,7 @@ RULES_MD = """## Scoring rules
 - **Maintainability** = 0.25·Tests + 0.20·DataDriven + 0.20·Size + 0.15·Docs + 0.10·Deps + 0.10·Build.
   Tests: passed → 0.6 + 0.4·min(1, log10(1+n)/2); failed → 0.2; timed out → 0.3; none → 0.
   DataDriven: L(h+10, h_min+10, 10), h = distinct dataset effect names (camelCase, ≥8 chars) referenced in hand-written core source (heuristic for per-effect special-casing).
-  Size: L(core LOC, min, 10). Docs: 0.4 README + 0.4 DESIGN + 0.2 LICENSE. Deps: 1/(1+n/5), n = direct runtime deps. Build: L(build s, best, 100).
+  Size: L(core LOC, min, 10). Docs: 0.4 README + 0.4 DESIGN + 0.2 LICENSE. Deps: 1/(1+n/5), n = direct runtime deps. Build: L(build s, best, 100), only if every ranked build was fresh (`--fresh-clones`), else dropped and the other weights renormalised.
 - **Features** = mean(EFT, RPC, search, type); EFT = ½ export (Pyfa byte-exact) + ½ eft_parse round-trip; others = share of RPC probes passing.
 - **Portability** = 1 if a WASM/browser build exists in code, 0.5 if only documented, else 0.
 """
@@ -719,6 +734,9 @@ def main():
                 row["static"] = static_metrics(letter, vd, names, n_mod); continue
         deadline = time.time() + a.variant_timeout
         a.remaining = lambda: max(5, deadline - time.time())
+        if m.get("batch_cmd"):  # untimed warm-up
+            corpus = "".join(json.dumps(json.loads(p.read_text())) + "\n" for p in sorted((ROOT / "cases").glob("*.json")))
+            sh(m["batch_cmd"], str(vd), min(300, a.case_timeout * 20), inp=corpus)
         runs = []
         for i in range(1, a.runs + 1):
             if time.time() > deadline:
