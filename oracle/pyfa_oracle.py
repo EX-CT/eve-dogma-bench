@@ -39,6 +39,8 @@ _chars = {}
 
 
 def character(req):
+    if "drafts" in ORACLE_EXTRA and (req.get("character", {}).get("implants") or req.get("character", {}).get("alpha_clone")):
+        return draft_character(req)
     sk = req.get("character", {}).get("skills", {})
     lvl = sk.get("default_level", 0) or 0
     key = (lvl, json.dumps(sk.get("levels", {}), sort_keys=True))
@@ -49,6 +51,23 @@ def character(req):
         s = ch.getSkill(int(k))
         s.setLevel(v, ignoreRestrict=True)
     _chars[key] = ch
+    return ch
+
+
+def draft_character(req):
+    """ORACLE_EXTRA=drafts (CONTRACT.md "Draft 1.11: character"): a fresh, uncached Character carrying the request's
+    character.implants (Pyfa Character.implants, applied when fit.implantLocation is CHARACTER) and
+    character.alpha_clone (Pyfa Character.alphaCloneID = eve.db alphaClones ID 1, "Alpha Clone")."""
+    c = req.get("character", {})
+    sk = c.get("skills", {})
+    ch = Character("oracle-draft", sk.get("default_level", 0) or 0)
+    for k, v in sk.get("levels", {}).items():
+        ch.getSkill(int(k)).setLevel(v, ignoreRestrict=True)
+    for i in c.get("implants") or []:
+        ch.implants.append(Implant(item(i)))
+    if c.get("alpha_clone"):
+        ch.alphaCloneID = 1
+        ch.alphaClone = eos.db.getAlphaClone(1)
     return ch
 
 
@@ -164,6 +183,8 @@ def build(req):
     from eos.const import ImplantLocation
     fit.implantLocation = ImplantLocation.FIT
     fit.character = character(req)
+    if "drafts" in ORACLE_EXTRA and req.get("options", {}).get("implant_source") == "character":
+        fit.implantLocation = ImplantLocation.CHARACTER
     if req["ship"].get("mode_type_id"):
         fit.mode = ship.validateModeItem(eos.db.getItem(req["ship"]["mode_type_id"]))
     for m in req.get("modules", []):
@@ -262,7 +283,10 @@ def build(req):
         eos.db.commit()
     explicit_buffs(fit, req.get("fleet", {}).get("buffs") or [])
     dp = req.get("damage_pattern") or {"em": 25, "thermal": 25, "kinetic": 25, "explosive": 25}
-    fit.damagePattern = DamagePattern(dp["em"], dp["thermal"], dp["kinetic"], dp["explosive"])
+    if "drafts" in ORACLE_EXTRA and dp.get("builtin"):  # Draft 1.11: Pyfa builtin pattern by rawName
+        fit.damagePattern = next(p for p in DamagePattern.getBuiltinList() if p.rawName == dp["builtin"])
+    else:
+        fit.damagePattern = DamagePattern(dp["em"], dp["thermal"], dp["kinetic"], dp["explosive"])
     fit.factorReload = bool(req.get("options", {}).get("factor_reload", False))
     return fit
 
@@ -353,9 +377,13 @@ def profile_stats(fit, req):
     the stats panel then shows resist-applied damage (no signature / velocity application). Done here on the summed
     copies getTotalDps / getTotalVolley return, so the fit's own figures stay unprofiled."""
     tp = req.get("target_profile") or {}
+    prof = _Profile(tp)
+    if "drafts" in ORACLE_EXTRA and tp.get("builtin"):  # Draft 1.11: Pyfa builtin target profile by rawName
+        from eos.saveddata.targetProfile import TargetProfile
+        prof = next(p for p in TargetProfile.getBuiltinList() if p.rawName == tp["builtin"])
     out = {}
     for k, dm in (("dps", fit.getTotalDps(spoolOptions=SPOOL)), ("volley", fit.getTotalVolley(spoolOptions=SPOOL))):
-        dm.profile = _Profile(tp)
+        dm.profile = prof
         out[k] = dm.total
     return {"vs_target_profile": out, "probe_size": fit.probeSize}
 
@@ -435,7 +463,7 @@ def validity(fit, req):
     return v
 
 
-# ---- opt-in extra outputs (ORACLE_EXTRA="attrs,ext"); unset = output identical to before -----------------------------
+# ---- opt-in extra outputs (ORACLE_EXTRA="attrs,ext,profile,validity,drafts,sources"); unset = output identical to before -----------------------------
 ORACLE_EXTRA = {x.strip() for x in os.environ.get("ORACLE_EXTRA", "").split(",") if x.strip()}
 
 
@@ -543,6 +571,51 @@ def ext_stats(fit):
     return out
 
 
+def _src_key(fit, obj):
+    """Stable id of an affecting item: ship / mode / modules.<i> / drones.<i> / fighters.<i>; anything else
+    (skill, implant, booster, projected ...) by its Pyfa class name."""
+    for i, m in enumerate(ORACLE_MODS.get(id(fit), [])):
+        if obj is m:
+            return "modules.%d" % i
+    for arr, lst in (("drones", fit.drones), ("fighters", fit.fighters)):
+        for i, d in enumerate(lst):
+            if obj is d:
+                return "%s.%d" % (arr, i)
+    if obj is fit.ship:
+        return "ship"
+    if obj is fit.mode:
+        return "mode"
+    cls = type(obj).__name__.lower()
+    return cls
+
+
+def sources(fit):
+    """ORACLE_EXTRA=sources (Draft 1.11: attribute sources, Pyfa 'Affected by' tab = ModifiedAttributeDict
+    getAfflictions; and its inverse, the 'dependants' of each fitted item). Only applied (used) modifiers.
+    sources[target][attr] = sorted ["<src key>:<type_id>:<Pyfa Operator name>"], target ship / modules.<i> / drones.<i>;
+    dependants[src key] = sorted ["<target>/<attr>"], src key ship / mode / modules.<i> / ... or "<class>.<type_id>"."""
+    targets = [("ship", fit.ship)] + [("modules.%d" % i, m) for i, m in enumerate(ORACLE_MODS.get(id(fit), []))] + \
+        [("drones.%d" % i, d) for i, d in enumerate(fit.drones)]
+    src, dep = {}, {}
+    for tkey, obj in targets:
+        d = obj.itemModifiedAttributes
+        for attr in sorted(d.iterAfflictions()):
+            entries = set()
+            for fkey, lst in (d.getAfflictions(attr) or {}).items():
+                for e in lst:
+                    mod, op, used = e[0], getattr(e[1], "name", e[1]), e[5]
+                    if not used:
+                        continue
+                    sk = _src_key(fit, mod)
+                    tid = getattr(getattr(mod, "item", None), "ID", None)
+                    entries.add("%s:%s:%s" % (sk, tid, op))
+                    dep.setdefault(sk if sk.startswith(("modules.", "drones.", "fighters.", "ship", "mode")) else "%s.%s" % (sk, tid),
+                                   set()).add("%s/%s" % (tkey, attr))
+            if entries:
+                src.setdefault(tkey, {})[attr] = sorted(entries)
+    return {"sources": src, "dependants": {k: sorted(v) for k, v in sorted(dep.items())}}
+
+
 def main():
     for path in sys.argv[1:]:
         req = json.load(open(path))
@@ -578,6 +651,8 @@ def run_one(path, req):
             st["profile"] = profile_stats(fit, req)
         if "validity" in ORACLE_EXTRA:
             st["validity"] = validity(fit, req)
+        if "sources" in ORACLE_EXTRA:
+            st["sources"] = sources(fit)
         first = time.perf_counter() - t0
         n = int(os.environ.get("ORACLE_REPEAT", "5"))
         t1 = time.perf_counter()

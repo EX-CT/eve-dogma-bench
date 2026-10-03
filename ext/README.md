@@ -15,6 +15,8 @@ metrics (`values`) for every case.
 | vs_target_profile | 11 | `DmgTypes.profile` = request target profile on the total weapon + drone + fighter dps / volley (oracle `ORACLE_EXTRA=profile`) |
 | probe_size | 10 | `fit.probeSize` |
 | validity | 22 + 2 unit | Pyfa fitting checks mapped to contract violation codes (oracle `ORACLE_EXTRA=validity`, CONTRACT.md "Draft 1.11: vs_target_profile, probe_size, validity"); scored: distinct code set + all bench metrics; draft (reported only): module indices, missing skill ids |
+| breacher_dc, char_implants, alpha_clone, damage_pattern_builtin, vs_target_profile_builtin, attr_sources, attr_dependants | 4, 6, 5, 6, 6, 6, 4 | docs/19 f-`missing` items (CONTRACT.md "Draft 1.11: missing-f"; oracle `ORACLE_EXTRA=drafts,sources,attrs`); generator `tools/gen_missing.py`; MANIFEST `item` = docs/19 id |
+| rpc/ (lookups) | 31 | Pyfa service layer (`oracle/pyfa_lookup.py`): variations, item compare, market tree, jargon search, implant sets, EVEMon import, renamed-item names, XML backup; `tools/gen_rpc.py`, `tools/make_rpc_expected.py`, `tools/score_rpc.py --cmd "ENGINE serve-stdio"` |
 | overrides | 22 + 10 unit | Pyfa attribute overrides (oracle `apply_overrides`); 10 hand-derived unit cases in `unit/` (see below) |
 
 Fits: hand-built reference fits (Venture, Hulk, Covetor, Procurer, Porpoise, Guardian, Basilisk, Oneiros, Scimitar,
@@ -34,6 +36,9 @@ cases, renamed), each with a `derivation` text. Generator: `tools/gen_overrides.
 python3 ext/tools/gen_ext.py [POOL_LIST LEGAL_JSONL]   # cases except overrides
 python3 ext/tools/gen_overrides.py                      # ovr_* cases + unit/ (hand-derived expected)
 python3 ext/tools/gen_val.py                            # tp_* / probe_* / val_* cases + unit_val_*
-python3 ext/tools/make_expected.py                       # Pyfa oracle (ORACLE_EXTRA=ext) for the rest
+python3 ext/tools/gen_missing.py                        # brdc_/cimp_/alpha_/dpb_/tpb_/src_/dep_ (docs/19 f-missing)
+python3 ext/tools/make_expected.py                       # Pyfa oracle (ORACLE_EXTRA=ext,...) for the rest
+python3 ext/tools/gen_rpc.py && python3 ext/tools/make_rpc_expected.py   # ext/rpc lookups
+python3 ext/tools/score_rpc.py --cmd "ENGINE serve-stdio" --name X [--out r.json]
 python3 ext/tools/score.py --batch-cmd "ENGINE batch" --name X [--out r.json]
 ```

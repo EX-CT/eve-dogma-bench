@@ -1,0 +1,198 @@
+{
+ "case": "dep_thorax_plate_dc",
+ "excluded": {},
+ "ext": {
+  "/dependants/modules.0": [
+   "ship/armorHP",
+   "ship/mass"
+  ],
+  "/dependants/modules.1": [
+   "ship/armorEmDamageResonance",
+   "ship/armorExplosiveDamageResonance",
+   "ship/armorKineticDamageResonance",
+   "ship/armorThermalDamageResonance",
+   "ship/emDamageResonance",
+   "ship/explosiveDamageResonance",
+   "ship/kineticDamageResonance",
+   "ship/shieldEmDamageResonance",
+   "ship/shieldExplosiveDamageResonance",
+   "ship/shieldKineticDamageResonance",
+   "ship/shieldThermalDamageResonance",
+   "ship/thermalDamageResonance"
+  ],
+  "/dependants/modules.2": [
+   "ship/armorEmDamageResonance",
+   "ship/armorExplosiveDamageResonance",
+   "ship/armorKineticDamageResonance",
+   "ship/armorThermalDamageResonance"
+  ],
+  "/dependants/skill.21610": [
+   "ship/jumpDriveConsumptionAmount"
+  ],
+  "/dependants/skill.21611": [
+   "ship/jumpDriveRange"
+  ],
+  "/dependants/skill.22806": [
+   "modules.2/emDamageResistanceBonus"
+  ],
+  "/dependants/skill.22807": [
+   "modules.2/explosiveDamageResistanceBonus"
+  ],
+  "/dependants/skill.22808": [
+   "modules.2/kineticDamageResistanceBonus"
+  ],
+  "/dependants/skill.22809": [
+   "modules.2/thermalDamageResistanceBonus"
+  ],
+  "/dependants/skill.23566": [
+   "ship/droneControlRange"
+  ],
+  "/dependants/skill.24606": [
+   "ship/maxJumpClones"
+  ],
+  "/dependants/skill.24613": [
+   "ship/fighterCapacity"
+  ],
+  "/dependants/skill.32999": [
+   "ship/scanMagnetometricStrength"
+  ],
+  "/dependants/skill.33000": [
+   "ship/scanGravimetricStrength"
+  ],
+  "/dependants/skill.33001": [
+   "ship/scanLadarStrength"
+  ],
+  "/dependants/skill.33002": [
+   "ship/scanRadarStrength"
+  ],
+  "/dependants/skill.33078": [
+   "modules.0/massAddition"
+  ],
+  "/dependants/skill.3327": [
+   "ship/agility"
+  ],
+  "/dependants/skill.3392": [
+   "ship/hp"
+  ],
+  "/dependants/skill.3394": [
+   "ship/armorHP"
+  ],
+  "/dependants/skill.3413": [
+   "ship/powerOutput"
+  ],
+  "/dependants/skill.3416": [
+   "ship/shieldRechargeRate"
+  ],
+  "/dependants/skill.3417": [
+   "ship/rechargeRate"
+  ],
+  "/dependants/skill.3418": [
+   "ship/capacitorCapacity"
+  ],
+  "/dependants/skill.3419": [
+   "ship/shieldCapacity"
+  ],
+  "/dependants/skill.3420": [
+   "ship/shieldUniformity"
+  ],
+  "/dependants/skill.3426": [
+   "ship/cpuOutput"
+  ],
+  "/dependants/skill.3428": [
+   "ship/maxTargetRange"
+  ],
+  "/dependants/skill.3429": [
+   "ship/maxTargetsLockedFromSkills"
+  ],
+  "/dependants/skill.3430": [
+   "ship/maxTargetsLockedFromSkills"
+  ],
+  "/dependants/skill.3431": [
+   "ship/scanResolution"
+  ],
+  "/dependants/skill.3436": [
+   "ship/maxActiveDrones"
+  ],
+  "/dependants/skill.3437": [
+   "ship/droneControlRange"
+  ],
+  "/dependants/skill.3449": [
+   "ship/maxVelocity"
+  ],
+  "/dependants/skill.3453": [
+   "ship/agility"
+  ],
+  "/dependants/skill.3455": [
+   "ship/warpCapacitorNeed"
+  ],
+  "/dependants/skill.3456": [
+   "ship/jumpDriveCapacitorNeed"
+  ],
+  "/dependants/skill.83094": [
+   "ship/conduitPassengerBonusModAdd"
+  ],
+  "/dependants/skill.89689": [
+   "modules.0/massAddition"
+  ]
+ },
+ "feature": "attr_dependants",
+ "oracle": "pyfa-eos",
+ "values": {
+  "align_time_s": 5.6208435567944255,
+  "calibration_used": 0.0,
+  "cap_capacity": 1812.5,
+  "cap_recharge_s": 387.75,
+  "cap_stable": true,
+  "cap_stable_percent": 100,
+  "cpu_total": 412.5,
+  "cpu_used": 94.0,
+  "drone_bandwidth_used": 0,
+  "drone_control_range": 60000.0,
+  "drone_dps": 0,
+  "drone_volley": 0,
+  "ehp.armor": 11619.462599854756,
+  "ehp.hull": 4975.124378109453,
+  "ehp.shield": 2364.5320197044334,
+  "hi_slots": 5.0,
+  "hp.armor": 5000.0,
+  "hp.hull": 2000.0,
+  "hp.shield": 1500.0,
+  "jam_chance": 0,
+  "low_slots": 5.0,
+  "mass": 12258750.0,
+  "max_target_range": 65625.0,
+  "max_targets": 6,
+  "max_velocity": 312.5,
+  "med_slots": 4.0,
+  "power_total": 1075.0,
+  "power_used": 232.0,
+  "res.armor.em": 0.31875,
+  "res.armor.explosive": 0.57375,
+  "res.armor.kinetic": 0.414375,
+  "res.armor.thermal": 0.414375,
+  "res.hull.em": 0.402,
+  "res.hull.explosive": 0.402,
+  "res.hull.kinetic": 0.402,
+  "res.hull.thermal": 0.402,
+  "res.shield.em": 0.875,
+  "res.shield.explosive": 0.4375,
+  "res.shield.kinetic": 0.525,
+  "res.shield.thermal": 0.7000000000000001,
+  "scan_resolution": 350.0,
+  "scan_strength": 18.0,
+  "signature_radius": 120.0,
+  "stank.armor": 0,
+  "stank.hull": 0,
+  "stank.shield": 0,
+  "tank.armor": 0,
+  "tank.hull": 0,
+  "tank.passive": 4.0,
+  "tank.shield": 0,
+  "warp_scramble_status": 0.0,
+  "warp_speed": 4.0,
+  "weapon_dps": 0,
+  "weapon_pure_dps": 0,
+  "weapon_pure_volley": 0,
+  "weapon_volley": 0
+ }
+}

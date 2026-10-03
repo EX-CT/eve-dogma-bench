@@ -1,4 +1,29 @@
 {
+ "alpha_drake": {
+  "feature": "alpha_clone",
+  "item": "ENG-CORE-009",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "alpha_kestrel": {
+  "feature": "alpha_clone",
+  "item": "ENG-CORE-009",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "alpha_omen_skills4": {
+  "feature": "alpha_clone",
+  "item": "ENG-CORE-009",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "alpha_rifter": {
+  "feature": "alpha_clone",
+  "item": "ENG-CORE-009",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "alpha_vexor_drones": {
+  "feature": "alpha_clone",
+  "item": "ENG-CORE-009",
+  "source": "hand-built (Pyfa oracle)"
+ },
  "bomb_basilisk": {
   "feature": "bombing",
   "source": "hand-built (Pyfa oracle)"
@@ -43,6 +68,56 @@
   "feature": "bombing",
   "source": "hand-built (Pyfa oracle)"
  },
+ "brdc_rifter_active": {
+  "feature": "breacher_dc",
+  "item": "ENG-MISC-004",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "brdc_rifter_online": {
+  "feature": "breacher_dc",
+  "item": "ENG-MISC-004",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "brdc_rifter_skills0": {
+  "feature": "breacher_dc",
+  "item": "ENG-MISC-004",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "brdc_thorax_active": {
+  "feature": "breacher_dc",
+  "item": "ENG-MISC-004",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "cimp_kestrel_char_missiles": {
+  "feature": "char_implants",
+  "item": "CHR-006",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "cimp_punisher_char_cap": {
+  "feature": "char_implants",
+  "item": "CHR-006",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "cimp_rifter_char_ignores_fit": {
+  "feature": "char_implants",
+  "item": "CHR-006",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "cimp_rifter_char_source": {
+  "feature": "char_implants",
+  "item": "ENG-IMP-002",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "cimp_rifter_default_fit": {
+  "feature": "char_implants",
+  "item": "ENG-IMP-002",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "cimp_rifter_fit_source": {
+  "feature": "char_implants",
+  "item": "ENG-IMP-002",
+  "source": "hand-built (Pyfa oracle)"
+ },
  "dehp_dominix_mixed": {
   "feature": "drone_ehp",
   "source": "hand-built (Pyfa oracle)"
@@ -61,6 +136,56 @@
  },
  "dehp_vexor_hobgoblin_skills0": {
   "feature": "drone_ehp",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "dep_kestrel_bcs_skills0": {
+  "feature": "attr_dependants",
+  "item": "ENG-CORE-008",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "dep_rifter_ab_gyro": {
+  "feature": "attr_dependants",
+  "item": "ENG-CORE-008",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "dep_thorax_plate_dc": {
+  "feature": "attr_dependants",
+  "item": "ENG-CORE-008",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "dep_vexor_drones_dda": {
+  "feature": "attr_dependants",
+  "item": "ENG-CORE-008",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "dpb_drake_abyssal_drifter": {
+  "feature": "damage_pattern_builtin",
+  "item": "PRF-DMG-001",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "dpb_drake_guristas": {
+  "feature": "damage_pattern_builtin",
+  "item": "PRF-DMG-001",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "dpb_rifter_generic_em": {
+  "feature": "damage_pattern_builtin",
+  "item": "PRF-DMG-001",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "dpb_rifter_generic_explosive": {
+  "feature": "damage_pattern_builtin",
+  "item": "PRF-DMG-001",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "dpb_thorax_scourge": {
+  "feature": "damage_pattern_builtin",
+  "item": "PRF-DMG-001",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "dpb_thorax_uniform": {
+  "feature": "damage_pattern_builtin",
+  "item": "PRF-DMG-001",
   "source": "hand-built (Pyfa oracle)"
  },
  "fehp_aeon_ametat_templar": {
@@ -627,6 +752,36 @@
   "feature": "outgoing",
   "source": "hand-built (Pyfa oracle)"
  },
+ "src_drake_implants": {
+  "feature": "attr_sources",
+  "item": "ENG-CORE-007",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "src_kestrel_bcs_skills0": {
+  "feature": "attr_sources",
+  "item": "ENG-CORE-007",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "src_punisher_stacking": {
+  "feature": "attr_sources",
+  "item": "ENG-CORE-007",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "src_rifter_ab_gyro": {
+  "feature": "attr_sources",
+  "item": "ENG-CORE-007",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "src_thorax_plate_dc": {
+  "feature": "attr_sources",
+  "item": "ENG-CORE-007",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "src_vexor_drones_dda": {
+  "feature": "attr_sources",
+  "item": "ENG-CORE-007",
+  "source": "hand-built (Pyfa oracle)"
+ },
  "tp_kestrel_missiles_kinetic": {
   "feature": "vs_target_profile",
   "source": "hand-built (Pyfa oracle)"
@@ -669,6 +824,36 @@
  },
  "tp_vexor_guns_drones": {
   "feature": "vs_target_profile",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "tpb_kestrel_serpentis": {
+  "feature": "vs_target_profile_builtin",
+  "item": "PRF-TGT-001",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "tpb_kestrel_t1_shield": {
+  "feature": "vs_target_profile_builtin",
+  "item": "PRF-TGT-001",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "tpb_punisher_sleeper": {
+  "feature": "vs_target_profile_builtin",
+  "item": "PRF-TGT-001",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "tpb_rifter_t2_amarr_armor": {
+  "feature": "vs_target_profile_builtin",
+  "item": "PRF-TGT-001",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "tpb_rifter_uniform50": {
+  "feature": "vs_target_profile_builtin",
+  "item": "PRF-TGT-001",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "tpb_vexor_rogue_drones": {
+  "feature": "vs_target_profile_builtin",
+  "item": "PRF-TGT-001",
   "source": "hand-built (Pyfa oracle)"
  },
  "val_capital_module_subcap": {

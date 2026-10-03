@@ -281,6 +281,37 @@ Existing FitStats fields, now scored against Pyfa (oracle `ORACLE_EXTRA=profile,
 - Hand-derived, `ext/unit/` (Pyfa has no equivalent): `options.validate: false` → no violations
   (`unit_val_validate_false`); MAX_TYPE_FITTED (Pyfa has no maxTypeFitted check, `unit_val_max_type_fitted`).
 
+## Draft 1.11: missing-f request / response fields and lookups (scored by `ext/`, not by run.py)
+
+Pyfa-backed cases for docs/19 items whose f status is `missing` (no engine implements these yet). Oracle opt-in
+`ORACLE_EXTRA=drafts` (request fields) and `sources` (attribute sources); the default oracle output is unchanged.
+
+- `options.include_attributes: "all"` → `attributes.ship.breacherPodDamageResistance` (Breach Control,
+  Pyfa `moduleBonusBreacherPodDamageControl`; 1.0 when not active). Cases `brdc_*` (ENG-MISC-004).
+- `character.implants: [type_id]` + `options.implant_source: "character" | "fit"` (default "fit"): with
+  "character" the character's implants apply and the fit's `implants` are ignored (Pyfa `ImplantLocation`).
+  Cases `cimp_*` (ENG-IMP-002, CHR-006).
+- `character.alpha_clone: true`: Alpha clone skill caps (Pyfa `alphaCloneID` 1, eve.db `alphaCloneSkills`).
+  Cases `alpha_*` (ENG-CORE-009).
+- `damage_pattern: {"builtin": <name>}` / `target_profile: {"builtin": <name>}`: Pyfa builtin pattern / profile by
+  its raw name (`DamagePattern.getBuiltinList`, `TargetProfile.getBuiltinList`, e.g. "[NPC][Asteroid]Guristas").
+  Cases `dpb_*` (PRF-DMG-001, EHP metrics) and `tpb_*` (PRF-TGT-001, `offense.vs_target_profile`).
+- `options.sources: true` → `sources[target][attr]` = sorted `"<source>:<type_id>:<operator>"` of the applied
+  modifiers (Pyfa "Affected by" = `ModifiedAttributeDict.getAfflictions`, used entries only); target `ship`,
+  `modules.<i>`, `drones.<i>`; source `ship`, `mode`, `modules.<i>`, `drones.<i>`, `fighters.<i>` or the Pyfa class
+  name (`skill`, `implant`, `booster`, ...); operator = Pyfa `Operator` name (`MULTIPLY`, `INCREASE`, `PREASSIGN`,
+  ...). `dependants[source]` = sorted `"<target>/<attr>"` (the inverse; non-fit sources keyed `<class>.<type_id>`).
+  Cases `src_*` (ENG-CORE-007), `dep_*` (ENG-CORE-008).
+- Lookups, `ext/rpc/` (JSON-RPC methods on `serve-stdio`, Pyfa service layer via `oracle/pyfa_lookup.py`, scorer
+  `ext/tools/score_rpc.py`): `item.variations {type_id}` → `{type_ids}` (ENG-MOD-013); `item.compare {type_id,
+  attributes}` → `{items: [{type_id, attributes}]}` base values of every variation (MKT-004); `market.group
+  {market_group_id | null}` → `{groups, items}` (null = roots; MKT-001); `market.search {query, filter}` →
+  `{type_ids}` with Pyfa jargon / `re:` regex / `*` wildcards (MKT-002); `implant_sets.list` → `{sets: {set:
+  {grade: [type_ids]}}}` (ENG-IMP-005); `character.import_evemon {xml}` → `{name, security_status, skills}` or an
+  error for a non-EVEMon root (CHR-004); `names.resolve {names}` → `{resolved: {name: type_id | null}}` incl. Pyfa's
+  renamed-item conversions (SVC-005); `fits.backup {fits: [{name, fit}]}` → `{xml}` (Pyfa XML backup of all fits,
+  compared after parsing; DB-003).
+
 ## Changelog
 - v1 (2026-10-03): initial contract.
 - v1.1 (2026-10-03): `fleet.booster_fits` implemented (oracle-verified). `projected[kind=fit]` and charges on

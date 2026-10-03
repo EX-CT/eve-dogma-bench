@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""ext/expected/<case>.json from the Pyfa oracle (ORACLE_EXTRA=ext): bench metrics (`values`, tools/metrics.py) for
+"""ext/expected/<case>.json from the Pyfa oracle (ORACLE_EXTRA=ext,profile,validity,attrs,drafts,sources;
+drafts/sources only change output for cases using Draft 1.11 request fields): bench metrics (`values`, tools/metrics.py) for
 every case plus the feature's Pyfa values (`ext`, keyed by JSON pointer into the proposed FitStats fields of
 CONTRACT.md "Draft 1.10: stats-ext"). Hand-derived cases (overrides, oracle "hand-derived (non-Pyfa)") are left alone.
 usage: python3 ext/tools/make_expected.py [ext/cases/*.json]"""
@@ -39,7 +40,7 @@ def ext_pointers(feature, x):
         for dt, lv in x["bombing"].items():
             for L, v in lv.items():
                 out[f"/bombing/{dt}/covert_ops_{L}"] = v
-    if feature == "vs_target_profile":
+    if feature in ("vs_target_profile", "vs_target_profile_builtin"):
         out["/offense/vs_target_profile/dps"] = x["profile"]["vs_target_profile"]["dps"]
         out["/offense/vs_target_profile/volley"] = x["profile"]["vs_target_profile"]["volley"]
     if feature == "probe_size":
@@ -48,6 +49,17 @@ def ext_pointers(feature, x):
         for h in x["heat"]:
             out[f"/modules[module_index={h['module_index']}]/heat/burn_cycles"] = h["burn_cycles"]
             out[f"/modules[module_index={h['module_index']}]/heat/burnout_s"] = h["burnout_s"]
+    if feature == "breacher_dc":  # Draft 1.11 missing-f: options.include_attributes "all"
+        # unmodified (module not active): absent from Pyfa's ship ModifiedAttributeDict -> eve.db attribute 6255
+        # defaultValue 1.0
+        out["/attributes/ship/breacherPodDamageResistance"] = x["attrs"]["ship"].get("breacherPodDamageResistance", 1.0)
+    if feature == "attr_sources":  # Draft 1.11 missing-f: options.sources (Pyfa 'Affected by')
+        for t, attrs in x["sources"]["sources"].items():
+            for a, lst in attrs.items():
+                out[f"/sources/{t}/{a}"] = lst
+    if feature == "attr_dependants":
+        for k, lst in x["sources"]["dependants"].items():
+            out[f"/dependants/{k}"] = lst
     return out
 
 
@@ -67,7 +79,7 @@ def main(files):
     files = [str(pathlib.Path(f).resolve()) for f in files] or sorted(str(p) for p in (SUITE / "cases").glob("*.json"))
     man = json.loads((SUITE / "MANIFEST.json").read_text())
     files = [f for f in files if "non-Pyfa" not in man[pathlib.Path(f).stem]["source"]]
-    env = dict(os.environ, PYTHONPATH=STUB, ORACLE_REPEAT="0", PYFA=PYFA, ORACLE_EXTRA="ext,profile,validity")
+    env = dict(os.environ, PYTHONPATH=STUB, ORACLE_REPEAT="0", PYFA=PYFA, ORACLE_EXTRA="ext,profile,validity,attrs,drafts,sources")
     out = subprocess.run([PY, str(ROOT / "oracle/pyfa_oracle.py"), *files], capture_output=True, text=True, cwd=PYFA, env=env)
     if out.returncode:
         print(out.stderr[-3000:], file=sys.stderr)
@@ -83,7 +95,8 @@ def main(files):
         feat = man[name]["feature"]
         exp = {"case": name, "oracle": "pyfa-eos", "feature": feat,
                "values": {k: v for k, v in sorted(from_pyfa(r["stats"]).items()) if k in METRICS},
-               "ext": ext_pointers(feat, {**r["stats"]["ext"], "profile": r["stats"]["profile"]}), "excluded": {}}
+               "ext": ext_pointers(feat, {**r["stats"]["ext"], **{k: r["stats"][k] for k in ("profile", "attrs", "sources")}}),
+               "excluded": {}}
         if feat == "validity":
             exp["violations"] = violations_expected(r["stats"]["validity"])
         (SUITE / "expected" / f"{name}.json").write_text(json.dumps(exp, indent=1, sort_keys=True, default=str) + "\n")

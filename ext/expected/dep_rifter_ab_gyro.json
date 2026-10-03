@@ -1,0 +1,243 @@
+{
+ "case": "dep_rifter_ab_gyro",
+ "excluded": {},
+ "ext": {
+  "/dependants/modules.0": [
+   "modules.0/maxRange"
+  ],
+  "/dependants/modules.1": [
+   "modules.1/maxRange"
+  ],
+  "/dependants/modules.2": [
+   "ship/mass",
+   "ship/maxVelocity"
+  ],
+  "/dependants/modules.3": [
+   "modules.0/damageMultiplier",
+   "modules.0/speed",
+   "modules.1/damageMultiplier",
+   "modules.1/speed"
+  ],
+  "/dependants/skill.11084": [
+   "modules.0/damageMultiplier",
+   "modules.1/damageMultiplier"
+  ],
+  "/dependants/skill.11207": [
+   "modules.0/power",
+   "modules.1/power"
+  ],
+  "/dependants/skill.21610": [
+   "ship/jumpDriveConsumptionAmount"
+  ],
+  "/dependants/skill.21611": [
+   "ship/jumpDriveRange"
+  ],
+  "/dependants/skill.23566": [
+   "ship/droneControlRange"
+  ],
+  "/dependants/skill.24606": [
+   "ship/maxJumpClones"
+  ],
+  "/dependants/skill.24613": [
+   "ship/fighterCapacity"
+  ],
+  "/dependants/skill.28164": [
+   "modules.0/heatDamage",
+   "modules.1/heatDamage",
+   "modules.2/heatDamage"
+  ],
+  "/dependants/skill.32999": [
+   "ship/scanMagnetometricStrength"
+  ],
+  "/dependants/skill.3300": [
+   "modules.0/speed",
+   "modules.1/speed"
+  ],
+  "/dependants/skill.33000": [
+   "ship/scanGravimetricStrength"
+  ],
+  "/dependants/skill.33001": [
+   "ship/scanLadarStrength"
+  ],
+  "/dependants/skill.33002": [
+   "ship/scanRadarStrength"
+  ],
+  "/dependants/skill.3302": [
+   "modules.0/damageMultiplier",
+   "modules.1/damageMultiplier"
+  ],
+  "/dependants/skill.3310": [
+   "modules.0/speed",
+   "modules.1/speed"
+  ],
+  "/dependants/skill.3311": [
+   "modules.0/maxRange",
+   "modules.1/maxRange"
+  ],
+  "/dependants/skill.3312": [
+   "modules.0/trackingSpeed",
+   "modules.1/trackingSpeed"
+  ],
+  "/dependants/skill.3315": [
+   "modules.0/damageMultiplier",
+   "modules.1/damageMultiplier"
+  ],
+  "/dependants/skill.3316": [
+   "modules.0/capacitorNeed",
+   "modules.1/capacitorNeed"
+  ],
+  "/dependants/skill.3317": [
+   "modules.0/falloff",
+   "modules.1/falloff"
+  ],
+  "/dependants/skill.3318": [
+   "modules.0/cpu",
+   "modules.1/cpu"
+  ],
+  "/dependants/skill.3327": [
+   "ship/agility"
+  ],
+  "/dependants/skill.3329": [
+   "modules.0/falloff",
+   "modules.0/speed",
+   "modules.1/falloff",
+   "modules.1/speed"
+  ],
+  "/dependants/skill.3392": [
+   "ship/hp"
+  ],
+  "/dependants/skill.3394": [
+   "ship/armorHP"
+  ],
+  "/dependants/skill.3413": [
+   "ship/powerOutput"
+  ],
+  "/dependants/skill.3416": [
+   "ship/shieldRechargeRate"
+  ],
+  "/dependants/skill.3417": [
+   "ship/rechargeRate"
+  ],
+  "/dependants/skill.3418": [
+   "ship/capacitorCapacity"
+  ],
+  "/dependants/skill.3419": [
+   "ship/shieldCapacity"
+  ],
+  "/dependants/skill.3420": [
+   "ship/shieldUniformity"
+  ],
+  "/dependants/skill.3426": [
+   "ship/cpuOutput"
+  ],
+  "/dependants/skill.3428": [
+   "ship/maxTargetRange"
+  ],
+  "/dependants/skill.3429": [
+   "ship/maxTargetsLockedFromSkills"
+  ],
+  "/dependants/skill.3430": [
+   "ship/maxTargetsLockedFromSkills"
+  ],
+  "/dependants/skill.3431": [
+   "ship/scanResolution"
+  ],
+  "/dependants/skill.3436": [
+   "ship/maxActiveDrones"
+  ],
+  "/dependants/skill.3437": [
+   "ship/droneControlRange"
+  ],
+  "/dependants/skill.3449": [
+   "ship/maxVelocity"
+  ],
+  "/dependants/skill.3450": [
+   "modules.2/capacitorNeed",
+   "modules.2/duration"
+  ],
+  "/dependants/skill.3451": [
+   "modules.2/capacitorNeed"
+  ],
+  "/dependants/skill.3452": [
+   "modules.2/speedFactor"
+  ],
+  "/dependants/skill.3453": [
+   "ship/agility"
+  ],
+  "/dependants/skill.3455": [
+   "ship/warpCapacitorNeed"
+  ],
+  "/dependants/skill.3456": [
+   "ship/jumpDriveCapacitorNeed"
+  ],
+  "/dependants/skill.83094": [
+   "ship/conduitPassengerBonusModAdd"
+  ]
+ },
+ "feature": "attr_dependants",
+ "oracle": "pyfa-eos",
+ "values": {
+  "align_time_s": 4.6922182499697165,
+  "calibration_used": 0.0,
+  "cap_capacity": 312.5,
+  "cap_recharge_s": 93.75,
+  "cap_stable": true,
+  "cap_stable_percent": 95.51020484343343,
+  "cpu_total": 162.5,
+  "cpu_used": 58.5,
+  "drone_bandwidth_used": 0,
+  "drone_control_range": 60000.0,
+  "drone_dps": 0,
+  "drone_volley": 0,
+  "ehp.armor": 833.3333333333333,
+  "ehp.hull": 652.9850746268656,
+  "ehp.shield": 775.8620689655172,
+  "hi_slots": 3.0,
+  "hp.armor": 562.5,
+  "hp.hull": 437.5,
+  "hp.shield": 562.5,
+  "jam_chance": 0,
+  "low_slots": 4.0,
+  "mass": 1567000.0,
+  "max_target_range": 28125.0,
+  "max_targets": 4,
+  "max_velocity": 1193.2524329929802,
+  "med_slots": 3.0,
+  "power_total": 51.25,
+  "power_used": 19.2,
+  "res.armor.em": 0.4,
+  "res.armor.explosive": 0.9,
+  "res.armor.kinetic": 0.75,
+  "res.armor.thermal": 0.65,
+  "res.hull.em": 0.67,
+  "res.hull.explosive": 0.67,
+  "res.hull.kinetic": 0.67,
+  "res.hull.thermal": 0.67,
+  "res.shield.em": 1.0,
+  "res.shield.explosive": 0.5,
+  "res.shield.kinetic": 0.6,
+  "res.shield.thermal": 0.8,
+  "scan_resolution": 825.0,
+  "scan_strength": 9.6,
+  "signature_radius": 35.0,
+  "stank.armor": 0,
+  "stank.hull": 0,
+  "stank.shield": 0,
+  "tank.armor": 0,
+  "tank.hull": 0,
+  "tank.passive": 3.0,
+  "tank.shield": 0,
+  "w0.falloff_m": 9675.0,
+  "w0.optimal_m": 750.0,
+  "w0.tracking": 393.75,
+  "w1.falloff_m": 9675.0,
+  "w1.optimal_m": 750.0,
+  "w1.tracking": 393.75,
+  "warp_scramble_status": 0.0,
+  "warp_speed": 5.0,
+  "weapon_dps": 95.77251396648043,
+  "weapon_pure_dps": 0,
+  "weapon_pure_volley": 0,
+  "weapon_volley": 144.64642500000002
+ }
+}
