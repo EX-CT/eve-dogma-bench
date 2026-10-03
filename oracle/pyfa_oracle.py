@@ -339,6 +339,102 @@ def weapons(fit):
     return out
 
 
+# ---- ORACLE_EXTRA=profile: damage vs the request target profile, probe size (contract offense.vs_target_profile,
+# targeting.probe_size) ------------------------------------------------------------------------------------------------
+class _Profile:
+    """Duck-typed TargetProfile for DmgTypes.profile (reads emAmount ... explosiveAmount, hp; resists as 0..1)."""
+    def __init__(self, tp):
+        self.emAmount, self.thermalAmount = float(tp.get("em") or 0), float(tp.get("thermal") or 0)
+        self.kineticAmount, self.explosiveAmount = float(tp.get("kinetic") or 0), float(tp.get("explosive") or 0)
+
+
+def profile_stats(fit, req):
+    """Pyfa fit.calculateWeaponDmgStats / calculateDroneDmgStats set `profile = fit.targetProfile` on the DmgTypes;
+    the stats panel then shows resist-applied damage (no signature / velocity application). Done here on the summed
+    copies getTotalDps / getTotalVolley return, so the fit's own figures stay unprofiled."""
+    tp = req.get("target_profile") or {}
+    out = {}
+    for k, dm in (("dps", fit.getTotalDps(spoolOptions=SPOOL)), ("volley", fit.getTotalVolley(spoolOptions=SPOOL))):
+        dm.profile = _Profile(tp)
+        out[k] = dm.total
+    return {"vs_target_profile": out, "probe_size": fit.probeSize}
+
+
+# ---- ORACLE_EXTRA=validity: Pyfa's fitting checks mapped to contract violation codes --------------------------------
+def validity(fit, req):
+    """Pyfa checks, decomposed into the contract codes (CONTRACT.md "Draft 1.11: validity"):
+    fit level: cpuUsed / pgUsed / calibrationUsed / droneBandwidthUsed vs ship totals; getSlotsUsed vs slot counts
+    (SLOTS_EXCEEDED); getHardpointsUsed vs turret/launcherSlotsLeft. Per module (Module.fits / __fitRestrictions /
+    canHaveState / isValidCharge, in that order of rules): fit.canFit -> SHIP_RESTRICTION, capital module on a
+    sub-capital hull -> SHIP_RESTRICTION, rigSize -> RIG_SIZE, raw maxGroupFitted -> MAX_GROUP_FITTED, canHaveState
+    -> MAX_GROUP_ONLINE / MAX_GROUP_ACTIVE, isValidCharge capacity / chargeSize / chargeGroup1-4 -> CHARGE_CAPACITY /
+    CHARGE_SIZE / CHARGE_GROUP. Skills: service.character.checkRequirements (rigs and fighter charges skipped,
+    prerequisites of a missing skill recursed) -> MISSING_SKILL, one per missing skill id. Pyfa has no maxTypeFitted
+    check (not reported here)."""
+    from eos.const import FittingHardpoint
+    sh = fit.ship
+    v = []
+
+    def add(code, idx=None, **kw):
+        v.append(dict({"code": code, "module_index": idx}, **kw))
+    g = sh.getModifiedItemAttr
+    for code, used, tot in (("CPU_OVERLOAD", fit.cpuUsed, g("cpuOutput")), ("POWER_OVERLOAD", fit.pgUsed, g("powerOutput")),
+                            ("CALIBRATION_OVERLOAD", fit.calibrationUsed, g("upgradeCapacity")),
+                            ("DRONE_BANDWIDTH", fit.droneBandwidthUsed, g("droneBandwidth"))):
+        if (used or 0) > (tot or 0) + 1e-9:
+            add(code)
+    mods = ORACLE_MODS.get(id(fit), [])
+    for slot in (FittingSlot.HIGH, FittingSlot.MED, FittingSlot.LOW, FittingSlot.RIG, FittingSlot.SUBSYSTEM, FittingSlot.SERVICE):
+        if fit.getSlotsFree(slot.value) < 0:  # int, as the fitting view passes it (getSlotsUsed compares with `is`)
+            add("SLOTS_EXCEEDED", None, slot=slot.name.lower(), modules=[i for i, m in enumerate(mods) if m.slot == slot])
+    for code, hp in (("TURRET_HARDPOINTS", FittingHardpoint.TURRET), ("LAUNCHER_HARDPOINTS", FittingHardpoint.MISSILE)):
+        if fit.getHardpointsFree(hp) < 0:
+            add(code, None, modules=[i for i, m in enumerate(mods) if m.hardpoint == hp])
+    for i, m in enumerate(mods):
+        if not fit.canFit(m.item) or (not isinstance(sh, Citadel) and g("isCapitalSize", 0) != 1 and m.isCapitalSize):
+            add("SHIP_RESTRICTION", i)
+        if m.slot == FittingSlot.RIG and m.getModifiedItemAttr("rigSize") != g("rigSize"):
+            add("RIG_SIZE", i)
+        mx = m.item.attributes.get("maxGroupFitted")
+        if mx is not None and mx.value:
+            others = sum(1 for o in mods if o is not m and o.item.groupID == m.item.groupID)
+            if others >= mx.value:
+                add("MAX_GROUP_FITTED", i)
+        if m.state >= FittingModuleState.ONLINE:
+            ms = m.canHaveState(m.state)
+            if ms is not True:
+                add("MAX_GROUP_ONLINE" if ms <= FittingModuleState.OFFLINE else "MAX_GROUP_ACTIVE", i)
+        c = m.charge
+        if c is not None:
+            cv, mc = c.attributes["volume"].value, m.item.attributes["capacity"].value
+            if cv is not None and mc is not None and cv > mc:
+                add("CHARGE_CAPACITY", i)
+            ics = m.getModifiedItemAttr("chargeSize")
+            if ics > 0 and ics != c.getAttribute("chargeSize"):
+                add("CHARGE_SIZE", i)
+            if not any(m.getModifiedItemAttr("chargeGroup%d" % k, None) == c.groupID for k in range(5)):
+                add("CHARGE_GROUP", i)
+    # service/character.py Character.checkRequirements + _checkRequirements (no wx import needed)
+    char = fit.character
+    missing = {}
+
+    def walk(thing):
+        for rq, lvl in thing.requiredSkills.items():
+            if char is None or char.getSkill(rq).level < lvl:
+                if missing.get(rq.ID, 0) < lvl:
+                    missing[rq.ID] = lvl
+                walk(rq)
+    for thing in [*mods, *fit.drones, *fit.fighters, fit.ship, *fit.appliedImplants, *fit.boosters]:
+        if isinstance(thing, Module) and thing.slot == FittingSlot.RIG:
+            continue
+        walk(thing.item)
+        if not isinstance(thing, Fighter) and getattr(thing, "charge", None) is not None:
+            walk(thing.charge)
+    for sid, lvl in sorted(missing.items()):
+        add("MISSING_SKILL", None, skill_type_id=sid, level=lvl)
+    return v
+
+
 # ---- opt-in extra outputs (ORACLE_EXTRA="attrs,ext"); unset = output identical to before -----------------------------
 ORACLE_EXTRA = {x.strip() for x in os.environ.get("ORACLE_EXTRA", "").split(",") if x.strip()}
 
@@ -478,6 +574,10 @@ def run_one(path, req):
             st["attrs"] = attr_dump(fit)
         if "ext" in ORACLE_EXTRA:
             st["ext"] = ext_stats(fit)
+        if "profile" in ORACLE_EXTRA:
+            st["profile"] = profile_stats(fit, req)
+        if "validity" in ORACLE_EXTRA:
+            st["validity"] = validity(fit, req)
         first = time.perf_counter() - t0
         n = int(os.environ.get("ORACLE_REPEAT", "5"))
         t1 = time.perf_counter()
