@@ -10,6 +10,12 @@ only go up.
     `formats` has `failing_ids` (failing scored rows) instead of `passed_ids`, because formats rows have no listed ids.
   - `inventory.columns.<col>`: `have` (count) and `ids` for every docs/19 column (`f`, `mcp`, `web`, `formats`).
     Only the 200 parity items count, the same as the docs/19 counts table; `extra: true` items are excluded.
+- `baselines/web.json`: the baseline for the eve-fit-web browser engine (the site's F wasm worker in headless Chrome,
+  `tools/browser-engine.mjs` in EX-CT/eve-fit-web CI, artifact `bench-suites-wasm-worker`). Seeded from run 37104154159
+  (eve-fit-web fdbb014, bench c2229b2, F wasm = eve-dogma 20aa425): core 339/339, ext 207/239, ext_rpc 0/54, batch 0/44,
+  effects 2353/2378, graphs 192/192, cap 150/150, mutated 93/93, formats 4779/4779; inventory column `web` only (have 106).
+  `f.json` is not lowered to it (native F is higher). Check a web run with
+  `check_no_regress.py --baseline baselines/web.json --run-dir <artifact dir>` (roots.json paths pointed at local checkouts).
 - `tools/run_all_suites.sh ENGINE OUT [NAME]`: runs every suite on one binary and writes OUT.
   - core, ext, ext_rpc, batch, effects, sde and price_inject run from this checkout. price_rule (docs/22 pricing rule;
     it tests the price updater, not the engine) runs only when `PRICE_RULE_CMD` is set and is not in `f.json`.
