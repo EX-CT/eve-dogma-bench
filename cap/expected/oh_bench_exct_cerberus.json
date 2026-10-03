@@ -1,0 +1,50 @@
+{
+ "case": "oh_bench_exct_cerberus",
+ "diagnostics": {
+  "drains": [
+   [
+    10000,
+    32.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    10000,
+    7.0,
+    0,
+    false,
+    0.01,
+    false
+   ],
+   [
+    10000,
+    120.0,
+    0,
+    false,
+    10000.0,
+    false
+   ]
+  ],
+  "high_gj": 547.5197996086227,
+  "low_gj": 388.5471174444227,
+  "optimized_repeat": true,
+  "sim_end_ms": 630000
+ },
+ "oracle": "pyfa-eos capSim",
+ "report_only": {
+  "eve_stable_percent": 39.47993776771059,
+  "sim_iterations": 192
+ },
+ "values": {
+  "capacity": 1200.0,
+  "delta_gj_s": 1.1212765957446802,
+  "injected_gj_s": 0.0,
+  "peak_recharge_gj_s": 17.02127659574468,
+  "recharge_time_s": 176.25,
+  "stable": true,
+  "stable_percent": 39.00278821054356,
+  "use_gj_s": 15.9
+ }
+}

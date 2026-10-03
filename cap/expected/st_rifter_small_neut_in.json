@@ -1,0 +1,66 @@
+{
+ "case": "st_rifter_small_neut_in",
+ "diagnostics": {
+  "drains": [
+   [
+    7500,
+    5.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    5000,
+    4.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    5000,
+    4.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    4500,
+    40.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    6000,
+    3.4375,
+    0,
+    false,
+    0,
+    false
+   ]
+  ],
+  "high_gj": 0.0,
+  "low_gj": 0.0,
+  "optimized_repeat": false,
+  "sim_end_ms": 54000
+ },
+ "oracle": "pyfa-eos capSim",
+ "report_only": {
+  "eve_stable_percent": 0.0,
+  "sim_iterations": 52
+ },
+ "values": {
+  "capacity": 312.5,
+  "delta_gj_s": -3.6618055555555546,
+  "depletes_in_s": 54.0,
+  "injected_gj_s": 0.0,
+  "peak_recharge_gj_s": 8.333333333333334,
+  "recharge_time_s": 93.75,
+  "stable": false,
+  "use_gj_s": 11.995138888888889
+ }
+}

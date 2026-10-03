@@ -1,0 +1,58 @@
+{
+ "case": "st_abaddon_four_lasers",
+ "diagnostics": {
+  "drains": [
+   [
+    5670,
+    27.0,
+    0,
+    true,
+    0.01,
+    false
+   ],
+   [
+    5670,
+    27.0,
+    0,
+    true,
+    0.01,
+    false
+   ],
+   [
+    5670,
+    27.0,
+    0,
+    true,
+    0.01,
+    false
+   ],
+   [
+    5670,
+    27.0,
+    0,
+    true,
+    0.01,
+    false
+   ]
+  ],
+  "high_gj": 8119.402918724905,
+  "low_gj": 8011.432797434353,
+  "optimized_repeat": true,
+  "sim_end_ms": 1893780
+ },
+ "oracle": "pyfa-eos capSim",
+ "report_only": {
+  "eve_stable_percent": 67.02884539616184,
+  "sim_iterations": 335
+ },
+ "values": {
+  "capacity": 12031.25,
+  "delta_gj_s": 13.035714285714292,
+  "injected_gj_s": 0.0,
+  "peak_recharge_gj_s": 32.083333333333336,
+  "recharge_time_s": 937.5,
+  "stable": true,
+  "stable_percent": 67.03723933988263,
+  "use_gj_s": 19.047619047619044
+ }
+}

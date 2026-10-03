@@ -1,0 +1,50 @@
+{
+ "case": "oh_bench_exct_rifter",
+ "diagnostics": {
+  "drains": [
+   [
+    7500,
+    5.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    5000,
+    4.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    5000,
+    4.5,
+    0,
+    false,
+    10000.0,
+    false
+   ]
+  ],
+  "high_gj": 265.5186949680303,
+  "low_gj": 255.24695167667534,
+  "optimized_repeat": true,
+  "sim_end_ms": 205000
+ },
+ "oracle": "pyfa-eos capSim",
+ "report_only": {
+  "eve_stable_percent": 84.11330722922841,
+  "sim_iterations": 70
+ },
+ "values": {
+  "capacity": 312.5,
+  "delta_gj_s": 5.800000000000001,
+  "injected_gj_s": 0.0,
+  "peak_recharge_gj_s": 8.333333333333334,
+  "recharge_time_s": 93.75,
+  "stable": true,
+  "stable_percent": 83.3225034631529,
+  "use_gj_s": 2.533333333333333
+ }
+}

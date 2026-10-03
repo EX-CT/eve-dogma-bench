@@ -1,0 +1,58 @@
+{
+ "case": "st_omen_rechargers",
+ "diagnostics": {
+  "drains": [
+   [
+    2835,
+    4.99875,
+    0,
+    true,
+    0.01,
+    false
+   ],
+   [
+    2835,
+    4.99875,
+    0,
+    true,
+    0.01,
+    false
+   ],
+   [
+    2835,
+    4.99875,
+    0,
+    true,
+    0.01,
+    false
+   ],
+   [
+    2835,
+    4.99875,
+    0,
+    true,
+    0.01,
+    false
+   ]
+  ],
+  "high_gj": 1605.00722104087,
+  "low_gj": 1585.0399007179653,
+  "optimized_repeat": true,
+  "sim_end_ms": 394065
+ },
+ "oracle": "pyfa-eos capSim",
+ "report_only": {
+  "eve_stable_percent": 79.72525238798205,
+  "sim_iterations": 140
+ },
+ "values": {
+  "capacity": 2000.0,
+  "delta_gj_s": 11.383668118181387,
+  "injected_gj_s": 0.0,
+  "peak_recharge_gj_s": 18.43657817109144,
+  "recharge_time_s": 271.20000000000005,
+  "stable": true,
+  "stable_percent": 79.7511780439709,
+  "use_gj_s": 7.052910052910053
+ }
+}

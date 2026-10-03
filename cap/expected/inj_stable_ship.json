@@ -1,0 +1,66 @@
+{
+ "case": "inj_stable_ship",
+ "diagnostics": {
+  "drains": [
+   [
+    4000,
+    144.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    10000,
+    32.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    7500,
+    22.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    5000,
+    22.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    12000,
+    -400.0,
+    3,
+    false,
+    10000.0,
+    true
+   ]
+  ],
+  "high_gj": 0.0,
+  "low_gj": 0.0,
+  "optimized_repeat": false,
+  "sim_end_ms": 376000
+ },
+ "oracle": "pyfa-eos capSim",
+ "report_only": {
+  "eve_stable_percent": 52.19859546128699,
+  "sim_iterations": 284
+ },
+ "values": {
+  "capacity": 3125.0,
+  "delta_gj_s": -3.946376811594206,
+  "depletes_in_s": 376.0,
+  "injected_gj_s": 26.08695652173913,
+  "peak_recharge_gj_s": 16.666666666666668,
+  "recharge_time_s": 468.75,
+  "stable": false,
+  "use_gj_s": 46.7
+ }
+}

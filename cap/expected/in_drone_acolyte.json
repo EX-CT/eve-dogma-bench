@@ -1,0 +1,130 @@
+{
+ "case": "in_drone_acolyte",
+ "diagnostics": {
+  "drains": [
+   [
+    7500,
+    22.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    5000,
+    22.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    9000,
+    160.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    9000,
+    160.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    3780,
+    9.9975,
+    1000,
+    true,
+    0.01,
+    false
+   ],
+   [
+    3780,
+    9.9975,
+    1000,
+    true,
+    0.01,
+    false
+   ],
+   [
+    3780,
+    9.9975,
+    1000,
+    true,
+    0.01,
+    false
+   ],
+   [
+    3780,
+    9.9975,
+    1000,
+    true,
+    0.01,
+    false
+   ],
+   [
+    6000,
+    5.0,
+    0,
+    false,
+    0,
+    false
+   ],
+   [
+    6000,
+    5.0,
+    0,
+    false,
+    0,
+    false
+   ],
+   [
+    6000,
+    5.0,
+    0,
+    false,
+    0,
+    false
+   ],
+   [
+    6000,
+    5.0,
+    0,
+    false,
+    0,
+    false
+   ],
+   [
+    6000,
+    5.0,
+    0,
+    false,
+    0,
+    false
+   ]
+  ],
+  "high_gj": 0.0,
+  "low_gj": 0.0,
+  "optimized_repeat": false,
+  "sim_end_ms": 40500
+ },
+ "oracle": "pyfa-eos capSim",
+ "report_only": {
+  "eve_stable_percent": 0.0,
+  "sim_iterations": 70
+ },
+ "values": {
+  "capacity": 2031.25,
+  "delta_gj_s": -43.240655401945745,
+  "depletes_in_s": 40.5,
+  "injected_gj_s": 0.0,
+  "peak_recharge_gj_s": 14.560931899641577,
+  "recharge_time_s": 348.75,
+  "stable": false,
+  "use_gj_s": 57.801587301587325
+ }
+}

@@ -1,0 +1,58 @@
+{
+ "case": "inj_asb_reload",
+ "diagnostics": {
+  "drains": [
+   [
+    4000,
+    144.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    10000,
+    32.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    7500,
+    22.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    5000,
+    22.5,
+    0,
+    false,
+    10000.0,
+    false
+   ]
+  ],
+  "high_gj": 0.0,
+  "low_gj": 0.0,
+  "optimized_repeat": false,
+  "sim_end_ms": 88000
+ },
+ "oracle": "pyfa-eos capSim",
+ "report_only": {
+  "eve_stable_percent": 0.0,
+  "sim_iterations": 62
+ },
+ "values": {
+  "capacity": 3125.0,
+  "delta_gj_s": -30.033333333333335,
+  "depletes_in_s": 88.0,
+  "injected_gj_s": 0.0,
+  "peak_recharge_gj_s": 16.666666666666668,
+  "recharge_time_s": 468.75,
+  "stable": false,
+  "use_gj_s": 46.7
+ }
+}

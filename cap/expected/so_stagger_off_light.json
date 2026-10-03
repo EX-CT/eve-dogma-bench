@@ -1,0 +1,42 @@
+{
+ "case": "so_stagger_off_light",
+ "diagnostics": {
+  "drains": [
+   [
+    9000,
+    160.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    9000,
+    160.0,
+    0,
+    false,
+    10000.0,
+    false
+   ]
+  ],
+  "high_gj": 1818.3083447425183,
+  "low_gj": 1498.3414683770104,
+  "optimized_repeat": true,
+  "sim_end_ms": 693000
+ },
+ "oracle": "pyfa-eos capSim",
+ "report_only": {
+  "eve_stable_percent": 45.91604799432996,
+  "sim_iterations": 78
+ },
+ "values": {
+  "capacity": 3625.0,
+  "delta_gj_s": 5.134548611111093,
+  "injected_gj_s": 0.0,
+  "peak_recharge_gj_s": 40.69010416666665,
+  "recharge_time_s": 222.72000000000008,
+  "stable": true,
+  "stable_percent": 45.746893974062466,
+  "use_gj_s": 35.55555555555556
+ }
+}

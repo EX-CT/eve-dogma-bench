@@ -1,0 +1,58 @@
+{
+ "case": "own_pilgrim",
+ "diagnostics": {
+  "drains": [
+   [
+    12000,
+    112.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    5000,
+    -54.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    7500,
+    22.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    9000,
+    160.0,
+    0,
+    false,
+    10000.0,
+    false
+   ]
+  ],
+  "high_gj": 0.0,
+  "low_gj": 0.0,
+  "optimized_repeat": false,
+  "sim_end_ms": 504000
+ },
+ "oracle": "pyfa-eos capSim",
+ "report_only": {
+  "eve_stable_percent": 0.0,
+  "sim_iterations": 269
+ },
+ "values": {
+  "capacity": 1800.0,
+  "delta_gj_s": -1.0600948509485093,
+  "depletes_in_s": 504.0,
+  "injected_gj_s": 10.8,
+  "peak_recharge_gj_s": 18.29268292682927,
+  "recharge_time_s": 246.0,
+  "stable": false,
+  "use_gj_s": 30.15277777777778
+ }
+}

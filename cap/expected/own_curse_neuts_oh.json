@@ -1,0 +1,66 @@
+{
+ "case": "own_curse_neuts_oh",
+ "diagnostics": {
+  "drains": [
+   [
+    20400,
+    375.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    20400,
+    375.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    10200,
+    112.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    7500,
+    22.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    9000,
+    160.0,
+    0,
+    false,
+    10000.0,
+    false
+   ]
+  ],
+  "high_gj": 0.0,
+  "low_gj": 0.0,
+  "optimized_repeat": false,
+  "sim_end_ms": 30600
+ },
+ "oracle": "pyfa-eos capSim",
+ "report_only": {
+  "eve_stable_percent": 0.0,
+  "sim_iterations": 16
+ },
+ "values": {
+  "capacity": 1837.5,
+  "delta_gj_s": -49.95487414824086,
+  "depletes_in_s": 30.6,
+  "injected_gj_s": 0.0,
+  "peak_recharge_gj_s": 18.617021276595747,
+  "recharge_time_s": 246.75,
+  "stable": false,
+  "use_gj_s": 68.57189542483661
+ }
+}

@@ -1,0 +1,74 @@
+{
+ "case": "own_neut_nos_mix",
+ "diagnostics": {
+  "drains": [
+   [
+    24000,
+    375.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    24000,
+    375.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    10000,
+    -210.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    10000,
+    -210.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    11250,
+    400.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    7500,
+    87.5,
+    0,
+    false,
+    10000.0,
+    false
+   ]
+  ],
+  "high_gj": 0.0,
+  "low_gj": 0.0,
+  "optimized_repeat": false,
+  "sim_end_ms": 588000
+ },
+ "oracle": "pyfa-eos capSim",
+ "report_only": {
+  "eve_stable_percent": 0.0,
+  "sim_iterations": 300
+ },
+ "values": {
+  "capacity": 9375.0,
+  "delta_gj_s": -9.39249951858271,
+  "depletes_in_s": 588.0,
+  "injected_gj_s": 42.0,
+  "peak_recharge_gj_s": 27.079722703639515,
+  "recharge_time_s": 865.5,
+  "stable": false,
+  "use_gj_s": 78.47222222222223
+ }
+}

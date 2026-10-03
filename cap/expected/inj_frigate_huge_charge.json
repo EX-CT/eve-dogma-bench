@@ -1,0 +1,90 @@
+{
+ "case": "inj_frigate_huge_charge",
+ "diagnostics": {
+  "drains": [
+   [
+    10000,
+    30.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    5000,
+    4.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    4500,
+    40.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    4500,
+    40.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    2520,
+    1.665,
+    0,
+    true,
+    0.01,
+    false
+   ],
+   [
+    2520,
+    1.665,
+    0,
+    true,
+    0.01,
+    false
+   ],
+   [
+    2520,
+    1.665,
+    0,
+    true,
+    0.01,
+    false
+   ],
+   [
+    12000,
+    -800.0,
+    0,
+    false,
+    10000.0,
+    true
+   ]
+  ],
+  "high_gj": 1.1885395528095843,
+  "low_gj": 0.10760481312954528,
+  "optimized_repeat": false,
+  "sim_end_ms": 21598920
+ },
+ "oracle": "pyfa-eos capSim",
+ "report_only": {
+  "eve_stable_percent": 303.12512844821254,
+  "sim_iterations": 25632
+ },
+ "values": {
+  "capacity": 400.0,
+  "delta_gj_s": 51.34007936507937,
+  "injected_gj_s": 66.66666666666667,
+  "peak_recharge_gj_s": 8.333333333333332,
+  "recharge_time_s": 120.0,
+  "stable": true,
+  "stable_percent": 0.1620180457423912,
+  "use_gj_s": 23.65992063492063
+ }
+}

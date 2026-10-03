@@ -1,0 +1,66 @@
+{
+ "case": "mod_power_relays",
+ "diagnostics": {
+  "drains": [
+   [
+    5000,
+    360.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    10000,
+    32.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    10000,
+    32.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    7500,
+    87.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    5000,
+    9.0,
+    0,
+    false,
+    10000.0,
+    false
+   ]
+  ],
+  "high_gj": 0.0,
+  "low_gj": 0.0,
+  "optimized_repeat": false,
+  "sim_end_ms": 100000
+ },
+ "oracle": "pyfa-eos capSim",
+ "report_only": {
+  "eve_stable_percent": 0.0,
+  "sim_iterations": 77
+ },
+ "values": {
+  "capacity": 6875.0,
+  "delta_gj_s": -57.366084547753836,
+  "depletes_in_s": 100.0,
+  "injected_gj_s": 0.0,
+  "peak_recharge_gj_s": 34.50058211891284,
+  "recharge_time_s": 498.18000000000006,
+  "stable": false,
+  "use_gj_s": 91.86666666666667
+ }
+}

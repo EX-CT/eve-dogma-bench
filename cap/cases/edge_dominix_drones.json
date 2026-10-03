@@ -1,0 +1,28 @@
+{
+ "character": {
+  "skills": {
+   "default_level": 5,
+   "levels": {}
+  }
+ },
+ "drones": [
+  {
+   "active": 5,
+   "quantity": 5,
+   "type_id": 22572
+  }
+ ],
+ "implants": [],
+ "modules": [
+  {
+   "charge_type_id": null,
+   "slot": "low",
+   "state": "active",
+   "type_id": 3540
+  }
+ ],
+ "projected": [],
+ "ship": {
+  "type_id": 645
+ }
+}

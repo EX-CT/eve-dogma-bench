@@ -1,0 +1,90 @@
+{
+ "case": "mod_flux_coils",
+ "diagnostics": {
+  "drains": [
+   [
+    7500,
+    22.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    5000,
+    22.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    9000,
+    160.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    9000,
+    160.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    3780,
+    9.9975,
+    1000,
+    true,
+    0.01,
+    false
+   ],
+   [
+    3780,
+    9.9975,
+    1000,
+    true,
+    0.01,
+    false
+   ],
+   [
+    3780,
+    9.9975,
+    1000,
+    true,
+    0.01,
+    false
+   ],
+   [
+    3780,
+    9.9975,
+    1000,
+    true,
+    0.01,
+    false
+   ]
+  ],
+  "high_gj": 0.0,
+  "low_gj": 0.0,
+  "optimized_repeat": false,
+  "sim_end_ms": 34020
+ },
+ "oracle": "pyfa-eos capSim",
+ "report_only": {
+  "eve_stable_percent": 0.0,
+  "sim_iterations": 30
+ },
+ "values": {
+  "capacity": 1300.0,
+  "delta_gj_s": -28.590587348786254,
+  "depletes_in_s": 34.02,
+  "injected_gj_s": 0.0,
+  "peak_recharge_gj_s": 25.044333286134393,
+  "recharge_time_s": 129.769875,
+  "stable": false,
+  "use_gj_s": 53.63492063492065
+ }
+}

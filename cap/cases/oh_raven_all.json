@@ -1,0 +1,82 @@
+{
+ "character": {
+  "skills": {
+   "default_level": 5,
+   "levels": {}
+  }
+ },
+ "drones": [],
+ "implants": [],
+ "modules": [
+  {
+   "charge_type_id": null,
+   "slot": "mid",
+   "state": "overheated",
+   "type_id": 10842
+  },
+  {
+   "charge_type_id": null,
+   "slot": "mid",
+   "state": "overheated",
+   "type_id": 2281
+  },
+  {
+   "charge_type_id": null,
+   "slot": "mid",
+   "state": "overheated",
+   "type_id": 2281
+  },
+  {
+   "charge_type_id": null,
+   "slot": "mid",
+   "state": "overheated",
+   "type_id": 12068
+  },
+  {
+   "charge_type_id": null,
+   "slot": "mid",
+   "state": "overheated",
+   "type_id": 19806
+  },
+  {
+   "charge_type_id": 209,
+   "slot": "high",
+   "state": "overheated",
+   "type_id": 2410
+  },
+  {
+   "charge_type_id": 209,
+   "slot": "high",
+   "state": "overheated",
+   "type_id": 2410
+  },
+  {
+   "charge_type_id": 209,
+   "slot": "high",
+   "state": "overheated",
+   "type_id": 2410
+  },
+  {
+   "charge_type_id": 209,
+   "slot": "high",
+   "state": "overheated",
+   "type_id": 2410
+  },
+  {
+   "charge_type_id": 209,
+   "slot": "high",
+   "state": "overheated",
+   "type_id": 2410
+  },
+  {
+   "charge_type_id": 209,
+   "slot": "high",
+   "state": "overheated",
+   "type_id": 2410
+  }
+ ],
+ "projected": [],
+ "ship": {
+  "type_id": 638
+ }
+}

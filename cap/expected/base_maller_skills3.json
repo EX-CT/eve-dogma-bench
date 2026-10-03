@@ -1,0 +1,90 @@
+{
+ "case": "base_maller_skills3",
+ "diagnostics": {
+  "drains": [
+   [
+    8500,
+    44.099999999999994,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    5000,
+    25.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    10200,
+    160.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    10200,
+    160.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    4342,
+    11.330499999999999,
+    1000,
+    true,
+    0.01,
+    false
+   ],
+   [
+    4342,
+    11.330499999999999,
+    1000,
+    true,
+    0.01,
+    false
+   ],
+   [
+    4342,
+    11.330499999999999,
+    1000,
+    true,
+    0.01,
+    false
+   ],
+   [
+    4342,
+    11.330499999999999,
+    1000,
+    true,
+    0.01,
+    false
+   ]
+  ],
+  "high_gj": 0.0,
+  "low_gj": 0.0,
+  "optimized_repeat": false,
+  "sim_end_ms": 40800
+ },
+ "oracle": "pyfa-eos capSim",
+ "report_only": {
+  "eve_stable_percent": 0.0,
+  "sim_iterations": 33
+ },
+ "values": {
+  "capacity": 1868.7499999999998,
+  "delta_gj_s": -40.276857872368396,
+  "depletes_in_s": 40.8,
+  "injected_gj_s": 0.0,
+  "peak_recharge_gj_s": 11.820050600885514,
+  "recharge_time_s": 395.25,
+  "stable": false,
+  "use_gj_s": 52.09690847325391
+ }
+}

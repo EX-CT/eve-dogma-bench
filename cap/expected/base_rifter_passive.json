@@ -1,0 +1,22 @@
+{
+ "case": "base_rifter_passive",
+ "diagnostics": {
+  "drains": [],
+  "high_gj": null,
+  "low_gj": null,
+  "optimized_repeat": null,
+  "sim_end_ms": null
+ },
+ "oracle": "pyfa-eos capSim",
+ "report_only": {},
+ "values": {
+  "capacity": 312.5,
+  "delta_gj_s": 8.333333333333334,
+  "injected_gj_s": 0.0,
+  "peak_recharge_gj_s": 8.333333333333334,
+  "recharge_time_s": 93.75,
+  "stable": true,
+  "stable_percent": 100,
+  "use_gj_s": 0
+ }
+}

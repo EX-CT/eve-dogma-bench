@@ -1,0 +1,74 @@
+{
+ "case": "own_ashimmu_nos",
+ "diagnostics": {
+  "drains": [
+   [
+    5000,
+    -63.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    5000,
+    -63.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    5000,
+    -63.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    7500,
+    22.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    9000,
+    160.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    9000,
+    160.0,
+    0,
+    false,
+    10000.0,
+    false
+   ]
+  ],
+  "high_gj": 2094.0618216580424,
+  "low_gj": 2094.0564625818274,
+  "optimized_repeat": false,
+  "sim_end_ms": 21599690
+ },
+ "oracle": "pyfa-eos capSim",
+ "report_only": {
+  "eve_stable_percent": 97.43789886540196,
+  "sim_iterations": 20646
+ },
+ "values": {
+  "capacity": 2312.5,
+  "delta_gj_s": 13.788469601677143,
+  "injected_gj_s": 37.8,
+  "peak_recharge_gj_s": 14.544025157232705,
+  "recharge_time_s": 397.5,
+  "stable": true,
+  "stable_percent": 90.55390884842963,
+  "use_gj_s": 38.55555555555556
+ }
+}

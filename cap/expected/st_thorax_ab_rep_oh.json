@@ -1,0 +1,42 @@
+{
+ "case": "st_thorax_ab_rep_oh",
+ "diagnostics": {
+  "drains": [
+   [
+    7500,
+    22.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    7649,
+    160.0,
+    0,
+    false,
+    10000.0,
+    false
+   ]
+  ],
+  "high_gj": 0.0,
+  "low_gj": 0.0,
+  "optimized_repeat": false,
+  "sim_end_ms": 114735
+ },
+ "oracle": "pyfa-eos capSim",
+ "report_only": {
+  "eve_stable_percent": 0.0,
+  "sim_iterations": 32
+ },
+ "values": {
+  "capacity": 1812.5,
+  "delta_gj_s": -12.229023653304004,
+  "depletes_in_s": 114.735,
+  "injected_gj_s": 0.0,
+  "peak_recharge_gj_s": 11.686009026434558,
+  "recharge_time_s": 387.75,
+  "stable": false,
+  "use_gj_s": 23.915032679738562
+ }
+}

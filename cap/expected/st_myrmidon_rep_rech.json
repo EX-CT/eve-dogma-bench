@@ -1,0 +1,42 @@
+{
+ "case": "st_myrmidon_rep_rech",
+ "diagnostics": {
+  "drains": [
+   [
+    9000,
+    160.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    9000,
+    160.0,
+    0,
+    false,
+    10000.0,
+    false
+   ]
+  ],
+  "high_gj": 0.0,
+  "low_gj": 0.0,
+  "optimized_repeat": false,
+  "sim_end_ms": 463500
+ },
+ "oracle": "pyfa-eos capSim",
+ "report_only": {
+  "eve_stable_percent": 0.0,
+  "sim_iterations": 104
+ },
+ "values": {
+  "capacity": 3625.0,
+  "delta_gj_s": -3.0034722222222285,
+  "depletes_in_s": 463.5,
+  "injected_gj_s": 0.0,
+  "peak_recharge_gj_s": 32.55208333333333,
+  "recharge_time_s": 278.40000000000003,
+  "stable": false,
+  "use_gj_s": 35.55555555555556
+ }
+}

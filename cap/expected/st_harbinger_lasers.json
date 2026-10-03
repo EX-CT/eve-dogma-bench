@@ -1,0 +1,82 @@
+{
+ "case": "st_harbinger_lasers",
+ "diagnostics": {
+  "drains": [
+   [
+    3780,
+    4.99875,
+    0,
+    true,
+    0.01,
+    false
+   ],
+   [
+    3780,
+    4.99875,
+    0,
+    true,
+    0.01,
+    false
+   ],
+   [
+    3780,
+    4.99875,
+    0,
+    true,
+    0.01,
+    false
+   ],
+   [
+    3780,
+    4.99875,
+    0,
+    true,
+    0.01,
+    false
+   ],
+   [
+    3780,
+    4.99875,
+    0,
+    true,
+    0.01,
+    false
+   ],
+   [
+    3780,
+    4.99875,
+    0,
+    true,
+    0.01,
+    false
+   ],
+   [
+    3780,
+    4.99875,
+    0,
+    true,
+    0.01,
+    false
+   ]
+  ],
+  "high_gj": 3057.8027200193224,
+  "low_gj": 3022.853732113838,
+  "optimized_repeat": true,
+  "sim_end_ms": 1054620
+ },
+ "oracle": "pyfa-eos capSim",
+ "report_only": {
+  "eve_stable_percent": 69.45312459316253,
+  "sim_iterations": 280
+ },
+ "values": {
+  "capacity": 4375.0,
+  "delta_gj_s": 7.409722222222225,
+  "injected_gj_s": 0.0,
+  "peak_recharge_gj_s": 16.666666666666668,
+  "recharge_time_s": 656.25,
+  "stable": true,
+  "stable_percent": 69.49321659580755,
+  "use_gj_s": 9.256944444444443
+ }
+}

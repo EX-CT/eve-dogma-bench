@@ -1,0 +1,82 @@
+{
+ "case": "base_punisher",
+ "diagnostics": {
+  "drains": [
+   [
+    10000,
+    30.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    5000,
+    4.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    4500,
+    40.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    4500,
+    40.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    2520,
+    1.665,
+    0,
+    true,
+    0.01,
+    false
+   ],
+   [
+    2520,
+    1.665,
+    0,
+    true,
+    0.01,
+    false
+   ],
+   [
+    2520,
+    1.665,
+    0,
+    true,
+    0.01,
+    false
+   ]
+  ],
+  "high_gj": 0.0,
+  "low_gj": 0.0,
+  "optimized_repeat": false,
+  "sim_end_ms": 20250
+ },
+ "oracle": "pyfa-eos capSim",
+ "report_only": {
+  "eve_stable_percent": 0.0,
+  "sim_iterations": 27
+ },
+ "values": {
+  "capacity": 400.0,
+  "delta_gj_s": -15.326587301587299,
+  "depletes_in_s": 20.25,
+  "injected_gj_s": 0.0,
+  "peak_recharge_gj_s": 8.333333333333332,
+  "recharge_time_s": 120.0,
+  "stable": false,
+  "use_gj_s": 23.65992063492063
+ }
+}

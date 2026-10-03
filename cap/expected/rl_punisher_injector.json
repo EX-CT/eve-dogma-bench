@@ -1,0 +1,90 @@
+{
+ "case": "rl_punisher_injector",
+ "diagnostics": {
+  "drains": [
+   [
+    10000,
+    30.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    5000,
+    4.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    4500,
+    40.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    4500,
+    40.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    2520,
+    1.665,
+    0,
+    true,
+    0.01,
+    false
+   ],
+   [
+    2520,
+    1.665,
+    0,
+    true,
+    0.01,
+    false
+   ],
+   [
+    2520,
+    1.665,
+    0,
+    true,
+    0.01,
+    false
+   ],
+   [
+    12000,
+    -150.0,
+    3,
+    false,
+    10000.0,
+    true
+   ]
+  ],
+  "high_gj": 0.0,
+  "low_gj": 0.0,
+  "optimized_repeat": false,
+  "sim_end_ms": 45000
+ },
+ "oracle": "pyfa-eos capSim",
+ "report_only": {
+  "eve_stable_percent": 0.0,
+  "sim_iterations": 56
+ },
+ "values": {
+  "capacity": 400.0,
+  "delta_gj_s": -5.5439786059351235,
+  "depletes_in_s": 45.0,
+  "injected_gj_s": 9.782608695652176,
+  "peak_recharge_gj_s": 8.333333333333332,
+  "recharge_time_s": 120.0,
+  "stable": false,
+  "use_gj_s": 23.65992063492063
+ }
+}

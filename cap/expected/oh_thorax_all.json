@@ -1,0 +1,98 @@
+{
+ "case": "oh_thorax_all",
+ "diagnostics": {
+  "drains": [
+   [
+    7500,
+    22.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    5000,
+    4.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    5000,
+    4.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    7649,
+    160.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    2160,
+    1.47,
+    200,
+    true,
+    5000.0,
+    false
+   ],
+   [
+    2160,
+    1.47,
+    200,
+    true,
+    5000.0,
+    false
+   ],
+   [
+    2160,
+    1.47,
+    200,
+    true,
+    5000.0,
+    false
+   ],
+   [
+    2160,
+    1.47,
+    200,
+    true,
+    5000.0,
+    false
+   ],
+   [
+    2160,
+    1.47,
+    200,
+    true,
+    5000.0,
+    false
+   ]
+  ],
+  "high_gj": 0.0,
+  "low_gj": 0.0,
+  "optimized_repeat": false,
+  "sim_end_ms": 84139
+ },
+ "oracle": "pyfa-eos capSim",
+ "report_only": {
+  "eve_stable_percent": 0.0,
+  "sim_iterations": 97
+ },
+ "values": {
+  "capacity": 1812.5,
+  "delta_gj_s": -17.43180143108179,
+  "depletes_in_s": 84.139,
+  "injected_gj_s": 0.0,
+  "peak_recharge_gj_s": 11.686009026434558,
+  "recharge_time_s": 387.75,
+  "stable": false,
+  "use_gj_s": 29.11781045751635
+ }
+}

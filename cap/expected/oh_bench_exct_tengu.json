@@ -1,0 +1,66 @@
+{
+ "case": "oh_bench_exct_tengu",
+ "diagnostics": {
+  "drains": [
+   [
+    7500,
+    22.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    10000,
+    32.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    10000,
+    20.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    5000,
+    22.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    5000,
+    4.5,
+    0,
+    false,
+    10000.0,
+    false
+   ]
+  ],
+  "high_gj": 1462.7674546639573,
+  "low_gj": 1412.8443936602023,
+  "optimized_repeat": true,
+  "sim_end_ms": 625000
+ },
+ "oracle": "pyfa-eos capSim",
+ "report_only": {
+  "eve_stable_percent": 64.64466418710055,
+  "sim_iterations": 462
+ },
+ "values": {
+  "capacity": 2265.625,
+  "delta_gj_s": 7.9773809523809565,
+  "injected_gj_s": 0.0,
+  "peak_recharge_gj_s": 21.577380952380956,
+  "recharge_time_s": 262.5,
+  "stable": true,
+  "stable_percent": 63.461778721636634,
+  "use_gj_s": 13.6
+ }
+}

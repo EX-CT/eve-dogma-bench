@@ -1,0 +1,64 @@
+{
+ "character": {
+  "skills": {
+   "default_level": 5,
+   "levels": {}
+  }
+ },
+ "drones": [],
+ "implants": [],
+ "modules": [
+  {
+   "charge_type_id": 262,
+   "slot": "high",
+   "state": "active",
+   "type_id": 3057
+  },
+  {
+   "charge_type_id": 262,
+   "slot": "high",
+   "state": "active",
+   "type_id": 3057
+  },
+  {
+   "charge_type_id": 262,
+   "slot": "high",
+   "state": "active",
+   "type_id": 3057
+  },
+  {
+   "charge_type_id": 262,
+   "slot": "high",
+   "state": "active",
+   "type_id": 3057
+  },
+  {
+   "charge_type_id": 262,
+   "slot": "high",
+   "state": "active",
+   "type_id": 3057
+  },
+  {
+   "charge_type_id": 262,
+   "slot": "high",
+   "state": "active",
+   "type_id": 3057
+  },
+  {
+   "charge_type_id": 262,
+   "slot": "high",
+   "state": "active",
+   "type_id": 3057
+  },
+  {
+   "charge_type_id": 262,
+   "slot": "high",
+   "state": "active",
+   "type_id": 3057
+  }
+ ],
+ "projected": [],
+ "ship": {
+  "type_id": 642
+ }
+}

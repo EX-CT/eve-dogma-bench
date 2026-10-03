@@ -1,0 +1,34 @@
+{
+ "case": "st_rokh_booster_rech",
+ "diagnostics": {
+  "drains": [
+   [
+    4000,
+    144.0,
+    0,
+    false,
+    10000.0,
+    false
+   ]
+  ],
+  "high_gj": 3504.600734315393,
+  "low_gj": 3360.641639525602,
+  "optimized_repeat": true,
+  "sim_end_ms": 1256000
+ },
+ "oracle": "pyfa-eos capSim",
+ "report_only": {
+  "eve_stable_percent": 45.75286165695995,
+  "sim_iterations": 315
+ },
+ "values": {
+  "capacity": 7500.0,
+  "delta_gj_s": 5.118421052631575,
+  "injected_gj_s": 0.0,
+  "peak_recharge_gj_s": 41.118421052631575,
+  "recharge_time_s": 456.00000000000006,
+  "stable": true,
+  "stable_percent": 45.76828249227329,
+  "use_gj_s": 36.0
+ }
+}

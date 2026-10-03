@@ -1,0 +1,58 @@
+{
+ "case": "own_nos_oh",
+ "diagnostics": {
+  "drains": [
+   [
+    4250,
+    -63.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    4250,
+    -63.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    7500,
+    22.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    9000,
+    160.0,
+    0,
+    false,
+    10000.0,
+    false
+   ]
+  ],
+  "high_gj": 2130.2808416010453,
+  "low_gj": 2130.0,
+  "optimized_repeat": true,
+  "sim_end_ms": 762875
+ },
+ "oracle": "pyfa-eos capSim",
+ "report_only": {
+  "eve_stable_percent": 128.68497519415524,
+  "sim_iterations": 547
+ },
+ "values": {
+  "capacity": 2312.5,
+  "delta_gj_s": 23.413306202984337,
+  "injected_gj_s": 29.647058823529413,
+  "peak_recharge_gj_s": 14.544025157232705,
+  "recharge_time_s": 397.5,
+  "stable": true,
+  "stable_percent": 92.11418035894151,
+  "use_gj_s": 20.77777777777778
+ }
+}

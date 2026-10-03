@@ -1,0 +1,90 @@
+{
+ "case": "stg_turrets",
+ "diagnostics": {
+  "drains": [
+   [
+    5670,
+    13.5,
+    0,
+    true,
+    0.01,
+    false
+   ],
+   [
+    5670,
+    13.5,
+    0,
+    true,
+    0.01,
+    false
+   ],
+   [
+    5670,
+    13.5,
+    0,
+    true,
+    0.01,
+    false
+   ],
+   [
+    5670,
+    13.5,
+    0,
+    true,
+    0.01,
+    false
+   ],
+   [
+    5670,
+    13.5,
+    0,
+    true,
+    0.01,
+    false
+   ],
+   [
+    5670,
+    13.5,
+    0,
+    true,
+    0.01,
+    false
+   ],
+   [
+    5670,
+    13.5,
+    0,
+    true,
+    0.01,
+    false
+   ],
+   [
+    5670,
+    13.5,
+    0,
+    true,
+    0.01,
+    false
+   ]
+  ],
+  "high_gj": 5578.216191457554,
+  "low_gj": 5470.2495440263065,
+  "optimized_repeat": true,
+  "sim_end_ms": 1553580
+ },
+ "oracle": "pyfa-eos capSim",
+ "report_only": {
+  "eve_stable_percent": 63.124223856452666,
+  "sim_iterations": 275
+ },
+ "values": {
+  "capacity": 8750.0,
+  "delta_gj_s": 10.119047619047628,
+  "injected_gj_s": 0.0,
+  "peak_recharge_gj_s": 29.166666666666668,
+  "recharge_time_s": 750.0,
+  "stable": true,
+  "stable_percent": 63.13408991705063,
+  "use_gj_s": 19.04761904761904
+ }
+}

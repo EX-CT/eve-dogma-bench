@@ -1,0 +1,682 @@
+[
+ {
+  "case": "base_rifter_passive",
+  "category": "baseline",
+  "description": "no cap-using module: no drains, stable 100 %"
+ },
+ {
+  "case": "base_punisher",
+  "category": "baseline",
+  "description": "frigate MWD + dual rep + lasers"
+ },
+ {
+  "case": "base_maller",
+  "category": "baseline",
+  "description": "cruiser AB + dual rep + lasers"
+ },
+ {
+  "case": "base_thorax",
+  "category": "baseline",
+  "description": "blasters (turrets, unstaggered) + AB + rep"
+ },
+ {
+  "case": "base_megathron",
+  "category": "baseline",
+  "description": "battleship MWD + blasters + rep"
+ },
+ {
+  "case": "base_apocalypse",
+  "category": "baseline",
+  "description": "8 mega pulse lasers + dual rep"
+ },
+ {
+  "case": "base_raven",
+  "category": "baseline",
+  "description": "XL shield booster + hardeners + missiles"
+ },
+ {
+  "case": "base_drake",
+  "category": "baseline",
+  "description": "large shield booster + hardener"
+ },
+ {
+  "case": "base_apocalypse_skills0",
+  "category": "baseline",
+  "description": "all skills 0"
+ },
+ {
+  "case": "base_maller_skills3",
+  "category": "baseline",
+  "description": "all skills 3"
+ },
+ {
+  "case": "base_megathron_rep_only",
+  "category": "baseline",
+  "description": "a single large armor repairer"
+ },
+ {
+  "case": "base_abaddon_lasers",
+  "category": "baseline",
+  "description": "abaddon with lasers, rep, hardener"
+ },
+ {
+  "case": "mod_cap_batteries",
+  "category": "modifiers",
+  "description": "large cap batteries raise capacity"
+ },
+ {
+  "case": "mod_power_relays",
+  "category": "modifiers",
+  "description": "capacitor power relays (recharge, shield boost penalty)"
+ },
+ {
+  "case": "mod_flux_coils",
+  "category": "modifiers",
+  "description": "flux coils (recharge up, capacity down)"
+ },
+ {
+  "case": "mod_ccc_rigs",
+  "category": "modifiers",
+  "description": "capacitor control circuit rigs"
+ },
+ {
+  "case": "mod_cap_rechargers",
+  "category": "modifiers",
+  "description": "cap rechargers (stacking-penalised)"
+ },
+ {
+  "case": "mod_mix_punisher",
+  "category": "modifiers",
+  "description": "small battery + CCC rigs on a frigate"
+ },
+ {
+  "case": "oh_maller_reps",
+  "category": "overheat",
+  "description": "overheated armor repairers (cycle time to fractional ms, truncated)"
+ },
+ {
+  "case": "oh_maller_all",
+  "category": "overheat",
+  "description": "every module overheated"
+ },
+ {
+  "case": "oh_drake_booster",
+  "category": "overheat",
+  "description": "overheated shield booster"
+ },
+ {
+  "case": "oh_raven_all",
+  "category": "overheat",
+  "description": "every module overheated"
+ },
+ {
+  "case": "oh_thorax_all",
+  "category": "overheat",
+  "description": "blasters, AB, web, scram, rep overheated"
+ },
+ {
+  "case": "oh_megathron_mwd",
+  "category": "overheat",
+  "description": "overheated MWD"
+ },
+ {
+  "case": "oh_hurricane_neuts",
+  "category": "overheat",
+  "description": "overheated neutralizers"
+ },
+ {
+  "case": "oh_apocalypse_lasers",
+  "category": "overheat",
+  "description": "overheated lasers"
+ },
+ {
+  "case": "oh_punisher_all",
+  "category": "overheat",
+  "description": "frigate every module overheated"
+ },
+ {
+  "case": "oh_abaddon_reps_rah",
+  "category": "overheat",
+  "description": "overheated rep + reactive hardener"
+ },
+ {
+  "case": "oh_bench_exct_rifter",
+  "category": "overheat",
+  "description": "bench case exct_rifter with every overheatable module overheated"
+ },
+ {
+  "case": "oh_bench_exct_cerberus",
+  "category": "overheat",
+  "description": "bench case exct_cerberus with every overheatable module overheated"
+ },
+ {
+  "case": "oh_bench_exct_tengu",
+  "category": "overheat",
+  "description": "bench case exct_tengu with every overheatable module overheated"
+ },
+ {
+  "case": "oh_bench_exct_nightmare",
+  "category": "overheat",
+  "description": "bench case exct_nightmare with every overheatable module overheated"
+ },
+ {
+  "case": "oh_bench_exct_kronos",
+  "category": "overheat",
+  "description": "bench case exct_kronos with every overheatable module overheated"
+ },
+ {
+  "case": "inj_small_frigate",
+  "category": "injectors",
+  "description": "small cap booster on an unstable frigate"
+ },
+ {
+  "case": "inj_medium_maller",
+  "category": "injectors",
+  "description": "medium booster, navy 400"
+ },
+ {
+  "case": "inj_medium_800_overshoot",
+  "category": "injectors",
+  "description": "800 charges on a cruiser (overshoot: injections postponed)"
+ },
+ {
+  "case": "inj_heavy_megathron",
+  "category": "injectors",
+  "description": "heavy booster on a battleship"
+ },
+ {
+  "case": "inj_two_heavy",
+  "category": "injectors",
+  "description": "two heavy boosters (injectors never staggered)"
+ },
+ {
+  "case": "inj_mixed_charges",
+  "category": "injectors",
+  "description": "two boosters with different charges"
+ },
+ {
+  "case": "inj_factor_reload",
+  "category": "injectors",
+  "description": "booster with options.factor_reload (reload in the simulation for every module)"
+ },
+ {
+  "case": "inj_offline",
+  "category": "injectors",
+  "description": "offline booster: no injection"
+ },
+ {
+  "case": "inj_no_charge",
+  "category": "injectors",
+  "description": "booster without charges: no injection"
+ },
+ {
+  "case": "inj_frigate_huge_charge",
+  "category": "injectors",
+  "description": "800 charge into a frigate capacitor (always overshoots)"
+ },
+ {
+  "case": "inj_capital",
+  "category": "injectors",
+  "description": "capital booster on a dreadnought with a capital rep"
+ },
+ {
+  "case": "inj_asb",
+  "category": "injectors",
+  "description": "ancillary shield booster with cap booster charges (no cap use while loaded)"
+ },
+ {
+  "case": "inj_asb_reload",
+  "category": "injectors",
+  "description": "ancillary shield booster, factor_reload"
+ },
+ {
+  "case": "inj_stable_ship",
+  "category": "injectors",
+  "description": "booster on an already stable fit (postponed, stays full)"
+ },
+ {
+  "case": "own_curse_neuts",
+  "category": "own_neut_nos",
+  "description": "heavy + medium neuts"
+ },
+ {
+  "case": "own_curse_neuts_oh",
+  "category": "own_neut_nos",
+  "description": "neuts overheated"
+ },
+ {
+  "case": "own_bhaalgorn",
+  "category": "own_neut_nos",
+  "description": "battleship heavy neuts"
+ },
+ {
+  "case": "own_ashimmu_nos",
+  "category": "own_neut_nos",
+  "description": "nosferatu count as cap gain in the simulation"
+ },
+ {
+  "case": "own_nos_only",
+  "category": "own_neut_nos",
+  "description": "only nosferatu: always stable"
+ },
+ {
+  "case": "own_neut_nos_mix",
+  "category": "own_neut_nos",
+  "description": "neuts and nos together"
+ },
+ {
+  "case": "own_faction_neuts",
+  "category": "own_neut_nos",
+  "description": "faction / compact neuts (different cycle times)"
+ },
+ {
+  "case": "own_pilgrim",
+  "category": "own_neut_nos",
+  "description": "recon neut + nos"
+ },
+ {
+  "case": "own_hurricane",
+  "category": "own_neut_nos",
+  "description": "medium neuts on a battlecruiser"
+ },
+ {
+  "case": "own_nos_oh",
+  "category": "own_neut_nos",
+  "description": "overheated nosferatu"
+ },
+ {
+  "case": "in_neut_1heavy",
+  "category": "incoming",
+  "description": "one heavy neut on a cruiser"
+ },
+ {
+  "case": "in_neut_3heavy",
+  "category": "incoming",
+  "description": "three heavy neuts (amount 3)"
+ },
+ {
+  "case": "in_neut_falloff",
+  "category": "incoming",
+  "description": "neut in falloff (range factor)"
+ },
+ {
+  "case": "in_neut_out_of_range",
+  "category": "incoming",
+  "description": "neut far beyond falloff"
+ },
+ {
+  "case": "in_neut_sigres_frigate",
+  "category": "incoming",
+  "description": "heavy neut on a frigate (signature resolution)"
+ },
+ {
+  "case": "in_neut_small_on_bs",
+  "category": "incoming",
+  "description": "small neuts on a battleship"
+ },
+ {
+  "case": "in_nos_enemy",
+  "category": "incoming",
+  "description": "enemy nosferatu drain the target"
+ },
+ {
+  "case": "in_drone_acolyte",
+  "category": "incoming",
+  "description": "5 light neut drones"
+ },
+ {
+  "case": "in_drone_infiltrator",
+  "category": "incoming",
+  "description": "medium neut drones"
+ },
+ {
+  "case": "in_drone_praetor",
+  "category": "incoming",
+  "description": "heavy neut drones on a frigate (sig resolution)"
+ },
+ {
+  "case": "in_drone_out_of_optimal",
+  "category": "incoming",
+  "description": "neut drones beyond their neutralizer optimal range (no drain)"
+ },
+ {
+  "case": "in_void_bomb",
+  "category": "incoming",
+  "description": "void bomb (bomb launcher cycle + reactivation)"
+ },
+ {
+  "case": "in_neut_fit",
+  "category": "incoming",
+  "description": "projected fit with two heavy neuts"
+ },
+ {
+  "case": "in_neut_capital",
+  "category": "incoming",
+  "description": "battleship neuts on a dreadnought"
+ },
+ {
+  "case": "in_neut_stable_target",
+  "category": "incoming",
+  "description": "neut on a fit with no own cap use"
+ },
+ {
+  "case": "in_neut_mixed",
+  "category": "incoming",
+  "description": "neut module + drones + nos"
+ },
+ {
+  "case": "rc_in_one",
+  "category": "remote_cap",
+  "description": "one incoming large transmitter (fill)"
+ },
+ {
+  "case": "rc_in_two",
+  "category": "remote_cap",
+  "description": "two incoming transmitters"
+ },
+ {
+  "case": "rc_in_near_max",
+  "category": "remote_cap",
+  "description": "transmitter at 9 km (inside its 9.75 km unskilled range)"
+ },
+ {
+  "case": "rc_in_out_of_range",
+  "category": "remote_cap",
+  "description": "transmitter beyond max range: no fill"
+ },
+ {
+  "case": "rc_in_fit",
+  "category": "remote_cap",
+  "description": "projected logistics fit"
+ },
+ {
+  "case": "rc_own_guardian",
+  "category": "remote_cap",
+  "description": "own transmitters drain the logistics ship"
+ },
+ {
+  "case": "rc_own_basilisk",
+  "category": "remote_cap",
+  "description": "shield logistics transmitting cap"
+ },
+ {
+  "case": "rc_fill_and_neut",
+  "category": "remote_cap",
+  "description": "incoming transmitter and neut together"
+ },
+ {
+  "case": "rc_own_and_in",
+  "category": "remote_cap",
+  "description": "logistics receiving cap while transmitting"
+ },
+ {
+  "case": "spool_leshak",
+  "category": "spool",
+  "description": "supratidal disintegrator (cap per cycle, spool does not change cap)"
+ },
+ {
+  "case": "spool_leshak_spool0",
+  "category": "spool",
+  "description": "default_spool 0"
+ },
+ {
+  "case": "spool_leshak_reload",
+  "category": "spool",
+  "description": "factor_reload with disintegrator charges"
+ },
+ {
+  "case": "spool_vedmak",
+  "category": "spool",
+  "description": "heavy entropic disintegrator"
+ },
+ {
+  "case": "spool_damavik",
+  "category": "spool",
+  "description": "light entropic disintegrator"
+ },
+ {
+  "case": "spool_damavik_oh",
+  "category": "spool",
+  "description": "light disintegrator, all overheated"
+ },
+ {
+  "case": "rl_maller_lasers",
+  "category": "reload",
+  "description": "crystals (no clip) + reps, factor_reload"
+ },
+ {
+  "case": "rl_thorax_blasters",
+  "category": "reload",
+  "description": "hybrid charges: clip + reload in the simulation"
+ },
+ {
+  "case": "rl_megathron",
+  "category": "reload",
+  "description": "large blasters with reload"
+ },
+ {
+  "case": "rl_aar",
+  "category": "reload",
+  "description": "ancillary armor repairer with paste, factor_reload"
+ },
+ {
+  "case": "rl_aar_noreload",
+  "category": "reload",
+  "description": "ancillary armor repairer, no reload"
+ },
+ {
+  "case": "rl_thorax_oh",
+  "category": "reload",
+  "description": "reload + overheat"
+ },
+ {
+  "case": "rl_apocalypse",
+  "category": "reload",
+  "description": "8 lasers, factor_reload"
+ },
+ {
+  "case": "rl_punisher_injector",
+  "category": "reload",
+  "description": "frigate booster + factor_reload"
+ },
+ {
+  "case": "stg_four_reps",
+  "category": "stagger",
+  "description": "four identical repairers (staggered: duration / 4)"
+ },
+ {
+  "case": "stg_three_neuts",
+  "category": "stagger",
+  "description": "three identical heavy neuts"
+ },
+ {
+  "case": "stg_turrets",
+  "category": "stagger",
+  "description": "eight identical turrets (never staggered, cap need x8)"
+ },
+ {
+  "case": "stg_reps_reload",
+  "category": "stagger",
+  "description": "identical ancillary repairers with clip + reload (staggered by clip)"
+ },
+ {
+  "case": "stg_neuts_oh_mix",
+  "category": "stagger",
+  "description": "two neuts overheated, one not (different groups)"
+ },
+ {
+  "case": "stg_boosters",
+  "category": "stagger",
+  "description": "two shield boosters"
+ },
+ {
+  "case": "st_rifter_light",
+  "category": "light",
+  "description": "frigate AB, scram, web, rep"
+ },
+ {
+  "case": "st_thorax_ab_rep",
+  "category": "light",
+  "description": "AB + rep only"
+ },
+ {
+  "case": "st_raven_hardeners",
+  "category": "light",
+  "description": "two active hardeners"
+ },
+ {
+  "case": "st_megathron_rep_ccc",
+  "category": "light",
+  "description": "rep + CCC rigs"
+ },
+ {
+  "case": "st_abaddon_four_lasers",
+  "category": "light",
+  "description": "four lasers + batteries"
+ },
+ {
+  "case": "st_harbinger_lasers",
+  "category": "light",
+  "description": "battlecruiser lasers only"
+ },
+ {
+  "case": "st_omen_rechargers",
+  "category": "light",
+  "description": "lasers with cap rechargers"
+ },
+ {
+  "case": "st_myrmidon_rep_rech",
+  "category": "light",
+  "description": "dual rep with cap rechargers"
+ },
+ {
+  "case": "st_rokh_booster_rech",
+  "category": "light",
+  "description": "shield booster + rechargers + relays"
+ },
+ {
+  "case": "st_rifter_small_neut_in",
+  "category": "light",
+  "description": "light fit under one small neut"
+ },
+ {
+  "case": "st_maller_rct_in",
+  "category": "light",
+  "description": "cruiser kept stable by two incoming transmitters"
+ },
+ {
+  "case": "st_thorax_nos_in",
+  "category": "light",
+  "description": "AB + rep under an enemy nosferatu"
+ },
+ {
+  "case": "st_thorax_ab_rep_oh",
+  "category": "light",
+  "description": "AB + rep overheated"
+ },
+ {
+  "case": "st_raven_hardeners_oh",
+  "category": "light",
+  "description": "hardeners overheated"
+ },
+ {
+  "case": "so_stagger_off_reps",
+  "category": "sim_options",
+  "description": "cap_sim.stagger false: identical repairers fire together"
+ },
+ {
+  "case": "so_stagger_on_reps",
+  "category": "sim_options",
+  "description": "cap_sim.stagger true (explicit; same as default)"
+ },
+ {
+  "case": "so_stagger_off_neuts",
+  "category": "sim_options",
+  "description": "stagger false, three neuts"
+ },
+ {
+  "case": "so_stagger_off_maller",
+  "category": "sim_options",
+  "description": "stagger false, dual rep cruiser"
+ },
+ {
+  "case": "so_stagger_off_light",
+  "category": "sim_options",
+  "description": "stagger false on a stable fit (stable % changes)"
+ },
+ {
+  "case": "so_stagger_off_injectors",
+  "category": "sim_options",
+  "description": "stagger false with two cap boosters"
+ },
+ {
+  "case": "so_reload_thorax",
+  "category": "sim_options",
+  "description": "cap_sim.reload true without factor_reload (reload only in the simulation)"
+ },
+ {
+  "case": "so_reload_aar",
+  "category": "sim_options",
+  "description": "cap_sim.reload, ancillary repairers (staggered by clip)"
+ },
+ {
+  "case": "so_reload_stagger_off_aar",
+  "category": "sim_options",
+  "description": "reload on, stagger off"
+ },
+ {
+  "case": "so_maxtime_60_unstable",
+  "category": "sim_options",
+  "description": "cap_sim.max_time_s 60 on a fit that empties later (stable within the window)"
+ },
+ {
+  "case": "so_maxtime_30_drake",
+  "category": "sim_options",
+  "description": "max_time_s 30, drake"
+ },
+ {
+  "case": "so_maxtime_long",
+  "category": "sim_options",
+  "description": "max_time_s 3600 on a fit that empties at 88 s (no effect)"
+ },
+ {
+  "case": "so_maxtime_600_slow",
+  "category": "sim_options",
+  "description": "max_time_s 600 vs a 4300 s depletion"
+ },
+ {
+  "case": "so_maxtime_stable_fit",
+  "category": "sim_options",
+  "description": "max_time_s 120 on a stable fit"
+ },
+ {
+  "case": "so_all_options_incoming",
+  "category": "sim_options",
+  "description": "stagger off + reload + max time, with incoming neut drones"
+ },
+ {
+  "case": "so_factor_reload_stagger_off",
+  "category": "sim_options",
+  "description": "factor_reload with stagger off"
+ },
+ {
+  "case": "edge_mjd",
+  "category": "edge",
+  "description": "micro jump drive (long cycle, big cap need)"
+ },
+ {
+  "case": "edge_mjd_alone",
+  "category": "edge",
+  "description": "only a micro jump drive"
+ },
+ {
+  "case": "edge_dominix_drones",
+  "category": "edge",
+  "description": "drones never use cap"
+ },
+ {
+  "case": "edge_tiny_drain",
+  "category": "edge",
+  "description": "a very small drain on a big capacitor (long stable run)"
+ }
+]

@@ -1,0 +1,58 @@
+{
+ "case": "so_maxtime_30_drake",
+ "diagnostics": {
+  "drains": [
+   [
+    4000,
+    144.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    10000,
+    32.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    7500,
+    22.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    5000,
+    22.5,
+    0,
+    false,
+    10000.0,
+    false
+   ]
+  ],
+  "high_gj": 1976.6148088410853,
+  "low_gj": 1842.817243855015,
+  "optimized_repeat": false,
+  "sim_end_ms": 28000
+ },
+ "oracle": "pyfa-eos capSim",
+ "report_only": {
+  "eve_stable_percent": 0.0,
+  "sim_iterations": 21
+ },
+ "values": {
+  "capacity": 3125.0,
+  "delta_gj_s": -30.033333333333335,
+  "injected_gj_s": 0.0,
+  "peak_recharge_gj_s": 16.666666666666668,
+  "recharge_time_s": 468.75,
+  "stable": true,
+  "stable_percent": 61.1109128431376,
+  "use_gj_s": 46.7
+ }
+}

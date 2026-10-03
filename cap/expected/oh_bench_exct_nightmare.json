@@ -1,0 +1,90 @@
+{
+ "case": "oh_bench_exct_nightmare",
+ "diagnostics": {
+  "drains": [
+   [
+    10000,
+    32.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    10000,
+    10.0,
+    0,
+    false,
+    0.01,
+    false
+   ],
+   [
+    10000,
+    217.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    10000,
+    12.0,
+    0,
+    false,
+    0.01,
+    false
+   ],
+   [
+    5849,
+    57.0,
+    1000,
+    true,
+    0.01,
+    false
+   ],
+   [
+    5849,
+    57.0,
+    1000,
+    true,
+    0.01,
+    false
+   ],
+   [
+    5849,
+    57.0,
+    1000,
+    true,
+    0.01,
+    false
+   ],
+   [
+    5849,
+    57.0,
+    1000,
+    true,
+    0.01,
+    false
+   ]
+  ],
+  "high_gj": 0.0,
+  "low_gj": 0.0,
+  "optimized_repeat": false,
+  "sim_end_ms": 130000
+ },
+ "oracle": "pyfa-eos capSim",
+ "report_only": {
+  "eve_stable_percent": 0.0,
+  "sim_iterations": 78
+ },
+ "values": {
+  "capacity": 6950.0,
+  "delta_gj_s": -46.054798759395666,
+  "depletes_in_s": 130.0,
+  "injected_gj_s": 0.0,
+  "peak_recharge_gj_s": 20.07510109763143,
+  "recharge_time_s": 865.5,
+  "stable": false,
+  "use_gj_s": 66.1298998570271
+ }
+}

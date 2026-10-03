@@ -1,0 +1,34 @@
+{
+ "case": "edge_dominix_drones",
+ "diagnostics": {
+  "drains": [
+   [
+    11250,
+    400.0,
+    0,
+    false,
+    10000.0,
+    false
+   ]
+  ],
+  "high_gj": 0.0,
+  "low_gj": 0.0,
+  "optimized_repeat": false,
+  "sim_end_ms": 393750
+ },
+ "oracle": "pyfa-eos capSim",
+ "report_only": {
+  "eve_stable_percent": 0.0,
+  "sim_iterations": 36
+ },
+ "values": {
+  "capacity": 7500.0,
+  "delta_gj_s": -12.82828282828283,
+  "depletes_in_s": 393.75,
+  "injected_gj_s": 0.0,
+  "peak_recharge_gj_s": 22.727272727272727,
+  "recharge_time_s": 825.0,
+  "stable": false,
+  "use_gj_s": 35.55555555555556
+ }
+}

@@ -1,0 +1,114 @@
+{
+ "case": "oh_abaddon_reps_rah",
+ "diagnostics": {
+  "drains": [
+   [
+    7500,
+    87.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    9562,
+    400.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    4250,
+    10.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    5670,
+    27.0,
+    0,
+    true,
+    0.01,
+    false
+   ],
+   [
+    5670,
+    27.0,
+    0,
+    true,
+    0.01,
+    false
+   ],
+   [
+    5670,
+    27.0,
+    0,
+    true,
+    0.01,
+    false
+   ],
+   [
+    5670,
+    27.0,
+    0,
+    true,
+    0.01,
+    false
+   ],
+   [
+    5670,
+    27.0,
+    0,
+    true,
+    0.01,
+    false
+   ],
+   [
+    5670,
+    27.0,
+    0,
+    true,
+    0.01,
+    false
+   ],
+   [
+    5670,
+    27.0,
+    0,
+    true,
+    0.01,
+    false
+   ],
+   [
+    5670,
+    27.0,
+    0,
+    true,
+    0.01,
+    false
+   ]
+  ],
+  "high_gj": 0.0,
+  "low_gj": 0.0,
+  "optimized_repeat": false,
+  "sim_end_ms": 95620
+ },
+ "oracle": "pyfa-eos capSim",
+ "report_only": {
+  "eve_stable_percent": 0.0,
+  "sim_iterations": 64
+ },
+ "values": {
+  "capacity": 7968.75,
+  "delta_gj_s": -72.81255835667598,
+  "depletes_in_s": 95.62,
+  "injected_gj_s": 0.0,
+  "peak_recharge_gj_s": 21.25,
+  "recharge_time_s": 937.5,
+  "stable": false,
+  "use_gj_s": 94.06255835667598
+ }
+}

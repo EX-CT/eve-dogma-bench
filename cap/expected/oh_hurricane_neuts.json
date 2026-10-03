@@ -1,0 +1,74 @@
+{
+ "case": "oh_hurricane_neuts",
+ "diagnostics": {
+  "drains": [
+   [
+    10000,
+    120.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    5000,
+    4.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    5000,
+    4.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    10200,
+    112.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    10200,
+    112.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    9000,
+    160.0,
+    0,
+    false,
+    10000.0,
+    false
+   ]
+  ],
+  "high_gj": 0.0,
+  "low_gj": 0.0,
+  "optimized_repeat": false,
+  "sim_end_ms": 45900
+ },
+ "oracle": "pyfa-eos capSim",
+ "report_only": {
+  "eve_stable_percent": 0.0,
+  "sim_iterations": 40
+ },
+ "values": {
+  "capacity": 2300.0,
+  "delta_gj_s": -40.30326797385621,
+  "depletes_in_s": 45.9,
+  "injected_gj_s": 0.0,
+  "peak_recharge_gj_s": 13.333333333333334,
+  "recharge_time_s": 431.25,
+  "stable": false,
+  "use_gj_s": 53.636601307189544
+ }
+}

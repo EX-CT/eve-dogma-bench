@@ -1,0 +1,98 @@
+{
+ "case": "in_drone_praetor",
+ "diagnostics": {
+  "drains": [
+   [
+    10000,
+    30.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    5000,
+    4.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    4500,
+    40.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    4500,
+    40.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    2520,
+    1.665,
+    0,
+    true,
+    0.01,
+    false
+   ],
+   [
+    2520,
+    1.665,
+    0,
+    true,
+    0.01,
+    false
+   ],
+   [
+    2520,
+    1.665,
+    0,
+    true,
+    0.01,
+    false
+   ],
+   [
+    6000,
+    25.0,
+    0,
+    false,
+    0,
+    false
+   ],
+   [
+    6000,
+    25.0,
+    0,
+    false,
+    0,
+    false
+   ]
+  ],
+  "high_gj": 0.0,
+  "low_gj": 0.0,
+  "optimized_repeat": false,
+  "sim_end_ms": 13500
+ },
+ "oracle": "pyfa-eos capSim",
+ "report_only": {
+  "eve_stable_percent": 0.0,
+  "sim_iterations": 23
+ },
+ "values": {
+  "capacity": 400.0,
+  "delta_gj_s": -23.659920634920635,
+  "depletes_in_s": 13.5,
+  "injected_gj_s": 0.0,
+  "peak_recharge_gj_s": 8.333333333333332,
+  "recharge_time_s": 120.0,
+  "stable": false,
+  "use_gj_s": 31.993253968253967
+ }
+}

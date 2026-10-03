@@ -1,0 +1,66 @@
+{
+ "case": "oh_raven_all",
+ "diagnostics": {
+  "drains": [
+   [
+    4250,
+    360.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    10000,
+    32.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    10000,
+    32.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    7500,
+    87.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    5000,
+    9.0,
+    0,
+    false,
+    10000.0,
+    false
+   ]
+  ],
+  "high_gj": 0.0,
+  "low_gj": 0.0,
+  "optimized_repeat": false,
+  "sim_end_ms": 72250
+ },
+ "oracle": "pyfa-eos capSim",
+ "report_only": {
+  "eve_stable_percent": 0.0,
+  "sim_iterations": 58
+ },
+ "values": {
+  "capacity": 6875.0,
+  "delta_gj_s": -84.64501278772379,
+  "depletes_in_s": 72.25,
+  "injected_gj_s": 0.0,
+  "peak_recharge_gj_s": 19.92753623188406,
+  "recharge_time_s": 862.5,
+  "stable": false,
+  "use_gj_s": 104.57254901960785
+ }
+}
