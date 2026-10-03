@@ -282,7 +282,8 @@ def parse_tests(kind, out):
         r = re.search(r"Ran (\d+) tests?", out)
         if r:
             n = int(r.group(1)); fm = re.search(r"FAILED \((?:failures=(\d+))?(?:, )?(?:errors=(\d+))?", out)
-            f = sum(int(x or 0) for x in fm.groups()) if fm else 0; p = n - f
+            f = sum(int(x or 0) for x in fm.groups()) if fm else 0
+            sk = re.search(r"skipped=(\d+)", out); p = n - f - (int(sk.group(1)) if sk else 0)
     elif kind == "pytest":
         r1, r2 = re.search(r"(\d+) passed", out), re.search(r"(\d+) failed", out)
         p, f = int(r1.group(1)) if r1 else 0, int(r2.group(1)) if r2 else 0
@@ -303,7 +304,7 @@ def run_tests(m, vd, timeout):
     if not cmd:
         return {"found": False}
     cmd = cmd.format(dataset=DATASET, bench=ROOT, dir=vd)
-    env = dict(ENV, EVE_DOGMA_DATASET=DATASET)
+    env = dict(ENV, EVE_DOGMA_DATASET=DATASET, EVE_DOGMA_GRAPH_CASES=str(ROOT / "graphs" / "cases"))
     rc, dt, out = sh(cmd, str(vd), timeout, env=env)
     p, f = parse_tests(kind, out or "")
     st = "timeout" if rc is None else ("passed" if rc == 0 and not f else "failed")
@@ -788,7 +789,7 @@ RULES_MD = """## Scoring rules (round 2)
 - **Gate:** every graph case fully correct through every interface the variant offers, and 326/326 bench-1.8.0 stats cases (round-1 commands of the same branch).
 - **Total = 0.40·Speed + 0.35·Maintainability + 0.15·Features + 0.10·Portability**, `L(x, best, span) = clamp(1 − log10(x/best)/log10(span), 0, 1)`.
 - **Speed** = 0.4·L(1/points·s⁻¹ batch, start-up excluded) + 0.4·L(dense 500-point damage latency, distinct fits) + 0.2·L(cold start + one request); medians over runs.
-- **Maintainability** = 0.3·Tests + 0.3·Size (L(round-2 core lines added on the branch since the round-1 merge-base, min, 10)) + 0.2·Docs + 0.2·Deps (round-1 definitions).
+- **Maintainability** = 0.3·Tests + 0.3·Size (L(round-2 core lines added on the branch since the round-1 merge-base, min, 10)) + 0.2·Docs + 0.2·Deps (round-1 definitions; test runs get `EVE_DOGMA_DATASET` and `EVE_DOGMA_GRAPH_CASES`, skipped tests are not counted as passed).
 - **Features** = 0.6·graphs fully correct/(graphs in the corpus) + 0.3·interfaces passing (graph-batch, graph, RPC)/3 + 0.1·empty `x.values` → empty series.
 - **Portability** = round-1 heuristic (WASM/browser build in code 1, documented 0.5).
 - Commands not declared in `bench.yaml` are inferred (variant's own `score*.sh`, or `batch`→`graph-batch` / RPC `graph` with a probe) and flagged in the table.
