@@ -1,0 +1,752 @@
+{
+ "meta": {
+  "started": "2026-10-03 11:05:43 CST",
+  "bench_sha": "0397d9530093e429596625761d04e650485adce6",
+  "graphs_pin": {
+   "ref": "0397d95",
+   "sha": "0397d9530093e429596625761d04e650485adce6",
+   "version": "1.8.0",
+   "cases": 326,
+   "dir": "/workspace/exct-eve/eval-work/eve-dogma-bench/work/graphs-eval/bench-0397d9530093",
+   "contract_revision": "0.2",
+   "graph_cases": 178
+  },
+  "stats_pin": {
+   "ref": "3da9671",
+   "sha": "3da9671da11379de6ae17d3c3285505e95267f29",
+   "version": "1.8.0",
+   "cases": 326,
+   "dir": "/workspace/exct-eve/eval-work/eve-dogma-bench/work/graphs-eval/bench-3da9671da113"
+  },
+  "evaluate_graphs_py_commit": "ed546760fbefe80365fa174db1bec400bea096a8",
+  "nproc": 8,
+  "command": "python3 tools/evaluate_graphs.py --as-of 2026-10-03T11:00:00+08:00 --runs 3 --only G4",
+  "dry_run": false,
+  "as_of": "2026-10-03T11:00:00+08:00",
+  "host_loadavg_start": [
+   6.13,
+   5.22,
+   3.48
+  ],
+  "contract": "# eve-dogma graphs contract (DRAFT, round 2, revision 0.2)",
+  "corpus": {
+   "graph_cases": 178,
+   "perf_cases": 154,
+   "graphs": [
+    "damage",
+    "application_profile",
+    "ewar",
+    "remote_reps",
+    "capacitor",
+    "shield_regen",
+    "mobility",
+    "warp_time",
+    "lock_time",
+    "ecm_burst"
+   ]
+  },
+  "finished": "2026-10-03 11:09:00 CST",
+  "wall_s": 197.7,
+  "host_loadavg_end": [
+   3.94,
+   4.4,
+   3.48
+  ],
+  "label": "F baseline (G4 only); official settings; run 11:05:42-11:09:00 CST; first attempt 11:04:24-11:05:04 aborted by external SIGTERM of the build"
+ },
+ "weights": {
+  "total": {
+   "speed": 0.4,
+   "maint": 0.35,
+   "feat": 0.15,
+   "port": 0.1
+  },
+  "speed": {
+   "throughput": 0.4,
+   "latency": 0.4,
+   "cold": 0.2
+  },
+  "maint": {
+   "tests": 0.3,
+   "size": 0.3,
+   "docs": 0.2,
+   "deps": 0.2
+  }
+ },
+ "variants": [
+  {
+   "variant": "G4",
+   "label": "declarative graph specs (Rust, on F)",
+   "gate": "pass",
+   "git": {
+    "url": "https://github.com/EX-CT/eve-dogma-lab",
+    "branch": "graphs-g4",
+    "sha": "f73ff1c804455815e5337245032c630d4b4546ba",
+    "commit_time": "2026-10-03T10:55:17+08:00",
+    "branch_head_at_fetch": "f73ff1c804455815e5337245032c630d4b4546ba",
+    "is_branch_head": true,
+    "base_branch": "variant-f",
+    "merge_base": "bc84e2bcc3db842b4f923bbf408a5f7c242376fe",
+    "push_check": {
+     "commit_date_pick": "f73ff1c804455815e5337245032c630d4b4546ba",
+     "commit_date": "2026-10-03T10:55:17+08:00",
+     "head_pushed_before_cutoff": "f73ff1c804455815e5337245032c630d4b4546ba",
+     "head_pushed_before_cutoff_at": "2026-10-03T10:55:18+08:00",
+     "commit_pushed_at": "2026-10-03T10:55:18+08:00",
+     "verdict": "ok: commit-date pick was pushed before the cutoff",
+     "chosen": "f73ff1c804455815e5337245032c630d4b4546ba"
+    }
+   },
+   "dir": "graphs-g4",
+   "build_s": 96.2,
+   "cmd_notes": [
+    "graph_cmd inferred (calc -> graph, probe ok)"
+   ],
+   "manifest": {
+    "build": "(EVE_DOGMA_DATASET=/workspace/exct-eve/data/dataset-3569502.json.gz RUSTFLAGS=\"-C target-feature=+crt-static\" cargo build --release --target x86_64-unknown-linux-gnu && cp target/x86_64-unknown-linux-gnu/release/eve-dogma-f target/eve-dogma-f-bench) || (EVE_DOGMA_DATASET=/workspace/exct-eve/data/dataset-3569502.json.gz cargo build --release && cp target/release/eve-dogma-f target/eve-dogma-f-bench)",
+    "cmd": "./target/eve-dogma-f-bench calc",
+    "batch_cmd": "./target/eve-dogma-f-bench batch",
+    "rpc_cmd": "./target/eve-dogma-f-bench serve-stdio",
+    "graph_batch_cmd": "./target/eve-dogma-f-bench graph-batch",
+    "graph_cmd": "./target/eve-dogma-f-bench graph",
+    "graph_rpc_cmd": "./target/eve-dogma-f-bench serve-stdio"
+   },
+   "interfaces": {
+    "batch": {
+     "interface": "batch",
+     "cases": 178,
+     "cases_ok": 178,
+     "values_ok": 2437,
+     "values_total": 2437,
+     "groups": {
+      "application_profile": {
+       "ok": 120,
+       "total": 120,
+       "cases": 10
+      },
+      "capacitor": {
+       "ok": 173,
+       "total": 173,
+       "cases": 14
+      },
+      "damage": {
+       "ok": 918,
+       "total": 918,
+       "cases": 60
+      },
+      "ecm_burst": {
+       "ok": 218,
+       "total": 218,
+       "cases": 11
+      },
+      "errors": {
+       "ok": 20,
+       "total": 20,
+       "cases": 20
+      },
+      "ewar": {
+       "ok": 337,
+       "total": 337,
+       "cases": 22
+      },
+      "lock_time": {
+       "ok": 82,
+       "total": 82,
+       "cases": 7
+      },
+      "mobility": {
+       "ok": 259,
+       "total": 259,
+       "cases": 10
+      },
+      "remote_reps": {
+       "ok": 151,
+       "total": 151,
+       "cases": 11
+      },
+      "shield_regen": {
+       "ok": 66,
+       "total": 66,
+       "cases": 5
+      },
+      "warp_time": {
+       "ok": 93,
+       "total": 93,
+       "cases": 8
+      }
+     },
+     "info_charge_ids": {
+      "ok": 120,
+      "total": 120
+     },
+     "wall_s": 0.976
+    },
+    "rpc": {
+     "interface": "rpc",
+     "cases": 178,
+     "cases_ok": 178,
+     "values_ok": 2437,
+     "values_total": 2437,
+     "groups": {
+      "application_profile": {
+       "ok": 120,
+       "total": 120,
+       "cases": 10
+      },
+      "capacitor": {
+       "ok": 173,
+       "total": 173,
+       "cases": 14
+      },
+      "damage": {
+       "ok": 918,
+       "total": 918,
+       "cases": 60
+      },
+      "ecm_burst": {
+       "ok": 218,
+       "total": 218,
+       "cases": 11
+      },
+      "errors": {
+       "ok": 20,
+       "total": 20,
+       "cases": 20
+      },
+      "ewar": {
+       "ok": 337,
+       "total": 337,
+       "cases": 22
+      },
+      "lock_time": {
+       "ok": 82,
+       "total": 82,
+       "cases": 7
+      },
+      "mobility": {
+       "ok": 259,
+       "total": 259,
+       "cases": 10
+      },
+      "remote_reps": {
+       "ok": 151,
+       "total": 151,
+       "cases": 11
+      },
+      "shield_regen": {
+       "ok": 66,
+       "total": 66,
+       "cases": 5
+      },
+      "warp_time": {
+       "ok": 93,
+       "total": 93,
+       "cases": 8
+      }
+     },
+     "info_charge_ids": {
+      "ok": 120,
+      "total": 120
+     },
+     "wall_s": 0.508
+    },
+    "single": {
+     "interface": "single",
+     "cases": 178,
+     "cases_ok": 178,
+     "values_ok": 2437,
+     "values_total": 2437,
+     "groups": {
+      "application_profile": {
+       "ok": 120,
+       "total": 120,
+       "cases": 10
+      },
+      "capacitor": {
+       "ok": 173,
+       "total": 173,
+       "cases": 14
+      },
+      "damage": {
+       "ok": 918,
+       "total": 918,
+       "cases": 60
+      },
+      "ecm_burst": {
+       "ok": 218,
+       "total": 218,
+       "cases": 11
+      },
+      "errors": {
+       "ok": 20,
+       "total": 20,
+       "cases": 20
+      },
+      "ewar": {
+       "ok": 337,
+       "total": 337,
+       "cases": 22
+      },
+      "lock_time": {
+       "ok": 82,
+       "total": 82,
+       "cases": 7
+      },
+      "mobility": {
+       "ok": 259,
+       "total": 259,
+       "cases": 10
+      },
+      "remote_reps": {
+       "ok": 151,
+       "total": 151,
+       "cases": 11
+      },
+      "shield_regen": {
+       "ok": 66,
+       "total": 66,
+       "cases": 5
+      },
+      "warp_time": {
+       "ok": 93,
+       "total": 93,
+       "cases": 8
+      }
+     },
+     "info_charge_ids": {
+      "ok": 120,
+      "total": 120
+     },
+     "wall_s": 0.839
+    }
+   },
+   "primary": {
+    "interface": "batch",
+    "cases": 178,
+    "cases_ok": 178,
+    "values_ok": 2437,
+    "values_total": 2437,
+    "groups": {
+     "application_profile": {
+      "ok": 120,
+      "total": 120,
+      "cases": 10
+     },
+     "capacitor": {
+      "ok": 173,
+      "total": 173,
+      "cases": 14
+     },
+     "damage": {
+      "ok": 918,
+      "total": 918,
+      "cases": 60
+     },
+     "ecm_burst": {
+      "ok": 218,
+      "total": 218,
+      "cases": 11
+     },
+     "errors": {
+      "ok": 20,
+      "total": 20,
+      "cases": 20
+     },
+     "ewar": {
+      "ok": 337,
+      "total": 337,
+      "cases": 22
+     },
+     "lock_time": {
+      "ok": 82,
+      "total": 82,
+      "cases": 7
+     },
+     "mobility": {
+      "ok": 259,
+      "total": 259,
+      "cases": 10
+     },
+     "remote_reps": {
+      "ok": 151,
+      "total": 151,
+      "cases": 11
+     },
+     "shield_regen": {
+      "ok": 66,
+      "total": 66,
+      "cases": 5
+     },
+     "warp_time": {
+      "ok": 93,
+      "total": 93,
+      "cases": 8
+     }
+    },
+    "info_charge_ids": {
+     "ok": 120,
+     "total": 120
+    },
+    "wall_s": 0.976
+   },
+   "stats": {
+    "status": "pass",
+    "cases": 326,
+    "cases_ok": 326,
+    "values_ok": 21051,
+    "values_total": 21051,
+    "dir": "graphs-g4",
+    "seconds": 0.8
+   },
+   "runs": [
+    {
+     "loadavg_before": [
+      2.8,
+      4.37,
+      3.36
+     ],
+     "corpus_wall_s": 0.9066,
+     "points_per_s_raw": 1800.1,
+     "one_wall_s": 0.0034,
+     "points_per_s": 1806.8,
+     "dense_rpc_ms": 13.538,
+     "dense_repeat_ms": 8.454,
+     "cold_ms": 2.3,
+     "cold_via": "graph single",
+     "loadavg_after": [
+      3.3,
+      4.45,
+      3.39
+     ],
+     "run": 1
+    },
+    {
+     "loadavg_before": [
+      3.3,
+      4.45,
+      3.39
+     ],
+     "corpus_wall_s": 0.9156,
+     "points_per_s_raw": 1782.5,
+     "one_wall_s": 0.0041,
+     "points_per_s": 1790.5,
+     "dense_rpc_ms": 9.159,
+     "dense_repeat_ms": 11.523,
+     "cold_ms": 2.4,
+     "cold_via": "graph single",
+     "loadavg_after": [
+      4.23,
+      4.62,
+      3.45
+     ],
+     "run": 2
+    },
+    {
+     "loadavg_before": [
+      4.23,
+      4.62,
+      3.45
+     ],
+     "corpus_wall_s": 0.9797,
+     "points_per_s_raw": 1665.9,
+     "one_wall_s": 0.0032,
+     "points_per_s": 1671.3,
+     "dense_rpc_ms": 9.631,
+     "dense_repeat_ms": 8.125,
+     "cold_ms": 2.4,
+     "cold_via": "graph single",
+     "loadavg_after": [
+      4.7,
+      4.72,
+      3.49
+     ],
+     "run": 3
+    }
+   ],
+   "loads": [
+    2.8,
+    3.3,
+    4.23,
+    3.3,
+    4.23,
+    4.7
+   ],
+   "points_per_s": 1790.5,
+   "points_per_s_raw": 1782.5,
+   "dense_rpc_ms": 9.631,
+   "dense_repeat_ms": 8.454,
+   "cold_ms": 2.4,
+   "cold_via": "graph single",
+   "perf_flags": [],
+   "latency": {
+    "latency_ms": 35.785472674979246,
+    "min_ms": null,
+    "max_ms": null,
+    "spread": null,
+    "valid": 0,
+    "n_samples": 8,
+    "n_per_sample": 20,
+    "startup_ms": 15.89,
+    "dense_requests": 31,
+    "pinned_single_cpu": true,
+    "flags": [
+     "8 invalid sample(s): above upper bound T_N/N",
+     "no valid differencing sample: using upper bound T_N/N"
+    ],
+    "samples": [
+     {
+      "cpu": 1,
+      "n": 20,
+      "load1": 4.4,
+      "t1_ms": 16.07,
+      "tN_s": 0.7157,
+      "ms": 36.82308184215799,
+      "upper_ms": 35.785184999986086,
+      "valid": false,
+      "why": "above upper bound T_N/N"
+     },
+     {
+      "cpu": 2,
+      "n": 20,
+      "load1": 4.4,
+      "t1_ms": 16.31,
+      "tN_s": 0.7158,
+      "ms": 36.81320426250367,
+      "upper_ms": 35.787895849352935,
+      "valid": false,
+      "why": "above upper bound T_N/N"
+     },
+     {
+      "cpu": 3,
+      "n": 20,
+      "load1": 4.4,
+      "t1_ms": 16.01,
+      "tN_s": 0.6657,
+      "ms": 34.1966452106135,
+      "upper_ms": 33.287275900511304,
+      "valid": false,
+      "why": "above upper bound T_N/N"
+     },
+     {
+      "cpu": 4,
+      "n": 20,
+      "load1": 4.4,
+      "t1_ms": 15.94,
+      "tN_s": 0.716,
+      "ms": 36.84348599927034,
+      "upper_ms": 35.79807004934992,
+      "valid": false,
+      "why": "above upper bound T_N/N"
+     },
+     {
+      "cpu": 5,
+      "n": 20,
+      "load1": 4.4,
+      "t1_ms": 16.11,
+      "tN_s": 0.7156,
+      "ms": 36.813973158132285,
+      "upper_ms": 35.778632150322665,
+      "valid": false,
+      "why": "above upper bound T_N/N"
+     },
+     {
+      "cpu": 6,
+      "n": 20,
+      "load1": 4.4,
+      "t1_ms": 15.84,
+      "tN_s": 0.7156,
+      "ms": 36.831537578683836,
+      "upper_ms": 35.78204629957327,
+      "valid": false,
+      "why": "above upper bound T_N/N"
+     },
+     {
+      "cpu": 7,
+      "n": 20,
+      "load1": 4.4,
+      "t1_ms": 16.02,
+      "tN_s": 0.7157,
+      "ms": 36.82620089430681,
+      "upper_ms": 35.78588849995867,
+      "valid": false,
+      "why": "above upper bound T_N/N"
+     },
+     {
+      "cpu": 0,
+      "n": 20,
+      "load1": 4.21,
+      "t1_ms": 15.88,
+      "tN_s": 0.7157,
+      "ms": 36.8334718422327,
+      "upper_ms": 35.785760349972406,
+      "valid": false,
+      "why": "above upper bound T_N/N"
+     }
+    ]
+   },
+   "dense_latency_ms": 35.785472674979246,
+   "dense_latency_via": "graph-batch, 1 cpu, differencing",
+   "empty_x": {
+    "ok": 154,
+    "total": 154
+   },
+   "features": {
+    "graphs_fully_correct": 10,
+    "interfaces_passing": [
+     "batch",
+     "rpc",
+     "single"
+    ],
+    "empty_x": {
+     "ok": 154,
+     "total": 154
+    },
+    "score": 1.0
+   },
+   "static": {
+    "loc": {
+     "core": {
+      "Rust": 7942
+     },
+     "tooling": {
+      "JavaScript": 16
+     },
+     "generated": {
+      "Rust": 1755
+     }
+    },
+    "core_loc": 7942,
+    "test_count_static": 0,
+    "hardcoded_effects": 107,
+    "hardcoded_effect_names_sample": [
+     "ChainLightning",
+     "OffensiveDefensiveReduction",
+     "ammoInfluenceEntityFlyRange",
+     "armorRepair",
+     "cargoScan",
+     "cloakingPrototype",
+     "cloakingScanResolutionMultiplier",
+     "cloakingWarpSafe",
+     "cloneJumpAccepting",
+     "cloneRespawnBay",
+     "cynosuralGeneration",
+     "debuffLance",
+     "disruptionLanceDisallowCloaking",
+     "doomsdayAOEDamp",
+     "doomsdayAOEPaint",
+     "doomsdayAOEWeb",
+     "doomsdayBeamDOT",
+     "doomsdayConeDOT",
+     "doomsdayHOG",
+     "doomsdaySlash",
+     "dotMissileLaunching",
+     "electronicAttributeModifyOnline",
+     "emergencyHullEnergizer",
+     "energyNosferatuFalloff",
+     "entosisLink",
+     "fighterAbilityAttackM",
+     "fighterAbilityECM",
+     "fighterAbilityEnergyNeutralizer",
+     "fighterAbilityEvasiveManeuvers",
+     "fighterAbilityLaunchBomb",
+     "fighterAbilityMicroJumpDrive",
+     "fighterAbilityMicroWarpDrive",
+     "fighterAbilityMissiles",
+     "fighterAbilityStasisWebifier",
+     "fighterAbilityWarpDisruption",
+     "fofMissileLaunching",
+     "freighterAgilityBonus2O2",
+     "fueledArmorRepair",
+     "fueledShieldBoosting",
+     "hardPointModifierEffect"
+    ],
+    "data_driven_ratio": 0.9667,
+    "docs": {
+     "readme": true,
+     "design": true,
+     "license_file": true
+    },
+    "license": {
+     "files": [
+      "LICENSE (LGPL-3)",
+      "LICENSE.GPL-3.0 (GPL-3)"
+     ],
+     "file_license": "LGPL-3",
+     "gpl_companion_text": true,
+     "declared": [
+      "LGPL-3.0-or-later"
+     ],
+     "readme": "LGPL-3.0-or-later",
+     "effective": "LGPL-3.0-or-later",
+     "qualifier_source": "package metadata",
+     "conflicts": [],
+     "mergeable": "yes",
+     "reason": "LGPL v3 LICENSE text + GPL companion text"
+    },
+    "deps": {
+     "runtime": [
+      "itoa",
+      "serde",
+      "serde_json",
+      "zmij"
+     ],
+     "dev": [],
+     "build": [
+      "flate2",
+      "serde_json"
+     ],
+     "n_runtime": 4
+    },
+    "loc_tool": "builtin"
+   },
+   "r2": {
+    "added_core_loc": 2773,
+    "by_language": {
+     "Rust": 2773
+    }
+   },
+   "portability": {
+    "score": 1.0,
+    "level": "code",
+    "evidence": [
+     "Cargo.toml: wasm32",
+     "examples/node-calc.mjs: wasm32",
+     "src/lib.rs: wasm32",
+     "src/main.rs: wasm32",
+     "src/wasm.rs: wasm-bindgen",
+     "src/wasm.rs: wasm32"
+    ]
+   },
+   "tests": {
+    "found": true,
+    "cmd": "cargo test --release 2>&1",
+    "runner": "cargo",
+    "status": "passed",
+    "rc": 0,
+    "passed": 0,
+    "failed": 0,
+    "seconds": 69.8,
+    "tail": ""
+   },
+   "scores": {
+    "speed_parts": {
+     "throughput": 1.0,
+     "latency": 1.0,
+     "cold": 1.0
+    },
+    "maint_parts": {
+     "tests": 0.6,
+     "size": 1.0,
+     "docs": 1.0,
+     "deps": 0.5555555555555556
+    },
+    "speed": 1.0,
+    "maint": 0.7911,
+    "feat": 1.0,
+    "port": 1.0,
+    "total": 0.9269
+   },
+   "rank": 1
+  }
+ ]
+}

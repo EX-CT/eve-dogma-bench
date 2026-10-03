@@ -710,6 +710,7 @@ RULES_MD = """## Scoring rules (round 2)
 - **Version rule:** each variant at its branch HEAD (or the last commit at or before `--as-of`); evaluated read-only from detached worktrees, nothing pushed.
 - **Gate (confirmed):** (a) all **178/178** cases of graph contract 0.2 @ `0397d95` — every case incl. `ecm_burst` and the error cases, not only the nine Pyfa graphs — through **every** interface offered; **and** (b) the branch's stats engine passes bench 1.8.0 (`3da9671`) **326/326**. Weights 40/35/15/10. Official cutoff `--as-of 2026-10-03T11:00:00+08:00`.
 - **Builds:** no fresh clones; build time is informational and not scored.
+- **Push-time check:** the `--as-of` pick (committer date) is verified against the GitHub branch activity log; a commit dated before the cutoff but pushed after it is replaced by the last head pushed before the cutoff (table "Commit selection").
 - **Total = 0.40·Speed + 0.35·Maintainability + 0.15·Features + 0.10·Portability**, `L(x, best, span) = clamp(1 − log10(x/best)/log10(span), 0, 1)`.
 - **Pins:** graph corpus / expected / run_graphs.py from `0397d95` (contract 0.2, 178 cases); stats gate from bench 1.8.0 `3da9671` (326 cases); recorded in the output.
 - **Speed** = 0.4·L(1/points·s⁻¹ batch, start-up excluded) + 0.4·L(dense 500-point damage latency, distinct fits) + 0.2·L(cold start + one request); points/s and cold = medians over runs.
