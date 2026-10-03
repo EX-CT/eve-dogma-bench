@@ -2,7 +2,7 @@
  "schema": "no-regress/1",
  "note": "Seeded 2026-10-03 14:10 CST from EX-CT/eve-dogma 2da8150 (eve-fit, dataset-3569502 compiled in) on eve-dogma-bench pending-1.11 113415b + pinned suite refs (tools/run_all_suites.sh); inventory = eve-fit-docs docs/19 f7f893a (200 parity items, extras excluded).",
  "created": "2026-10-03T14:07:47+0800",
- "updated": "2026-10-03T14:07:47+0800",
+ "updated": "2026-10-03T14:27:30+0800",
  "suites": {
   "core": {
    "passed": 339,
@@ -3387,6 +3387,12 @@
    "total": 4779,
    "failing_ids": [],
    "ref": "7c716e707779ffb90c5c9845a66478351d62f583"
+  },
+  "batch": {
+   "passed": 0,
+   "total": 44,
+   "passed_ids": [],
+   "ref": "07245e837906377be45eec3e5acf3359b8d0b321"
   }
  },
  "inventory": {
