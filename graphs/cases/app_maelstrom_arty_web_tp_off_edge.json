@@ -1,0 +1,75 @@
+{
+ "fit": {
+  "character": {
+   "skills": {
+    "default_level": 5
+   }
+  },
+  "drones": [],
+  "modules": [
+   {
+    "charge_type_id": 201,
+    "state": "active",
+    "type_id": 2961
+   },
+   {
+    "charge_type_id": 201,
+    "state": "active",
+    "type_id": 2961
+   },
+   {
+    "charge_type_id": 201,
+    "state": "active",
+    "type_id": 2961
+   },
+   {
+    "charge_type_id": 201,
+    "state": "active",
+    "type_id": 2961
+   },
+   {
+    "state": "active",
+    "type_id": 527
+   },
+   {
+    "state": "active",
+    "type_id": 19806
+   }
+  ],
+  "schema_version": 1,
+  "ship": {
+   "type_id": 24694
+  }
+ },
+ "graph": "application_profile",
+ "params": {
+  "tgt_speed_pct": 100
+ },
+ "schema_version": 1,
+ "target": {
+  "profile": {
+   "max_velocity": 250,
+   "radius": 150,
+   "signature_radius": 125
+  }
+ },
+ "x": {
+  "axis": "distance_m",
+  "values": [
+   0,
+   2000,
+   5000,
+   8000,
+   15000,
+   20000,
+   30000,
+   40000,
+   60000,
+   80000,
+   100000
+  ]
+ },
+ "y": [
+  "dps"
+ ]
+}

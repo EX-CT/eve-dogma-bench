@@ -1,11 +1,12 @@
-# Round 2: graphs (draft, branch `graphs-round2`)
+# Round 2: graphs (branch `graphs-round2`, contract 0.3)
 
 Pyfa-verified sample points for Pyfa's graph subsystem, scored separately from the 1.x stats corpus (main / tag 1.8.0
-are untouched). Contract draft: [CONTRACT-GRAPHS.md](CONTRACT-GRAPHS.md).
+are untouched). Contract: [CONTRACT-GRAPHS.md](CONTRACT-GRAPHS.md), revision **0.3** (released 2026-10-03, tag `graphs-v0.3`). Round 2 itself
+was scored on 0.2 @ `0397d95`.
 
 ```
-graphs/CONTRACT-GRAPHS.md        GraphRequest / GraphResult, 10 graph types, axes, units, semantics, error codes (rev 0.2)
-graphs/cases/*.json              178 GraphRequests: 158 value cases + 20 error cases err_* (source fit embedded; most fits from cases/ of the 1.x corpus)
+graphs/CONTRACT-GRAPHS.md        GraphRequest / GraphResult, 10 graph types, axes, units, semantics, error codes (rev 0.3)
+graphs/cases/*.json              192 GraphRequests: 172 value cases + 20 error cases err_* (source fit embedded; most fits from cases/ of the 1.x corpus)
 graphs/expected/*.json           Pyfa values at every sample point (oracle/pyfa_graph_oracle.py); err_*: contract error code
 graphs/CHANGELOG.md              corpus / contract revisions
 graphs/tools/make_graph_cases.py regenerates cases/ (sample points chosen per graph)
@@ -13,22 +14,23 @@ graphs/tools/make_graph_expected.py  regenerates expected/ with the Pyfa graph o
 graphs/run_graphs.py             scorer: --batch-cmd | --cmd | --rpc-cmd (method "graph") | --self-test
 ```
 
-| graph | cases | scored sample values |
-|---|---|---|
-| `application_profile` | 10 | 120 (+120 informational charge ids) |
-| `capacitor` | 14 | 173 |
-| `damage` | 60 | 918 |
-| `ecm_burst` | 11 | 218 |
-| `ewar` | 22 | 337 |
-| `lock_time` | 7 | 82 |
-| `mobility` | 10 | 259 |
-| `remote_reps` | 11 | 151 |
-| `shield_regen` | 5 | 66 |
-| `warp_time` | 8 | 93 |
-| errors (`err_*`, expected error code) | 20 | 20 |
-| **total** | **178** | **2437** |
+| graph | cases | scored values | new vs 0.2 |
+|---|---|---|---|
+| application_profile | 14 | 161 | +4 cases / +41 (XL navy tier ×3, Maelstrom arty web+TP sampled off the edges) |
+| capacitor | 14 | 173 | – |
+| damage | 70 | 1134 | +10 cases / +216 (state correction: overheated Bastion → online ×1, sentries follow_target ×2, breacher distance ×2, bomb time ×2, fighters vs fast target ×3) |
+| ecm_burst | 11 | 218 | – |
+| ewar | 22 | 337 | – |
+| lock_time | 7 | 82 | – |
+| mobility | 10 | 259 | – |
+| remote_reps | 11 | 151 | – |
+| shield_regen | 5 | 66 | – |
+| warp_time | 8 | 93 | – |
+| errors | 20 | 20 | – |
+| **total** | **192** | **2694** | +14 cases / +257 values (0.2: 178 / 2437) |
 
-Contract 0.2 (see [CHANGELOG.md](CHANGELOG.md)): 0.1 had 111 cases / 1843 values. Empty-x cases score one value per
+Contract 0.3 (see [CHANGELOG.md](CHANGELOG.md)): 0.2 had 178 cases / 2437 values, 0.1 had 111 cases / 1843 values.
+To score on 0.2 exactly, use the bench at commit `0397d95` (what `tools/evaluate_graphs.py` pins). Empty-x cases score one value per
 y series (`[]` expected); error cases score one value (matching `error.code`).
 
 ## Running

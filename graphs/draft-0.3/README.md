@@ -1,4 +1,10 @@
-# ⚠ DRAFT — graphs contract 0.3 (UNRELEASED)
+# graphs contract 0.3 — working directory (released)
+
+**Released 2026-10-03 as 0.3** (tag `graphs-v0.3`): the contract is `graphs/CONTRACT-GRAPHS.md` and the corpus is
+`graphs/cases` + `graphs/expected`, scored with `graphs/run_graphs.py`. This directory keeps the generators, the ruling
+script and the draft copy they write to; after regenerating here, copy cases/ and expected/ to graphs/.
+
+_Original draft notes below._
 
 **Round 2 is scored on 0.2, frozen at bench commit 0397d95** (`graphs/CONTRACT-GRAPHS.md`, `graphs/cases`,
 `graphs/expected`, `graphs/run_graphs.py`). Nothing in this directory is read by the 0.2 scorer, and no version

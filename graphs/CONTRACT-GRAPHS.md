@@ -1,4 +1,7 @@
-# eve-dogma graphs contract (DRAFT, round 2, revision 0.2)
+# eve-dogma graphs contract (round 2, revision 0.3)
+
+> **Released 2026-10-03 CST** (branch `graphs-round2`, tag `graphs-v0.3`). Changes against 0.2 are marked **(0.3)**.
+> Round 2 was scored on 0.2 (frozen at bench commit `0397d95`); 0.2 scores are not comparable with 0.3 scores.
 
 Extension of the eve-dogma request/response contract (`CONTRACT.md`, revision 1.4.3) with **Pyfa's graph
 subsystem** (`graphs/data/*` in Pyfa). Same style and rules as the base contract: stateless, **one JSON
@@ -107,6 +110,22 @@ point; informational, see that graph).
 Notation: `src` = source fit after a normal `calc` (same FitRequest semantics, including `projected`,
 `fleet`, `environment` applied to it). "Pyfa:" names the Pyfa getter class that defines the value.
 
+**(0.3) Module state correction (same rule as the stats contract draft 1.4.5, pending-1.10 `49f7555`; coordinator
+ruling 2026-10-03 11:19 CST, which reverses the earlier "keeps the requested value" ruling; principle: align with Pyfa).**
+For every module of the source fit, of `target.fit`, and of projected / booster fits:
+- `rig` and `subsystem` modules are always `online` unless `offline` is requested (no warning).
+- A requested `active` or `overheated` state the module cannot use is **corrected to `online`**, exactly like Pyfa
+  (`mod.state = st if mod.isValidState(st) else ONLINE`): `active` needs an activatable effect (effect category
+  active/target) and `activationBlocked` ≤ 0; `overheated` additionally needs an overload effect. An `overheated`
+  module with no overload effect (Bastion Module, doomsdays) therefore becomes `online`, not `active`.
+- The graph is computed with the corrected state. Graph results have no `modules[]` echo; where an engine also returns
+  the stats response for the same request (`calc`), that response reports the corrected state in `modules[N].state` and
+  emits the warning `/modules/N: state '<requested>' not possible for this module, using online` (base contract 1.4.5).
+  Warnings are not scored in the graph corpus.
+- Expected values come from the unchanged Pyfa graph oracle on the request as written (Pyfa applies the same
+  correction). Case: `dmg_dist_vargur_bastion_overheated_state` (Vargur, Bastion Module I requested `overheated` →
+  corrected to `online`: no Bastion bonuses, so dps is about half of the Bastion-active value).
+
 ### `damage` — Pyfa "Damage Stats" (`fitDamageStats`)
 
 | x axis | unit | valid range | notes |
@@ -138,16 +157,32 @@ Definitions (Pyfa `graphs/data/fitDamageStats/calc/application.py`):
   t = 0 (module `getCycleParametersForDps(reloadOverride=True)`, volley parameters with
   `SpoolOptions(CYCLES, nonstopCycles)`, breacher pods offset 1 s), value at t = last change point ≤ t (with
   `floatUnerr` comparison).
+  **(0.3)** Each cycle contributes a dps/volley segment over its *active* time only. Between two segments, during a
+  module's `reactivationDelay` (e.g. bombs) or a reload, dps and volley are **0** (Pyfa inserts a zero point at
+  the end of the previous segment). `damage` is cumulative and keeps its value during the gap.
 - Turrets / drones: chance to hit = range factor (`calculateRangeFactor`, not restricted to 3× falloff) ×
   `0.5^((ω·optimalSigRadius/(tracking·sig))²)`, ω = transversal / (r_atk + distance + r_tgt); damage multiplier
   from chance to hit with 1 % wrecking hits (×3) and the (0.01 + cth)/2 + 0.49 average (`_calcTurretMult`).
-  Drones faster than the target (mode auto) or in `follow_target` mode hit with cth 1; otherwise they are
-  placed at the attacker's centre, moving at min(attacker speed, drone speed).
+  **(0.3)** A drone hits with cth 1 when its `maxVelocity` > 1 *and* (mode `auto` and drone speed ≥ target speed,
+  or mode `follow_target`). Otherwise the drone shoots from the attacker's centre: distance = d + r_attacker −
+  r_drone, its own radius, speed min(attacker speed, drone speed). Every sentry drone (speed ≤ 1) does this in every
+  mode, including `follow_target`.
 - Missiles: distance factor from `missileMaxRangeData` (lower range → 1, between lower and higher → higher chance,
   beyond → 0) × `min(1, sig/eR, (eV·sig/(eR·v))^drf)`; FoF ignores lock range. Vorton: range factor (no falloff)
   × missile formula with the module's aoe attributes. Smartbombs: 1 inside range, else 0. Bombs / guided bombs /
-  doomsdays / breachers / fighter abilities as in Pyfa (doomsday: `min(1, sig/signatureRadius)`; titan single-target
-  DDs 0 vs sub-capital target fits).
+  doomsdays as in Pyfa (doomsday: `min(1, sig/signatureRadius)`; titan single-target DDs 0 vs sub-capital target
+  fits).
+- **(0.3) Breacher pods:** application = (1 if d ≤ lowerRange, `higherChance` if d ≤ higherRange, else 0) from the
+  module's `missileMaxRangeData`, × the target fit's `breacherPodDamageResistance` (1 for profiles). Lock range is
+  required. The factor multiplies the per-tick value min(absolute, relative · target HP).
+- **(0.3) Fighter abilities:**
+  - A fighter follows when mode is `auto` and fighter speed ≥ target speed, or mode is `follow_target`. Unlike
+    drones there is no minimum speed. A following fighter has range factor 1.
+  - Otherwise the range factor is `calculateRangeFactor(<prefix>RangeOptimal or <prefix>Range, <prefix>RangeFalloff,
+    d + r_attacker − r_fighter)`. The fighter sits at the attacker's centre.
+  - The range factor is multiplied by the missile factor (ability explosion radius/velocity, aggregated drf) and by
+    the target fit's `<prefix>ResistanceID` attribute.
+  - `fighterAbilityLaunchBomb` needs no lock and has no range check: bomb factor only.
 - Application multipliers are rounded with `floatUnerr` before use.
 - `apply_projected`: the source's own active webs and TPs (modules with range factor; drones/fighters as mobile
   sources) slow / paint the target, stacking-penalised together with the target fit's own modifiers (Pyfa
@@ -160,12 +195,38 @@ Definitions (Pyfa `graphs/data/fitDamageStats/calc/application.py`):
 ### `application_profile` — Pyfa "Application Profile" (`fitApplicationProfile`, newer Pyfa)
 
 x: `distance_m` (≥ 0). y: `dps`, `volley` — the best value over every charge the fit's dominant weapon group can
-load (Pyfa `getValidChargesForModule`, quality tier `params.ammo_quality`: `t1` | `navy` | `all`, default `all`),
+load (Pyfa `getValidChargesForModule`, quality tier `params.ammo_quality`: `t1` | `navy` | `all`, default `all`,
+defined below),
 with the same application math and target parameters as `damage` (settings `ignore_resists` /
 `apply_projected` map to Pyfa's `ammoOptimal*` settings). Returns `<y>_charge_type_id` per point:
 **informational only** — Pyfa breaks exact DPS ties between equal-stat faction charges (e.g. Dark Blood vs True
 Sansha) by set iteration order, so the id is not well defined. Params: `tgt_speed_*`, `atk_speed_*`, angles as for
 `damage`.
+
+**(0.3) Quality tiers** (Pyfa `filterChargesByQuality`; cumulative):
+- `t1`: charges with metaGroup 1 (Tech I) or no metaGroup.
+- `navy`: `t1` + metaGroup 2 (Tech II) + metaGroup 4 (faction) charges whose name starts with `Imperial Navy `,
+  `Republic Fleet `, `Caldari Navy ` or `Federation Navy `. For charges whose name ends in ` XL`, the prefixes are
+  `Sansha `, `Arch Angel ` or `Shadow ` instead. So Republic Fleet XL, Blood XL and every lower-tier pirate sub-capital
+  charge are **not** `navy`.
+- `all`: every valid charge.
+- If no candidate charge has a metaGroup, the tier is ignored (all candidates).
+- dataset-3569502 carries no metaGroupID per type. Derive it as meta level 5 → 2, a variation parent → 4, else 1;
+  for every turret and missile charge this matches Pyfa's eve.db.
+
+**(0.3) Informational, not scored: Pyfa's sampling shortcuts.** Pyfa builds a projected cache: the target's speed and
+signature after the source's webs, TPs and scram, at d = 0, s, 2s, … ≤ R, linearly interpolated in between.
+- s = `getSampleStep(R)` = max(100, ⌈R / 300 / 100⌉ · 100) m.
+- R = the largest, over the dominant weapon group, of int(optimal × longest-range charge multiplier + 3.1 × falloff)
+  for turrets, or of the longest missile effective range for launchers.
+- Pyfa's ammo-transition scan uses the same step, plus a 10 m bisection.
+
+Near a web/TP/scram range edge, and within a few metres of a charge crossover ("ammo-switch hysteresis"), Pyfa's
+value therefore depends on s. The contract does **not** require reproducing this:
+- The scored value at a point is the exact application at d: projected effects evaluated at d, best charge at d.
+- The corpus only samples points where the two coincide. Checked with `graphs/draft-0.3/tools/edge_check.py`: Pyfa
+  re-run with s/4 and s/10 must agree with the default within tolerance.
+- Engines may implement either behaviour.
 
 ### `ewar` — Pyfa "Electronic Warfare Stats" (`fitEwarStats`)
 
@@ -294,6 +355,10 @@ Scenario: the source fit ECM-bursts every 30 s and the enemy re-locks after each
 
 ## Scoring (bench, branch `graphs-round2`)
 
+**(0.3)** The 0.3 corpus is `graphs/cases` + `graphs/expected` (192 cases, 2694 values), scored with the unchanged
+`graphs/run_graphs.py`. The 0.2 corpus is the same files at bench commit `0397d95`.
+
+
 `graphs/run_graphs.py` compares every sample value with the corpus tolerance
 (|got − want| ≤ max(1e-3, 1e-4·|want|), or both `null`), grouped by graph type; `*_charge_type_id` series are
 reported separately and not scored. 0.2: an empty expected series scores one value (the response must have
@@ -303,6 +368,16 @@ in group `errors`, correct when the response is `{"error":{"code":CODE,…}}`. C
 
 ## Changelog
 
+- 0.3 (released 2026-10-03, tag `graphs-v0.3`): wording fixes from G2's probe findings (graphs/pending.md items 1–4, 6),
+  following eve's rulings:
+  - sentry drones never follow;
+  - breacher range chance × breacherPodDamageResistance on the per-tick value;
+  - dps/volley 0 between active cycle segments (reactivation delay, reload);
+  - non-following fighters at the attacker's centre;
+  - quality-tier definition including XL.
+  Pyfa's application-profile grid step and ammo-switch hysteresis are documented as informational and not scored;
+  sample points are kept off web/TP edges. Module state correction: an impossible `active` / `overheated` state is
+  corrected to `online` (as in Pyfa and stats contract draft 1.4.5). Corpus: 192 cases (172 value + 20 error), 2694 values.
 - 0.2 (2026-10-03): empty `x.values` → success with empty `x` and empty series. New "Validation and error codes"
   section (empty `y` → `BAD_REQUEST`; enum values validated). New graph `ecm_burst` (Pyfa's hidden ECM burst graph).
   Damage x axes `tgt_speed_pct` and `tgt_sig_pct`; `tgt_sig_m` ≤ 0 → `null`. `target.fit` for `ewar` (resistance
