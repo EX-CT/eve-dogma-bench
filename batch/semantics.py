@@ -1,4 +1,4 @@
-"""batch-suite reference semantics (PROVISIONAL batch shape, see CONTRACT-BATCH.md).
+"""batch-suite reference semantics: eve-fit-docs docs/23 (batch API contract DRAFT, 8b1e6cf), see CONTRACT-BATCH.md.
 
 Everything an engine's batch answer must equal is derived here from one-by-one FitRequest -> FitStats calls:
   expand(req)                      -> [(label, FitRequest)]        which fits the batch stands for, in order
@@ -7,7 +7,7 @@ Everything an engine's batch answer must equal is derived here from one-by-one F
 The request/response *shape* lives in adapter.py; only adapter.py changes when the engine contract lands."""
 import copy, json, math
 
-DELTA_ABS_TOL = 1e-6   # deltas: round6(value - base_value) from the emitted (6-dp) values; compared within 1e-6
+DELTA_ABS_TOL = 1e-6   # deltas: round6(value - ref) from the emitted (6-dp) values; delta_pct = round6(delta/|ref|*100); within 1e-6
 OPS = {"<": lambda a, b: a < b, "<=": lambda a, b: a <= b, ">": lambda a, b: a > b, ">=": lambda a, b: a >= b,
        "==": lambda a, b: a == b, "!=": lambda a, b: a != b}
 
@@ -51,23 +51,49 @@ def apply_patch(doc, ops):
 
 
 # ---------------------------------------------------------------- expansion
-def expand(req):
-    """-> list of (label, FitRequest) in result-index order."""
+def _sweep_values(sw):
+    if "values" in sw:
+        return list(sw["values"])
+    out, k = [], 0
+    while True:
+        v = sw["from"] + k * sw["step"]
+        if v > sw["to"] + 1e-9 * abs(sw["step"]):
+            return out
+        out.append(v)
+        k += 1
+
+
+def _sweep_options(sw):
+    return [{"id": f"{sw['path']}={json.dumps(v)}", "label": f"{sw['path']}={json.dumps(v)}",
+             "patch": [{"op": "add", "path": sw["path"], "value": v}]} for v in _sweep_values(sw)]
+
+
+def expand3(req):
+    """-> list of (id, label, FitRequest) in result-index order (docs/23 §2)."""
     if "fits" in req:
-        return [(it.get("label"), it["fit"]) for it in req["fits"]]
+        out = []
+        for i, it in enumerate(req["fits"]):
+            fid = it.get("id", str(i))
+            out.append((fid, it.get("label", fid), it["fit"]))
+        return out
     base = req["base"]
     if "variants" in req:
-        return [(v.get("label"), apply_patch(base, v["patch"])) for v in req["variants"]]
-    if "product" in req:
-        out = [([], [])]
-        for axis in req["product"]["axes"]:
-            out = [(labels + [v.get("label")], patch + v["patch"]) for labels, patch in out for v in axis]
-        return [("×".join(str(l) for l in labels), apply_patch(base, patch)) for labels, patch in out]
-    if "sweep" in req:
-        sw = req["sweep"]
-        return [(f"{sw['path']}={json.dumps(v)}", apply_patch(base, [{"op": "add", "path": sw["path"], "value": v}]))
-                for v in sw["values"]]
-    raise ValueError("no fits/variants/product/sweep")
+        out = []
+        for k, v in enumerate(req["variants"]):
+            vid = v.get("id", f"v{k + 1}")
+            out.append((vid, v.get("label", vid), apply_patch(base, v.get("patch", []))))
+        return out
+    axes = req["product"]["axes"] if "product" in req else [{"name": "sweep", "sweep": req["sweep"]}]
+    combos = [([], [], [])]
+    for ax in axes:
+        opts = _sweep_options(ax["sweep"]) if "sweep" in ax else ax["options"]
+        combos = [(ids + [o.get("id", str(n))], labels + [o.get("label", o.get("id", str(n)))], patch + o.get("patch", []))
+                  for ids, labels, patch in combos for n, o in enumerate(opts)]
+    return [("|".join(i), " × ".join(l), apply_patch(base, p)) for i, l, p in combos]
+
+
+def expand(req):
+    return [(label, fit) for _, label, fit in expand3(req)]
 
 
 # ---------------------------------------------------------------- projection / reference result
@@ -95,9 +121,24 @@ def _num(x):
     return isinstance(x, (int, float)) and not isinstance(x, bool)
 
 
+def _cmp(x):
+    """filter / sort value: numbers, booleans as 0/1 (docs/23 §4.3); None otherwise"""
+    if isinstance(x, bool):
+        return int(x)
+    return x if _num(x) else None
+
+
 def delta(stats, base_stats, fields):
     return {f: (round(get_path(stats, f) - get_path(base_stats, f), 6)
                 if _num(get_path(stats, f)) and _num(get_path(base_stats, f)) else None) for f in fields}
+
+
+def delta_pct(d, base_stats, fields):
+    out = {}
+    for f in fields:
+        ref = get_path(base_stats, f)
+        out[f] = round(d[f] / abs(ref) * 100, 6) if d[f] is not None and _num(ref) and ref != 0 else None
+    return out
 
 
 def expected(req, singles, base_single=None):
@@ -105,30 +146,34 @@ def expected(req, singles, base_single=None):
     fields = req.get("fields")
     want_delta = bool(req.get("deltas"))
     rows = []
-    for i, ((label, _), out) in enumerate(zip(expand(req), singles)):
-        r = {"index": i, "label": label}
+    for i, ((fid, label, _), out) in enumerate(zip(expand3(req), singles)):
+        r = {"index": i, "id": fid, "label": label}
         if isinstance(out, dict) and "error" in out:
             r["error"] = {"code": out["error"].get("code")}
         else:
             r["stats"] = project(out, fields)
             if want_delta:
                 r["delta"] = delta(out, base_single, fields)
+                r["delta_pct"] = delta_pct(r["delta"], base_single, fields)
         rows.append(r)
 
     def key_val(r, spec):
         if "error" in r:
             return None
-        src = r["delta"] if spec.get("on") == "delta" else r["stats"]
-        return src.get(spec["field"]) if fields is not None else get_path(src, spec["field"])
+        on = spec.get("on", "value")
+        src = r["delta"] if on == "delta" else r["delta_pct"] if on == "delta_pct" else r["stats"]
+        return _cmp(src.get(spec["field"]) if fields is not None else get_path(src, spec["field"]))
 
     for flt in req.get("filter", []):
-        rows = [r for r in rows if _num(key_val(r, flt)) and OPS[flt["op"]](key_val(r, flt), flt["value"])]
-    for spec in reversed(req.get("sort", [])):          # stable multi-key sort; nulls / errors last
+        rows = [r for r in rows if key_val(r, flt) is not None and OPS[flt["op"]](key_val(r, flt), flt["value"])]
+    matched = len(rows)
+    for spec in reversed(req.get("sort_by", req.get("sort", []))):   # stable multi-key sort; nulls / errors last
         desc = spec.get("order", "asc") == "desc"
-        rows.sort(key=lambda r: (0, -key_val(r, spec) if desc else key_val(r, spec)) if _num(key_val(r, spec)) else (1, 0))
-    if req.get("limit") is not None:
-        rows = rows[:req["limit"]]
-    resp = {"total": len(singles), "results": rows}
+        rows.sort(key=lambda r: (0, -key_val(r, spec) if desc else key_val(r, spec)) if key_val(r, spec) is not None else (1, 0))
+    n = req.get("top_n", req.get("limit"))
+    if n is not None:
+        rows = rows[:n]
+    resp = {"total": len(singles), "matched": matched, "results": rows}
     if want_delta:
         resp["base"] = {"stats": project(base_single, fields)}
     return resp
@@ -146,8 +191,9 @@ def compare(exp, got, limit=8):
     if not isinstance(got, dict) or "results" not in got:
         err = got.get("error") if isinstance(got, dict) else None
         return [f"no batch result: {json.dumps(err)[:200] if err else repr(got)[:200]}"]
-    if got.get("total") != exp["total"]:
-        bad.append(f"total {got.get('total')} != {exp['total']}")
+    for k in ("total", "matched"):
+        if got.get(k) != exp[k]:
+            bad.append(f"{k} {got.get(k)} != {exp[k]}")
     er, gr = exp["results"], got["results"]
     if [r["index"] for r in gr] != [r["index"] for r in er]:
         bad.append(f"result order/indices {[r['index'] for r in gr][:12]} != {[r['index'] for r in er][:12]}")
@@ -158,8 +204,9 @@ def compare(exp, got, limit=8):
         g = gmap.get(e["index"])
         if g is None:
             continue
-        if g.get("label") != e["label"]:
-            bad.append(f"[{e['index']}] label {g.get('label')!r} != {e['label']!r}")
+        for k in ("id", "label"):
+            if g.get(k) != e[k]:
+                bad.append(f"[{e['index']}] {k} {g.get(k)!r} != {e[k]!r}")
         if "error" in e:
             if "error" not in g or g["error"].get("code") != e["error"]["code"]:
                 bad.append(f"[{e['index']}] expected error {e['error']['code']}, got {json.dumps(g)[:120]}")
@@ -175,6 +222,10 @@ def compare(exp, got, limit=8):
             wrong = [k for k in e["delta"] if not _close_delta(e["delta"][k], gd.get(k))]
             if wrong or set(gd) != set(e["delta"]):
                 bad.append(f"[{e['index']}] delta wrong for {wrong[:6] or sorted(set(gd) ^ set(e['delta']))[:6]}")
+            gp = g.get("delta_pct") or {}
+            wrong = [k for k in e["delta_pct"] if not _close_delta(e["delta_pct"][k], gp.get(k))]
+            if wrong or set(gp) != set(e["delta_pct"]):
+                bad.append(f"[{e['index']}] delta_pct wrong for {wrong[:6] or sorted(set(gp) ^ set(e['delta_pct']))[:6]}")
         if len(bad) >= limit:
             break
     return bad

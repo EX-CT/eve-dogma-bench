@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate batch/cases/<id>.json (BatchRequest, provisional shape) + batch/MANIFEST.json from the core (cases/) and
+"""Generate batch/cases/<id>.json (BatchRequest, eve-fit-docs docs/23 draft shape) + batch/MANIFEST.json from the core (cases/) and
 ext (ext/cases/) fits. Deterministic (fixed seeds, sorted inputs). Kinds:
   multi    - explicit list of independent fits ("fits")
   variants - one base fit + labelled JSON-Patch variants ("base" + "variants")
@@ -45,9 +45,26 @@ def charged(f):
 cases = {}
 
 
+def to_docs23(req):
+    """bench builder shape -> docs/23 BatchRequest (batch_version 1)."""
+    req = dict(req, batch_version=1)
+    if "sort" in req:
+        req["sort_by"] = req.pop("sort")
+    if "limit" in req:
+        req["top_n"] = req.pop("limit")
+    if "fits" in req:
+        req["fits"] = [{"id": it["label"], "fit": it["fit"]} for it in req["fits"]]      # label defaults to id
+    if "variants" in req:
+        req["variants"] = [{"label": v["label"], "patch": v["patch"]} for v in req["variants"]]   # id defaults to v<k>
+    if "product" in req:
+        req["product"] = {"axes": [{"name": f"axis{k}", "options": [{"id": o["label"], "label": o["label"], "patch": o["patch"]}
+                                                                     for o in ax]} for k, ax in enumerate(req["product"]["axes"])]}
+    return req
+
+
 def add(cid, kind, req, note):
     assert cid not in cases, cid
-    req = dict(req, batch_version="0.1-provisional")
+    req = to_docs23(req)
     cases[cid] = {"kind": kind, "note": note, "request": req}
 
 
@@ -207,7 +224,7 @@ man = {}
 for cid, c in sorted(cases.items()):
     (OUT / f"{cid}.json").write_text(json.dumps(c["request"], sort_keys=True) + "\n")
     r = c["request"]
-    ops = [o for o in ("fields", "deltas", "filter", "sort", "limit") if r.get(o) not in (None, False, [])]
+    ops = [o for o in ("fields", "deltas", "filter", "sort_by", "top_n") if r.get(o) not in (None, False, [])]
     man[cid] = {"kind": c["kind"], "fits": len(semantics.expand(r)), "ops": ops, "note": c["note"]}
 (ROOT / "batch" / "MANIFEST.json").write_text(json.dumps(man, indent=1, sort_keys=True) + "\n")
 from collections import Counter

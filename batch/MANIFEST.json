@@ -73,7 +73,7 @@
   "ops": [
    "fields",
    "filter",
-   "sort"
+   "sort_by"
   ]
  },
  "multi_single": {
@@ -88,8 +88,8 @@
   "note": "sort desc + limit",
   "ops": [
    "fields",
-   "sort",
-   "limit"
+   "sort_by",
+   "top_n"
   ]
  },
  "product_full_output": {
@@ -114,8 +114,8 @@
   "ops": [
    "fields",
    "deltas",
-   "sort",
-   "limit"
+   "sort_by",
+   "top_n"
   ]
  },
  "product_skill_charge_state_2": {
@@ -134,8 +134,8 @@
   "ops": [
    "fields",
    "deltas",
-   "sort",
-   "limit"
+   "sort_by",
+   "top_n"
   ]
  },
  "product_states_dp_0": {
@@ -183,8 +183,8 @@
   "ops": [
    "fields",
    "deltas",
-   "sort",
-   "limit"
+   "sort_by",
+   "top_n"
   ]
  },
  "sweep_charge_1": {
@@ -194,8 +194,8 @@
   "ops": [
    "fields",
    "deltas",
-   "sort",
-   "limit"
+   "sort_by",
+   "top_n"
   ]
  },
  "sweep_damage_pattern": {
@@ -205,7 +205,7 @@
   "ops": [
    "fields",
    "deltas",
-   "sort"
+   "sort_by"
   ]
  },
  "sweep_skill_override_full": {
@@ -257,7 +257,7 @@
   "ops": [
    "fields",
    "deltas",
-   "sort"
+   "sort_by"
   ]
  },
  "sweep_state_1": {
@@ -267,7 +267,7 @@
   "ops": [
    "fields",
    "deltas",
-   "sort"
+   "sort_by"
   ]
  },
  "sweep_state_2": {
@@ -277,7 +277,7 @@
   "ops": [
    "fields",
    "deltas",
-   "sort"
+   "sort_by"
   ]
  },
  "variants_charges_0": {
@@ -287,7 +287,7 @@
   "ops": [
    "fields",
    "deltas",
-   "sort"
+   "sort_by"
   ]
  },
  "variants_charges_1": {
@@ -297,7 +297,7 @@
   "ops": [
    "fields",
    "deltas",
-   "sort"
+   "sort_by"
   ]
  },
  "variants_charges_2": {
@@ -307,7 +307,7 @@
   "ops": [
    "fields",
    "deltas",
-   "sort"
+   "sort_by"
   ]
  },
  "variants_damage_pattern": {

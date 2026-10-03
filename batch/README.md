@@ -1,4 +1,4 @@
-# batch-suite (bench 1.11 draft, PROVISIONAL shape)
+# batch-suite (bench 1.11 draft; contract eve-fit-docs docs/23)
 
 There are 44 batch requests built from the core (`cases/`) and ext (`ext/cases/`) fits, 1024 expanded fits in
 total. The core assertion is that a batch answer is identical to computing each fit on its own (`ENGINE calc`, one
@@ -7,12 +7,12 @@ from those single results. See `CONTRACT-BATCH.md`.
 
 | kind | cases | what it covers |
 |---|---|---|
-| multi | 12 | 1, 5, 10, 25, 100 and all 339 core fits; ext + core mix; duplicates; an error in place; sort + limit; filter; 2 filters + 2 sort keys |
+| multi | 12 | 1, 5, 10, 25, 100 and all 339 core fits; ext + core mix; duplicates; an error in place; sort_by + top_n; filter; 2 filters + 2 sort keys |
 | variants | 12 | module states, charges (sorted by dps delta), remove/duplicate module + skill levels (filtered on ehp delta), damage patterns, full FitStats |
-| product | 9 | skills × charge × state (some with 2-key sort + limit), state × state × damage pattern (some filtered), full FitStats |
+| product | 9 | skills × charge × state (some with 2-key sort_by + top_n), state × state × damage pattern (some filtered), full FitStats |
 | sweep | 11 | default skill level 0..5, module state, charge (top 3), damage pattern, per-skill override (full FitStats) |
 
-Option use across cases: `fields` 37, `deltas` 29, `sort` 13, `filter` 7, `limit` 5.
+Option use across cases: `fields` 37, `deltas` 29, `sort_by` 13, `filter` 7, `top_n` 5.
 
 Files:
 - `MANIFEST.json`: kind, number of fits and options per case.
@@ -27,6 +27,6 @@ python3 batch/run_batch.py --cmd target/release/eve-fit [--transport rpc|cli] --
 python3 batch/run_batch.py --cmd target/release/eve-fit --self-test   # reference batch from `ENGINE batch` JSONL: must be 44/44
 ```
 
-An engine without batch support scores 0/44 without crashing (rpc answers UNKNOWN_METHOD). EX-CT/eve-dogma 2da8150:
+An engine without batch support scores 0/44 without crashing (rpc answers UNKNOWN_METHOD). EX-CT/eve-dogma 2da8150 and d990818:
 0/44. Self-test with the same binary: 44/44. The no-regression gate (`baselines/f.json`) records the suite as
 `batch` at 0/44, so it can only go up.

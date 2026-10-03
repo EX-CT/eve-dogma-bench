@@ -1,13 +1,13 @@
 """batch-suite adapter: the ONLY place that knows the engine's batch request/response shape and transport.
 
-PROVISIONAL (2026-10-03): EX-CT/eve-dogma has no batch contract yet (main d990818: only the JSONL `batch` stream).
-The bench shape (CONTRACT-BATCH.md) is sent unchanged:
-  rpc (default): `ENGINE serve-stdio`, one line {"id":1,"method":"calc_batch","params":<BatchRequest>} -> {"id":1,"result":<BatchResponse>}
-  cli:           `ENGINE calc-batch` with the BatchRequest JSON on stdin -> BatchResponse JSON on stdout
+Contract: eve-fit-docs docs/23 (DRAFT 8b1e6cf, 2026-10-03 14:29 CST); cases are written in that shape (batch_version 1).
+  rpc (default): `ENGINE serve-stdio`, {"id":1,"method":"batch","params":<BatchRequest>} -> {"id":1,"result":<BatchResponse>}
+  cli:           `ENGINE batch --request -` with the BatchRequest JSON on stdin -> BatchResponse JSON on stdout
+Until F ships it, d990818 answers UNKNOWN_METHOD (0 passed).
 When F publishes its contract, change to_engine() / from_engine() / call() here; semantics.py and the cases stay."""
 import json, subprocess
 
-METHOD, CLI_CMD = "calc_batch", "calc-batch"
+METHOD, CLI_ARGS = "batch", ["batch", "--request", "-"]
 
 
 def to_engine(req):
@@ -32,7 +32,7 @@ def call(engine, req, transport="rpc", timeout=600):
             if j.get("id") == 1:
                 return from_engine(j["result"]) if "result" in j else {"error": j.get("error")}
         return {"error": {"code": "NO_RESPONSE", "message": (r.stderr or r.stdout)[-300:]}}
-    r = subprocess.run(engine.split() + [CLI_CMD], input=json.dumps(payload), capture_output=True, text=True, timeout=timeout)
+    r = subprocess.run(engine.split() + CLI_ARGS, input=json.dumps(payload), capture_output=True, text=True, timeout=timeout)
     try:
         j = json.loads(r.stdout)
     except ValueError:
