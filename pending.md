@@ -32,6 +32,22 @@ Every one of them was an offline rig. EVE can't offline a rig, so these were (b)
 keeps rigs online; that changed exactly those 26 fits. If the bench does want offline rigs, A should count
 `upgradeCost` only for rigs that are online, like Pyfa `getItemAttrOnlineSum`.
 
+## Expected differences: Pyfa data drift (`oracle/fuzz/expected_diffs.json`)
+Data-driven allowlist (eve ruling 2026-10-03), copied from EX-CT/eve-sde-pipeline `docs/pyfa-data-drift.json`.
+Pyfa's `eve.db` is client build 3532181. The engines' dataset follows SDE 3569502.
+- `paladin-agility` (28659, attr 70: Pyfa 0.858 vs SDE/ESI 0.0858) and `golem-agility` (28710, 0.963 vs 0.0963):
+  CCP fixed both after 3532181, by 3552227. `align_time_s` diffs on these hulls are class (a), like the 2 Paladin
+  fits in the sweep above.
+- `remote-capacitor-impedance`: the SDE added attrs 6463/6464 and switched effect 6184's resistance from 2116 to
+  6463. A remote cap transmitter projected onto one of the 47 listed capitals, or onto a ship running
+  Siege/Triage/Bastion/Industrial Core, gives class (a) diffs on `cap_stable` / `cap_stable_percent`.
+- `t3c-max-subsystems` (1367: Pyfa forces 4, SDE 5): decision is no pipeline patch, informational only (no metric).
+
+Not wired in yet: `compare.py` / `drift.py` don't read the file (owner TODO: drop `diffs.json` entries whose
+`(ship or projected target, metric)` matches an entry and count them as `expected_drift` in `summary.json`). No
+scored case is affected. The only corpus case on these hulls is `esf_projection_18`, already in
+`expected/known_divergences.json`.
+
 ## (c) A bugs, with minimal repro cases (`cases/e_fz_*.json`, `expected/e_fz_*.json`, 1.9.0 format)
 Each case is legal by `check_legal.py`. **A fails exactly one value on each one and E passes all of them.**
 
