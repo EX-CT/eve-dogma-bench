@@ -10,8 +10,6 @@ name: nightly
 on:
   schedule:
     - cron: '0 18 * * *'   # 18:00 UTC = 02:00 CST
-  push:                    # TEMPORARY: test run on the ci-nightly branch (dispatch needs the file on main first)
-    branches: [ci-nightly]
   workflow_dispatch:
     inputs:
       engine_ref:
