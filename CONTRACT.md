@@ -256,6 +256,31 @@ Beyond Pyfa (our contract supports it, Pyfa cannot express it): hand-derived uni
 Known engine gap (F 4b8f5f9, informational): F applies top-level overrides to its own fit only (rule 2) and lets an
 override beat a rolled mutation (rule 3).
 
+## Draft 1.11: vs_target_profile, probe_size, validity (scored by `ext/`, not by run.py)
+
+Existing FitStats fields, now scored against Pyfa (oracle `ORACLE_EXTRA=profile,validity`):
+
+- `offense.vs_target_profile` {dps, volley}: total weapon + drone + fighter damage with each type × (1 − the
+  request `target_profile` resist, 0..1), pure (breacher) damage unchanged. Resists only, no signature / velocity
+  application (Pyfa sets `DmgTypes.profile = fit.targetProfile`). Cases `tp_*`.
+- `targeting.probe_size`: ship signatureRadius / strongest sensor strength, at least 1.08; null when the sensor
+  strength is 0 (Pyfa `fit.probeSize`). Cases `probe_*`.
+- `violations[]`: scored as the **set of distinct codes**, which must equal Pyfa's checks mapped as follows:
+  `cpuUsed / pgUsed / calibrationUsed / droneBandwidthUsed` > ship total → CPU_OVERLOAD / POWER_OVERLOAD /
+  CALIBRATION_OVERLOAD / DRONE_BANDWIDTH; `getSlotsFree(slot) < 0` → SLOTS_EXCEEDED; turret / launcher hardpoints
+  free < 0 → TURRET_HARDPOINTS / LAUNCHER_HARDPOINTS; `fit.canFit` (canFitShipGroup*/canFitShipType*/fitsToShipType)
+  **or a capital-size module on a sub-capital hull** → SHIP_RESTRICTION; rigSize ≠ ship rigSize → RIG_SIZE; raw
+  maxGroupFitted → MAX_GROUP_FITTED; `canHaveState` → MAX_GROUP_ONLINE / MAX_GROUP_ACTIVE; `isValidCharge` volume >
+  capacity / chargeSize / chargeGroup1–4 → CHARGE_CAPACITY / CHARGE_SIZE / CHARGE_GROUP (each checked on its own);
+  `checkRequirements` → MISSING_SKILL. A fit with violations is still computed in full ("Disable Fitting
+  Restrictions", ENG-VAL-005): the `val_*` cases also score every bench metric. Cases `val_*`.
+- Draft (reported, not part of pass): per-module codes carry the `module_index` of **every** module that breaks
+  the rule (Pyfa flags all modules of an over-limit group, not just the ones past the limit); SLOTS_EXCEEDED may
+  carry `slot`; MISSING_SKILL is one entry per missing skill with `skill_type_id` and `level`, following Pyfa
+  (rigs skipped, prerequisites of a missing skill included, charges of fighters skipped).
+- Hand-derived, `ext/unit/` (Pyfa has no equivalent): `options.validate: false` → no violations
+  (`unit_val_validate_false`); MAX_TYPE_FITTED (Pyfa has no maxTypeFitted check, `unit_val_max_type_fitted`).
+
 ## Changelog
 - v1 (2026-10-03): initial contract.
 - v1.1 (2026-10-03): `fleet.booster_fits` implemented (oracle-verified). `projected[kind=fit]` and charges on
