@@ -1,0 +1,43 @@
+{
+ "expected": {
+  "band_max": 105.0,
+  "orders": 1,
+  "orders_considered": 1,
+  "orders_total": 1,
+  "p0": 100.0,
+  "price": 100.0,
+  "units": 10,
+  "units_considered": 10
+ },
+ "note": "Jita buy orders (above and below) ignored; orders_total counts sell orders only",
+ "orders": [
+  {
+   "is_buy_order": true,
+   "location_id": 60003760,
+   "order_id": 1028,
+   "price": 200.0,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 1000
+  },
+  {
+   "is_buy_order": true,
+   "location_id": 60003760,
+   "order_id": 1029,
+   "price": 90.0,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 1000
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1030,
+   "price": 100.0,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 10
+  }
+ ],
+ "params": {}
+}

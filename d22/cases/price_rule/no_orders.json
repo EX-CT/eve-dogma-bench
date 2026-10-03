@@ -1,0 +1,6 @@
+{
+ "expected": null,
+ "note": "empty book -> missing",
+ "orders": [],
+ "params": {}
+}

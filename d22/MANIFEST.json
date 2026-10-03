@@ -1,0 +1,400 @@
+{
+ "price_inject/bad_prices_key": {
+  "check": "inject_error",
+  "note": "request prices: non-integer key -> BAD_PRICES",
+  "suite": "price_inject"
+ },
+ "price_inject/bad_prices_mode": {
+  "check": "inject_error",
+  "note": "request prices: unknown mode -> BAD_PRICES",
+  "suite": "price_inject"
+ },
+ "price_inject/bad_prices_negative": {
+  "check": "inject_error",
+  "note": "request prices: negative value -> BAD_PRICES",
+  "suite": "price_inject"
+ },
+ "price_inject/bad_prices_string": {
+  "check": "inject_error",
+  "note": "request prices: non-numeric value -> BAD_PRICES",
+  "suite": "price_inject"
+ },
+ "price_inject/embedded_only": {
+  "check": "inject_calc",
+  "note": "options.price, no inputs: embedded snapshot (structural); id/time/hash set",
+  "suite": "price_inject"
+ },
+ "price_inject/file_map": {
+  "check": "inject_calc",
+  "note": "--prices plain map (one rig unpriced -> missing)",
+  "suite": "price_inject"
+ },
+ "price_inject/file_map_negative": {
+  "check": "inject_error",
+  "note": "--prices map with a negative value -> BAD_PRICES",
+  "suite": "price_inject"
+ },
+ "price_inject/file_map_nonint_key": {
+  "check": "inject_error",
+  "note": "--prices map with a non-integer key -> BAD_PRICES",
+  "suite": "price_inject"
+ },
+ "price_inject/file_map_string_value": {
+  "check": "inject_error",
+  "note": "--prices map with a string value -> BAD_PRICES",
+  "suite": "price_inject"
+ },
+ "price_inject/file_other_sde_build_warns": {
+  "check": "inject_calc",
+  "note": "snapshot for another SDE build is accepted with a warning",
+  "suite": "price_inject"
+ },
+ "price_inject/file_snap_bad_hash": {
+  "check": "inject_error",
+  "note": "--prices content_hash mismatch -> PRICE_SNAPSHOT_INVALID",
+  "suite": "price_inject"
+ },
+ "price_inject/file_snap_bad_invariant": {
+  "check": "inject_error",
+  "note": "--prices price < p0 -> PRICE_SNAPSHOT_INVALID",
+  "suite": "price_inject"
+ },
+ "price_inject/file_snap_bad_units": {
+  "check": "inject_error",
+  "note": "--prices units 0 -> PRICE_SNAPSHOT_INVALID",
+  "suite": "price_inject"
+ },
+ "price_inject/file_snap_schema_other": {
+  "check": "inject_error",
+  "note": "--prices unknown schema -> PRICE_SNAPSHOT_VERSION",
+  "suite": "price_inject"
+ },
+ "price_inject/file_snap_v2": {
+  "check": "inject_error",
+  "note": "--prices schema_version 2 -> PRICE_SNAPSHOT_VERSION",
+  "suite": "price_inject"
+ },
+ "price_inject/file_snapshot": {
+  "check": "inject_calc",
+  "note": "--prices snapshot: lines injected, provenance = the file's id / market_time / content_hash",
+  "suite": "price_inject"
+ },
+ "price_inject/file_snapshot_gz": {
+  "check": "inject_calc",
+  "note": "--prices .json.gz (gzip, mtime 0)",
+  "suite": "price_inject"
+ },
+ "price_inject/overrides_only_file": {
+  "check": "inject_calc",
+  "note": "overrides over the file only: price_source stays file (overrides are not a price source)",
+  "suite": "price_inject"
+ },
+ "price_inject/overrides_request_file": {
+  "check": "inject_calc",
+  "note": "price_overrides > request table > file",
+  "suite": "price_inject"
+ },
+ "price_inject/request_full": {
+  "check": "inject_calc",
+  "note": "full request table, use_snapshot false: id/time/hash null",
+  "suite": "price_inject"
+ },
+ "price_inject/request_full_mode_replace": {
+  "check": "inject_calc",
+  "note": "mode replace = use_snapshot false (alias)",
+  "suite": "price_inject"
+ },
+ "price_inject/request_full_over_file": {
+  "check": "inject_calc",
+  "note": "use_snapshot false ignores --prices",
+  "suite": "price_inject"
+ },
+ "price_inject/request_partial_embedded": {
+  "check": "inject_calc",
+  "note": "partial table over the embedded snapshot",
+  "suite": "price_inject"
+ },
+ "price_inject/request_partial_file": {
+  "check": "inject_calc",
+  "note": "partial table over --prices: request wins per type",
+  "suite": "price_inject"
+ },
+ "price_inject/request_partial_mode_override": {
+  "check": "inject_calc",
+  "note": "mode override = use_snapshot true (alias)",
+  "suite": "price_inject"
+ },
+ "price_inject/request_partial_no_snapshot": {
+  "check": "inject_calc",
+  "note": "partial + use_snapshot false: the rest missing",
+  "suite": "price_inject"
+ },
+ "price_inject/rpc_prices_load_bad_hash": {
+  "check": "inject_rpc_error",
+  "note": "RPC prices_load with a hash mismatch -> PRICE_SNAPSHOT_INVALID",
+  "suite": "price_inject"
+ },
+ "price_inject/rpc_prices_load_isk": {
+  "check": "inject_rpc",
+  "note": "RPC prices_load {isk} (a map) then calc",
+  "suite": "price_inject"
+ },
+ "price_inject/rpc_prices_load_path": {
+  "check": "inject_rpc",
+  "note": "RPC prices_load {path} then calc = --prices",
+  "suite": "price_inject"
+ },
+ "price_inject/rpc_prices_load_snapshot": {
+  "check": "inject_rpc",
+  "note": "RPC prices_load {snapshot} (inline object)",
+  "suite": "price_inject"
+ },
+ "price_inject/rpc_request_over_session": {
+  "check": "inject_rpc",
+  "note": "request table beats the session snapshot",
+  "suite": "price_inject"
+ },
+ "price_inject/rpc_session_isolated": {
+  "check": "inject_rpc_isolated",
+  "note": "a prices_load in one serve-stdio process does not leak into a new one (embedded there)",
+  "suite": "price_inject"
+ },
+ "price_inject/sde_and_prices": {
+  "check": "inject_calc",
+  "needs": [
+   "SDE_PACK"
+  ],
+  "note": "--sde does not change prices (docs/22 \u00a72.4)",
+  "suite": "price_inject"
+ },
+ "price_rule/all_small_missing": {
+  "check": "rule",
+  "note": "every order below min_units -> no price (missing)",
+  "suite": "price_rule"
+ },
+ "price_rule/band_above_ignored": {
+  "check": "rule",
+  "note": "1000 units above the band ignored for the mean, counted in units_considered",
+  "suite": "price_rule"
+ },
+ "price_rule/band_edge_inclusive": {
+  "check": "rule",
+  "note": "order exactly at p0*1.05 = 1050.0 is in the band (inclusive): (10000+31500)/40 = 1037.5",
+  "suite": "price_rule"
+ },
+ "price_rule/band_edge_just_above": {
+  "check": "rule",
+  "note": "order one ulp above p0*1.05 is out: price 1000",
+  "suite": "price_rule"
+ },
+ "price_rule/band_edge_p0_100": {
+  "check": "rule",
+  "note": "p0 100: band_max = 100*(1+0.05) = 105.0; 105 included -> 102.5",
+  "suite": "price_rule"
+ },
+ "price_rule/buy_orders_ignored": {
+  "check": "rule",
+  "note": "Jita buy orders (above and below) ignored; orders_total counts sell orders only",
+  "suite": "price_rule"
+ },
+ "price_rule/min_units_exact_kept": {
+  "check": "rule",
+  "note": "exactly min_units (10) is kept: p0 90, band [90, 94.5]",
+  "suite": "price_rule"
+ },
+ "price_rule/mixed_book_60": {
+  "check": "rule",
+  "note": "60 mixed orders (sells/buys, Jita/Amarr, small/large)",
+  "suite": "price_rule"
+ },
+ "price_rule/no_orders": {
+  "check": "rule",
+  "note": "empty book -> missing",
+  "suite": "price_rule"
+ },
+ "price_rule/no_sell_orders": {
+  "check": "rule",
+  "note": "only buy orders / other stations -> missing",
+  "suite": "price_rule"
+ },
+ "price_rule/other_station_ignored": {
+  "check": "rule",
+  "note": "cheaper Amarr order ignored (location != 60003760)",
+  "suite": "price_rule"
+ },
+ "price_rule/outlier_low_large": {
+  "check": "rule",
+  "note": "an outlier with >= min_units sets p0 (rule as written; band [1, 1.05]) -> 1.0",
+  "suite": "price_rule"
+ },
+ "price_rule/outlier_low_small": {
+  "check": "rule",
+  "note": "1-ISK outlier with 1 unit dropped by min_units: p0 1000, mean 1020",
+  "suite": "price_rule"
+ },
+ "price_rule/params_band0_min1": {
+  "check": "rule",
+  "note": "min_units 1, band 0: only orders at exactly p0 (units 6, orders 2)",
+  "suite": "price_rule"
+ },
+ "price_rule/params_band10": {
+  "check": "rule",
+  "note": "band 0.10: 1000*1.1 = 1100.0 included, 1101 out -> 1050",
+  "suite": "price_rule"
+ },
+ "price_rule/params_min_units_100": {
+  "check": "rule",
+  "note": "min_units 100 drops the 99-unit order at 90: (10000+31200)/400 = 103",
+  "suite": "price_rule"
+ },
+ "price_rule/rounding_cents": {
+  "check": "rule",
+  "note": "mean 100.333.. rounded to 0.01 -> 100.33",
+  "suite": "price_rule"
+ },
+ "price_rule/single_order": {
+  "check": "rule",
+  "note": "one qualifying order: price = p0 = 100",
+  "suite": "price_rule"
+ },
+ "price_rule/small_orders_dropped": {
+  "check": "rule",
+  "note": "orders with 9 and 5 units (< min_units 10) dropped before p0: p0 100, mean 101.5",
+  "suite": "price_rule"
+ },
+ "price_rule/ties_at_p0": {
+  "check": "rule",
+  "note": "several orders at p0: (1000+4000+5050)/100 = 100.5",
+  "suite": "price_rule"
+ },
+ "price_rule/weighted_mean": {
+  "check": "rule",
+  "note": "unit-weighted mean (1000+3060+6240)/100 = 103",
+  "suite": "price_rule"
+ },
+ "sde/embedded_hash_matches_release_pack": {
+  "check": "embedded_hash",
+  "needs": [
+   "SDE_PACK"
+  ],
+  "note": "embedded version.sde_hash == the release pack's header hash (SDE_PACK = the pack the release embeds)",
+  "suite": "sde"
+ },
+ "sde/provenance_calc_cli": {
+  "check": "provenance_calc",
+  "note": "cli calc: provenance present; sde_* and engine equal version's; sde_source embedded",
+  "suite": "sde"
+ },
+ "sde/provenance_calc_rpc": {
+  "check": "provenance_calc",
+  "note": "rpc calc: provenance present; sde_* and engine equal version's; sde_source embedded",
+  "suite": "sde"
+ },
+ "sde/sde_invalid_cli_bad_magic": {
+  "check": "sde_invalid_cli",
+  "note": "--sde with a broken pack (magic EDPX instead of EDPK) -> SDE_PACK_INVALID, no fallback to embedded",
+  "suite": "sde"
+ },
+ "sde/sde_invalid_cli_empty": {
+  "check": "sde_invalid_cli",
+  "note": "--sde with a broken pack (zero-byte file) -> SDE_PACK_INVALID, no fallback to embedded",
+  "suite": "sde"
+ },
+ "sde/sde_invalid_cli_format_major_2": {
+  "check": "sde_invalid_cli",
+  "note": "--sde with a broken pack (unknown format_major 2) -> SDE_PACK_INVALID, no fallback to embedded",
+  "suite": "sde"
+ },
+ "sde/sde_invalid_cli_hash_mismatch": {
+  "check": "sde_invalid_cli",
+  "note": "--sde with a broken pack (one body byte flipped; header content_sha256 stale) -> SDE_PACK_INVALID, no fallback to embedded",
+  "suite": "sde"
+ },
+ "sde/sde_invalid_cli_missing_file": {
+  "check": "sde_invalid_cli",
+  "note": "--sde with a path that does not exist -> a structured error JSON (any code), no fallback",
+  "suite": "sde"
+ },
+ "sde/sde_invalid_cli_section_out_of_range": {
+  "check": "sde_invalid_cli",
+  "note": "--sde with a broken pack (META directory entry runs past EOF (hash consistent)) -> SDE_PACK_INVALID, no fallback to embedded",
+  "suite": "sde"
+ },
+ "sde/sde_invalid_cli_truncated_header": {
+  "check": "sde_invalid_cli",
+  "note": "--sde with a broken pack (file shorter than the 64-byte header) -> SDE_PACK_INVALID, no fallback to embedded",
+  "suite": "sde"
+ },
+ "sde/sde_invalid_rpc_b64": {
+  "check": "sde_invalid_rpc",
+  "note": "RPC sde_override {pack_b64} with a hash mismatch -> SDE_PACK_INVALID",
+  "suite": "sde"
+ },
+ "sde/sde_invalid_rpc_bad_magic": {
+  "check": "sde_invalid_rpc",
+  "note": "RPC sde_override {path} with bad_magic -> SDE_PACK_INVALID; the session stays on the embedded pack",
+  "suite": "sde"
+ },
+ "sde/sde_invalid_rpc_format_major_2": {
+  "check": "sde_invalid_rpc",
+  "note": "RPC sde_override {path} with format_major_2 -> SDE_PACK_INVALID; the session stays on the embedded pack",
+  "suite": "sde"
+ },
+ "sde/sde_invalid_rpc_hash_mismatch": {
+  "check": "sde_invalid_rpc",
+  "note": "RPC sde_override {path} with hash_mismatch -> SDE_PACK_INVALID; the session stays on the embedded pack",
+  "suite": "sde"
+ },
+ "sde/sde_valid_cli_identical": {
+  "check": "sde_valid_cli_identical",
+  "needs": [
+   "SDE_PACK"
+  ],
+  "note": "--sde PACK calc == embedded calc (minus provenance) on 5 fits; provenance sde_source override",
+  "suite": "sde"
+ },
+ "sde/sde_valid_cli_version": {
+  "check": "sde_valid_cli_version",
+  "needs": [
+   "SDE_PACK"
+  ],
+  "note": "--sde PACK version: sde_source override, sde_override_path, sde_hash = sha256:<header content_sha256>, sde_build/revision from the header",
+  "suite": "sde"
+ },
+ "sde/sde_valid_rpc_b64": {
+  "check": "sde_valid_rpc",
+  "needs": [
+   "SDE_PACK"
+  ],
+  "note": "RPC sde_override {pack_b64}",
+  "suite": "sde"
+ },
+ "sde/sde_valid_rpc_switch_reset": {
+  "check": "sde_valid_rpc",
+  "needs": [
+   "SDE_PACK"
+  ],
+  "note": "RPC sde_override {path} -> version override; calc identical; {reset:true} -> embedded",
+  "suite": "sde"
+ },
+ "sde/version_cli_fields": {
+  "check": "version_fields",
+  "note": "`version`: engine, sde_build 3569502, sde_revision, sde_release, sde_hash sha256:<64hex>, sde_source embedded, pack_format 1.0, snapshot_schema_version 1, target native",
+  "suite": "sde"
+ },
+ "sde/version_matches_meta": {
+  "check": "version_matches_meta",
+  "note": "version.sde_build / sde_release == meta.sde_build / sde_release_date (meta keeps its fields)",
+  "suite": "sde"
+ },
+ "sde/version_rpc_equals_cli": {
+  "check": "version_rpc_equals_cli",
+  "note": "RPC version == CLI version",
+  "suite": "sde"
+ },
+ "sde/version_rpc_fields": {
+  "check": "version_fields",
+  "note": "RPC `version`: same checks",
+  "suite": "sde"
+ }
+}

@@ -1,0 +1,556 @@
+{
+ "expected": {
+  "band_max": 5327.7,
+  "orders": 2,
+  "orders_considered": 27,
+  "orders_total": 41,
+  "p0": 5074,
+  "price": 5293.37,
+  "units": 1012,
+  "units_considered": 10062
+ },
+ "note": "60 mixed orders (sells/buys, Jita/Amarr, small/large)",
+ "orders": [
+  {
+   "is_buy_order": true,
+   "location_id": 60008494,
+   "order_id": 1048,
+   "price": 5000,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 3
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1049,
+   "price": 6517,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 12
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1050,
+   "price": 8034,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 40
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1051,
+   "price": 5814,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 250
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1052,
+   "price": 7331,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 9
+  },
+  {
+   "is_buy_order": true,
+   "location_id": 60003760,
+   "order_id": 1053,
+   "price": 5111,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 1000
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1054,
+   "price": 6628,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 3
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60008494,
+   "order_id": 1055,
+   "price": 8145,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 12
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1056,
+   "price": 5925,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 40
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1057,
+   "price": 7442,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 250
+  },
+  {
+   "is_buy_order": true,
+   "location_id": 60003760,
+   "order_id": 1058,
+   "price": 5222,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 9
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1059,
+   "price": 6739,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 1000
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1060,
+   "price": 8256,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 3
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1061,
+   "price": 6036,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 12
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60008494,
+   "order_id": 1062,
+   "price": 7553,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 40
+  },
+  {
+   "is_buy_order": true,
+   "location_id": 60003760,
+   "order_id": 1063,
+   "price": 5333,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 250
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1064,
+   "price": 6850,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 9
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1065,
+   "price": 8367,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 1000
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1066,
+   "price": 6147,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 3
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1067,
+   "price": 7664,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 12
+  },
+  {
+   "is_buy_order": true,
+   "location_id": 60003760,
+   "order_id": 1068,
+   "price": 5444,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 40
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60008494,
+   "order_id": 1069,
+   "price": 6961,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 250
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1070,
+   "price": 8478,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 9
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1071,
+   "price": 6258,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 1000
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1072,
+   "price": 7775,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 3
+  },
+  {
+   "is_buy_order": true,
+   "location_id": 60003760,
+   "order_id": 1073,
+   "price": 5555,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 12
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1074,
+   "price": 7072,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 40
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1075,
+   "price": 8589,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 250
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60008494,
+   "order_id": 1076,
+   "price": 6369,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 9
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1077,
+   "price": 7886,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 1000
+  },
+  {
+   "is_buy_order": true,
+   "location_id": 60003760,
+   "order_id": 1078,
+   "price": 5666,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 3
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1079,
+   "price": 7183,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 12
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1080,
+   "price": 8700,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 40
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1081,
+   "price": 6480,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 250
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1082,
+   "price": 7997,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 9
+  },
+  {
+   "is_buy_order": true,
+   "location_id": 60008494,
+   "order_id": 1083,
+   "price": 5777,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 1000
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1084,
+   "price": 7294,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 3
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1085,
+   "price": 5074,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 12
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1086,
+   "price": 6591,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 40
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1087,
+   "price": 8108,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 250
+  },
+  {
+   "is_buy_order": true,
+   "location_id": 60003760,
+   "order_id": 1088,
+   "price": 5888,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 9
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1089,
+   "price": 7405,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 1000
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60008494,
+   "order_id": 1090,
+   "price": 5185,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 3
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1091,
+   "price": 6702,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 12
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1092,
+   "price": 8219,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 40
+  },
+  {
+   "is_buy_order": true,
+   "location_id": 60003760,
+   "order_id": 1093,
+   "price": 5999,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 250
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1094,
+   "price": 7516,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 9
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1095,
+   "price": 5296,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 1000
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1096,
+   "price": 6813,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 3
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60008494,
+   "order_id": 1097,
+   "price": 8330,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 12
+  },
+  {
+   "is_buy_order": true,
+   "location_id": 60003760,
+   "order_id": 1098,
+   "price": 6110,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 40
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1099,
+   "price": 7627,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 250
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1100,
+   "price": 5407,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 9
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1101,
+   "price": 6924,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 1000
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1102,
+   "price": 8441,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 3
+  },
+  {
+   "is_buy_order": true,
+   "location_id": 60003760,
+   "order_id": 1103,
+   "price": 6221,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 12
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60008494,
+   "order_id": 1104,
+   "price": 7738,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 40
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1105,
+   "price": 5518,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 250
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1106,
+   "price": 7035,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 9
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1107,
+   "price": 8552,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 1000
+  }
+ ],
+ "params": {}
+}

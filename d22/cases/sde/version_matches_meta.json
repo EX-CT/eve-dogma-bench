@@ -1,0 +1,4 @@
+{
+ "check": "version_matches_meta",
+ "note": "version.sde_build / sde_release == meta.sde_build / sde_release_date (meta keeps its fields)"
+}

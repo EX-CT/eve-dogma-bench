@@ -1,0 +1,34 @@
+{
+ "expected": {
+  "band_max": 105.0,
+  "orders": 1,
+  "orders_considered": 2,
+  "orders_total": 2,
+  "p0": 100.0,
+  "price": 100.0,
+  "units": 10,
+  "units_considered": 1010
+ },
+ "note": "1000 units above the band ignored for the mean, counted in units_considered",
+ "orders": [
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1024,
+   "price": 100.0,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 10
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1025,
+   "price": 106.0,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 1000
+  }
+ ],
+ "params": {}
+}

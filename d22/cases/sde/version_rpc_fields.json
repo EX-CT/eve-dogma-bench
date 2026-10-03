@@ -1,0 +1,5 @@
+{
+ "check": "version_fields",
+ "note": "RPC `version`: same checks",
+ "transport": "rpc"
+}

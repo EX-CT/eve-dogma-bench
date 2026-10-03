@@ -1,0 +1,7 @@
+{
+ "check": "embedded_hash",
+ "needs": [
+  "SDE_PACK"
+ ],
+ "note": "embedded version.sde_hash == the release pack's header hash (SDE_PACK = the pack the release embeds)"
+}

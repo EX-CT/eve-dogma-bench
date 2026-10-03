@@ -1,0 +1,6 @@
+{
+ "check": "sde_invalid_rpc",
+ "fit": "exct_rifter",
+ "note": "RPC sde_override {path} with format_major_2 -> SDE_PACK_INVALID; the session stays on the embedded pack",
+ "pack": "d22/data/packs/format_major_2.edp"
+}

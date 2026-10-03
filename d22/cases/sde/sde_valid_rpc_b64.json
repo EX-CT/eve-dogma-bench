@@ -1,0 +1,11 @@
+{
+ "b64": true,
+ "check": "sde_valid_rpc",
+ "fits": [
+  "exct_rifter"
+ ],
+ "needs": [
+  "SDE_PACK"
+ ],
+ "note": "RPC sde_override {pack_b64}"
+}

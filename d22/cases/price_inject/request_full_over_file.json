@@ -1,0 +1,192 @@
+{
+ "args": [
+  "--prices",
+  "d22/data/prices/snap-good.json"
+ ],
+ "check": "inject_calc",
+ "fit": {
+  "boosters": [],
+  "cargo": [
+   {
+    "quantity": 1000,
+    "type_id": 21898
+   }
+  ],
+  "character": {
+   "security_status": null,
+   "skills": {
+    "default_level": 5,
+    "levels": {}
+   }
+  },
+  "damage_pattern": null,
+  "drones": [
+   {
+    "active": 2,
+    "mutation": null,
+    "quantity": 2,
+    "type_id": 2488
+   }
+  ],
+  "environment": {
+   "effect_type_ids": [],
+   "system_security": null
+  },
+  "fighters": [],
+  "fleet": {
+   "booster_fits": [],
+   "buffs": []
+  },
+  "implants": [],
+  "modules": [
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "low",
+    "spool": null,
+    "state": "active",
+    "type_id": 2048
+   },
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "low",
+    "spool": null,
+    "state": "active",
+    "type_id": 519
+   },
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "low",
+    "spool": null,
+    "state": "active",
+    "type_id": 20347
+   },
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "mid",
+    "spool": null,
+    "state": "active",
+    "type_id": 438
+   },
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "mid",
+    "spool": null,
+    "state": "active",
+    "type_id": 448
+   },
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "mid",
+    "spool": null,
+    "state": "active",
+    "type_id": 527
+   },
+   {
+    "charge_type_id": 21898,
+    "mutation": null,
+    "slot": "high",
+    "spool": null,
+    "state": "active",
+    "type_id": 2889
+   },
+   {
+    "charge_type_id": 21898,
+    "mutation": null,
+    "slot": "high",
+    "spool": null,
+    "state": "active",
+    "type_id": 2889
+   },
+   {
+    "charge_type_id": 21898,
+    "mutation": null,
+    "slot": "high",
+    "spool": null,
+    "state": "active",
+    "type_id": 2889
+   },
+   {
+    "charge_type_id": 24473,
+    "mutation": null,
+    "slot": "high",
+    "spool": null,
+    "state": "active",
+    "type_id": 10631
+   },
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "rig",
+    "spool": null,
+    "state": "online",
+    "type_id": 31674
+   },
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "rig",
+    "spool": null,
+    "state": "online",
+    "type_id": 31686
+   },
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "rig",
+    "spool": null,
+    "state": "online",
+    "type_id": 31015
+   }
+  ],
+  "options": {
+   "cap_sim": {
+    "max_time_s": null,
+    "reload": false,
+    "stagger": false
+   },
+   "default_spool": null,
+   "factor_reload": false,
+   "include_attributes": null,
+   "nos_no_target_cap": false,
+   "rah": null,
+   "sources": false,
+   "validate": true
+  },
+  "overrides": [],
+  "prices": {
+   "isk": {
+    "10631": 105840.0,
+    "20347": 515880.0,
+    "2048": 418070.0,
+    "21898": 339570.0,
+    "24473": 253820.0,
+    "2488": 261670.0,
+    "2889": 16860.0,
+    "31015": 314800.0,
+    "31674": 501010.0,
+    "31686": 451290.0,
+    "438": 922170.0,
+    "448": 714070.0,
+    "519": 336560.0,
+    "527": 970080.0,
+    "587": 721480.0
+   },
+   "use_snapshot": false
+  },
+  "projected": [],
+  "schema_version": 1,
+  "ship": {
+   "mode_type_id": null,
+   "type_id": 587
+  },
+  "target_profile": null
+ },
+ "note": "use_snapshot false ignores --prices",
+ "price_source": "request"
+}

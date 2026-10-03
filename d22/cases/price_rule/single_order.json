@@ -1,0 +1,25 @@
+{
+ "expected": {
+  "band_max": 105.0,
+  "orders": 1,
+  "orders_considered": 1,
+  "orders_total": 1,
+  "p0": 100.0,
+  "price": 100.0,
+  "units": 50,
+  "units_considered": 50
+ },
+ "note": "one qualifying order: price = p0 = 100",
+ "orders": [
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1001,
+   "price": 100.0,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 50
+  }
+ ],
+ "params": {}
+}

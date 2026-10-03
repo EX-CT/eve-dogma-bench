@@ -1,0 +1,11 @@
+{
+ "check": "sde_valid_rpc",
+ "fits": [
+  "exct_rifter",
+  "aoe_web_paint_rifter"
+ ],
+ "needs": [
+  "SDE_PACK"
+ ],
+ "note": "RPC sde_override {path} -> version override; calc identical; {reset:true} -> embedded"
+}

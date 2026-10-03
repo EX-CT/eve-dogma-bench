@@ -1,0 +1,14 @@
+{
+ "check": "sde_valid_cli_identical",
+ "fits": [
+  "exct_rifter",
+  "aoe_web_paint_rifter",
+  "drones_sentry_dominix",
+  "booster_strongblue",
+  "dmgpattern_rah_hyperion"
+ ],
+ "needs": [
+  "SDE_PACK"
+ ],
+ "note": "--sde PACK calc == embedded calc (minus provenance) on 5 fits; provenance sde_source override"
+}

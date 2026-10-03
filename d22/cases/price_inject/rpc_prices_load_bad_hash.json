@@ -1,0 +1,13 @@
+{
+ "calls": [
+  [
+   "prices_load",
+   {
+    "path": "d22/data/prices/snap-bad-hash.json"
+   }
+  ]
+ ],
+ "check": "inject_rpc_error",
+ "code": "PRICE_SNAPSHOT_INVALID",
+ "note": "RPC prices_load with a hash mismatch -> PRICE_SNAPSHOT_INVALID"
+}

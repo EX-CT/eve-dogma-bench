@@ -1,0 +1,4 @@
+{
+ "check": "version_rpc_equals_cli",
+ "note": "RPC version == CLI version"
+}

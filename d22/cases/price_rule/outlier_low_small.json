@@ -1,0 +1,43 @@
+{
+ "expected": {
+  "band_max": 1050.0,
+  "orders": 2,
+  "orders_considered": 2,
+  "orders_total": 3,
+  "p0": 1000.0,
+  "price": 1020.0,
+  "units": 40,
+  "units_considered": 40
+ },
+ "note": "1-ISK outlier with 1 unit dropped by min_units: p0 1000, mean 1020",
+ "orders": [
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1013,
+   "price": 1.0,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 1
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1014,
+   "price": 1000.0,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 20
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1015,
+   "price": 1040.0,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 20
+  }
+ ],
+ "params": {}
+}

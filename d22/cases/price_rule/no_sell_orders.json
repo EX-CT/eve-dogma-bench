@@ -1,0 +1,25 @@
+{
+ "expected": null,
+ "note": "only buy orders / other stations -> missing",
+ "orders": [
+  {
+   "is_buy_order": true,
+   "location_id": 60003760,
+   "order_id": 1031,
+   "price": 200.0,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 1000
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60008494,
+   "order_id": 1032,
+   "price": 50.0,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 1000
+  }
+ ],
+ "params": {}
+}

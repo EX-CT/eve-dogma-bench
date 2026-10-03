@@ -1,0 +1,6 @@
+{
+ "any_error": true,
+ "check": "sde_invalid_cli",
+ "note": "--sde with a path that does not exist -> a structured error JSON (any code), no fallback",
+ "pack": "d22/data/packs/does-not-exist.edp"
+}

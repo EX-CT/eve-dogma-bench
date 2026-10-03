@@ -1,0 +1,12 @@
+{
+ "check": "provenance_calc",
+ "fits": [
+  "exct_rifter",
+  "aoe_web_paint_rifter",
+  "drones_sentry_dominix",
+  "booster_strongblue",
+  "dmgpattern_rah_hyperion"
+ ],
+ "note": "cli calc: provenance present; sde_* and engine equal version's; sde_source embedded",
+ "transport": "cli"
+}

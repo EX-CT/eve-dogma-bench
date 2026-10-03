@@ -1,0 +1,7 @@
+{
+ "check": "sde_valid_cli_version",
+ "needs": [
+  "SDE_PACK"
+ ],
+ "note": "--sde PACK version: sde_source override, sde_override_path, sde_hash = sha256:<header content_sha256>, sde_build/revision from the header"
+}

@@ -1,0 +1,5 @@
+{
+ "check": "sde_invalid_cli",
+ "note": "--sde with a broken pack (unknown format_major 2) -> SDE_PACK_INVALID, no fallback to embedded",
+ "pack": "d22/data/packs/format_major_2.edp"
+}

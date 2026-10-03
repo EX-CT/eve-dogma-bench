@@ -1,0 +1,25 @@
+{
+ "expected": null,
+ "note": "every order below min_units -> no price (missing)",
+ "orders": [
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1011,
+   "price": 100.0,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 9
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1012,
+   "price": 101.0,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 1
+  }
+ ],
+ "params": {}
+}
