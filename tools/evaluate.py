@@ -36,7 +36,11 @@ SCORING RULES (round 1)
   Normalisation helper  L(x, best, span) = clamp(1 − log10(x / best) / log10(span), 0, 1)  for lower-is-better x
         (1 at the best ranked variant, 0 at `span`× worse; log scale so a 2× gap costs the same everywhere).
   Speed = 0.5·L(latency ms/calc, best, 100) + 0.3·L(1/batch fits-per-s, best, 100) + 0.2·L(cold ms, best, 100)
-        latency = run.py latency_one_fit.per_calc_ms, throughput = batch_corpus.fits_per_s, cold = median wall time
+        latency = own measurement (see measure_latency(): batch cmd pinned to ONE cpu, (t_N − t_1)/(N − 1), ≥ 5
+        independent samples, median; invalid if ≤ 0, < 0.002 ms floor, > t_N/N or wrong response count; spread
+        > 50 % => up to 3 extra samples, then flagged; spread/flags in md+json). run.py's per-run latency_one_fit
+        (one (500−1)/499 difference, sensitive to startup jitter, multi-threaded batch) is kept as info only.
+        throughput = batch_corpus.fits_per_s, cold = median wall time
         of one process per case (single mode); medians over --runs. Only comparable at similar load: see loadavg.
   Maintainability = 0.25·Tests + 0.20·DataDriven + 0.20·Size + 0.15·Docs + 0.10·Deps + 0.10·Build
         Tests      own test command ran and passed: 0.6 + 0.4·min(1, log10(1+n)/log10(101)) (n = tests passed, or
@@ -60,13 +64,20 @@ SCORING RULES (round 1)
         type = share of probes ok (by id, by name, unknown id -> error).
   Portability (WASM/browser) = 1.0 if the code base has a browser/WASM build (wasm-bindgen/wasm32 target,
         emscripten, browser bundle/tsconfig, pyodide …), 0.5 if only documented as possible/planned, else 0.
+Bench pin: run.py, tools/metrics.py, cases/ and expected/ come from bench commit 3da9671 (1.8.0, 326 cases, cases
+  identical to 0969967), extracted with `git archive` into <work-dir>/bench-<sha>, regardless of upstream main
+  (--bench-ref to override). The pinned SHA, version and case count are recorded in the output.
+Licensing (informational, not scored): effective license = package metadata > LICENSE file > README "License"
+  section; "mergeable into LGPL-3.0-or-later mainline" = yes (LGPL-3 / permissive), no (GPL), unknown (none found or
+  conflicting), with the reason.
 Outputs: <out>/evaluation.md and <out>/evaluation.json (+ <out>/raw/<X>/ per-run scorecards and logs).
 --dry-run writes to results/dryrun/ by default and marks every output DRY RUN (not final results)."""
 import argparse, gzip, json, math, os, pathlib, re, shutil, signal, statistics, subprocess, sys, time
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(ROOT))
-sys.path.insert(0, str(ROOT / "tools"))
+BENCH_PIN = "3da9671"      # frozen bench 1.8.0 (cases/expected identical to 0969967), 326 cases
+BENCH_PIN_VERSION, BENCH_PIN_CASES = "1.8.0", 326
+BENCH = ROOT               # replaced in main() by the pinned snapshot (work-dir/bench-<sha>)
 DATASET = "/workspace/exct-eve/data/dataset-3569502.json.gz"
 LAB = "https://github.com/EX-CT/eve-dogma-lab"
 REF = "https://github.com/EX-CT/eve-dogma-rs"
@@ -165,6 +176,7 @@ def manifest(letter, vd):
 
 # ---------------------------------------------------------------- bench runs (child process)
 def child(spec):
+    sys.path.insert(0, spec.pop("_bench"))
     import run
     a = run.Args(**spec)
     run.evaluate(a)
@@ -172,13 +184,13 @@ def child(spec):
 
 def bench_run(letter, m, vd, i, a, tag):
     name = f"_eval/{tag}/{letter}/run{i}"
-    spec = dict(name=name, cmd=m["cmd"], batch_cmd=m.get("batch_cmd"), cwd=str(vd), cases="cases/*.json",
+    spec = dict(_bench=str(BENCH), name=name, cmd=m["cmd"], batch_cmd=m.get("batch_cmd"), cwd=str(vd), cases="cases/*.json",
                 timeout=a.case_timeout, batch_repeat=1 if a.quick else 5, latency_n=100 if a.quick else 500)
     before = load3()
     rc, dt, out = sh(f"{shlex_q(sys.executable)} {shlex_q(__file__)} --_child {shlex_q(json.dumps(spec))}", ROOT,
                      a.remaining(), inp=None)
     after = load3()
-    card_f = ROOT / "results" / name / "scorecard.json"
+    card_f = BENCH / "results" / name / "scorecard.json"
     res = {"run": i, "wall_s": round(dt, 1), "loadavg_before": before, "loadavg_after": after}
     if rc is None:
         res["error"] = "timeout"
@@ -194,13 +206,144 @@ def bench_run(letter, m, vd, i, a, tag):
                    batch_responses=p.get("batch_corpus", {}).get("responses"),
                    cold_ms=p["single_process_per_case_ms"]["median"], deterministic=p.get("deterministic"),
                    groups=c["groups"])
-        shutil.copytree(ROOT / "results" / name, a.out / "raw" / letter / f"run{i}", dirs_exist_ok=True)
+        shutil.copytree(BENCH / "results" / name, a.out / "raw" / letter / f"run{i}", dirs_exist_ok=True)
     return res
 
 
 def shlex_q(s):
     import shlex
     return shlex.quote(str(s))
+
+
+# ---------------------------------------------------------------- bench pin
+def pin_bench(work, ref):
+    """Extract cases/, expected/, run.py, tools/ … of bench commit `ref` into work/bench-<sha> (read-only use)."""
+    git = lambda c: subprocess.run(c, shell=True, cwd=ROOT, capture_output=True, text=True)  # noqa: E731
+    if git(f"git cat-file -e {ref}^{{commit}}").returncode:
+        git(f"git fetch -q origin {ref} || git fetch -q --unshallow origin || git fetch -q origin")
+    sha = git(f"git rev-parse {ref}^{{commit}}").stdout.strip()
+    if not sha:
+        sys.exit(f"bench ref {ref} not found")
+    d = work / f"bench-{sha[:12]}"
+    if not (d / "run.py").exists():
+        tmp = work / f".bench-{sha[:12]}.tmp"
+        shutil.rmtree(tmp, ignore_errors=True); tmp.mkdir(parents=True)
+        r = subprocess.run(f"git archive {sha} | tar -x -C {shlex_q(tmp)}", shell=True, cwd=ROOT, capture_output=True, text=True)
+        if r.returncode:
+            sys.exit(f"git archive {sha} failed: {r.stderr}")
+        tmp.rename(d)
+    n = sum(1 for p in (d / "cases").glob("*.json") if (d / "expected" / p.name).exists())
+    ver = (d / "VERSION").read_text().strip() if (d / "VERSION").exists() else "?"
+    if ref == BENCH_PIN and (ver != BENCH_PIN_VERSION or n != BENCH_PIN_CASES):
+        sys.exit(f"pinned bench mismatch: version {ver}, {n} cases (expected {BENCH_PIN_VERSION}, {BENCH_PIN_CASES})")
+    return d, {"ref": ref, "sha": sha, "version": ver, "cases": n, "dir": str(d)}
+
+
+# ---------------------------------------------------------------- latency (own measurement, not run.py's)
+LAT_FLOOR_MS = 0.002     # 2 µs: below any real FitRequest parse + dogma + FitStats JSON; smaller = measurement artefact
+LAT_SPREAD_MAX = 0.5     # (max − min) / median of valid samples above this => re-measure, then flag
+
+
+def timed_batch(cmd, cwd, inp_path, timeout, cpu=None):
+    """Wall time of one batch process reading inp_path; stdout streamed and only newline-counted."""
+    import threading
+    if cpu is not None and shutil.which("taskset"):
+        cmd = f"taskset -c {cpu} sh -c {shlex_q(cmd)}"
+    with open(inp_path, "rb") as f:
+        t0 = time.perf_counter()
+        p = subprocess.Popen(cmd, shell=True, cwd=cwd, stdin=f, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL,
+                             start_new_session=True, env=ENV)
+        n = [0]
+        def rd():
+            while True:
+                b = p.stdout.read(1 << 20)
+                if not b:
+                    break
+                n[0] += b.count(b"\n")
+        th = threading.Thread(target=rd, daemon=True); th.start()
+        try:
+            p.wait(timeout=timeout)
+        except subprocess.TimeoutExpired:
+            os.killpg(p.pid, signal.SIGKILL); p.wait(); th.join(5)
+            return None, n[0], None
+        th.join(30)
+        return time.perf_counter() - t0, n[0], p.returncode
+
+
+def measure_latency(batch_cmd, vd, a, work):
+    """Single-core per-calc latency of one fit (case exct_rifter): run the batch command pinned to ONE cpu
+    (taskset; so multi-threaded batch modes measure latency, not throughput), with 1 request (startup, median of 3)
+    and with N requests (N sized so the calc part takes ≈0.5 s, 200..10000). sample = (t_N − t_1) / (N − 1).
+    A sample is invalid if ≤ 0, below LAT_FLOOR_MS, above the upper bound t_N / N, or if responses != requests.
+    Median of valid samples; if spread > LAT_SPREAD_MAX or < 3 valid, up to 3 extra samples, then flagged.
+    No valid sample => fall back to median t_N / N (upper bound, flagged)."""
+    req = json.dumps(json.loads((BENCH / "cases" / "exct_rifter.json").read_text())) + "\n"
+    tmpd = work / ".lat"; tmpd.mkdir(exist_ok=True)
+    def inp(n):
+        f = tmpd / f"in{n}.jsonl"
+        if not f.exists():
+            f.write_text(req * n)
+        return f
+    ncpu = os.cpu_count() or 1
+    to = max(60, a.case_timeout * 10)
+    flags, samples = [], []
+    def one(n, cpu):
+        t, k, rc = timed_batch(batch_cmd, str(vd), inp(n), to, cpu)
+        return (t if (t is not None and k == n and rc == 0) else None), k, rc
+    # pilot
+    t1s = [one(1, 0)[0] for _ in range(3)]
+    t1s = [t for t in t1s if t is not None]
+    tp, kp, rcp = one(200, 0)
+    if not t1s or tp is None:
+        return {"latency_ms": None, "flags": [f"batch failed (responses {kp}/200, rc {rcp})"], "samples": []}
+    t1 = statistics.median(t1s)
+    est = (tp - t1) / 199 if tp > t1 else tp / 200
+    N = int(max(200, min(10000, 0.5 / max(est, 1e-7))))
+    k = 0
+    while k < a.latency_samples + 3:
+        cpu = (k + 1) % ncpu
+        t1k = [x for x in (one(1, cpu)[0] for _ in range(3)) if x is not None]
+        tN, got, rc = one(N, cpu)
+        smp = {"cpu": cpu, "n": N, "load1": load3()[0]}
+        if not t1k or tN is None:
+            smp.update(valid=False, why=f"run failed (responses {got}/{N}, rc {rc})")
+        else:
+            t1m = statistics.median(t1k)
+            lat = (tN - t1m) / (N - 1) * 1000
+            ub = tN / N * 1000
+            smp.update(t1_ms=round(t1m * 1000, 2), tN_s=round(tN, 4), ms=lat, upper_ms=ub)
+            if lat <= 0:
+                smp.update(valid=False, why="non-positive differencing")
+            elif lat < LAT_FLOOR_MS:
+                smp.update(valid=False, why=f"below physical floor {LAT_FLOOR_MS} ms")
+            elif lat > ub * 1.001:
+                smp.update(valid=False, why="above upper bound t_N/N")
+            else:
+                smp["valid"] = True
+        samples.append(smp); k += 1
+        v = [x["ms"] for x in samples if x.get("valid")]
+        if k >= a.latency_samples and len(v) >= 3 and (max(v) - min(v)) / statistics.median(v) <= LAT_SPREAD_MAX:
+            break
+    v = [x["ms"] for x in samples if x.get("valid")]
+    bad = [x for x in samples if not x.get("valid")]
+    if bad:
+        flags.append(f"{len(bad)} invalid sample(s): " + "; ".join(sorted({x['why'] for x in bad})))
+    if v:
+        lat = statistics.median(v)
+        spread = (max(v) - min(v)) / lat
+        if len(v) < 3:
+            flags.append(f"only {len(v)} valid sample(s)")
+        if spread > LAT_SPREAD_MAX:
+            flags.append(f"high spread {spread:.0%} after re-measuring")
+        if len(samples) > a.latency_samples:
+            flags.append(f"re-measured ({len(samples)} samples)")
+    else:
+        ubs = [x["upper_ms"] for x in samples if "upper_ms" in x]
+        lat = statistics.median(ubs) if ubs else None; spread = None
+        flags.append("no valid differencing sample: using upper bound t_N/N")
+    return {"latency_ms": lat, "median_ms": lat, "min_ms": min(v) if v else None, "max_ms": max(v) if v else None,
+            "spread": spread, "valid": len(v), "n_samples": len(samples), "n_per_sample": N, "startup_ms": round(t1 * 1000, 2),
+            "pinned_single_cpu": bool(shutil.which("taskset")), "flags": flags, "samples": samples}
 
 
 # ---------------------------------------------------------------- RPC feature probes
@@ -230,19 +373,21 @@ def features(m, vd, a):
         return {"eft": 0.0, "rpc": 0.0, "search": 0.0, "type": 0.0, "detail": "no rpc_cmd in manifest"}
     # EFT export (official informational check)
     try:
-        import check_eft_export as cee
+        import importlib.util
+        spec_ = importlib.util.spec_from_file_location("cee_pinned", BENCH / "tools" / "check_eft_export.py")
+        cee = importlib.util.module_from_spec(spec_); spec_.loader.exec_module(cee)
         ex = cee.check(rc_cmd, cwd=str(vd), timeout=a.case_timeout * 30)
         res["eft_export"] = {"ok": ex["ok"], "total": ex["total"]}
         exp_frac = ex["ok"] / ex["total"]
     except Exception as e:  # noqa: BLE001
         res["eft_export"] = {"error": repr(e)[:300]}; exp_frac = 0.0
-    exp = [json.loads(l) for l in open(ROOT / "expected_extra/eft_export.jsonl")]
+    exp = [json.loads(l) for l in open(BENCH / "expected_extra/eft_export.jsonl")]
     step = max(1, len(exp) // 20)
     sample = exp[::step][:20]
-    cases = ["exct_rifter", sorted(p.stem for p in (ROOT / "cases").glob("*.json"))[0],
-             sorted(p.stem for p in (ROOT / "cases").glob("*.json"))[-1]]
+    cases = ["exct_rifter", sorted(p.stem for p in (BENCH / "cases").glob("*.json"))[0],
+             sorted(p.stem for p in (BENCH / "cases").glob("*.json"))[-1]]
     reqs = [{"id": 1000 + k, "method": "eft_parse", "params": {"text": e["text"]}} for k, e in enumerate(sample)]
-    reqs += [{"id": 2000 + k, "method": "calc", "params": json.loads((ROOT / "cases" / f"{c}.json").read_text())}
+    reqs += [{"id": 2000 + k, "method": "calc", "params": json.loads((BENCH / "cases" / f"{c}.json").read_text())}
              for k, c in enumerate(cases)]
     reqs += [{"id": 3000, "method": "meta", "params": {}}, {"id": 3001, "method": "no_such_method", "params": {}}]
     sq = [("Rifter", None, None), ("裂谷", None, None), ("Raven", None, None), ("Hammerhead", ["drone"], None),
@@ -269,7 +414,7 @@ def features(m, vd, a):
     # rpc
     checks = []
     for k, c in enumerate(cases):
-        cli_rc, _, cli_out = sh(m["cmd"], str(vd), a.case_timeout * 3, inp=(ROOT / "cases" / f"{c}.json").read_text())
+        cli_rc, _, cli_out = sh(m["cmd"], str(vd), a.case_timeout * 3, inp=(BENCH / "cases" / f"{c}.json").read_text())
         try:
             checks.append(json.loads(cli_out) == R(2000 + k))
         except ValueError:
@@ -384,11 +529,17 @@ def static_metrics(letter, vd, effect_names, n_mod_effects):
             "license": lic, "deps": deps(vd), "loc_tool": "builtin"}
 
 
+SPDX_RE = re.compile(r"\b((?:L?GPL|AGPL)-[23]\.[01](?:-or-later|-only|\+)?|MIT|Apache-2\.0|BSD-[23]-Clause|MPL-2\.0|ISC|Zlib|Unlicense)\b")
+PERMISSIVE = ("MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC", "Zlib", "Unlicense", "MPL-2.0")
+
+
 def license_id(vd, files):
     ids = []
+    lgpl_present = any("GNU LESSER GENERAL PUBLIC" in (vd / f).read_text(errors="replace")[:3000] for f in files)
     for f in files:
         t = (vd / f).read_text(errors="replace")[:3000]
         if "GNU LESSER GENERAL PUBLIC" in t: ids.append("LGPL-3.0")
+        elif "GNU GENERAL PUBLIC LICENSE" in t and lgpl_present and re.search(r"GPL", f): ids.append("(GPL-3.0 text shipped with LGPL)")
         elif "GNU GENERAL PUBLIC LICENSE" in t: ids.append("GPL-3.0")
         elif "Permission is hereby granted" in t: ids.append("MIT")
         elif "Apache License" in t: ids.append("Apache-2.0")
@@ -399,7 +550,38 @@ def license_id(vd, files):
             decl += re.findall(pat, (vd / mf).read_text(), re.M)
     for x in vd.rglob("*.csproj"):
         decl += re.findall(r"<PackageLicenseExpression>([^<]+)<", x.read_text())
-    return {"files": files, "detected": sorted(set(ids)), "declared": sorted(set(decl))}
+    readme = None
+    if (vd / "README.md").exists():
+        mt = re.search(r"^#+\s*Licen[cs]e.*?$(.*?)(?=^#|\Z)", (vd / "README.md").read_text(errors="replace"), re.M | re.S | re.I)
+        if mt:
+            rm = SPDX_RE.search(mt.group(1)); readme = rm.group(1) if rm else None
+    return mergeable({"files": files, "detected": sorted(set(ids)), "declared": sorted(set(decl)), "readme": readme})
+
+
+def mergeable(lic):
+    """Effective license (package metadata > LICENSE file > README 'License' section) and whether the code can be
+    merged into the LGPL-3.0-or-later mainline (eve-dogma-rs)."""
+    det = [x for x in lic["detected"] if not x.startswith("(")]
+    src, eff = None, None
+    if lic["declared"]:
+        src, eff = "package metadata", lic["declared"][0]
+    elif det:
+        src, eff = "LICENSE file", det[0]
+    elif lic["readme"]:
+        src, eff = "README only", lic["readme"]
+    lic["effective"], lic["source"] = eff, src
+    if not eff:
+        lic["mergeable"], lic["reason"] = "unknown", "no LICENSE file, package metadata or README license statement"
+    elif re.match(r"A?GPL", eff):
+        lic["mergeable"], lic["reason"] = "no", f"{eff} is stronger copyleft than LGPL; cannot be relicensed into LGPL-3.0-or-later"
+    elif eff.startswith("LGPL-3") or eff.startswith("LGPL-2.1-or-later") or eff in PERMISSIVE:
+        lic["mergeable"] = "yes"
+        lic["reason"] = f"{eff} ({src})" + ("; add a LICENSE file before merging" if src == "README only" else "")
+        if det and any(x.startswith("GPL") for x in det):
+            lic["mergeable"], lic["reason"] = "unknown", f"declared {eff} but a GPL LICENSE file is present"
+    else:
+        lic["mergeable"], lic["reason"] = "unknown", f"unrecognised license {eff}"
+    return lic
 
 
 def deps(vd):
@@ -511,7 +693,7 @@ def run_tests(m, vd, timeout):
     cmd, kind = test_command(m, vd)
     if not cmd:
         return {"found": False}
-    cmd = cmd.format(dataset=DATASET, bench=ROOT, dir=vd)
+    cmd = cmd.format(dataset=DATASET, bench=BENCH, dir=vd)
     env = dict(ENV, EVE_DOGMA_DATASET=DATASET)
     rc, dt, out = sh(cmd, str(vd), timeout, env=env)
     p, f = parse_tests(kind, out or "")
@@ -592,6 +774,9 @@ RULES_MD = """## Scoring rules
 - **Gate (correctness):** ranked only if the variant built, ran, and passed **all** bench cases (cases fully correct = cases, no engine errors) in every run.
 - **Total = 0.40·Speed + 0.35·Maintainability + 0.15·Features + 0.10·Portability** (each in [0, 1]).
 - `L(x, best, span) = clamp(1 − log10(x/best)/log10(span), 0, 1)` for lower-is-better `x` (1 = best ranked variant, 0 = `span`× worse).
+- **Bench pin:** cases/expected/run.py from bench `3da9671` (1.8.0, 326 cases; = 0969967 cases), whatever upstream main is.
+- **Latency** = own measurement (not run.py's): batch command pinned to one CPU (taskset), (t_N − t_1)/(N − 1) with N sized for ≈0.5 s of calcs; ≥5 independent samples, median; samples ≤0, < 0.002 ms, or > t_N/N are invalid; spread > 50 % ⇒ re-measure (≤3 extra), then flagged.
+- **Licensing:** effective license = package metadata > LICENSE file > README "License" section; mergeable into LGPL-3.0-or-later mainline: LGPL-3/permissive yes, GPL no, none unknown. Informational, not scored.
 - **Speed** = 0.5·L(latency ms/calc, 100) + 0.3·L(1/batch fits·s⁻¹, 100) + 0.2·L(cold-start ms, 100); medians over runs.
 - **Maintainability** = 0.25·Tests + 0.20·DataDriven + 0.20·Size + 0.15·Docs + 0.10·Deps + 0.10·Build.
   Tests: passed → 0.6 + 0.4·min(1, log10(1+n)/2); failed → 0.2; timed out → 0.3; none → 0.
@@ -618,7 +803,8 @@ def write(rows, a, meta):
     f2 = lambda x, f="{:.2f}": "–" if x is None else f.format(x)  # noqa: E731
     dry = "**DRY RUN — not final results.** " if a.dry_run else ""
     md = [f"# Engine round 1 evaluation{' (DRY RUN)' if a.dry_run else ''}", "",
-          f"{dry}Generated {meta['finished']} (Asia/Shanghai) by `tools/evaluate.py` at bench {meta['bench_version']}; "
+          f"{dry}Generated {meta['finished']} (Asia/Shanghai) by `tools/evaluate.py` (`{meta['evaluate_py_commit'][:7]}`); bench pinned to "
+          f"{meta['bench_pin']['version']} @ `{meta['bench_pin']['sha'][:7]}` ({meta['bench_pin']['cases']} cases); "
           f"commits: {meta['as_of']}; runs = {a.runs}{' (quick)' if a.quick else ''}; host {meta['nproc']} CPUs; total wall time {meta['wall_s']/60:.1f} min. "
           "Perf numbers were measured on a shared, loaded machine: compare with the loadavg column.", "",
           "## Ranking", "",
@@ -647,16 +833,31 @@ def write(rows, a, meta):
         d = st["docs"]; fe = r.get("features", {})
         ex = fe.get("eft_export", {}); ep = fe.get("eft_parse", {})
         yn = lambda b: "✓" if b else "✗"  # noqa: E731
-        lic = ",".join(st["license"]["declared"] or st["license"]["detected"]) or "none"
+        lic = st["license"].get("effective") or "none"
         md.append(f"| {r['letter']} | {st['core_loc']} ({langs}) | {tl} | {ts} | {st['deps']['n_runtime']} | {f2(r.get('build_s'), '{:.1f}')} ({r.get('build_kind', '?')}) | "
                   f"{yn(d['readme'])}{yn(d['design'])}{yn(d['license_file'])} | {lic} | {st['hardcoded_effects']} | {st['data_driven_ratio']:.3f} | "
                   f"{ex.get('ok', '–')}/{ex.get('total', '–')} | {ep.get('ok', '–')}/{ep.get('total', '–')} | {f2(fe.get('rpc'))} | {f2(fe.get('search'))} | {f2(fe.get('type'))} | {r.get('portability', {}).get('level', '–')} |")
+    md += ["", "## Licensing (mainline eve-dogma-rs is LGPL-3.0-or-later)", "",
+           "| variant | license | source | LICENSE files | mergeable into LGPL-3.0-or-later mainline | reason |", "|---|---|---|---|---|---|"]
+    for r in order:
+        li = (r.get("static") or {}).get("license")
+        if li:
+            md.append(f"| {r['letter']} | {li.get('effective') or 'none'} | {li.get('source') or '–'} | {', '.join(li['files']) or '–'} | "
+                      f"**{li['mergeable']}** | {li['reason']} |")
+    md += ["", "## Latency measurement (single CPU, own measurement)", "",
+           "| variant | ms/calc (median) | min | max | spread | valid/samples | N per sample | startup ms | flags |", "|---|---|---|---|---|---|---|---|---|"]
+    for r in order:
+        la = r.get("latency")
+        if la:
+            md.append(f"| {r['letter']} | {f2(la.get('latency_ms'), '{:.4f}')} | {f2(la.get('min_ms'), '{:.4f}')} | {f2(la.get('max_ms'), '{:.4f}')} | "
+                      f"{f2(la.get('spread') * 100 if la.get('spread') is not None else None, '{:.0f}%')} | {la.get('valid')}/{la.get('n_samples')} | "
+                      f"{la.get('n_per_sample')} | {la.get('startup_ms')} | {'; '.join(la.get('flags') or []) or 'ok'} |")
     notes = [f"- **{r['letter']}**: {r.get('gate_reason', '')}" for r in order if r.get("gate") != "pass"]
     notes += [f"- {r['letter']} tests {r['tests']['status']}: `{r['tests'].get('tail', '')[-200:].strip()}`".replace("\n", " ")
               for r in order if r.get("tests", {}).get("status") in ("failed", "timeout")]
     if notes:
         md += ["", "## Not ranked / problems", ""] + notes
-    md += ["", "## Per-run measurements", "", "| variant | run | wall s | cases ok | ms/calc | fits/s | cold ms | loadavg before | loadavg after |", "|---|---|---|---|---|---|---|---|---|"]
+    md += ["", "## Per-run measurements", "", "| variant | run | wall s | cases ok | run.py ms/calc (info only) | fits/s | cold ms | loadavg before | loadavg after |", "|---|---|---|---|---|---|---|---|---|"]
     for r in order:
         for x in r.get("runs", []):
             md.append(f"| {r['letter']} | {x['run']} | {x['wall_s']} | {x.get('cases_ok', x.get('error', '–'))} | {f2(x.get('latency_ms'), '{:.3f}')} | "
@@ -688,6 +889,8 @@ def main():
     ap.add_argument("--test-timeout", type=float, default=300)
     ap.add_argument("--variant-timeout", type=float, default=1200, help="hard limit for all bench runs of one variant")
     ap.add_argument("--case-timeout", type=float, default=20, help="per request (single mode); batch gets 20x")
+    ap.add_argument("--bench-ref", default=BENCH_PIN, help="bench commit whose cases/expected/run.py are used (default: frozen 1.8.0)")
+    ap.add_argument("--latency-samples", type=int, default=5, help="independent latency measurements per variant (median)")
     ap.add_argument("--_child")
     a = ap.parse_args()
     if a._child:
@@ -700,9 +903,12 @@ def main():
     if a.as_of and datetime.datetime.fromisoformat(a.as_of).tzinfo is None:
         ap.error("--as-of needs an explicit UTC offset, e.g. 2026-10-03T10:15:00+08:00")
     as_of = datetime.datetime.fromisoformat(a.as_of).timestamp() if a.as_of else None
-    import bench
+    global BENCH
+    BENCH, pin = pin_bench(work, a.bench_ref)
+    log(f"bench pinned: {pin}")
     t_start = time.time()
-    meta = {"started": time.strftime("%Y-%m-%d %H:%M:%S %Z"), "bench_version": bench.bench_version(), "nproc": os.cpu_count(),
+    meta = {"started": time.strftime("%Y-%m-%d %H:%M:%S %Z"), "bench_version": f"{pin['version']}+{pin['sha'][:7]}", "bench_pin": pin,
+            "evaluate_py_commit": subprocess.run("git rev-parse HEAD", shell=True, cwd=ROOT, capture_output=True, text=True).stdout.strip(), "nproc": os.cpu_count(),
             "command": " ".join(["python3", "tools/evaluate.py"] + [x for x in sys.argv[1:]]), "dry_run": a.dry_run, "as_of": a.as_of or "current head",
             "host_loadavg_start": load3()}
     ds = json.load(gzip.open(DATASET))
@@ -722,7 +928,7 @@ def main():
         m = manifest(letter, vd)
         if not m or "cmd" not in m:
             row["gate_reason"] = "no bench.yaml / cmd"; continue
-        m = {k: (v.format(dataset=DATASET, bench=ROOT, dir=vd) if isinstance(v, str) else v) for k, v in m.items()}
+        m = {k: (v.format(dataset=DATASET, bench=BENCH, dir=vd) if isinstance(v, str) else v) for k, v in m.items()}
         row["manifest"] = m
         if m.get("build") and not a.no_build:
             fresh_build = g.get("fresh_clone", False)
@@ -735,7 +941,7 @@ def main():
         deadline = time.time() + a.variant_timeout
         a.remaining = lambda: max(5, deadline - time.time())
         if m.get("batch_cmd"):  # untimed warm-up
-            corpus = "".join(json.dumps(json.loads(p.read_text())) + "\n" for p in sorted((ROOT / "cases").glob("*.json")))
+            corpus = "".join(json.dumps(json.loads(p.read_text())) + "\n" for p in sorted((BENCH / "cases").glob("*.json")))
             sh(m["batch_cmd"], str(vd), min(300, a.case_timeout * 20), inp=corpus)
         runs = []
         for i in range(1, a.runs + 1):
@@ -748,12 +954,16 @@ def main():
                 break
         row["runs"] = runs
         good = [x for x in runs if not x.get("error")]
+        if good and m.get("batch_cmd"):
+            row["latency"] = measure_latency(m["batch_cmd"], vd, a, work)
+            log(f"{letter} latency {row['latency'].get('latency_ms')} ms spread={row['latency'].get('spread')} flags={row['latency'].get('flags')}")
         row["loads"] = [x["loadavg_before"][0] for x in runs] + [x["loadavg_after"][0] for x in runs]
         if good:
             r1 = good[0]
             row.update(cases=r1["cases"], cases_ok=r1["cases_ok"], values_ok=r1["values_ok"], values_total=r1["values_total"],
                        errors=r1["errors"], groups=r1["groups"],
-                       latency_ms=med([x["latency_ms"] for x in good]), fits_per_s=med([x["fits_per_s"] for x in good]),
+                       latency_ms=(row.get("latency") or {}).get("latency_ms"),
+                       latency_runpy_ms_info=med([x["latency_ms"] for x in good]), fits_per_s=med([x["fits_per_s"] for x in good]),
                        cold_ms=med([x["cold_ms"] for x in good]), deterministic=all(x.get("deterministic") is not False for x in good),
                        consistent=len({(x["cases_ok"], x["values_ok"]) for x in good}) == 1)
         bad = [x for x in runs if x.get("error")]

@@ -68,7 +68,7 @@ python3 tools/evaluate.py --dry-run --runs 2 --quick --only A,J                 
 
 Fetches A (eve-dogma-rs main) and B–K (eve-dogma-lab variant-x) at the cutoff, builds, runs the official scorer
 `--runs` times (median, loadavg per run, hard timeouts), probes EFT/RPC/search/type, collects maintainability metrics
-and the variants' own tests, and ranks variants that pass every case. Rules and formulas: docstring of
+and the variants' own tests, and ranks variants that pass every case. Always scores against the frozen 1.8.0 case set (bench `3da9671`, 326 cases, extracted with `git archive`, independent of upstream main); latency is its own single-CPU measurement (median of ≥5 samples with sanity checks); a licensing table shows whether each variant can merge into the LGPL-3.0-or-later mainline. Rules and formulas: docstring of
 [tools/evaluate.py](tools/evaluate.py) (also printed in the md output).
 
 ## Plugging a variant in (single run)
