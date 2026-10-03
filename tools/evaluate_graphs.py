@@ -45,9 +45,14 @@ Per variant (sequentially, so variants never compete for the CPU with each other
   5. maint.  static metrics on the variant directory (same heuristics as round 1) + round-2 core LOC = lines added
              in hand-written core source since the merge-base with the round-1 branch the variant started from
              (variant-e/c/g/f), the variant's own test suite, docs, deps.
-SCORING RULES (round 2, plan docs/10-round-2-graphs-plan.md §8)
-  Gate: all graph cases fully correct (every interface offered agrees) AND 326/326 stats cases (unless
-        --no-stats-gate). Ungated variants are listed with the reason, unscored.
+SCORING RULES (round 2, confirmed by the coordinator 2026-10-03; plan docs/10 §8, report docs/13)
+  Official run: python3 tools/evaluate_graphs.py --as-of 2026-10-03T11:00:00+08:00 --runs 3
+  Gate (both required): (a) ALL 178 cases of graph contract 0.2 @ 0397d95 fully correct — every case file in
+        graphs/cases, i.e. the ten graph types incl. ecm_burst AND the error cases (err_*), not only the nine Pyfa
+        graphs — through every interface the variant offers (they must all score 178/178); (b) the branch's
+        underlying stats engine passes bench 1.8.0 (3da9671) 326/326 cases. --no-stats-gate (dev only) marks the
+        output UNOFFICIAL. Ungated variants are listed with the reason, unscored.
+  Builds: no fresh clones; build time is recorded for information only and is NOT scored.
   Total = 0.40·Speed + 0.35·Maintainability + 0.15·Features + 0.10·Portability
   L(x, best, span) = clamp(1 − log10(x/best)/log10(span), 0, 1) for lower-is-better x (as round 1).
   Speed = 0.4·L(1/points-per-s, 100) + 0.4·L(dense latency ms, 100) + 0.2·L(cold ms, 100)
@@ -640,7 +645,8 @@ def features(row):
 RULES_MD = """## Scoring rules (round 2)
 
 - **Version rule:** each variant at its branch HEAD (or the last commit at or before `--as-of`); evaluated read-only from detached worktrees, nothing pushed.
-- **Gate:** every graph case fully correct through every interface the variant offers, and 326/326 bench-1.8.0 stats cases (round-1 commands of the same branch).
+- **Gate (confirmed):** (a) all **178/178** cases of graph contract 0.2 @ `0397d95` — every case incl. `ecm_burst` and the error cases, not only the nine Pyfa graphs — through **every** interface offered; **and** (b) the branch's stats engine passes bench 1.8.0 (`3da9671`) **326/326**. Weights 40/35/15/10. Official cutoff `--as-of 2026-10-03T11:00:00+08:00`.
+- **Builds:** no fresh clones; build time is informational and not scored.
 - **Total = 0.40·Speed + 0.35·Maintainability + 0.15·Features + 0.10·Portability**, `L(x, best, span) = clamp(1 − log10(x/best)/log10(span), 0, 1)`.
 - **Pins:** graph corpus / expected / run_graphs.py from `0397d95` (contract 0.2, 178 cases); stats gate from bench 1.8.0 `3da9671` (326 cases); recorded in the output.
 - **Speed** = 0.4·L(1/points·s⁻¹ batch, start-up excluded) + 0.4·L(dense 500-point damage latency, distinct fits) + 0.2·L(cold start + one request); points/s and cold = medians over runs.
@@ -667,6 +673,11 @@ def write(rows, a, meta):
           "## Ranking", "",
           "| rank | variant | commit (CST) | graph cases | values | stats 1.8.0 | points/s | dense ms | cold ms | speed | maint | features | port | **total** | load (1m) |",
           "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
+    if a.no_stats_gate:
+        md[2:2] = ["**UNOFFICIAL: --no-stats-gate was used, so gate (b) (bench 1.8.0 326/326) was not checked.**", ""]
+    md[-4:-4] = [f"Gate: all {meta['graphs_pin']['graph_cases']} contract-{meta['graphs_pin']['contract_revision']} cases "
+                 f"(incl. ecm_burst and error cases) via every interface AND stats {meta['stats_pin']['cases']}/{meta['stats_pin']['cases']} "
+                 f"(bench {meta['stats_pin']['version']}). Build time is not scored (no fresh clones).", ""]
     order = sorted(rows, key=lambda r: (r.get("rank") or 99, r["variant"]))
     for r in order:
         s = r.get("scores", {})
@@ -876,13 +887,17 @@ def main():
         row["tests"] = {"found": test_command(m, vd)[0] is not None, "status": "not run"} if a.no_tests else run_tests(m, vd, a.test_timeout)
         # gate
         p = row.get("primary") or {}
-        bad_if = [k for k, v in ifs.items() if v.get("cases_ok") != v.get("cases")]
+        n_graph = meta["graphs_pin"]["graph_cases"]  # 178 at contract 0.2
+        n_stats = meta["stats_pin"]["cases"]         # 326 at bench 1.8.0
+        bad_if = [k for k, v in ifs.items() if not (v.get("cases") == n_graph and v.get("cases_ok") == n_graph)]
         st = row["stats"]
         if not ifs:
             pass
         elif bad_if:
             row["gate_reason"] = f"graph corpus not fully correct via {', '.join(bad_if)}: " + "; ".join(
                 f"{k} {ifs[k].get('cases_ok', 'error')}/{ifs[k].get('cases', '–')} {ifs[k].get('error', '')[:120]}" for k in bad_if)
+        elif st.get("status") == "pass" and st.get("cases") != n_stats:
+            row["gate_reason"] = f"stats gate: scored {st.get('cases')} cases, expected {n_stats} (bench 1.8.0)"
         elif st.get("status") not in ("pass", "skipped"):
             row["gate_reason"] = f"stats gate: {st.get('status')} {st.get('cases_ok', '')}/{st.get('cases', '')} {st.get('detail', '')[:200]}"
         else:
