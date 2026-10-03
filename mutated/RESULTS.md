@@ -2,7 +2,7 @@
 
 These are informational, not official. The binaries are the ones already built in the bench's `work/` clones (from each
 variant's last `bench.py` run, so they may be older than the branch heads) and in `/workspace/exct-eve/eve-dogma-rs` for A.
-Variant I is at 349c6fd, the reference implementation of this contract.
+Variant I is at 349c6fd, the reference implementation of this contract. Before the port (9a4844a) it scored the same as A.
 
 | variant | commit | stats cases | values | EFT export | EFT import | failing stats cases |
 |---|---|---|---|---|---|---|
@@ -22,4 +22,4 @@ Common gaps:
 * Every variant ignores the §3.1 implant/booster slot rule, so it fails the `slot_*` cases and `combo_two_boosters_dda_*`.
 * Every variant except E fails the §3.3 effect 2791 override (`combo_nomad_ab_mwd_*`).
 * EFT export: most variants print the request's raw values, not the validated ones (over/under/partial/foreign/empty cases), and do not follow Pyfa's drone full-name order.
-* EFT import: the usual failure is a mutated module with `/offline` before ` [N]`; E has no `eft_parse`.
+* EFT import (A, and the same three rows for most variants): `/offline` before ` [N]` (`state_lse_offline_*`), the header's base name used instead of the item line's (`eftedge_header_base_mismatch`), and a reference without a block treated as an error instead of a plain item (`eftedge_missing_ref`). E has no `eft_parse`.
