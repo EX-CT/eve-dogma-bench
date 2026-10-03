@@ -32,10 +32,21 @@ def items_of(kind, payload):
     return [{"type_id": t["type_id"], "amount": n, "mutation": m} for t, n, m in lst]
 
 
+CRASH = ("AttributeError", "KeyError", "TypeError", "IndexError")
+
+
+def pyfa_crash(msg):
+    """Pyfa failed with an internal exception rather than a parse/validation error (flagged for review)."""
+    return msg.startswith(CRASH) or "substring not found" in msg
+
+
 def expect(raw):
     if "error" in raw:
         code = "UNRECOGNIZED_INPUT" if raw["error"].startswith("Unrecognized") else "IMPORT_ERROR"
-        return {"error": {"code": code, "pyfa": raw["error"]}}
+        r = {"error": {"code": code, "pyfa": raw["error"]}}
+        if pyfa_crash(raw["error"]):
+            r["pyfa_crash"] = True
+        return r
     kind = raw.get("kind")
     ok = raw["ok"]
     if kind is None or kind in FIT_KINDS:
