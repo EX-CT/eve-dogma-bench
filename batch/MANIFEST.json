@@ -2,7 +2,7 @@
  "calcprice_embedded_snapshot": {
   "fits": 1,
   "kind": "calc_price_embedded",
-  "note": "no price inputs: lines priced from the embedded snapshot carry source/layer snapshot and snapshot_time == provenance.price_time (structural; values unknown)",
+  "note": "options.price, no price inputs: lines priced from the embedded snapshot carry source/layer snapshot and snapshot_time == provenance.price_time (structural; values unknown)",
   "ops": []
  },
  "calcprice_file_map": {

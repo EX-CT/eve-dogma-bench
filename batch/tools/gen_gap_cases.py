@@ -147,8 +147,8 @@ add("calcprice_file_snapshot", {"fit": dict(BASE, price_overrides=[{"category_id
 add("calcprice_request_over_file", {"fit": dict(BASE, prices={"isk": {"2889": 777.0}})}, "request > file", kind="calc_price", eargs=A_SNAP)
 add("calcprice_use_snapshot_false", {"fit": dict(BASE, prices={"isk": {"2889": 777.0}, "use_snapshot": False})},
     "use_snapshot false ignores the file", kind="calc_price", eargs=A_SNAP)
-add("calcprice_embedded_snapshot", {"fit": BASE},
-    "no price inputs: lines priced from the embedded snapshot carry source/layer snapshot and snapshot_time == "
+add("calcprice_embedded_snapshot", {"fit": dict(BASE, options={"price": True})},
+    "options.price, no price inputs: lines priced from the embedded snapshot carry source/layer snapshot and snapshot_time == "
     "provenance.price_time (structural; values unknown)", kind="calc_price_embedded")
 
 man = json.loads((ROOT / "batch" / "MANIFEST.json").read_text())
