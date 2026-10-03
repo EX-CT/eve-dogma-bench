@@ -5,8 +5,8 @@ Pyfa graph oracle (oracle/pyfa_graph_oracle.py, GPL test tool).
   python3 graphs/tools/fuzz_graphs.py [--n 400] [--seed 1] [--variants G1,G2,G3,G4] [--work-dir work/graphs-eval]
                                       [--out results/graphs-fuzz] [--record]
 
-1. Generates random GraphRequests over the contract-0.1 feature set (9 graphs, mps/m axes; the 0.2 additions are
-   covered by the corpus and not implemented by every variant yet, so they would only measure missing features): fits drawn from the graph corpus and the 1.8.0 stats
+1. Generates random GraphRequests for contract --contract (default 0.2: 10 graphs incl. ecm_burst, damage %-axes,
+   ewar/RR target fits, out-of-range time_s / resist params; 0.1: the 9 original graphs only): fits drawn from the graph corpus and the 1.8.0 stats
    corpus (cases/*.json, 326 FitRequests), random graph / x axis / y series, random x samples (incl. limiter edges),
    random params, settings and targets (ideal, random profile, random target fit with a resist mode).
 2. Runs every request through each variant's graph-batch command. Variants are the read-only worktrees that
@@ -15,6 +15,8 @@ Pyfa graph oracle (oracle/pyfa_graph_oracle.py, GPL test tool).
 3. Each disagreement goes to the Pyfa graph oracle. Each variant's answer is then scored against the oracle with
    graphs/run_graphs.score_case. Confirmed cases (oracle answered and at least one variant is wrong) are clustered by
    (graph, axis, set of wrong variants, request features).
+   A confirmed wrong answer that is only a 0.2 feature the variant also fails in the scored corpus (its batch
+   failures in results/graphs-eval/raw/<G>/batch/failures.json, same feature tags) is "known (corpus gap)", not new.
 4. --record writes graphs/pending/cases/<id>.json + graphs/pending/expected/<id>.json for one representative per cluster
    and appends a section to graphs/pending.md. Nothing is added to the scored corpus (graphs/cases) automatically.
 Outputs: <out>/fuzz.json (all requests, verdicts), <out>/fuzz.md (summary)."""
@@ -50,6 +52,12 @@ AXES = {
 }
 GRAPH_W = {"damage": 34, "application_profile": 12, "ewar": 10, "remote_reps": 8, "capacitor": 10, "shield_regen": 6,
            "mobility": 6, "warp_time": 7, "lock_time": 7}
+AXES_02 = {
+    "damage": {"tgt_speed_pct": ("dps", "volley", "damage"), "tgt_sig_pct": ("dps", "volley", "damage")},
+    "ecm_burst": {"tgt_scan_res_mm": ("src_damage", "tgt_lock_time_s", "tgt_lock_uptime_s"), "tgt_dps": ("src_damage",)},
+}
+GRAPH_W_02 = {"ecm_burst": 8}
+CONTRACT = {"v": "0.2"}
 GRAPH_FITS = {}  # graph -> fits from the graph corpus that exercise it (biases sampling toward meaningful fits)
 
 
@@ -78,9 +86,15 @@ def xs_for(rng, graph, axis):
         hi = rng.choice([300, 1500, 5000])
     elif axis == "tgt_sig_m":
         hi = rng.choice([100, 1000, 20000])
+    elif axis == "tgt_scan_res_mm":
+        hi = rng.choice([50, 300, 1500])
+    elif axis == "tgt_dps":
+        hi = rng.choice([100, 1000, 5000])
+    elif axis in ("tgt_speed_pct", "tgt_sig_pct"):
+        hi = rng.choice([100, 200, 400])
     else:  # pct axes
         hi = 100
-    lo = 1 if axis == "tgt_sig_m" else 0  # sig <= 0 is outside the limiter (null) and the oracle divides by it
+    lo = 1 if axis in ("tgt_sig_m", "tgt_sig_pct", "tgt_scan_res_mm", "tgt_dps") else 0  # limiter edges (≤ 0 → null; oracle divides)
     vals = sorted({round(rng.uniform(lo, hi), rng.choice([0, 1, 3])) for _ in range(n)})
     if rng.random() < 0.3 and lo == 0:
         vals = [0] + vals
@@ -112,11 +126,24 @@ def rand_params(rng, graph, axis):
         if axis != "distance_m" and rng.random() < 0.6:
             p["distance_m"] = rng.choice([0, 2000, 10000, 30000, 70000])
         if axis != "time_s" and rng.random() < 0.4:
-            p["time_s"] = rng.choice([0, 5, 20, 60, 400])
+            p["time_s"] = rng.choice([0, 5, 20, 60, 400] + ([2499, 2600, 4000] if CONTRACT["v"] >= "0.2" else []))
     if graph == "remote_reps" and rng.random() < 0.3:
         p["anc_reload"] = rng.random() < 0.5
     if graph == "ewar" and rng.random() < 0.4:
-        p["resist"] = rng.choice([0.1, 0.3, 0.6])
+        p["resist"] = rng.choice([0.1, 0.3, 0.6] + ([-0.5, 1.5] if CONTRACT["v"] >= "0.2" else []))
+    if graph == "ecm_burst":
+        if axis != "tgt_scan_res_mm" and rng.random() < 0.5:
+            p["tgt_scan_res_mm"] = rng.choice([30, 150, 700, 2000])
+        if axis != "tgt_dps" and rng.random() < 0.5:
+            p["tgt_dps"] = rng.choice([50, 200, 800, 3000])
+        if rng.random() < 0.3:
+            p["uptime_adj_s"] = rng.choice([0, 1, 3])
+        if rng.random() < 0.3:
+            p["uptime_amount_limit"] = rng.choice([1, 2, 3, 5, 2.7])
+        if rng.random() < 0.3:
+            p["apply_damps"] = rng.random() < 0.5
+        if rng.random() < 0.3:
+            p["apply_drones"] = rng.random() < 0.5
     if graph == "capacitor":
         if rng.random() < 0.5:
             p["cap_start_pct"] = rng.choice([0, 30, 50, 100])
@@ -173,6 +200,8 @@ def gen(rng, graph_fits, stats_fits, k):
                 s[key] = rng.choice(choices)
         if s:
             r["settings"] = s
+    elif graph in ("ewar", "remote_reps") and CONTRACT["v"] >= "0.2" and rng.random() < 0.45:
+        r["target"] = {"fit": copy.deepcopy(rng.choice(graph_fits + stats_fits[:60]))}
     r["_id"] = f"fz{k:04d}-" + hashlib.sha1(json.dumps(r, sort_keys=True).encode()).hexdigest()[:8]
     return r
 
@@ -250,6 +279,40 @@ def features(r):
     return f
 
 
+def tags02(r):
+    """contract-0.2 features a request uses (to tell new bugs from corpus-known feature gaps)"""
+    t = set()
+    g, ax, p = r.get("graph"), (r.get("x") or {}).get("axis"), r.get("params") or {}
+    if g == "ecm_burst":
+        t.add("ecm_burst")
+    if ax in ("tgt_speed_pct", "tgt_sig_pct"):
+        t.add("pct-axis")
+    if g in ("ewar", "remote_reps") and (r.get("target") or {}).get("fit"):
+        t.add("ewar/rr-target-fit")
+    tp = p.get("time_s")
+    if isinstance(tp, (int, float)) and (tp > 2500 or tp < 0):
+        t.add("time-clamp")
+    rs = p.get("resist")
+    if isinstance(rs, (int, float)) and not 0 <= rs <= 1:
+        t.add("resist-clamp")
+    return t
+
+
+def corpus_gaps(names):
+    """per variant: 0.2 feature tags of the scored corpus cases it fails (batch interface, evaluate_graphs run)"""
+    gaps = {}
+    for g in names:
+        f = ROOT / "results/graphs-eval/raw" / g / "batch/failures.json"
+        tags = set()
+        if f.exists():
+            for cid in json.loads(f.read_text()):
+                cp = ROOT / "graphs/cases" / f"{cid}.json"
+                if cp.exists():
+                    tags |= tags02(json.loads(cp.read_text()))
+        gaps[g] = tags
+    return gaps
+
+
 def ship_name(type_id, names):
     return names.get(type_id, str(type_id))
 
@@ -263,12 +326,18 @@ def main():
     ap.add_argument("--out", default=str(ROOT / "results" / "graphs-fuzz"))
     ap.add_argument("--oracle-sample", type=int, default=0,
                     help="also adjudicate this many randomly chosen requests on which all variants agree")
+    ap.add_argument("--contract", default="0.2", choices=["0.1", "0.2"])
     ap.add_argument("--record", action="store_true", help="write confirmed clusters to graphs/pending/ and graphs/pending.md")
     a = ap.parse_args()
     out = pathlib.Path(a.out)
     out.mkdir(parents=True, exist_ok=True)
     work = pathlib.Path(a.work_dir).resolve()
     rng = random.Random(a.seed)
+    CONTRACT["v"] = a.contract
+    if a.contract >= "0.2":
+        for gname, ax in AXES_02.items():
+            AXES.setdefault(gname, {}).update(ax)
+        GRAPH_W.update(GRAPH_W_02)
     graph_fits, stats_fits = fit_pool()
     reqs = [gen(rng, graph_fits, stats_fits, k) for k in range(a.n)]
     variants = {}
@@ -300,6 +369,8 @@ def main():
     t0 = time.time()
     ora = oracle([reqs[i] for i in dis + sample]) if dis or sample else {}
     print(f"oracle: {len(ora)} answers in {time.time() - t0:.0f} s", flush=True)
+    gaps = corpus_gaps(names)
+    print("corpus 0.2 feature gaps: " + json.dumps({g: sorted(t) for g, t in gaps.items()}), flush=True)
     verdicts = []
     for i in dis + sample:
         r = reqs[i]
@@ -318,8 +389,10 @@ def main():
                 if bad or not tot:
                     resp = answers[g][i]
                     detail[g] = (resp or {}).get("error") if isinstance(resp, dict) and "error" in resp else bad[:3]
-            v.update(status="confirmed" if wrong else "all match oracle", wrong=wrong, right=right, detail=detail,
-                     expected=exp)
+            tg = sorted(tags02(r))
+            known = bool(wrong) and bool(tg) and all(set(tg) & gaps[g] for g in wrong)
+            v.update(status=("known (corpus gap)" if known else "confirmed") if wrong else "all match oracle",
+                     wrong=wrong, right=right, detail=detail, expected=exp, tags02=tg)
         verdicts.append(v)
     clusters = collections.OrderedDict()
     for v in verdicts:
@@ -331,6 +404,9 @@ def main():
                "disagreements": len(dis), "oracle_sampled_agreeing": len(sample),
                "agreeing_sample_wrong": sum(1 for v in verdicts if v["kind"] == "agreeing sample" and v["status"] == "confirmed"),
                "confirmed": sum(1 for v in verdicts if v["status"] == "confirmed"),
+               "known_corpus_gap": sum(1 for v in verdicts if v["status"] == "known (corpus gap)"),
+               "known_gap_by_variant": dict(collections.Counter(g for v in verdicts if v["status"] == "known (corpus gap)" for g in v["wrong"])),
+               "corpus_gaps": {g: sorted(t) for g, t in gaps.items()}, "contract": a.contract,
                "oracle_errors": sum(1 for v in verdicts if v["status"] == "oracle error"),
                "all_match_oracle": sum(1 for v in verdicts if v["status"] == "all match oracle"),
                "wrong_by_variant": dict(collections.Counter(g for v in verdicts if v["status"] == "confirmed" for g in v["wrong"])),
@@ -338,11 +414,12 @@ def main():
                             for k, vs in clusters.items()]}
     (out / "fuzz.json").write_text(json.dumps({"summary": summary, "verdicts": verdicts,
                                                "requests": {r["_id"]: strip(r) for r in (reqs[i] for i in dis)}}, indent=1))
-    md = [f"# Graph differential fuzz (seed {a.seed}, {len(reqs)} requests)", "",
+    md = [f"# Graph differential fuzz (contract {a.contract}, seed {a.seed}, {len(reqs)} requests)", "",
           "Variants: " + ", ".join(f"{g} `{s[:7]}`" for g, s in summary["variants"].items()), "",
           f"- disagreements between variants: **{len(dis)}**",
           f"- agreeing requests also checked against the oracle: {len(sample)} (all variants wrong together: {summary['agreeing_sample_wrong']})",
           f"- confirmed by the Pyfa oracle (≥ 1 variant wrong): **{summary['confirmed']}**",
+          f"- wrong only on a 0.2 feature the variant also fails in the scored corpus (not new): {summary['known_corpus_gap']} {summary['known_gap_by_variant']}",
           f"- adjudicated requests where every variant matches the oracle: {summary['all_match_oracle']}",
           f"- oracle could not evaluate: {summary['oracle_errors']}",
           f"- wrong answers by variant: {summary['wrong_by_variant']}", "",
