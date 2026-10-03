@@ -1,4 +1,4 @@
-# eve-dogma request/response contract (v1, revision 1.4.4)
+# eve-dogma request/response contract (v1, revision 1.4.5)
 
 Stateless: **one JSON `FitRequest` in → one JSON `FitStats` out.** No hidden state, no clocks, no network.
 The same request with the same dataset must give byte-identical output. Unknown request fields are ignored.
@@ -139,7 +139,7 @@ effect reads its module's `overload*` attribute (e.g. `overloadHardeningBonus`) 
 list have applied their modifiers. Example: a Tengu with its Defensive subsystem listed after an overheated shield
 hardener gets the hardener's base overload bonus; with the subsystem listed first it gets the boosted one.
 
-**Module state correction** (draft revision 1.4.5, pending-1.10; coordinator ruling 2026-10-03 11:19 CST, reverses the
+**Module state correction** (revision 1.4.5, bench 1.10.0; coordinator ruling 2026-10-03 11:19 CST, reverses the
 earlier "unusable state keeps requested value" ruling; principle: align with Pyfa). For each entry of `modules[]`:
 - `rig` and `subsystem` modules are always `online` unless requested `offline` (no warning).
 - A requested `active` or `overheated` state the module cannot use is **corrected to `online`**, exactly like the Pyfa
@@ -201,6 +201,27 @@ CHARGE_GROUP CHARGE_SIZE CHARGE_CAPACITY MISSING_SKILL`.
 Conventions matching Pyfa (deliberate): volley is spooled; local nosferatu is cap income; missiles use the pilot's
 `missileDamageMultiplier`; fighters use Pyfa's default abilities; system security defaults to nullsec.
 
+## Draft 1.10: stats-ext (proposed fields, scored only by `ext/`, not by run.py)
+
+Proposed for docs/20 P0-3 / P0-4. Shapes may still change before they enter a revision; `ext/` scores them against
+Pyfa so an engine can implement them against fixed numbers. All optional (absent = not implemented).
+
+- `mining` {modules_m3_s, drones_m3_s, total_m3_s, modules_drain_m3_s, drones_drain_m3_s}: ore/ice/gas yield per
+  second of active mining modules and mining drones; `*_drain_*` = volume removed from the asteroid incl. residue
+  (Pyfa `minerYield`, `droneYield`, `minerDrain`, `droneDrain`).
+- `outgoing` {current, spool_min, spool_max} each {shield_per_s, armor_per_s, hull_per_s, capacitor_per_s}: remote
+  repair HP/s and capacitor transfer GJ/s of active modules and drones (Pyfa `getRemoteReps`; current = request /
+  default spool, min/max = spool 0 / 1).
+- `drones.items[]` / `fighters.items[]` {drone_index | fighter_index, hp{shield,armor,hull}, ehp{shield,armor,hull},
+  shield_peak_recharge_hp_s}: per drone type entry (one drone, not × quantity); ehp uses the request damage pattern
+  (Pyfa drone/fighter `hp`, `ehp`, `calculateShieldRecharge`).
+- `bombing` {em, thermal, kinetic, explosive} each {covert_ops_0 … covert_ops_5}: bombs of that type needed to
+  kill this fit (Pyfa bombing panel: Electron / Scorch / Concussion / Shrapnel bomb, damage × (1 + 0.05 × Covert Ops
+  level) × red giant `smartbombDamageMultiplier` × min(1, sig / bomb sig), result ceil to 0.1).
+- `modules[].heat` {burn_cycles, burnout_s} for overheated modules (Pyfa heat column `Thermodynamics`).
+- `options.include_attributes` also returns `attributes.fighters[]` {fighter_index, attributes} (scored by `effects/`
+  as a separate count).
+
 ## Changelog
 - v1 (2026-10-03): initial contract.
 - v1.1 (2026-10-03): `fleet.booster_fits` implemented (oracle-verified). `projected[kind=fit]` and charges on
@@ -244,7 +265,7 @@ Conventions matching Pyfa (deliberate): volley is spooled; local nosferatu is ca
   AoE cloud environment beacons (warfare buffs in the fleet-buff pool, drone scope, penalties), incursion system
   effects and burst projectors (full strength, no range factor). Doomsday / lance DPS = subcycles × volley / cycle
   (Pyfa `getVolleyParameters`). `cpu_used` / `pg_used` round like Python `round(v, 2)`. Oracle-verified (bench 1.8.0).
-- v1.4.5 (draft, pending-1.10, not released; applies on top of 1.4.4): module state correction (see "Semantics"):
+- v1.4.5 (bench 1.10.0, released 2026-10-03; applies on top of 1.4.4): module state correction (see "Semantics"):
   an impossible requested `active`/`overheated` state is corrected to `online`, `modules[].state` reports the
   corrected state, and a `warnings[]` entry `/modules/N: state '<requested>' not possible for this module, using online`
   is emitted. Reverses the 2026-10-03 ruling that kept the requested value. Values are unchanged for every scored case

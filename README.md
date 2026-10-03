@@ -1,7 +1,9 @@
 # eve-dogma-bench
 
-> **Bench 1.9.0** (released 2026-10-03, tag `v1.9.0`): 331 cases, 22 046 values, contract 1.4.4. The round-1
-> evaluation (`tools/evaluate.py`) stays pinned to the frozen 1.8.0 case set (`3da9671`). See CHANGELOG.md.
+> **Bench 1.10.0** (released 2026-10-03, tag `v1.10.0`): 339 core cases, 22 513 values, contract 1.4.5; new suites
+> `effects/` (2 378 per-effect Pyfa micro-fits, full attribute dump) and `ext/` (116: mining, outgoing RR, drone EHP,
+> bombing, heat, fleet.buffs, overrides). The round-1 evaluation (`tools/evaluate.py`) stays pinned to the frozen
+> 1.8.0 case set (`3da9671`). See CHANGELOG.md.
 
 
 Shared, engine-agnostic test & benchmark harness for EVE Online fitting engines (EX-CT).
@@ -16,6 +18,10 @@ expected_extra/ informational checks outside accuracy scoring (eft_export.jsonl:
 oracle/      pyfa_oracle.py (GPL-3.0 test tool: runs Pyfa's eos engine headless as a black box)
 tools/       metrics.py (metric -> JSON pointer, tolerance), make_expected.py (regenerate expected/)
 run.py       the runner / scorer
+effects/     per-effect suite (cases, expected, MANIFEST.json, tools/score.py), see effects/README.md
+ext/         stats-ext / heat / fleet.buffs / overrides suite (draft fields), see ext/README.md
+inventory/   suites.yaml + tests.yaml for tools/check_inventory.py (docs/19 item -> tests gate)
+results-1.10/ release results of the 1.10 suites (tracked; results/ itself is local)
 results/     scorecards (results/<variant>/scorecard.{md,json}, failures.json)
 ```
 
@@ -95,7 +101,7 @@ determinism (identical output for identical input), plus `failures.json` with ev
 
 ## Corpus
 
-331 cases: 101 dogma-engine (EVE Ship Fit) community/regression fits, 35 hand-written fits (frigates, destroyers,
+339 cases (331 of 1.9.0 + 8 `e_fz_*` from the differential fuzz): 101 dogma-engine (EVE Ship Fit) community/regression fits, 35 hand-written fits (frigates, destroyers,
 T3D modes, cruisers, HACs, T3C subsystems, battleships, marauders in bastion, logistics, command ships, interdictor,
 mining, carriers/supercarrier with fighters, structures with rigs/service modules, titan lance, HIC bubble, emergency hull energizer, entosis, micro jump field generator, breacher pods), 195 variations (fleet command booster fits, projected whole fits, incoming remote reps/neuts/nos/cap transfers, scripted projected modules, wormhole environments C1–C6, abyssal weather / AoE clouds, incursion system effects, burst projectors and Standup weapon disruptors, implant sets, combat boosters, overheat module order, EWAR drones, skills 0/2/3/4,
 damage patterns incl. Reactive Armor Hardener adaptation, reload, projected webs/target painters/damps/web drones/TD drones,
@@ -107,10 +113,27 @@ metrics excluded because Pyfa's data is older than the SDE or because Pyfa disag
 
 ## Current results
 
-| variant | cases | values | latency/fit | batch fits/s | cold start |
-|---|---|---|---|---|---|
-| A: eve-dogma-rs (Rust, lazy memoised dogma graph; 9f8579c, bench 1.8.0, load ≈10) | 326/326 | 21 051/21 051 | 0.51 ms | 1 429 | 147 ms |
-| Pyfa (reference, Python) | – | – | 10–31 ms | – | ~390 ms first calc + startup |
+Bench 1.10.0, 2026-10-03 12:05 CST, shared box (load average 0.5–1.6 during the runs). Core = `run.py` on `cases/`
+(339 cases, 22 513 values); effects = `effects/tools/score.py`; ext = `ext/tools/score.py`.
+
+| engine | core cases | core values | effects | ext | batch fits/s | latency/fit | cold start + calc |
+|---|---|---|---|---|---|---|---|
+| F: eve-dogma-lab variant-f-features 4b8f5f9 | 339/339 | 22 513/22 513 | 2 107/2 378 | 18/116 | 20 683 | 0.036 ms | 4.6 ms |
+| eve-dogma-rs d6043a7 | 325/339 | 22 499/22 513 | 2 095/2 378 | 18/116 | 5 338 | 0.128 ms | 9.2 ms |
+| Pyfa (reference, Python) | – | – | – | – | – | 10–31 ms | ~390 ms first calc + startup |
+
+- eve-dogma-rs core failures: `e_fz_cloak_wcs_penalty_group_ninazu e_fz_drone_speed_orbweaver_dagon
+  e_fz_drone_speed_torafugu_odysseus e_fz_offline_cloak_hulk e_fz_offline_expanded_cargohold_rifter exct_hel
+  exct_nidhoggur fighters_mwd_nidhoggur skills0_hel skills0_nidhoggur skills2_hel skills2_nidhoggur skills4_hel
+  skills4_nidhoggur` (mostly warp_scramble_status, +drone_dps / scan_resolution / max_velocity).
+- ext: both engines pass fleet.buffs 12/12 and overrides 6/6; mining, outgoing, drone_ehp, bombing and heat are not
+  implemented by either (0/98, proposed fields).
+- effects: failure classes per engine in `results-1.10/effects/failure-classes.txt`. F's largest:
+  `moduleRepairRate` on subsystems/modules (150 cases), `isBlackOpsJump{Conduit,Portal}Passenger` on subsystems (139),
+  `ship.conduitJumpPassengerCount` 30 vs Pyfa 130 (91), no `attributes.fighters` dump (38), then 5 or fewer each
+  (gateScrambleStatus, miningScannerUpgrade, drone miningDroneAmountPercent / shieldCapacity, structure armor HP and
+  scan resolution rigs, missile damage with a launcher-speed effect, triage drone damage, breacher pod resistance).
+- Per-case JSON: `results-1.10/{core,effects,ext}/`.
 
 ## License
 
