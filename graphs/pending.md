@@ -131,3 +131,17 @@ Variants: G1 `1c8424c`, G2 `96e612a`, G3 `a6e8dc5`, G4 `7c35c04`. Disagreements 
 - **fuzz_damage_tgt_sig_m_fz0137-dd056346**: damage / tgt_sig_m; features `tgt-ideal atk_speed_pct distance_m tgt_speed_pct time_s`; wrong: **G2**; matches oracle: G1, G3, G4; 2 fuzz request(s) in this cluster. Example: `{"G2": [{"y": "damage", "x": 271.0, "got": 8791.340918509448, "want": 9955.487544114776}, {"y": "damage", "x": 518.208, "got": 10124.687342618283, "want": 11288.833644978295}, {"y": "damage", "x": 1694.477, "got": 10729.4204628435, "want": 11893.566958188765}]}`
 - **fuzz_application_profile_distance_m_fz0278-6a1506cd**: application_profile / distance_m; features `tgt-fit ignore_drone_control_range=False ignore_lock_range=False ignore_resists=False atk_angle_deg tgt_angle_deg`; wrong: **G3**; matches oracle: G1, G2, G4; 2 fuzz request(s) in this cluster. Example: `{"G3": [{"y": "dps", "x": 1282.095, "got": 80.60343982590258, "want": 105.9910781927622}, {"y": "dps", "x": 30521.9, "got": 80.60343982590258, "want": 105.9910781927622}, {"y": "dps", "x": 56140.0, "got": 58.36927738355493, "want": 76.75382507680165}]}`
 - **fuzz_damage_time_s_fz0374-9483420c**: damage / time_s; features `tgt-fit ignore_drone_control_range=True atk_angle_deg tgt_angle_deg tgt_speed_pct`; wrong: **G2**; matches oracle: G1, G3, G4; 1 fuzz request(s) in this cluster. Example: `{"G2": [{"y": "damage", "x": 44.0, "got": 23062.01181306945, "want": 24226.158301673775}]}`
+
+### Adjudication notes (G3 maintainer, 2026-10-03 09:30 CST)
+
+- seed 1 `fuzz_application_profile_distance_m_fz0185-c3a9d7ab` (G3 wrong): fixed in graphs-g3 a6e8dc5. Projected TPs and webs now
+  stack with the target fit's own penalised multipliers (Pyfa `getModifiedItemAttrExtended`). Cause: CDFE rig sig drawbacks on
+  the Tengu target. 30 G3 stress outputs changed, and all 30 now match the oracle.
+- seed 2 `fuzz_application_profile_distance_m_fz0278-6a1506cd` (G3 wrong): fixed in graphs-g3 61ad5ae (launcher damage-type
+  multipliers; the wrong torpedo was picked against armor resists).
+- seed 2 `fuzz_damage_distance_m_fz0038-7ba04408` (G2 + G3 wrong, exactly ×2): this is a **stats-engine** difference, not a
+  graph one. The source is a Vargur with **Bastion Module I in state `overheated`**. Pyfa's stats oracle (`oracle/pyfa_oracle.py`)
+  gives weapon_dps 1356.36. variant-g gives 2712.72 and the volley is identical, so the difference is the rate of fire. With the
+  bastion `active`, every variant agrees with Pyfa. variant-c (G2's base) behaves the same as variant-g. This is a candidate for
+  the stats corpus (1.9.0 pending), not for graphs. The bastion can't be overheated in game, so the contract may want to state
+  how an invalid `overheated` state is handled.
