@@ -1,0 +1,10 @@
+{
+ "case": "evemon_bad_root",
+ "feature": "character.import_evemon",
+ "item": "CHR-004",
+ "oracle": "pyfa-service",
+ "result": {
+  "error": "INVALID_CHARACTER_XML"
+ },
+ "source": "hand-built (Pyfa lookup oracle)"
+}

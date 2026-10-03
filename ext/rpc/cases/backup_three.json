@@ -1,0 +1,154 @@
+{
+ "method": "fits.backup",
+ "params": {
+  "fits": [
+   {
+    "fit": {
+     "boosters": [],
+     "cargo": [],
+     "character": {
+      "security_status": null,
+      "skills": {
+       "default_level": 5,
+       "levels": {}
+      }
+     },
+     "damage_pattern": null,
+     "drones": [],
+     "environment": {
+      "effect_type_ids": [],
+      "system_security": null
+     },
+     "fighters": [],
+     "fleet": {
+      "booster_fits": [],
+      "buffs": []
+     },
+     "implants": [],
+     "modules": [
+      {
+       "charge_type_id": 210,
+       "mutation": null,
+       "spool": null,
+       "state": "active",
+       "type_id": 2404
+      },
+      {
+       "charge_type_id": 210,
+       "mutation": null,
+       "spool": null,
+       "state": "active",
+       "type_id": 2404
+      }
+     ],
+     "options": {},
+     "projected": [],
+     "schema_version": 1,
+     "ship": {
+      "mode_type_id": null,
+      "type_id": 602
+     }
+    },
+    "name": "Kestrel LML"
+   },
+   {
+    "fit": {
+     "boosters": [],
+     "cargo": [],
+     "character": {
+      "security_status": null,
+      "skills": {
+       "default_level": 5,
+       "levels": {}
+      }
+     },
+     "damage_pattern": null,
+     "drones": [
+      {
+       "active": 5,
+       "mutation": null,
+       "quantity": 5,
+       "type_id": 2185
+      }
+     ],
+     "environment": {
+      "effect_type_ids": [],
+      "system_security": null
+     },
+     "fighters": [],
+     "fleet": {
+      "booster_fits": [],
+      "buffs": []
+     },
+     "implants": [],
+     "modules": [
+      {
+       "charge_type_id": null,
+       "mutation": null,
+       "spool": null,
+       "state": "active",
+       "type_id": 4405
+      }
+     ],
+     "options": {},
+     "projected": [],
+     "schema_version": 1,
+     "ship": {
+      "mode_type_id": null,
+      "type_id": 626
+     }
+    },
+    "name": "Vexor drones"
+   },
+   {
+    "fit": {
+     "boosters": [],
+     "cargo": [],
+     "character": {
+      "security_status": null,
+      "skills": {
+       "default_level": 5,
+       "levels": {}
+      }
+     },
+     "damage_pattern": null,
+     "drones": [],
+     "environment": {
+      "effect_type_ids": [],
+      "system_security": null
+     },
+     "fighters": [],
+     "fleet": {
+      "booster_fits": [],
+      "buffs": []
+     },
+     "implants": [],
+     "modules": [
+      {
+       "charge_type_id": null,
+       "mutation": null,
+       "spool": null,
+       "state": "active",
+       "type_id": 20351
+      },
+      {
+       "charge_type_id": null,
+       "mutation": null,
+       "spool": null,
+       "state": "active",
+       "type_id": 2048
+      }
+     ],
+     "options": {},
+     "projected": [],
+     "schema_version": 1,
+     "ship": {
+      "mode_type_id": null,
+      "type_id": 627
+     }
+    },
+    "name": "Thorax plate"
+   }
+  ]
+ }
+}

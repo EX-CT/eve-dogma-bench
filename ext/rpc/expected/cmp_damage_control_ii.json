@@ -1,0 +1,181 @@
+{
+ "case": "cmp_damage_control_ii",
+ "feature": "item.compare",
+ "item": "MKT-004",
+ "oracle": "pyfa-service",
+ "result": {
+  "items": [
+   {
+    "attributes": {
+     "armorEmDamageResonance": 0.925,
+     "cpu": 15.0,
+     "hullEmDamageResonance": 0.75,
+     "power": 1.0,
+     "shieldEmDamageResonance": 0.95
+    },
+    "type_id": 521
+   },
+   {
+    "attributes": {
+     "armorEmDamageResonance": 0.9,
+     "cpu": 25.0,
+     "hullEmDamageResonance": 0.7,
+     "power": 1.0,
+     "shieldEmDamageResonance": 0.925
+    },
+    "type_id": 2046
+   },
+   {
+    "attributes": {
+     "armorEmDamageResonance": 0.85,
+     "cpu": 30.0,
+     "hullEmDamageResonance": 0.6,
+     "power": 1.0,
+     "shieldEmDamageResonance": 0.875
+    },
+    "type_id": 2048
+   },
+   {
+    "attributes": {
+     "armorEmDamageResonance": 0.875,
+     "cpu": 20.0,
+     "hullEmDamageResonance": 0.65,
+     "power": 1.0,
+     "shieldEmDamageResonance": 0.9
+    },
+    "type_id": 5839
+   },
+   {
+    "attributes": {
+     "armorEmDamageResonance": 0.85,
+     "cpu": 16.0,
+     "hullEmDamageResonance": 0.6,
+     "power": 1.0,
+     "shieldEmDamageResonance": 0.875
+    },
+    "type_id": 23418
+   },
+   {
+    "attributes": {
+     "armorEmDamageResonance": 0.835,
+     "cpu": 18.0,
+     "hullEmDamageResonance": 0.575,
+     "power": 1.0,
+     "shieldEmDamageResonance": 0.86
+    },
+    "type_id": 41200
+   },
+   {
+    "attributes": {
+     "armorEmDamageResonance": 0.835,
+     "cpu": 18.0,
+     "hullEmDamageResonance": 0.575,
+     "power": 1.0,
+     "shieldEmDamageResonance": 0.86
+    },
+    "type_id": 41201
+   },
+   {
+    "attributes": {
+     "armorEmDamageResonance": 0.835,
+     "cpu": 18.0,
+     "hullEmDamageResonance": 0.575,
+     "power": 1.0,
+     "shieldEmDamageResonance": 0.86
+    },
+    "type_id": 41202
+   },
+   {
+    "attributes": {
+     "armorEmDamageResonance": 0.81,
+     "cpu": 30.0,
+     "hullEmDamageResonance": 0.55,
+     "power": 1.0,
+     "shieldEmDamageResonance": 0.82
+    },
+    "type_id": 41203
+   },
+   {
+    "attributes": {
+     "armorEmDamageResonance": 0.81,
+     "cpu": 30.0,
+     "hullEmDamageResonance": 0.55,
+     "power": 1.0,
+     "shieldEmDamageResonance": 0.82
+    },
+    "type_id": 41204
+   },
+   {
+    "attributes": {
+     "armorEmDamageResonance": 0.8,
+     "cpu": 32.0,
+     "hullEmDamageResonance": 0.525,
+     "power": 1.0,
+     "shieldEmDamageResonance": 0.81
+    },
+    "type_id": 41205
+   },
+   {
+    "attributes": {
+     "armorEmDamageResonance": 0.8,
+     "cpu": 32.0,
+     "hullEmDamageResonance": 0.525,
+     "power": 1.0,
+     "shieldEmDamageResonance": 0.81
+    },
+    "type_id": 41206
+   },
+   {
+    "attributes": {
+     "armorEmDamageResonance": 0.79,
+     "cpu": 34.0,
+     "hullEmDamageResonance": 0.5,
+     "power": 1.0,
+     "shieldEmDamageResonance": 0.8
+    },
+    "type_id": 41207
+   },
+   {
+    "attributes": {
+     "armorEmDamageResonance": 0.79,
+     "cpu": 34.0,
+     "hullEmDamageResonance": 0.5,
+     "power": 1.0,
+     "shieldEmDamageResonance": 0.8
+    },
+    "type_id": 41208
+   },
+   {
+    "attributes": {
+     "armorEmDamageResonance": 0.78,
+     "cpu": 36.0,
+     "hullEmDamageResonance": 0.475,
+     "power": 1.0,
+     "shieldEmDamageResonance": 0.79
+    },
+    "type_id": 41210
+   },
+   {
+    "attributes": {
+     "armorEmDamageResonance": 0.78,
+     "cpu": 36.0,
+     "hullEmDamageResonance": 0.475,
+     "power": 1.0,
+     "shieldEmDamageResonance": 0.79
+    },
+    "type_id": 41211
+   },
+   {
+    "attributes": {
+     "armorEmDamageResonance": 0.85,
+     "cpu": 22.0,
+     "hullEmDamageResonance": 0.6,
+     "power": 1.0,
+     "shieldEmDamageResonance": 0.875
+    },
+    "type_id": 95414
+   }
+  ]
+ },
+ "source": "hand-built (Pyfa lookup oracle)"
+}

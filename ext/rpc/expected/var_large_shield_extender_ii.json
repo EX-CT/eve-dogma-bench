@@ -1,0 +1,19 @@
+{
+ "case": "var_large_shield_extender_ii",
+ "feature": "item.variations",
+ "item": "ENG-MOD-013",
+ "oracle": "pyfa-service",
+ "result": {
+  "type_ids": [
+   3839,
+   3841,
+   8419,
+   8529,
+   20631,
+   28744,
+   31930,
+   31932
+  ]
+ },
+ "source": "hand-built (Pyfa lookup oracle)"
+}

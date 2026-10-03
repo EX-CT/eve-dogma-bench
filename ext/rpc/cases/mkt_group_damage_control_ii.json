@@ -1,0 +1,6 @@
+{
+ "method": "market.group",
+ "params": {
+  "market_group_id": 615
+ }
+}

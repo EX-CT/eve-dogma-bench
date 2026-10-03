@@ -1,0 +1,13 @@
+{
+ "method": "item.compare",
+ "params": {
+  "attributes": [
+   "cpu",
+   "power",
+   "hullEmDamageResonance",
+   "armorEmDamageResonance",
+   "shieldEmDamageResonance"
+  ],
+  "type_id": 2048
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "method": "item.compare",
+ "params": {
+  "attributes": [
+   "cpu",
+   "power",
+   "speedFactor",
+   "capacitorNeed",
+   "duration"
+  ],
+  "type_id": 438
+ }
+}

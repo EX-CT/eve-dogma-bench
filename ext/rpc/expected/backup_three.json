@@ -1,0 +1,65 @@
+{
+ "case": "backup_three",
+ "feature": "fits.backup",
+ "item": "DB-003",
+ "oracle": "pyfa-service",
+ "parsed": [
+  {
+   "hardware": [
+    [
+     "cargo",
+     "Scourge Light Missile",
+     106
+    ],
+    [
+     "hi slot 0",
+     "Light Missile Launcher II",
+     1
+    ],
+    [
+     "hi slot 1",
+     "Light Missile Launcher II",
+     1
+    ]
+   ],
+   "name": "Kestrel LML",
+   "ship": "Kestrel"
+  },
+  {
+   "hardware": [
+    [
+     "drone bay",
+     "Hammerhead II",
+     5
+    ],
+    [
+     "low slot 0",
+     "Drone Damage Amplifier II",
+     1
+    ]
+   ],
+   "name": "Vexor drones",
+   "ship": "Vexor"
+  },
+  {
+   "hardware": [
+    [
+     "low slot 0",
+     "800mm Steel Plates II",
+     1
+    ],
+    [
+     "low slot 1",
+     "Damage Control II",
+     1
+    ]
+   ],
+   "name": "Thorax plate",
+   "ship": "Thorax"
+  }
+ ],
+ "result": {
+  "xml": "<?xml version=\"1.0\" ?>\n<fittings count=\"3\">\n\t<fitting name=\"Kestrel LML\">\n\t\t<description value=\"\"/>\n\t\t<shipType value=\"Kestrel\"/>\n\t\t<hardware type=\"Light Missile Launcher II\" slot=\"hi slot 0\"/>\n\t\t<hardware type=\"Light Missile Launcher II\" slot=\"hi slot 1\"/>\n\t\t<hardware qty=\"106\" slot=\"cargo\" type=\"Scourge Light Missile\"/>\n\t</fitting>\n\t<fitting name=\"Vexor drones\">\n\t\t<description value=\"\"/>\n\t\t<shipType value=\"Vexor\"/>\n\t\t<hardware type=\"Drone Damage Amplifier II\" slot=\"low slot 0\"/>\n\t\t<hardware qty=\"5\" slot=\"drone bay\" type=\"Hammerhead II\"/>\n\t</fitting>\n\t<fitting name=\"Thorax plate\">\n\t\t<description value=\"\"/>\n\t\t<shipType value=\"Thorax\"/>\n\t\t<hardware type=\"800mm Steel Plates II\" slot=\"low slot 0\"/>\n\t\t<hardware type=\"Damage Control II\" slot=\"low slot 1\"/>\n\t</fitting>\n</fittings>\n"
+ },
+ "source": "hand-built (Pyfa lookup oracle)"
+}

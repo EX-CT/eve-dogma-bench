@@ -1,0 +1,15 @@
+{
+ "case": "names_renamed",
+ "feature": "names.resolve",
+ "item": "SVC-005",
+ "oracle": "pyfa-service",
+ "result": {
+  "resolved": {
+   "200mm Reinforced Crystalline Carbonide Plates I": 11351,
+   "Inertia Stabilizers I": 1403,
+   "Limited Energized Thermal Membrane I": 16431,
+   "Small Anti-Explosive Screen Reinforcer I": 31728
+  }
+ },
+ "source": "hand-built (Pyfa lookup oracle)"
+}

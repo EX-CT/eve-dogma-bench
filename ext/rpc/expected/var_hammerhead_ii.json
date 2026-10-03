@@ -1,0 +1,16 @@
+{
+ "case": "var_hammerhead_ii",
+ "feature": "item.variations",
+ "item": "ENG-MOD-013",
+ "oracle": "pyfa-service",
+ "result": {
+  "type_ids": [
+   2183,
+   2185,
+   28270,
+   28272,
+   31882
+  ]
+ },
+ "source": "hand-built (Pyfa lookup oracle)"
+}

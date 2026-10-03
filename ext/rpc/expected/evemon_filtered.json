@@ -1,0 +1,15 @@
+{
+ "case": "evemon_filtered",
+ "feature": "character.import_evemon",
+ "item": "CHR-004",
+ "oracle": "pyfa-service",
+ "result": {
+  "name": "Pilot C (EVEMon)",
+  "security_status": 0.0,
+  "skills": {
+   "3392": 0,
+   "3394": 5
+  }
+ },
+ "source": "hand-built (Pyfa lookup oracle)"
+}

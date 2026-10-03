@@ -1,0 +1,22 @@
+{
+ "case": "mkt_root",
+ "feature": "market.group",
+ "item": "MKT-001",
+ "oracle": "pyfa-service",
+ "result": {
+  "groups": [
+   9,
+   11,
+   24,
+   157,
+   404,
+   1111,
+   1112,
+   2202,
+   2203,
+   2456
+  ],
+  "items": []
+ },
+ "source": "hand-built (Pyfa lookup oracle)"
+}

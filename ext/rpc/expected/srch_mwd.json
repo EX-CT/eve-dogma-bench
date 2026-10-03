@@ -1,0 +1,29 @@
+{
+ "case": "srch_mwd",
+ "feature": "market.search",
+ "item": "MKT-002",
+ "oracle": "pyfa-service",
+ "result": {
+  "type_ids": [
+   434,
+   440,
+   5971,
+   5973,
+   14122,
+   14124,
+   15747,
+   15759,
+   19313,
+   19319,
+   19325,
+   19337,
+   19343,
+   19349,
+   21476,
+   35658,
+   84962,
+   84963
+  ]
+ },
+ "source": "hand-built (Pyfa lookup oracle)"
+}

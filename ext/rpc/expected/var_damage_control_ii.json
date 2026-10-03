@@ -1,0 +1,28 @@
+{
+ "case": "var_damage_control_ii",
+ "feature": "item.variations",
+ "item": "ENG-MOD-013",
+ "oracle": "pyfa-service",
+ "result": {
+  "type_ids": [
+   521,
+   2046,
+   2048,
+   5839,
+   23418,
+   41200,
+   41201,
+   41202,
+   41203,
+   41204,
+   41205,
+   41206,
+   41207,
+   41208,
+   41210,
+   41211,
+   95414
+  ]
+ },
+ "source": "hand-built (Pyfa lookup oracle)"
+}

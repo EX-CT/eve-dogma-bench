@@ -1,0 +1,6 @@
+{
+ "method": "character.import_evemon",
+ "params": {
+  "xml": "<?xml version=\"1.0\"?><SerializableUriCharacter><name>Pilot B</name><securityStatus>-1.25</securityStatus><skills><skill typeID=\"3327\" name=\"x\" level=\"2\" /></skills></SerializableUriCharacter>"
+ }
+}

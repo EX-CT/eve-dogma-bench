@@ -1,0 +1,7 @@
+{
+ "method": "market.search",
+ "params": {
+  "filter": "market",
+  "query": "hammer*"
+ }
+}

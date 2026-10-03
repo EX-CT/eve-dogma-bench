@@ -1,0 +1,14 @@
+{
+ "case": "evemon_uri",
+ "feature": "character.import_evemon",
+ "item": "CHR-004",
+ "oracle": "pyfa-service",
+ "result": {
+  "name": "Pilot B (EVEMon)",
+  "security_status": -1.25,
+  "skills": {
+   "3327": 2
+  }
+ },
+ "source": "hand-built (Pyfa lookup oracle)"
+}

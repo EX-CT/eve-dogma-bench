@@ -1,0 +1,23 @@
+{
+ "case": "srch_regex",
+ "feature": "market.search",
+ "item": "MKT-002",
+ "oracle": "pyfa-service",
+ "result": {
+  "type_ids": [
+   453,
+   454,
+   3033,
+   3041,
+   6671,
+   6673,
+   6675,
+   6677,
+   6715,
+   6717,
+   6719,
+   6721
+  ]
+ },
+ "source": "hand-built (Pyfa lookup oracle)"
+}

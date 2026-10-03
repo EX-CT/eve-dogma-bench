@@ -1,0 +1,179 @@
+{
+ "case": "cmp_heat_sink_ii",
+ "feature": "item.compare",
+ "item": "MKT-004",
+ "oracle": "pyfa-service",
+ "result": {
+  "items": [
+   {
+    "attributes": {
+     "cpu": 16.0,
+     "damageMultiplier": 1.07,
+     "speedMultiplier": 0.93
+    },
+    "type_id": 1893
+   },
+   {
+    "attributes": {
+     "cpu": 27.0,
+     "damageMultiplier": 1.07,
+     "speedMultiplier": 0.92
+    },
+    "type_id": 2363
+   },
+   {
+    "attributes": {
+     "cpu": 30.0,
+     "damageMultiplier": 1.1,
+     "speedMultiplier": 0.895
+    },
+    "type_id": 2364
+   },
+   {
+    "attributes": {
+     "cpu": 25.0,
+     "damageMultiplier": 1.08,
+     "speedMultiplier": 0.905
+    },
+    "type_id": 5849
+   },
+   {
+    "attributes": {
+     "cpu": 20.0,
+     "damageMultiplier": 1.12,
+     "speedMultiplier": 0.89
+    },
+    "type_id": 13941
+   },
+   {
+    "attributes": {
+     "cpu": 20.0,
+     "damageMultiplier": 1.12,
+     "speedMultiplier": 0.89
+    },
+    "type_id": 13943
+   },
+   {
+    "attributes": {
+     "cpu": 22.0,
+     "damageMultiplier": 1.13,
+     "speedMultiplier": 0.89
+    },
+    "type_id": 14800
+   },
+   {
+    "attributes": {
+     "cpu": 22.0,
+     "damageMultiplier": 1.13,
+     "speedMultiplier": 0.89
+    },
+    "type_id": 14802
+   },
+   {
+    "attributes": {
+     "cpu": 24.0,
+     "damageMultiplier": 1.135,
+     "speedMultiplier": 0.89
+    },
+    "type_id": 14804
+   },
+   {
+    "attributes": {
+     "cpu": 24.0,
+     "damageMultiplier": 1.135,
+     "speedMultiplier": 0.89
+    },
+    "type_id": 14806
+   },
+   {
+    "attributes": {
+     "cpu": 26.0,
+     "damageMultiplier": 1.14,
+     "speedMultiplier": 0.89
+    },
+    "type_id": 14808
+   },
+   {
+    "attributes": {
+     "cpu": 26.0,
+     "damageMultiplier": 1.14,
+     "speedMultiplier": 0.89
+    },
+    "type_id": 14810
+   },
+   {
+    "attributes": {
+     "cpu": 28.0,
+     "damageMultiplier": 1.145,
+     "speedMultiplier": 0.89
+    },
+    "type_id": 14812
+   },
+   {
+    "attributes": {
+     "cpu": 28.0,
+     "damageMultiplier": 1.145,
+     "speedMultiplier": 0.89
+    },
+    "type_id": 14814
+   },
+   {
+    "attributes": {
+     "cpu": 20.0,
+     "damageMultiplier": 1.12,
+     "speedMultiplier": 0.89
+    },
+    "type_id": 15808
+   },
+   {
+    "attributes": {
+     "cpu": 20.0,
+     "damageMultiplier": 1.12,
+     "speedMultiplier": 0.89
+    },
+    "type_id": 15810
+   },
+   {
+    "attributes": {
+     "cpu": 18.0,
+     "damageMultiplier": 1.1,
+     "speedMultiplier": 0.895
+    },
+    "type_id": 23902
+   },
+   {
+    "attributes": {
+     "cpu": 29.0,
+     "damageMultiplier": 1.1,
+     "speedMultiplier": 0.9
+    },
+    "type_id": 44111
+   },
+   {
+    "attributes": {
+     "cpu": 26.0,
+     "damageMultiplier": 1.14,
+     "speedMultiplier": 0.89
+    },
+    "type_id": 88265
+   },
+   {
+    "attributes": {
+     "cpu": 32.0,
+     "damageMultiplier": 1.07,
+     "speedMultiplier": 0.93
+    },
+    "type_id": 94058
+   },
+   {
+    "attributes": {
+     "cpu": 37.0,
+     "damageMultiplier": 1.1,
+     "speedMultiplier": 0.9
+    },
+    "type_id": 94060
+   }
+  ]
+ },
+ "source": "hand-built (Pyfa lookup oracle)"
+}

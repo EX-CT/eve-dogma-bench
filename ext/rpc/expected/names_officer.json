@@ -1,0 +1,14 @@
+{
+ "case": "names_officer",
+ "feature": "names.resolve",
+ "item": "SVC-005",
+ "oracle": "pyfa-service",
+ "result": {
+  "resolved": {
+   "Cormack's Modified Armor Thermal Hardener": 15258,
+   "Damage Control II": 2048,
+   "Tuvan's Modified Armor Kinetic Hardener": 15262
+  }
+ },
+ "source": "hand-built (Pyfa lookup oracle)"
+}

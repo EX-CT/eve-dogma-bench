@@ -1,0 +1,10 @@
+{
+ "method": "names.resolve",
+ "params": {
+  "names": [
+   "Cormack's Modified Armor Thermal Hardener",
+   "Tuvan's Modified Armor Kinetic Hardener",
+   "Damage Control II"
+  ]
+ }
+}

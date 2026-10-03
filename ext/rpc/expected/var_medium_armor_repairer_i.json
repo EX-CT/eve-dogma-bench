@@ -1,0 +1,37 @@
+{
+ "case": "var_medium_armor_repairer_i",
+ "feature": "item.variations",
+ "item": "ENG-MOD-013",
+ "oracle": "pyfa-service",
+ "result": {
+  "type_ids": [
+   3528,
+   3530,
+   4569,
+   4573,
+   13958,
+   13959,
+   13960,
+   14068,
+   15742,
+   15745,
+   17493,
+   17547,
+   19017,
+   19019,
+   19021,
+   19023,
+   19025,
+   19027,
+   19029,
+   19031,
+   19033,
+   22889,
+   23797,
+   28549,
+   84972,
+   84973
+  ]
+ },
+ "source": "hand-built (Pyfa lookup oracle)"
+}

@@ -1,0 +1,11 @@
+{
+ "method": "item.compare",
+ "params": {
+  "attributes": [
+   "cpu",
+   "damageMultiplier",
+   "speedMultiplier"
+  ],
+  "type_id": 2364
+ }
+}

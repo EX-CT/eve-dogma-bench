@@ -1,0 +1,6 @@
+{
+ "method": "character.import_evemon",
+ "params": {
+  "xml": "<?xml version=\"1.0\"?><SerializableCCPCharacter><name>Pilot C</name><securityStatus>0</securityStatus><skills><skill typeID=\"3449\" name=\"x\" level=\"7\" /><skill typeID=\"587\" name=\"x\" level=\"3\" /><skill typeID=\"3392\" name=\"x\" level=\"0\" /><skill typeID=\"3394\" name=\"x\" level=\"5\" /></skills></SerializableCCPCharacter>"
+ }
+}

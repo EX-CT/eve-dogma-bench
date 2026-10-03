@@ -1,0 +1,157 @@
+{
+ "backup_one": {
+  "feature": "fits.backup",
+  "item": "DB-003",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "backup_three": {
+  "feature": "fits.backup",
+  "item": "DB-003",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "cmp_1mn_afterburner_ii": {
+  "feature": "item.compare",
+  "item": "MKT-004",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "cmp_damage_control_ii": {
+  "feature": "item.compare",
+  "item": "MKT-004",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "cmp_heat_sink_ii": {
+  "feature": "item.compare",
+  "item": "MKT-004",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "cmp_large_shield_extender_ii": {
+  "feature": "item.compare",
+  "item": "MKT-004",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "evemon_bad_root": {
+  "feature": "character.import_evemon",
+  "item": "CHR-004",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "evemon_ccp": {
+  "feature": "character.import_evemon",
+  "item": "CHR-004",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "evemon_filtered": {
+  "feature": "character.import_evemon",
+  "item": "CHR-004",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "evemon_uri": {
+  "feature": "character.import_evemon",
+  "item": "CHR-004",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "isets_all": {
+  "feature": "implant_sets.list",
+  "item": "ENG-IMP-005",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "mkt_group_1mn_afterburner_ii": {
+  "feature": "market.group",
+  "item": "MKT-001",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "mkt_group_damage_control_ii": {
+  "feature": "market.group",
+  "item": "MKT-001",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "mkt_group_hammerhead_ii": {
+  "feature": "market.group",
+  "item": "MKT-001",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "mkt_root": {
+  "feature": "market.group",
+  "item": "MKT-001",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "names_officer": {
+  "feature": "names.resolve",
+  "item": "SVC-005",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "names_renamed": {
+  "feature": "names.resolve",
+  "item": "SVC-005",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "names_trig": {
+  "feature": "names.resolve",
+  "item": "SVC-005",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "srch_dc_t2": {
+  "feature": "market.search",
+  "item": "MKT-002",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "srch_dda": {
+  "feature": "market.search",
+  "item": "MKT-002",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "srch_lse": {
+  "feature": "market.search",
+  "item": "MKT-002",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "srch_mwd": {
+  "feature": "market.search",
+  "item": "MKT-002",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "srch_plain": {
+  "feature": "market.search",
+  "item": "MKT-002",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "srch_regex": {
+  "feature": "market.search",
+  "item": "MKT-002",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "srch_wildcard": {
+  "feature": "market.search",
+  "item": "MKT-002",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "var_200mm_autocannon_ii": {
+  "feature": "item.variations",
+  "item": "ENG-MOD-013",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "var_damage_control_ii": {
+  "feature": "item.variations",
+  "item": "ENG-MOD-013",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "var_hammerhead_ii": {
+  "feature": "item.variations",
+  "item": "ENG-MOD-013",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "var_high_grade_snake_alpha": {
+  "feature": "item.variations",
+  "item": "ENG-MOD-013",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "var_large_shield_extender_ii": {
+  "feature": "item.variations",
+  "item": "ENG-MOD-013",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "var_medium_armor_repairer_i": {
+  "feature": "item.variations",
+  "item": "ENG-MOD-013",
+  "source": "hand-built (Pyfa lookup oracle)"
+ }
+}

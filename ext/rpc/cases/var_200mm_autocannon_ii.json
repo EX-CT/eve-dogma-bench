@@ -1,0 +1,6 @@
+{
+ "method": "item.variations",
+ "params": {
+  "type_id": 2889
+ }
+}

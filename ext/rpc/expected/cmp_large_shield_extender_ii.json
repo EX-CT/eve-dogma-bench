@@ -1,0 +1,83 @@
+{
+ "case": "cmp_large_shield_extender_ii",
+ "feature": "item.compare",
+ "item": "MKT-004",
+ "oracle": "pyfa-service",
+ "result": {
+  "items": [
+   {
+    "attributes": {
+     "capacityBonus": 1900.0,
+     "cpu": 40.0,
+     "power": 150.0,
+     "signatureRadiusAdd": 25.0
+    },
+    "type_id": 3839
+   },
+   {
+    "attributes": {
+     "capacityBonus": 2600.0,
+     "cpu": 45.0,
+     "power": 160.0,
+     "signatureRadiusAdd": 25.0
+    },
+    "type_id": 3841
+   },
+   {
+    "attributes": {
+     "capacityBonus": 2200.0,
+     "cpu": 40.0,
+     "power": 150.0,
+     "signatureRadiusAdd": 15.0
+    },
+    "type_id": 8419
+   },
+   {
+    "attributes": {
+     "capacityBonus": 2200.0,
+     "cpu": 35.0,
+     "power": 140.0,
+     "signatureRadiusAdd": 25.0
+    },
+    "type_id": 8529
+   },
+   {
+    "attributes": {
+     "capacityBonus": 2400.0,
+     "cpu": 35.0,
+     "power": 135.0,
+     "signatureRadiusAdd": 25.0
+    },
+    "type_id": 20631
+   },
+   {
+    "attributes": {
+     "capacityBonus": 2750.0,
+     "cpu": 40.0,
+     "power": 155.0,
+     "signatureRadiusAdd": 15.0
+    },
+    "type_id": 28744
+   },
+   {
+    "attributes": {
+     "capacityBonus": 2750.0,
+     "cpu": 35.0,
+     "power": 150.0,
+     "signatureRadiusAdd": 25.0
+    },
+    "type_id": 31930
+   },
+   {
+    "attributes": {
+     "capacityBonus": 2750.0,
+     "cpu": 40.0,
+     "power": 145.0,
+     "signatureRadiusAdd": 20.0
+    },
+    "type_id": 31932
+   }
+  ]
+ },
+ "source": "hand-built (Pyfa lookup oracle)"
+}

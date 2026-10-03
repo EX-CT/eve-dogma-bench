@@ -1,0 +1,14 @@
+{
+ "case": "names_trig",
+ "feature": "names.resolve",
+ "item": "SVC-005",
+ "oracle": "pyfa-service",
+ "result": {
+  "resolved": {
+   "No Such Item Name": null,
+   "PLACEHOLDER TRIG DREAD": 52907,
+   "XL Entropic Disintegrator": 52915
+  }
+ },
+ "source": "hand-built (Pyfa lookup oracle)"
+}

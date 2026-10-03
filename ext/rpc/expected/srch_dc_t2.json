@@ -1,0 +1,12 @@
+{
+ "case": "srch_dc_t2",
+ "feature": "market.search",
+ "item": "MKT-002",
+ "oracle": "pyfa-service",
+ "result": {
+  "type_ids": [
+   2048
+  ]
+ },
+ "source": "hand-built (Pyfa lookup oracle)"
+}

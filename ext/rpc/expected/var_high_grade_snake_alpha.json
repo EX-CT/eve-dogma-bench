@@ -1,0 +1,14 @@
+{
+ "case": "var_high_grade_snake_alpha",
+ "feature": "item.variations",
+ "item": "ENG-MOD-013",
+ "oracle": "pyfa-service",
+ "result": {
+  "type_ids": [
+   19540,
+   22125,
+   33959
+  ]
+ },
+ "source": "hand-built (Pyfa lookup oracle)"
+}

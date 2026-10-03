@@ -1,0 +1,201 @@
+{
+ "case": "cmp_1mn_afterburner_ii",
+ "feature": "item.compare",
+ "item": "MKT-004",
+ "oracle": "pyfa-service",
+ "result": {
+  "items": [
+   {
+    "attributes": {
+     "capacitorNeed": 22.0,
+     "cpu": 15.0,
+     "duration": 10000.0,
+     "power": 11.0,
+     "speedFactor": 135.0
+    },
+    "type_id": 438
+   },
+   {
+    "attributes": {
+     "capacitorNeed": 20.0,
+     "cpu": 15.0,
+     "duration": 10000.0,
+     "power": 10.0,
+     "speedFactor": 115.0
+    },
+    "type_id": 439
+   },
+   {
+    "attributes": {
+     "capacitorNeed": 20.0,
+     "cpu": 13.0,
+     "duration": 10000.0,
+     "power": 9.0,
+     "speedFactor": 125.0
+    },
+    "type_id": 6001
+   },
+   {
+    "attributes": {
+     "capacitorNeed": 15.0,
+     "cpu": 15.0,
+     "duration": 10000.0,
+     "power": 10.0,
+     "speedFactor": 125.0
+    },
+    "type_id": 6003
+   },
+   {
+    "attributes": {
+     "capacitorNeed": 18.0,
+     "cpu": 15.0,
+     "duration": 10000.0,
+     "power": 11.0,
+     "speedFactor": 145.0
+    },
+    "type_id": 14110
+   },
+   {
+    "attributes": {
+     "capacitorNeed": 18.0,
+     "cpu": 17.0,
+     "duration": 10000.0,
+     "power": 10.0,
+     "speedFactor": 145.0
+    },
+    "type_id": 14112
+   },
+   {
+    "attributes": {
+     "capacitorNeed": 18.0,
+     "cpu": 15.0,
+     "duration": 10000.0,
+     "power": 11.0,
+     "speedFactor": 145.0
+    },
+    "type_id": 15749
+   },
+   {
+    "attributes": {
+     "capacitorNeed": 18.0,
+     "cpu": 17.0,
+     "duration": 10000.0,
+     "power": 10.0,
+     "speedFactor": 145.0
+    },
+    "type_id": 15761
+   },
+   {
+    "attributes": {
+     "capacitorNeed": 18.0,
+     "cpu": 15.0,
+     "duration": 10000.0,
+     "power": 12.0,
+     "speedFactor": 150.0
+    },
+    "type_id": 18658
+   },
+   {
+    "attributes": {
+     "capacitorNeed": 18.0,
+     "cpu": 15.0,
+     "duration": 10000.0,
+     "power": 12.0,
+     "speedFactor": 155.0
+    },
+    "type_id": 18664
+   },
+   {
+    "attributes": {
+     "capacitorNeed": 18.0,
+     "cpu": 15.0,
+     "duration": 10000.0,
+     "power": 13.0,
+     "speedFactor": 160.0
+    },
+    "type_id": 18670
+   },
+   {
+    "attributes": {
+     "capacitorNeed": 18.0,
+     "cpu": 17.0,
+     "duration": 10000.0,
+     "power": 10.0,
+     "speedFactor": 150.0
+    },
+    "type_id": 18680
+   },
+   {
+    "attributes": {
+     "capacitorNeed": 18.0,
+     "cpu": 18.0,
+     "duration": 10000.0,
+     "power": 10.0,
+     "speedFactor": 155.0
+    },
+    "type_id": 18686
+   },
+   {
+    "attributes": {
+     "capacitorNeed": 18.0,
+     "cpu": 19.0,
+     "duration": 10000.0,
+     "power": 10.0,
+     "speedFactor": 160.0
+    },
+    "type_id": 18692
+   },
+   {
+    "attributes": {
+     "capacitorNeed": 15.0,
+     "cpu": 13.0,
+     "duration": 10000.0,
+     "power": 9.0,
+     "speedFactor": 135.0
+    },
+    "type_id": 21470
+   },
+   {
+    "attributes": {
+     "capacitorNeed": 18.0,
+     "cpu": 20.0,
+     "duration": 10000.0,
+     "power": 10.0,
+     "speedFactor": 165.0
+    },
+    "type_id": 84966
+   },
+   {
+    "attributes": {
+     "capacitorNeed": 18.0,
+     "cpu": 15.0,
+     "duration": 10000.0,
+     "power": 14.0,
+     "speedFactor": 165.0
+    },
+    "type_id": 84967
+   },
+   {
+    "attributes": {
+     "capacitorNeed": 24.0,
+     "cpu": 20.0,
+     "duration": 10000.0,
+     "power": 14.0,
+     "speedFactor": 170.0
+    },
+    "type_id": 85025
+   },
+   {
+    "attributes": {
+     "capacitorNeed": 18.0,
+     "cpu": 17.0,
+     "duration": 10000.0,
+     "power": 11.0,
+     "speedFactor": 147.5
+    },
+    "type_id": 85031
+   }
+  ]
+ },
+ "source": "hand-built (Pyfa lookup oracle)"
+}

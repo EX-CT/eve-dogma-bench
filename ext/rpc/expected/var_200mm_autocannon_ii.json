@@ -1,0 +1,22 @@
+{
+ "case": "var_200mm_autocannon_ii",
+ "feature": "item.variations",
+ "item": "ENG-MOD-013",
+ "oracle": "pyfa-service",
+ "result": {
+  "type_ids": [
+   486,
+   2889,
+   8863,
+   8865,
+   8867,
+   8869,
+   13777,
+   16050,
+   21545,
+   34284,
+   85010
+  ]
+ },
+ "source": "hand-built (Pyfa lookup oracle)"
+}
