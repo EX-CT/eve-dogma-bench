@@ -1,0 +1,137 @@
+{
+ "case": "val_missing_skills_all0",
+ "excluded": {},
+ "ext": {},
+ "feature": "validity",
+ "oracle": "pyfa-eos",
+ "values": {
+  "align_time_s": 4.733363466607754,
+  "calibration_used": 0.0,
+  "cap_capacity": 250.0,
+  "cap_recharge_s": 125.0,
+  "cap_stable": true,
+  "cap_stable_percent": 100,
+  "cpu_total": 130.0,
+  "cpu_used": 48.0,
+  "drone_bandwidth_used": 0,
+  "drone_control_range": 20000.0,
+  "drone_dps": 0,
+  "drone_volley": 0,
+  "ehp.armor": 784.3137254901961,
+  "ehp.hull": 870.6467661691541,
+  "ehp.shield": 709.35960591133,
+  "hi_slots": 3.0,
+  "hp.armor": 450.0,
+  "hp.hull": 350.0,
+  "hp.shield": 450.0,
+  "jam_chance": 0,
+  "low_slots": 4.0,
+  "mass": 1067000.0,
+  "max_target_range": 22500.0,
+  "max_targets": 2,
+  "max_velocity": 365.0,
+  "med_slots": 3.0,
+  "power_total": 41.0,
+  "power_used": 9.0,
+  "res.armor.em": 0.34,
+  "res.armor.explosive": 0.765,
+  "res.armor.kinetic": 0.6375,
+  "res.armor.thermal": 0.5525,
+  "res.hull.em": 0.402,
+  "res.hull.explosive": 0.402,
+  "res.hull.kinetic": 0.402,
+  "res.hull.thermal": 0.402,
+  "res.shield.em": 0.875,
+  "res.shield.explosive": 0.4375,
+  "res.shield.kinetic": 0.525,
+  "res.shield.thermal": 0.7000000000000001,
+  "scan_resolution": 660.0,
+  "scan_strength": 8.0,
+  "signature_radius": 35.0,
+  "stank.armor": 0,
+  "stank.hull": 0,
+  "stank.shield": 0,
+  "tank.armor": 0,
+  "tank.hull": 0,
+  "tank.passive": 1.8,
+  "tank.shield": 0,
+  "w0.falloff_m": 5160.0,
+  "w0.optimal_m": 600.0,
+  "w0.tracking": 315.0,
+  "w1.falloff_m": 5160.0,
+  "w1.optimal_m": 600.0,
+  "w1.tracking": 315.0,
+  "warp_scramble_status": 0.0,
+  "warp_speed": 5.0,
+  "weapon_dps": 22.175999999999995,
+  "weapon_pure_dps": 0,
+  "weapon_pure_volley": 0,
+  "weapon_volley": 83.16
+ },
+ "violations": {
+  "codes": [
+   "MISSING_SKILL"
+  ],
+  "missing_skills": [
+   3300,
+   3302,
+   3312,
+   3327,
+   3329,
+   3392,
+   3394,
+   11084
+  ],
+  "modules": {},
+  "pyfa": [
+   {
+    "code": "MISSING_SKILL",
+    "level": 2,
+    "module_index": null,
+    "skill_type_id": 3300
+   },
+   {
+    "code": "MISSING_SKILL",
+    "level": 5,
+    "module_index": null,
+    "skill_type_id": 3302
+   },
+   {
+    "code": "MISSING_SKILL",
+    "level": 3,
+    "module_index": null,
+    "skill_type_id": 3312
+   },
+   {
+    "code": "MISSING_SKILL",
+    "level": 1,
+    "module_index": null,
+    "skill_type_id": 3327
+   },
+   {
+    "code": "MISSING_SKILL",
+    "level": 1,
+    "module_index": null,
+    "skill_type_id": 3329
+   },
+   {
+    "code": "MISSING_SKILL",
+    "level": 1,
+    "module_index": null,
+    "skill_type_id": 3392
+   },
+   {
+    "code": "MISSING_SKILL",
+    "level": 4,
+    "module_index": null,
+    "skill_type_id": 3394
+   },
+   {
+    "code": "MISSING_SKILL",
+    "level": 1,
+    "module_index": null,
+    "skill_type_id": 11084
+   }
+  ]
+ }
+}

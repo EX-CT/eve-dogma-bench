@@ -1,0 +1,130 @@
+{
+ "case": "val_disable_restrictions_stats",
+ "excluded": {},
+ "ext": {},
+ "feature": "validity",
+ "oracle": "pyfa-eos",
+ "values": {
+  "align_time_s": 3.195020339960234,
+  "calibration_used": 50.0,
+  "cap_capacity": 312.5,
+  "cap_recharge_s": 93.75,
+  "cap_stable": true,
+  "cap_stable_percent": 100,
+  "cpu_total": 162.5,
+  "cpu_used": 87.0,
+  "drone_bandwidth_used": 0,
+  "drone_control_range": 60000.0,
+  "drone_dps": 0,
+  "drone_volley": 0,
+  "ehp.armor": 1127.3643950728617,
+  "ehp.hull": 1668.2840627441724,
+  "ehp.shield": 1143.9872001795286,
+  "hi_slots": 3.0,
+  "hp.armor": 562.5,
+  "hp.hull": 437.5,
+  "hp.shield": 646.875,
+  "jam_chance": 0,
+  "low_slots": 4.0,
+  "mass": 1067000.0,
+  "max_target_range": 28125.0,
+  "max_targets": 4,
+  "max_velocity": 456.25,
+  "med_slots": 3.0,
+  "power_total": 51.25,
+  "power_used": 16.4,
+  "res.armor.em": 0.29567488097917977,
+  "res.armor.explosive": 0.6652684822031544,
+  "res.armor.kinetic": 0.5543904018359619,
+  "res.armor.thermal": 0.48047168159116704,
+  "res.hull.em": 0.2622455070872961,
+  "res.hull.explosive": 0.2622455070872961,
+  "res.hull.kinetic": 0.2622455070872961,
+  "res.hull.thermal": 0.2622455070872961,
+  "res.shield.em": 0.7799400020999565,
+  "res.shield.explosive": 0.38997000104997825,
+  "res.shield.kinetic": 0.4679640012599739,
+  "res.shield.thermal": 0.6239520016799652,
+  "scan_resolution": 825.0,
+  "scan_strength": 9.6,
+  "signature_radius": 36.75,
+  "stank.armor": 0,
+  "stank.hull": 0,
+  "stank.shield": 0,
+  "tank.armor": 0,
+  "tank.hull": 0,
+  "tank.passive": 3.4499999999999997,
+  "tank.shield": 0,
+  "w0.falloff_m": 9675.0,
+  "w0.optimal_m": 750.0,
+  "w0.tracking": 393.75,
+  "w1.falloff_m": 9675.0,
+  "w1.optimal_m": 750.0,
+  "w1.tracking": 393.75,
+  "w2.falloff_m": 9675.0,
+  "w2.optimal_m": 750.0,
+  "w2.tracking": 393.75,
+  "w3.falloff_m": 9675.0,
+  "w3.optimal_m": 750.0,
+  "w3.tracking": 393.75,
+  "warp_scramble_status": 0.0,
+  "warp_speed": 5.0,
+  "weapon_dps": 155.848,
+  "weapon_pure_dps": 0,
+  "weapon_pure_volley": 0,
+  "weapon_volley": 262.9935
+ },
+ "violations": {
+  "codes": [
+   "MAX_GROUP_FITTED",
+   "RIG_SIZE",
+   "SLOTS_EXCEEDED",
+   "TURRET_HARDPOINTS"
+  ],
+  "missing_skills": [],
+  "modules": {
+   "MAX_GROUP_FITTED": [
+    4,
+    5
+   ],
+   "RIG_SIZE": [
+    6
+   ]
+  },
+  "pyfa": [
+   {
+    "code": "SLOTS_EXCEEDED",
+    "module_index": null,
+    "modules": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "slot": "high"
+   },
+   {
+    "code": "TURRET_HARDPOINTS",
+    "module_index": null,
+    "modules": [
+     0,
+     1,
+     2,
+     3
+    ]
+   },
+   {
+    "code": "MAX_GROUP_FITTED",
+    "module_index": 4
+   },
+   {
+    "code": "MAX_GROUP_FITTED",
+    "module_index": 5
+   },
+   {
+    "code": "RIG_SIZE",
+    "module_index": 6
+   }
+  ]
+ }
+}

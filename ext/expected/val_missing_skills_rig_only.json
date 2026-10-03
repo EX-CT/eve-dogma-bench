@@ -1,0 +1,89 @@
+{
+ "case": "val_missing_skills_rig_only",
+ "excluded": {},
+ "ext": {},
+ "feature": "validity",
+ "oracle": "pyfa-eos",
+ "values": {
+  "align_time_s": 4.733363466607754,
+  "calibration_used": 50.0,
+  "cap_capacity": 250.0,
+  "cap_recharge_s": 125.0,
+  "cap_stable": true,
+  "cap_stable_percent": 100,
+  "cpu_total": 130.0,
+  "cpu_used": 0.0,
+  "drone_bandwidth_used": 0,
+  "drone_control_range": 20000.0,
+  "drone_dps": 0,
+  "drone_volley": 0,
+  "ehp.armor": 666.6666666666666,
+  "ehp.hull": 522.3880597014925,
+  "ehp.shield": 713.7931034482759,
+  "hi_slots": 3.0,
+  "hp.armor": 450.0,
+  "hp.hull": 350.0,
+  "hp.shield": 517.5,
+  "jam_chance": 0,
+  "low_slots": 4.0,
+  "mass": 1067000.0,
+  "max_target_range": 22500.0,
+  "max_targets": 2,
+  "max_velocity": 365.0,
+  "med_slots": 3.0,
+  "power_total": 41.0,
+  "power_used": 0.0,
+  "res.armor.em": 0.4,
+  "res.armor.explosive": 0.9,
+  "res.armor.kinetic": 0.75,
+  "res.armor.thermal": 0.65,
+  "res.hull.em": 0.67,
+  "res.hull.explosive": 0.67,
+  "res.hull.kinetic": 0.67,
+  "res.hull.thermal": 0.67,
+  "res.shield.em": 1.0,
+  "res.shield.explosive": 0.5,
+  "res.shield.kinetic": 0.6,
+  "res.shield.thermal": 0.8,
+  "scan_resolution": 660.0,
+  "scan_strength": 8.0,
+  "signature_radius": 38.5,
+  "stank.armor": 0,
+  "stank.hull": 0,
+  "stank.shield": 0,
+  "tank.armor": 0,
+  "tank.hull": 0,
+  "tank.passive": 2.07,
+  "tank.shield": 0,
+  "warp_scramble_status": 0.0,
+  "warp_speed": 5.0,
+  "weapon_dps": 0,
+  "weapon_pure_dps": 0,
+  "weapon_pure_volley": 0,
+  "weapon_volley": 0
+ },
+ "violations": {
+  "codes": [
+   "MISSING_SKILL"
+  ],
+  "missing_skills": [
+   3327,
+   3329
+  ],
+  "modules": {},
+  "pyfa": [
+   {
+    "code": "MISSING_SKILL",
+    "level": 1,
+    "module_index": null,
+    "skill_type_id": 3327
+   },
+   {
+    "code": "MISSING_SKILL",
+    "level": 1,
+    "module_index": null,
+    "skill_type_id": 3329
+   }
+  ]
+ }
+}

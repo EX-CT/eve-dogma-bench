@@ -487,6 +487,46 @@
   "feature": "outgoing",
   "source": "random legal fit fsweep17342.json (gen_legal pool; Pyfa oracle)"
  },
+ "probe_dominix": {
+  "feature": "probe_size",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "probe_hel": {
+  "feature": "probe_size",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "probe_heron": {
+  "feature": "probe_size",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "probe_heron_sensor_booster": {
+  "feature": "probe_size",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "probe_ibis": {
+  "feature": "probe_size",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "probe_rifter": {
+  "feature": "probe_size",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "probe_rifter_mwd": {
+  "feature": "probe_size",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "probe_rifter_skills0": {
+  "feature": "probe_size",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "probe_thanatos": {
+  "feature": "probe_size",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "probe_vexor": {
+  "feature": "probe_size",
+  "source": "hand-built (Pyfa oracle)"
+ },
  "rr_basilisk": {
   "feature": "outgoing",
   "source": "hand-built (Pyfa oracle)"
@@ -525,6 +565,138 @@
  },
  "rr_zarmazd_spool_full": {
   "feature": "outgoing",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "tp_kestrel_missiles_kinetic": {
+  "feature": "vs_target_profile",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "tp_rifter_ac_armor_t2": {
+  "feature": "vs_target_profile",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "tp_rifter_ac_frigate_t1": {
+  "feature": "vs_target_profile",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "tp_rifter_ac_immune_em": {
+  "feature": "vs_target_profile",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "tp_rifter_ac_shield_t2": {
+  "feature": "vs_target_profile",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "tp_rifter_ac_uniform0": {
+  "feature": "vs_target_profile",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "tp_rifter_no_weapons": {
+  "feature": "vs_target_profile",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "tp_rifter_skills0": {
+  "feature": "vs_target_profile",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "tp_thanatos_fighters": {
+  "feature": "vs_target_profile",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "tp_vexor_drones": {
+  "feature": "vs_target_profile",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "tp_vexor_guns_drones": {
+  "feature": "vs_target_profile",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_capital_module_subcap": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_charge_capacity": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_charge_capacity_probe": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_charge_group": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_charge_size": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_clean_rifter": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_cpu_power_overload": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_disable_restrictions_stats": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_drone_bandwidth": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_launcher_hardpoints": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_max_group_active": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_max_group_fitted": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_max_group_online_bursts": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_missing_skills_all0": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_missing_skills_drone_implant": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_missing_skills_partial": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_missing_skills_rig_only": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_rig_size": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_ship_restriction_burst": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_slots_high": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_slots_mid_low_rig": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_turret_hardpoints": {
+  "feature": "validity",
   "source": "hand-built (Pyfa oracle)"
  }
 }

@@ -1,0 +1,14 @@
+{
+ "case": "unit_val_max_type_fitted",
+ "derivation": "Standup Manufacturing Plant I has maxTypeFitted 1; two fitted -> MAX_TYPE_FITTED (Pyfa has no maxTypeFitted check). Only the presence of the code is checked (structure fitting is otherwise out of the bench's scope).",
+ "excluded": {},
+ "ext": {},
+ "feature": "validity-unit",
+ "oracle": "hand-derived (non-Pyfa)",
+ "values": {},
+ "violations": {
+  "codes_include": [
+   "MAX_TYPE_FITTED"
+  ]
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "case": "unit_val_validate_false",
+ "derivation": "options.validate=false: no violations are reported (CONTRACT.md options), the fit is still computed; Pyfa has no such option (its 'Disable Fitting Restrictions' only lets the fit be built, ENG-VAL-005).",
+ "excluded": {},
+ "ext": {},
+ "feature": "validity-unit",
+ "oracle": "hand-derived (non-Pyfa)",
+ "values": {},
+ "violations": {
+  "codes": []
+ }
+}

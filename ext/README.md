@@ -1,6 +1,6 @@
 # ext suite: stats-ext, heat, fleet.buffs, overrides (bench 1.10, docs/20 P0-3 / P0-4)
 
-132 cases + 10 hand-derived unit cases (`unit/`). Values are keyed by JSON pointer into the **proposed** FitStats fields of CONTRACT.md "Draft 1.10:
+175 cases + 12 hand-derived unit cases (`unit/`). Values are keyed by JSON pointer into the **proposed** FitStats fields of CONTRACT.md "Draft 1.10:
 stats-ext" (no engine implements them yet, so a missing pointer is reported as `not_implemented`), plus the bench
 metrics (`values`) for every case.
 
@@ -12,6 +12,9 @@ metrics (`values`) for every case.
 | bombing | 15 | `gui/builtinStatsViews/bombingViewFull.py` arithmetic: bombs to kill per bomb type (27920 / 27916 / 27912 / 27918), Covert Ops 0–5, red giant `smartbombDamageMultiplier`, signature factor, ceil to 0.1 |
 | heat | 30 | `gui/builtinViewColumns/heat.py` `Thermodynamics` (loaded from Pyfa's source): `calcBurnCycles` and burnout time per overheated module |
 | fleet.buffs | 12 | explicit `fleet.buffs` through Pyfa command bonuses (oracle `explicit_buffs`), incl. duplicate ids (Minimum / Maximum aggregate), titan generator buffs, a Claymore booster fit with and without an explicit override |
+| vs_target_profile | 11 | `DmgTypes.profile` = request target profile on the total weapon + drone + fighter dps / volley (oracle `ORACLE_EXTRA=profile`) |
+| probe_size | 10 | `fit.probeSize` |
+| validity | 22 + 2 unit | Pyfa fitting checks mapped to contract violation codes (oracle `ORACLE_EXTRA=validity`, CONTRACT.md "Draft 1.11: vs_target_profile, probe_size, validity"); scored: distinct code set + all bench metrics; draft (reported only): module indices, missing skill ids |
 | overrides | 22 + 10 unit | Pyfa attribute overrides (oracle `apply_overrides`); 10 hand-derived unit cases in `unit/` (see below) |
 
 Fits: hand-built reference fits (Venture, Hulk, Covetor, Procurer, Porpoise, Guardian, Basilisk, Oneiros, Scimitar,
@@ -30,6 +33,7 @@ cases, renamed), each with a `derivation` text. Generator: `tools/gen_overrides.
 ```
 python3 ext/tools/gen_ext.py [POOL_LIST LEGAL_JSONL]   # cases except overrides
 python3 ext/tools/gen_overrides.py                      # ovr_* cases + unit/ (hand-derived expected)
+python3 ext/tools/gen_val.py                            # tp_* / probe_* / val_* cases + unit_val_*
 python3 ext/tools/make_expected.py                       # Pyfa oracle (ORACLE_EXTRA=ext) for the rest
 python3 ext/tools/score.py --batch-cmd "ENGINE batch" --name X [--out r.json]
 ```

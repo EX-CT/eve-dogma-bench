@@ -38,5 +38,13 @@
  "unit_ovr_skill_attribute": {
   "feature": "overrides-unit",
   "source": "hand-derived (non-Pyfa)"
+ },
+ "unit_val_max_type_fitted": {
+  "feature": "validity-unit",
+  "source": "hand-derived (non-Pyfa)"
+ },
+ "unit_val_validate_false": {
+  "feature": "validity-unit",
+  "source": "hand-derived (non-Pyfa)"
  }
 }
