@@ -159,7 +159,7 @@ items:
   SVC-005: ['ext-rpc:names_*']
   DB-003: ['ext-rpc:backup_*']
   ENG-SHIP-006: ['ext-rpc:type_traits_*', 'mcp:mcp.integration.get-ship-traits']
-  ENG-PRICE-001: ['mcp:mcp.features.price-passthrough', 'mcp:mcp.features.price-fit-engine', {ref: 'mcp:mcp.unit.price-inputs', strength: partial, why: 'request normalisation (names -> ids), no pricing math'}, 'batch:price_*', 'batch:calcprice_*', 'mcp-batch:price_*']
+  ENG-PRICE-001: ['mcp:mcp.features.price-passthrough', 'mcp:mcp.features.price-fit-engine', {ref: 'mcp:mcp.unit.price-inputs', strength: partial, why: 'request normalisation (names -> ids), no pricing math'}, 'batch:price_*', 'batch:calcprice_*', 'mcp-batch:price_*', {ref: 'mcp:mcp.features.provenance', strength: partial, why: 'provenance fields only (price_source request / snapshot_time null, batch top level); no override precedence or pricing math'}]
   PRC-003: ['mcp:mcp.features.price-passthrough', 'mcp:mcp.features.price-fit-engine']
   ENG-BATCH-001: [{ref: 'mcp:mcp.features.compute-batch', strength: partial, why: 'one variants request (fields, deltas) vs compute_fit; other forms via mcp-batch'}, {ref: 'mcp:mcp.unit.batch-prepare', strength: partial, why: 'request normalisation only'}, {ref: 'mcp:mcp.unit.batch-table', strength: partial, why: 'markdown rendering only'}, 'batch:multi_*', 'batch:variants_*', 'batch:product_*', 'batch:sweep_*', 'batch:gap_*', 'mcp-batch:multi_*', 'mcp-batch:variants_*', 'mcp-batch:product_*', 'mcp-batch:sweep_*']
   ENG-MISC-002: [{ref: 'mcp:mcp.stats.utility-modules', strength: partial, why: 'scanners, cloak, probe launcher only (no salvager, tractor, cyno, point defense, lightning weapon)'}]
