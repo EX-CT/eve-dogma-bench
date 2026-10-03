@@ -7,11 +7,14 @@ Source: the graphs differential fuzz on eve-dogma-bench `graphs-round2` (`graphs
 fz0767-81a1012d, 2026-10-03 09:40 CST). The graph-level disagreement comes from a stats-engine difference, so it's
 filed here as a FitRequest case.
 
+**Status (eve, 2026-10-03 11:00 CST): `exct_fuzz_rifter_standup_cap_battery` is OUT OF CONTRACT, not scored. A Standup
+Cap Battery on a ship is an illegal in-game fit. Kept only as a record; no engine change required.**
+
 | Candidate case | What it checks | Pyfa oracle | eve-dogma-rs 659737b / variant-g |
 |---|---|---|---|
 | `exct_fuzz_rifter_standup_cap_battery` (Rifter 587, 1× Standup Cap Battery I 47352, requested `active`, all skills V) | Pyfa's python effect `structureCapacitorCapacityBonus` (7027) adds the module's `capacitorBonus` (50000) to the ship's `capacitorCapacity` before the Capacitor Management skill multiplier. The SDE effect has no modifiers, so a modifier-only engine adds nothing | `cap_capacity` 62812.5 GJ, `cap_recharge_peak` 1675.0 GJ/s | **gap**: capacity 312.5, peak 8.33 (both) |
 
-Adjudication needed before it's scored:
+Adjudication (resolved: out of contract, see status above):
 - **Illegal fit.** `oracle/fuzz/check_legal.py` says `legal: false`: a structure module on a ship
   (canFitShipGroup/Type restriction), and `active` is above the module's max state. The graphs fuzzer doesn't enforce
   fitting legality; E's generator does. If the bench only scores legal fits, drop the case or keep it as an
