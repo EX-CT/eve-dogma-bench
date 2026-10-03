@@ -188,3 +188,16 @@ Variants: G1 `1c8424c`, G2 `96e612a`, G3 `b8c6ef8`. Disagreements 50, confirmed 
   earlier note: the oracle's state convention isn't written in CONTRACT.md, and variant-g / variant-c treat such modules as
   active. graphs-g3 aa04330 applies the oracle rule on its graph path. Suggest stating the rule in CONTRACT.md and adding a stats case.
 - `fuzz_damage_tgt_sig_m_fz0264-fc907b5a` (G3 only: INTERNAL): drone webs vs a target fit crashed under NumPy 2.5. Fixed in aa04330.
+
+## Differential fuzz 2026-10-03 09:40 CST (seed 5, 800 requests)
+
+Variants: G1 `1c8424c`, G3 `aa04330`. Disagreements 1, confirmed by the oracle 1, oracle errors 0. Wrong answers by variant: {'G3': 1}.
+
+- **fuzz_capacitor_time_s_fz0767-81a1012d**: capacitor / time_s; features `tgt-ideal`; wrong: **G3**; matches oracle: G1; 1 fuzz request(s) in this cluster. Example: `{"G3": [{"y": "cap_gj", "x": 64.0, "got": 312.5, "want": 62812.5}, {"y": "cap_gj", "x": 1793.5, "got": 312.5, "want": 62812.5}, {"y": "cap_gj", "x": 2157.135, "got": 312.5, "want": 62812.5}]}`
+
+### Adjudication note, seed 5 (G1 vs G3 aa04330, 800 req: 1 disagreement)
+
+- `fuzz_capacitor_time_s_fz0767-81a1012d` (G3 wrong): a Rifter with an active **Standup Cap Battery I** (a structure module on a
+  ship). Pyfa applies its capacitor bonus (62812.5 GJ). variant-g's dogma engine (stats `calc`) doesn't (312.5 GJ). This is a
+  stats-engine difference in variant-g, not in G3's graph code, so it's a stats-corpus candidate. Not fixed: variant-g stays
+  untouched in round 2.
