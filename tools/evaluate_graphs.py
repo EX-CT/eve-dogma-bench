@@ -542,11 +542,13 @@ def corpus():
 
 
 def corpus_graphs():
-    gs = []
-    for p in sorted((ROOT / "graphs/expected").glob("*.json")):
-        g = json.loads(p.read_text()).get("graph")
-        if g and g not in gs:
-            gs.append(g)
+    """graph types of the contract ("### `name` —" headers under "## Graph types"), cross-checked with the
+    value cases; 0.1 → 9, 0.2 → 10. The coverage denominator is len() of this."""
+    txt = (ROOT / "graphs/CONTRACT-GRAPHS.md").read_text()
+    sec = txt.split("## Graph types", 1)[1].split("\n## ", 1)[0]
+    gs = re.findall(r"^### `([a-z_]+)`", sec, flags=re.M)
+    seen = {r["graph"] for r in corpus()}
+    gs += sorted(seen - set(gs))  # a corpus graph the contract headers miss still counts
     return gs
 
 
