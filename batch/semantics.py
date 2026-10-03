@@ -68,8 +68,13 @@ def _sweep_values(sw):
         k += 1
 
 
+def _cj(v):
+    """sweep id / label value: compact JSON, keys sorted (docs/23 §2.3)"""
+    return json.dumps(v, separators=(",", ":"), sort_keys=True)
+
+
 def _sweep_options(sw):
-    return [{"id": f"{sw['path']}={json.dumps(v)}", "label": f"{sw['path']}={json.dumps(v)}",
+    return [{"id": f"{sw['path']}={_cj(v)}", "label": f"{sw['path']}={_cj(v)}",
              "patch": [{"op": "add", "path": sw["path"], "value": v}]} for v in _sweep_values(sw)]
 
 

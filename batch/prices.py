@@ -105,9 +105,15 @@ def items(fit):
             cap, vol = tinfo(m["type_id"]).get("capacity") or 0, tinfo(c).get("volume") or 0
             n = int(math.floor(cap / vol + 1e-9)) if vol else 0
             out.append(("charges", i, c, n))
-    for sec, key in (("drones", "drones"), ("fighters", "fighters"), ("cargo", "cargo")):
-        for i, d in enumerate(fit.get(key, [])):
-            out.append((sec, i, d["type_id"], int(d.get("quantity", 1))))
+    for i, d in enumerate(fit.get("drones", [])):         # mutated drones are priced as their base type (F, docs/23 §11.5)
+        out.append(("drones", i, (d.get("mutation") or {}).get("base_type_id") or d["type_id"], int(d.get("quantity", 1))))
+    for i, d in enumerate(fit.get("fighters", [])):       # no quantity -> squadron max size (attr 2215; F, docs/23 §11.5)
+        q = d.get("quantity")
+        if q is None:
+            q = (tinfo(d["type_id"]).get("attrs") or {}).get("2215") or 1
+        out.append(("fighters", i, d["type_id"], int(q)))
+    for i, d in enumerate(fit.get("cargo", [])):
+        out.append(("cargo", i, d["type_id"], int(d.get("quantity", 1))))
     for sec in ("implants", "boosters"):
         for i, x in enumerate(fit.get(sec, [])):
             out.append((sec, i, x if isinstance(x, int) else x["type_id"], 1))
@@ -128,6 +134,9 @@ def price_block(fit, layers):
         s["items"].append(line)
         s["total_isk"] += line["total_isk"]
         sources[r["source"]] = sources.get(r["source"], 0) + 1
+    for sec in SECTIONS:                                  # all eight sections always present (F, docs/23 §11.2)
+        secs.setdefault(sec, {"total_isk": 0.0, "items": []})
+    secs = {k: secs[k] for k in SECTIONS}
     times = sorted({l["snapshot_time"] for s in secs.values() for l in s["items"] if l["snapshot_time"]})
     return {"total_isk": sum(s["total_isk"] for s in secs.values()), "complete": not missing, "sections": secs,
             "missing": missing, "sources": sources, "snapshot_time": times[0] if times else None}
@@ -160,17 +169,10 @@ def compare_block(exp, got, where=""):
     em = sorted((m["section"], m["index"], m["type_id"], m["quantity"], m["reason"]) for m in exp["missing"])
     if gm != em:
         bad.append(f"{where}missing {gm[:4]} != {em[:4]}")
-    if {k: v for k, v in (got.get("sources") or {}).items() if v} != exp["sources"]:
-        bad.append(f"{where}sources {got.get('sources')} != {exp['sources']}")
-    if got.get("snapshot_time") != exp["snapshot_time"]:
-        bad.append(f"{where}snapshot_time {got.get('snapshot_time')!r} != {exp['snapshot_time']!r}")
+    # docs/23 §6 (eccf455): no block-level snapshot_time / source list; provenance carries them
     gs = got.get("sections") or {}
     for sec in SECTIONS:
         e, g = exp["sections"].get(sec), gs.get(sec)
-        if e is None:
-            if g and (g.get("items") or g.get("total_isk")):
-                bad.append(f"{where}section {sec} should be empty")
-            continue
         if not g:
             bad.append(f"{where}section {sec} missing")
             continue

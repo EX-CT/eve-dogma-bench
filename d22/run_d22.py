@@ -234,7 +234,10 @@ def check_price_out(o, fit, files, src, embedded):
     if pv.get("price_source") != src:
         bad.append(f"provenance.price_source {pv.get('price_source')!r} != {src!r}")
     st = pv.get("snapshot_time")
-    if not use_snapshot(fit):
+    if src in ("request", "none"):                       # docs/22 §2.3 (eccf455): null for request / none
+        if st is not None:
+            bad.append(f"provenance.snapshot_time {st!r} != null (price_source {src})")
+    elif not use_snapshot(fit):
         if st is not None:
             bad.append(f"provenance.snapshot_time {st!r} != null (use_snapshot false)")
     elif files:
@@ -262,7 +265,10 @@ def check_price_out(o, fit, files, src, embedded):
         g = got.get((m["section"], m["index"], m["type_id"]))
         if g and (g.get("base_source") or g.get("source")) != "snapshot":
             bad.append(f"{m['section']}[{m['index']}] {m['type_id']}: source {g.get('source')!r}, want snapshot-based")
-        if g and g.get("snapshot_time") != pv.get("snapshot_time"):
+        lt = g.get("snapshot_time") if g else None
+        if g and pv.get("snapshot_time") is None and not (isinstance(lt, str) and TIME_RE.match(lt)):
+            bad.append(f"{m['section']}[{m['index']}]: snapshot_time {lt!r} (embedded snapshot line: want its time)")
+        elif g and pv.get("snapshot_time") is not None and lt != pv.get("snapshot_time"):
             bad.append(f"{m['section']}[{m['index']}]: snapshot_time {g.get('snapshot_time')!r} != provenance {pv.get('snapshot_time')!r}")
     return bad
 

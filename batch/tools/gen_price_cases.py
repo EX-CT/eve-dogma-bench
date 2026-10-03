@@ -41,7 +41,7 @@ one = lambda fid, fit, **kw: dict({"id": fid, "fit": fit}, **kw)  # noqa: E731
 # ---- single-fit (form 1, one entry) checks of the resolver rules
 add("price_injected_complete", {"fits": [one("rifter", BASE)], "prices": {"isk": INJ}, "fields": PF},
     "injected table prices every item: sources injected, complete, sections sum to total")
-add("price_missing_list", {"fits": [one("rifter", BASE)], "prices": {"isk": INJ_PARTIAL}, "fields": PF},
+add("price_missing_list", {"fits": [one("rifter", BASE)], "prices": {"isk": INJ_PARTIAL, "use_snapshot": False}, "fields": PF},
     "3 types unpriced -> missing (no_price) with section/index/quantity; not in totals")
 add("price_type_beats_injected", {"fits": [one("rifter", BASE)], "prices": {"isk": INJ},
                                   "price_overrides": [{"type_id": 2889, "price": 2500000}], "fields": PF},
@@ -62,7 +62,7 @@ add("price_specificity_order", {"fits": [one("rifter", BASE)], "prices": {"isk":
                                                     {"group_id": 52, "price": 5}, {"category_id": 8, "multiplier": 1.5}],
                                 "fields": PF},
     "type > market group > group > category within one layer (2889 -> mg 574; 448 -> type; 527 -> category)")
-add("price_multiplier_without_base", {"fits": [one("rifter", BASE)], "prices": {"isk": INJ_PARTIAL},
+add("price_multiplier_without_base", {"fits": [one("rifter", BASE)], "prices": {"isk": INJ_PARTIAL, "use_snapshot": False},
                                       "price_overrides": [{"category_id": 7, "multiplier": 1.1}], "fields": PF},
     "multiplier over an unpriced type -> missing reason multiplier_without_base")
 add("price_fit_level_overrides", {"fits": [one("rifter", dict(BASE, price_overrides=[{"group_id": 55, "price": 1000000}]))],
@@ -83,7 +83,7 @@ add("price_variant_fixed_beats_request_fixed", {"base": BASE, "prices": {"isk": 
                                                 "fields": PF},
     "variant layer beats request layer even when less specific")
 # ---- batch forms with per-item overrides, sort / filter / deltas by price
-add("price_variants_sort_filter", {"base": BASE, "prices": {"isk": INJ},
+add("price_variants_sort_filter", {"base": BASE, "prices": {"isk": INJ, "use_snapshot": False},
                                    "variants": [{"label": f"guns {p}", "price_overrides": [{"type_id": 2889, "price": p}]} for p in (0, 50000, 900000, 2500000)]
                                    + [{"label": "stock modules", "price_overrides": [{"category_id": 7, "price": 0}]},
                                       {"label": "T2 swap + market", "patch": [{"op": "replace", "path": "/modules/3/type_id", "value": 439}]}],

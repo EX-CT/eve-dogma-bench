@@ -144,7 +144,7 @@ add("gap_variant_own_price_table", {"base": BASE, "variants": [
     "variants with their own price table carry their own provenance (price_source request / none) under a top-level file",
     eargs=A_MAP, price=True)
 # ---- calc's own price block (kind calc_price: ENGINE [--prices F] calc <fit with price inputs>)
-add("calcprice_request_table", {"fit": dict(BASE, prices={"isk": MAP})}, "calc with prices.isk: the price block", kind="calc_price")
+add("calcprice_request_table", {"fit": dict(BASE, prices={"isk": MAP, "use_snapshot": False})}, "calc with prices.isk: the price block", kind="calc_price")
 add("calcprice_overrides", {"fit": dict(BASE, prices={"isk": MAP}, price_overrides=[{"group_id": 55, "multiplier": 0.9},
                                                                                      {"type_id": 31015, "price": 0}])},
     "calc with prices + price_overrides", kind="calc_price")

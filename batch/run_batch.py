@@ -46,7 +46,7 @@ def with_price(out, fit, req, l1, engine_args=()):
         return out
     inj = dict((req.get("prices") or {}).get("isk", {}))
     inj.update((fit.get("prices") or {}).get("isk", {}))      # the FitRequest's own table wins per type (docs/23 §5.2)
-    l2 = list(req.get("price_overrides", [])) + list(fit.get("price_overrides", []))
+    l2 = list(fit.get("price_overrides", [])) + list(req.get("price_overrides", []))   # same target: the fit's own wins (§11.4)
     return dict(out, price=prices.price_block(fit, prices.layers_for(l2, l1, inj, l4_for(fit, req, list(engine_args)))))
 
 
@@ -63,7 +63,7 @@ def expected_prov(req, fit, engine_args):
     pr = dict(req.get("prices") or {}, **(fit.get("prices") or {}))
     use = pr.get("use_snapshot", {"replace": False, "override": True}.get(pr.get("mode"), True)) is not False
     if isk:
-        return {"request"}, (None if use else "null")
+        return {"request"}, "null"                        # docs/22 §2.3 (eccf455): null for request / none
     if not use:
         return {"none"}, "null"
     if "--prices" in engine_args:
