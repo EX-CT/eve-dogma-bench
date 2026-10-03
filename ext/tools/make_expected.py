@@ -39,6 +39,11 @@ def ext_pointers(feature, x):
         for dt, lv in x["bombing"].items():
             for L, v in lv.items():
                 out[f"/bombing/{dt}/covert_ops_{L}"] = v
+    if feature == "vs_target_profile":
+        out["/offense/vs_target_profile/dps"] = x["profile"]["vs_target_profile"]["dps"]
+        out["/offense/vs_target_profile/volley"] = x["profile"]["vs_target_profile"]["volley"]
+    if feature == "probe_size":
+        out["/targeting/probe_size"] = x["profile"]["probe_size"]
     if feature == "heat":
         for h in x["heat"]:
             out[f"/modules[module_index={h['module_index']}]/heat/burn_cycles"] = h["burn_cycles"]
@@ -46,11 +51,23 @@ def ext_pointers(feature, x):
     return out
 
 
+def violations_expected(v):
+    """Scored: the set of distinct codes. Draft (CONTRACT.md "Draft 1.11: validity"): module indices per per-module
+    code, missing skill ids (violation field skill_type_id)."""
+    mods = {}
+    for x in v:
+        if x.get("module_index") is not None:
+            mods.setdefault(x["code"], set()).add(x["module_index"])
+    return {"codes": sorted({x["code"] for x in v}), "modules": {k: sorted(s) for k, s in sorted(mods.items())},
+            "missing_skills": sorted(x["skill_type_id"] for x in v if x["code"] == "MISSING_SKILL"),
+            "pyfa": v}
+
+
 def main(files):
     files = [str(pathlib.Path(f).resolve()) for f in files] or sorted(str(p) for p in (SUITE / "cases").glob("*.json"))
     man = json.loads((SUITE / "MANIFEST.json").read_text())
     files = [f for f in files if "non-Pyfa" not in man[pathlib.Path(f).stem]["source"]]
-    env = dict(os.environ, PYTHONPATH=STUB, ORACLE_REPEAT="0", PYFA=PYFA, ORACLE_EXTRA="ext")
+    env = dict(os.environ, PYTHONPATH=STUB, ORACLE_REPEAT="0", PYFA=PYFA, ORACLE_EXTRA="ext,profile,validity")
     out = subprocess.run([PY, str(ROOT / "oracle/pyfa_oracle.py"), *files], capture_output=True, text=True, cwd=PYFA, env=env)
     if out.returncode:
         print(out.stderr[-3000:], file=sys.stderr)
@@ -66,7 +83,9 @@ def main(files):
         feat = man[name]["feature"]
         exp = {"case": name, "oracle": "pyfa-eos", "feature": feat,
                "values": {k: v for k, v in sorted(from_pyfa(r["stats"]).items()) if k in METRICS},
-               "ext": ext_pointers(feat, r["stats"]["ext"]), "excluded": {}}
+               "ext": ext_pointers(feat, {**r["stats"]["ext"], "profile": r["stats"]["profile"]}), "excluded": {}}
+        if feat == "validity":
+            exp["violations"] = violations_expected(r["stats"]["validity"])
         (SUITE / "expected" / f"{name}.json").write_text(json.dumps(exp, indent=1, sort_keys=True, default=str) + "\n")
         n += 1
     print(f"wrote {n} expected files")

@@ -45,8 +45,27 @@ def main():
                 ni += 1
             if not close(g, v):
                 bad.append((p, g, v))
-        res[f.stem] = {"pass": not bad, "feature": man[f.stem]["feature"], "source": man[f.stem]["source"],
-                       "checks": len(exp["values"]) + len(exp.get("ext", {})), "mismatches": len(bad),
+        draft = []
+        if "violations" in exp:
+            ev, got = exp["violations"], resp.get("violations") or []
+            gc = sorted({x.get("code") for x in got})
+            if "codes" in ev and gc != ev["codes"]:
+                bad.append(("violations.codes", gc, ev["codes"]))
+            for c in ev.get("codes_include", []):
+                if c not in gc:
+                    bad.append(("violations.codes_include", gc, c))
+            # draft 1.11 (informational, not part of pass): module indices per code, missing skill ids
+            for c, idx in ev.get("modules", {}).items():
+                gi = sorted({x.get("module_index") for x in got if x.get("code") == c and x.get("module_index") is not None})
+                if gi != idx:
+                    draft.append((f"modules[{c}]", gi, idx))
+            if "missing_skills" in ev:
+                gs = sorted(x["skill_type_id"] for x in got if x.get("code") == "MISSING_SKILL" and "skill_type_id" in x)
+                n_ms = sum(1 for x in got if x.get("code") == "MISSING_SKILL")
+                if gs != ev["missing_skills"]:
+                    draft.append(("missing_skills", gs if gs or not n_ms else f"not_implemented ({n_ms} MISSING_SKILL)", ev["missing_skills"]))
+        res[f.stem] = {"pass": not bad, "draft_pass": not bad and not draft, "draft_first": draft[:5], "feature": man[f.stem]["feature"], "source": man[f.stem]["source"],
+                       "checks": len(exp["values"]) + len(exp.get("ext", {})) + ("violations" in exp), "mismatches": len(bad),
                        "not_implemented": ni, "first": bad[:10]}
     by = collections.defaultdict(lambda: [0, 0])
     for r in res.values():
