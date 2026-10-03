@@ -17,20 +17,20 @@ only go up.
   - Runner exit codes are ignored, because the gate decides.
 - `tools/check_no_regress.py`: the gate.
 
-## Suites (seed: EX-CT/eve-dogma 2da8150, 2026-10-03 14:10 CST)
+## Suites (seeded from 2da8150 at 14:10 CST; raised to EX-CT/eve-dogma d990818 at 14:40 CST)
 | suite | runner | source | passed / total |
 |---|---|---|---|
 | core | `run.py` | pending-1.11 | 339 / 339 |
-| ext | `ext/tools/score.py` | pending-1.11 (incl. the 37 f-missing cases) | 204 / 239 |
-| ext_rpc | `ext/tools/score_rpc.py` (serve-stdio) | pending-1.11 `ext/rpc` | 0 / 31 |
-| batch | `batch/run_batch.py` (identity vs one-by-one calc; provisional shape) | pending-1.11 `batch/` | 0 / 44 (added 2026-10-03 14:30 CST; no batch API in 2da8150) |
-| effects | `effects/tools/score.py` | pending-1.11 | 2352 / 2378 |
+| ext | `ext/tools/score.py` | pending-1.11 (incl. the 37 f-missing cases) | 207 / 239 |
+| ext_rpc | `ext/tools/score_rpc.py` (serve-stdio) | pending-1.11 `ext/rpc` | 0 / 54 |
+| batch | `batch/run_batch.py` (identity vs one-by-one calc; provisional shape) | pending-1.11 `batch/` | 0 / 44 (added 2026-10-03 14:30 CST; no batch API in 2da8150 / d990818) |
+| effects | `effects/tools/score.py` | pending-1.11 | 2378 / 2378 |
 | graphs | `graphs/run_graphs.py` (serve-stdio) | graphs-round2 db81b8c (`graphs-v0.3`) | 192 / 192 |
 | cap | `cap/run_cap.py` | cap-suite d80cc38 | 150 / 150 |
 | mutated | `mutated/run_mutated.py` | mutated-suite 4533dde | 93 / 93 |
 | formats | `tools/evaluate_formats.py` (serve-stdio) | formats-suite 7c716e7 | 4779 / 4779 scored rows |
 
-docs/19 (eve-fit-docs f7f893a) `have` counts: f 104, mcp 38, web 84, formats 10.
+docs/19 (eve-fit-docs 3d99eea) `have` counts: f 104, mcp 97, web 84, formats 10.
 
 ## Rules (exit 1 = regression)
 1. For each suite in the baseline, `passed` must be at least the baseline value.
