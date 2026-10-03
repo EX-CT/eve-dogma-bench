@@ -41,7 +41,7 @@ suites:
   mcp-effects: {column: mcp, kind: files, dir: effects/cases, ext: .json}   # effects suite through compute_fit (include_attributes)
   mcp-batch: {column: mcp, kind: files, dir: batch/cases, ext: .json}   # batch suite through compute_batch (tools/mcp_batch.py --tool compute_batch, run_batch.py --transport cli)
   mcp-mut:   {column: mcp, kind: files, git_ref: origin/mutated-suite, dir: mutated/cases, ext: .json}
-  mcp:       {column: mcp, kind: id, id_prefix: "mcp.", glob: "*.test.ts", ids_json: docs/test-ids.json}   # --root mcp=<EX-CT/eve-fit-mcp checkout, = v0.4.0 d3786eb (docs/test-ids.json 89 ids, 36 with inventory refs)>: ids mcp.<file>.<slug> on the node --test titles in src/test/ (guard: mcp.unit.test-ids; table docs/test-ids.{md,json})
+  mcp:       {column: mcp, kind: id, id_prefix: "mcp.", glob: "*.test.ts", ids_json: docs/test-ids.json}   # --root mcp=<EX-CT/eve-fit-mcp checkout, = v0.4.1 447420f (docs/test-ids.json 90 ids, 37 with inventory refs)>: ids mcp.<file>.<slug> on the node --test titles in src/test/ (guard: mcp.unit.test-ids; table docs/test-ids.{md,json})
   # web-* (bench-suites run): eve-fit-web CI runs the pending-1.11 suites at c2229b2 in headless Chrome through the site's F wasm worker
   # (tools/browser-engine.mjs; F = eve-dogma 20aa425 per engines.lock ENGINE_F_SRC), run 37104154159 (eve-fit-web fdbb014, 2026-10-03
   # 14:46 CST), artifact bench-suites-wasm-worker; per-case results verified in results-1.11/web-fdbb014.md; gate baselines/web.json

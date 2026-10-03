@@ -18,3 +18,11 @@
 | extra keys in full results | multi_100_full, multi_5_full, multi_duplicates, multi_single, product_full_output, variants_full_output, sweep_skill_override_full (7) | Full-output `stats` carry `engine`, `notes` and `request_hash`, which the one-by-one compute_fit stats don't. Batch results are therefore not identical to one-by-one results. |
 | per-fit error in place | multi_error_in_place (1) | The whole request is rejected up front with `UNKNOWN_TYPE ... (at fits/4/fit)`. The contract requires the error to stay at index 4 while the other fits are computed. |
 | builtin profiles: compute_fit vs compute_batch | multi_ext_mix (1) | compute_fit rejects fits with `target_profile: {"builtin": ...}` or `damage_pattern: {"builtin": ...}` with `-32602 Invalid input at fit.ship` (the error names the wrong field). compute_batch computes the same fits, so batch and one-by-one disagree at [4] tpb_rifter_uniform50 and [14] dpb_thorax_uniform. |
+
+## MCP CI on v0.4.1 (features + unit)
+- Run locally on 2026-10-03 at 15:52 CST, read-only, with engine 8bde0ba-r5: [mcp-v0.4.1/mcp-ci-features-unit.tap](mcp-v0.4.1/mcp-ci-features-unit.tap).
+- Result: 38 pass, 0 fail, 1 todo (security-status-value, effect 6871), 1 skip (variant C binary missing).
+- These tests pass: provenance, price-passthrough, price-fit-engine, compute-batch, price-inputs, batch-prepare and batch-table.
+- docs/19 decisions:
+  - ENG-PRICE-001 mcp: partial → have. mcp-batch price_* is 14/14, and the full refs pass. The `--prices FILE` cases are an engine global option outside the request contract, so their status is left to eve.
+  - ENG-BATCH-001 mcp: stays partial, because of the 12 non-price failures above.
