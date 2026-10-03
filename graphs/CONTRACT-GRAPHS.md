@@ -81,7 +81,7 @@ path (`graph`, `x.axis`, `y[1]`, `x.values[2]`, `target.resist_mode`, …).
 | `graph` not one of the graph types below | `UNKNOWN_GRAPH` |
 | `x.axis` not valid for the graph, a y not valid for the graph, or an (x, y) pair the graph does not define (e.g. `ecm_burst` `tgt_dps` × `tgt_lock_time_s`) | `BAD_AXIS` |
 | enumerated value not recognised: `target.resist_mode`, `settings.mobile_drone_mode`, `params.ammo_quality` | `BAD_REQUEST` |
-| unknown type id in the source fit or in `target.fit` (base contract rules) | `UNKNOWN_TYPE` |
+| unknown type id in the source fit, or in `target.fit` for graphs that use a target (`damage`, `application_profile`, `ewar`, `remote_reps`; other graphs ignore `target`) — base contract rules | `UNKNOWN_TYPE` |
 
 Out-of-range x values are **not** errors: they yield `null` at that point (per-graph valid ranges). Numeric params
 outside their range are clamped where stated (`time_s` 0 … 2500, `cap_start_pct` / `shield_start_pct` 0 … 100,
