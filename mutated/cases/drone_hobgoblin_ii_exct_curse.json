@@ -1,0 +1,196 @@
+{
+ "boosters": [],
+ "cargo": [],
+ "character": {
+  "security_status": null,
+  "skills": {
+   "default_level": 5,
+   "levels": {}
+  }
+ },
+ "damage_pattern": null,
+ "drones": [
+  {
+   "active": 1,
+   "mutation": {
+    "attributes": {
+     "158": 2142.96,
+     "160": 2.43225,
+     "263": 66.4255,
+     "265": 84.5152,
+     "37": 4485.1,
+     "54": 2389.38,
+     "64": 1.34656,
+     "9": 285.625
+    },
+    "base_type_id": 2456,
+    "mutaplasmid_type_id": 85676
+   },
+   "quantity": 1,
+   "type_id": 60478
+  },
+  {
+   "active": 1,
+   "mutation": {
+    "attributes": {
+     "158": 2676.46,
+     "160": 1.43116,
+     "263": 37.3546,
+     "265": 81.4686,
+     "37": 2954.81,
+     "54": 2734.35,
+     "64": 1.40556,
+     "9": 257.337
+    },
+    "base_type_id": 2456,
+    "mutaplasmid_type_id": 85677
+   },
+   "quantity": 1,
+   "type_id": 60478
+  },
+  {
+   "active": 3,
+   "mutation": null,
+   "quantity": 3,
+   "type_id": 2456
+  }
+ ],
+ "environment": {
+  "effect_type_ids": [],
+  "system_security": null
+ },
+ "fighters": [],
+ "fleet": {
+  "booster_fits": [],
+  "buffs": []
+ },
+ "implants": [],
+ "modules": [
+  {
+   "charge_type_id": null,
+   "mutation": null,
+   "slot": "low",
+   "spool": null,
+   "state": "active",
+   "type_id": 2048
+  },
+  {
+   "charge_type_id": null,
+   "mutation": null,
+   "slot": "low",
+   "spool": null,
+   "state": "active",
+   "type_id": 11269
+  },
+  {
+   "charge_type_id": null,
+   "mutation": null,
+   "slot": "low",
+   "spool": null,
+   "state": "active",
+   "type_id": 20349
+  },
+  {
+   "charge_type_id": null,
+   "mutation": null,
+   "slot": "low",
+   "spool": null,
+   "state": "active",
+   "type_id": 3530
+  },
+  {
+   "charge_type_id": null,
+   "mutation": null,
+   "slot": "mid",
+   "spool": null,
+   "state": "active",
+   "type_id": 12058
+  },
+  {
+   "charge_type_id": 29007,
+   "mutation": null,
+   "slot": "mid",
+   "spool": null,
+   "state": "active",
+   "type_id": 2109
+  },
+  {
+   "charge_type_id": null,
+   "mutation": null,
+   "slot": "mid",
+   "spool": null,
+   "state": "active",
+   "type_id": 2109
+  },
+  {
+   "charge_type_id": null,
+   "mutation": null,
+   "slot": "mid",
+   "spool": null,
+   "state": "active",
+   "type_id": 2032
+  },
+  {
+   "charge_type_id": null,
+   "mutation": null,
+   "slot": "high",
+   "spool": null,
+   "state": "active",
+   "type_id": 12267
+  },
+  {
+   "charge_type_id": null,
+   "mutation": null,
+   "slot": "high",
+   "spool": null,
+   "state": "active",
+   "type_id": 12267
+  },
+  {
+   "charge_type_id": null,
+   "mutation": null,
+   "slot": "high",
+   "spool": null,
+   "state": "active",
+   "type_id": 12259
+  },
+  {
+   "charge_type_id": null,
+   "mutation": null,
+   "slot": "rig",
+   "spool": null,
+   "state": "online",
+   "type_id": 31360
+  },
+  {
+   "charge_type_id": null,
+   "mutation": null,
+   "slot": "rig",
+   "spool": null,
+   "state": "online",
+   "type_id": 31372
+  }
+ ],
+ "options": {
+  "cap_sim": {
+   "max_time_s": null,
+   "reload": false,
+   "stagger": false
+  },
+  "default_spool": null,
+  "factor_reload": false,
+  "include_attributes": null,
+  "nos_no_target_cap": false,
+  "rah": null,
+  "sources": false,
+  "validate": true
+ },
+ "overrides": [],
+ "projected": [],
+ "schema_version": 1,
+ "ship": {
+  "mode_type_id": null,
+  "type_id": 20125
+ },
+ "target_profile": null
+}

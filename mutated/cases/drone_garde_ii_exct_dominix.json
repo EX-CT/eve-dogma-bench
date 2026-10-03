@@ -1,0 +1,241 @@
+{
+ "boosters": [],
+ "cargo": [],
+ "character": {
+  "security_status": null,
+  "skills": {
+   "default_level": 5,
+   "levels": {}
+  }
+ },
+ "damage_pattern": null,
+ "drones": [
+  {
+   "active": 1,
+   "mutation": {
+    "attributes": {
+     "158": 35547.3,
+     "160": 0.0430429,
+     "263": 835.346,
+     "265": 928.455,
+     "54": 13472.5,
+     "64": 1.53523,
+     "9": 1776.29
+    },
+    "base_type_id": 28211,
+    "mutaplasmid_type_id": 85692
+   },
+   "quantity": 1,
+   "type_id": 60481
+  },
+  {
+   "active": 1,
+   "mutation": {
+    "attributes": {
+     "158": 31825.4,
+     "160": 0.0302688,
+     "263": 753.475,
+     "265": 935.573,
+     "37": 9.47273e-06,
+     "54": 23574.0,
+     "64": 1.47413,
+     "9": 1321.25
+    },
+    "base_type_id": 28211,
+    "mutaplasmid_type_id": 85693
+   },
+   "quantity": 1,
+   "type_id": 60481
+  },
+  {
+   "active": 3,
+   "mutation": null,
+   "quantity": 3,
+   "type_id": 28211
+  },
+  {
+   "active": 5,
+   "mutation": null,
+   "quantity": 5,
+   "type_id": 2446
+  }
+ ],
+ "environment": {
+  "effect_type_ids": [],
+  "system_security": null
+ },
+ "fighters": [],
+ "fleet": {
+  "booster_fits": [],
+  "buffs": []
+ },
+ "implants": [],
+ "modules": [
+  {
+   "charge_type_id": null,
+   "mutation": null,
+   "slot": "low",
+   "spool": null,
+   "state": "active",
+   "type_id": 4405
+  },
+  {
+   "charge_type_id": null,
+   "mutation": null,
+   "slot": "low",
+   "spool": null,
+   "state": "active",
+   "type_id": 4405
+  },
+  {
+   "charge_type_id": null,
+   "mutation": null,
+   "slot": "low",
+   "spool": null,
+   "state": "active",
+   "type_id": 4405
+  },
+  {
+   "charge_type_id": null,
+   "mutation": null,
+   "slot": "low",
+   "spool": null,
+   "state": "active",
+   "type_id": 3540
+  },
+  {
+   "charge_type_id": null,
+   "mutation": null,
+   "slot": "low",
+   "spool": null,
+   "state": "active",
+   "type_id": 3540
+  },
+  {
+   "charge_type_id": null,
+   "mutation": null,
+   "slot": "low",
+   "spool": null,
+   "state": "active",
+   "type_id": 11269
+  },
+  {
+   "charge_type_id": null,
+   "mutation": null,
+   "slot": "low",
+   "spool": null,
+   "state": "active",
+   "type_id": 2048
+  },
+  {
+   "charge_type_id": null,
+   "mutation": null,
+   "slot": "mid",
+   "spool": null,
+   "state": "active",
+   "type_id": 3504
+  },
+  {
+   "charge_type_id": null,
+   "mutation": null,
+   "slot": "mid",
+   "spool": null,
+   "state": "active",
+   "type_id": 2032
+  },
+  {
+   "charge_type_id": 29001,
+   "mutation": null,
+   "slot": "mid",
+   "spool": null,
+   "state": "active",
+   "type_id": 24438
+  },
+  {
+   "charge_type_id": 28999,
+   "mutation": null,
+   "slot": "mid",
+   "spool": null,
+   "state": "active",
+   "type_id": 24438
+  },
+  {
+   "charge_type_id": null,
+   "mutation": null,
+   "slot": "high",
+   "spool": null,
+   "state": "active",
+   "type_id": 24427
+  },
+  {
+   "charge_type_id": null,
+   "mutation": null,
+   "slot": "high",
+   "spool": null,
+   "state": "active",
+   "type_id": 24427
+  },
+  {
+   "charge_type_id": null,
+   "mutation": null,
+   "slot": "high",
+   "spool": null,
+   "state": "active",
+   "type_id": 12271
+  },
+  {
+   "charge_type_id": null,
+   "mutation": null,
+   "slot": "high",
+   "spool": null,
+   "state": "active",
+   "type_id": 12271
+  },
+  {
+   "charge_type_id": null,
+   "mutation": null,
+   "slot": "rig",
+   "spool": null,
+   "state": "online",
+   "type_id": 26294
+  },
+  {
+   "charge_type_id": null,
+   "mutation": null,
+   "slot": "rig",
+   "spool": null,
+   "state": "online",
+   "type_id": 26294
+  },
+  {
+   "charge_type_id": null,
+   "mutation": null,
+   "slot": "rig",
+   "spool": null,
+   "state": "online",
+   "type_id": 26338
+  }
+ ],
+ "options": {
+  "cap_sim": {
+   "max_time_s": null,
+   "reload": false,
+   "stagger": false
+  },
+  "default_spool": null,
+  "factor_reload": false,
+  "include_attributes": null,
+  "nos_no_target_cap": false,
+  "rah": null,
+  "sources": false,
+  "validate": true
+ },
+ "overrides": [],
+ "projected": [],
+ "schema_version": 1,
+ "ship": {
+  "mode_type_id": null,
+  "type_id": 645
+ },
+ "target_profile": null
+}
