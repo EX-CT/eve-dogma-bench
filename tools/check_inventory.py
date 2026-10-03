@@ -8,8 +8,10 @@ suite registry (inventory/suites.yaml), and fails (exit 1) when:
   2. a cited test does not exist (a file case missing, a Rust test fn not found, an unknown test id);
   3. with --release: an item is `missing` or `partial` in a checked column without `deferred: <ruling>`
      (on the item, or as `deferred:` in the mapping file entry);
-  4. an item is `have` in a checked column but its only tests there are `strength: weak` ("weak-only", reported
-     separately and not counted as "with tests").
+  4. an item is `have` in a checked column but has no full test there: its tests are only `strength: weak`
+     ("weak-only") or only `strength: partial` ("partial-only"). Only full tests (no strength) cover `have`.
+Items with `extra: true` (features beyond Pyfa, docs/19 header) are gated the same way but counted separately and
+excluded from the per-column parity totals.
 References whose suite needs a --root that was not given are "unverified": reported, and fatal only with --strict.
 
   python3 tools/check_inventory.py --inventory ../eve-fit-docs/docs/19-pyfa-feature-inventory.yaml \
@@ -22,8 +24,8 @@ Mapping file format (inventory/tests.yaml):
     ENG-OFF-006: {tests: [ext:mining_*], deferred: "user 2026-10-03: P0-3"}
     ENG-NAV-001: [bench:esf_mwd*, {ref: "mcp:mcp.integration.what-if", strength: partial, why: velocity only}]
     FMT-ESI-001: {tests: [...], unsupported: [mcp], why: "..."}
-A ref is "suite:name" or {ref: "suite:name", strength: weak|partial, why: "..."}; no strength = full. partial counts
-as covered (and is counted as "partial only" when an item has nothing stronger); weak does not.
+A ref is "suite:name" or {ref: "suite:name", strength: weak|partial, why: "..."}; no strength = full. Only full refs
+cover `have` (strict gate, eve 2026-10-03); partial and weak refs are evidence for `partial`.
 `unsupported: [column]` records that the column does not support the item (a mapping-file ruling; a conflict with a
 docs/19 `have` is a problem). An item's `tests:` in docs/19 may be a list of refs or a {column: [refs]} mapping; both
 sources are merged.
@@ -230,7 +232,8 @@ def main():
     problems, unverified, report = [], [], {"uncovered_have": {c: [] for c in cols}, "covered_have": {c: 0 for c in cols},
                                             "have": {c: 0 for c in cols}, "undeferred": {c: [] for c in cols},
                                             "weak_only": {c: [] for c in cols}, "partial_only": {c: [] for c in cols},
-                                            "unsupported": {c: [] for c in cols}}
+                                            "unsupported": {c: [] for c in cols},
+                                            "extras": {"items": [], "have": {c: 0 for c in cols}, "covered_have": {c: 0 for c in cols}}}
     for k in mapping:
         if k not in ids:
             problems.append(("unknown-item", k, "mapping entry for an id not in the inventory"))
@@ -248,6 +251,9 @@ def main():
             unsupported = set(m.get("unsupported", []))
         elif m:
             refs += list(m)
+        extra = bool(it.get("extra"))
+        if extra:
+            report["extras"]["items"].append(iid)
         bycol = {}
         for r in refs:
             strength = "full"
@@ -278,11 +284,13 @@ def main():
                 continue
             sts = set(bycol.get(c, []))
             if st == "have":
-                report["have"][c] += 1
-                if sts - {"weak"}:
-                    report["covered_have"][c] += 1
-                    if "full" not in sts:
-                        report["partial_only"][c].append(iid)
+                tot = report["extras"] if extra else report
+                tot["have"][c] += 1
+                if "full" in sts:
+                    tot["covered_have"][c] += 1
+                elif "partial" in sts:
+                    report["partial_only"][c].append(iid)
+                    problems.append(("partial-only-have", iid, f"column {c}: only partial tests"))
                 elif sts:
                     report["weak_only"][c].append(iid)
                     problems.append(("weak-only-have", iid, f"column {c}: only weak tests"))
@@ -303,11 +311,14 @@ def main():
         for iid, r in unverified if not a.strict else []:
             print(f"warn unverified      {iid:14s} {r} (no --root for its suite)")
     for c in cols:
-        print(f"column {c}: have {report['have'][c]}, with tests {report['covered_have'][c]}, "
-              f"(partial only {len(report['partial_only'][c])}), weak only {len(report['weak_only'][c])}, "
+        print(f"column {c}: have {report['have'][c]}, with full tests {report['covered_have'][c]}, "
+              f"partial only {len(report['partial_only'][c])}, weak only {len(report['weak_only'][c])}, "
               f"uncovered {len(report['uncovered_have'][c])}" +
               (f", unsupported {len(report['unsupported'][c])}" if report['unsupported'][c] else "") +
               (f", missing/partial without deferral {len(report['undeferred'][c])}" if a.release else ""))
+    ex = report["extras"]
+    print(f"extras (beyond Pyfa, not in the parity totals): {len(ex['items'])} items" +
+          "".join(f"; {c} have {ex['have'][c]} (full tests {ex['covered_have'][c]})" for c in cols))
     nmiss = sum(1 for p in problems if p[0] == "missing-test")
     nunk = sum(1 for p in problems if p[0] == "unknown-id")
     print(f"missing tests {nmiss}, unknown ids {nunk}, unverified refs {len(unverified)}, problems {len(problems)}")
