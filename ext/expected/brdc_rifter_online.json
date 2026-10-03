@@ -1,9 +1,7 @@
 {
  "case": "brdc_rifter_online",
  "excluded": {},
- "ext": {
-  "/attributes/ship/breacherPodDamageResistance": 1.0
- },
+ "ext": {},
  "feature": "breacher_dc",
  "oracle": "pyfa-eos",
  "values": {

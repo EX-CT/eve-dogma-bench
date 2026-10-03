@@ -50,9 +50,10 @@ def ext_pointers(feature, x):
             out[f"/modules[module_index={h['module_index']}]/heat/burn_cycles"] = h["burn_cycles"]
             out[f"/modules[module_index={h['module_index']}]/heat/burnout_s"] = h["burnout_s"]
     if feature == "breacher_dc":  # Draft 1.11 missing-f: options.include_attributes "all"
-        # unmodified (module not active): absent from Pyfa's ship ModifiedAttributeDict -> eve.db attribute 6255
-        # defaultValue 1.0
-        out["/attributes/ship/breacherPodDamageResistance"] = x["attrs"]["ship"].get("breacherPodDamageResistance", 1.0)
+        # unmodified (module not active): Pyfa's ship ModifiedAttributeDict has no entry (the ship type lacks the
+        # attribute), so there is nothing to score; the case then checks only the bench metrics
+        if "breacherPodDamageResistance" in x["attrs"]["ship"]:
+            out["/attributes/ship/breacherPodDamageResistance"] = x["attrs"]["ship"]["breacherPodDamageResistance"]
     if feature == "attr_sources":  # Draft 1.11 missing-f: options.sources (Pyfa 'Affected by')
         for t, attrs in x["sources"]["sources"].items():
             for a, lst in attrs.items():

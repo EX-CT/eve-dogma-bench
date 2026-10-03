@@ -1,6 +1,6 @@
 {
- "name": "ED-2da8150",
- "pass": 205,
+ "name": "ED-d990818",
+ "pass": 208,
  "total": 239,
  "cases": {
   "alpha_drake": {
@@ -435,21 +435,15 @@
    "first": []
   },
   "brdc_rifter_active": {
-   "pass": false,
-   "draft_pass": false,
+   "pass": true,
+   "draft_pass": true,
    "draft_first": [],
    "feature": "breacher_dc",
    "source": "hand-built (Pyfa oracle)",
    "checks": 57,
-   "mismatches": 1,
-   "not_implemented": 1,
-   "first": [
-    [
-     "/attributes/ship/breacherPodDamageResistance",
-     null,
-     0.09999999999999998
-    ]
-   ]
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
   },
   "brdc_rifter_online": {
    "pass": true,
@@ -463,38 +457,26 @@
    "first": []
   },
   "brdc_rifter_skills0": {
-   "pass": false,
-   "draft_pass": false,
+   "pass": true,
+   "draft_pass": true,
    "draft_first": [],
    "feature": "breacher_dc",
    "source": "hand-built (Pyfa oracle)",
    "checks": 57,
-   "mismatches": 1,
-   "not_implemented": 1,
-   "first": [
-    [
-     "/attributes/ship/breacherPodDamageResistance",
-     null,
-     0.09999999999999998
-    ]
-   ]
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
   },
   "brdc_thorax_active": {
-   "pass": false,
-   "draft_pass": false,
+   "pass": true,
+   "draft_pass": true,
    "draft_first": [],
    "feature": "breacher_dc",
    "source": "hand-built (Pyfa oracle)",
    "checks": 56,
-   "mismatches": 1,
-   "not_implemented": 1,
-   "first": [
-    [
-     "/attributes/ship/breacherPodDamageResistance",
-     null,
-     0.09999999999999998
-    ]
-   ]
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
   },
   "cimp_kestrel_char_missiles": {
    "pass": false,
