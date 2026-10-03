@@ -27,6 +27,13 @@ suites:
   fmt-edge:  {column: formats, kind: jsonl, git_ref: origin/formats-suite, file: formats/expected/edge.jsonl, key: category}
   graphs:    {column: f, kind: files, git_ref: origin/graphs-round2, dir: graphs/cases, ext: .json}
   unit:      {column: f, kind: rust-test}
+  # mcp-* = the bench suites driven through eve-fit-mcp's compute_fit (detail=full) by tools/mcp_batch.py (bench-side, not
+  # in the MCP's CI); results-1.11/mcp-8c6b93d-F2da8150.md (eve-fit-mcp 8c6b93d, EVE_DOGMA_BIN = eve-dogma 2da8150)
+  mcp-bench: {column: mcp, kind: files, dir: cases, ext: .json}
+  mcp-ext:   {column: mcp, kind: files, dir: ext/cases, ext: .json}
+  mcp-ext-unit: {column: mcp, kind: files, dir: ext/unit/cases, ext: .json}
+  mcp-cap:   {column: mcp, kind: files, git_ref: origin/cap-suite, dir: cap/cases, ext: .json}
+  mcp-mut:   {column: mcp, kind: files, git_ref: origin/mutated-suite, dir: mutated/cases, ext: .json}
   mcp:       {column: mcp, kind: id, id_prefix: "mcp.", glob: "*.test.ts", ids_json: docs/test-ids.json}   # --root mcp=<EX-CT/eve-fit-mcp checkout, >= 8c6b93d>: ids mcp.<file>.<slug> on the node --test titles in src/test/ (guard: mcp.unit.test-ids; table docs/test-ids.{md,json})
   web-bench: {column: web, kind: files, git_ref: v1.9.0, dir: cases, ext: .json}   # bench 1.9.0 corpus in headless Chrome vs the site's wasm-worker (F): eve-fit-web Pages CI tools/browser-dogma-bench.py (engines.lock DOGMA_BENCH_SHA d2edf98 = v1.9.0); gates the deploy only when the F (wasm) build succeeds (eve4 is making it a hard gate)
   web-graphs: {column: web, kind: files, git_ref: 8c40921911aed9a7d7f032a2f9d4c43986ca0232, dir: graphs/cases, ext: .json}   # graphs 0.2 suite in headless Chrome vs wasm-worker (F): eve-fit-web Pages CI (engines.lock GRAPHS_BENCH_SHA); like web-bench, gates the deploy only when the F build succeeds (hard gate in progress, eve4)

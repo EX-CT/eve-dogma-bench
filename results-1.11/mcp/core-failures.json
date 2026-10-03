@@ -1,0 +1,3927 @@
+{
+ "fleet_armorcmd_hyperion": {
+  "error": null,
+  "mismatches": {
+   "align_time_s": {
+    "got": null,
+    "want": 16.556725657892105
+   },
+   "calibration_used": {
+    "got": null,
+    "want": 600.0
+   },
+   "cap_capacity": {
+    "got": null,
+    "want": 7200.0
+   },
+   "cap_recharge_s": {
+    "got": null,
+    "want": 1125.0
+   },
+   "cap_stable": {
+    "got": null,
+    "want": false
+   },
+   "cpu_total": {
+    "got": null,
+    "want": 750.0
+   },
+   "cpu_used": {
+    "got": null,
+    "want": 797.0
+   },
+   "d0.falloff_m": {
+    "got": null,
+    "want": 3000.0
+   },
+   "d0.max_velocity": {
+    "got": null,
+    "want": 2520.0
+   },
+   "d0.optimal_m": {
+    "got": null,
+    "want": 5250.0
+   },
+   "d0.signature_radius": {
+    "got": null,
+    "want": 50.0
+   },
+   "d0.tracking": {
+    "got": null,
+    "want": 0.696
+   },
+   "drone_bandwidth_used": {
+    "got": null,
+    "want": 50.0
+   },
+   "drone_control_range": {
+    "got": null,
+    "want": 60000.0
+   },
+   "drone_dps": {
+    "got": null,
+    "want": 158.4
+   },
+   "drone_volley": {
+    "got": null,
+    "want": 633.6
+   },
+   "ehp.armor": {
+    "got": null,
+    "want": 42340.58813452715
+   },
+   "ehp.hull": {
+    "got": null,
+    "want": 29073.38308457711
+   },
+   "ehp.shield": {
+    "got": null,
+    "want": 16256.15763546798
+   },
+   "hi_slots": {
+    "got": null,
+    "want": 7.0
+   },
+   "hp.armor": {
+    "got": null,
+    "want": 12897.499999999998
+   },
+   "hp.hull": {
+    "got": null,
+    "want": 11687.5
+   },
+   "hp.shield": {
+    "got": null,
+    "want": 10312.5
+   },
+   "jam_chance": {
+    "got": null,
+    "want": 0
+   },
+   "low_slots": {
+    "got": null,
+    "want": 7.0
+   },
+   "mass": {
+    "got": null,
+    "want": 150200000.0
+   },
+   "max_target_range": {
+    "got": null,
+    "want": 106750.0
+   },
+   "max_targets": {
+    "got": null,
+    "want": 7
+   },
+   "max_velocity": {
+    "got": null,
+    "want": 1058.9360019973367
+   },
+   "med_slots": {
+    "got": null,
+    "want": 5.0
+   },
+   "power_total": {
+    "got": null,
+    "want": 20000.0
+   },
+   "power_used": {
+    "got": null,
+    "want": 23588.64
+   },
+   "res.armor.em": {
+    "got": null,
+    "want": 0.27096198105567815
+   },
+   "res.armor.explosive": {
+    "got": null,
+    "want": 0.3118727783246901
+   },
+   "res.armor.kinetic": {
+    "got": null,
+    "want": 0.31551281377583285
+   },
+   "res.armor.thermal": {
+    "got": null,
+    "want": 0.3201050339754014
+   },
+   "res.hull.em": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.hull.explosive": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.hull.kinetic": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.hull.thermal": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.shield.em": {
+    "got": null,
+    "want": 0.875
+   },
+   "res.shield.explosive": {
+    "got": null,
+    "want": 0.4375
+   },
+   "res.shield.kinetic": {
+    "got": null,
+    "want": 0.525
+   },
+   "res.shield.thermal": {
+    "got": null,
+    "want": 0.7000000000000001
+   },
+   "scan_resolution": {
+    "got": null,
+    "want": 178.75
+   },
+   "scan_strength": {
+    "got": null,
+    "want": 27.599999999999998
+   },
+   "signature_radius": {
+    "got": null,
+    "want": 2788.75
+   },
+   "stank.armor": {
+    "got": null,
+    "want": 101.2592349540048
+   },
+   "stank.hull": {
+    "got": null,
+    "want": 0
+   },
+   "stank.shield": {
+    "got": null,
+    "want": 0
+   },
+   "tank.armor": {
+    "got": null,
+    "want": 407.65357502517617
+   },
+   "tank.hull": {
+    "got": null,
+    "want": 0
+   },
+   "tank.passive": {
+    "got": null,
+    "want": 13.75
+   },
+   "tank.shield": {
+    "got": null,
+    "want": 0
+   },
+   "w11.falloff_m": {
+    "got": null,
+    "want": 6250.0
+   },
+   "w11.optimal_m": {
+    "got": null,
+    "want": 6750.0
+   },
+   "w11.tracking": {
+    "got": null,
+    "want": 4.87125
+   },
+   "w12.falloff_m": {
+    "got": null,
+    "want": 6250.0
+   },
+   "w12.optimal_m": {
+    "got": null,
+    "want": 6750.0
+   },
+   "w12.tracking": {
+    "got": null,
+    "want": 4.87125
+   },
+   "w13.falloff_m": {
+    "got": null,
+    "want": 6250.0
+   },
+   "w13.optimal_m": {
+    "got": null,
+    "want": 6750.0
+   },
+   "w13.tracking": {
+    "got": null,
+    "want": 4.87125
+   },
+   "w14.falloff_m": {
+    "got": null,
+    "want": 6250.0
+   },
+   "w14.optimal_m": {
+    "got": null,
+    "want": 6750.0
+   },
+   "w14.tracking": {
+    "got": null,
+    "want": 4.87125
+   },
+   "w15.falloff_m": {
+    "got": null,
+    "want": 6250.0
+   },
+   "w15.optimal_m": {
+    "got": null,
+    "want": 6750.0
+   },
+   "w15.tracking": {
+    "got": null,
+    "want": 4.87125
+   },
+   "w16.falloff_m": {
+    "got": null,
+    "want": 6250.0
+   },
+   "w16.optimal_m": {
+    "got": null,
+    "want": 6750.0
+   },
+   "w16.tracking": {
+    "got": null,
+    "want": 4.87125
+   },
+   "w17.falloff_m": {
+    "got": null,
+    "want": 6250.0
+   },
+   "w17.optimal_m": {
+    "got": null,
+    "want": 6750.0
+   },
+   "w17.tracking": {
+    "got": null,
+    "want": 4.87125
+   },
+   "w18.falloff_m": {
+    "got": null,
+    "want": 6250.0
+   },
+   "w18.optimal_m": {
+    "got": null,
+    "want": 6750.0
+   },
+   "w18.tracking": {
+    "got": null,
+    "want": 4.87125
+   },
+   "warp_scramble_status": {
+    "got": null,
+    "want": 0.0
+   },
+   "warp_speed": {
+    "got": null,
+    "want": 3.0
+   },
+   "weapon_dps": {
+    "got": null,
+    "want": 1720.3985094349596
+   },
+   "weapon_pure_dps": {
+    "got": null,
+    "want": 0
+   },
+   "weapon_pure_volley": {
+    "got": null,
+    "want": 0
+   },
+   "weapon_volley": {
+    "got": null,
+    "want": 7083.382590251823
+   }
+  }
+ },
+ "fleet_shieldcmd_ishtar": {
+  "error": null,
+  "mismatches": {
+   "align_time_s": {
+    "got": null,
+    "want": 8.247688986764732
+   },
+   "calibration_used": {
+    "got": null,
+    "want": 150.0
+   },
+   "cap_capacity": {
+    "got": null,
+    "want": 1400.0
+   },
+   "cap_recharge_s": {
+    "got": null,
+    "want": 198.75
+   },
+   "cap_stable": {
+    "got": null,
+    "want": true
+   },
+   "cap_stable_percent": {
+    "got": null,
+    "want": 45.84240630167086
+   },
+   "cpu_total": {
+    "got": null,
+    "want": 425.0
+   },
+   "cpu_used": {
+    "got": null,
+    "want": 453.0
+   },
+   "d0.falloff_m": {
+    "got": null,
+    "want": 39000.0
+   },
+   "d0.max_velocity": {
+    "got": null,
+    "want": 1.25e-05
+   },
+   "d0.optimal_m": {
+    "got": null,
+    "want": 32343.749999999996
+   },
+   "d0.signature_radius": {
+    "got": null,
+    "want": 300.0
+   },
+   "d0.tracking": {
+    "got": null,
+    "want": 0.041999999999999996
+   },
+   "d1.falloff_m": {
+    "got": null,
+    "want": 3900.0
+   },
+   "d1.max_velocity": {
+    "got": null,
+    "want": 2520.0
+   },
+   "d1.optimal_m": {
+    "got": null,
+    "want": 6037.499999999999
+   },
+   "d1.signature_radius": {
+    "got": null,
+    "want": 50.0
+   },
+   "d1.tracking": {
+    "got": null,
+    "want": 0.696
+   },
+   "drone_bandwidth_used": {
+    "got": null,
+    "want": 175.0
+   },
+   "drone_control_range": {
+    "got": null,
+    "want": 133000.0
+   },
+   "drone_dps": {
+    "got": null,
+    "want": 916.4278480358747
+   },
+   "drone_volley": {
+    "got": null,
+    "want": 3665.711392143499
+   },
+   "ehp.armor": {
+    "got": null,
+    "want": 4986.365407089988
+   },
+   "ehp.hull": {
+    "got": null,
+    "want": 7151.741293532338
+   },
+   "ehp.shield": {
+    "got": null,
+    "want": 46169.22448262623
+   },
+   "hi_slots": {
+    "got": null,
+    "want": 4.0
+   },
+   "hp.armor": {
+    "got": null,
+    "want": 2000.0
+   },
+   "hp.hull": {
+    "got": null,
+    "want": 2875.0
+   },
+   "hp.shield": {
+    "got": null,
+    "want": 11879.999999999998
+   },
+   "jam_chance": {
+    "got": null,
+    "want": 0
+   },
+   "low_slots": {
+    "got": null,
+    "want": 6.0
+   },
+   "mass": {
+    "got": null,
+    "want": 15600000.0
+   },
+   "max_target_range": {
+    "got": null,
+    "want": 75000.0
+   },
+   "max_targets": {
+    "got": null,
+    "want": 7
+   },
+   "max_velocity": {
+    "got": null,
+    "want": 1906.6021259014422
+   },
+   "med_slots": {
+    "got": null,
+    "want": 4.0
+   },
+   "power_total": {
+    "got": null,
+    "want": 925.0
+   },
+   "power_used": {
+    "got": null,
+    "want": 413.0
+   },
+   "res.armor.em": {
+    "got": null,
+    "want": 0.425
+   },
+   "res.armor.explosive": {
+    "got": null,
+    "want": 0.765
+   },
+   "res.armor.kinetic": {
+    "got": null,
+    "want": 0.138125
+   },
+   "res.armor.thermal": {
+    "got": null,
+    "want": 0.27625
+   },
+   "res.hull.em": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.hull.explosive": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.hull.kinetic": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.hull.thermal": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.shield.em": {
+    "got": null,
+    "want": 0.5020766119561095
+   },
+   "res.shield.explosive": {
+    "got": null,
+    "want": 0.25103830597805477
+   },
+   "res.shield.kinetic": {
+    "got": null,
+    "want": 0.07531149179341644
+   },
+   "res.shield.thermal": {
+    "got": null,
+    "want": 0.20083064478244383
+   },
+   "scan_resolution": {
+    "got": null,
+    "want": 367.5
+   },
+   "scan_strength": {
+    "got": null,
+    "want": 27.599999999999998
+   },
+   "signature_radius": {
+    "got": null,
+    "want": 706.3161499763914
+   },
+   "stank.armor": {
+    "got": null,
+    "want": 0
+   },
+   "stank.hull": {
+    "got": null,
+    "want": 0
+   },
+   "stank.shield": {
+    "got": null,
+    "want": 0
+   },
+   "tank.armor": {
+    "got": null,
+    "want": 0
+   },
+   "tank.hull": {
+    "got": null,
+    "want": 0
+   },
+   "tank.passive": {
+    "got": null,
+    "want": 31.679999999999993
+   },
+   "tank.shield": {
+    "got": null,
+    "want": 0
+   },
+   "warp_scramble_status": {
+    "got": null,
+    "want": 0.0
+   },
+   "warp_speed": {
+    "got": null,
+    "want": 4.0
+   },
+   "weapon_dps": {
+    "got": null,
+    "want": 0.0
+   },
+   "weapon_pure_dps": {
+    "got": null,
+    "want": 0
+   },
+   "weapon_pure_volley": {
+    "got": null,
+    "want": 0
+   },
+   "weapon_volley": {
+    "got": null,
+    "want": 0.0
+   }
+  }
+ },
+ "fleet_two_boosters_hyperion": {
+  "error": null,
+  "mismatches": {
+   "align_time_s": {
+    "got": null,
+    "want": 16.556725657892105
+   },
+   "calibration_used": {
+    "got": null,
+    "want": 600.0
+   },
+   "cap_capacity": {
+    "got": null,
+    "want": 7200.0
+   },
+   "cap_recharge_s": {
+    "got": null,
+    "want": 1125.0
+   },
+   "cap_stable": {
+    "got": null,
+    "want": false
+   },
+   "cpu_total": {
+    "got": null,
+    "want": 750.0
+   },
+   "cpu_used": {
+    "got": null,
+    "want": 797.0
+   },
+   "d0.falloff_m": {
+    "got": null,
+    "want": 3000.0
+   },
+   "d0.max_velocity": {
+    "got": null,
+    "want": 2520.0
+   },
+   "d0.optimal_m": {
+    "got": null,
+    "want": 5250.0
+   },
+   "d0.signature_radius": {
+    "got": null,
+    "want": 50.0
+   },
+   "d0.tracking": {
+    "got": null,
+    "want": 0.696
+   },
+   "drone_bandwidth_used": {
+    "got": null,
+    "want": 50.0
+   },
+   "drone_control_range": {
+    "got": null,
+    "want": 60000.0
+   },
+   "drone_dps": {
+    "got": null,
+    "want": 158.4
+   },
+   "drone_volley": {
+    "got": null,
+    "want": 633.6
+   },
+   "ehp.armor": {
+    "got": null,
+    "want": 42340.58813452715
+   },
+   "ehp.hull": {
+    "got": null,
+    "want": 29073.38308457711
+   },
+   "ehp.shield": {
+    "got": null,
+    "want": 19644.903486970365
+   },
+   "hi_slots": {
+    "got": null,
+    "want": 7.0
+   },
+   "hp.armor": {
+    "got": null,
+    "want": 12897.499999999998
+   },
+   "hp.hull": {
+    "got": null,
+    "want": 11687.5
+   },
+   "hp.shield": {
+    "got": null,
+    "want": 10312.5
+   },
+   "jam_chance": {
+    "got": null,
+    "want": 0
+   },
+   "low_slots": {
+    "got": null,
+    "want": 7.0
+   },
+   "mass": {
+    "got": null,
+    "want": 150200000.0
+   },
+   "max_target_range": {
+    "got": null,
+    "want": 106750.0
+   },
+   "max_targets": {
+    "got": null,
+    "want": 7
+   },
+   "max_velocity": {
+    "got": null,
+    "want": 1295.7403800141476
+   },
+   "med_slots": {
+    "got": null,
+    "want": 5.0
+   },
+   "power_total": {
+    "got": null,
+    "want": 20000.0
+   },
+   "power_used": {
+    "got": null,
+    "want": 23588.64
+   },
+   "res.armor.em": {
+    "got": null,
+    "want": 0.27096198105567815
+   },
+   "res.armor.explosive": {
+    "got": null,
+    "want": 0.3118727783246901
+   },
+   "res.armor.kinetic": {
+    "got": null,
+    "want": 0.31551281377583285
+   },
+   "res.armor.thermal": {
+    "got": null,
+    "want": 0.3201050339754014
+   },
+   "res.hull.em": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.hull.explosive": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.hull.kinetic": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.hull.thermal": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.shield.em": {
+    "got": null,
+    "want": 0.7240625
+   },
+   "res.shield.explosive": {
+    "got": null,
+    "want": 0.36203125
+   },
+   "res.shield.kinetic": {
+    "got": null,
+    "want": 0.43443750000000003
+   },
+   "res.shield.thermal": {
+    "got": null,
+    "want": 0.57925
+   },
+   "scan_resolution": {
+    "got": null,
+    "want": 178.75
+   },
+   "scan_strength": {
+    "got": null,
+    "want": 27.599999999999998
+   },
+   "signature_radius": {
+    "got": null,
+    "want": 2788.75
+   },
+   "stank.armor": {
+    "got": null,
+    "want": 101.2592349540048
+   },
+   "stank.hull": {
+    "got": null,
+    "want": 0
+   },
+   "stank.shield": {
+    "got": null,
+    "want": 0
+   },
+   "tank.armor": {
+    "got": null,
+    "want": 407.65357502517617
+   },
+   "tank.hull": {
+    "got": null,
+    "want": 0
+   },
+   "tank.passive": {
+    "got": null,
+    "want": 13.75
+   },
+   "tank.shield": {
+    "got": null,
+    "want": 0
+   },
+   "w11.falloff_m": {
+    "got": null,
+    "want": 6250.0
+   },
+   "w11.optimal_m": {
+    "got": null,
+    "want": 6750.0
+   },
+   "w11.tracking": {
+    "got": null,
+    "want": 4.87125
+   },
+   "w12.falloff_m": {
+    "got": null,
+    "want": 6250.0
+   },
+   "w12.optimal_m": {
+    "got": null,
+    "want": 6750.0
+   },
+   "w12.tracking": {
+    "got": null,
+    "want": 4.87125
+   },
+   "w13.falloff_m": {
+    "got": null,
+    "want": 6250.0
+   },
+   "w13.optimal_m": {
+    "got": null,
+    "want": 6750.0
+   },
+   "w13.tracking": {
+    "got": null,
+    "want": 4.87125
+   },
+   "w14.falloff_m": {
+    "got": null,
+    "want": 6250.0
+   },
+   "w14.optimal_m": {
+    "got": null,
+    "want": 6750.0
+   },
+   "w14.tracking": {
+    "got": null,
+    "want": 4.87125
+   },
+   "w15.falloff_m": {
+    "got": null,
+    "want": 6250.0
+   },
+   "w15.optimal_m": {
+    "got": null,
+    "want": 6750.0
+   },
+   "w15.tracking": {
+    "got": null,
+    "want": 4.87125
+   },
+   "w16.falloff_m": {
+    "got": null,
+    "want": 6250.0
+   },
+   "w16.optimal_m": {
+    "got": null,
+    "want": 6750.0
+   },
+   "w16.tracking": {
+    "got": null,
+    "want": 4.87125
+   },
+   "w17.falloff_m": {
+    "got": null,
+    "want": 6250.0
+   },
+   "w17.optimal_m": {
+    "got": null,
+    "want": 6750.0
+   },
+   "w17.tracking": {
+    "got": null,
+    "want": 4.87125
+   },
+   "w18.falloff_m": {
+    "got": null,
+    "want": 6250.0
+   },
+   "w18.optimal_m": {
+    "got": null,
+    "want": 6750.0
+   },
+   "w18.tracking": {
+    "got": null,
+    "want": 4.87125
+   },
+   "warp_scramble_status": {
+    "got": null,
+    "want": 0.0
+   },
+   "warp_speed": {
+    "got": null,
+    "want": 3.0
+   },
+   "weapon_dps": {
+    "got": null,
+    "want": 1720.3985094349596
+   },
+   "weapon_pure_dps": {
+    "got": null,
+    "want": 0
+   },
+   "weapon_pure_volley": {
+    "got": null,
+    "want": 0
+   },
+   "weapon_volley": {
+    "got": null,
+    "want": 7083.382590251823
+   }
+  }
+ },
+ "pfighter_dromi_default_vexor": {
+  "error": null,
+  "mismatches": {
+   "max_velocity": {
+    "got": 508.799738,
+    "want": 329.22335986024837
+   }
+  }
+ },
+ "pfighter_dromi_web_vexor": {
+  "error": null,
+  "mismatches": {
+   "max_velocity": {
+    "got": 508.799738,
+    "want": 329.22335986024837
+   }
+  }
+ },
+ "pfighter_scarab_ecm_hyperion": {
+  "error": null,
+  "mismatches": {
+   "jam_chance": {
+    "got": 10.222281,
+    "want": 30.666842596380484
+   }
+  }
+ },
+ "pfighter_siren_point_tengu": {
+  "error": null,
+  "mismatches": {
+   "warp_scramble_status": {
+    "got": 1,
+    "want": 3.0
+   }
+  }
+ },
+ "projfit_crucifier_x2_on_cerberus": {
+  "error": null,
+  "mismatches": {
+   "align_time_s": {
+    "got": null,
+    "want": 6.468057136489591
+   },
+   "calibration_used": {
+    "got": null,
+    "want": 225.0
+   },
+   "cap_capacity": {
+    "got": null,
+    "want": 1200.0
+   },
+   "cap_recharge_s": {
+    "got": null,
+    "want": 176.25
+   },
+   "cap_stable": {
+    "got": null,
+    "want": true
+   },
+   "cap_stable_percent": {
+    "got": null,
+    "want": 39.00278821054356
+   },
+   "cpu_total": {
+    "got": null,
+    "want": 668.75
+   },
+   "cpu_used": {
+    "got": null,
+    "want": 545.55
+   },
+   "drone_bandwidth_used": {
+    "got": null,
+    "want": 0
+   },
+   "drone_control_range": {
+    "got": null,
+    "want": 60000.0
+   },
+   "drone_dps": {
+    "got": null,
+    "want": 0
+   },
+   "drone_volley": {
+    "got": null,
+    "want": 0
+   },
+   "ehp.armor": {
+    "got": null,
+    "want": 3690.888119953864
+   },
+   "ehp.hull": {
+    "got": null,
+    "want": 3482.5870646766166
+   },
+   "ehp.shield": {
+    "got": null,
+    "want": 36571.428571428565
+   },
+   "hi_slots": {
+    "got": null,
+    "want": 6.0
+   },
+   "hp.armor": {
+    "got": null,
+    "want": 1500.0
+   },
+   "hp.hull": {
+    "got": null,
+    "want": 1400.0
+   },
+   "hp.shield": {
+    "got": null,
+    "want": 10800.0
+   },
+   "jam_chance": {
+    "got": null,
+    "want": 0
+   },
+   "low_slots": {
+    "got": null,
+    "want": 4.0
+   },
+   "mass": {
+    "got": null,
+    "want": 17720000.0
+   },
+   "max_target_range": {
+    "got": null,
+    "want": 75000.0
+   },
+   "max_targets": {
+    "got": null,
+    "want": 6
+   },
+   "max_velocity": {
+    "got": null,
+    "want": 1926.1294088600453
+   },
+   "med_slots": {
+    "got": null,
+    "want": 5.0
+   },
+   "power_total": {
+    "got": null,
+    "want": 1025.0
+   },
+   "power_used": {
+    "got": null,
+    "want": 882.5
+   },
+   "res.armor.em": {
+    "got": null,
+    "want": 0.425
+   },
+   "res.armor.explosive": {
+    "got": null,
+    "want": 0.765
+   },
+   "res.armor.kinetic": {
+    "got": null,
+    "want": 0.31875
+   },
+   "res.armor.thermal": {
+    "got": null,
+    "want": 0.116875
+   },
+   "res.hull.em": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.hull.explosive": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.hull.kinetic": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.hull.thermal": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.shield.em": {
+    "got": null,
+    "want": 0.5906250000000001
+   },
+   "res.shield.explosive": {
+    "got": null,
+    "want": 0.29531250000000003
+   },
+   "res.shield.kinetic": {
+    "got": null,
+    "want": 0.17718750000000003
+   },
+   "res.shield.thermal": {
+    "got": null,
+    "want": 0.11812500000000002
+   },
+   "scan_resolution": {
+    "got": null,
+    "want": 352.5
+   },
+   "scan_strength": {
+    "got": null,
+    "want": 28.799999999999997
+   },
+   "signature_radius": {
+    "got": null,
+    "want": 651.5078394006124
+   },
+   "stank.armor": {
+    "got": null,
+    "want": 0
+   },
+   "stank.hull": {
+    "got": null,
+    "want": 0
+   },
+   "stank.shield": {
+    "got": null,
+    "want": 0
+   },
+   "tank.armor": {
+    "got": null,
+    "want": 0
+   },
+   "tank.hull": {
+    "got": null,
+    "want": 0
+   },
+   "tank.passive": {
+    "got": null,
+    "want": 28.8
+   },
+   "tank.shield": {
+    "got": null,
+    "want": 0
+   },
+   "w10.explosion_radius": {
+    "got": null,
+    "want": 410.28157010196014
+   },
+   "w10.explosion_velocity": {
+    "got": null,
+    "want": 33.34693387725532
+   },
+   "w10.range_m": {
+    "got": null,
+    "want": 36847.67365162083
+   },
+   "w11.explosion_radius": {
+    "got": null,
+    "want": 410.28157010196014
+   },
+   "w11.explosion_velocity": {
+    "got": null,
+    "want": 33.34693387725532
+   },
+   "w11.range_m": {
+    "got": null,
+    "want": 36847.67365162083
+   },
+   "w12.explosion_radius": {
+    "got": null,
+    "want": 410.28157010196014
+   },
+   "w12.explosion_velocity": {
+    "got": null,
+    "want": 33.34693387725532
+   },
+   "w12.range_m": {
+    "got": null,
+    "want": 36847.67365162083
+   },
+   "w13.explosion_radius": {
+    "got": null,
+    "want": 410.28157010196014
+   },
+   "w13.explosion_velocity": {
+    "got": null,
+    "want": 33.34693387725532
+   },
+   "w13.range_m": {
+    "got": null,
+    "want": 36847.67365162083
+   },
+   "w9.explosion_radius": {
+    "got": null,
+    "want": 410.28157010196014
+   },
+   "w9.explosion_velocity": {
+    "got": null,
+    "want": 33.34693387725532
+   },
+   "w9.range_m": {
+    "got": null,
+    "want": 36847.67365162083
+   },
+   "warp_scramble_status": {
+    "got": null,
+    "want": 0.0
+   },
+   "warp_speed": {
+    "got": null,
+    "want": 4.0
+   },
+   "weapon_dps": {
+    "got": null,
+    "want": 368.80607676594934
+   },
+   "weapon_pure_dps": {
+    "got": null,
+    "want": 0
+   },
+   "weapon_pure_volley": {
+    "got": null,
+    "want": 0
+   },
+   "weapon_volley": {
+    "got": null,
+    "want": 1858.6959402167336
+   }
+  }
+ },
+ "projfit_crucifier_x3_falloff_on_rifter": {
+  "error": null,
+  "mismatches": {
+   "align_time_s": {
+    "got": null,
+    "want": 5.245170868083969
+   },
+   "calibration_used": {
+    "got": null,
+    "want": 675.0
+   },
+   "cap_capacity": {
+    "got": null,
+    "want": 312.5
+   },
+   "cap_recharge_s": {
+    "got": null,
+    "want": 93.75
+   },
+   "cap_stable": {
+    "got": null,
+    "want": true
+   },
+   "cap_stable_percent": {
+    "got": null,
+    "want": 83.49598710843377
+   },
+   "cpu_total": {
+    "got": null,
+    "want": 162.5
+   },
+   "cpu_used": {
+    "got": null,
+    "want": 190.0
+   },
+   "d0.falloff_m": {
+    "got": null,
+    "want": 2000.0
+   },
+   "d0.max_velocity": {
+    "got": null,
+    "want": 6300.0
+   },
+   "d0.optimal_m": {
+    "got": null,
+    "want": 2625.0
+   },
+   "d0.signature_radius": {
+    "got": null,
+    "want": 25.0
+   },
+   "d0.tracking": {
+    "got": null,
+    "want": 3.24
+   },
+   "drone_bandwidth_used": {
+    "got": null,
+    "want": 10.0
+   },
+   "drone_control_range": {
+    "got": null,
+    "want": 60000.0
+   },
+   "drone_dps": {
+    "got": null,
+    "want": 32.175000000000004
+   },
+   "drone_volley": {
+    "got": null,
+    "want": 128.70000000000002
+   },
+   "ehp.armor": {
+    "got": null,
+    "want": 2589.715131335553
+   },
+   "ehp.hull": {
+    "got": null,
+    "want": 1088.3084577114428
+   },
+   "ehp.shield": {
+    "got": null,
+    "want": 886.6995073891625
+   },
+   "hi_slots": {
+    "got": null,
+    "want": 3.0
+   },
+   "hp.armor": {
+    "got": null,
+    "want": 1312.5
+   },
+   "hp.hull": {
+    "got": null,
+    "want": 437.5
+   },
+   "hp.shield": {
+    "got": null,
+    "want": 562.5
+   },
+   "jam_chance": {
+    "got": null,
+    "want": 0
+   },
+   "low_slots": {
+    "got": null,
+    "want": 4.0
+   },
+   "mass": {
+    "got": null,
+    "want": 1668250.0
+   },
+   "max_target_range": {
+    "got": null,
+    "want": 28125.0
+   },
+   "max_targets": {
+    "got": null,
+    "want": 4
+   },
+   "max_velocity": {
+    "got": null,
+    "want": 1148.5220290723812
+   },
+   "med_slots": {
+    "got": null,
+    "want": 3.0
+   },
+   "power_total": {
+    "got": null,
+    "want": 51.25
+   },
+   "power_used": {
+    "got": null,
+    "want": 42.51
+   },
+   "res.armor.em": {
+    "got": null,
+    "want": 0.34
+   },
+   "res.armor.explosive": {
+    "got": null,
+    "want": 0.49725
+   },
+   "res.armor.kinetic": {
+    "got": null,
+    "want": 0.6375
+   },
+   "res.armor.thermal": {
+    "got": null,
+    "want": 0.5525
+   },
+   "res.hull.em": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.hull.explosive": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.hull.kinetic": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.hull.thermal": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.shield.em": {
+    "got": null,
+    "want": 0.875
+   },
+   "res.shield.explosive": {
+    "got": null,
+    "want": 0.4375
+   },
+   "res.shield.kinetic": {
+    "got": null,
+    "want": 0.525
+   },
+   "res.shield.thermal": {
+    "got": null,
+    "want": 0.7000000000000001
+   },
+   "scan_resolution": {
+    "got": null,
+    "want": 825.0
+   },
+   "scan_strength": {
+    "got": null,
+    "want": 9.6
+   },
+   "signature_radius": {
+    "got": null,
+    "want": 35.0
+   },
+   "stank.armor": {
+    "got": null,
+    "want": 0
+   },
+   "stank.hull": {
+    "got": null,
+    "want": 0
+   },
+   "stank.shield": {
+    "got": null,
+    "want": 0
+   },
+   "tank.armor": {
+    "got": null,
+    "want": 0
+   },
+   "tank.hull": {
+    "got": null,
+    "want": 0
+   },
+   "tank.passive": {
+    "got": null,
+    "want": 3.0
+   },
+   "tank.shield": {
+    "got": null,
+    "want": 0
+   },
+   "w6.falloff_m": {
+    "got": null,
+    "want": 1276.1553069925947
+   },
+   "w6.optimal_m": {
+    "got": null,
+    "want": 98.92676798392208
+   },
+   "w6.tracking": {
+    "got": null,
+    "want": 393.75
+   },
+   "w7.falloff_m": {
+    "got": null,
+    "want": 1276.1553069925947
+   },
+   "w7.optimal_m": {
+    "got": null,
+    "want": 98.92676798392208
+   },
+   "w7.tracking": {
+    "got": null,
+    "want": 393.75
+   },
+   "w8.falloff_m": {
+    "got": null,
+    "want": 1276.1553069925947
+   },
+   "w8.optimal_m": {
+    "got": null,
+    "want": 98.92676798392208
+   },
+   "w8.tracking": {
+    "got": null,
+    "want": 393.75
+   },
+   "w9.explosion_radius": {
+    "got": null,
+    "want": 65.7795290752184
+   },
+   "w9.explosion_velocity": {
+    "got": null,
+    "want": 51.0413564666783
+   },
+   "w9.range_m": {
+    "got": null,
+    "want": 3754.2588692196223
+   },
+   "warp_scramble_status": {
+    "got": null,
+    "want": 0.0
+   },
+   "warp_speed": {
+    "got": null,
+    "want": 5.0
+   },
+   "weapon_dps": {
+    "got": null,
+    "want": 243.12956327613847
+   },
+   "weapon_pure_dps": {
+    "got": null,
+    "want": 0
+   },
+   "weapon_pure_volley": {
+    "got": null,
+    "want": 0
+   },
+   "weapon_volley": {
+    "got": null,
+    "want": 354.06575289370556
+   }
+  }
+ },
+ "projfit_curse_x2_falloff_on_rifter": {
+  "error": null,
+  "mismatches": {
+   "align_time_s": {
+    "got": null,
+    "want": 5.245170868083969
+   },
+   "calibration_used": {
+    "got": null,
+    "want": 675.0
+   },
+   "cap_capacity": {
+    "got": null,
+    "want": 312.5
+   },
+   "cap_recharge_s": {
+    "got": null,
+    "want": 93.75
+   },
+   "cap_stable": {
+    "got": null,
+    "want": false
+   },
+   "cpu_total": {
+    "got": null,
+    "want": 162.5
+   },
+   "cpu_used": {
+    "got": null,
+    "want": 190.0
+   },
+   "d0.falloff_m": {
+    "got": null,
+    "want": 2000.0
+   },
+   "d0.max_velocity": {
+    "got": null,
+    "want": 6300.0
+   },
+   "d0.optimal_m": {
+    "got": null,
+    "want": 2625.0
+   },
+   "d0.signature_radius": {
+    "got": null,
+    "want": 25.0
+   },
+   "d0.tracking": {
+    "got": null,
+    "want": 3.24
+   },
+   "drone_bandwidth_used": {
+    "got": null,
+    "want": 10.0
+   },
+   "drone_control_range": {
+    "got": null,
+    "want": 60000.0
+   },
+   "drone_dps": {
+    "got": null,
+    "want": 32.175000000000004
+   },
+   "drone_volley": {
+    "got": null,
+    "want": 128.70000000000002
+   },
+   "ehp.armor": {
+    "got": null,
+    "want": 2589.715131335553
+   },
+   "ehp.hull": {
+    "got": null,
+    "want": 1088.3084577114428
+   },
+   "ehp.shield": {
+    "got": null,
+    "want": 886.6995073891625
+   },
+   "hi_slots": {
+    "got": null,
+    "want": 3.0
+   },
+   "hp.armor": {
+    "got": null,
+    "want": 1312.5
+   },
+   "hp.hull": {
+    "got": null,
+    "want": 437.5
+   },
+   "hp.shield": {
+    "got": null,
+    "want": 562.5
+   },
+   "jam_chance": {
+    "got": null,
+    "want": 0
+   },
+   "low_slots": {
+    "got": null,
+    "want": 4.0
+   },
+   "mass": {
+    "got": null,
+    "want": 1668250.0
+   },
+   "max_target_range": {
+    "got": null,
+    "want": 28125.0
+   },
+   "max_targets": {
+    "got": null,
+    "want": 4
+   },
+   "max_velocity": {
+    "got": null,
+    "want": 1148.5220290723812
+   },
+   "med_slots": {
+    "got": null,
+    "want": 3.0
+   },
+   "power_total": {
+    "got": null,
+    "want": 51.25
+   },
+   "power_used": {
+    "got": null,
+    "want": 42.51
+   },
+   "res.armor.em": {
+    "got": null,
+    "want": 0.34
+   },
+   "res.armor.explosive": {
+    "got": null,
+    "want": 0.49725
+   },
+   "res.armor.kinetic": {
+    "got": null,
+    "want": 0.6375
+   },
+   "res.armor.thermal": {
+    "got": null,
+    "want": 0.5525
+   },
+   "res.hull.em": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.hull.explosive": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.hull.kinetic": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.hull.thermal": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.shield.em": {
+    "got": null,
+    "want": 0.875
+   },
+   "res.shield.explosive": {
+    "got": null,
+    "want": 0.4375
+   },
+   "res.shield.kinetic": {
+    "got": null,
+    "want": 0.525
+   },
+   "res.shield.thermal": {
+    "got": null,
+    "want": 0.7000000000000001
+   },
+   "scan_resolution": {
+    "got": null,
+    "want": 825.0
+   },
+   "scan_strength": {
+    "got": null,
+    "want": 9.6
+   },
+   "signature_radius": {
+    "got": null,
+    "want": 35.0
+   },
+   "stank.armor": {
+    "got": null,
+    "want": 0
+   },
+   "stank.hull": {
+    "got": null,
+    "want": 0
+   },
+   "stank.shield": {
+    "got": null,
+    "want": 0
+   },
+   "tank.armor": {
+    "got": null,
+    "want": 0
+   },
+   "tank.hull": {
+    "got": null,
+    "want": 0
+   },
+   "tank.passive": {
+    "got": null,
+    "want": 3.0
+   },
+   "tank.shield": {
+    "got": null,
+    "want": 0
+   },
+   "w6.falloff_m": {
+    "got": null,
+    "want": 5066.123725707834
+   },
+   "w6.optimal_m": {
+    "got": null,
+    "want": 392.72276943471576
+   },
+   "w6.tracking": {
+    "got": null,
+    "want": 59.69946263104681
+   },
+   "w7.falloff_m": {
+    "got": null,
+    "want": 5066.123725707834
+   },
+   "w7.optimal_m": {
+    "got": null,
+    "want": 392.72276943471576
+   },
+   "w7.tracking": {
+    "got": null,
+    "want": 59.69946263104681
+   },
+   "w8.falloff_m": {
+    "got": null,
+    "want": 5066.123725707834
+   },
+   "w8.optimal_m": {
+    "got": null,
+    "want": 392.72276943471576
+   },
+   "w8.tracking": {
+    "got": null,
+    "want": 59.69946263104681
+   },
+   "w9.explosion_radius": {
+    "got": null,
+    "want": 25.5
+   },
+   "w9.explosion_velocity": {
+    "got": null,
+    "want": 193.5
+   },
+   "w9.range_m": {
+    "got": null,
+    "want": 8436.765294824345
+   },
+   "warp_scramble_status": {
+    "got": null,
+    "want": 0.0
+   },
+   "warp_speed": {
+    "got": null,
+    "want": 5.0
+   },
+   "weapon_dps": {
+    "got": null,
+    "want": 243.12956327613847
+   },
+   "weapon_pure_dps": {
+    "got": null,
+    "want": 0
+   },
+   "weapon_pure_volley": {
+    "got": null,
+    "want": 0
+   },
+   "weapon_volley": {
+    "got": null,
+    "want": 354.06575289370556
+   }
+  }
+ },
+ "projfit_curse_x3_on_ishtar": {
+  "error": null,
+  "mismatches": {
+   "align_time_s": {
+    "got": null,
+    "want": 8.247688986764732
+   },
+   "calibration_used": {
+    "got": null,
+    "want": 150.0
+   },
+   "cap_capacity": {
+    "got": null,
+    "want": 1400.0
+   },
+   "cap_recharge_s": {
+    "got": null,
+    "want": 198.75
+   },
+   "cap_stable": {
+    "got": null,
+    "want": false
+   },
+   "cpu_total": {
+    "got": null,
+    "want": 425.0
+   },
+   "cpu_used": {
+    "got": null,
+    "want": 453.0
+   },
+   "d0.falloff_m": {
+    "got": null,
+    "want": 39000.0
+   },
+   "d0.max_velocity": {
+    "got": null,
+    "want": 1.25e-05
+   },
+   "d0.optimal_m": {
+    "got": null,
+    "want": 32343.749999999996
+   },
+   "d0.signature_radius": {
+    "got": null,
+    "want": 300.0
+   },
+   "d0.tracking": {
+    "got": null,
+    "want": 0.041999999999999996
+   },
+   "d1.falloff_m": {
+    "got": null,
+    "want": 3900.0
+   },
+   "d1.max_velocity": {
+    "got": null,
+    "want": 2520.0
+   },
+   "d1.optimal_m": {
+    "got": null,
+    "want": 6037.499999999999
+   },
+   "d1.signature_radius": {
+    "got": null,
+    "want": 50.0
+   },
+   "d1.tracking": {
+    "got": null,
+    "want": 0.696
+   },
+   "drone_bandwidth_used": {
+    "got": null,
+    "want": 175.0
+   },
+   "drone_control_range": {
+    "got": null,
+    "want": 133000.0
+   },
+   "drone_dps": {
+    "got": null,
+    "want": 916.4278480358747
+   },
+   "drone_volley": {
+    "got": null,
+    "want": 3665.711392143499
+   },
+   "ehp.armor": {
+    "got": null,
+    "want": 4986.365407089988
+   },
+   "ehp.hull": {
+    "got": null,
+    "want": 7151.741293532338
+   },
+   "ehp.shield": {
+    "got": null,
+    "want": 39247.386759581874
+   },
+   "hi_slots": {
+    "got": null,
+    "want": 4.0
+   },
+   "hp.armor": {
+    "got": null,
+    "want": 2000.0
+   },
+   "hp.hull": {
+    "got": null,
+    "want": 2875.0
+   },
+   "hp.shield": {
+    "got": null,
+    "want": 11879.999999999998
+   },
+   "jam_chance": {
+    "got": null,
+    "want": 0
+   },
+   "low_slots": {
+    "got": null,
+    "want": 6.0
+   },
+   "mass": {
+    "got": null,
+    "want": 15600000.0
+   },
+   "max_target_range": {
+    "got": null,
+    "want": 75000.0
+   },
+   "max_targets": {
+    "got": null,
+    "want": 7
+   },
+   "max_velocity": {
+    "got": null,
+    "want": 1559.6454326923078
+   },
+   "med_slots": {
+    "got": null,
+    "want": 4.0
+   },
+   "power_total": {
+    "got": null,
+    "want": 925.0
+   },
+   "power_used": {
+    "got": null,
+    "want": 413.0
+   },
+   "res.armor.em": {
+    "got": null,
+    "want": 0.425
+   },
+   "res.armor.explosive": {
+    "got": null,
+    "want": 0.765
+   },
+   "res.armor.kinetic": {
+    "got": null,
+    "want": 0.138125
+   },
+   "res.armor.thermal": {
+    "got": null,
+    "want": 0.27625
+   },
+   "res.hull.em": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.hull.explosive": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.hull.kinetic": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.hull.thermal": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.shield.em": {
+    "got": null,
+    "want": 0.5906250000000001
+   },
+   "res.shield.explosive": {
+    "got": null,
+    "want": 0.29531250000000003
+   },
+   "res.shield.kinetic": {
+    "got": null,
+    "want": 0.08859375000000001
+   },
+   "res.shield.thermal": {
+    "got": null,
+    "want": 0.23625000000000004
+   },
+   "scan_resolution": {
+    "got": null,
+    "want": 367.5
+   },
+   "scan_strength": {
+    "got": null,
+    "want": 27.599999999999998
+   },
+   "signature_radius": {
+    "got": null,
+    "want": 706.3161499763914
+   },
+   "stank.armor": {
+    "got": null,
+    "want": 0
+   },
+   "stank.hull": {
+    "got": null,
+    "want": 0
+   },
+   "stank.shield": {
+    "got": null,
+    "want": 0
+   },
+   "tank.armor": {
+    "got": null,
+    "want": 0
+   },
+   "tank.hull": {
+    "got": null,
+    "want": 0
+   },
+   "tank.passive": {
+    "got": null,
+    "want": 31.679999999999993
+   },
+   "tank.shield": {
+    "got": null,
+    "want": 0
+   },
+   "warp_scramble_status": {
+    "got": null,
+    "want": 0.0
+   },
+   "warp_speed": {
+    "got": null,
+    "want": 4.0
+   },
+   "weapon_dps": {
+    "got": null,
+    "want": 0.0
+   },
+   "weapon_pure_dps": {
+    "got": null,
+    "want": 0
+   },
+   "weapon_pure_volley": {
+    "got": null,
+    "want": 0
+   },
+   "weapon_volley": {
+    "got": null,
+    "want": 0.0
+   }
+  }
+ },
+ "projfit_hyperion_x2_on_ishtar": {
+  "error": null,
+  "mismatches": {
+   "align_time_s": {
+    "got": null,
+    "want": 8.247688986764732
+   },
+   "calibration_used": {
+    "got": null,
+    "want": 150.0
+   },
+   "cap_capacity": {
+    "got": null,
+    "want": 1400.0
+   },
+   "cap_recharge_s": {
+    "got": null,
+    "want": 198.75
+   },
+   "cap_stable": {
+    "got": null,
+    "want": true
+   },
+   "cap_stable_percent": {
+    "got": null,
+    "want": 45.84240630167086
+   },
+   "cpu_total": {
+    "got": null,
+    "want": 425.0
+   },
+   "cpu_used": {
+    "got": null,
+    "want": 453.0
+   },
+   "d0.falloff_m": {
+    "got": null,
+    "want": 39000.0
+   },
+   "d0.max_velocity": {
+    "got": null,
+    "want": 1.25e-05
+   },
+   "d0.optimal_m": {
+    "got": null,
+    "want": 32343.749999999996
+   },
+   "d0.signature_radius": {
+    "got": null,
+    "want": 300.0
+   },
+   "d0.tracking": {
+    "got": null,
+    "want": 0.041999999999999996
+   },
+   "d1.falloff_m": {
+    "got": null,
+    "want": 3900.0
+   },
+   "d1.max_velocity": {
+    "got": null,
+    "want": 2520.0
+   },
+   "d1.optimal_m": {
+    "got": null,
+    "want": 6037.499999999999
+   },
+   "d1.signature_radius": {
+    "got": null,
+    "want": 50.0
+   },
+   "d1.tracking": {
+    "got": null,
+    "want": 0.696
+   },
+   "drone_bandwidth_used": {
+    "got": null,
+    "want": 175.0
+   },
+   "drone_control_range": {
+    "got": null,
+    "want": 133000.0
+   },
+   "drone_dps": {
+    "got": null,
+    "want": 916.4278480358747
+   },
+   "drone_volley": {
+    "got": null,
+    "want": 3665.711392143499
+   },
+   "ehp.armor": {
+    "got": null,
+    "want": 4986.365407089988
+   },
+   "ehp.hull": {
+    "got": null,
+    "want": 7151.741293532338
+   },
+   "ehp.shield": {
+    "got": null,
+    "want": 39247.386759581874
+   },
+   "hi_slots": {
+    "got": null,
+    "want": 4.0
+   },
+   "hp.armor": {
+    "got": null,
+    "want": 2000.0
+   },
+   "hp.hull": {
+    "got": null,
+    "want": 2875.0
+   },
+   "hp.shield": {
+    "got": null,
+    "want": 11879.999999999998
+   },
+   "jam_chance": {
+    "got": null,
+    "want": 0
+   },
+   "low_slots": {
+    "got": null,
+    "want": 6.0
+   },
+   "mass": {
+    "got": null,
+    "want": 15600000.0
+   },
+   "max_target_range": {
+    "got": null,
+    "want": 75000.0
+   },
+   "max_targets": {
+    "got": null,
+    "want": 7
+   },
+   "max_velocity": {
+    "got": null,
+    "want": 298.5336110328513
+   },
+   "med_slots": {
+    "got": null,
+    "want": 4.0
+   },
+   "power_total": {
+    "got": null,
+    "want": 925.0
+   },
+   "power_used": {
+    "got": null,
+    "want": 413.0
+   },
+   "res.armor.em": {
+    "got": null,
+    "want": 0.425
+   },
+   "res.armor.explosive": {
+    "got": null,
+    "want": 0.765
+   },
+   "res.armor.kinetic": {
+    "got": null,
+    "want": 0.138125
+   },
+   "res.armor.thermal": {
+    "got": null,
+    "want": 0.27625
+   },
+   "res.hull.em": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.hull.explosive": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.hull.kinetic": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.hull.thermal": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.shield.em": {
+    "got": null,
+    "want": 0.5906250000000001
+   },
+   "res.shield.explosive": {
+    "got": null,
+    "want": 0.29531250000000003
+   },
+   "res.shield.kinetic": {
+    "got": null,
+    "want": 0.08859375000000001
+   },
+   "res.shield.thermal": {
+    "got": null,
+    "want": 0.23625000000000004
+   },
+   "scan_resolution": {
+    "got": null,
+    "want": 367.5
+   },
+   "scan_strength": {
+    "got": null,
+    "want": 27.599999999999998
+   },
+   "signature_radius": {
+    "got": null,
+    "want": 706.3161499763914
+   },
+   "stank.armor": {
+    "got": null,
+    "want": 0
+   },
+   "stank.hull": {
+    "got": null,
+    "want": 0
+   },
+   "stank.shield": {
+    "got": null,
+    "want": 0
+   },
+   "tank.armor": {
+    "got": null,
+    "want": 0
+   },
+   "tank.hull": {
+    "got": null,
+    "want": 0
+   },
+   "tank.passive": {
+    "got": null,
+    "want": 31.679999999999993
+   },
+   "tank.shield": {
+    "got": null,
+    "want": 0
+   },
+   "warp_scramble_status": {
+    "got": null,
+    "want": 2.0
+   },
+   "warp_speed": {
+    "got": null,
+    "want": 4.0
+   },
+   "weapon_dps": {
+    "got": null,
+    "want": 0.0
+   },
+   "weapon_pure_dps": {
+    "got": null,
+    "want": 0
+   },
+   "weapon_pure_volley": {
+    "got": null,
+    "want": 0
+   },
+   "weapon_volley": {
+    "got": null,
+    "want": 0.0
+   }
+  }
+ },
+ "projfit_proj1_on_naga": {
+  "error": null,
+  "mismatches": {
+   "align_time_s": {
+    "got": null,
+    "want": 9.825361284437227
+   },
+   "calibration_used": {
+    "got": null,
+    "want": 450.0
+   },
+   "cap_capacity": {
+    "got": null,
+    "want": 2900.0
+   },
+   "cap_recharge_s": {
+    "got": null,
+    "want": 543.75
+   },
+   "cap_stable": {
+    "got": null,
+    "want": false
+   },
+   "cpu_total": {
+    "got": null,
+    "want": 531.25
+   },
+   "cpu_used": {
+    "got": null,
+    "want": 527.0
+   },
+   "drone_bandwidth_used": {
+    "got": null,
+    "want": 0
+   },
+   "drone_control_range": {
+    "got": null,
+    "want": 60000.0
+   },
+   "drone_dps": {
+    "got": null,
+    "want": 0
+   },
+   "drone_volley": {
+    "got": null,
+    "want": 0
+   },
+   "ehp.armor": {
+    "got": null,
+    "want": 2916.6666666666665
+   },
+   "ehp.hull": {
+    "got": null,
+    "want": 3274.2537313432836
+   },
+   "ehp.shield": {
+    "got": null,
+    "want": 27071.26436781609
+   },
+   "hi_slots": {
+    "got": null,
+    "want": 8.0
+   },
+   "hp.armor": {
+    "got": null,
+    "want": 1968.75
+   },
+   "hp.hull": {
+    "got": null,
+    "want": 2193.75
+   },
+   "hp.shield": {
+    "got": null,
+    "want": 13247.999999999998
+   },
+   "jam_chance": {
+    "got": null,
+    "want": 0
+   },
+   "low_slots": {
+    "got": null,
+    "want": 3.0
+   },
+   "mass": {
+    "got": null,
+    "want": 20000000.0
+   },
+   "max_target_range": {
+    "got": null,
+    "want": 150000.0
+   },
+   "max_targets": {
+    "got": null,
+    "want": 8
+   },
+   "max_velocity": {
+    "got": null,
+    "want": 1409.1796875
+   },
+   "med_slots": {
+    "got": null,
+    "want": 6.0
+   },
+   "power_total": {
+    "got": null,
+    "want": 1093.75
+   },
+   "power_used": {
+    "got": null,
+    "want": 1327.8
+   },
+   "res.armor.em": {
+    "got": null,
+    "want": 0.5
+   },
+   "res.armor.explosive": {
+    "got": null,
+    "want": 0.9
+   },
+   "res.armor.kinetic": {
+    "got": null,
+    "want": 0.75
+   },
+   "res.armor.thermal": {
+    "got": null,
+    "want": 0.55
+   },
+   "res.hull.em": {
+    "got": null,
+    "want": 0.67
+   },
+   "res.hull.explosive": {
+    "got": null,
+    "want": 0.67
+   },
+   "res.hull.kinetic": {
+    "got": null,
+    "want": 0.67
+   },
+   "res.hull.thermal": {
+    "got": null,
+    "want": 0.67
+   },
+   "res.shield.em": {
+    "got": null,
+    "want": 0.675
+   },
+   "res.shield.explosive": {
+    "got": null,
+    "want": 0.3375
+   },
+   "res.shield.kinetic": {
+    "got": null,
+    "want": 0.405
+   },
+   "res.shield.thermal": {
+    "got": null,
+    "want": 0.54
+   },
+   "scan_resolution": {
+    "got": null,
+    "want": 250.0
+   },
+   "scan_strength": {
+    "got": null,
+    "want": 25.2
+   },
+   "signature_radius": {
+    "got": null,
+    "want": 1635.3264706955767
+   },
+   "stank.armor": {
+    "got": null,
+    "want": 0
+   },
+   "stank.hull": {
+    "got": null,
+    "want": 0
+   },
+   "stank.shield": {
+    "got": null,
+    "want": 0
+   },
+   "tank.armor": {
+    "got": null,
+    "want": 0
+   },
+   "tank.hull": {
+    "got": null,
+    "want": 0
+   },
+   "tank.passive": {
+    "got": null,
+    "want": 31.54285714285714
+   },
+   "tank.shield": {
+    "got": null,
+    "want": 0
+   },
+   "w10.falloff_m": {
+    "got": null,
+    "want": 32400.0
+   },
+   "w10.optimal_m": {
+    "got": null,
+    "want": 260508.52867250994
+   },
+   "w10.tracking": {
+    "got": null,
+    "want": 0.35792128125
+   },
+   "w11.falloff_m": {
+    "got": null,
+    "want": 32400.0
+   },
+   "w11.optimal_m": {
+    "got": null,
+    "want": 260508.52867250994
+   },
+   "w11.tracking": {
+    "got": null,
+    "want": 0.35792128125
+   },
+   "w12.falloff_m": {
+    "got": null,
+    "want": 32400.0
+   },
+   "w12.optimal_m": {
+    "got": null,
+    "want": 260508.52867250994
+   },
+   "w12.tracking": {
+    "got": null,
+    "want": 0.35792128125
+   },
+   "w13.falloff_m": {
+    "got": null,
+    "want": 32400.0
+   },
+   "w13.optimal_m": {
+    "got": null,
+    "want": 260508.52867250994
+   },
+   "w13.tracking": {
+    "got": null,
+    "want": 0.35792128125
+   },
+   "w14.falloff_m": {
+    "got": null,
+    "want": 32400.0
+   },
+   "w14.optimal_m": {
+    "got": null,
+    "want": 260508.52867250994
+   },
+   "w14.tracking": {
+    "got": null,
+    "want": 0.35792128125
+   },
+   "w15.falloff_m": {
+    "got": null,
+    "want": 32400.0
+   },
+   "w15.optimal_m": {
+    "got": null,
+    "want": 260508.52867250994
+   },
+   "w15.tracking": {
+    "got": null,
+    "want": 0.35792128125
+   },
+   "w16.falloff_m": {
+    "got": null,
+    "want": 32400.0
+   },
+   "w16.optimal_m": {
+    "got": null,
+    "want": 260508.52867250994
+   },
+   "w16.tracking": {
+    "got": null,
+    "want": 0.35792128125
+   },
+   "w9.falloff_m": {
+    "got": null,
+    "want": 32400.0
+   },
+   "w9.optimal_m": {
+    "got": null,
+    "want": 260508.52867250994
+   },
+   "w9.tracking": {
+    "got": null,
+    "want": 0.35792128125
+   },
+   "warp_scramble_status": {
+    "got": null,
+    "want": 0.0
+   },
+   "warp_speed": {
+    "got": null,
+    "want": 3.5
+   },
+   "weapon_dps": {
+    "got": null,
+    "want": 518.7293766139106
+   },
+   "weapon_pure_dps": {
+    "got": null,
+    "want": 0
+   },
+   "weapon_pure_volley": {
+    "got": null,
+    "want": 0
+   },
+   "weapon_volley": {
+    "got": null,
+    "want": 2321.363526016578
+   }
+  }
+ },
+ "projfit_proj7_on_hyperion": {
+  "error": null,
+  "mismatches": {
+   "align_time_s": {
+    "got": null,
+    "want": 16.556725657892105
+   },
+   "calibration_used": {
+    "got": null,
+    "want": 600.0
+   },
+   "cap_capacity": {
+    "got": null,
+    "want": 7200.0
+   },
+   "cap_recharge_s": {
+    "got": null,
+    "want": 1125.0
+   },
+   "cap_stable": {
+    "got": null,
+    "want": false
+   },
+   "cpu_total": {
+    "got": null,
+    "want": 750.0
+   },
+   "cpu_used": {
+    "got": null,
+    "want": 797.0
+   },
+   "d0.falloff_m": {
+    "got": null,
+    "want": 3000.0
+   },
+   "d0.max_velocity": {
+    "got": null,
+    "want": 2520.0
+   },
+   "d0.optimal_m": {
+    "got": null,
+    "want": 5250.0
+   },
+   "d0.signature_radius": {
+    "got": null,
+    "want": 50.0
+   },
+   "d0.tracking": {
+    "got": null,
+    "want": 0.696
+   },
+   "drone_bandwidth_used": {
+    "got": null,
+    "want": 50.0
+   },
+   "drone_control_range": {
+    "got": null,
+    "want": 60000.0
+   },
+   "drone_dps": {
+    "got": null,
+    "want": 158.4
+   },
+   "drone_volley": {
+    "got": null,
+    "want": 633.6
+   },
+   "ehp.armor": {
+    "got": null,
+    "want": 30697.44290980464
+   },
+   "ehp.hull": {
+    "got": null,
+    "want": 29073.38308457711
+   },
+   "ehp.shield": {
+    "got": null,
+    "want": 16256.15763546798
+   },
+   "hi_slots": {
+    "got": null,
+    "want": 7.0
+   },
+   "hp.armor": {
+    "got": null,
+    "want": 11000.0
+   },
+   "hp.hull": {
+    "got": null,
+    "want": 11687.5
+   },
+   "hp.shield": {
+    "got": null,
+    "want": 10312.5
+   },
+   "jam_chance": {
+    "got": null,
+    "want": 0
+   },
+   "low_slots": {
+    "got": null,
+    "want": 7.0
+   },
+   "mass": {
+    "got": null,
+    "want": 150200000.0
+   },
+   "max_target_range": {
+    "got": null,
+    "want": 149450.0
+   },
+   "max_targets": {
+    "got": null,
+    "want": 7
+   },
+   "max_velocity": {
+    "got": null,
+    "want": 1058.9360019973367
+   },
+   "med_slots": {
+    "got": null,
+    "want": 5.0
+   },
+   "power_total": {
+    "got": null,
+    "want": 20000.0
+   },
+   "power_used": {
+    "got": null,
+    "want": 23588.64
+   },
+   "res.armor.em": {
+    "got": null,
+    "want": 0.31875
+   },
+   "res.armor.explosive": {
+    "got": null,
+    "want": 0.3668760012149748
+   },
+   "res.armor.kinetic": {
+    "got": null,
+    "want": 0.37115800895470025
+   },
+   "res.armor.thermal": {
+    "got": null,
+    "want": 0.3765601328353627
+   },
+   "res.hull.em": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.hull.explosive": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.hull.kinetic": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.hull.thermal": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.shield.em": {
+    "got": null,
+    "want": 0.875
+   },
+   "res.shield.explosive": {
+    "got": null,
+    "want": 0.4375
+   },
+   "res.shield.kinetic": {
+    "got": null,
+    "want": 0.525
+   },
+   "res.shield.thermal": {
+    "got": null,
+    "want": 0.7000000000000001
+   },
+   "scan_resolution": {
+    "got": null,
+    "want": 237.7375
+   },
+   "scan_strength": {
+    "got": null,
+    "want": 44.16
+   },
+   "signature_radius": {
+    "got": null,
+    "want": 2788.75
+   },
+   "stank.armor": {
+    "got": null,
+    "want": 83.79201692443897
+   },
+   "stank.hull": {
+    "got": null,
+    "want": 0
+   },
+   "stank.shield": {
+    "got": null,
+    "want": 0
+   },
+   "tank.armor": {
+    "got": null,
+    "want": 337.33333333333326
+   },
+   "tank.hull": {
+    "got": null,
+    "want": 0
+   },
+   "tank.passive": {
+    "got": null,
+    "want": 13.75
+   },
+   "tank.shield": {
+    "got": null,
+    "want": 0
+   },
+   "w11.falloff_m": {
+    "got": null,
+    "want": 6250.0
+   },
+   "w11.optimal_m": {
+    "got": null,
+    "want": 6750.0
+   },
+   "w11.tracking": {
+    "got": null,
+    "want": 4.87125
+   },
+   "w12.falloff_m": {
+    "got": null,
+    "want": 6250.0
+   },
+   "w12.optimal_m": {
+    "got": null,
+    "want": 6750.0
+   },
+   "w12.tracking": {
+    "got": null,
+    "want": 4.87125
+   },
+   "w13.falloff_m": {
+    "got": null,
+    "want": 6250.0
+   },
+   "w13.optimal_m": {
+    "got": null,
+    "want": 6750.0
+   },
+   "w13.tracking": {
+    "got": null,
+    "want": 4.87125
+   },
+   "w14.falloff_m": {
+    "got": null,
+    "want": 6250.0
+   },
+   "w14.optimal_m": {
+    "got": null,
+    "want": 6750.0
+   },
+   "w14.tracking": {
+    "got": null,
+    "want": 4.87125
+   },
+   "w15.falloff_m": {
+    "got": null,
+    "want": 6250.0
+   },
+   "w15.optimal_m": {
+    "got": null,
+    "want": 6750.0
+   },
+   "w15.tracking": {
+    "got": null,
+    "want": 4.87125
+   },
+   "w16.falloff_m": {
+    "got": null,
+    "want": 6250.0
+   },
+   "w16.optimal_m": {
+    "got": null,
+    "want": 6750.0
+   },
+   "w16.tracking": {
+    "got": null,
+    "want": 4.87125
+   },
+   "w17.falloff_m": {
+    "got": null,
+    "want": 6250.0
+   },
+   "w17.optimal_m": {
+    "got": null,
+    "want": 6750.0
+   },
+   "w17.tracking": {
+    "got": null,
+    "want": 4.87125
+   },
+   "w18.falloff_m": {
+    "got": null,
+    "want": 6250.0
+   },
+   "w18.optimal_m": {
+    "got": null,
+    "want": 6750.0
+   },
+   "w18.tracking": {
+    "got": null,
+    "want": 4.87125
+   },
+   "warp_scramble_status": {
+    "got": null,
+    "want": 0.0
+   },
+   "warp_speed": {
+    "got": null,
+    "want": 3.0
+   },
+   "weapon_dps": {
+    "got": null,
+    "want": 1720.3985094349596
+   },
+   "weapon_pure_dps": {
+    "got": null,
+    "want": 0
+   },
+   "weapon_pure_volley": {
+    "got": null,
+    "want": 0
+   },
+   "weapon_volley": {
+    "got": null,
+    "want": 7083.382590251823
+   }
+  }
+ },
+ "projfit_rifter_on_tengu": {
+  "error": null,
+  "mismatches": {
+   "align_time_s": {
+    "got": null,
+    "want": 11.25518528849628
+   },
+   "calibration_used": {
+    "got": null,
+    "want": 300.0
+   },
+   "cap_capacity": {
+    "got": null,
+    "want": 2265.625
+   },
+   "cap_recharge_s": {
+    "got": null,
+    "want": 262.5
+   },
+   "cap_stable": {
+    "got": null,
+    "want": true
+   },
+   "cap_stable_percent": {
+    "got": null,
+    "want": 63.461778721636634
+   },
+   "cpu_total": {
+    "got": null,
+    "want": 587.5
+   },
+   "cpu_used": {
+    "got": null,
+    "want": 489.65
+   },
+   "drone_bandwidth_used": {
+    "got": null,
+    "want": 0
+   },
+   "drone_control_range": {
+    "got": null,
+    "want": 60000.0
+   },
+   "drone_dps": {
+    "got": null,
+    "want": 0
+   },
+   "drone_volley": {
+    "got": null,
+    "want": 0
+   },
+   "ehp.armor": {
+    "got": null,
+    "want": 5520.8675649030565
+   },
+   "ehp.hull": {
+    "got": null,
+    "want": 5286.0696517412935
+   },
+   "ehp.shield": {
+    "got": null,
+    "want": 51672.71656301126
+   },
+   "hi_slots": {
+    "got": null,
+    "want": 7.0
+   },
+   "hp.armor": {
+    "got": null,
+    "want": 2625.0
+   },
+   "hp.hull": {
+    "got": null,
+    "want": 2125.0
+   },
+   "hp.shield": {
+    "got": null,
+    "want": 13950.0
+   },
+   "jam_chance": {
+    "got": null,
+    "want": 0
+   },
+   "low_slots": {
+    "got": null,
+    "want": 5.0
+   },
+   "mass": {
+    "got": null,
+    "want": 19400000.0
+   },
+   "max_target_range": {
+    "got": null,
+    "want": 68750.0
+   },
+   "max_targets": {
+    "got": null,
+    "want": 6
+   },
+   "max_velocity": {
+    "got": null,
+    "want": 195.90528350515467
+   },
+   "med_slots": {
+    "got": null,
+    "want": 4.0
+   },
+   "power_total": {
+    "got": null,
+    "want": 915.0
+   },
+   "power_used": {
+    "got": null,
+    "want": 563.4
+   },
+   "res.armor.em": {
+    "got": null,
+    "want": 0.425
+   },
+   "res.armor.explosive": {
+    "got": null,
+    "want": 0.765
+   },
+   "res.armor.kinetic": {
+    "got": null,
+    "want": 0.47812499999999997
+   },
+   "res.armor.thermal": {
+    "got": null,
+    "want": 0.23375
+   },
+   "res.hull.em": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.hull.explosive": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.hull.kinetic": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.hull.thermal": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.shield.em": {
+    "got": null,
+    "want": 0.2825298024569491
+   },
+   "res.shield.explosive": {
+    "got": null,
+    "want": 0.29531250000000003
+   },
+   "res.shield.kinetic": {
+    "got": null,
+    "want": 0.26578125
+   },
+   "res.shield.thermal": {
+    "got": null,
+    "want": 0.23625000000000004
+   },
+   "scan_resolution": {
+    "got": null,
+    "want": 262.5
+   },
+   "scan_strength": {
+    "got": null,
+    "want": 24.0
+   },
+   "signature_radius": {
+    "got": null,
+    "want": 257.4727677631249
+   },
+   "stank.armor": {
+    "got": null,
+    "want": 0
+   },
+   "stank.hull": {
+    "got": null,
+    "want": 0
+   },
+   "stank.shield": {
+    "got": null,
+    "want": 0
+   },
+   "tank.armor": {
+    "got": null,
+    "want": 0
+   },
+   "tank.hull": {
+    "got": null,
+    "want": 0
+   },
+   "tank.passive": {
+    "got": null,
+    "want": 33.214285714285715
+   },
+   "tank.shield": {
+    "got": null,
+    "want": 0
+   },
+   "w10.explosion_radius": {
+    "got": null,
+    "want": 161.25
+   },
+   "w10.explosion_velocity": {
+    "got": null,
+    "want": 130.5
+   },
+   "w10.range_m": {
+    "got": null,
+    "want": 30255.314706636967
+   },
+   "w11.explosion_radius": {
+    "got": null,
+    "want": 161.25
+   },
+   "w11.explosion_velocity": {
+    "got": null,
+    "want": 130.5
+   },
+   "w11.range_m": {
+    "got": null,
+    "want": 30255.314706636967
+   },
+   "w12.explosion_radius": {
+    "got": null,
+    "want": 161.25
+   },
+   "w12.explosion_velocity": {
+    "got": null,
+    "want": 130.5
+   },
+   "w12.range_m": {
+    "got": null,
+    "want": 30255.314706636967
+   },
+   "w13.explosion_radius": {
+    "got": null,
+    "want": 161.25
+   },
+   "w13.explosion_velocity": {
+    "got": null,
+    "want": 130.5
+   },
+   "w13.range_m": {
+    "got": null,
+    "want": 30255.314706636967
+   },
+   "w9.explosion_radius": {
+    "got": null,
+    "want": 161.25
+   },
+   "w9.explosion_velocity": {
+    "got": null,
+    "want": 130.5
+   },
+   "w9.range_m": {
+    "got": null,
+    "want": 30255.314706636967
+   },
+   "warp_scramble_status": {
+    "got": null,
+    "want": 2.0
+   },
+   "warp_speed": {
+    "got": null,
+    "want": 6.0
+   },
+   "weapon_dps": {
+    "got": null,
+    "want": 712.3828821113426
+   },
+   "weapon_pure_dps": {
+    "got": null,
+    "want": 0
+   },
+   "weapon_pure_volley": {
+    "got": null,
+    "want": 0
+   },
+   "weapon_volley": {
+    "got": null,
+    "want": 1595.663236681364
+   }
+  }
+ },
+ "projfit_scythe_rtc_x2_on_rifter": {
+  "error": null,
+  "mismatches": {
+   "align_time_s": {
+    "got": null,
+    "want": 5.245170868083969
+   },
+   "calibration_used": {
+    "got": null,
+    "want": 675.0
+   },
+   "cap_capacity": {
+    "got": null,
+    "want": 312.5
+   },
+   "cap_recharge_s": {
+    "got": null,
+    "want": 93.75
+   },
+   "cap_stable": {
+    "got": null,
+    "want": true
+   },
+   "cap_stable_percent": {
+    "got": null,
+    "want": 83.49598710843377
+   },
+   "cpu_total": {
+    "got": null,
+    "want": 162.5
+   },
+   "cpu_used": {
+    "got": null,
+    "want": 190.0
+   },
+   "d0.falloff_m": {
+    "got": null,
+    "want": 2000.0
+   },
+   "d0.max_velocity": {
+    "got": null,
+    "want": 6300.0
+   },
+   "d0.optimal_m": {
+    "got": null,
+    "want": 2625.0
+   },
+   "d0.signature_radius": {
+    "got": null,
+    "want": 25.0
+   },
+   "d0.tracking": {
+    "got": null,
+    "want": 3.24
+   },
+   "drone_bandwidth_used": {
+    "got": null,
+    "want": 10.0
+   },
+   "drone_control_range": {
+    "got": null,
+    "want": 60000.0
+   },
+   "drone_dps": {
+    "got": null,
+    "want": 32.175000000000004
+   },
+   "drone_volley": {
+    "got": null,
+    "want": 128.70000000000002
+   },
+   "ehp.armor": {
+    "got": null,
+    "want": 2589.715131335553
+   },
+   "ehp.hull": {
+    "got": null,
+    "want": 1088.3084577114428
+   },
+   "ehp.shield": {
+    "got": null,
+    "want": 886.6995073891625
+   },
+   "hi_slots": {
+    "got": null,
+    "want": 3.0
+   },
+   "hp.armor": {
+    "got": null,
+    "want": 1312.5
+   },
+   "hp.hull": {
+    "got": null,
+    "want": 437.5
+   },
+   "hp.shield": {
+    "got": null,
+    "want": 562.5
+   },
+   "jam_chance": {
+    "got": null,
+    "want": 0
+   },
+   "low_slots": {
+    "got": null,
+    "want": 4.0
+   },
+   "mass": {
+    "got": null,
+    "want": 1668250.0
+   },
+   "max_target_range": {
+    "got": null,
+    "want": 28125.0
+   },
+   "max_targets": {
+    "got": null,
+    "want": 4
+   },
+   "max_velocity": {
+    "got": null,
+    "want": 1148.5220290723812
+   },
+   "med_slots": {
+    "got": null,
+    "want": 3.0
+   },
+   "power_total": {
+    "got": null,
+    "want": 51.25
+   },
+   "power_used": {
+    "got": null,
+    "want": 42.51
+   },
+   "res.armor.em": {
+    "got": null,
+    "want": 0.34
+   },
+   "res.armor.explosive": {
+    "got": null,
+    "want": 0.49725
+   },
+   "res.armor.kinetic": {
+    "got": null,
+    "want": 0.6375
+   },
+   "res.armor.thermal": {
+    "got": null,
+    "want": 0.5525
+   },
+   "res.hull.em": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.hull.explosive": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.hull.kinetic": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.hull.thermal": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.shield.em": {
+    "got": null,
+    "want": 0.875
+   },
+   "res.shield.explosive": {
+    "got": null,
+    "want": 0.4375
+   },
+   "res.shield.kinetic": {
+    "got": null,
+    "want": 0.525
+   },
+   "res.shield.thermal": {
+    "got": null,
+    "want": 0.7000000000000001
+   },
+   "scan_resolution": {
+    "got": null,
+    "want": 825.0
+   },
+   "scan_strength": {
+    "got": null,
+    "want": 9.6
+   },
+   "signature_radius": {
+    "got": null,
+    "want": 35.0
+   },
+   "stank.armor": {
+    "got": null,
+    "want": 0
+   },
+   "stank.hull": {
+    "got": null,
+    "want": 0
+   },
+   "stank.shield": {
+    "got": null,
+    "want": 0
+   },
+   "tank.armor": {
+    "got": null,
+    "want": 0
+   },
+   "tank.hull": {
+    "got": null,
+    "want": 0
+   },
+   "tank.passive": {
+    "got": null,
+    "want": 3.0
+   },
+   "tank.shield": {
+    "got": null,
+    "want": 0
+   },
+   "w6.falloff_m": {
+    "got": null,
+    "want": 17944.680571464756
+   },
+   "w6.optimal_m": {
+    "got": null,
+    "want": 1038.2390950462643
+   },
+   "w6.tracking": {
+    "got": null,
+    "want": 730.3067674433331
+   },
+   "w7.falloff_m": {
+    "got": null,
+    "want": 17944.680571464756
+   },
+   "w7.optimal_m": {
+    "got": null,
+    "want": 1038.2390950462643
+   },
+   "w7.tracking": {
+    "got": null,
+    "want": 730.3067674433331
+   },
+   "w8.falloff_m": {
+    "got": null,
+    "want": 17944.680571464756
+   },
+   "w8.optimal_m": {
+    "got": null,
+    "want": 1038.2390950462643
+   },
+   "w8.tracking": {
+    "got": null,
+    "want": 730.3067674433331
+   },
+   "w9.explosion_radius": {
+    "got": null,
+    "want": 25.5
+   },
+   "w9.explosion_velocity": {
+    "got": null,
+    "want": 193.5
+   },
+   "w9.range_m": {
+    "got": null,
+    "want": 8436.765294824345
+   },
+   "warp_scramble_status": {
+    "got": null,
+    "want": 0.0
+   },
+   "warp_speed": {
+    "got": null,
+    "want": 5.0
+   },
+   "weapon_dps": {
+    "got": null,
+    "want": 243.12956327613847
+   },
+   "weapon_pure_dps": {
+    "got": null,
+    "want": 0
+   },
+   "weapon_pure_volley": {
+    "got": null,
+    "want": 0
+   },
+   "weapon_volley": {
+    "got": null,
+    "want": 354.06575289370556
+   }
+  }
+ },
+ "projfit_svipul_on_vexor": {
+  "error": null,
+  "mismatches": {
+   "align_time_s": {
+    "got": null,
+    "want": 8.858545734048603
+   },
+   "calibration_used": {
+    "got": null,
+    "want": 250.0
+   },
+   "cap_capacity": {
+    "got": null,
+    "want": 3600.0
+   },
+   "cap_recharge_s": {
+    "got": null,
+    "want": 361.875
+   },
+   "cap_stable": {
+    "got": null,
+    "want": true
+   },
+   "cap_stable_percent": {
+    "got": null,
+    "want": 31.310303425544856
+   },
+   "cpu_total": {
+    "got": null,
+    "want": 375.0
+   },
+   "cpu_used": {
+    "got": null,
+    "want": 352.0
+   },
+   "drone_bandwidth_used": {
+    "got": null,
+    "want": 0
+   },
+   "drone_control_range": {
+    "got": null,
+    "want": 60000.0
+   },
+   "drone_dps": {
+    "got": null,
+    "want": 0
+   },
+   "drone_volley": {
+    "got": null,
+    "want": 0
+   },
+   "ehp.armor": {
+    "got": null,
+    "want": 6383.060633403696
+   },
+   "ehp.hull": {
+    "got": null,
+    "want": 6218.905472636816
+   },
+   "ehp.shield": {
+    "got": null,
+    "want": 2167.487684729064
+   },
+   "hi_slots": {
+    "got": null,
+    "want": 4.0
+   },
+   "hp.armor": {
+    "got": null,
+    "want": 2500.0
+   },
+   "hp.hull": {
+    "got": null,
+    "want": 2500.0
+   },
+   "hp.shield": {
+    "got": null,
+    "want": 1375.0
+   },
+   "jam_chance": {
+    "got": null,
+    "want": 0
+   },
+   "low_slots": {
+    "got": null,
+    "want": 5.0
+   },
+   "mass": {
+    "got": null,
+    "want": 16100000.0
+   },
+   "max_target_range": {
+    "got": null,
+    "want": 65625.0
+   },
+   "max_targets": {
+    "got": null,
+    "want": 6
+   },
+   "max_velocity": {
+    "got": null,
+    "want": 598.5879270186334
+   },
+   "med_slots": {
+    "got": null,
+    "want": 4.0
+   },
+   "power_total": {
+    "got": null,
+    "want": 875.0
+   },
+   "power_used": {
+    "got": null,
+    "want": 854.35
+   },
+   "res.armor.em": {
+    "got": null,
+    "want": 0.31875
+   },
+   "res.armor.explosive": {
+    "got": null,
+    "want": 0.41914656257034677
+   },
+   "res.armor.kinetic": {
+    "got": null,
+    "want": 0.41437500000000005
+   },
+   "res.armor.thermal": {
+    "got": null,
+    "want": 0.41437500000000005
+   },
+   "res.hull.em": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.hull.explosive": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.hull.kinetic": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.hull.thermal": {
+    "got": null,
+    "want": 0.402
+   },
+   "res.shield.em": {
+    "got": null,
+    "want": 0.875
+   },
+   "res.shield.explosive": {
+    "got": null,
+    "want": 0.4375
+   },
+   "res.shield.kinetic": {
+    "got": null,
+    "want": 0.525
+   },
+   "res.shield.thermal": {
+    "got": null,
+    "want": 0.7000000000000001
+   },
+   "scan_resolution": {
+    "got": null,
+    "want": 350.0
+   },
+   "scan_strength": {
+    "got": null,
+    "want": 19.2
+   },
+   "signature_radius": {
+    "got": null,
+    "want": 145.0
+   },
+   "stank.armor": {
+    "got": null,
+    "want": 53.152415153467686
+   },
+   "stank.hull": {
+    "got": null,
+    "want": 0
+   },
+   "stank.shield": {
+    "got": null,
+    "want": 0
+   },
+   "tank.armor": {
+    "got": null,
+    "want": 53.152415153467686
+   },
+   "tank.hull": {
+    "got": null,
+    "want": 0
+   },
+   "tank.passive": {
+    "got": null,
+    "want": 3.6666666666666665
+   },
+   "tank.shield": {
+    "got": null,
+    "want": 0
+   },
+   "w10.falloff_m": {
+    "got": null,
+    "want": 3750.0
+   },
+   "w10.optimal_m": {
+    "got": null,
+    "want": 1500.0
+   },
+   "w10.tracking": {
+    "got": null,
+    "want": 57.599999999999994
+   },
+   "w11.falloff_m": {
+    "got": null,
+    "want": 3750.0
+   },
+   "w11.optimal_m": {
+    "got": null,
+    "want": 1500.0
+   },
+   "w11.tracking": {
+    "got": null,
+    "want": 57.599999999999994
+   },
+   "w12.falloff_m": {
+    "got": null,
+    "want": 3750.0
+   },
+   "w12.optimal_m": {
+    "got": null,
+    "want": 1500.0
+   },
+   "w12.tracking": {
+    "got": null,
+    "want": 57.599999999999994
+   },
+   "w9.falloff_m": {
+    "got": null,
+    "want": 3750.0
+   },
+   "w9.optimal_m": {
+    "got": null,
+    "want": 1500.0
+   },
+   "w9.tracking": {
+    "got": null,
+    "want": 57.599999999999994
+   },
+   "warp_scramble_status": {
+    "got": null,
+    "want": 0.0
+   },
+   "warp_speed": {
+    "got": null,
+    "want": 4.0
+   },
+   "weapon_dps": {
+    "got": null,
+    "want": 222.75859374999993
+   },
+   "weapon_pure_dps": {
+    "got": null,
+    "want": 0
+   },
+   "weapon_pure_volley": {
+    "got": null,
+    "want": 0
+   },
+   "weapon_volley": {
+    "got": null,
+    "want": 481.1585625
+   }
+  }
+ }
+}

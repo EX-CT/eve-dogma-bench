@@ -1,0 +1,4452 @@
+{
+ "name": "mcp-8c6b93d",
+ "pass": 198,
+ "total": 239,
+ "cases": {
+  "alpha_drake": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "alpha_clone",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 74,
+   "mismatches": 37,
+   "not_implemented": 0,
+   "first": [
+    [
+     "align_time_s",
+     8.211195,
+     9.512821220722746
+    ],
+    [
+     "cap_capacity",
+     3125,
+     3000.0
+    ],
+    [
+     "cap_recharge_s",
+     468.75,
+     531.25
+    ],
+    [
+     "drone_control_range",
+     60000,
+     40000.0
+    ],
+    [
+     "ehp.shield",
+     23060.344828,
+     21083.743842364533
+    ],
+    [
+     "hp.shield",
+     13375,
+     12840.0
+    ],
+    [
+     "max_target_range",
+     81250,
+     74750.0
+    ],
+    [
+     "max_targets",
+     8,
+     6
+    ],
+    [
+     "max_velocity",
+     187.5,
+     180.0
+    ],
+    [
+     "power_used",
+     807,
+     848.2
+    ]
+   ]
+  },
+  "alpha_kestrel": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "alpha_clone",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 68,
+   "mismatches": 26,
+   "not_implemented": 0,
+   "first": [
+    [
+     "align_time_s",
+     3.405667,
+     3.945527972767252
+    ],
+    [
+     "cap_capacity",
+     412.5,
+     396.0
+    ],
+    [
+     "cap_recharge_s",
+     123.75,
+     140.25
+    ],
+    [
+     "drone_control_range",
+     60000,
+     40000.0
+    ],
+    [
+     "ehp.shield",
+     862.068966,
+     827.5862068965517
+    ],
+    [
+     "hp.shield",
+     625,
+     600.0
+    ],
+    [
+     "max_target_range",
+     62500,
+     57499.99999999999
+    ],
+    [
+     "max_velocity",
+     406.25,
+     390.0
+    ],
+    [
+     "power_used",
+     25.2,
+     26.32
+    ],
+    [
+     "scan_resolution",
+     775,
+     713.0
+    ]
+   ]
+  },
+  "alpha_omen_skills4": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "alpha_clone",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 68,
+   "mismatches": 10,
+   "not_implemented": 0,
+   "first": [
+    [
+     "align_time_s",
+     5.703548,
+     6.060019444312268
+    ],
+    [
+     "cap_recharge_s",
+     452,
+     480.25
+    ],
+    [
+     "cap_stable_percent",
+     68.12241,
+     65.83042567884014
+    ],
+    [
+     "drone_control_range",
+     52000,
+     40000.0
+    ],
+    [
+     "max_target_range",
+     66000,
+     63249.99999999999
+    ],
+    [
+     "power_used",
+     460,
+     470.0
+    ],
+    [
+     "scan_resolution",
+     360,
+     345.0
+    ],
+    [
+     "scan_strength",
+     17.4,
+     15.0
+    ],
+    [
+     "weapon_dps",
+     133.565217,
+     131.0917874396135
+    ],
+    [
+     "weapon_volley",
+     334.430208,
+     328.23705600000005
+    ]
+   ]
+  },
+  "alpha_rifter": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "alpha_clone",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 65,
+   "mismatches": 24,
+   "not_implemented": 0,
+   "first": [
+    [
+     "align_time_s",
+     4.692218,
+     5.436021735520471
+    ],
+    [
+     "cap_capacity",
+     312.5,
+     300.0
+    ],
+    [
+     "cap_recharge_s",
+     93.75,
+     106.25
+    ],
+    [
+     "cap_stable_percent",
+     95.510205,
+     86.54277180776492
+    ],
+    [
+     "drone_control_range",
+     60000,
+     40000.0
+    ],
+    [
+     "ehp.shield",
+     775.862069,
+     744.8275862068966
+    ],
+    [
+     "hp.shield",
+     562.5,
+     540.0
+    ],
+    [
+     "max_target_range",
+     28125,
+     25874.999999999996
+    ],
+    [
+     "max_velocity",
+     1193.252433,
+     1088.9205488194002
+    ],
+    [
+     "power_used",
+     21.8,
+     22.28
+    ]
+   ]
+  },
+  "alpha_vexor_drones": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "alpha_clone",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 61,
+   "mismatches": 15,
+   "not_implemented": 0,
+   "first": [
+    [
+     "align_time_s",
+     5.816614,
+     6.73865489550001
+    ],
+    [
+     "cap_capacity",
+     1812.5,
+     1740.0
+    ],
+    [
+     "cap_recharge_s",
+     361.875,
+     410.125
+    ],
+    [
+     "d0.max_velocity",
+     2520,
+     2419.2
+    ],
+    [
+     "d0.optimal_m",
+     5250,
+     5040.0
+    ],
+    [
+     "drone_control_range",
+     60000,
+     40000.0
+    ],
+    [
+     "drone_dps",
+     237.6,
+     174.440448
+    ],
+    [
+     "drone_volley",
+     950.4,
+     697.761792
+    ],
+    [
+     "ehp.shield",
+     1896.551724,
+     1820.689655172414
+    ],
+    [
+     "hp.shield",
+     1375,
+     1320.0
+    ]
+   ]
+  },
+  "bomb_basilisk": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "bombing",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 80,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "bomb_dominix": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "bombing",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 80,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "bomb_dominix_red_giant6": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "bombing",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 80,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "bomb_hulk": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "bombing",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 80,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "bomb_ishtar": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "bombing",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 80,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "bomb_ishtar_shieldext": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "bombing",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 80,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "bomb_purifier": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "bombing",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 80,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "bomb_rifter": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "bombing",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 80,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "bomb_rifter_red_giant3": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "bombing",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 80,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "bomb_rorqual": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "bombing",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 80,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "bomb_vexor": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "bombing",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 80,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "brdc_rifter_active": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "breacher_dc",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 57,
+   "mismatches": 1,
+   "not_implemented": 1,
+   "first": [
+    [
+     "/attributes/ship/breacherPodDamageResistance",
+     null,
+     0.09999999999999998
+    ]
+   ]
+  },
+  "brdc_rifter_online": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "breacher_dc",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 57,
+   "mismatches": 1,
+   "not_implemented": 1,
+   "first": [
+    [
+     "/attributes/ship/breacherPodDamageResistance",
+     null,
+     1.0
+    ]
+   ]
+  },
+  "brdc_rifter_skills0": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "breacher_dc",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 57,
+   "mismatches": 1,
+   "not_implemented": 1,
+   "first": [
+    [
+     "/attributes/ship/breacherPodDamageResistance",
+     null,
+     0.09999999999999998
+    ]
+   ]
+  },
+  "brdc_thorax_active": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "breacher_dc",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 56,
+   "mismatches": 1,
+   "not_implemented": 1,
+   "first": [
+    [
+     "/attributes/ship/breacherPodDamageResistance",
+     null,
+     0.09999999999999998
+    ]
+   ]
+  },
+  "cimp_kestrel_char_missiles": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "char_implants",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 68,
+   "mismatches": 4,
+   "not_implemented": 0,
+   "first": [
+    [
+     "w0.explosion_radius",
+     30,
+     28.499999999999996
+    ],
+    [
+     "w1.explosion_radius",
+     30,
+     28.499999999999996
+    ],
+    [
+     "w2.explosion_radius",
+     30,
+     28.499999999999996
+    ],
+    [
+     "w3.explosion_radius",
+     30,
+     28.499999999999996
+    ]
+   ]
+  },
+  "cimp_punisher_char_cap": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "char_implants",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 65,
+   "mismatches": 4,
+   "not_implemented": 0,
+   "first": [
+    [
+     "cap_capacity",
+     500,
+     525.0
+    ],
+    [
+     "cap_stable",
+     false,
+     true
+    ],
+    [
+     "cap_stable_percent",
+     null,
+     24.787092680266834
+    ],
+    [
+     "stank.armor",
+     19.399405,
+     20.444444444444443
+    ]
+   ]
+  },
+  "cimp_rifter_char_ignores_fit": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "char_implants",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 56,
+   "mismatches": 1,
+   "not_implemented": 0,
+   "first": [
+    [
+     "max_velocity",
+     1252.915055,
+     1265.5106610810722
+    ]
+   ]
+  },
+  "cimp_rifter_char_source": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "char_implants",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 56,
+   "mismatches": 1,
+   "not_implemented": 0,
+   "first": [
+    [
+     "max_velocity",
+     1193.252433,
+     1227.599820530616
+    ]
+   ]
+  },
+  "cimp_rifter_default_fit": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "char_implants",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 56,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "cimp_rifter_fit_source": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "char_implants",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 56,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "dehp_dominix_mixed": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "drone_ehp",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 87,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "dehp_dominix_ogre_enhancer": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "drone_ehp",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 68,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "dehp_ishtar_hammerhead_explosive": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "drone_ehp",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 68,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "dehp_vexor_hobgoblin": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "drone_ehp",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 68,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "dehp_vexor_hobgoblin_skills0": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "drone_ehp",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 68,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "dep_kestrel_bcs_skills0": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "attr_dependants",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 63,
+   "mismatches": 1,
+   "not_implemented": 1,
+   "first": [
+    [
+     "/dependants/modules.2",
+     null,
+     [
+      "modules.0/speed",
+      "modules.1/speed"
+     ]
+    ]
+   ]
+  },
+  "dep_rifter_ab_gyro": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "attr_dependants",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 112,
+   "mismatches": 50,
+   "not_implemented": 50,
+   "first": [
+    [
+     "/dependants/modules.0",
+     null,
+     [
+      "modules.0/maxRange"
+     ]
+    ],
+    [
+     "/dependants/modules.1",
+     null,
+     [
+      "modules.1/maxRange"
+     ]
+    ],
+    [
+     "/dependants/modules.2",
+     null,
+     [
+      "ship/mass",
+      "ship/maxVelocity"
+     ]
+    ],
+    [
+     "/dependants/modules.3",
+     null,
+     [
+      "modules.0/damageMultiplier",
+      "modules.0/speed",
+      "modules.1/damageMultiplier",
+      "modules.1/speed"
+     ]
+    ],
+    [
+     "/dependants/skill.11084",
+     null,
+     [
+      "modules.0/damageMultiplier",
+      "modules.1/damageMultiplier"
+     ]
+    ],
+    [
+     "/dependants/skill.11207",
+     null,
+     [
+      "modules.0/power",
+      "modules.1/power"
+     ]
+    ],
+    [
+     "/dependants/skill.21610",
+     null,
+     [
+      "ship/jumpDriveConsumptionAmount"
+     ]
+    ],
+    [
+     "/dependants/skill.21611",
+     null,
+     [
+      "ship/jumpDriveRange"
+     ]
+    ],
+    [
+     "/dependants/skill.23566",
+     null,
+     [
+      "ship/droneControlRange"
+     ]
+    ],
+    [
+     "/dependants/skill.24606",
+     null,
+     [
+      "ship/maxJumpClones"
+     ]
+    ]
+   ]
+  },
+  "dep_thorax_plate_dc": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "attr_dependants",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 95,
+   "mismatches": 39,
+   "not_implemented": 39,
+   "first": [
+    [
+     "/dependants/modules.0",
+     null,
+     [
+      "ship/armorHP",
+      "ship/mass"
+     ]
+    ],
+    [
+     "/dependants/modules.1",
+     null,
+     [
+      "ship/armorEmDamageResonance",
+      "ship/armorExplosiveDamageResonance",
+      "ship/armorKineticDamageResonance",
+      "ship/armorThermalDamageResonance",
+      "ship/emDamageResonance",
+      "ship/explosiveDamageResonance",
+      "ship/kineticDamageResonance",
+      "ship/shieldEmDamageResonance",
+      "ship/shieldExplosiveDamageResonance",
+      "ship/shieldKineticDamageResonance",
+      "ship/shieldThermalDamageResonance",
+      "ship/thermalDamageResonance"
+     ]
+    ],
+    [
+     "/dependants/modules.2",
+     null,
+     [
+      "ship/armorEmDamageResonance",
+      "ship/armorExplosiveDamageResonance",
+      "ship/armorKineticDamageResonance",
+      "ship/armorThermalDamageResonance"
+     ]
+    ],
+    [
+     "/dependants/skill.21610",
+     null,
+     [
+      "ship/jumpDriveConsumptionAmount"
+     ]
+    ],
+    [
+     "/dependants/skill.21611",
+     null,
+     [
+      "ship/jumpDriveRange"
+     ]
+    ],
+    [
+     "/dependants/skill.22806",
+     null,
+     [
+      "modules.2/emDamageResistanceBonus"
+     ]
+    ],
+    [
+     "/dependants/skill.22807",
+     null,
+     [
+      "modules.2/explosiveDamageResistanceBonus"
+     ]
+    ],
+    [
+     "/dependants/skill.22808",
+     null,
+     [
+      "modules.2/kineticDamageResistanceBonus"
+     ]
+    ],
+    [
+     "/dependants/skill.22809",
+     null,
+     [
+      "modules.2/thermalDamageResistanceBonus"
+     ]
+    ],
+    [
+     "/dependants/skill.23566",
+     null,
+     [
+      "ship/droneControlRange"
+     ]
+    ]
+   ]
+  },
+  "dep_vexor_drones_dda": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "attr_dependants",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 100,
+   "mismatches": 39,
+   "not_implemented": 39,
+   "first": [
+    [
+     "/dependants/modules.0",
+     null,
+     [
+      "drones.0/damageMultiplier"
+     ]
+    ],
+    [
+     "/dependants/modules.1",
+     null,
+     [
+      "drones.0/damageMultiplier"
+     ]
+    ],
+    [
+     "/dependants/skill.12305",
+     null,
+     [
+      "drones.0/maxVelocity"
+     ]
+    ],
+    [
+     "/dependants/skill.12486",
+     null,
+     [
+      "drones.0/damageMultiplier"
+     ]
+    ],
+    [
+     "/dependants/skill.21610",
+     null,
+     [
+      "ship/jumpDriveConsumptionAmount"
+     ]
+    ],
+    [
+     "/dependants/skill.21611",
+     null,
+     [
+      "ship/jumpDriveRange"
+     ]
+    ],
+    [
+     "/dependants/skill.23566",
+     null,
+     [
+      "ship/droneControlRange"
+     ]
+    ],
+    [
+     "/dependants/skill.23606",
+     null,
+     [
+      "drones.0/maxRange"
+     ]
+    ],
+    [
+     "/dependants/skill.23618",
+     null,
+     [
+      "drones.0/armorHP",
+      "drones.0/hp",
+      "drones.0/shieldCapacity"
+     ]
+    ],
+    [
+     "/dependants/skill.24606",
+     null,
+     [
+      "ship/maxJumpClones"
+     ]
+    ]
+   ]
+  },
+  "dpb_drake_abyssal_drifter": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "damage_pattern_builtin",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 56,
+   "mismatches": 54,
+   "not_implemented": 0,
+   "first": [
+    [
+     "align_time_s",
+     null,
+     8.211194787708253
+    ],
+    [
+     "calibration_used",
+     null,
+     0.0
+    ],
+    [
+     "cap_capacity",
+     null,
+     3125.0
+    ],
+    [
+     "cap_recharge_s",
+     null,
+     468.75
+    ],
+    [
+     "cap_stable",
+     null,
+     true
+    ],
+    [
+     "cap_stable_percent",
+     null,
+     100
+    ],
+    [
+     "cpu_total",
+     null,
+     625.0
+    ],
+    [
+     "cpu_used",
+     null,
+     30.0
+    ],
+    [
+     "drone_bandwidth_used",
+     null,
+     0
+    ],
+    [
+     "drone_control_range",
+     null,
+     60000.0
+    ]
+   ]
+  },
+  "dpb_drake_guristas": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "damage_pattern_builtin",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 56,
+   "mismatches": 54,
+   "not_implemented": 0,
+   "first": [
+    [
+     "align_time_s",
+     null,
+     8.211194787708253
+    ],
+    [
+     "calibration_used",
+     null,
+     0.0
+    ],
+    [
+     "cap_capacity",
+     null,
+     3125.0
+    ],
+    [
+     "cap_recharge_s",
+     null,
+     468.75
+    ],
+    [
+     "cap_stable",
+     null,
+     true
+    ],
+    [
+     "cap_stable_percent",
+     null,
+     100
+    ],
+    [
+     "cpu_total",
+     null,
+     625.0
+    ],
+    [
+     "cpu_used",
+     null,
+     30.0
+    ],
+    [
+     "drone_bandwidth_used",
+     null,
+     0
+    ],
+    [
+     "drone_control_range",
+     null,
+     60000.0
+    ]
+   ]
+  },
+  "dpb_rifter_generic_em": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "damage_pattern_builtin",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 56,
+   "mismatches": 54,
+   "not_implemented": 0,
+   "first": [
+    [
+     "align_time_s",
+     null,
+     3.195020339960234
+    ],
+    [
+     "calibration_used",
+     null,
+     0.0
+    ],
+    [
+     "cap_capacity",
+     null,
+     312.5
+    ],
+    [
+     "cap_recharge_s",
+     null,
+     93.75
+    ],
+    [
+     "cap_stable",
+     null,
+     true
+    ],
+    [
+     "cap_stable_percent",
+     null,
+     100
+    ],
+    [
+     "cpu_total",
+     null,
+     162.5
+    ],
+    [
+     "cpu_used",
+     null,
+     30.0
+    ],
+    [
+     "drone_bandwidth_used",
+     null,
+     0
+    ],
+    [
+     "drone_control_range",
+     null,
+     60000.0
+    ]
+   ]
+  },
+  "dpb_rifter_generic_explosive": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "damage_pattern_builtin",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 56,
+   "mismatches": 54,
+   "not_implemented": 0,
+   "first": [
+    [
+     "align_time_s",
+     null,
+     3.195020339960234
+    ],
+    [
+     "calibration_used",
+     null,
+     0.0
+    ],
+    [
+     "cap_capacity",
+     null,
+     312.5
+    ],
+    [
+     "cap_recharge_s",
+     null,
+     93.75
+    ],
+    [
+     "cap_stable",
+     null,
+     true
+    ],
+    [
+     "cap_stable_percent",
+     null,
+     100
+    ],
+    [
+     "cpu_total",
+     null,
+     162.5
+    ],
+    [
+     "cpu_used",
+     null,
+     30.0
+    ],
+    [
+     "drone_bandwidth_used",
+     null,
+     0
+    ],
+    [
+     "drone_control_range",
+     null,
+     60000.0
+    ]
+   ]
+  },
+  "dpb_thorax_scourge": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "damage_pattern_builtin",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 56,
+   "mismatches": 54,
+   "not_implemented": 0,
+   "first": [
+    [
+     "align_time_s",
+     null,
+     5.172070180127755
+    ],
+    [
+     "calibration_used",
+     null,
+     0.0
+    ],
+    [
+     "cap_capacity",
+     null,
+     1812.5
+    ],
+    [
+     "cap_recharge_s",
+     null,
+     387.75
+    ],
+    [
+     "cap_stable",
+     null,
+     true
+    ],
+    [
+     "cap_stable_percent",
+     null,
+     100
+    ],
+    [
+     "cpu_total",
+     null,
+     412.5
+    ],
+    [
+     "cpu_used",
+     null,
+     30.0
+    ],
+    [
+     "drone_bandwidth_used",
+     null,
+     0
+    ],
+    [
+     "drone_control_range",
+     null,
+     60000.0
+    ]
+   ]
+  },
+  "dpb_thorax_uniform": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "damage_pattern_builtin",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 56,
+   "mismatches": 54,
+   "not_implemented": 0,
+   "first": [
+    [
+     "align_time_s",
+     null,
+     5.172070180127755
+    ],
+    [
+     "calibration_used",
+     null,
+     0.0
+    ],
+    [
+     "cap_capacity",
+     null,
+     1812.5
+    ],
+    [
+     "cap_recharge_s",
+     null,
+     387.75
+    ],
+    [
+     "cap_stable",
+     null,
+     true
+    ],
+    [
+     "cap_stable_percent",
+     null,
+     100
+    ],
+    [
+     "cpu_total",
+     null,
+     412.5
+    ],
+    [
+     "cpu_used",
+     null,
+     30.0
+    ],
+    [
+     "drone_bandwidth_used",
+     null,
+     0
+    ],
+    [
+     "drone_control_range",
+     null,
+     60000.0
+    ]
+   ]
+  },
+  "fehp_aeon_ametat_templar": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fighter_ehp",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 74,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "fehp_archon_em_thermal_pattern": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fighter_ehp",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 65,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "fehp_archon_templar_cenobite": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fighter_ehp",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 72,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "fehp_chimera_dragonfly_scarab": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fighter_ehp",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 72,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "fehp_chimera_inactive_squadron": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fighter_ehp",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 70,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "fehp_hel_fsu3_mantis": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fighter_ehp",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 65,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "fehp_hel_mantis_einherji": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fighter_ehp",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 74,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "fehp_nidhoggur_einherji_siren": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fighter_ehp",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 72,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "fehp_nyx_explosive_pattern": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fighter_ehp",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 65,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "fehp_nyx_malleus_firbolg": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fighter_ehp",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 74,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "fehp_thanatos_firbolg": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fighter_ehp",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 65,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "fehp_thanatos_fsu2": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fighter_ehp",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 65,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "fehp_thanatos_skills0": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fighter_ehp",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 65,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "fehp_thanatos_skills_fighters1": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fighter_ehp",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 72,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "fehp_wyvern_cyclops_dromi": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fighter_ehp",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 72,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "fleet_booster_claymore_only": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "fleet.buffs",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 55,
+   "mismatches": 53,
+   "not_implemented": 0,
+   "first": [
+    [
+     "align_time_s",
+     null,
+     6.078623514638497
+    ],
+    [
+     "calibration_used",
+     null,
+     0.0
+    ],
+    [
+     "cap_capacity",
+     null,
+     1450.0
+    ],
+    [
+     "cap_recharge_s",
+     null,
+     361.875
+    ],
+    [
+     "cap_stable",
+     null,
+     false
+    ],
+    [
+     "cpu_total",
+     null,
+     375.0
+    ],
+    [
+     "cpu_used",
+     null,
+     149.0
+    ],
+    [
+     "drone_bandwidth_used",
+     null,
+     0
+    ],
+    [
+     "drone_control_range",
+     null,
+     60000.0
+    ],
+    [
+     "drone_dps",
+     null,
+     0
+    ]
+   ]
+  },
+  "fleet_buffs_armor_all": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fleet.buffs",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 55,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "fleet_buffs_drones": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fleet.buffs",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 60,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "fleet_buffs_info": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fleet.buffs",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 55,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "fleet_buffs_max_aggregate_dup": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fleet.buffs",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 55,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "fleet_buffs_min_aggregate_dup": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fleet.buffs",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 55,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "fleet_buffs_override_booster_claymore": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "fleet.buffs",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 55,
+   "mismatches": 53,
+   "not_implemented": 0,
+   "first": [
+    [
+     "align_time_s",
+     null,
+     6.078623514638497
+    ],
+    [
+     "calibration_used",
+     null,
+     0.0
+    ],
+    [
+     "cap_capacity",
+     null,
+     1450.0
+    ],
+    [
+     "cap_recharge_s",
+     null,
+     361.875
+    ],
+    [
+     "cap_stable",
+     null,
+     false
+    ],
+    [
+     "cpu_total",
+     null,
+     375.0
+    ],
+    [
+     "cpu_used",
+     null,
+     149.0
+    ],
+    [
+     "drone_bandwidth_used",
+     null,
+     0
+    ],
+    [
+     "drone_control_range",
+     null,
+     60000.0
+    ],
+    [
+     "drone_dps",
+     null,
+     0
+    ]
+   ]
+  },
+  "fleet_buffs_shield_all": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fleet.buffs",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 55,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "fleet_buffs_shield_resist": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fleet.buffs",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 55,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "fleet_buffs_skills0": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fleet.buffs",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 55,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "fleet_buffs_skirmish": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fleet.buffs",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 55,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "fleet_buffs_titan_generators": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fleet.buffs",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 55,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "mining_covetor_strip_i": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "mining",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 61,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "mining_hulk_fleet_buffs": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "mining+fleet.buffs",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 61,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "mining_hulk_skills4": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "mining",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 61,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "mining_hulk_strip": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "mining",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 61,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "mining_porpoise_drones": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "mining",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 61,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "mining_porpoise_ice_drones": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "mining",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 61,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "mining_procurer_ice": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "mining",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 61,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "mining_venture": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "mining",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 61,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "mining_venture_gas": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "mining",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 61,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "mining_venture_skills0": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "mining",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 61,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "ovr_booster": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "overrides",
+   "source": "Pyfa oracle (attribute overrides)",
+   "checks": 56,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "ovr_booster_fit_charge": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "overrides",
+   "source": "Pyfa oracle (attribute overrides)",
+   "checks": 55,
+   "mismatches": 53,
+   "not_implemented": 0,
+   "first": [
+    [
+     "align_time_s",
+     null,
+     6.078623514638497
+    ],
+    [
+     "calibration_used",
+     null,
+     0.0
+    ],
+    [
+     "cap_capacity",
+     null,
+     1450.0
+    ],
+    [
+     "cap_recharge_s",
+     null,
+     361.875
+    ],
+    [
+     "cap_stable",
+     null,
+     false
+    ],
+    [
+     "cpu_total",
+     null,
+     375.0
+    ],
+    [
+     "cpu_used",
+     null,
+     149.0
+    ],
+    [
+     "drone_bandwidth_used",
+     null,
+     0
+    ],
+    [
+     "drone_control_range",
+     null,
+     60000.0
+    ],
+    [
+     "drone_dps",
+     null,
+     0
+    ]
+   ]
+  },
+  "ovr_charge_damage_volley": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "overrides",
+   "source": "Pyfa oracle (attribute overrides)",
+   "checks": 59,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "ovr_drone_damage": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "overrides",
+   "source": "Pyfa oracle (attribute overrides)",
+   "checks": 61,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "ovr_drone_hp": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "overrides",
+   "source": "Pyfa oracle (attribute overrides)",
+   "checks": 61,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "ovr_duplicate_last_wins": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "overrides",
+   "source": "Pyfa oracle (attribute overrides)",
+   "checks": 56,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "ovr_environment": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "overrides",
+   "source": "Pyfa oracle (attribute overrides)",
+   "checks": 56,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "ovr_fighter": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "overrides",
+   "source": "Pyfa oracle (attribute overrides)",
+   "checks": 58,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "ovr_implant": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "overrides",
+   "source": "Pyfa oracle (attribute overrides)",
+   "checks": 56,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "ovr_module_cpu_power": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "overrides",
+   "source": "Pyfa oracle (attribute overrides)",
+   "checks": 65,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "ovr_module_resist_stacking": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "overrides",
+   "source": "Pyfa oracle (attribute overrides)",
+   "checks": 56,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "ovr_module_shield_extender_x2": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "overrides",
+   "source": "Pyfa oracle (attribute overrides)",
+   "checks": 56,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "ovr_mutated_other_attr": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "overrides",
+   "source": "Pyfa oracle (attribute overrides)",
+   "checks": 56,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "ovr_mutated_rolled_attr": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "overrides",
+   "source": "Pyfa oracle (attribute overrides)",
+   "checks": 56,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "ovr_projected_fit_global": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "overrides",
+   "source": "Pyfa oracle (attribute overrides)",
+   "checks": 56,
+   "mismatches": 54,
+   "not_implemented": 0,
+   "first": [
+    [
+     "align_time_s",
+     null,
+     4.733363466607754
+    ],
+    [
+     "calibration_used",
+     null,
+     0
+    ],
+    [
+     "cap_capacity",
+     null,
+     250.0
+    ],
+    [
+     "cap_recharge_s",
+     null,
+     125.0
+    ],
+    [
+     "cap_stable",
+     null,
+     true
+    ],
+    [
+     "cap_stable_percent",
+     null,
+     100
+    ],
+    [
+     "cpu_total",
+     null,
+     130.0
+    ],
+    [
+     "cpu_used",
+     null,
+     0
+    ],
+    [
+     "drone_bandwidth_used",
+     null,
+     0
+    ],
+    [
+     "drone_control_range",
+     null,
+     20000.0
+    ]
+   ]
+  },
+  "ovr_projected_module": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "overrides",
+   "source": "Pyfa oracle (attribute overrides)",
+   "checks": 56,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "ovr_rifter_shield_skills0": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "overrides",
+   "source": "Pyfa oracle (attribute overrides)",
+   "checks": 56,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "ovr_rifter_shield_skills5": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "overrides",
+   "source": "Pyfa oracle (attribute overrides)",
+   "checks": 56,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "ovr_rifter_velocity_skills0": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "overrides",
+   "source": "Pyfa oracle (attribute overrides)",
+   "checks": 56,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "ovr_rifter_velocity_skills5": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "overrides",
+   "source": "Pyfa oracle (attribute overrides)",
+   "checks": 56,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "ovr_ship_armor_plate_skills5": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "overrides",
+   "source": "Pyfa oracle (attribute overrides)",
+   "checks": 56,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "ovr_t3d_mode": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "overrides",
+   "source": "Pyfa oracle (attribute overrides)",
+   "checks": 56,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_bombing_fsweep00000": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "bombing",
+   "source": "random legal fit fsweep00000.json (gen_legal pool; Pyfa oracle)",
+   "checks": 80,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_bombing_fsweep06421": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "bombing",
+   "source": "random legal fit fsweep06421.json (gen_legal pool; Pyfa oracle)",
+   "checks": 82,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_bombing_fsweep17389": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "bombing",
+   "source": "random legal fit fsweep17389.json (gen_legal pool; Pyfa oracle)",
+   "checks": 90,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_bombing_fsweep17392": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "bombing",
+   "source": "random legal fit fsweep17392.json (gen_legal pool; Pyfa oracle)",
+   "checks": 90,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_drone_ehp_fsweep06267": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "drone_ehp",
+   "source": "random legal fit fsweep06267.json (gen_legal pool; Pyfa oracle)",
+   "checks": 63,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_drone_ehp_fsweep17345": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "drone_ehp",
+   "source": "random legal fit fsweep17345.json (gen_legal pool; Pyfa oracle)",
+   "checks": 73,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_drone_ehp_fsweep17360": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "drone_ehp",
+   "source": "random legal fit fsweep17360.json (gen_legal pool; Pyfa oracle)",
+   "checks": 73,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_drone_ehp_fsweep17361": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "drone_ehp",
+   "source": "random legal fit fsweep17361.json (gen_legal pool; Pyfa oracle)",
+   "checks": 73,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_drone_ehp_fsweep17362": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "drone_ehp",
+   "source": "random legal fit fsweep17362.json (gen_legal pool; Pyfa oracle)",
+   "checks": 73,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_drone_ehp_fsweep17363": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "drone_ehp",
+   "source": "random legal fit fsweep17363.json (gen_legal pool; Pyfa oracle)",
+   "checks": 73,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_drone_ehp_fsweep17375": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "drone_ehp",
+   "source": "random legal fit fsweep17375.json (gen_legal pool; Pyfa oracle)",
+   "checks": 73,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_drone_ehp_fsweep17376": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "drone_ehp",
+   "source": "random legal fit fsweep17376.json (gen_legal pool; Pyfa oracle)",
+   "checks": 73,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_drone_ehp_fsweep17379": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "drone_ehp",
+   "source": "random legal fit fsweep17379.json (gen_legal pool; Pyfa oracle)",
+   "checks": 73,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_drone_ehp_fsweep17380": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "drone_ehp",
+   "source": "random legal fit fsweep17380.json (gen_legal pool; Pyfa oracle)",
+   "checks": 73,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_fighter_ehp_fsweep06420": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "drone_ehp",
+   "source": "random legal fit fsweep06420.json (gen_legal pool; Pyfa oracle)",
+   "checks": 65,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_heat_fsweep11325": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "heat",
+   "source": "random legal fit fsweep11325.json (gen_legal pool; Pyfa oracle)",
+   "checks": 58,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_heat_fsweep17714": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "heat",
+   "source": "random legal fit fsweep17714.json (gen_legal pool; Pyfa oracle)",
+   "checks": 80,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_heat_fsweep17748": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "heat",
+   "source": "random legal fit fsweep17748.json (gen_legal pool; Pyfa oracle)",
+   "checks": 80,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_heat_fsweep17750": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "heat",
+   "source": "random legal fit fsweep17750.json (gen_legal pool; Pyfa oracle)",
+   "checks": 80,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_heat_fsweep17751": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "heat",
+   "source": "random legal fit fsweep17751.json (gen_legal pool; Pyfa oracle)",
+   "checks": 80,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_heat_fsweep17752": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "heat",
+   "source": "random legal fit fsweep17752.json (gen_legal pool; Pyfa oracle)",
+   "checks": 80,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_heat_fsweep17753": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "heat",
+   "source": "random legal fit fsweep17753.json (gen_legal pool; Pyfa oracle)",
+   "checks": 80,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_heat_fsweep17755": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "heat",
+   "source": "random legal fit fsweep17755.json (gen_legal pool; Pyfa oracle)",
+   "checks": 81,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_heat_fsweep17756": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "heat",
+   "source": "random legal fit fsweep17756.json (gen_legal pool; Pyfa oracle)",
+   "checks": 81,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_heat_fsweep17759": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "heat",
+   "source": "random legal fit fsweep17759.json (gen_legal pool; Pyfa oracle)",
+   "checks": 80,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_heat_fsweep17760": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "heat",
+   "source": "random legal fit fsweep17760.json (gen_legal pool; Pyfa oracle)",
+   "checks": 80,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_heat_fsweep17761": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "heat",
+   "source": "random legal fit fsweep17761.json (gen_legal pool; Pyfa oracle)",
+   "checks": 80,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_heat_fsweep17762": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "heat",
+   "source": "random legal fit fsweep17762.json (gen_legal pool; Pyfa oracle)",
+   "checks": 80,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_heat_fsweep17765": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "heat",
+   "source": "random legal fit fsweep17765.json (gen_legal pool; Pyfa oracle)",
+   "checks": 80,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_heat_fsweep17768": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "heat",
+   "source": "random legal fit fsweep17768.json (gen_legal pool; Pyfa oracle)",
+   "checks": 80,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_heat_fsweep17783": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "heat",
+   "source": "random legal fit fsweep17783.json (gen_legal pool; Pyfa oracle)",
+   "checks": 80,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_heat_fsweep17784": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "heat",
+   "source": "random legal fit fsweep17784.json (gen_legal pool; Pyfa oracle)",
+   "checks": 80,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_heat_fsweep17785": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "heat",
+   "source": "random legal fit fsweep17785.json (gen_legal pool; Pyfa oracle)",
+   "checks": 80,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_heat_fsweep17786": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "heat",
+   "source": "random legal fit fsweep17786.json (gen_legal pool; Pyfa oracle)",
+   "checks": 80,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_heat_fsweep17798": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "heat",
+   "source": "random legal fit fsweep17798.json (gen_legal pool; Pyfa oracle)",
+   "checks": 80,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_heat_fsweep17799": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "heat",
+   "source": "random legal fit fsweep17799.json (gen_legal pool; Pyfa oracle)",
+   "checks": 80,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_heat_fsweep17802": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "heat",
+   "source": "random legal fit fsweep17802.json (gen_legal pool; Pyfa oracle)",
+   "checks": 80,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_heat_fsweep17803": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "heat",
+   "source": "random legal fit fsweep17803.json (gen_legal pool; Pyfa oracle)",
+   "checks": 80,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_heat_fsweep17812": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "heat",
+   "source": "random legal fit fsweep17812.json (gen_legal pool; Pyfa oracle)",
+   "checks": 80,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_heat_fsweep17815": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "heat",
+   "source": "random legal fit fsweep17815.json (gen_legal pool; Pyfa oracle)",
+   "checks": 80,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_heat_fsweep17827": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "heat",
+   "source": "random legal fit fsweep17827.json (gen_legal pool; Pyfa oracle)",
+   "checks": 80,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_heat_fsweep17828": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "heat",
+   "source": "random legal fit fsweep17828.json (gen_legal pool; Pyfa oracle)",
+   "checks": 80,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_heat_fsweep17841": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "heat",
+   "source": "random legal fit fsweep17841.json (gen_legal pool; Pyfa oracle)",
+   "checks": 80,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_heat_fsweep17842": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "heat",
+   "source": "random legal fit fsweep17842.json (gen_legal pool; Pyfa oracle)",
+   "checks": 80,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_heat_fsweep17843": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "heat",
+   "source": "random legal fit fsweep17843.json (gen_legal pool; Pyfa oracle)",
+   "checks": 80,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_mining_drones_fsweep06266": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "mining",
+   "source": "random legal fit fsweep06266.json (gen_legal pool; Pyfa oracle)",
+   "checks": 61,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_mining_fsweep00106": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "mining",
+   "source": "random legal fit fsweep00106.json (gen_legal pool; Pyfa oracle)",
+   "checks": 61,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_outgoing_drones_fsweep06283": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "outgoing",
+   "source": "random legal fit fsweep06283.json (gen_legal pool; Pyfa oracle)",
+   "checks": 68,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_outgoing_fsweep00075": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "outgoing",
+   "source": "random legal fit fsweep00075.json (gen_legal pool; Pyfa oracle)",
+   "checks": 68,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_outgoing_fsweep17291": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "outgoing",
+   "source": "random legal fit fsweep17291.json (gen_legal pool; Pyfa oracle)",
+   "checks": 78,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_outgoing_fsweep17325": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "outgoing",
+   "source": "random legal fit fsweep17325.json (gen_legal pool; Pyfa oracle)",
+   "checks": 78,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_outgoing_fsweep17327": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "outgoing",
+   "source": "random legal fit fsweep17327.json (gen_legal pool; Pyfa oracle)",
+   "checks": 78,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_outgoing_fsweep17328": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "outgoing",
+   "source": "random legal fit fsweep17328.json (gen_legal pool; Pyfa oracle)",
+   "checks": 78,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_outgoing_fsweep17329": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "outgoing",
+   "source": "random legal fit fsweep17329.json (gen_legal pool; Pyfa oracle)",
+   "checks": 78,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_outgoing_fsweep17330": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "outgoing",
+   "source": "random legal fit fsweep17330.json (gen_legal pool; Pyfa oracle)",
+   "checks": 78,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_outgoing_fsweep17332": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "outgoing",
+   "source": "random legal fit fsweep17332.json (gen_legal pool; Pyfa oracle)",
+   "checks": 79,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_outgoing_fsweep17333": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "outgoing",
+   "source": "random legal fit fsweep17333.json (gen_legal pool; Pyfa oracle)",
+   "checks": 79,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_outgoing_fsweep17336": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "outgoing",
+   "source": "random legal fit fsweep17336.json (gen_legal pool; Pyfa oracle)",
+   "checks": 78,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_outgoing_fsweep17337": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "outgoing",
+   "source": "random legal fit fsweep17337.json (gen_legal pool; Pyfa oracle)",
+   "checks": 78,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_outgoing_fsweep17338": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "outgoing",
+   "source": "random legal fit fsweep17338.json (gen_legal pool; Pyfa oracle)",
+   "checks": 78,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_outgoing_fsweep17339": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "outgoing",
+   "source": "random legal fit fsweep17339.json (gen_legal pool; Pyfa oracle)",
+   "checks": 78,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "pool_outgoing_fsweep17342": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "outgoing",
+   "source": "random legal fit fsweep17342.json (gen_legal pool; Pyfa oracle)",
+   "checks": 78,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "probe_dominix": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "probe_size",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 57,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "probe_hel": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "probe_size",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 57,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "probe_heron": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "probe_size",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 57,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "probe_heron_sensor_booster": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "probe_size",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 57,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "probe_ibis": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "probe_size",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 57,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "probe_rifter": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "probe_size",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 57,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "probe_rifter_mwd": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "probe_size",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 57,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "probe_rifter_skills0": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "probe_size",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 57,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "probe_thanatos": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "probe_size",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 57,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "probe_vexor": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "probe_size",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 57,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "rr_basilisk": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "outgoing",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 67,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "rr_dominix_heavy_bots": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "outgoing",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 68,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "rr_dominix_shield_bots": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "outgoing",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 68,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "rr_guardian": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "outgoing",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 67,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "rr_guardian_skills0": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "outgoing",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 67,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "rr_oneiros": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "outgoing",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 67,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "rr_scimitar": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "outgoing",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 67,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "rr_vexor_light_bots": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "outgoing",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 68,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "rr_zarmazd_spool": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "outgoing",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 67,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "rr_zarmazd_spool_full": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "outgoing",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 67,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "src_drake_implants": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "attr_sources",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 103,
+   "mismatches": 41,
+   "not_implemented": 41,
+   "first": [
+    [
+     "/sources/modules.0/cpu",
+     null,
+     [
+      "skill:3318:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/modules.0/heatDamage",
+     null,
+     [
+      "skill:28164:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/modules.0/power",
+     null,
+     [
+      "skill:11207:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/modules.0/speed",
+     null,
+     [
+      "skill:20211:MULTIPLY",
+      "skill:21071:MULTIPLY",
+      "skill:3319:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/modules.1/cpu",
+     null,
+     [
+      "skill:3318:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/modules.1/heatDamage",
+     null,
+     [
+      "skill:28164:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/modules.1/power",
+     null,
+     [
+      "skill:11207:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/modules.1/speed",
+     null,
+     [
+      "skill:20211:MULTIPLY",
+      "skill:21071:MULTIPLY",
+      "skill:3319:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/modules.2/power",
+     null,
+     [
+      "skill:3425:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/ship/agility",
+     null,
+     [
+      "skill:3327:MULTIPLY",
+      "skill:3453:MULTIPLY"
+     ]
+    ]
+   ]
+  },
+  "src_kestrel_bcs_skills0": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "attr_sources",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 64,
+   "mismatches": 2,
+   "not_implemented": 2,
+   "first": [
+    [
+     "/sources/modules.0/speed",
+     null,
+     [
+      "modules.2:22291:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/modules.1/speed",
+     null,
+     [
+      "modules.2:22291:MULTIPLY"
+     ]
+    ]
+   ]
+  },
+  "src_punisher_stacking": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "attr_sources",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 99,
+   "mismatches": 40,
+   "not_implemented": 40,
+   "first": [
+    [
+     "/sources/modules.0/capacitorNeed",
+     null,
+     [
+      "skill:3316:MULTIPLY",
+      "skill:3331:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/modules.0/cpu",
+     null,
+     [
+      "skill:3318:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/modules.0/damageMultiplier",
+     null,
+     [
+      "modules.1:2364:MULTIPLY",
+      "modules.2:2364:MULTIPLY",
+      "modules.3:2364:MULTIPLY",
+      "skill:12213:MULTIPLY",
+      "skill:3303:MULTIPLY",
+      "skill:3315:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/modules.0/falloff",
+     null,
+     [
+      "skill:3317:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/modules.0/heatDamage",
+     null,
+     [
+      "skill:28164:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/modules.0/maxRange",
+     null,
+     [
+      "modules.0:3041:MULTIPLY",
+      "skill:3311:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/modules.0/power",
+     null,
+     [
+      "skill:11207:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/modules.0/speed",
+     null,
+     [
+      "modules.1:2364:MULTIPLY",
+      "modules.2:2364:MULTIPLY",
+      "modules.3:2364:MULTIPLY",
+      "skill:3300:MULTIPLY",
+      "skill:3310:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/modules.0/trackingSpeed",
+     null,
+     [
+      "skill:3312:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/ship/agility",
+     null,
+     [
+      "skill:3327:MULTIPLY",
+      "skill:3453:MULTIPLY"
+     ]
+    ]
+   ]
+  },
+  "src_rifter_ab_gyro": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "attr_sources",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 112,
+   "mismatches": 50,
+   "not_implemented": 50,
+   "first": [
+    [
+     "/sources/modules.0/capacitorNeed",
+     null,
+     [
+      "skill:3316:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/modules.0/cpu",
+     null,
+     [
+      "skill:3318:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/modules.0/damageMultiplier",
+     null,
+     [
+      "modules.3:519:MULTIPLY",
+      "skill:11084:MULTIPLY",
+      "skill:3302:MULTIPLY",
+      "skill:3315:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/modules.0/falloff",
+     null,
+     [
+      "skill:3317:MULTIPLY",
+      "skill:3329:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/modules.0/heatDamage",
+     null,
+     [
+      "skill:28164:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/modules.0/maxRange",
+     null,
+     [
+      "modules.0:2889:MULTIPLY",
+      "skill:3311:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/modules.0/power",
+     null,
+     [
+      "skill:11207:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/modules.0/speed",
+     null,
+     [
+      "modules.3:519:MULTIPLY",
+      "skill:3300:MULTIPLY",
+      "skill:3310:MULTIPLY",
+      "skill:3329:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/modules.0/trackingSpeed",
+     null,
+     [
+      "skill:3312:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/modules.1/capacitorNeed",
+     null,
+     [
+      "skill:3316:MULTIPLY"
+     ]
+    ]
+   ]
+  },
+  "src_thorax_plate_dc": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "attr_sources",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 101,
+   "mismatches": 45,
+   "not_implemented": 45,
+   "first": [
+    [
+     "/sources/modules.0/massAddition",
+     null,
+     [
+      "skill:33078:MULTIPLY",
+      "skill:89689:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/modules.2/emDamageResistanceBonus",
+     null,
+     [
+      "skill:22806:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/modules.2/explosiveDamageResistanceBonus",
+     null,
+     [
+      "skill:22807:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/modules.2/kineticDamageResistanceBonus",
+     null,
+     [
+      "skill:22808:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/modules.2/thermalDamageResistanceBonus",
+     null,
+     [
+      "skill:22809:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/ship/agility",
+     null,
+     [
+      "skill:3327:MULTIPLY",
+      "skill:3453:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/ship/armorEmDamageResonance",
+     null,
+     [
+      "modules.1:2048:MULTIPLY",
+      "modules.2:11269:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/ship/armorExplosiveDamageResonance",
+     null,
+     [
+      "modules.1:2048:MULTIPLY",
+      "modules.2:11269:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/ship/armorHP",
+     null,
+     [
+      "modules.0:20351:PREINCREASE",
+      "skill:3394:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/ship/armorKineticDamageResonance",
+     null,
+     [
+      "modules.1:2048:MULTIPLY",
+      "modules.2:11269:MULTIPLY"
+     ]
+    ]
+   ]
+  },
+  "src_vexor_drones_dda": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "attr_sources",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 94,
+   "mismatches": 33,
+   "not_implemented": 33,
+   "first": [
+    [
+     "/sources/drones.0/armorHP",
+     null,
+     [
+      "skill:23618:MULTIPLY",
+      "skill:3332:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/drones.0/damageMultiplier",
+     null,
+     [
+      "modules.0:4405:MULTIPLY",
+      "modules.1:4405:MULTIPLY",
+      "skill:12486:MULTIPLY",
+      "skill:3332:MULTIPLY",
+      "skill:33699:MULTIPLY",
+      "skill:3442:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/drones.0/hp",
+     null,
+     [
+      "skill:23618:MULTIPLY",
+      "skill:3332:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/drones.0/maxRange",
+     null,
+     [
+      "skill:23606:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/drones.0/maxVelocity",
+     null,
+     [
+      "skill:12305:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/drones.0/shieldCapacity",
+     null,
+     [
+      "skill:23618:MULTIPLY",
+      "skill:3332:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/ship/agility",
+     null,
+     [
+      "skill:3327:MULTIPLY",
+      "skill:3453:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/ship/armorHP",
+     null,
+     [
+      "skill:3394:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/ship/capacitorCapacity",
+     null,
+     [
+      "skill:3418:MULTIPLY"
+     ]
+    ],
+    [
+     "/sources/ship/conduitPassengerBonusModAdd",
+     null,
+     [
+      "skill:83094:PREINCREASE"
+     ]
+    ]
+   ]
+  },
+  "tp_kestrel_missiles_kinetic": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "vs_target_profile",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 70,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "tp_rifter_ac_armor_t2": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "vs_target_profile",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 67,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "tp_rifter_ac_frigate_t1": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "vs_target_profile",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 67,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "tp_rifter_ac_immune_em": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "vs_target_profile",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 67,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "tp_rifter_ac_shield_t2": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "vs_target_profile",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 67,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "tp_rifter_ac_uniform0": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "vs_target_profile",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 67,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "tp_rifter_no_weapons": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "vs_target_profile",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 58,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "tp_rifter_skills0": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "vs_target_profile",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 67,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "tp_thanatos_fighters": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "vs_target_profile",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 60,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "tp_vexor_drones": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "vs_target_profile",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 63,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "tp_vexor_guns_drones": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "vs_target_profile",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 75,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "tpb_kestrel_serpentis": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "vs_target_profile_builtin",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 70,
+   "mismatches": 68,
+   "not_implemented": 2,
+   "first": [
+    [
+     "align_time_s",
+     null,
+     3.405666728411631
+    ],
+    [
+     "calibration_used",
+     null,
+     0.0
+    ],
+    [
+     "cap_capacity",
+     null,
+     412.5
+    ],
+    [
+     "cap_recharge_s",
+     null,
+     123.75
+    ],
+    [
+     "cap_stable",
+     null,
+     true
+    ],
+    [
+     "cap_stable_percent",
+     null,
+     100
+    ],
+    [
+     "cpu_total",
+     null,
+     225.0
+    ],
+    [
+     "cpu_used",
+     null,
+     72.0
+    ],
+    [
+     "drone_bandwidth_used",
+     null,
+     0
+    ],
+    [
+     "drone_control_range",
+     null,
+     60000.0
+    ]
+   ]
+  },
+  "tpb_kestrel_t1_shield": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "vs_target_profile_builtin",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 70,
+   "mismatches": 68,
+   "not_implemented": 2,
+   "first": [
+    [
+     "align_time_s",
+     null,
+     3.405666728411631
+    ],
+    [
+     "calibration_used",
+     null,
+     0.0
+    ],
+    [
+     "cap_capacity",
+     null,
+     412.5
+    ],
+    [
+     "cap_recharge_s",
+     null,
+     123.75
+    ],
+    [
+     "cap_stable",
+     null,
+     true
+    ],
+    [
+     "cap_stable_percent",
+     null,
+     100
+    ],
+    [
+     "cpu_total",
+     null,
+     225.0
+    ],
+    [
+     "cpu_used",
+     null,
+     72.0
+    ],
+    [
+     "drone_bandwidth_used",
+     null,
+     0
+    ],
+    [
+     "drone_control_range",
+     null,
+     60000.0
+    ]
+   ]
+  },
+  "tpb_punisher_sleeper": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "vs_target_profile_builtin",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 67,
+   "mismatches": 65,
+   "not_implemented": 2,
+   "first": [
+    [
+     "align_time_s",
+     null,
+     3.229268742151701
+    ],
+    [
+     "calibration_used",
+     null,
+     0.0
+    ],
+    [
+     "cap_capacity",
+     null,
+     500.0
+    ],
+    [
+     "cap_recharge_s",
+     null,
+     120.0
+    ],
+    [
+     "cap_stable",
+     null,
+     true
+    ],
+    [
+     "cap_stable_percent",
+     null,
+     90.28588609751037
+    ],
+    [
+     "cpu_total",
+     null,
+     175.0
+    ],
+    [
+     "cpu_used",
+     null,
+     36.0
+    ],
+    [
+     "drone_bandwidth_used",
+     null,
+     0
+    ],
+    [
+     "drone_control_range",
+     null,
+     60000.0
+    ]
+   ]
+  },
+  "tpb_rifter_t2_amarr_armor": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "vs_target_profile_builtin",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 67,
+   "mismatches": 65,
+   "not_implemented": 2,
+   "first": [
+    [
+     "align_time_s",
+     null,
+     3.195020339960234
+    ],
+    [
+     "calibration_used",
+     null,
+     0.0
+    ],
+    [
+     "cap_capacity",
+     null,
+     312.5
+    ],
+    [
+     "cap_recharge_s",
+     null,
+     93.75
+    ],
+    [
+     "cap_stable",
+     null,
+     true
+    ],
+    [
+     "cap_stable_percent",
+     null,
+     100
+    ],
+    [
+     "cpu_total",
+     null,
+     162.5
+    ],
+    [
+     "cpu_used",
+     null,
+     20.25
+    ],
+    [
+     "drone_bandwidth_used",
+     null,
+     0
+    ],
+    [
+     "drone_control_range",
+     null,
+     60000.0
+    ]
+   ]
+  },
+  "tpb_rifter_uniform50": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "vs_target_profile_builtin",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 67,
+   "mismatches": 65,
+   "not_implemented": 2,
+   "first": [
+    [
+     "align_time_s",
+     null,
+     3.195020339960234
+    ],
+    [
+     "calibration_used",
+     null,
+     0.0
+    ],
+    [
+     "cap_capacity",
+     null,
+     312.5
+    ],
+    [
+     "cap_recharge_s",
+     null,
+     93.75
+    ],
+    [
+     "cap_stable",
+     null,
+     true
+    ],
+    [
+     "cap_stable_percent",
+     null,
+     100
+    ],
+    [
+     "cpu_total",
+     null,
+     162.5
+    ],
+    [
+     "cpu_used",
+     null,
+     20.25
+    ],
+    [
+     "drone_bandwidth_used",
+     null,
+     0
+    ],
+    [
+     "drone_control_range",
+     null,
+     60000.0
+    ]
+   ]
+  },
+  "tpb_vexor_rogue_drones": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "vs_target_profile_builtin",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 63,
+   "mismatches": 61,
+   "not_implemented": 2,
+   "first": [
+    [
+     "align_time_s",
+     null,
+     5.8166138803868375
+    ],
+    [
+     "calibration_used",
+     null,
+     0
+    ],
+    [
+     "cap_capacity",
+     null,
+     1812.5
+    ],
+    [
+     "cap_recharge_s",
+     null,
+     361.875
+    ],
+    [
+     "cap_stable",
+     null,
+     true
+    ],
+    [
+     "cap_stable_percent",
+     null,
+     100
+    ],
+    [
+     "cpu_total",
+     null,
+     375.0
+    ],
+    [
+     "cpu_used",
+     null,
+     0
+    ],
+    [
+     "d0.falloff_m",
+     null,
+     3000.0
+    ],
+    [
+     "d0.max_velocity",
+     null,
+     2520.0
+    ]
+   ]
+  },
+  "val_capital_module_subcap": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "validity",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 57,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "val_charge_capacity": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "validity",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 57,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "val_charge_capacity_probe": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "validity",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 57,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "val_charge_group": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "validity",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 60,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "val_charge_size": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "validity",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 60,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "val_clean_rifter": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "validity",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 66,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "val_cpu_power_overload": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "validity",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 66,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "val_disable_restrictions_stats": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "validity",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 69,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "val_drone_bandwidth": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "validity",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 62,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "val_launcher_hardpoints": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "validity",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 57,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "val_max_group_active": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "validity",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 57,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "val_max_group_fitted": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "validity",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 57,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "val_max_group_online_bursts": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "validity",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 57,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "val_missing_skills_all0": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "validity",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 63,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "val_missing_skills_drone_implant": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "validity",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 62,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "val_missing_skills_partial": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "validity",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 66,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "val_missing_skills_rig_only": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "validity",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 57,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "val_rig_size": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "validity",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 57,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "val_ship_restriction_burst": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "validity",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 57,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "val_slots_high": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "validity",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 57,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "val_slots_mid_low_rig": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "validity",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 57,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "val_turret_hardpoints": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "validity",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 57,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "unit_ovr_attr_not_on_type": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "overrides-unit",
+   "source": "hand-derived (non-Pyfa)",
+   "checks": 1,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "unit_ovr_charge_damage_volley": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "overrides-unit",
+   "source": "hand-derived (non-Pyfa)",
+   "checks": 1,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "unit_ovr_module_shield_extender_x2": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "overrides-unit",
+   "source": "hand-derived (non-Pyfa)",
+   "checks": 1,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "unit_ovr_nested_projected_fit": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "overrides-unit",
+   "source": "hand-derived (non-Pyfa)",
+   "checks": 1,
+   "mismatches": 1,
+   "not_implemented": 0,
+   "first": [
+    [
+     "max_velocity",
+     null,
+     36.5
+    ]
+   ]
+  },
+  "unit_ovr_nested_projected_fit_control": {
+   "pass": false,
+   "draft_pass": false,
+   "draft_first": [],
+   "feature": "overrides-unit",
+   "source": "hand-derived (non-Pyfa)",
+   "checks": 1,
+   "mismatches": 1,
+   "not_implemented": 0,
+   "first": [
+    [
+     "max_velocity",
+     null,
+     182.5
+    ]
+   ]
+  },
+  "unit_ovr_rifter_shield_skills0": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "overrides-unit",
+   "source": "hand-derived (non-Pyfa)",
+   "checks": 1,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "unit_ovr_rifter_shield_skills5": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "overrides-unit",
+   "source": "hand-derived (non-Pyfa)",
+   "checks": 1,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "unit_ovr_rifter_velocity_skills0": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "overrides-unit",
+   "source": "hand-derived (non-Pyfa)",
+   "checks": 1,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "unit_ovr_rifter_velocity_skills5": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "overrides-unit",
+   "source": "hand-derived (non-Pyfa)",
+   "checks": 1,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "unit_ovr_skill_attribute": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "overrides-unit",
+   "source": "hand-derived (non-Pyfa)",
+   "checks": 1,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "unit_val_max_type_fitted": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "validity-unit",
+   "source": "hand-derived (non-Pyfa)",
+   "checks": 1,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "unit_val_validate_false": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "validity-unit",
+   "source": "hand-derived (non-Pyfa)",
+   "checks": 1,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  }
+ }
+}
