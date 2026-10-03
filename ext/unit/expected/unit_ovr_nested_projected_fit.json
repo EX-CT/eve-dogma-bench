@@ -1,0 +1,11 @@
+{
+ "case": "unit_ovr_nested_projected_fit",
+ "derivation": "`overrides` inside a nested projected FitRequest apply to that fit (Pyfa has one global override table and no per-fit overrides). Skills 0 on both: the projector's Stasis Webifier I speedFactor overridden -50 -> -90, 5 km (inside its 10 km optimal), single web, no stacking penalty: 365.0 * (1 - 0.90) = 36.5000.",
+ "excluded": {},
+ "ext": {},
+ "feature": "overrides-unit",
+ "oracle": "hand-derived (non-Pyfa)",
+ "values": {
+  "max_velocity": 36.5
+ }
+}

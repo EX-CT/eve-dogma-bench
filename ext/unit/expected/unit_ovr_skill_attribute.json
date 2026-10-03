@@ -1,0 +1,11 @@
+{
+ "case": "unit_ovr_skill_attribute",
+ "derivation": "Skill-type override (Pyfa's Skill.getModifiedItemAttr reads the raw type attributes, so Pyfa ignores it): only Navigation trained (V), velocityBonus overridden 5 -> 10 %/level: 365.0 * (1 + 5 * 0.10) = 547.5.",
+ "excluded": {},
+ "ext": {},
+ "feature": "overrides-unit",
+ "oracle": "hand-derived (non-Pyfa)",
+ "values": {
+  "max_velocity": 547.5
+ }
+}

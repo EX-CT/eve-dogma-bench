@@ -1,0 +1,43 @@
+{
+ "boosters": [],
+ "cargo": [],
+ "character": {
+  "security_status": null,
+  "skills": {
+   "default_level": 5,
+   "levels": {}
+  }
+ },
+ "damage_pattern": null,
+ "drones": [],
+ "environment": {
+  "effect_type_ids": [],
+  "system_security": null
+ },
+ "fighters": [],
+ "fleet": {
+  "booster_fits": [],
+  "buffs": []
+ },
+ "implants": [],
+ "modules": [],
+ "options": {},
+ "overrides": [
+  {
+   "attribute_id": 2001,
+   "type_id": 34319,
+   "value": 3.0
+  },
+  {
+   "attribute_id": 1997,
+   "type_id": 34319,
+   "value": 3.0
+  }
+ ],
+ "projected": [],
+ "schema_version": 1,
+ "ship": {
+  "mode_type_id": 34319,
+  "type_id": 34317
+ }
+}

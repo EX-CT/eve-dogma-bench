@@ -151,29 +151,93 @@
   "feature": "mining",
   "source": "hand-built (Pyfa oracle)"
  },
+ "ovr_booster": {
+  "feature": "overrides",
+  "source": "Pyfa oracle (attribute overrides)"
+ },
+ "ovr_booster_fit_charge": {
+  "feature": "overrides",
+  "source": "Pyfa oracle (attribute overrides)"
+ },
  "ovr_charge_damage_volley": {
   "feature": "overrides",
-  "source": "hand-derived (non-Pyfa)"
+  "source": "Pyfa oracle (attribute overrides)"
+ },
+ "ovr_drone_damage": {
+  "feature": "overrides",
+  "source": "Pyfa oracle (attribute overrides)"
+ },
+ "ovr_drone_hp": {
+  "feature": "overrides",
+  "source": "Pyfa oracle (attribute overrides)"
+ },
+ "ovr_duplicate_last_wins": {
+  "feature": "overrides",
+  "source": "Pyfa oracle (attribute overrides)"
+ },
+ "ovr_environment": {
+  "feature": "overrides",
+  "source": "Pyfa oracle (attribute overrides)"
+ },
+ "ovr_fighter": {
+  "feature": "overrides",
+  "source": "Pyfa oracle (attribute overrides)"
+ },
+ "ovr_implant": {
+  "feature": "overrides",
+  "source": "Pyfa oracle (attribute overrides)"
+ },
+ "ovr_module_cpu_power": {
+  "feature": "overrides",
+  "source": "Pyfa oracle (attribute overrides)"
+ },
+ "ovr_module_resist_stacking": {
+  "feature": "overrides",
+  "source": "Pyfa oracle (attribute overrides)"
  },
  "ovr_module_shield_extender_x2": {
   "feature": "overrides",
-  "source": "hand-derived (non-Pyfa)"
+  "source": "Pyfa oracle (attribute overrides)"
+ },
+ "ovr_mutated_other_attr": {
+  "feature": "overrides",
+  "source": "Pyfa oracle (attribute overrides)"
+ },
+ "ovr_mutated_rolled_attr": {
+  "feature": "overrides",
+  "source": "Pyfa oracle (attribute overrides)"
+ },
+ "ovr_projected_fit_global": {
+  "feature": "overrides",
+  "source": "Pyfa oracle (attribute overrides)"
+ },
+ "ovr_projected_module": {
+  "feature": "overrides",
+  "source": "Pyfa oracle (attribute overrides)"
  },
  "ovr_rifter_shield_skills0": {
   "feature": "overrides",
-  "source": "hand-derived (non-Pyfa)"
+  "source": "Pyfa oracle (attribute overrides)"
  },
  "ovr_rifter_shield_skills5": {
   "feature": "overrides",
-  "source": "hand-derived (non-Pyfa)"
+  "source": "Pyfa oracle (attribute overrides)"
  },
  "ovr_rifter_velocity_skills0": {
   "feature": "overrides",
-  "source": "hand-derived (non-Pyfa)"
+  "source": "Pyfa oracle (attribute overrides)"
  },
  "ovr_rifter_velocity_skills5": {
   "feature": "overrides",
-  "source": "hand-derived (non-Pyfa)"
+  "source": "Pyfa oracle (attribute overrides)"
+ },
+ "ovr_ship_armor_plate_skills5": {
+  "feature": "overrides",
+  "source": "Pyfa oracle (attribute overrides)"
+ },
+ "ovr_t3d_mode": {
+  "feature": "overrides",
+  "source": "Pyfa oracle (attribute overrides)"
  },
  "pool_bombing_fsweep00000": {
   "feature": "bombing",

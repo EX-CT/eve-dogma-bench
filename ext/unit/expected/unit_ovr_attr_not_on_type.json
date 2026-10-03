@@ -1,0 +1,11 @@
+{
+ "case": "unit_ovr_attr_not_on_type",
+ "derivation": "Attribute the type does not have (Rifter has no warpScrambleStatus; Pyfa's Item.overrides only loads overrides for the type's own attributes, so Pyfa ignores it): the override adds the base value, warp_scramble_status = 2.",
+ "excluded": {},
+ "ext": {},
+ "feature": "overrides-unit",
+ "oracle": "hand-derived (non-Pyfa)",
+ "values": {
+  "warp_scramble_status": 2.0
+ }
+}

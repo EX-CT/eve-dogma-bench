@@ -1,0 +1,42 @@
+{
+ "unit_ovr_attr_not_on_type": {
+  "feature": "overrides-unit",
+  "source": "hand-derived (non-Pyfa)"
+ },
+ "unit_ovr_charge_damage_volley": {
+  "feature": "overrides-unit",
+  "source": "hand-derived (non-Pyfa)"
+ },
+ "unit_ovr_module_shield_extender_x2": {
+  "feature": "overrides-unit",
+  "source": "hand-derived (non-Pyfa)"
+ },
+ "unit_ovr_nested_projected_fit": {
+  "feature": "overrides-unit",
+  "source": "hand-derived (non-Pyfa)"
+ },
+ "unit_ovr_nested_projected_fit_control": {
+  "feature": "overrides-unit",
+  "source": "hand-derived (non-Pyfa)"
+ },
+ "unit_ovr_rifter_shield_skills0": {
+  "feature": "overrides-unit",
+  "source": "hand-derived (non-Pyfa)"
+ },
+ "unit_ovr_rifter_shield_skills5": {
+  "feature": "overrides-unit",
+  "source": "hand-derived (non-Pyfa)"
+ },
+ "unit_ovr_rifter_velocity_skills0": {
+  "feature": "overrides-unit",
+  "source": "hand-derived (non-Pyfa)"
+ },
+ "unit_ovr_rifter_velocity_skills5": {
+  "feature": "overrides-unit",
+  "source": "hand-derived (non-Pyfa)"
+ },
+ "unit_ovr_skill_attribute": {
+  "feature": "overrides-unit",
+  "source": "hand-derived (non-Pyfa)"
+ }
+}

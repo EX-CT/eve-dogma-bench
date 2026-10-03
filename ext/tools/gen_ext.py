@@ -6,7 +6,7 @@ Writes ext/cases/<case>.json and ext/MANIFEST.json ({case: {feature, source}}).
   random LEGAL fits picked from a gen_legal pool (oracle/fuzz/gen_legal.py + check_legal.py), when given:
   first fits per distinct hull that have the feature (mining modules/drones, RR modules/drones, drones,
   fighters, overheated modules);
-  overrides: hand-derived expectations, written by this script to ext/expected/ (non-Pyfa, see ext/README.md).
+  overrides: ext/tools/gen_overrides.py (not written here; their MANIFEST entries are kept).
 Pyfa expectations for the rest: ext/tools/make_expected.py."""
 import copy, gzip, json, os, pathlib, sys
 ROOT = pathlib.Path(__file__).resolve().parents[2]
@@ -135,48 +135,8 @@ add("fleet_booster_claymore_only", "fleet.buffs", r)
 r = copy.deepcopy(r)
 r["fleet"]["buffs"] = [{"buff_id": 10, "value": -5.0}]
 add("fleet_buffs_override_booster_claymore", "fleet.buffs", r)
-# ---- overrides: hand-derived (non-Pyfa) -----------------------------------------------------------------------------
+# ---- overrides: ext/tools/gen_overrides.py (Pyfa-backed ext/cases/ovr_* + hand-derived ext/unit/) ---------------
 A = {v["name"]: int(k) for k, v in D["attributes"].items()}
-
-
-def base(t, attr):
-    v = T[t]["attrs"].get(str(A[attr]))
-    return v if v is not None else T[t].get({"mass": "mass", "capacity": "capacity", "volume": "volume"}.get(attr, ""), 0.0)
-
-
-ovr_expected = {}
-
-
-def ovr(name, req, overrides, values, derivation):
-    req["overrides"] = [{"type_id": t, "attribute_id": A[a], "value": v} for t, a, v in overrides]
-    add(name, "overrides", req, "hand-derived (non-Pyfa)")
-    ovr_expected[name] = {"case": name, "oracle": "hand-derived (non-Pyfa)", "values": values, "ext": {},
-                          "derivation": derivation, "excluded": {}}
-
-
-RIF = tid("Rifter")
-ovr("ovr_rifter_velocity_skills0", fit("Rifter", [], skills=0), [(RIF, "maxVelocity", 400.0)], {"max_velocity": 400.0},
-    "Empty Rifter, all skills 0: no modifier touches maxVelocity, so max_velocity = the overridden base 400.")
-ovr("ovr_rifter_velocity_skills5", fit("Rifter", []), [(RIF, "maxVelocity", 400.0)], {"max_velocity": 500.0},
-    "All skills V: Navigation +5%/level on ship maxVelocity -> 400 * 1.25 = 500 (no other velocity modifier on an empty Rifter).")
-ovr("ovr_rifter_shield_skills0", fit("Rifter", [], skills=0), [(RIF, "shieldCapacity", 1000.0)], {"hp.shield": 1000.0},
-    "Skills 0, no modules: hp.shield = overridden shieldCapacity 1000.")
-ovr("ovr_rifter_shield_skills5", fit("Rifter", []), [(RIF, "shieldCapacity", 1000.0)], {"hp.shield": 1250.0},
-    "Shield Management +5%/level on shieldCapacity: 1000 * 1.25 = 1250.")
-lse = tid("Medium Shield Extender II")
-sb = base(RIF, "shieldCapacity")
-ovr("ovr_module_shield_extender_x2", fit("Rifter", [("Medium Shield Extender II", 2, "online")], skills=0),
-    [(lse, "capacityBonus", 1000.0)], {"hp.shield": sb + 2000.0},
-    f"Skills 0: Rifter base shieldCapacity {sb} + 2 extenders x overridden capacityBonus 1000 (modAdd, not stacking"
-    f"-penalised; the override applies to every module of that type) = {sb + 2000.0}.")
-ac = tid("200mm AutoCannon I")
-emp = tid("EMP S")
-dm = base(ac, "damageMultiplier")
-r = fit("Rifter", [("200mm AutoCannon I", 1, "active", "EMP S")], skills=0)
-ovr("ovr_charge_damage_volley", r, [(emp, "emDamage", 100.0), (emp, "thermalDamage", 0.0), (emp, "kineticDamage", 0.0),
-                                    (emp, "explosiveDamage", 0.0)], {"weapon_volley": 100.0 * dm},
-    f"Skills 0 (no Gunnery / Minmatar Frigate bonuses): volley = charge damage (overridden to 100 EM, 0 else) x "
-    f"200mm AutoCannon I damageMultiplier {dm} = {100.0 * dm}.")
 
 
 def pool_pick(pool_list, legal_jsonl):
@@ -223,14 +183,19 @@ def pool_pick(pool_list, legal_jsonl):
                 f"random legal fit {f} (gen_legal pool; Pyfa oracle)")
 
 
-if len(sys.argv) == 3:
-    pool_pick(sys.argv[1], sys.argv[2])
-(SUITE / "cases").mkdir(parents=True, exist_ok=True)
-(SUITE / "expected").mkdir(parents=True, exist_ok=True)
-for n, r in cases.items():
-    (SUITE / "cases" / f"{n}.json").write_text(json.dumps(r, indent=1, sort_keys=True) + "\n")
-for n, e in ovr_expected.items():
-    (SUITE / "expected" / f"{n}.json").write_text(json.dumps(e, indent=1, sort_keys=True) + "\n")
-(SUITE / "MANIFEST.json").write_text(json.dumps(man, indent=1, sort_keys=True) + "\n")
-import collections  # noqa: E402
-print(len(cases), "cases:", dict(collections.Counter(m["feature"] for m in man.values())))
+def write():
+    (SUITE / "cases").mkdir(parents=True, exist_ok=True)
+    (SUITE / "expected").mkdir(parents=True, exist_ok=True)
+    for n, r in cases.items():
+        (SUITE / "cases" / f"{n}.json").write_text(json.dumps(r, indent=1, sort_keys=True) + "\n")
+    old = json.loads((SUITE / "MANIFEST.json").read_text()) if (SUITE / "MANIFEST.json").exists() else {}
+    keep = {n: m for n, m in old.items() if m["feature"] == "overrides"}  # owned by gen_overrides.py
+    (SUITE / "MANIFEST.json").write_text(json.dumps({**man, **keep}, indent=1, sort_keys=True) + "\n")
+    import collections
+    print(len(cases), "cases:", dict(collections.Counter(m["feature"] for m in man.values())))
+
+
+if __name__ == "__main__":
+    if len(sys.argv) == 3:
+        pool_pick(sys.argv[1], sys.argv[2])
+    write()

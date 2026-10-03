@@ -1,0 +1,11 @@
+{
+ "case": "unit_ovr_nested_projected_fit_control",
+ "derivation": "Control for unit_ovr_nested_projected_fit: same request without overrides, web -50 %: 365.0 * 0.5 = 182.5.",
+ "excluded": {},
+ "ext": {},
+ "feature": "overrides-unit",
+ "oracle": "hand-derived (non-Pyfa)",
+ "values": {
+  "max_velocity": 182.5
+ }
+}

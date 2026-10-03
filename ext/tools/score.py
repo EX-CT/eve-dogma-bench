@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Score an engine on the ext suite (stats-ext, heat, fleet.buffs, overrides).
 usage: python3 ext/tools/score.py --batch-cmd "ENGINE batch" [--name X] [--out results.json] [cases...]
+Default cases: ext/cases (Pyfa oracle) + ext/unit/cases (hand-derived overrides unit tests, feature overrides-unit).
 A case passes when every `values` metric (tools/metrics.py pointers) and every `ext` pointer (proposed FitStats
 fields, CONTRACT.md "Draft 1.10: stats-ext") matches within the bench tolerance. A pointer the engine does not
 return is reported as not_implemented (a failure)."""
@@ -18,17 +19,20 @@ def main():
     ap.add_argument("--out")
     ap.add_argument("cases", nargs="*")
     a = ap.parse_args()
-    files = [pathlib.Path(f) for f in a.cases] or sorted((SUITE / "cases").glob("*.json"))
-    files = [f for f in files if (SUITE / "expected" / f.name).exists()]
+    files = [pathlib.Path(f).resolve() for f in a.cases] or (sorted((SUITE / "cases").glob("*.json"))
+                                                             + sorted((SUITE / "unit/cases").glob("*.json")))
+    files = [f for f in files if (f.parent.parent / "expected" / f.name).exists()]
     reqs = [json.loads(f.read_text()) for f in files]
     out = subprocess.run(a.batch_cmd, shell=True, input="".join(json.dumps(r) + "\n" for r in reqs), capture_output=True, text=True)
     lines = out.stdout.splitlines()
     if len(lines) != len(reqs):
         raise SystemExit(f"batch returned {len(lines)} lines for {len(reqs)} requests: {out.stderr[-1500:]}")
-    man = json.loads((SUITE / "MANIFEST.json").read_text())
+    man = {}
+    for d in {f.parent.parent for f in files}:  # ext/ and ext/unit/ (hand-derived, non-Pyfa)
+        man.update(json.loads((d / "MANIFEST.json").read_text()))
     res = {}
     for f, line in zip(files, lines):
-        exp = json.loads((SUITE / "expected" / f.name).read_text())
+        exp = json.loads((f.parent.parent / "expected" / f.name).read_text())
         resp = json.loads(line)
         bad, ni = [], 0
         for k, v in exp["values"].items():

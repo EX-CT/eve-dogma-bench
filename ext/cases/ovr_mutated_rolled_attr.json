@@ -1,0 +1,61 @@
+{
+ "boosters": [],
+ "cargo": [],
+ "character": {
+  "security_status": null,
+  "skills": {
+   "default_level": 5,
+   "levels": {}
+  }
+ },
+ "damage_pattern": null,
+ "drones": [],
+ "environment": {
+  "effect_type_ids": [],
+  "system_security": null
+ },
+ "fighters": [],
+ "fleet": {
+  "booster_fits": [],
+  "buffs": []
+ },
+ "implants": [],
+ "modules": [
+  {
+   "charge_type_id": null,
+   "mutation": {
+    "attributes": {
+     "50": 37.5,
+     "974": 0.63,
+     "975": 0.63,
+     "976": 0.63,
+     "977": 0.63
+    },
+    "base_type_id": 2048,
+    "mutaplasmid_type_id": 52224
+   },
+   "spool": null,
+   "state": "active",
+   "type_id": 52227
+  }
+ ],
+ "options": {},
+ "overrides": [
+  {
+   "attribute_id": 974,
+   "type_id": 52227,
+   "value": 0.1
+  },
+  {
+   "attribute_id": 50,
+   "type_id": 52227,
+   "value": 1.0
+  }
+ ],
+ "projected": [],
+ "schema_version": 1,
+ "ship": {
+  "mode_type_id": null,
+  "type_id": 587
+ }
+}
