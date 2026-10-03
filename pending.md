@@ -46,7 +46,7 @@ Pyfa's `eve.db` is client build 3532181. The engines' dataset follows SDE 356950
 `compare.py` reads it (default: next to the script, or `--expected-diffs FILE`): a diff whose metric is listed by an
 `expected_difference` entry whose `match` holds for the fit goes to `expected_drift.json` and `summary.expected_drift`
 (fits, values, by_entry, per-engine fits) instead of `diffs.json` / `*_diff_fits`. New `--no-engines` reuses saved
-`<engine>.jsonl`. Test 2026-10-03 11:45 CST on the saved 200 fits (`fz-e/work/out`, m19 metrics): before A 10 / E 2 / J 10
+`<engine>.jsonl`. Test 2026-10-03 11:26 CST on the saved 200 fits (`fz-e/work/out`, m19 metrics): before A 10 / E 2 / J 10
 diff fits; now A 8 / E 0 / J 8 real + expected_drift 2 fits / 2 values (`paladin-agility`, lf10_123/197). The
 `remote-capacitor-impedance` matcher (transmitter projected onto a listed capital, or onto a ship with an active
 Siege/Triage/Bastion/Industrial Core) was checked on 3 synthetic fits (Revelation, Revelation + Siege → drift;
@@ -84,7 +84,7 @@ response reports the corrected `modules[].state`, and `warnings[]` gets
   state now differ only in `modules[].state` / `warnings[]`.
 - Check (informational, not scored): `python3 tools/check_module_state.py --batch-cmd "<engine> batch"` on
   `pending/state/state_rifter_*.json` (expected states from Pyfa `isValidState` via `oracle/state_oracle.py`).
-  2026-10-03 11:30 CST: F bc84e2b 3/3, eve-dogma-rs d6043a7 1/3 (echoes the requested state, no warnings).
+  2026-10-03 11:22 CST: F bc84e2b 3/3, eve-dogma-rs d6043a7 1/3 (echoes the requested state, no warnings).
 - **Not on this branch, still encodes the old "keeps requested value" ruling:** eve-dogma-bench `graphs-round2`
   `graphs/draft-0.3` (fd4e8c8: contract section + case `dmg_dist_vargur_bastion_overheated_state`, whose expected
   values were made with the Bastion *active*; under the reversed ruling Pyfa corrects `overheated` Bastion to
@@ -96,10 +96,10 @@ The 9 `known_divergences` entries "SDE: Networked Sensor Array ModAdd warpScramb
 Pyfa's hand-written moduleBonusNetworkedSensorArray omits it" are removed (exct_hel, exct_nidhoggur,
 fighters_mwd_nidhoggur, skills{0,2,4}_{hel,nidhoggur}). Their expected files were regenerated from the Pyfa oracle
 (`tools/make_expected.py`): the only change per file is the added `warp_scramble_status` value (e.g. exct_hel −25.0) and
-an empty `excluded`. 9 more values scored. Check 2026-10-03 11:35 CST (pending-1.10 corpus, bench-1.9.0 metrics.py):
+an empty `excluded`. 9 more values scored. Check 2026-10-03 11:24 CST (pending-1.10 corpus, bench-1.9.0 metrics.py):
 F bc84e2b 334/334 cases; eve-dogma-rs d6043a7 320/334 (fails the 9 NSA cases + 5 `e_fz_*`).
 
-## F/A-vs-Pyfa root-cause triage on valid fits (2026-10-03 11:35–12:05 CST)
+## F/A-vs-Pyfa root-cause triage on valid fits (2026-10-03 11:26–11:32 CST)
 Question: the metrics where both Variant F (bc84e2b) and A disagreed with Pyfa in the random-fit arbitration
 (`cap_stable_percent`, `max_velocity`, `scan_resolution`, `ehp.{shield,armor,hull}`, `stank.armor`). Pool: every fit that
 passes `oracle/fuzz/check_legal.py` from J's random generator (51 of 4 000) and F's module sweeps (13 398 of 20 312), plus 900
