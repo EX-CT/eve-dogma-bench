@@ -4,6 +4,25 @@ Variants: compare scores only at the same bench version (`VERSION`, shown in res
 Expected values always come from the Pyfa oracle (`oracle/pyfa_oracle.py`). Re-run `python3 bench.py --only <X>` after
 pulling.
 
+## 1.9.0 (2026-10-03 11:00 CST, tag v1.9.0)
+- Released after the round-1 unified evaluation, which used 1.8.0 (`tools/evaluate.py` keeps pinning `3da9671`).
+- CONTRACT.md = contract revision 1.4.4: additive `pure` damage key (breacher pods) and `weapons[].kind = "breacher"`;
+  "Semantics" defines breacher pods and overheat order.
+- Scorer: new metrics `weapon_pure_dps` / `weapon_pure_volley` (`/offense/total/{dps,volley}/pure`, an absent key
+  counts as 0), expected from Pyfa `getWeaponDps().pure` / `getWeaponVolley().pure` (oracle extended). Every case
+  gains these two values; the other expected values are unchanged.
+- +5 cases (331 cases, 22 046 values), from Variant F's Pyfa sweep, all Pyfa-verified:
+  - `overheat_order_tengu`, `overheat_order_rev_tengu`: every active module overheated, EFT order and reversed. Pyfa
+    runs effects module by module, so a hardener's overheat reads `overloadHardeningBonus` before a Defensive
+    subsystem listed after it has boosted it (shield EM resonance 0.1967 vs 0.1769 with the full bonus).
+  - `breacher_kestrel`: 2 × Small Breacher Pod Launcher with SCARAB Breacher Pod S. Volley = DPS = one tick
+    (`dotMaxDamagePerTick`) as `pure` damage, strongest pod only: 250, not 500.
+  - `neut_nos_vs_mwd_rifter`: projected neutralisers read the target signature before the 'late' MWD bloom,
+    nosferatu after it.
+  - `ewar_drones_rifter`: ECM and target-painter drones projected (EWAR drone cycle time).
+- EFT export expected texts added for the 5 cases (331 lines).
+  Scores at 1.8.0 are not comparable with 1.9.0.
+
 ## 1.8.0 (2026-10-03 06:10 CST)
 - CONTRACT.md = contract revision 1.4.3. No field changes; "Semantics" now also defines weather/cloud beacons,
   incursion system effects and burst projectors (below).

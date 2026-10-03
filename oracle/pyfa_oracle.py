@@ -198,6 +198,7 @@ def stats(fit):
                           for t in ("em", "thermal", "kinetic", "explosive")} for l in ("shield", "armor", "hull")},
         "tank": fit.tank, "sustainable_tank": fit.sustainableTank, "cap_used": fit.capUsed, "cap_recharge_peak_plus_added": fit.capRecharge,
         "weapon_dps": fit.getWeaponDps(spoolOptions=SPOOL).total, "weapon_volley": fit.getWeaponVolley(spoolOptions=SPOOL).total,
+        "weapon_pure_dps": fit.getWeaponDps(spoolOptions=SPOOL).pure, "weapon_pure_volley": fit.getWeaponVolley(spoolOptions=SPOOL).pure,
         "drone_dps": fit.getDroneDps().total, "drone_volley": fit.getDroneVolley().total,
         "dps": dps.total, "volley": vol.total,
         "cap_capacity": g("capacitorCapacity"), "cap_recharge_s": g("rechargeRate") / 1000,
