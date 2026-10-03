@@ -1,4 +1,4 @@
 {
- "combo_mindflood_ham_se_exct_ishtar": "Pyfa importEft (oracle setup) drops the mutated module from its own export; cause not yet understood, excluded from 0.1",
- "state_web_overheated_exct_tengu": "Pyfa importEft (oracle setup) drops the mutated module from its own export; cause not yet understood, excluded from 0.1"
+ "combo_mindflood_ham_se_exct_ishtar": "Pyfa importEft drops modules that do not fit(): the source fit has more mid modules than Pyfa's import-time mid slots, and the mutated module is last in the rack (CONTRACT-MUTATED \u00a76.1)",
+ "state_web_overheated_exct_tengu": "Pyfa importEft drops modules that do not fit(): the source fit has more mid modules than Pyfa's import-time mid slots, and the mutated module is last in the rack (CONTRACT-MUTATED \u00a76.1)"
 }

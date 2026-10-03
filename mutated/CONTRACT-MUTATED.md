@@ -119,14 +119,59 @@ same shape as CONTRACT.md 1.x and as the result of Pyfa importing EFT `[Mutated]
 | EFT import | Pyfa import of 91 of the 93 exports plus 8 edge texts | `mutated/tools/check_eft.py` | fits equal / 99 |
 | regression | bench 1.8.0 corpus | `run.py` | must stay 326/326, byte-identical |
 
-* Two exports are excluded from the import check (`expected_extra/eft_import_excluded.json`). In this oracle setup,
-  Pyfa's `importEft` drops the mutated module from its own export text, and the cause is not yet understood:
-  `combo_mindflood_ham_se_exct_ishtar` and `state_web_overheated_exct_tengu`.
+* Two exports are excluded from the import check (`expected_extra/eft_import_excluded.json`):
+  `combo_mindflood_ham_se_exct_ishtar` and `state_web_overheated_exct_tengu`. The cause has been found (§6.1) and is
+  not specific to mutation. Pyfa's `importEft` drops every module that does not `fits()` the hull, and both source
+  fits have more mid-slot modules than Pyfa gives the hull at import time. The mutated module is the last one in
+  the mid rack, so it is the one that gets dropped.
 * The import check compares only the ship, the mutated modules (in order), all drones, implants and boosters.
   General EFT import fidelity for unmutated modules belongs to the formats suite.
 * Known SDE-vs-Pyfa divergences that the main corpus excludes for a source fit stay excluded in every case built from
   that fit. An example is `warp_scramble_status` with a Networked Sensor Array; see `expected/known_divergences.json`.
 
+### 5.1 Pass rules
+* **Stats value:** `|got - want| <= max(1e-3, 1e-4 * |want|)`. Booleans must match exactly, and a missing pointer
+  fails. This is the main corpus rule from `tools/metrics.py`. A case passes when every expected value passes and
+  the engine reports no error.
+* **EFT export row:** the text must be byte-identical. The one exception is the T3C extra
+  `[Empty Subsystem slot]` line from the SDE/Pyfa `maxSubSystems` divergence, which is accepted.
+* **EFT import row:** the comparison covers the ship, the mutated modules in order (type id, charge, base,
+  mutaplasmid, and effective values from §2 within relative 1e-6), all drones as a multiset (type, quantity,
+  mutation), and the implants and boosters after the §3.1 slot rule. An RPC error or an unparsable result fails
+  the row.
+* **Gate:** 326/326 on the 1.8.0 corpus and no engine errors on the suite. Below the gate the suite score is
+  reported but not ranked.
+* **Score (proposed, open):** 0.6 × stats cases + 0.2 × export rows + 0.2 × import rows, each as a fraction.
+  Performance is not scored.
+
+## 6. Open questions (for 0.2)
+
+### 6.1 EFT import drops modules that do not fit
+This was found while checking the two excluded rows. Pyfa's `importEft` builds the fit in this order: subsystems,
+then a recalculation, then the other racks. It then places each module only if `Module.fits(fit)` is true. That
+means a free slot in the rack (counted with the subsystem slot modifiers), `canFitShipGroup/Type`, the capital-size
+rule, rig size, and `maxGroupFitted`. A module that fails is **dropped silently**. Within a rack the lines are
+placed in order, so an overfull rack loses its last lines.
+
+* `exct_ishtar` lists 5 mid-slot modules, but the Ishtar has 4 mid slots in both Pyfa's eve.db and the dataset
+  (`medSlots`). The last mid module, here the mutated 50MN MWD, is dropped. The unmutated text behaves the same way:
+  the plain `50MN Microwarpdrive II` is dropped too.
+* `exct_tengu` lists 6 mid-slot modules, but at import time Pyfa gives this subsystem set 4 mid slots. The last two
+  are dropped: `Warp Disruptor II` and the mutated `Stasis Webifier II`.
+* `calc` and `eft_export` do not check slot counts, in Pyfa or in this contract, so the stats and export rows of
+  these cases stay valid.
+
+Proposed for 0.2: either make **"import drops modules that do not fit, in line order"** a rule with dedicated rows
+(this is general import fidelity, so it may belong in the formats suite), or keep overfitted source fits out of the
+generator. Until then the two rows stay excluded.
+
+### 6.2 Other open points
+* `overrides[]` combined with a mutation (`mutator > override > base`).
+* A mutaplasmid applied to a base outside its family. Pyfa raises an error, so this is undefined.
+* Name-keyed `attributes` in requests (EFT style).
+* Naiyon's Modified Stasis Webifier (15419): the one base whose effects the resulting type lacks.
+
 ## Changelog
 
 * 0.1 (2026-10-03): first draft, with 93 stats cases, 93 export texts and 99 import texts.
+* 0.1 (2026-10-03 ~10:00): text only. The cause of the two excluded import rows is identified (§6.1), and the pass rules are written out (§5.1). Status: DRAFT.
