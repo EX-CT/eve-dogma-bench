@@ -1,0 +1,136 @@
+{
+ "cases": {
+  "embedded_hash_matches_release_pack": {
+   "check": "embedded_hash",
+   "first": [
+    "needs SDE_PACK"
+   ],
+   "pass": false,
+   "pending": true
+  },
+  "provenance_calc_cli": {
+   "check": "provenance_calc",
+   "first": [],
+   "pass": true
+  },
+  "provenance_calc_rpc": {
+   "check": "provenance_calc",
+   "first": [],
+   "pass": true
+  },
+  "sde_invalid_cli_bad_magic": {
+   "check": "sde_invalid_cli",
+   "first": [],
+   "pass": true
+  },
+  "sde_invalid_cli_empty": {
+   "check": "sde_invalid_cli",
+   "first": [],
+   "pass": true
+  },
+  "sde_invalid_cli_format_major_2": {
+   "check": "sde_invalid_cli",
+   "first": [],
+   "pass": true
+  },
+  "sde_invalid_cli_hash_mismatch": {
+   "check": "sde_invalid_cli",
+   "first": [],
+   "pass": true
+  },
+  "sde_invalid_cli_missing_file": {
+   "check": "sde_invalid_cli",
+   "first": [],
+   "pass": true
+  },
+  "sde_invalid_cli_section_out_of_range": {
+   "check": "sde_invalid_cli",
+   "first": [],
+   "pass": true
+  },
+  "sde_invalid_cli_truncated_header": {
+   "check": "sde_invalid_cli",
+   "first": [],
+   "pass": true
+  },
+  "sde_invalid_rpc_b64": {
+   "check": "sde_invalid_rpc",
+   "first": [],
+   "pass": true
+  },
+  "sde_invalid_rpc_bad_magic": {
+   "check": "sde_invalid_rpc",
+   "first": [],
+   "pass": true
+  },
+  "sde_invalid_rpc_format_major_2": {
+   "check": "sde_invalid_rpc",
+   "first": [],
+   "pass": true
+  },
+  "sde_invalid_rpc_hash_mismatch": {
+   "check": "sde_invalid_rpc",
+   "first": [],
+   "pass": true
+  },
+  "sde_invalid_rpc_missing_file": {
+   "check": "sde_invalid_rpc",
+   "first": [],
+   "pass": true
+  },
+  "sde_valid_cli_identical": {
+   "check": "sde_valid_cli_identical",
+   "first": [
+    "needs SDE_PACK"
+   ],
+   "pass": false,
+   "pending": true
+  },
+  "sde_valid_cli_version": {
+   "check": "sde_valid_cli_version",
+   "first": [
+    "needs SDE_PACK"
+   ],
+   "pass": false,
+   "pending": true
+  },
+  "sde_valid_rpc_b64": {
+   "check": "sde_valid_rpc",
+   "first": [
+    "needs SDE_PACK"
+   ],
+   "pass": false,
+   "pending": true
+  },
+  "sde_valid_rpc_switch_reset": {
+   "check": "sde_valid_rpc",
+   "first": [
+    "needs SDE_PACK"
+   ],
+   "pass": false,
+   "pending": true
+  },
+  "version_cli_fields": {
+   "check": "version_fields",
+   "first": [],
+   "pass": true
+  },
+  "version_matches_meta": {
+   "check": "version_matches_meta",
+   "first": [],
+   "pass": true
+  },
+  "version_rpc_equals_cli": {
+   "check": "version_rpc_equals_cli",
+   "first": [],
+   "pass": true
+  },
+  "version_rpc_fields": {
+   "check": "version_fields",
+   "first": [],
+   "pass": true
+  }
+ },
+ "name": "F8bde0ba",
+ "suite": "sde"
+}

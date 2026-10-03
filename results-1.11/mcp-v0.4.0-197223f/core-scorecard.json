@@ -1,0 +1,756 @@
+{
+ "variant": "mcp-v040-197223f",
+ "cmd": "python3 /workspace/exct-eve/fj-compare/p110/tools/mcp_batch.py --mcp-dir /workspace/exct-eve/inv/eve-fit-mcp",
+ "batch_cmd": null,
+ "cases": 339,
+ "cases_fully_correct": 339,
+ "values_correct": 22513,
+ "values_total": 22513,
+ "accuracy": 1.0,
+ "groups": {
+  "application": {
+   "ok": 4030,
+   "total": 4030
+  },
+  "capacitor": {
+   "ok": 1198,
+   "total": 1198
+  },
+  "defense": {
+   "ok": 6100,
+   "total": 6100
+  },
+  "fitting": {
+   "ok": 3051,
+   "total": 3051
+  },
+  "navigation": {
+   "ok": 2032,
+   "total": 2032
+  },
+  "offense": {
+   "ok": 2034,
+   "total": 2034
+  },
+  "tank": {
+   "ok": 2373,
+   "total": 2373
+  },
+  "targeting": {
+   "ok": 1695,
+   "total": 1695
+  }
+ },
+ "metrics": {
+  "align_time_s": {
+   "ok": 338,
+   "total": 338
+  },
+  "calibration_used": {
+   "ok": 339,
+   "total": 339
+  },
+  "cap_capacity": {
+   "ok": 338,
+   "total": 338
+  },
+  "cap_recharge_s": {
+   "ok": 339,
+   "total": 339
+  },
+  "cap_stable": {
+   "ok": 339,
+   "total": 339
+  },
+  "cap_stable_percent": {
+   "ok": 182,
+   "total": 182
+  },
+  "cpu_total": {
+   "ok": 339,
+   "total": 339
+  },
+  "cpu_used": {
+   "ok": 339,
+   "total": 339
+  },
+  "d0.falloff_m": {
+   "ok": 120,
+   "total": 120
+  },
+  "d0.max_velocity": {
+   "ok": 120,
+   "total": 120
+  },
+  "d0.optimal_m": {
+   "ok": 120,
+   "total": 120
+  },
+  "d0.signature_radius": {
+   "ok": 120,
+   "total": 120
+  },
+  "d0.tracking": {
+   "ok": 120,
+   "total": 120
+  },
+  "d1.falloff_m": {
+   "ok": 36,
+   "total": 36
+  },
+  "d1.max_velocity": {
+   "ok": 36,
+   "total": 36
+  },
+  "d1.optimal_m": {
+   "ok": 36,
+   "total": 36
+  },
+  "d1.signature_radius": {
+   "ok": 36,
+   "total": 36
+  },
+  "d1.tracking": {
+   "ok": 36,
+   "total": 36
+  },
+  "drone_bandwidth_used": {
+   "ok": 339,
+   "total": 339
+  },
+  "drone_control_range": {
+   "ok": 339,
+   "total": 339
+  },
+  "drone_dps": {
+   "ok": 339,
+   "total": 339
+  },
+  "drone_volley": {
+   "ok": 339,
+   "total": 339
+  },
+  "ehp.armor": {
+   "ok": 338,
+   "total": 338
+  },
+  "ehp.hull": {
+   "ok": 339,
+   "total": 339
+  },
+  "ehp.shield": {
+   "ok": 339,
+   "total": 339
+  },
+  "f0.max_velocity": {
+   "ok": 13,
+   "total": 13
+  },
+  "f0.signature_radius": {
+   "ok": 13,
+   "total": 13
+  },
+  "f1.max_velocity": {
+   "ok": 12,
+   "total": 12
+  },
+  "f1.signature_radius": {
+   "ok": 12,
+   "total": 12
+  },
+  "f2.max_velocity": {
+   "ok": 8,
+   "total": 8
+  },
+  "f2.signature_radius": {
+   "ok": 8,
+   "total": 8
+  },
+  "f3.max_velocity": {
+   "ok": 4,
+   "total": 4
+  },
+  "f3.signature_radius": {
+   "ok": 4,
+   "total": 4
+  },
+  "f4.max_velocity": {
+   "ok": 4,
+   "total": 4
+  },
+  "f4.signature_radius": {
+   "ok": 4,
+   "total": 4
+  },
+  "hi_slots": {
+   "ok": 339,
+   "total": 339
+  },
+  "hp.armor": {
+   "ok": 338,
+   "total": 338
+  },
+  "hp.hull": {
+   "ok": 339,
+   "total": 339
+  },
+  "hp.shield": {
+   "ok": 339,
+   "total": 339
+  },
+  "jam_chance": {
+   "ok": 339,
+   "total": 339
+  },
+  "low_slots": {
+   "ok": 339,
+   "total": 339
+  },
+  "mass": {
+   "ok": 339,
+   "total": 339
+  },
+  "max_target_range": {
+   "ok": 339,
+   "total": 339
+  },
+  "max_targets": {
+   "ok": 339,
+   "total": 339
+  },
+  "max_velocity": {
+   "ok": 338,
+   "total": 338
+  },
+  "med_slots": {
+   "ok": 339,
+   "total": 339
+  },
+  "power_total": {
+   "ok": 339,
+   "total": 339
+  },
+  "power_used": {
+   "ok": 339,
+   "total": 339
+  },
+  "res.armor.em": {
+   "ok": 339,
+   "total": 339
+  },
+  "res.armor.explosive": {
+   "ok": 339,
+   "total": 339
+  },
+  "res.armor.kinetic": {
+   "ok": 339,
+   "total": 339
+  },
+  "res.armor.thermal": {
+   "ok": 339,
+   "total": 339
+  },
+  "res.hull.em": {
+   "ok": 339,
+   "total": 339
+  },
+  "res.hull.explosive": {
+   "ok": 339,
+   "total": 339
+  },
+  "res.hull.kinetic": {
+   "ok": 339,
+   "total": 339
+  },
+  "res.hull.thermal": {
+   "ok": 339,
+   "total": 339
+  },
+  "res.shield.em": {
+   "ok": 339,
+   "total": 339
+  },
+  "res.shield.explosive": {
+   "ok": 339,
+   "total": 339
+  },
+  "res.shield.kinetic": {
+   "ok": 339,
+   "total": 339
+  },
+  "res.shield.thermal": {
+   "ok": 339,
+   "total": 339
+  },
+  "scan_resolution": {
+   "ok": 339,
+   "total": 339
+  },
+  "scan_strength": {
+   "ok": 339,
+   "total": 339
+  },
+  "signature_radius": {
+   "ok": 339,
+   "total": 339
+  },
+  "stank.armor": {
+   "ok": 339,
+   "total": 339
+  },
+  "stank.hull": {
+   "ok": 339,
+   "total": 339
+  },
+  "stank.shield": {
+   "ok": 339,
+   "total": 339
+  },
+  "tank.armor": {
+   "ok": 339,
+   "total": 339
+  },
+  "tank.hull": {
+   "ok": 339,
+   "total": 339
+  },
+  "tank.passive": {
+   "ok": 339,
+   "total": 339
+  },
+  "tank.shield": {
+   "ok": 339,
+   "total": 339
+  },
+  "w0.explosion_radius": {
+   "ok": 3,
+   "total": 3
+  },
+  "w0.explosion_velocity": {
+   "ok": 3,
+   "total": 3
+  },
+  "w0.falloff_m": {
+   "ok": 6,
+   "total": 6
+  },
+  "w0.optimal_m": {
+   "ok": 6,
+   "total": 6
+  },
+  "w0.range_m": {
+   "ok": 3,
+   "total": 3
+  },
+  "w0.tracking": {
+   "ok": 6,
+   "total": 6
+  },
+  "w1.explosion_radius": {
+   "ok": 1,
+   "total": 1
+  },
+  "w1.explosion_velocity": {
+   "ok": 1,
+   "total": 1
+  },
+  "w1.falloff_m": {
+   "ok": 2,
+   "total": 2
+  },
+  "w1.optimal_m": {
+   "ok": 2,
+   "total": 2
+  },
+  "w1.range_m": {
+   "ok": 1,
+   "total": 1
+  },
+  "w1.tracking": {
+   "ok": 2,
+   "total": 2
+  },
+  "w10.explosion_radius": {
+   "ok": 44,
+   "total": 44
+  },
+  "w10.explosion_velocity": {
+   "ok": 44,
+   "total": 44
+  },
+  "w10.falloff_m": {
+   "ok": 57,
+   "total": 57
+  },
+  "w10.optimal_m": {
+   "ok": 57,
+   "total": 57
+  },
+  "w10.range_m": {
+   "ok": 44,
+   "total": 44
+  },
+  "w10.tracking": {
+   "ok": 57,
+   "total": 57
+  },
+  "w11.explosion_radius": {
+   "ok": 47,
+   "total": 47
+  },
+  "w11.explosion_velocity": {
+   "ok": 47,
+   "total": 47
+  },
+  "w11.falloff_m": {
+   "ok": 89,
+   "total": 89
+  },
+  "w11.optimal_m": {
+   "ok": 89,
+   "total": 89
+  },
+  "w11.range_m": {
+   "ok": 47,
+   "total": 47
+  },
+  "w11.tracking": {
+   "ok": 89,
+   "total": 89
+  },
+  "w12.explosion_radius": {
+   "ok": 45,
+   "total": 45
+  },
+  "w12.explosion_velocity": {
+   "ok": 45,
+   "total": 45
+  },
+  "w12.falloff_m": {
+   "ok": 87,
+   "total": 87
+  },
+  "w12.optimal_m": {
+   "ok": 87,
+   "total": 87
+  },
+  "w12.range_m": {
+   "ok": 45,
+   "total": 45
+  },
+  "w12.tracking": {
+   "ok": 87,
+   "total": 87
+  },
+  "w13.explosion_radius": {
+   "ok": 45,
+   "total": 45
+  },
+  "w13.explosion_velocity": {
+   "ok": 45,
+   "total": 45
+  },
+  "w13.falloff_m": {
+   "ok": 70,
+   "total": 70
+  },
+  "w13.optimal_m": {
+   "ok": 70,
+   "total": 70
+  },
+  "w13.range_m": {
+   "ok": 45,
+   "total": 45
+  },
+  "w13.tracking": {
+   "ok": 70,
+   "total": 70
+  },
+  "w14.explosion_radius": {
+   "ok": 12,
+   "total": 12
+  },
+  "w14.explosion_velocity": {
+   "ok": 12,
+   "total": 12
+  },
+  "w14.falloff_m": {
+   "ok": 57,
+   "total": 57
+  },
+  "w14.optimal_m": {
+   "ok": 57,
+   "total": 57
+  },
+  "w14.range_m": {
+   "ok": 12,
+   "total": 12
+  },
+  "w14.tracking": {
+   "ok": 57,
+   "total": 57
+  },
+  "w15.explosion_radius": {
+   "ok": 8,
+   "total": 8
+  },
+  "w15.explosion_velocity": {
+   "ok": 8,
+   "total": 8
+  },
+  "w15.falloff_m": {
+   "ok": 53,
+   "total": 53
+  },
+  "w15.optimal_m": {
+   "ok": 53,
+   "total": 53
+  },
+  "w15.range_m": {
+   "ok": 8,
+   "total": 8
+  },
+  "w15.tracking": {
+   "ok": 53,
+   "total": 53
+  },
+  "w16.explosion_radius": {
+   "ok": 2,
+   "total": 2
+  },
+  "w16.explosion_velocity": {
+   "ok": 2,
+   "total": 2
+  },
+  "w16.falloff_m": {
+   "ok": 49,
+   "total": 49
+  },
+  "w16.optimal_m": {
+   "ok": 49,
+   "total": 49
+  },
+  "w16.range_m": {
+   "ok": 2,
+   "total": 2
+  },
+  "w16.tracking": {
+   "ok": 49,
+   "total": 49
+  },
+  "w17.explosion_radius": {
+   "ok": 2,
+   "total": 2
+  },
+  "w17.explosion_velocity": {
+   "ok": 2,
+   "total": 2
+  },
+  "w17.falloff_m": {
+   "ok": 43,
+   "total": 43
+  },
+  "w17.optimal_m": {
+   "ok": 43,
+   "total": 43
+  },
+  "w17.range_m": {
+   "ok": 2,
+   "total": 2
+  },
+  "w17.tracking": {
+   "ok": 43,
+   "total": 43
+  },
+  "w18.falloff_m": {
+   "ok": 30,
+   "total": 30
+  },
+  "w18.optimal_m": {
+   "ok": 30,
+   "total": 30
+  },
+  "w18.tracking": {
+   "ok": 30,
+   "total": 30
+  },
+  "w2.explosion_radius": {
+   "ok": 1,
+   "total": 1
+  },
+  "w2.explosion_velocity": {
+   "ok": 1,
+   "total": 1
+  },
+  "w2.falloff_m": {
+   "ok": 1,
+   "total": 1
+  },
+  "w2.optimal_m": {
+   "ok": 1,
+   "total": 1
+  },
+  "w2.range_m": {
+   "ok": 1,
+   "total": 1
+  },
+  "w2.tracking": {
+   "ok": 1,
+   "total": 1
+  },
+  "w3.falloff_m": {
+   "ok": 1,
+   "total": 1
+  },
+  "w3.optimal_m": {
+   "ok": 1,
+   "total": 1
+  },
+  "w3.tracking": {
+   "ok": 1,
+   "total": 1
+  },
+  "w4.falloff_m": {
+   "ok": 1,
+   "total": 1
+  },
+  "w4.optimal_m": {
+   "ok": 1,
+   "total": 1
+  },
+  "w4.tracking": {
+   "ok": 1,
+   "total": 1
+  },
+  "w5.explosion_radius": {
+   "ok": 1,
+   "total": 1
+  },
+  "w5.explosion_velocity": {
+   "ok": 1,
+   "total": 1
+  },
+  "w5.range_m": {
+   "ok": 1,
+   "total": 1
+  },
+  "w6.falloff_m": {
+   "ok": 23,
+   "total": 23
+  },
+  "w6.optimal_m": {
+   "ok": 23,
+   "total": 23
+  },
+  "w6.tracking": {
+   "ok": 23,
+   "total": 23
+  },
+  "w7.explosion_radius": {
+   "ok": 2,
+   "total": 2
+  },
+  "w7.explosion_velocity": {
+   "ok": 2,
+   "total": 2
+  },
+  "w7.falloff_m": {
+   "ok": 32,
+   "total": 32
+  },
+  "w7.optimal_m": {
+   "ok": 32,
+   "total": 32
+  },
+  "w7.range_m": {
+   "ok": 2,
+   "total": 2
+  },
+  "w7.tracking": {
+   "ok": 32,
+   "total": 32
+  },
+  "w8.explosion_radius": {
+   "ok": 5,
+   "total": 5
+  },
+  "w8.explosion_velocity": {
+   "ok": 5,
+   "total": 5
+  },
+  "w8.falloff_m": {
+   "ok": 28,
+   "total": 28
+  },
+  "w8.optimal_m": {
+   "ok": 28,
+   "total": 28
+  },
+  "w8.range_m": {
+   "ok": 5,
+   "total": 5
+  },
+  "w8.tracking": {
+   "ok": 28,
+   "total": 28
+  },
+  "w9.explosion_radius": {
+   "ok": 56,
+   "total": 56
+  },
+  "w9.explosion_velocity": {
+   "ok": 56,
+   "total": 56
+  },
+  "w9.falloff_m": {
+   "ok": 40,
+   "total": 40
+  },
+  "w9.optimal_m": {
+   "ok": 40,
+   "total": 40
+  },
+  "w9.range_m": {
+   "ok": 56,
+   "total": 56
+  },
+  "w9.tracking": {
+   "ok": 40,
+   "total": 40
+  },
+  "warp_scramble_status": {
+   "ok": 339,
+   "total": 339
+  },
+  "warp_speed": {
+   "ok": 339,
+   "total": 339
+  },
+  "weapon_dps": {
+   "ok": 339,
+   "total": 339
+  },
+  "weapon_pure_dps": {
+   "ok": 339,
+   "total": 339
+  },
+  "weapon_pure_volley": {
+   "ok": 339,
+   "total": 339
+  },
+  "weapon_volley": {
+   "ok": 339,
+   "total": 339
+  }
+ },
+ "errors": 0,
+ "perf": {
+  "single_process_per_case_ms": {
+   "median": 712.4952680023853,
+   "min": 633.5351500019897,
+   "max": 1137.3310110066086
+  }
+ },
+ "host": "x86_64",
+ "time": "2026-10-03T15:18:26+0800"
+}

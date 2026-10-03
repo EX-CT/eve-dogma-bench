@@ -1,0 +1,969 @@
+{
+ "name": "F8bde0ba",
+ "pass": 77,
+ "total": 93,
+ "self_test": false,
+ "transport": "rpc",
+ "one_by_one_s": 0.44,
+ "batch_s": 0.85,
+ "cases": {
+  "calcprice_embedded_snapshot": {
+   "pass": true,
+   "kind": "calc_price_embedded",
+   "fits": 1,
+   "ops": [],
+   "first": []
+  },
+  "calcprice_file_map": {
+   "pass": true,
+   "kind": "calc_price",
+   "fits": 1,
+   "ops": [],
+   "first": []
+  },
+  "calcprice_file_snapshot": {
+   "pass": false,
+   "kind": "calc_price",
+   "fits": 1,
+   "ops": [],
+   "first": [
+    "price: snapshot_time None != '2026-10-03T06:00:00Z'"
+   ]
+  },
+  "calcprice_overrides": {
+   "pass": true,
+   "kind": "calc_price",
+   "fits": 1,
+   "ops": [],
+   "first": []
+  },
+  "calcprice_request_over_file": {
+   "pass": false,
+   "kind": "calc_price",
+   "fits": 1,
+   "ops": [],
+   "first": [
+    "price: snapshot_time None != '2026-10-03T06:00:00Z'"
+   ]
+  },
+  "calcprice_request_table": {
+   "pass": false,
+   "kind": "calc_price",
+   "fits": 1,
+   "ops": [],
+   "first": [
+    "price: total_isk 220262139.38 != 215183570.0",
+    "price: complete True != False",
+    "price: missing [] != [('modules', 12, 31015, 1, 'no_price')]",
+    "price: sources {'injected': 19, 'snapshot': 1} != {'injected': 19}",
+    "price: modules.total_isk 11794199.38 != 6715630.0"
+   ]
+  },
+  "calcprice_use_snapshot_false": {
+   "pass": true,
+   "kind": "calc_price",
+   "fits": 1,
+   "ops": [],
+   "first": []
+  },
+  "gap_bad_override_both_values": {
+   "pass": true,
+   "kind": "gap_error",
+   "fits": 1,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "gap_bad_override_duplicate": {
+   "pass": true,
+   "kind": "gap_error",
+   "fits": 1,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "gap_bad_override_in_variant": {
+   "pass": true,
+   "kind": "gap_error",
+   "fits": 2,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "gap_bad_override_negative": {
+   "pass": true,
+   "kind": "gap_error",
+   "fits": 1,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "gap_bad_override_negative_mult": {
+   "pass": true,
+   "kind": "gap_error",
+   "fits": 1,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "gap_bad_override_no_target": {
+   "pass": true,
+   "kind": "gap_error",
+   "fits": 1,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "gap_bad_override_no_value": {
+   "pass": true,
+   "kind": "gap_error",
+   "fits": 1,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "gap_bad_override_string": {
+   "pass": true,
+   "kind": "gap_error",
+   "fits": 1,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "gap_bad_override_two_targets": {
+   "pass": true,
+   "kind": "gap_error",
+   "fits": 1,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "gap_delta_ref": {
+   "pass": true,
+   "kind": "gap",
+   "fits": 5,
+   "ops": [
+    "fields",
+    "deltas",
+    "sort_by"
+   ],
+   "first": []
+  },
+  "gap_delta_ref_pct_filter": {
+   "pass": true,
+   "kind": "gap",
+   "fits": 5,
+   "ops": [
+    "fields",
+    "deltas",
+    "filter"
+   ],
+   "first": []
+  },
+  "gap_filter_in": {
+   "pass": true,
+   "kind": "gap",
+   "fits": 5,
+   "ops": [
+    "fields",
+    "filter"
+   ],
+   "first": []
+  },
+  "gap_filter_in_numbers": {
+   "pass": true,
+   "kind": "gap",
+   "fits": 5,
+   "ops": [
+    "fields",
+    "deltas",
+    "filter"
+   ],
+   "first": []
+  },
+  "gap_filter_not_null_drops": {
+   "pass": true,
+   "kind": "gap",
+   "fits": 6,
+   "ops": [
+    "fields",
+    "filter"
+   ],
+   "first": []
+  },
+  "gap_prices_file_map": {
+   "pass": true,
+   "kind": "gap",
+   "fits": 2,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "gap_prices_file_snapshot": {
+   "pass": false,
+   "kind": "gap",
+   "fits": 3,
+   "ops": [
+    "fields",
+    "deltas"
+   ],
+   "first": [
+    "base.price: snapshot_time None != '2026-10-03T06:00:00Z'",
+    "[0] price: snapshot_time None != '2026-10-03T06:00:00Z'",
+    "[1] price: snapshot_time None != '2026-10-03T06:00:00Z'",
+    "[2] price: snapshot_time None != '2026-10-03T06:00:00Z'"
+   ]
+  },
+  "gap_prices_request_over_file": {
+   "pass": false,
+   "kind": "gap",
+   "fits": 1,
+   "ops": [
+    "fields"
+   ],
+   "first": [
+    "[0] price: snapshot_time None != '2026-10-03T06:00:00Z'"
+   ]
+  },
+  "gap_product_sweep_axis": {
+   "pass": true,
+   "kind": "gap",
+   "fits": 9,
+   "ops": [
+    "fields",
+    "deltas",
+    "sort_by"
+   ],
+   "first": []
+  },
+  "gap_swap_type": {
+   "pass": true,
+   "kind": "gap",
+   "fits": 4,
+   "ops": [
+    "fields",
+    "deltas"
+   ],
+   "first": []
+  },
+  "gap_sweep_float": {
+   "pass": true,
+   "kind": "gap",
+   "fits": 9,
+   "ops": [
+    "fields",
+    "deltas"
+   ],
+   "first": []
+  },
+  "gap_sweep_float_inexact": {
+   "pass": true,
+   "kind": "gap",
+   "fits": 3,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "gap_sweep_int": {
+   "pass": true,
+   "kind": "gap",
+   "fits": 3,
+   "ops": [
+    "fields",
+    "deltas"
+   ],
+   "first": []
+  },
+  "gap_too_large_ceiling": {
+   "pass": true,
+   "kind": "gap_error",
+   "fits": 200001,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "gap_too_large_default": {
+   "pass": true,
+   "kind": "gap_error",
+   "fits": 2406,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "gap_too_large_lowered": {
+   "pass": true,
+   "kind": "gap_error",
+   "fits": 6,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "gap_use_snapshot_false": {
+   "pass": true,
+   "kind": "gap",
+   "fits": 1,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "gap_use_snapshot_false_fit": {
+   "pass": true,
+   "kind": "gap",
+   "fits": 2,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "gap_variant_own_price_table": {
+   "pass": false,
+   "kind": "gap",
+   "fits": 3,
+   "ops": [
+    "fields"
+   ],
+   "first": [
+    "[2] stats not identical to one-by-one calc (keys ['price.total_isk'])"
+   ]
+  },
+  "multi_100_full": {
+   "pass": true,
+   "kind": "multi",
+   "fits": 100,
+   "ops": [],
+   "first": []
+  },
+  "multi_10_fields": {
+   "pass": true,
+   "kind": "multi",
+   "fits": 10,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "multi_25_fields": {
+   "pass": true,
+   "kind": "multi",
+   "fits": 25,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "multi_5_full": {
+   "pass": true,
+   "kind": "multi",
+   "fits": 5,
+   "ops": [],
+   "first": []
+  },
+  "multi_all_core": {
+   "pass": true,
+   "kind": "multi",
+   "fits": 339,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "multi_duplicates": {
+   "pass": true,
+   "kind": "multi",
+   "fits": 9,
+   "ops": [],
+   "first": []
+  },
+  "multi_error_in_place": {
+   "pass": true,
+   "kind": "multi",
+   "fits": 8,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "multi_ext_mix": {
+   "pass": true,
+   "kind": "multi",
+   "fits": 30,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "multi_filter_fast": {
+   "pass": true,
+   "kind": "multi",
+   "fits": 60,
+   "ops": [
+    "fields",
+    "filter"
+   ],
+   "first": []
+  },
+  "multi_filter_sort_2key": {
+   "pass": true,
+   "kind": "multi",
+   "fits": 80,
+   "ops": [
+    "fields",
+    "filter",
+    "sort_by"
+   ],
+   "first": []
+  },
+  "multi_single": {
+   "pass": true,
+   "kind": "multi",
+   "fits": 1,
+   "ops": [],
+   "first": []
+  },
+  "multi_sort_dps_top10": {
+   "pass": true,
+   "kind": "multi",
+   "fits": 60,
+   "ops": [
+    "fields",
+    "sort_by",
+    "top_n"
+   ],
+   "first": []
+  },
+  "price_chain_variant_over_request": {
+   "pass": true,
+   "kind": "price",
+   "fits": 3,
+   "ops": [
+    "fields",
+    "deltas"
+   ],
+   "first": []
+  },
+  "price_fit_level_overrides": {
+   "pass": true,
+   "kind": "price",
+   "fits": 1,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "price_fits_entries": {
+   "pass": false,
+   "kind": "price",
+   "fits": 3,
+   "ops": [
+    "fields",
+    "sort_by"
+   ],
+   "first": [
+    "[2] stats not identical to one-by-one calc (keys ['price.sections.charges.total_isk'])"
+   ]
+  },
+  "price_injected_complete": {
+   "pass": true,
+   "kind": "price",
+   "fits": 1,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "price_market_group_children": {
+   "pass": false,
+   "kind": "price",
+   "fits": 1,
+   "ops": [
+    "fields"
+   ],
+   "first": [
+    "[0] stats not identical to one-by-one calc (keys ['price.sections.modules.total_isk', 'price.total_isk'])",
+    "[0] price: total_isk 153032130.0 != 151897380.0",
+    "[0] price: sources {'injected': 24} != {'injected': 14, 'override:market_group': 10}",
+    "[0] price: modules.total_isk 6233000.0 != 5098250.0",
+    "[0] price: modules[0].source 'injected' != 'override:market_group'"
+   ]
+  },
+  "price_market_group_deepest": {
+   "pass": false,
+   "kind": "price",
+   "fits": 1,
+   "ops": [
+    "fields"
+   ],
+   "first": [
+    "[0] stats not identical to one-by-one calc (keys ['price.sections.modules.total_isk', 'price.total_isk'])",
+    "[0] price: total_isk 153032130.0 != 152044839.0",
+    "[0] price: sources {'injected': 24} != {'injected': 14, 'override:market_group': 10}",
+    "[0] price: modules.total_isk 6233000.0 != 5245709.0",
+    "[0] price: modules[0].source 'injected' != 'override:market_group'"
+   ]
+  },
+  "price_missing_list": {
+   "pass": false,
+   "kind": "price",
+   "fits": 1,
+   "ops": [
+    "fields"
+   ],
+   "first": [
+    "[0] stats not identical to one-by-one calc (keys ['price.complete', 'price.sections.charges.total_isk', 'price.sections.modules.total_isk', 'price.total_isk'])",
+    "[0] price: total_isk 93602738.57 != 11692980.0",
+    "[0] price: complete True != False",
+    "[0] price: missing [] != [('cargo', 0, 21898, 1000, 'no_price'), ('charges', 6, 21898, 120, 'no_price'), ('charges', 7, 21898, 120, 'no_price'), ('charges', 8, 21898, 120, 'no_price')]",
+    "[0] price: sources {'injected': 18, 'snapshot': 6} != {'injected': 18}"
+   ]
+  },
+  "price_multiplier_without_base": {
+   "pass": false,
+   "kind": "price",
+   "fits": 1,
+   "ops": [
+    "fields"
+   ],
+   "first": [
+    "[0] stats not identical to one-by-one calc (keys ['price.complete', 'price.sections.charges.total_isk', 'price.sections.modules.total_isk', 'price.total_isk'])",
+    "[0] price: total_isk 94245509.721 != 12298068.0",
+    "[0] price: complete True != False",
+    "[0] price: missing [] != [('cargo', 0, 21898, 1000, 'no_price'), ('charges', 6, 21898, 120, 'no_price'), ('charges', 7, 21898, 120, 'no_price'), ('charges', 8, 21898, 120, 'no_price')]",
+    "[0] price: sources {'injected': 6, 'override:category': 13, 'snapshot': 5} != {'injected': 6, 'override:category': 12}"
+   ]
+  },
+  "price_product_options": {
+   "pass": false,
+   "kind": "price",
+   "fits": 6,
+   "ops": [
+    "fields",
+    "deltas",
+    "sort_by"
+   ],
+   "first": [
+    "result order/indices [0, 1, 2, 3, 4, 5] != [0, 2, 1, 3, 5, 4]",
+    "[1] stats not identical to one-by-one calc (keys ['price.sections.modules.total_isk', 'price.total_isk'])",
+    "[1] price: total_isk 153032130.0 != 152464755.0",
+    "[1] price: sources {'injected': 24} != {'injected': 14, 'override:market_group': 10}",
+    "[1] price: modules.total_isk 6233000.0 != 5665625.0"
+   ]
+  },
+  "price_specificity_order": {
+   "pass": false,
+   "kind": "price",
+   "fits": 1,
+   "ops": [
+    "fields"
+   ],
+   "first": [
+    "[0] stats not identical to one-by-one calc (keys ['price.sections.modules.total_isk', 'price.total_isk'])",
+    "[0] price: total_isk 219494499.0 != 219494502.0",
+    "[0] price: sources {'injected': 5, 'override:category': 15, 'override:group': 3, 'override:type': 1} != {'injected': 5, 'override:category': 15, 'override:type': 1, 'override:market_group': 3}",
+    "[0] price: modules.total_isk 19.0 != 22.0",
+    "[0] price: modules[6].source 'override:group' != 'override:market_group'"
+   ]
+  },
+  "price_type_beats_injected": {
+   "pass": true,
+   "kind": "price",
+   "fits": 1,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "price_variant_fixed_beats_request_fixed": {
+   "pass": true,
+   "kind": "price",
+   "fits": 2,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "price_variants_sort_filter": {
+   "pass": false,
+   "kind": "price",
+   "fits": 6,
+   "ops": [
+    "fields",
+    "deltas",
+    "filter",
+    "sort_by"
+   ],
+   "first": [
+    "[5] stats not identical to one-by-one calc (keys ['price.complete', 'price.sections.modules.total_isk', 'price.total_isk'])",
+    "[5] price: total_isk 152360048.02 != 152345910.0",
+    "[5] price: complete True != False",
+    "[5] price: missing [] != [('modules', 3, 439, 1, 'no_price')]",
+    "[5] price: sources {'injected': 23, 'snapshot': 1} != {'injected': 23}"
+   ]
+  },
+  "price_zero_self_made": {
+   "pass": true,
+   "kind": "price",
+   "fits": 1,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "product_full_output": {
+   "pass": true,
+   "kind": "product",
+   "fits": 4,
+   "ops": [],
+   "first": []
+  },
+  "product_skill_charge_state_0": {
+   "pass": true,
+   "kind": "product",
+   "fits": 12,
+   "ops": [
+    "fields",
+    "deltas"
+   ],
+   "first": []
+  },
+  "product_skill_charge_state_1": {
+   "pass": true,
+   "kind": "product",
+   "fits": 24,
+   "ops": [
+    "fields",
+    "deltas",
+    "sort_by",
+    "top_n"
+   ],
+   "first": []
+  },
+  "product_skill_charge_state_2": {
+   "pass": true,
+   "kind": "product",
+   "fits": 12,
+   "ops": [
+    "fields",
+    "deltas"
+   ],
+   "first": []
+  },
+  "product_skill_charge_state_3": {
+   "pass": true,
+   "kind": "product",
+   "fits": 12,
+   "ops": [
+    "fields",
+    "deltas",
+    "sort_by",
+    "top_n"
+   ],
+   "first": []
+  },
+  "product_states_dp_0": {
+   "pass": true,
+   "kind": "product",
+   "fits": 32,
+   "ops": [
+    "fields",
+    "deltas"
+   ],
+   "first": []
+  },
+  "product_states_dp_1": {
+   "pass": true,
+   "kind": "product",
+   "fits": 32,
+   "ops": [
+    "fields",
+    "deltas"
+   ],
+   "first": []
+  },
+  "product_states_dp_2": {
+   "pass": true,
+   "kind": "product",
+   "fits": 32,
+   "ops": [
+    "fields",
+    "deltas",
+    "filter"
+   ],
+   "first": []
+  },
+  "product_states_dp_3": {
+   "pass": true,
+   "kind": "product",
+   "fits": 32,
+   "ops": [
+    "fields",
+    "deltas",
+    "filter"
+   ],
+   "first": []
+  },
+  "sweep_charge_0": {
+   "pass": true,
+   "kind": "sweep",
+   "fits": 2,
+   "ops": [
+    "fields",
+    "deltas",
+    "sort_by",
+    "top_n"
+   ],
+   "first": []
+  },
+  "sweep_charge_1": {
+   "pass": true,
+   "kind": "sweep",
+   "fits": 2,
+   "ops": [
+    "fields",
+    "deltas",
+    "sort_by",
+    "top_n"
+   ],
+   "first": []
+  },
+  "sweep_damage_pattern": {
+   "pass": false,
+   "kind": "sweep",
+   "fits": 5,
+   "ops": [
+    "fields",
+    "deltas",
+    "sort_by"
+   ],
+   "first": [
+    "[3] id '/damage_pattern={\"em\":10,\"explosive\":0,\"kinetic\":45,\"thermal\":45}' != '/damage_pattern={\"em\": 10, \"explosive\": 0, \"kinetic\": 45, \"thermal\": 45}'",
+    "[3] label '/damage_pattern={\"em\":10,\"explosive\":0,\"kinetic\":45,\"thermal\":45}' != '/damage_pattern={\"em\": 10, \"explosive\": 0, \"kinetic\": 45, \"thermal\": 45}'",
+    "[2] id '/damage_pattern={\"em\":0,\"explosive\":20,\"kinetic\":80,\"thermal\":0}' != '/damage_pattern={\"em\": 0, \"explosive\": 20, \"kinetic\": 80, \"thermal\": 0}'",
+    "[2] label '/damage_pattern={\"em\":0,\"explosive\":20,\"kinetic\":80,\"thermal\":0}' != '/damage_pattern={\"em\": 0, \"explosive\": 20, \"kinetic\": 80, \"thermal\": 0}'",
+    "[1] id '/damage_pattern={\"em\":25,\"explosive\":25,\"kinetic\":25,\"thermal\":25}' != '/damage_pattern={\"em\": 25, \"explosive\": 25, \"kinetic\": 25, \"thermal\": 25}'"
+   ]
+  },
+  "sweep_skill_override_full": {
+   "pass": false,
+   "kind": "sweep",
+   "fits": 3,
+   "ops": [],
+   "first": [
+    "[1] id '/character/skills/levels={\"3300\":0}' != '/character/skills/levels={\"3300\": 0}'",
+    "[1] label '/character/skills/levels={\"3300\":0}' != '/character/skills/levels={\"3300\": 0}'",
+    "[2] id '/character/skills/levels={\"3300\":3}' != '/character/skills/levels={\"3300\": 3}'",
+    "[2] label '/character/skills/levels={\"3300\":3}' != '/character/skills/levels={\"3300\": 3}'"
+   ]
+  },
+  "sweep_skills_0": {
+   "pass": true,
+   "kind": "sweep",
+   "fits": 6,
+   "ops": [
+    "fields",
+    "deltas"
+   ],
+   "first": []
+  },
+  "sweep_skills_1": {
+   "pass": true,
+   "kind": "sweep",
+   "fits": 6,
+   "ops": [
+    "fields",
+    "deltas"
+   ],
+   "first": []
+  },
+  "sweep_skills_2": {
+   "pass": true,
+   "kind": "sweep",
+   "fits": 6,
+   "ops": [
+    "fields",
+    "deltas"
+   ],
+   "first": []
+  },
+  "sweep_skills_3": {
+   "pass": true,
+   "kind": "sweep",
+   "fits": 6,
+   "ops": [
+    "fields",
+    "deltas"
+   ],
+   "first": []
+  },
+  "sweep_state_0": {
+   "pass": true,
+   "kind": "sweep",
+   "fits": 4,
+   "ops": [
+    "fields",
+    "deltas",
+    "sort_by"
+   ],
+   "first": []
+  },
+  "sweep_state_1": {
+   "pass": true,
+   "kind": "sweep",
+   "fits": 4,
+   "ops": [
+    "fields",
+    "deltas",
+    "sort_by"
+   ],
+   "first": []
+  },
+  "sweep_state_2": {
+   "pass": true,
+   "kind": "sweep",
+   "fits": 4,
+   "ops": [
+    "fields",
+    "deltas",
+    "sort_by"
+   ],
+   "first": []
+  },
+  "variants_charges_0": {
+   "pass": true,
+   "kind": "variants",
+   "fits": 2,
+   "ops": [
+    "fields",
+    "deltas",
+    "sort_by"
+   ],
+   "first": []
+  },
+  "variants_charges_1": {
+   "pass": true,
+   "kind": "variants",
+   "fits": 1,
+   "ops": [
+    "fields",
+    "deltas",
+    "sort_by"
+   ],
+   "first": []
+  },
+  "variants_charges_2": {
+   "pass": true,
+   "kind": "variants",
+   "fits": 1,
+   "ops": [
+    "fields",
+    "deltas",
+    "sort_by"
+   ],
+   "first": []
+  },
+  "variants_damage_pattern": {
+   "pass": true,
+   "kind": "variants",
+   "fits": 5,
+   "ops": [
+    "fields",
+    "deltas"
+   ],
+   "first": []
+  },
+  "variants_full_output": {
+   "pass": true,
+   "kind": "variants",
+   "fits": 6,
+   "ops": [],
+   "first": []
+  },
+  "variants_states_0": {
+   "pass": true,
+   "kind": "variants",
+   "fits": 6,
+   "ops": [
+    "fields",
+    "deltas"
+   ],
+   "first": []
+  },
+  "variants_states_1": {
+   "pass": true,
+   "kind": "variants",
+   "fits": 6,
+   "ops": [
+    "fields",
+    "deltas"
+   ],
+   "first": []
+  },
+  "variants_states_2": {
+   "pass": true,
+   "kind": "variants",
+   "fits": 6,
+   "ops": [
+    "fields",
+    "deltas"
+   ],
+   "first": []
+  },
+  "variants_states_3": {
+   "pass": true,
+   "kind": "variants",
+   "fits": 6,
+   "ops": [
+    "fields",
+    "deltas"
+   ],
+   "first": []
+  },
+  "variants_struct_0": {
+   "pass": true,
+   "kind": "variants",
+   "fits": 6,
+   "ops": [
+    "fields",
+    "deltas",
+    "filter"
+   ],
+   "first": []
+  },
+  "variants_struct_1": {
+   "pass": true,
+   "kind": "variants",
+   "fits": 6,
+   "ops": [
+    "fields",
+    "deltas",
+    "filter"
+   ],
+   "first": []
+  },
+  "variants_struct_2": {
+   "pass": true,
+   "kind": "variants",
+   "fits": 6,
+   "ops": [
+    "fields",
+    "deltas",
+    "filter"
+   ],
+   "first": []
+  }
+ }
+}

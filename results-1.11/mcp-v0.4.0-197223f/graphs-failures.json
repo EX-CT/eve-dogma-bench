@@ -1,0 +1,32 @@
+{
+ "err_missing_x": {
+  "error": null,
+  "mismatches": [
+   {
+    "want_error": "BAD_REQUEST",
+    "got_error": null,
+    "got": "<success>"
+   }
+  ]
+ },
+ "err_missing_x_values": {
+  "error": null,
+  "mismatches": [
+   {
+    "want_error": "BAD_REQUEST",
+    "got_error": null,
+    "got": "<success>"
+   }
+  ]
+ },
+ "err_missing_y": {
+  "error": null,
+  "mismatches": [
+   {
+    "want_error": "BAD_REQUEST",
+    "got_error": null,
+    "got": "<success>"
+   }
+  ]
+ }
+}

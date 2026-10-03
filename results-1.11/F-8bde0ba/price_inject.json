@@ -1,0 +1,204 @@
+{
+ "cases": {
+  "bad_prices_key": {
+   "check": "inject_error",
+   "first": [],
+   "pass": true
+  },
+  "bad_prices_mode": {
+   "check": "inject_error",
+   "first": [],
+   "pass": true
+  },
+  "bad_prices_negative": {
+   "check": "inject_error",
+   "first": [],
+   "pass": true
+  },
+  "bad_prices_string": {
+   "check": "inject_error",
+   "first": [],
+   "pass": true
+  },
+  "embedded_only": {
+   "check": "inject_calc",
+   "first": [],
+   "pass": true
+  },
+  "file_map": {
+   "check": "inject_calc",
+   "first": [],
+   "pass": true
+  },
+  "file_map_negative": {
+   "check": "inject_error",
+   "first": [],
+   "pass": true
+  },
+  "file_map_nonint_key": {
+   "check": "inject_error",
+   "first": [],
+   "pass": true
+  },
+  "file_map_string_value": {
+   "check": "inject_error",
+   "first": [],
+   "pass": true
+  },
+  "file_other_sde_build_warns": {
+   "check": "inject_calc",
+   "first": [
+    "price: snapshot_time None != '2026-10-03T05:30:00Z'"
+   ],
+   "pass": false
+  },
+  "file_snap_bad_hash": {
+   "check": "inject_error",
+   "first": [],
+   "pass": true
+  },
+  "file_snap_bad_invariant": {
+   "check": "inject_error",
+   "first": [],
+   "pass": true
+  },
+  "file_snap_bad_units": {
+   "check": "inject_error",
+   "first": [],
+   "pass": true
+  },
+  "file_snap_schema_other": {
+   "check": "inject_error",
+   "first": [],
+   "pass": true
+  },
+  "file_snap_v2": {
+   "check": "inject_error",
+   "first": [],
+   "pass": true
+  },
+  "file_snapshot": {
+   "check": "inject_calc",
+   "first": [
+    "price: snapshot_time None != '2026-10-03T05:30:00Z'"
+   ],
+   "pass": false
+  },
+  "file_snapshot_gz": {
+   "check": "inject_calc",
+   "first": [
+    "price: snapshot_time None != '2026-10-03T05:30:00Z'"
+   ],
+   "pass": false
+  },
+  "overrides_only_file": {
+   "check": "inject_calc",
+   "first": [
+    "price: snapshot_time None != '2026-10-03T05:30:00Z'"
+   ],
+   "pass": false
+  },
+  "overrides_request_file": {
+   "check": "inject_calc",
+   "first": [
+    "provenance.snapshot_time None != '2026-10-03T05:30:00Z'",
+    "price: snapshot_time None != '2026-10-03T05:30:00Z'"
+   ],
+   "pass": false
+  },
+  "request_full": {
+   "check": "inject_calc",
+   "first": [],
+   "pass": true
+  },
+  "request_full_mode_replace": {
+   "check": "inject_calc",
+   "first": [],
+   "pass": true
+  },
+  "request_full_over_file": {
+   "check": "inject_calc",
+   "first": [],
+   "pass": true
+  },
+  "request_partial_embedded": {
+   "check": "inject_calc",
+   "first": [
+    "provenance.snapshot_time None (embedded snapshot: want its time)",
+    "modules[2]: snapshot_time '2026-10-03T06:38:56Z' != provenance None",
+    "modules[6]: snapshot_time '2026-10-03T06:38:56Z' != provenance None",
+    "charges[6]: snapshot_time '2026-10-03T06:38:56Z' != provenance None",
+    "modules[7]: snapshot_time '2026-10-03T06:38:56Z' != provenance None"
+   ],
+   "pass": false
+  },
+  "request_partial_file": {
+   "check": "inject_calc",
+   "first": [
+    "provenance.snapshot_time None != '2026-10-03T05:30:00Z'",
+    "price: snapshot_time None != '2026-10-03T05:30:00Z'"
+   ],
+   "pass": false
+  },
+  "request_partial_mode_override": {
+   "check": "inject_calc",
+   "first": [
+    "provenance.snapshot_time None != '2026-10-03T05:30:00Z'",
+    "price: snapshot_time None != '2026-10-03T05:30:00Z'"
+   ],
+   "pass": false
+  },
+  "request_partial_no_snapshot": {
+   "check": "inject_calc",
+   "first": [],
+   "pass": true
+  },
+  "rpc_prices_load_bad_hash": {
+   "check": "inject_rpc_error",
+   "first": [],
+   "pass": true
+  },
+  "rpc_prices_load_isk": {
+   "check": "inject_rpc",
+   "first": [],
+   "pass": true
+  },
+  "rpc_prices_load_path": {
+   "check": "inject_rpc",
+   "first": [
+    "price: snapshot_time None != '2026-10-03T05:30:00Z'"
+   ],
+   "pass": false
+  },
+  "rpc_prices_load_snapshot": {
+   "check": "inject_rpc",
+   "first": [
+    "price: snapshot_time None != '2026-10-03T05:30:00Z'"
+   ],
+   "pass": false
+  },
+  "rpc_request_over_session": {
+   "check": "inject_rpc",
+   "first": [
+    "provenance.snapshot_time None != '2026-10-03T05:30:00Z'",
+    "price: snapshot_time None != '2026-10-03T05:30:00Z'"
+   ],
+   "pass": false
+  },
+  "rpc_session_isolated": {
+   "check": "inject_rpc_isolated",
+   "first": [],
+   "pass": true
+  },
+  "sde_and_prices": {
+   "check": "inject_calc",
+   "first": [
+    "needs SDE_PACK"
+   ],
+   "pass": false,
+   "pending": true
+  }
+ },
+ "name": "F8bde0ba",
+ "suite": "price_inject"
+}
