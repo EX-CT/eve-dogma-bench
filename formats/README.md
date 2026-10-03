@@ -2,8 +2,8 @@
 
 > **Round 3:** this suite is now the **FORMATS contract 0.1 (DRAFT)**: `formats/CONTRACT-FORMATS.md`. It is
 > scored with `tools/evaluate_formats.py`:
-> `python3 tools/evaluate_formats.py --rpc "<variant> serve-stdio" --name X`. The suite has 4792 rows: 3260
-> export, 1304 round-trip import, 125 export-edge and 103 import-edge (malformed and abnormal) rows. Edge inputs
+> `python3 tools/evaluate_formats.py --rpc "<variant> serve-stdio" --name X`. The suite has 4793 rows (4782 scored; 4 groups x 25 %): 3260
+> export, 1304 round-trip import, 125 export-edge and 104 import-edge (malformed and abnormal; 11 report-only) rows. Edge inputs
 > and their expectations are regenerated with `tools/gen_formats_edge.sh <ref>`. It is not frozen or published
 > until the round-1 archive. The older `tools/check_formats.py` (16 edge rows) is kept for comparison.
 
