@@ -80,13 +80,17 @@ injector) — earliest first, ties broken by the following fields in that order.
 3. When time advanced: track the lowest cap seen *before* activations; when the time equals the next period
    boundary, compare: if cap ≥ the cap recorded at the previous boundary (rounded to 1 decimal) and the same
    postponed boosters are waiting, stop (stable); otherwise record and move the boundary one period on.
-4. A booster whose injection would overfill the capacitor is postponed (kept waiting) instead of firing.
-   Any other event: if it needs more than the current cap and the capacitor is not full, waiting boosters fire first,
-   choosing the one that covers the shortfall with the least excess (or, failing that, the largest), until the need
-   is covered or the capacitor is full; each booster fired this way is rescheduled from now.
+4. A booster whose injection would overfill the capacitor is postponed: it leaves the queue and waits (it is not
+   rescheduled until it fires). Any other event: if it needs more than the current cap and the capacitor is not full,
+   waiting boosters fire first — each time the one with the smallest bonus that still covers
+   min(need − cap, C − cap) — until the need is covered or the capacitor is full; a booster fired this way is
+   rescheduled from the current time (plus reload after its last charge). If no waiting booster covers the shortfall,
+   Pyfa's simulator raises an error (its fallback picks from an empty list); this is **undefined** in 0.1 and no
+   case exercises it (proposal: fire the largest waiting booster).
 5. Apply the event: cap −= need, capped at C. If cap < 0 → stop, **unstable** at this event's time. Otherwise track the
    lowest cap after activations.
-6. Top up: while boosters wait and the capacitor is not full, fire the largest waiting booster that does not overfill.
+6. Top up: while boosters wait and the capacitor is not full, fire the largest waiting booster that does not overfill
+   (stop when none fits); rescheduled as in step 4.
 7. Reschedule the event at time + duration; after the last shot of a clip add the reload time.
 
 ## 6. Results
@@ -115,6 +119,7 @@ The suite keeps such cases (category `overheat`); they are now scored.
 ## 9. Open questions
 
 1. `cap_sim.stagger` default (proposed true, §6).
-2. `options.nos_no_target_cap` is not covered (Pyfa has no such switch).
-3. Starting capacitor below 100 % is not in the request; the graphs suite covers capacitor over time.
-4. `max_time_s` < the first failure → stable, with stable % from the lowest levels inside the window (as Pyfa).
+2. Booster shortfall fallback (§5 step 4) — Pyfa errors; proposal: largest waiting booster.
+3. `options.nos_no_target_cap` is not covered (Pyfa has no such switch).
+4. Starting capacitor below 100 % is not in the request; the graphs suite covers capacitor over time.
+5. `max_time_s` < the first failure → stable, with stable % from the lowest levels inside the window (as Pyfa).
