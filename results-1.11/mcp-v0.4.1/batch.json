@@ -1,0 +1,964 @@
+{
+ "name": "mcp-v041",
+ "pass": 71,
+ "total": 93,
+ "self_test": false,
+ "transport": "cli",
+ "one_by_one_s": 98.61,
+ "batch_s": 54.13,
+ "cases": {
+  "calcprice_embedded_snapshot": {
+   "pass": true,
+   "kind": "calc_price_embedded",
+   "fits": 1,
+   "ops": [],
+   "first": []
+  },
+  "calcprice_file_map": {
+   "pass": false,
+   "kind": "calc_price",
+   "fits": 1,
+   "ops": [],
+   "first": [
+    "calc error {\"error\": {\"code\": \"UNSUPPORTED\", \"message\": \"eve-fit-mcp has no --prices FILE input (engine global option)\"}}"
+   ]
+  },
+  "calcprice_file_snapshot": {
+   "pass": false,
+   "kind": "calc_price",
+   "fits": 1,
+   "ops": [],
+   "first": [
+    "calc error {\"error\": {\"code\": \"UNSUPPORTED\", \"message\": \"eve-fit-mcp has no --prices FILE input (engine global option)\"}}"
+   ]
+  },
+  "calcprice_overrides": {
+   "pass": true,
+   "kind": "calc_price",
+   "fits": 1,
+   "ops": [],
+   "first": []
+  },
+  "calcprice_request_over_file": {
+   "pass": false,
+   "kind": "calc_price",
+   "fits": 1,
+   "ops": [],
+   "first": [
+    "calc error {\"error\": {\"code\": \"UNSUPPORTED\", \"message\": \"eve-fit-mcp has no --prices FILE input (engine global option)\"}}"
+   ]
+  },
+  "calcprice_request_table": {
+   "pass": true,
+   "kind": "calc_price",
+   "fits": 1,
+   "ops": [],
+   "first": []
+  },
+  "calcprice_use_snapshot_false": {
+   "pass": false,
+   "kind": "calc_price",
+   "fits": 1,
+   "ops": [],
+   "first": [
+    "calc error {\"error\": {\"code\": \"UNSUPPORTED\", \"message\": \"eve-fit-mcp has no --prices FILE input (engine global option)\"}}"
+   ]
+  },
+  "gap_bad_override_both_values": {
+   "pass": true,
+   "kind": "gap_error",
+   "fits": 1,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "gap_bad_override_duplicate": {
+   "pass": true,
+   "kind": "gap_error",
+   "fits": 1,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "gap_bad_override_in_variant": {
+   "pass": true,
+   "kind": "gap_error",
+   "fits": 2,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "gap_bad_override_negative": {
+   "pass": true,
+   "kind": "gap_error",
+   "fits": 1,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "gap_bad_override_negative_mult": {
+   "pass": true,
+   "kind": "gap_error",
+   "fits": 1,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "gap_bad_override_no_target": {
+   "pass": true,
+   "kind": "gap_error",
+   "fits": 1,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "gap_bad_override_no_value": {
+   "pass": true,
+   "kind": "gap_error",
+   "fits": 1,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "gap_bad_override_string": {
+   "pass": true,
+   "kind": "gap_error",
+   "fits": 1,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "gap_bad_override_two_targets": {
+   "pass": true,
+   "kind": "gap_error",
+   "fits": 1,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "gap_delta_ref": {
+   "pass": true,
+   "kind": "gap",
+   "fits": 5,
+   "ops": [
+    "fields",
+    "deltas",
+    "sort_by"
+   ],
+   "first": []
+  },
+  "gap_delta_ref_pct_filter": {
+   "pass": true,
+   "kind": "gap",
+   "fits": 5,
+   "ops": [
+    "fields",
+    "deltas",
+    "filter"
+   ],
+   "first": []
+  },
+  "gap_filter_in": {
+   "pass": true,
+   "kind": "gap",
+   "fits": 5,
+   "ops": [
+    "fields",
+    "filter"
+   ],
+   "first": []
+  },
+  "gap_filter_in_numbers": {
+   "pass": true,
+   "kind": "gap",
+   "fits": 5,
+   "ops": [
+    "fields",
+    "deltas",
+    "filter"
+   ],
+   "first": []
+  },
+  "gap_filter_not_null_drops": {
+   "pass": true,
+   "kind": "gap",
+   "fits": 6,
+   "ops": [
+    "fields",
+    "filter"
+   ],
+   "first": []
+  },
+  "gap_prices_file_map": {
+   "pass": false,
+   "kind": "gap",
+   "fits": 2,
+   "ops": [
+    "fields"
+   ],
+   "first": [
+    "no batch result: {\"code\": \"UNSUPPORTED\", \"message\": \"eve-fit-mcp has no --prices FILE input (engine global option)\"}"
+   ]
+  },
+  "gap_prices_file_snapshot": {
+   "pass": false,
+   "kind": "gap",
+   "fits": 3,
+   "ops": [
+    "fields",
+    "deltas"
+   ],
+   "first": [
+    "no batch result: {\"code\": \"UNSUPPORTED\", \"message\": \"eve-fit-mcp has no --prices FILE input (engine global option)\"}"
+   ]
+  },
+  "gap_prices_request_over_file": {
+   "pass": false,
+   "kind": "gap",
+   "fits": 1,
+   "ops": [
+    "fields"
+   ],
+   "first": [
+    "no batch result: {\"code\": \"UNSUPPORTED\", \"message\": \"eve-fit-mcp has no --prices FILE input (engine global option)\"}"
+   ]
+  },
+  "gap_product_sweep_axis": {
+   "pass": true,
+   "kind": "gap",
+   "fits": 9,
+   "ops": [
+    "fields",
+    "deltas",
+    "sort_by"
+   ],
+   "first": []
+  },
+  "gap_swap_type": {
+   "pass": true,
+   "kind": "gap",
+   "fits": 4,
+   "ops": [
+    "fields",
+    "deltas"
+   ],
+   "first": []
+  },
+  "gap_sweep_float": {
+   "pass": true,
+   "kind": "gap",
+   "fits": 9,
+   "ops": [
+    "fields",
+    "deltas"
+   ],
+   "first": []
+  },
+  "gap_sweep_float_inexact": {
+   "pass": true,
+   "kind": "gap",
+   "fits": 3,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "gap_sweep_int": {
+   "pass": true,
+   "kind": "gap",
+   "fits": 3,
+   "ops": [
+    "fields",
+    "deltas"
+   ],
+   "first": []
+  },
+  "gap_too_large_ceiling": {
+   "pass": false,
+   "kind": "gap_error",
+   "fits": 200001,
+   "ops": [
+    "fields"
+   ],
+   "first": [
+    "BATCH_TOO_LARGE.count None != 200001",
+    "BATCH_TOO_LARGE.limit None != 100000"
+   ]
+  },
+  "gap_too_large_default": {
+   "pass": false,
+   "kind": "gap_error",
+   "fits": 2406,
+   "ops": [
+    "fields"
+   ],
+   "first": [
+    "BATCH_TOO_LARGE.count None != 2406",
+    "BATCH_TOO_LARGE.limit None != 2000"
+   ]
+  },
+  "gap_too_large_lowered": {
+   "pass": false,
+   "kind": "gap_error",
+   "fits": 6,
+   "ops": [
+    "fields"
+   ],
+   "first": [
+    "BATCH_TOO_LARGE.count None != 6",
+    "BATCH_TOO_LARGE.limit None != 5"
+   ]
+  },
+  "gap_use_snapshot_false": {
+   "pass": false,
+   "kind": "gap",
+   "fits": 1,
+   "ops": [
+    "fields"
+   ],
+   "first": [
+    "no batch result: {\"code\": \"UNSUPPORTED\", \"message\": \"eve-fit-mcp has no --prices FILE input (engine global option)\"}"
+   ]
+  },
+  "gap_use_snapshot_false_fit": {
+   "pass": false,
+   "kind": "gap",
+   "fits": 2,
+   "ops": [
+    "fields"
+   ],
+   "first": [
+    "no batch result: {\"code\": \"UNSUPPORTED\", \"message\": \"eve-fit-mcp has no --prices FILE input (engine global option)\"}"
+   ]
+  },
+  "gap_variant_own_price_table": {
+   "pass": false,
+   "kind": "gap",
+   "fits": 3,
+   "ops": [
+    "fields"
+   ],
+   "first": [
+    "no batch result: {\"code\": \"UNSUPPORTED\", \"message\": \"eve-fit-mcp has no --prices FILE input (engine global option)\"}"
+   ]
+  },
+  "multi_100_full": {
+   "pass": false,
+   "kind": "multi",
+   "fits": 100,
+   "ops": [],
+   "first": [
+    "[0] stats not identical to one-by-one calc (keys ['engine', 'notes', 'request_hash'])",
+    "[1] stats not identical to one-by-one calc (keys ['engine', 'notes', 'request_hash'])",
+    "[2] stats not identical to one-by-one calc (keys ['engine', 'notes', 'request_hash'])",
+    "[3] stats not identical to one-by-one calc (keys ['engine', 'notes', 'request_hash'])",
+    "[4] stats not identical to one-by-one calc (keys ['engine', 'notes', 'request_hash'])"
+   ]
+  },
+  "multi_10_fields": {
+   "pass": true,
+   "kind": "multi",
+   "fits": 10,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "multi_25_fields": {
+   "pass": true,
+   "kind": "multi",
+   "fits": 25,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "multi_5_full": {
+   "pass": false,
+   "kind": "multi",
+   "fits": 5,
+   "ops": [],
+   "first": [
+    "[0] stats not identical to one-by-one calc (keys ['engine', 'notes', 'request_hash'])",
+    "[1] stats not identical to one-by-one calc (keys ['engine', 'notes', 'request_hash'])",
+    "[2] stats not identical to one-by-one calc (keys ['engine', 'notes', 'request_hash'])",
+    "[3] stats not identical to one-by-one calc (keys ['engine', 'notes', 'request_hash'])",
+    "[4] stats not identical to one-by-one calc (keys ['engine', 'notes', 'request_hash'])"
+   ]
+  },
+  "multi_all_core": {
+   "pass": true,
+   "kind": "multi",
+   "fits": 339,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "multi_duplicates": {
+   "pass": false,
+   "kind": "multi",
+   "fits": 9,
+   "ops": [],
+   "first": [
+    "[0] stats not identical to one-by-one calc (keys ['engine', 'notes', 'request_hash'])",
+    "[1] stats not identical to one-by-one calc (keys ['engine', 'notes', 'request_hash'])",
+    "[2] stats not identical to one-by-one calc (keys ['engine', 'notes', 'request_hash'])",
+    "[3] stats not identical to one-by-one calc (keys ['engine', 'notes', 'request_hash'])",
+    "[4] stats not identical to one-by-one calc (keys ['engine', 'notes', 'request_hash'])"
+   ]
+  },
+  "multi_error_in_place": {
+   "pass": false,
+   "kind": "multi",
+   "fits": 8,
+   "ops": [
+    "fields"
+   ],
+   "first": [
+    "no batch result: {\"code\": \"UNKNOWN_TYPE\", \"message\": \"Error: UNKNOWN_TYPE: unknown type id 999999999 (at fits/4/fit)\"}"
+   ]
+  },
+  "multi_ext_mix": {
+   "pass": false,
+   "kind": "multi",
+   "fits": 30,
+   "ops": [
+    "fields"
+   ],
+   "first": [
+    "[4] expected error None, got {\"id\": \"tpb_rifter_uniform50\", \"index\": 4, \"label\": \"tpb_rifter_uniform50\", \"provenance\": {\"engine\": \"eve-dogma-f 0.1.0\"",
+    "[14] expected error None, got {\"id\": \"dpb_thorax_uniform\", \"index\": 14, \"label\": \"dpb_thorax_uniform\", \"provenance\": {\"engine\": \"eve-dogma-f 0.1.0\", \""
+   ]
+  },
+  "multi_filter_fast": {
+   "pass": true,
+   "kind": "multi",
+   "fits": 60,
+   "ops": [
+    "fields",
+    "filter"
+   ],
+   "first": []
+  },
+  "multi_filter_sort_2key": {
+   "pass": true,
+   "kind": "multi",
+   "fits": 80,
+   "ops": [
+    "fields",
+    "filter",
+    "sort_by"
+   ],
+   "first": []
+  },
+  "multi_single": {
+   "pass": false,
+   "kind": "multi",
+   "fits": 1,
+   "ops": [],
+   "first": [
+    "[0] stats not identical to one-by-one calc (keys ['engine', 'notes', 'request_hash'])"
+   ]
+  },
+  "multi_sort_dps_top10": {
+   "pass": true,
+   "kind": "multi",
+   "fits": 60,
+   "ops": [
+    "fields",
+    "sort_by",
+    "top_n"
+   ],
+   "first": []
+  },
+  "price_chain_variant_over_request": {
+   "pass": true,
+   "kind": "price",
+   "fits": 3,
+   "ops": [
+    "fields",
+    "deltas"
+   ],
+   "first": []
+  },
+  "price_fit_level_overrides": {
+   "pass": true,
+   "kind": "price",
+   "fits": 1,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "price_fits_entries": {
+   "pass": true,
+   "kind": "price",
+   "fits": 3,
+   "ops": [
+    "fields",
+    "sort_by"
+   ],
+   "first": []
+  },
+  "price_injected_complete": {
+   "pass": true,
+   "kind": "price",
+   "fits": 1,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "price_market_group_children": {
+   "pass": true,
+   "kind": "price",
+   "fits": 1,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "price_market_group_deepest": {
+   "pass": true,
+   "kind": "price",
+   "fits": 1,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "price_missing_list": {
+   "pass": true,
+   "kind": "price",
+   "fits": 1,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "price_multiplier_without_base": {
+   "pass": true,
+   "kind": "price",
+   "fits": 1,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "price_product_options": {
+   "pass": true,
+   "kind": "price",
+   "fits": 6,
+   "ops": [
+    "fields",
+    "deltas",
+    "sort_by"
+   ],
+   "first": []
+  },
+  "price_specificity_order": {
+   "pass": true,
+   "kind": "price",
+   "fits": 1,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "price_type_beats_injected": {
+   "pass": true,
+   "kind": "price",
+   "fits": 1,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "price_variant_fixed_beats_request_fixed": {
+   "pass": true,
+   "kind": "price",
+   "fits": 2,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "price_variants_sort_filter": {
+   "pass": true,
+   "kind": "price",
+   "fits": 6,
+   "ops": [
+    "fields",
+    "deltas",
+    "filter",
+    "sort_by"
+   ],
+   "first": []
+  },
+  "price_zero_self_made": {
+   "pass": true,
+   "kind": "price",
+   "fits": 1,
+   "ops": [
+    "fields"
+   ],
+   "first": []
+  },
+  "product_full_output": {
+   "pass": false,
+   "kind": "product",
+   "fits": 4,
+   "ops": [],
+   "first": [
+    "[0] stats not identical to one-by-one calc (keys ['engine', 'notes', 'request_hash'])",
+    "[1] stats not identical to one-by-one calc (keys ['engine', 'notes', 'request_hash'])",
+    "[2] stats not identical to one-by-one calc (keys ['engine', 'notes', 'request_hash'])",
+    "[3] stats not identical to one-by-one calc (keys ['engine', 'notes', 'request_hash'])"
+   ]
+  },
+  "product_skill_charge_state_0": {
+   "pass": true,
+   "kind": "product",
+   "fits": 12,
+   "ops": [
+    "fields",
+    "deltas"
+   ],
+   "first": []
+  },
+  "product_skill_charge_state_1": {
+   "pass": true,
+   "kind": "product",
+   "fits": 24,
+   "ops": [
+    "fields",
+    "deltas",
+    "sort_by",
+    "top_n"
+   ],
+   "first": []
+  },
+  "product_skill_charge_state_2": {
+   "pass": true,
+   "kind": "product",
+   "fits": 12,
+   "ops": [
+    "fields",
+    "deltas"
+   ],
+   "first": []
+  },
+  "product_skill_charge_state_3": {
+   "pass": true,
+   "kind": "product",
+   "fits": 12,
+   "ops": [
+    "fields",
+    "deltas",
+    "sort_by",
+    "top_n"
+   ],
+   "first": []
+  },
+  "product_states_dp_0": {
+   "pass": true,
+   "kind": "product",
+   "fits": 32,
+   "ops": [
+    "fields",
+    "deltas"
+   ],
+   "first": []
+  },
+  "product_states_dp_1": {
+   "pass": true,
+   "kind": "product",
+   "fits": 32,
+   "ops": [
+    "fields",
+    "deltas"
+   ],
+   "first": []
+  },
+  "product_states_dp_2": {
+   "pass": true,
+   "kind": "product",
+   "fits": 32,
+   "ops": [
+    "fields",
+    "deltas",
+    "filter"
+   ],
+   "first": []
+  },
+  "product_states_dp_3": {
+   "pass": true,
+   "kind": "product",
+   "fits": 32,
+   "ops": [
+    "fields",
+    "deltas",
+    "filter"
+   ],
+   "first": []
+  },
+  "sweep_charge_0": {
+   "pass": true,
+   "kind": "sweep",
+   "fits": 2,
+   "ops": [
+    "fields",
+    "deltas",
+    "sort_by",
+    "top_n"
+   ],
+   "first": []
+  },
+  "sweep_charge_1": {
+   "pass": true,
+   "kind": "sweep",
+   "fits": 2,
+   "ops": [
+    "fields",
+    "deltas",
+    "sort_by",
+    "top_n"
+   ],
+   "first": []
+  },
+  "sweep_damage_pattern": {
+   "pass": true,
+   "kind": "sweep",
+   "fits": 5,
+   "ops": [
+    "fields",
+    "deltas",
+    "sort_by"
+   ],
+   "first": []
+  },
+  "sweep_skill_override_full": {
+   "pass": false,
+   "kind": "sweep",
+   "fits": 3,
+   "ops": [],
+   "first": [
+    "[0] stats not identical to one-by-one calc (keys ['engine', 'notes', 'request_hash'])",
+    "[1] stats not identical to one-by-one calc (keys ['engine', 'notes', 'request_hash'])",
+    "[2] stats not identical to one-by-one calc (keys ['engine', 'notes', 'request_hash'])"
+   ]
+  },
+  "sweep_skills_0": {
+   "pass": true,
+   "kind": "sweep",
+   "fits": 6,
+   "ops": [
+    "fields",
+    "deltas"
+   ],
+   "first": []
+  },
+  "sweep_skills_1": {
+   "pass": true,
+   "kind": "sweep",
+   "fits": 6,
+   "ops": [
+    "fields",
+    "deltas"
+   ],
+   "first": []
+  },
+  "sweep_skills_2": {
+   "pass": true,
+   "kind": "sweep",
+   "fits": 6,
+   "ops": [
+    "fields",
+    "deltas"
+   ],
+   "first": []
+  },
+  "sweep_skills_3": {
+   "pass": true,
+   "kind": "sweep",
+   "fits": 6,
+   "ops": [
+    "fields",
+    "deltas"
+   ],
+   "first": []
+  },
+  "sweep_state_0": {
+   "pass": true,
+   "kind": "sweep",
+   "fits": 4,
+   "ops": [
+    "fields",
+    "deltas",
+    "sort_by"
+   ],
+   "first": []
+  },
+  "sweep_state_1": {
+   "pass": true,
+   "kind": "sweep",
+   "fits": 4,
+   "ops": [
+    "fields",
+    "deltas",
+    "sort_by"
+   ],
+   "first": []
+  },
+  "sweep_state_2": {
+   "pass": true,
+   "kind": "sweep",
+   "fits": 4,
+   "ops": [
+    "fields",
+    "deltas",
+    "sort_by"
+   ],
+   "first": []
+  },
+  "variants_charges_0": {
+   "pass": true,
+   "kind": "variants",
+   "fits": 2,
+   "ops": [
+    "fields",
+    "deltas",
+    "sort_by"
+   ],
+   "first": []
+  },
+  "variants_charges_1": {
+   "pass": true,
+   "kind": "variants",
+   "fits": 1,
+   "ops": [
+    "fields",
+    "deltas",
+    "sort_by"
+   ],
+   "first": []
+  },
+  "variants_charges_2": {
+   "pass": true,
+   "kind": "variants",
+   "fits": 1,
+   "ops": [
+    "fields",
+    "deltas",
+    "sort_by"
+   ],
+   "first": []
+  },
+  "variants_damage_pattern": {
+   "pass": true,
+   "kind": "variants",
+   "fits": 5,
+   "ops": [
+    "fields",
+    "deltas"
+   ],
+   "first": []
+  },
+  "variants_full_output": {
+   "pass": false,
+   "kind": "variants",
+   "fits": 6,
+   "ops": [],
+   "first": [
+    "[0] stats not identical to one-by-one calc (keys ['engine', 'notes', 'request_hash'])",
+    "[1] stats not identical to one-by-one calc (keys ['engine', 'notes', 'request_hash'])",
+    "[2] stats not identical to one-by-one calc (keys ['engine', 'notes', 'request_hash'])",
+    "[3] stats not identical to one-by-one calc (keys ['engine', 'notes', 'request_hash'])",
+    "[4] stats not identical to one-by-one calc (keys ['engine', 'notes', 'request_hash'])"
+   ]
+  },
+  "variants_states_0": {
+   "pass": true,
+   "kind": "variants",
+   "fits": 6,
+   "ops": [
+    "fields",
+    "deltas"
+   ],
+   "first": []
+  },
+  "variants_states_1": {
+   "pass": true,
+   "kind": "variants",
+   "fits": 6,
+   "ops": [
+    "fields",
+    "deltas"
+   ],
+   "first": []
+  },
+  "variants_states_2": {
+   "pass": true,
+   "kind": "variants",
+   "fits": 6,
+   "ops": [
+    "fields",
+    "deltas"
+   ],
+   "first": []
+  },
+  "variants_states_3": {
+   "pass": true,
+   "kind": "variants",
+   "fits": 6,
+   "ops": [
+    "fields",
+    "deltas"
+   ],
+   "first": []
+  },
+  "variants_struct_0": {
+   "pass": true,
+   "kind": "variants",
+   "fits": 6,
+   "ops": [
+    "fields",
+    "deltas",
+    "filter"
+   ],
+   "first": []
+  },
+  "variants_struct_1": {
+   "pass": true,
+   "kind": "variants",
+   "fits": 6,
+   "ops": [
+    "fields",
+    "deltas",
+    "filter"
+   ],
+   "first": []
+  },
+  "variants_struct_2": {
+   "pass": true,
+   "kind": "variants",
+   "fits": 6,
+   "ops": [
+    "fields",
+    "deltas",
+    "filter"
+   ],
+   "first": []
+  }
+ }
+}
