@@ -1,0 +1,6 @@
+{
+ "case": "err_unknown_type_in_target_fit",
+ "expect_error": "UNKNOWN_TYPE",
+ "graph": "damage",
+ "oracle": "contract"
+}

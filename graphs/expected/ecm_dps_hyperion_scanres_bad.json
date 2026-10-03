@@ -1,0 +1,16 @@
+{
+ "case": "ecm_dps_hyperion_scanres_bad",
+ "graph": "ecm_burst",
+ "oracle": "pyfa-graphs",
+ "series": {
+  "src_damage": [
+   null,
+   null
+  ]
+ },
+ "x": [
+  100,
+  500
+ ],
+ "x_axis": "tgt_dps"
+}

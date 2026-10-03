@@ -1,0 +1,10 @@
+{
+ "case": "empty_x_ewar_vs_fit",
+ "graph": "ewar",
+ "oracle": "pyfa-graphs",
+ "series": {
+  "web_pct": []
+ },
+ "x": [],
+ "x_axis": "distance_m"
+}

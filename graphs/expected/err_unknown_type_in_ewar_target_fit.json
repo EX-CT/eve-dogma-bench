@@ -1,0 +1,6 @@
+{
+ "case": "err_unknown_type_in_ewar_target_fit",
+ "expect_error": "UNKNOWN_TYPE",
+ "graph": "ewar",
+ "oracle": "contract"
+}

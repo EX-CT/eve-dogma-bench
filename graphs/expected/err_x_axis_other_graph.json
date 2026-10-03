@@ -1,0 +1,6 @@
+{
+ "case": "err_x_axis_other_graph",
+ "expect_error": "BAD_AXIS",
+ "graph": "capacitor",
+ "oracle": "contract"
+}

@@ -186,10 +186,115 @@ LS = [0, 0.5, 1, 10, 25, 40, 65, 125, 250, 400, 1000, 5000, 100000]
 for n in ("exct_rifter", "exct_hyperion", "exct_avatar_lance", "exct_sabre", "exct_crucifier", "exct_rattlesnake"):
     add("lock_" + n.split("_", 1)[1], "lock_time", corpus(n), "tgt_sig_m", LS, ["time_s"])
 
+# ======================================================================== contract 0.2 additions
+# ---- damage: percentage x axes (Pyfa XDef tgtSpeed % / tgtSigRad %, normalised by the target's own max speed / sig)
+SPEED_PCT = [0, 10, 25, 50, 75, 100, 150, 200]
+SIG_PCT = [0, 10, 25, 50, 100, 150, 200, 400]
+add("dmg_speedpct_rifter", "damage", corpus("exct_rifter"), "tgt_speed_pct", SPEED_PCT, ["dps", "volley"], {"distance_m": 5000}, SMALL)
+add("dmg_speedpct_tengu", "damage", corpus("exct_tengu"), "tgt_speed_pct", SPEED_PCT, ["dps"], {"distance_m": 20000}, CRUISER)
+add("dmg_speedpct_hyperion_web_vs_fit", "damage", corpus("exct_hyperion"), "tgt_speed_pct", SPEED_PCT, ["dps"], {"distance_m": 7500},
+    {"fit": corpus("exct_sabre"), "resist_mode": "auto"}, {"ignore_resists": False})
+add("dmg_speedpct_ideal", "damage", corpus("exct_kronos"), "tgt_speed_pct", [0, 50, 100], ["dps"], {"distance_m": 5000}, IDEAL)
+add("dmg_sigpct_raven", "damage", corpus("exct_raven"), "tgt_sig_pct", SIG_PCT, ["dps", "volley"], {"distance_m": 30000, "tgt_speed_pct": 100}, CRUISER)
+add("dmg_sigpct_hyperion_vs_fit", "damage", corpus("exct_hyperion"), "tgt_sig_pct", SIG_PCT, ["dps"], {"distance_m": 5000, "tgt_speed_pct": 50},
+    {"fit": corpus("exct_guardian"), "resist_mode": "armor"}, {"ignore_resists": False})
+add("dmg_sigpct_cerberus_time", "damage", corpus("exct_cerberus"), "tgt_sig_pct", SIG_PCT, ["damage"], {"distance_m": 40000, "time_s": 20}, BS)
+add("dmg_sigpct_ideal_null", "damage", corpus("exct_kronos"), "tgt_sig_pct", [50, 100, 200], ["dps"], {"distance_m": 5000}, IDEAL)
+add("dmg_sig_bounds", "damage", corpus("exct_hyperion"), "tgt_sig_m", [-10, 0, 0.5, 1, 125], ["dps"], {"distance_m": 5000, "tgt_speed_pct": 100}, CRUISER)
+add("dmg_time_bounds", "damage", corpus("exct_rifter"), "time_s", [-0.001, 0, 2499.999, 2500, 2500.001], ["dps", "damage"], {"distance_m": 3000}, SMALL)
+add("dmg_time_param_clamped", "damage", corpus("exct_rifter"), "distance_m", KM(0, 1, 5), ["damage"], {"time_s": 5000}, SMALL)
+# ---- ewar / remote_reps against a target fit (Pyfa has no target here: values derived from Pyfa's projected-effect
+# handlers, see CONTRACT-GRAPHS.md "Target fits for ewar / remote_reps")
+AVATAR, HEL, ASTRAHUS = corpus("exct_avatar_lance"), corpus("exct_hel"), corpus("esf_structure_stats")
+add("ewar_huginn_web_tp_vs_avatar", "ewar", HUGINN_WEB, "distance_m", EW, ["web_pct", "tp_sig_pct"], target={"fit": AVATAR})
+add("ewar_maulus_damp_vs_hel", "ewar", MAULUS_DAMP, "distance_m", EW, ["damp_lock_range_pct"], target={"fit": HEL})
+add("ewar_arbitrator_td_neut_vs_avatar", "ewar", ARBI_TD, "distance_m", EW, ["td_optimal_pct", "neut_gj_s"], target={"fit": AVATAR})
+add("ewar_bhaalgorn_neut_vs_avatar", "ewar", BHAAL_NEUT, "distance_m", EW, ["neut_gj_s"], target={"fit": AVATAR})
+add("ewar_griffin_ecm_vs_astrahus", "ewar", GRIFFIN_ECM, "distance_m", EW, ["ecm_strength"], target={"fit": ASTRAHUS})
+add("ewar_curse_vs_astrahus", "ewar", corpus("exct_curse"), "distance_m", EW, ["neut_gj_s", "td_optimal_pct"], target={"fit": ASTRAHUS})
+add("ewar_vexor_drones_vs_hel", "ewar", VEXOR_EWAR_DRONES, "distance_m", EW, ["ecm_strength", "web_pct"], target={"fit": HEL})
+add("ewar_vigil_tp_vs_rifter", "ewar", VIGIL_TP, "distance_m", EW, ["tp_sig_pct"], target={"fit": corpus("exct_rifter")})
+add("ewar_huginn_explicit_resist_wins", "ewar", HUGINN_WEB, "distance_m", EW, ["web_pct"], {"resist": 0.1}, {"fit": AVATAR})
+add("ewar_resist_clamp_high", "ewar", HUGINN_WEB, "distance_m", KM(0, 10, 20), ["web_pct", "tp_sig_pct"], {"resist": 1.5})
+add("ewar_resist_clamp_low", "ewar", HUGINN_WEB, "distance_m", KM(0, 10, 20), ["web_pct", "tp_sig_pct"], {"resist": -0.5})
+add("rr_guardian_vs_vargur_bastion", "remote_reps", corpus("exct_guardian"), "distance_m", RRD, ["rps"], target={"fit": corpus("exct_vargur")})
+add("rr_oneiros_vs_astrahus", "remote_reps", ONEIROS_RR, "distance_m", RRD, ["rps", "total"], {"time_s": 60}, {"fit": ASTRAHUS})
+add("rr_scimitar_vs_rifter", "remote_reps", SCIMI_RR, "distance_m", RRD, ["rps"], target={"fit": corpus("exct_rifter")})
+add("rr_oneiros_time_vs_kronos", "remote_reps", ONEIROS_RR, "time_s", [0, 5, 30, 60, 61, 120], ["rps", "total"], {"distance_m": 10000}, {"fit": corpus("exct_kronos")})
+add("rr_time_bounds", "remote_reps", ONEIROS_RR, "time_s", [-1, 0, 2500, 2501], ["rps", "total"], {"distance_m": 10000})
+# ---- ecm_burst: Pyfa's hidden "ECM Burst + Scanres Damps" graph (fitEcmBurstScanresDamps)
+GRIFFIN_BURST_DAMP = fit(584, [(2117, None), (1969, 29013), (1969, 29013), (1969, None)])
+MAULUS_DAMP_DRONES = fit(609, [(1969, 29013), (1969, 29013), (2117, None)], drones=[(23715, 2, 2)])
+SCANRES = [0, 0.5, 1, 25, 50, 100, 200, 300, 500, 700, 1000, 2000, 5000]
+TDPS = [-50, 0, 1, 25, 50, 100, 200, 400, 600, 1000, 5000]
+ECM_Y = ["src_damage", "tgt_lock_time_s", "tgt_lock_uptime_s"]
+add("ecm_scanres_griffin_damps", "ecm_burst", GRIFFIN_BURST_DAMP, "tgt_scan_res_mm", SCANRES, ECM_Y)
+add("ecm_scanres_griffin_nodamps", "ecm_burst", GRIFFIN_BURST_DAMP, "tgt_scan_res_mm", SCANRES, ECM_Y, {"apply_damps": False})
+add("ecm_scanres_maulus_drones", "ecm_burst", MAULUS_DAMP_DRONES, "tgt_scan_res_mm", SCANRES, ECM_Y, {"tgt_dps": 50})
+add("ecm_scanres_rifter", "ecm_burst", corpus("exct_rifter"), "tgt_scan_res_mm", SCANRES, ECM_Y)
+add("ecm_scanres_vexor_params", "ecm_burst", corpus("drones_mixed_vexor"), "tgt_scan_res_mm", SCANRES, ["src_damage"],
+    {"tgt_dps": 300, "uptime_adj_s": 0, "uptime_amount_limit": 5})
+add("ecm_dps_vexor_drones", "ecm_burst", corpus("drones_mixed_vexor"), "tgt_dps", TDPS, ["src_damage"])
+add("ecm_dps_vexor_nodrones", "ecm_burst", corpus("drones_mixed_vexor"), "tgt_dps", TDPS, ["src_damage"], {"apply_drones": False, "tgt_scan_res_mm": 300})
+add("ecm_dps_rifter_limit1", "ecm_burst", corpus("exct_rifter"), "tgt_dps", TDPS, ["src_damage"], {"uptime_amount_limit": 1, "uptime_adj_s": 2.5})
+add("ecm_dps_hyperion_scanres_bad", "ecm_burst", corpus("exct_hyperion"), "tgt_dps", [100, 500], ["src_damage"], {"tgt_scan_res_mm": 0.5})
+add("ecm_dps_hyperion_damage_pattern", "ecm_burst", corpus("dmgpattern_kin_maelstrom"), "tgt_dps", TDPS, ["src_damage"], {"tgt_scan_res_mm": 150})
+# ---- boundaries
+add("empty_x_damage", "damage", corpus("exct_rifter"), "distance_m", [], ["dps", "volley"], {"tgt_speed_pct": 100}, SMALL)
+add("empty_x_capacitor", "capacitor", corpus("exct_hyperion"), "time_s", [], ["cap_gj"])
+add("empty_x_ewar_vs_fit", "ewar", HUGINN_WEB, "distance_m", [], ["web_pct"], target={"fit": AVATAR})
+add("empty_x_ecm_burst", "ecm_burst", GRIFFIN_BURST_DAMP, "tgt_scan_res_mm", [], ECM_Y)
+add("shield_pct_bounds", "shield_regen", corpus("exct_tengu"), "shield_pct", [-10, -0.001, 0, 100, 100.001, 110], ["shield_hp", "shield_regen_hp_s"])
+add("cap_bounds", "capacitor", corpus("exct_rifter"), "cap_pct", [-1, 0, 100, 100.5], ["cap_gj"])
+add("cap_time_bounds", "capacitor", corpus("exct_rifter"), "time_s", [-1, 0, 3600, 3600.5], ["cap_gj"], {"use_capsim": False})
+add("lock_sig_bounds", "lock_time", corpus("exct_rifter"), "tgt_sig_m", [-5, 0.99, 1, 1.01], ["time_s"])
+add("warp_max_bounds", "warp_time", corpus("exct_rifter"), "distance_m", [0.9999 * 25020516898455.395, 1.0001 * 25020516898455.395], ["time_s"])
+add("mob_time_zero_bounds", "mobility", corpus("exct_rifter"), "time_s", [0, 1e-9, 3600], ["speed_mps", "distance_m"])
+
+# ---- error cases: expected = the error code the contract prescribes (graphs/expected/err_*.json, oracle "contract")
+ERRORS = {}
+
+
+def err(name, req, code):
+    ERRORS[name] = (req, code)
+
+
+_RIF = corpus("exct_rifter")
+_base = {"schema_version": 1, "graph": "damage", "fit": _RIF, "x": {"axis": "distance_m", "values": [0, 1000]}, "y": ["dps"]}
+_mk = lambda **kw: dict(_base, **kw)  # noqa: E731
+err("err_unknown_graph", _mk(graph="fitDamageStats"), "UNKNOWN_GRAPH")
+err("err_missing_graph", {k: v for k, v in _base.items() if k != "graph"}, "BAD_REQUEST")
+err("err_bad_x_axis", _mk(x={"axis": "distance_km", "values": [0]}), "BAD_AXIS")
+err("err_x_axis_other_graph", _mk(graph="capacitor", x={"axis": "distance_m", "values": [0]}, y=["cap_gj"]), "BAD_AXIS")
+err("err_bad_y", _mk(y=["dps", "alpha"]), "BAD_AXIS")
+err("err_ecm_tgt_dps_lock_time", _mk(graph="ecm_burst", x={"axis": "tgt_dps", "values": [100]}, y=["tgt_lock_time_s"]), "BAD_AXIS")
+err("err_ecm_bad_axis", _mk(graph="ecm_burst", x={"axis": "distance_m", "values": [100]}, y=["src_damage"]), "BAD_AXIS")
+err("err_missing_fit", {k: v for k, v in _base.items() if k != "fit"}, "BAD_REQUEST")
+err("err_missing_x", {k: v for k, v in _base.items() if k != "x"}, "BAD_REQUEST")
+err("err_missing_x_values", _mk(x={"axis": "distance_m"}), "BAD_REQUEST")
+err("err_null_in_x", _mk(x={"axis": "distance_m", "values": [0, None, 1000]}), "BAD_REQUEST")
+err("err_string_in_x", _mk(x={"axis": "distance_m", "values": [0, "5km"]}), "BAD_REQUEST")
+err("err_missing_y", {k: v for k, v in _base.items() if k != "y"}, "BAD_REQUEST")
+err("err_empty_y", _mk(y=[]), "BAD_REQUEST")
+err("err_bad_resist_mode", _mk(target={"fit": corpus("exct_svipul"), "resist_mode": "kinetic"}), "BAD_REQUEST")
+err("err_bad_drone_mode", _mk(settings={"mobile_drone_mode": "orbit"}), "BAD_REQUEST")
+err("err_bad_ammo_quality", _mk(graph="application_profile", params={"ammo_quality": "faction"}), "BAD_REQUEST")
+err("err_unknown_ship", _mk(fit=dict(_RIF, ship={"type_id": 999999999})), "UNKNOWN_TYPE")
+err("err_unknown_type_in_target_fit", _mk(target={"fit": dict(corpus("exct_svipul"), ship={"type_id": 999999999})}), "UNKNOWN_TYPE")
+err("err_unknown_type_in_ewar_target_fit", _mk(graph="ewar", y=["web_pct"], target={"fit": dict(_RIF, ship={"type_id": 999999999})}), "UNKNOWN_TYPE")
+
 if __name__ == "__main__":
     OUT.mkdir(parents=True, exist_ok=True)
     for old in OUT.glob("*.json"):
         old.unlink()
     for name, r in sorted(cases.items()):
         (OUT / (name + ".json")).write_text(json.dumps(r, indent=1, sort_keys=True) + "\n")
-    print(len(cases), "graph cases,", sum(len(r["x"]["values"]) * len(r["y"]) for r in cases.values()), "sample values")
+    exp = ROOT / "graphs/expected"
+    for old in exp.glob("err_*.json"):
+        old.unlink()
+    for name, (r, code) in sorted(ERRORS.items()):
+        (OUT / (name + ".json")).write_text(json.dumps(r, indent=1, sort_keys=True) + "\n")
+        e = {"case": name, "graph": r.get("graph"), "oracle": "contract", "expect_error": code}
+        (exp / (name + ".json")).write_text(json.dumps(e, indent=1, sort_keys=True) + "\n")
+    print(len(cases), "graph cases,", sum(max(1, len(r["x"]["values"])) * len(r["y"]) for r in cases.values()),
+          "sample values (empty x: 1 shape value per y);", len(ERRORS), "error cases")

@@ -1,0 +1,22 @@
+{
+ "case": "dmg_sig_bounds",
+ "graph": "damage",
+ "oracle": "pyfa-graphs",
+ "series": {
+  "dps": [
+   null,
+   null,
+   160.78392,
+   160.78392,
+   616.669396337704
+  ]
+ },
+ "x": [
+  -10,
+  0,
+  0.5,
+  1,
+  125
+ ],
+ "x_axis": "tgt_sig_m"
+}

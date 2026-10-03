@@ -1,0 +1,16 @@
+{
+ "case": "warp_max_bounds",
+ "graph": "warp_time",
+ "oracle": "pyfa-graphs",
+ "series": {
+  "time_s": [
+   51.434553945026934,
+   null
+  ]
+ },
+ "x": [
+  25018014846765.55,
+  25023018950145.24
+ ],
+ "x_axis": "distance_m"
+}

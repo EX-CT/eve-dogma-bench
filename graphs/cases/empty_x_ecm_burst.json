@@ -1,0 +1,45 @@
+{
+ "fit": {
+  "character": {
+   "skills": {
+    "default_level": 5
+   }
+  },
+  "drones": [],
+  "modules": [
+   {
+    "state": "active",
+    "type_id": 2117
+   },
+   {
+    "charge_type_id": 29013,
+    "state": "active",
+    "type_id": 1969
+   },
+   {
+    "charge_type_id": 29013,
+    "state": "active",
+    "type_id": 1969
+   },
+   {
+    "state": "active",
+    "type_id": 1969
+   }
+  ],
+  "schema_version": 1,
+  "ship": {
+   "type_id": 584
+  }
+ },
+ "graph": "ecm_burst",
+ "schema_version": 1,
+ "x": {
+  "axis": "tgt_scan_res_mm",
+  "values": []
+ },
+ "y": [
+  "src_damage",
+  "tgt_lock_time_s",
+  "tgt_lock_uptime_s"
+ ]
+}

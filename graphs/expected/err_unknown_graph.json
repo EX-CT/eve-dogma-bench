@@ -1,0 +1,6 @@
+{
+ "case": "err_unknown_graph",
+ "expect_error": "UNKNOWN_GRAPH",
+ "graph": "fitDamageStats",
+ "oracle": "contract"
+}

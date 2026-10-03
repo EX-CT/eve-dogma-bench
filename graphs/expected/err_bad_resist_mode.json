@@ -1,0 +1,6 @@
+{
+ "case": "err_bad_resist_mode",
+ "expect_error": "BAD_REQUEST",
+ "graph": "damage",
+ "oracle": "contract"
+}

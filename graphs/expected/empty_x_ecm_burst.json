@@ -1,0 +1,12 @@
+{
+ "case": "empty_x_ecm_burst",
+ "graph": "ecm_burst",
+ "oracle": "pyfa-graphs",
+ "series": {
+  "src_damage": [],
+  "tgt_lock_time_s": [],
+  "tgt_lock_uptime_s": []
+ },
+ "x": [],
+ "x_axis": "tgt_scan_res_mm"
+}

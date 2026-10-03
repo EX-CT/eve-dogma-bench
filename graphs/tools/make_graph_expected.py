@@ -11,7 +11,8 @@ STUB = os.environ.get("WX_STUB", f"{REF}/stubs")
 
 
 def main():
-    files = sorted(str(p) for p in (ROOT / "graphs/cases").glob("*.json"))
+    # err_* cases are contract-defined error cases; their expected files are written by make_graph_cases.py
+    files = sorted(str(p) for p in (ROOT / "graphs/cases").glob("*.json") if not p.stem.startswith("err_"))
     if len(sys.argv) > 1:
         files = [f for f in files if Path(f).stem in sys.argv[1:]]
     env = dict(os.environ, PYTHONPATH=STUB, PYFA=PYFA)
@@ -26,7 +27,7 @@ def main():
         r = {"case": name, "oracle": "pyfa-graphs", **r}
         (ROOT / "graphs/expected" / (name + ".json")).write_text(json.dumps(r, indent=1, sort_keys=True) + "\n")
         n += 1
-        pts += sum(len(v) for v in r["series"].values())
+        pts += sum(max(1, len(v)) for v in r["series"].values())
     print(f"{n} expected files, {pts} sample values")
     if out.returncode:
         sys.stderr.write(out.stderr[-4000:])

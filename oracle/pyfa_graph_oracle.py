@@ -37,6 +37,7 @@ from graphs.data.fitWarpTime import getter as WARP  # noqa: E402
 from graphs.data.fitWarpTime.cache import SubwarpSpeedCache  # noqa: E402
 from graphs.data.fitLockTime import getter as LOCK  # noqa: E402
 from graphs.data.fitApplicationProfile import getter as APP  # noqa: E402
+from graphs.data.fitEcmBurstScanresDamps import getter as ECMB  # noqa: E402
 
 AU = WARP.AU_METERS
 
@@ -133,9 +134,17 @@ def damage_point(req, fit, axis, y, x):
         return None  # Pyfa: inflicted damage needs a time
     g = FakeGraph()
     g._timeCache = DmgTimeCache()
+    # percentage axes: Pyfa `_normalizers` ('tgtSpeed', '%') / ('tgtSigRad', '%') -> absolute value
+    if axis == "tgt_speed_pct":
+        axis, x = "tgt_speed_mps", x / 100 * tgt.getMaxVelocity()
+    elif axis == "tgt_sig_pct":
+        sig = tgt.getSigRadius()
+        if sig is None or not math.isfinite(sig):
+            return None  # infinite-signature (ideal) target: % of infinity is not a sample point
+        axis, x = "tgt_sig_m", x / 100 * sig
+    if axis == "tgt_sig_m" and not x > 0:
+        return None
     getter = DMG_GETTERS[(axis, y)](g)
-    if axis == "tgt_sig_m":
-        x = x  # absolute signature radius (Pyfa normalises its % input to this)
     return num(getter.getPoint(x=x, miscParams=misc, src=src, tgt=tgt))
 
 
@@ -145,11 +154,35 @@ EWAR_GETTERS = {"neut_gj_s": EWAR.Distance2NeutingStrGetter, "web_pct": EWAR.Dis
                 "tp_sig_pct": EWAR.Distance2TpStrGetter}
 
 
+# 0.2: target fit for ewar / remote_reps. Pyfa's ewar and RR graphs have no target; values are derived from Pyfa's
+# own projected-effect handlers (eos/effects.py): resistance = the target ship's resistance attribute named by the
+# effect (`resistanceID`, applied by ModifiedAttributeDict.getResistance), and the handlers' early returns on
+# `disallowOffensiveModifiers` (all ewar except neutralizers) / `disallowAssistance` (all remote repairs).
+EWAR_RESIST_ATTR = {"neut_gj_s": "energyWarfareResistance", "web_pct": "stasisWebifierResistance",
+                    "ecm_strength": "ECMResistance", "damp_lock_range_pct": "sensorDampenerResistance",
+                    "td_optimal_pct": "weaponDisruptionResistance", "gd_range_pct": "weaponDisruptionResistance",
+                    "tp_sig_pct": "targetPainterResistance"}
+
+
+def target_ship_attr(req, name, default):
+    t = req.get("target") or {}
+    if "fit" not in t:
+        return None
+    tf = O.build(t["fit"])
+    tf.calculateModifiedAttributes()
+    v = tf.ship.getModifiedItemAttr(name)
+    return default if v is None else v
+
+
 def ewar_point(req, fit, axis, y, x):
     p = req.get("params") or {}
     resist = p.get("resist")
     if resist is not None:
         resist = max(0, min(1, resist))
+    elif (req.get("target") or {}).get("fit") is not None:
+        if y != "neut_gj_s" and target_ship_attr(req, "disallowOffensiveModifiers", 0):
+            return 0.0
+        resist = max(0, min(1, 1 - (target_ship_attr(req, EWAR_RESIST_ATTR[y], 1) or 1)))  # Pyfa: `resist or 1`
     misc = {"distance": x, "resist": resist}
     return num(EWAR_GETTERS[y](FakeGraph()).getPoint(x=x, miscParams=misc, src=SourceWrapper(fit, 0), tgt=None))
 
@@ -170,9 +203,17 @@ def rr_point(req, fit, axis, y, x):
     misc = {"distance": p.get("distance_m"), "time": t, "ancReload": p.get("anc_reload", True)}
     if axis == "distance_m":
         misc["distance"] = x
+    mult = 1
+    if (req.get("target") or {}).get("fit") is not None:
+        if target_ship_attr(req, "disallowAssistance", 0):
+            return 0.0
+        # remote repair effects carry resistanceID 2116 (remoteRepairImpedance); Pyfa's RR handlers do not apply it
+        # (they append to fit._armorRr without the effect kwarg), so it is applied here as getResistance would.
+        mult = target_ship_attr(req, "remoteRepairImpedance", 1) or 1
     g = FakeGraph()
     g._timeCache = RrTimeCache()
-    return num(RR_GETTERS[(axis, y)](g).getPoint(x=x, miscParams=misc, src=SourceWrapper(fit, 0), tgt=None))
+    v = num(RR_GETTERS[(axis, y)](g).getPoint(x=x, miscParams=misc, src=SourceWrapper(fit, 0), tgt=None))
+    return None if v is None else v * mult
 
 
 def cap_point(req, fit, axis, y, x):
@@ -265,9 +306,33 @@ def app_point(req, fit, axis, y, x):
     return num(v), cid
 
 
+ECMB_GETTERS = {("tgt_scan_res_mm", "src_damage"): ECMB.TgtScanRes2SrcDmgGetter,
+                ("tgt_scan_res_mm", "tgt_lock_time_s"): ECMB.TgtScanRes2TgtLockTimeGetter,
+                ("tgt_scan_res_mm", "tgt_lock_uptime_s"): ECMB.TgtScanRes2TgtLockUptimeGetter,
+                ("tgt_dps", "src_damage"): ECMB.TgtDps2SrcDmgGetter}
+
+
+def ecm_point(req, fit, axis, y, x):
+    """Pyfa's hidden experimental 'ECM Burst + Scanres Damps' graph (fitEcmBurstScanresDamps)."""
+    p = req.get("params") or {}
+    if (axis, y) not in ECMB_GETTERS:
+        raise ValueError("BAD_AXIS %s/%s" % (axis, y))
+    misc = {"tgtScanRes": p.get("tgt_scan_res_mm", 700), "tgtDps": p.get("tgt_dps", 200),
+            "uptimeAdj": p.get("uptime_adj_s", 1), "uptimeAmtLimit": p.get("uptime_amount_limit", 3),
+            "applyDamps": p.get("apply_damps", True), "applyDrones": p.get("apply_drones", True)}
+    if axis == "tgt_scan_res_mm" and not x >= 1:
+        return None  # Pyfa limiter (1, inf)
+    tgt_dps = x if axis == "tgt_dps" else misc["tgtDps"]
+    if y == "src_damage" and not tgt_dps > 0:
+        return None  # Pyfa divides remaining EHP by enemy dps
+    if axis == "tgt_dps" and not misc["tgtScanRes"] >= 1:
+        return None
+    return num(ECMB_GETTERS[(axis, y)](FakeGraph()).getPoint(x=x, miscParams=misc, src=SourceWrapper(fit, 0), tgt=None))
+
+
 GRAPHS = {
     "application_profile": (app_point, {"distance_m"}, {"dps", "volley"}),
-    "damage": (damage_point, {"distance_m", "time_s", "tgt_speed_mps", "tgt_sig_m"}, {"dps", "volley", "damage"}),
+    "damage": (damage_point, {"distance_m", "time_s", "tgt_speed_mps", "tgt_speed_pct", "tgt_sig_m", "tgt_sig_pct"}, {"dps", "volley", "damage"}),
     "ewar": (ewar_point, {"distance_m"}, set(EWAR_GETTERS)),
     "remote_reps": (rr_point, {"distance_m", "time_s"}, {"rps", "total"}),
     "capacitor": (cap_point, {"time_s", "cap_pct"}, {"cap_gj", "cap_regen_gj_s"}),
@@ -275,6 +340,7 @@ GRAPHS = {
     "mobility": (mobility_point, {"time_s"}, set(MOB_GETTERS)),
     "warp_time": (warp_point, {"distance_m"}, {"time_s"}),
     "lock_time": (lock_point, {"tgt_sig_m"}, {"time_s"}),
+    "ecm_burst": (ecm_point, {"tgt_scan_res_mm", "tgt_dps"}, {"src_damage", "tgt_lock_time_s", "tgt_lock_uptime_s"}),
 }
 
 

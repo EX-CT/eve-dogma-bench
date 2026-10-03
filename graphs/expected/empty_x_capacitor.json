@@ -1,0 +1,10 @@
+{
+ "case": "empty_x_capacitor",
+ "graph": "capacitor",
+ "oracle": "pyfa-graphs",
+ "series": {
+  "cap_gj": []
+ },
+ "x": [],
+ "x_axis": "time_s"
+}

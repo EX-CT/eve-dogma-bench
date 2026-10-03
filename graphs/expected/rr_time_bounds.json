@@ -1,0 +1,26 @@
+{
+ "case": "rr_time_bounds",
+ "graph": "remote_reps",
+ "oracle": "pyfa-graphs",
+ "series": {
+  "rps": [
+   null,
+   200.5,
+   200.5,
+   null
+  ],
+  "total": [
+   null,
+   0.0,
+   400398.0,
+   null
+  ]
+ },
+ "x": [
+  -1,
+  0,
+  2500,
+  2501
+ ],
+ "x_axis": "time_s"
+}

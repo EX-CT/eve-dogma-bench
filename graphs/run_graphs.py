@@ -10,6 +10,10 @@ graph oracle (graphs/expected/, produced by graphs/tools/make_graph_expected.py)
 A sample value is correct when |got - want| <= max(1e-3, 1e-4 * |want|) (the corpus tolerance, tools/metrics.py),
 or both are null. Series ending in `_charge_type_id` (application_profile) are informational: Pyfa breaks DPS ties
 between equal-stat faction charges by set iteration order, so the id is not well defined; they are reported, not scored.
+Contract 0.2 additions: an expected series that is empty (request with `x.values: []`) scores one "shape" value per
+y series, correct only when the response has that series as `[]`. An expected file with `expect_error` (error cases,
+`oracle: "contract"`) scores one value, correct when the response is `{"error": {"code": <expect_error>, ...}}`;
+error cases are grouped as `errors`.
 Writes results/graphs-<name>/scorecard.{json,md} and failures.json."""
 import argparse, json, pathlib, subprocess, sys, time
 
@@ -71,14 +75,33 @@ def run_single(cmd, reqs, cwd, timeout):
     return outs, time.perf_counter() - t0
 
 
+def error_code(resp):
+    if isinstance(resp, dict) and isinstance(resp.get("error"), dict):
+        return resp["error"].get("code")
+    return None
+
+
 def score_case(resp, exp):
     """-> (ok, total, info_ok, info_total, mismatches)"""
     ok = total = iok = itot = 0
     bad = []
+    if "expect_error" in exp:
+        good = error_code(resp) == exp["expect_error"]
+        if not good:
+            bad.append({"want_error": exp["expect_error"], "got_error": error_code(resp),
+                        "got": "<success>" if isinstance(resp, dict) and "series" in resp else resp})
+        return int(good), 1, 0, 0, bad
     series = (resp or {}).get("series") if isinstance(resp, dict) else None
     for y, want in exp["series"].items():
         got = (series or {}).get(y)
         info = y.endswith(INFO_SUFFIX)
+        if not want and not info:  # empty x: the series must be present and empty
+            total += 1
+            if got == [] and isinstance(resp, dict) and resp.get("x") == []:
+                ok += 1
+            else:
+                bad.append({"y": y, "x": "<empty>", "got": got if got is not None else error_code(resp) or "<missing>", "want": []})
+            continue
         for i, w in enumerate(want):
             g = got[i] if isinstance(got, list) and i < len(got) else "<missing>"
             good = g != "<missing>" and close(g, w)
@@ -106,7 +129,9 @@ def main():
     cases = load()
     reqs = [c[1] for c in cases]
     if a.self_test:
-        outs, dt, name = [c[2] for c in cases], 0.0, "self-test"
+        outs = [{"error": {"code": c[2]["expect_error"], "message": "self-test", "path": None}} if "expect_error" in c[2]
+                else c[2] for c in cases]
+        dt, name = 0.0, "self-test"
     elif a.batch_cmd:
         outs, dt = run_batch(a.batch_cmd, reqs, a.cwd, a.timeout)
         name = a.name
@@ -123,7 +148,7 @@ def main():
     full = 0
     for (cname, req, exp), resp in zip(cases, outs + [None] * (len(cases) - len(outs))):
         ok, t, iok, it, bad = score_case(resp, exp)
-        g = groups.setdefault(exp["graph"], [0, 0, 0])
+        g = groups.setdefault("errors" if "expect_error" in exp else exp["graph"], [0, 0, 0])
         g[0] += ok; g[1] += t; g[2] += 1
         for k, v in enumerate((ok, t, iok, it)):
             tot[k] += v
