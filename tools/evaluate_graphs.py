@@ -53,6 +53,10 @@ SCORING RULES (round 2, confirmed by the coordinator 2026-10-03; plan docs/10 §
         underlying stats engine passes bench 1.8.0 (3da9671) 326/326 cases. --no-stats-gate (dev only) marks the
         output UNOFFICIAL. Ungated variants are listed with the reason, unscored.
   Builds: no fresh clones; build time is recorded for information only and is NOT scored.
+  Push-time check: the --as-of pick (last first-parent commit with committer date <= cutoff) is verified against the
+        GitHub branch activity log (gh api repos/<o>/<r>/activity?ref=refs/heads/<branch>); a commit dated before the
+        cutoff but first pushed after it is replaced by the last head pushed at or before the cutoff. Commit date,
+        push time, chosen SHA and verdict are recorded (json git.push_check, md "Commit selection").
   Total = 0.40·Speed + 0.35·Maintainability + 0.15·Features + 0.10·Portability
   L(x, best, span) = clamp(1 − log10(x/best)/log10(span), 0, 1) for lower-is-better x (as round 1).
   Speed = 0.4·L(1/points-per-s, 100) + 0.4·L(dense latency ms, 100) + 0.2·L(cold ms, 100)
@@ -68,7 +72,7 @@ SCORING RULES (round 2, confirmed by the coordinator 2026-10-03; plan docs/10 §
         G1 is therefore NOT mergeable into the LGPL-3.0-or-later mainline whatever its own LICENSE file says.
 Outputs: <out>/evaluation-graphs.md, <out>/evaluation-graphs.json (+ <out>/raw-graphs/<G>/ scorecards); default
   <out> = results/ (results/dryrun/ with --dry-run, every output labelled DRY RUN)."""
-import argparse, gzip, json, math, os, pathlib, re, shutil, signal, statistics, subprocess, sys, time
+import argparse, datetime, gzip, json, math, os, pathlib, re, shutil, signal, statistics, subprocess, sys, time
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
@@ -81,7 +85,9 @@ LAB = "https://github.com/EX-CT/eve-dogma-lab"
 VARIANTS = {"G1": ("graphs-g1", "variant-e", "Pyfa-faithful graph port (Rust, on E)"),
             "G2": ("graphs-g2", "variant-c", "engine primitives + TS evaluator (on C)"),
             "G3": ("graphs-g3", "variant-g", "vectorised NumPy grid + fit cache (on G)"),
-            "G4": ("graphs-g4", "variant-f", "declarative graph specs (Rust, on F)")}
+            "G4": ("graphs-g4", "variant-f", "declarative graph specs (Rust, on F)"),
+            # J's graphs port (branch graphs-j, based on variant-j 3ab992d); side-by-side with F: --only G4,GJ
+            "GJ": ("graphs-j", "variant-j", "graphs port on J (C++20, on J)")}
 GRAPHS_PIN, GRAPHS_PIN_REVISION = "0397d95", "0.2"   # graph contract 0.2 (corpus/expected/run_graphs.py), this repo
 STATS_PIN = ev.BENCH_PIN                              # bench 1.8.0 (3da9671) for the 326-case stats gate
 GROOT = ROOT                                          # replaced in main() by the pinned 0397d95 snapshot
@@ -183,6 +189,59 @@ def git(cwd, *args, check=True):
     return r.stdout.strip()
 
 
+def push_log(branch):
+    """GitHub branch activity (push / force_push / branch_creation) for eve-dogma-lab, oldest first:
+    [(unix_ts, after_sha, iso_ts)]. None if the API is unavailable (then no push-time check is possible)."""
+    repo = LAB.split("github.com/")[1]
+    try:
+        r = subprocess.run(["gh", "api", "--paginate", f"repos/{repo}/activity?ref=refs/heads/{branch}&per_page=100",
+                            "--jq", '.[] | [.timestamp, .after, .activity_type] | @tsv'],
+                           capture_output=True, text=True, timeout=60)
+    except Exception:
+        return None
+    if r.returncode:
+        return None
+    out = []
+    for line in r.stdout.splitlines():
+        ts, after, kind = (line.split("\t") + ["", "", ""])[:3]
+        if not after or set(after) == {"0"}:
+            continue
+        t = datetime.datetime.fromisoformat(ts.replace("Z", "+00:00"))
+        out.append((t.timestamp(), after, t.astimezone().isoformat(timespec="seconds"), kind))
+    return sorted(out)
+
+
+def push_time_check(lab, br, cand, as_of):
+    """Push-time check of the commit-date pick `cand` (last first-parent commit with committer date <= cutoff).
+    A commit dated before the cutoff but pushed after it was not available at the cutoff: then the last head pushed
+    at or before the cutoff is evaluated instead. Returns (sha_to_evaluate, record)."""
+    log = push_log(br)
+    rec = {"commit_date_pick": cand, "commit_date": git(lab, "log", "-1", "--format=%cI", cand, check=False)}
+    if not log:
+        rec.update(verdict="unverified (GitHub activity API unavailable)", chosen=cand)
+        return cand, rec
+    before = [e for e in log if e[0] <= as_of]
+    rec["head_pushed_before_cutoff"] = before[-1][1] if before else None
+    rec["head_pushed_before_cutoff_at"] = before[-1][2] if before else None
+    first_push = None   # first push whose new head contains cand
+    for ts, after, iso, _ in log:
+        if subprocess.run(["git", "merge-base", "--is-ancestor", cand, after], cwd=lab, env=ENV,
+                          capture_output=True).returncode == 0:
+            first_push = (ts, iso)
+            break
+    rec["commit_pushed_at"] = first_push[1] if first_push else None
+    if first_push and first_push[0] <= as_of:
+        rec.update(verdict="ok: commit-date pick was pushed before the cutoff", chosen=cand)
+        return cand, rec
+    if before and git(lab, "cat-file", "-t", before[-1][1], check=False) == "commit":
+        rec.update(verdict="commit dated before the cutoff but pushed after it: using the last head pushed before the cutoff",
+                   chosen=before[-1][1])
+        return before[-1][1], rec
+    rec.update(verdict="WARNING: commit pushed after the cutoff and no earlier pushed head available locally; "
+                       "keeping the commit-date pick", chosen=cand)
+    return cand, rec
+
+
 def fetch(g, work, no_fetch, as_of):
     br, base_br, _ = VARIANTS[g]
     lab = work / "_lab"
@@ -200,6 +259,9 @@ def fetch(g, work, no_fetch, as_of):
         target = git(lab, "rev-list", "-1", "--first-parent", f"--before={int(as_of)}", f"origin/{br}")
         if not target:
             return None, {"branch": br, "head": head, "error": "no commit at or before --as-of"}
+        target, push_rec = push_time_check(lab, br, target, as_of)
+    else:
+        push_rec = None
     wt = work / g
     if wt.exists():
         git(lab, "worktree", "remove", "--force", str(wt), check=False)
@@ -208,7 +270,8 @@ def fetch(g, work, no_fetch, as_of):
     git(lab, "worktree", "add", "-q", "--detach", str(wt), target)
     mb = git(lab, "merge-base", target, f"origin/{base_br}", check=False)
     info = {"url": LAB, "branch": br, "sha": target, "commit_time": git(wt, "log", "-1", "--format=%cI"),
-            "branch_head_at_fetch": head, "is_branch_head": head == target, "base_branch": base_br, "merge_base": mb}
+            "branch_head_at_fetch": head, "is_branch_head": head == target, "base_branch": base_br, "merge_base": mb,
+            "push_check": push_rec}
     return wt, info
 
 
@@ -716,6 +779,15 @@ def write(rows, a, meta):
                   f"({', '.join(f'{k} {v}' for k, v in sorted((r2.get('by_language') or {}).items(), key=lambda kv: -kv[1]))}) | "
                   f"{st.get('core_loc', '–')} | {ts} | {(st.get('deps') or {}).get('n_runtime', '–')} | "
                   f"{yn(d.get('readme'))}{yn(d.get('design'))}{yn(d.get('license_file'))} | {(r.get('portability') or {}).get('level', '–')} |")
+    md += ["", "## Commit selection (cutoff by commit date, verified by push time)", "",
+           "| variant | branch | commit-date pick | commit date (CST) | pushed (CST) | head pushed before cutoff | evaluated | verdict |",
+           "|---|---|---|---|---|---|---|---|"]
+    for r in rows:
+        gi = r.get("git") or {}
+        pc = gi.get("push_check") or {}
+        md.append(f"| {r['variant']} | {gi.get('branch', '–')} | `{(pc.get('commit_date_pick') or '')[:7]}` | {pc.get('commit_date', '–')} | "
+                  f"{pc.get('commit_pushed_at', '–')} | `{(pc.get('head_pushed_before_cutoff') or '')[:7]}` {pc.get('head_pushed_before_cutoff_at') or ''} | "
+                  f"`{gi.get('sha', '')[:7]}` | {pc.get('verdict', 'no --as-of: current head')} |")
     md += ["", "## Licensing (mainline eve-dogma-rs is LGPL-3.0-or-later)", "",
            "| variant | license (files) | round-1 base | base license | mergeable into LGPL-3.0-or-later mainline | reason |", "|---|---|---|---|---|---|"]
     for r in order:

@@ -25,6 +25,10 @@ What it does, per variant (sequentially, so variants never compete for the CPU w
   5. maint.  static metrics on the variant directory (see below) and the variant's own test suite (if discoverable).
 Bench 1.8.0 (cases/, expected/, run.py, tools/metrics.py) is used unchanged; this tool only reads it.
 
+TODO (from round 3): define cutoffs by PUSH time, not committer date. Round 1 picked by committer date; variant-i had
+      commits dated 09:52-09:53 that were pushed only at 10:53 (after the 10:15 cutoff; the evaluated ad9f73e was the
+      head pushed before the cutoff, so round 1 was unaffected). evaluate_graphs.py already verifies by push time.
+
 SCORING RULES (round 1)
   Version rule: each variant is evaluated at its branch HEAD as of the cutoff (unified scoring: --as-of
         2026-10-03T10:15:00+08:00; A = eve-dogma-rs main, B–K = eve-dogma-lab variant-<x>). Self-reported "final"
