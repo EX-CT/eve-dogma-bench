@@ -222,6 +222,40 @@ Pyfa so an engine can implement them against fixed numbers. All optional (absent
 - `options.include_attributes` also returns `attributes.fighters[]` {fighter_index, attributes} (scored by `effects/`
   as a separate count).
 
+## Draft 1.11: overrides semantics (follow Pyfa; scored by `ext/`, not by run.py)
+
+`overrides: [{type_id, attribute_id, value}]` replaces a type's **base** attribute value before any modifier is
+applied, the way Pyfa's Attribute Overrides do (`eos/saveddata/override.py`, read by `ModifiedAttributeDict` when
+overrides are on). The oracle applies them through that mechanism (`oracle/pyfa_oracle.py` `apply_overrides`), so
+`ext/cases/ovr_*` are Pyfa-backed. Rules (Pyfa):
+
+1. Per type, for every item of that type: ship, T3D mode, modules, charges, drones, fighters, implants, boosters,
+   environment effects, projected modules / drones.
+2. **Global for the whole request**: top-level overrides also reach `projected[kind=fit]` fits and
+   `fleet.booster_fits` (Pyfa has one override table, not one per fit). Case `ovr_projected_fit_global`,
+   `ovr_booster_fit_charge`.
+3. **A mutated attribute's rolled value wins over an override** of the same attribute (Pyfa `getOriginal` reads
+   mutators after overrides); the mutated item's other attributes, including those inherited from the base type,
+   are overridable. Cases `ovr_mutated_rolled_attr`, `ovr_mutated_other_attr`.
+4. The last entry for the same (type, attribute) wins (`ovr_duplicate_last_wins`).
+5. The result is a base value: skills, modules, stacking penalties and fleet buffs then apply as usual
+   (`ovr_rifter_*_skills5`, `ovr_module_resist_stacking`).
+
+Beyond Pyfa (our contract supports it, Pyfa cannot express it): hand-derived unit tests in `ext/unit/`
+(feature `overrides-unit`, each with a `derivation`), not compared to Pyfa:
+
+- **Skill types**: an override of a skill's attribute (e.g. Navigation `velocityBonus`) applies. Pyfa ignores it
+  (`Skill.getModifiedItemAttr` reads the raw type attributes). `unit_ovr_skill_attribute`.
+- **Attributes the type does not have**: the override adds that base value. Pyfa ignores it (`Item.overrides`
+  only loads overrides for the type's own attributes; for a mutated item, base + mutated type attributes).
+  `unit_ovr_attr_not_on_type`.
+- **`overrides` inside a nested FitRequest** (`projected[kind=fit].fit`, `fleet.booster_fits[]`): apply to that
+  fit (and what it projects). Pyfa has no per-fit overrides. `unit_ovr_nested_projected_fit` (+ `_control`).
+- The six 1.10 hand-derived cases are kept as `unit_ovr_*` (Pyfa agrees with all six).
+
+Known engine gap (F 4b8f5f9, informational): F applies top-level overrides to its own fit only (rule 2) and lets an
+override beat a rolled mutation (rule 3).
+
 ## Changelog
 - v1 (2026-10-03): initial contract.
 - v1.1 (2026-10-03): `fleet.booster_fits` implemented (oracle-verified). `projected[kind=fit]` and charges on
