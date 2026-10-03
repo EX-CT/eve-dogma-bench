@@ -147,3 +147,5 @@ items:
   UI-STAT-TGT: [{ref: 'web-unit:web.unit.metric-lock-range-km', strength: partial, why: lock range unit only}]
   FMT-EFT-003: [{ref: 'fmt-export:eft_min', strength: partial, why: minimal EFT export variant only}]
   FMT-ADD-001: ['fmt:additions_*']
+  ENG-FTR-004: ['ext:fehp_*', 'ext:pool_fighter_ehp_*']
+  UI-CMP-001: ['mcp:mcp.integration.compare-fits', 'web-e2e:web.e2e.compare-fits', 'web-unit:web.unit.compare-best-delta', 'web-unit:web.unit.compare-ties-missing']
