@@ -4,6 +4,10 @@ Variants: compare scores only at the same bench version (`VERSION`, shown in res
 Expected values always come from the Pyfa oracle (`oracle/pyfa_oracle.py`). Re-run `python3 bench.py --only <X>` after
 pulling.
 
+## graphs-round2 branch (draft, not a bench version)
+- Graphs contract 0.2 and corpus (178 cases / 2437 values incl. 20 error cases): see `graphs/CHANGELOG.md`.
+  The 1.x corpus is unchanged.
+
 ## 1.8.0 (2026-10-03 06:10 CST)
 - CONTRACT.md = contract revision 1.4.3. No field changes; "Semantics" now also defines weather/cloud beacons,
   incursion system effects and burst projectors (below).

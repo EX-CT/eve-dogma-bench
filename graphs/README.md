@@ -4,9 +4,10 @@ Pyfa-verified sample points for Pyfa's graph subsystem, scored separately from t
 are untouched). Contract draft: [CONTRACT-GRAPHS.md](CONTRACT-GRAPHS.md).
 
 ```
-graphs/CONTRACT-GRAPHS.md        GraphRequest / GraphResult, 9 graph types, axes, units, semantics
-graphs/cases/*.json              111 GraphRequests (source fit embedded; most fits taken from cases/ of the 1.x corpus)
-graphs/expected/*.json           Pyfa values at every sample point (oracle/pyfa_graph_oracle.py)
+graphs/CONTRACT-GRAPHS.md        GraphRequest / GraphResult, 10 graph types, axes, units, semantics, error codes (rev 0.2)
+graphs/cases/*.json              178 GraphRequests: 158 value cases + 20 error cases err_* (source fit embedded; most fits from cases/ of the 1.x corpus)
+graphs/expected/*.json           Pyfa values at every sample point (oracle/pyfa_graph_oracle.py); err_*: contract error code
+graphs/CHANGELOG.md              corpus / contract revisions
 graphs/tools/make_graph_cases.py regenerates cases/ (sample points chosen per graph)
 graphs/tools/make_graph_expected.py  regenerates expected/ with the Pyfa graph oracle (GPL test tool)
 graphs/run_graphs.py             scorer: --batch-cmd | --cmd | --rpc-cmd (method "graph") | --self-test
@@ -15,15 +16,20 @@ graphs/run_graphs.py             scorer: --batch-cmd | --cmd | --rpc-cmd (method
 | graph | cases | scored sample values |
 |---|---|---|
 | `application_profile` | 10 | 120 (+120 informational charge ids) |
-| `capacitor` | 11 | 164 |
-| `damage` | 48 | 828 |
-| `ewar` | 10 | 168 |
-| `lock_time` | 6 | 78 |
-| `mobility` | 9 | 253 |
-| `remote_reps` | 6 | 87 |
-| `shield_regen` | 4 | 54 |
-| `warp_time` | 7 | 91 |
-| **total** | **111** | **1843** |
+| `capacitor` | 14 | 173 |
+| `damage` | 60 | 918 |
+| `ecm_burst` | 11 | 218 |
+| `ewar` | 22 | 337 |
+| `lock_time` | 7 | 82 |
+| `mobility` | 10 | 259 |
+| `remote_reps` | 11 | 151 |
+| `shield_regen` | 5 | 66 |
+| `warp_time` | 8 | 93 |
+| errors (`err_*`, expected error code) | 20 | 20 |
+| **total** | **178** | **2437** |
+
+Contract 0.2 (see [CHANGELOG.md](CHANGELOG.md)): 0.1 had 111 cases / 1843 values. Empty-x cases score one value per
+y series (`[]` expected); error cases score one value (matching `error.code`).
 
 ## Running
 
@@ -63,9 +69,16 @@ point. Verified: running every case in its own process gives identical numbers t
   `effectivify` itself for `effective: true`), `GraphSettings` is a process-wide singleton and is reset from each
   request's `settings`.
 - **Unsaved fits:** Pyfa keys graph caches by fit ID (None for oracle fits) — hence fresh caches per point.
-- **Not covered:** the hidden experimental "ECM Burst + Scanres Damps" graph; `%`-of-target x axes (`tgt_speed`/
-  `tgt_sig` in %) — engines get absolute axes, the GUI converts; target fits only as `damage`/`application_profile`
-  targets (not as EWAR/RR targets: Pyfa's EWAR and RR graphs have no target).
+- **Covered since 0.2:** the hidden "ECM Burst + Scanres Damps" graph (`ecm_burst`, Pyfa's own getters);
+  `%`-of-target x axes (`tgt_speed_pct`, `tgt_sig_pct`, Pyfa's normalisers).
+- **Derived, not Pyfa graph output (0.2):** `ewar` / `remote_reps` with `target.fit`. Pyfa's EWAR and RR graphs have no
+  target, so the oracle evaluates Pyfa's getter and then applies the target ship's resistance attribute: for ewar
+  `resist = 1 − attr` (energyWarfare/stasisWebifier/ECM/sensorDampener/weaponDisruption/targetPainter resistance, as
+  Pyfa's `getResistance` does for projected fits), 0 for `disallowOffensiveModifiers` (except neuts); for RR
+  `× remoteRepairImpedance` and 0 for `disallowAssistance`. Pyfa's projected-fit RR ignores the impedance. The contract
+  follows the effect's SDE `resistanceID`. See CONTRACT-GRAPHS.md "Target fits for ewar / remote_reps".
+- **Error cases** (`err_*`) have no oracle: the expected code is the one CONTRACT-GRAPHS.md "Validation and error codes"
+  prescribes.
 - **Exotic weapons** are exercised by a few cases each: fighters (Hel, Nidhoggur, Thanatos/Templar II), doomsday
   (Avatar lance), Entropic Disintegrator spool-up (Kikimora, distance + time), Vorton (Skybreaker), breacher pods
   (Kestrel vs. target fit, time axis), bombs (Manticore). Target-fit cases include scram-vs-MWD (Rifter → Stiletto)
