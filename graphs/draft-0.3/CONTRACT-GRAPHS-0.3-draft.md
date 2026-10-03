@@ -111,6 +111,16 @@ point; informational, see that graph).
 Notation: `src` = source fit after a normal `calc` (same FitRequest semantics, including `projected`,
 `fleet`, `environment` applied to it). "Pyfa:" names the Pyfa getter class that defines the value.
 
+**(0.3) Module states are kept as requested (eve ruling, 2026-10-03; same rule as the stats contract).** A module
+whose requested `state` it cannot use (for example `overheated` on a type with no overheat effects, such as a Bastion
+Module or a doomsday, or `active` on a module that cannot be activated) **keeps the requested state**. The engine does
+not downgrade it to `online` or any other state. The module gets exactly the effects that apply at the requested state.
+For an overheated module with no overheat effects that is the same as `active`. This applies to the source fit, to
+projected modules, and to `target.fit`. Pyfa (and so the bench's graph oracle) downgrades such a state to `online`.
+For these fits the expected values come from the oracle run with the state the ruling implies
+(`rulings/make_ruling_cases.py`). Case: `dmg_dist_vargur_bastion_overheated_state` (Vargur, Bastion Module I
+`overheated` → same dps/volley as with Bastion active).
+
 ### `damage` — Pyfa "Damage Stats" (`fitDamageStats`)
 
 | x axis | unit | valid range | notes |
@@ -361,7 +371,8 @@ in group `errors`, correct when the response is `{"error":{"code":CODE,…}}`. C
   - non-following fighters at the attacker's centre;
   - quality-tier definition including XL.
   Pyfa's application-profile grid step and ammo-switch hysteresis are documented as informational and not scored;
-  sample points are kept off web/TP edges. Draft corpus: 191 cases (171 value + 20 error), 2680 values.
+  sample points are kept off web/TP edges. Module states are kept as requested, even when the module cannot use
+  that state (eve ruling, same as the stats contract). Draft corpus: 192 cases (172 value + 20 error), 2694 values.
 - 0.2 (2026-10-03): empty `x.values` → success with empty `x` and empty series. New "Validation and error codes"
   section (empty `y` → `BAD_REQUEST`; enum values validated). New graph `ecm_burst` (Pyfa's hidden ECM burst graph).
   Damage x axes `tgt_speed_pct` and `tgt_sig_pct`; `tgt_sig_m` ≤ 0 → `null`. `target.fit` for `ewar` (resistance

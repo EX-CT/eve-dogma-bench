@@ -26,7 +26,7 @@ python3 graphs/draft-0.3/run_draft.py --name E --batch-cmd "<engine> graph-batch
 |---|---|---|---|
 | application_profile | 14 | 161 | +4 cases / +41 (XL navy tier ×3, Maelstrom arty web+TP sampled off the edges) |
 | capacitor | 14 | 173 | – |
-| damage | 69 | 1120 | +9 cases / +202 (sentries follow_target ×2, breacher distance ×2, bomb time ×2, fighters vs fast target ×3) |
+| damage | 70 | 1134 | +10 cases / +216 (state ruling: overheated Bastion ×1, sentries follow_target ×2, breacher distance ×2, bomb time ×2, fighters vs fast target ×3) |
 | ecm_burst | 11 | 218 | – |
 | ewar | 22 | 337 | – |
 | lock_time | 7 | 82 | – |
@@ -35,7 +35,7 @@ python3 graphs/draft-0.3/run_draft.py --name E --batch-cmd "<engine> graph-batch
 | shield_regen | 5 | 66 | – |
 | warp_time | 8 | 93 | – |
 | errors | 20 | 20 | – |
-| **total** | **191** | **2680** | +13 cases / +243 values (0.2: 178 / 2437) |
+| **total** | **192** | **2694** | +14 cases / +257 values (0.2: 178 / 2437) |
 
 The expected values of all 178 0.2 cases were regenerated with the oracle and are identical to `graphs/expected`
 (every scored value; only the informational, tie-dependent charge ids may differ).
