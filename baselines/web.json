@@ -1,8 +1,8 @@
 {
  "schema": "no-regress/1",
- "note": "eve-fit-web browser engine (site F wasm worker, tools/browser-engine.mjs; F = eve-dogma 20aa425) from CI run 37104154159 (eve-fit-web fdbb014, bench c2229b2), artifact bench-suites-wasm-worker; docs/19 eve-fit-docs 3f86ebb; f.json unchanged (native F is higher)",
+ "note": "eve-fit-web browser engine (site F wasm worker, tools/browser-engine.mjs; F = eve-dogma 20aa425) from CI run 37104154159 (eve-fit-web fdbb014, bench c2229b2), artifact bench-suites-wasm-worker; docs/19 eve-fit-docs 3f86ebb; f.json unchanged (native F is higher); 2026-10-03 15:40: web have 106 -> 104 by ruling (strict-gate honesty: ENG-CORE-006, PRF-DMG-001 downgraded, eve-fit-docs docs/19), not an engine regression",
  "created": "2026-10-03T15:28:39+0800",
- "updated": "2026-10-03T15:28:39+0800",
+ "updated": "2026-10-03T15:34:18+0800",
  "suites": {
   "core": {
    "passed": 339,
@@ -3403,7 +3403,7 @@
   "source": "19-pyfa-feature-inventory.yaml",
   "columns": {
    "web": {
-    "have": 106,
+    "have": 104,
     "ids": [
      "CHR-001",
      "CHR-002",
@@ -3422,7 +3422,6 @@
      "ENG-CORE-002",
      "ENG-CORE-004",
      "ENG-CORE-005",
-     "ENG-CORE-006",
      "ENG-DEF-001",
      "ENG-DEF-002",
      "ENG-DEF-003",
@@ -3506,7 +3505,6 @@
      "GRF-WARP-001",
      "MKT-003",
      "MKT-005",
-     "PRF-DMG-001",
      "UI-STAT-CAP",
      "UI-STAT-RCH",
      "UI-STAT-RES",
