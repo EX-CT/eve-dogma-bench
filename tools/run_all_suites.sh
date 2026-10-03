@@ -2,7 +2,7 @@
 # Run every bench suite on one engine binary and write the outputs check_no_regress.py reads.
 #   tools/run_all_suites.sh ENGINE OUT [NAME]
 # ENGINE: eve-fit binary (calc / batch / serve-stdio). OUT: output dir (created). NAME: result label (default ci).
-# core / ext / ext_rpc / effects run from this checkout (pending-1.11). graphs, cap, mutated and formats run from the pinned
+# core / ext / ext_rpc / batch / effects run from this checkout (pending-1.11). graphs, cap, mutated and formats run from the pinned
 # suite commits below, checked out as worktrees under $SUITES_DIR (default OUT/suites); override a checkout with
 # SUITE_GRAPHS / SUITE_CAP / SUITE_MUTATED / SUITE_FORMATS=/path.
 set -euo pipefail
@@ -30,6 +30,7 @@ step core     python3 run.py --name "$N" --cmd "$ENGINE calc" --batch-cmd "$ENGI
 rm -rf "$OUT/core"; cp -r "results/$N" "$OUT/core"; rm -rf "results/$N"
 step ext      python3 ext/tools/score.py --batch-cmd "$ENGINE batch" --name "$N" --out "$OUT/ext.json"
 step ext_rpc  python3 ext/tools/score_rpc.py --cmd "$ENGINE serve-stdio" --name "$N" --out "$OUT/ext_rpc.json"
+step batch    python3 batch/run_batch.py --cmd "$ENGINE" --name "$N" --out "$OUT/batch.json"
 step effects  python3 effects/tools/score.py --batch-cmd "$ENGINE batch" --name "$N" --out "$OUT/effects.json"
 cd "${DIR[graphs]}"
 step graphs   python3 graphs/run_graphs.py --name "$N" --rpc-cmd "$ENGINE serve-stdio"
@@ -46,7 +47,7 @@ python3 - "$OUT" "$BENCH" "${DIR[graphs]}" "${DIR[cap]}" "${DIR[mutated]}" "${DI
 import json, subprocess, sys
 out, bench, gr, cap, mut, fmt = sys.argv[1:]
 rev = lambda d: subprocess.run(["git", "-C", d, "rev-parse", "HEAD"], capture_output=True, text=True).stdout.strip()
-roots = {"core": bench, "ext": bench, "ext_rpc": bench, "effects": bench, "graphs": gr, "cap": cap, "mutated": mut, "formats": fmt}
+roots = {"core": bench, "ext": bench, "ext_rpc": bench, "batch": bench, "effects": bench, "graphs": gr, "cap": cap, "mutated": mut, "formats": fmt}
 json.dump({"roots": roots, "refs": {k: rev(v) for k, v in roots.items()}}, open(f"{out}/roots.json", "w"), indent=1)
 PY
 echo "outputs in $OUT (suite runner exit codes ignored by design; the gate is check_no_regress.py)"

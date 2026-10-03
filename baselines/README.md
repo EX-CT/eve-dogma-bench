@@ -11,7 +11,7 @@ only go up.
   - `inventory.columns.<col>`: `have` (count) and `ids` for every docs/19 column (`f`, `mcp`, `web`, `formats`).
     Only the 200 parity items count, the same as the docs/19 counts table; `extra: true` items are excluded.
 - `tools/run_all_suites.sh ENGINE OUT [NAME]`: runs every suite on one binary and writes OUT.
-  - core, ext, ext_rpc and effects run from this checkout.
+  - core, ext, ext_rpc, batch and effects run from this checkout.
   - graphs, cap, mutated and formats run from the pinned commits in the script. They are fetched and checked out as
     worktrees under `OUT/suites`.
   - Runner exit codes are ignored, because the gate decides.
@@ -23,6 +23,7 @@ only go up.
 | core | `run.py` | pending-1.11 | 339 / 339 |
 | ext | `ext/tools/score.py` | pending-1.11 (incl. the 37 f-missing cases) | 204 / 239 |
 | ext_rpc | `ext/tools/score_rpc.py` (serve-stdio) | pending-1.11 `ext/rpc` | 0 / 31 |
+| batch | `batch/run_batch.py` (identity vs one-by-one calc; provisional shape) | pending-1.11 `batch/` | 0 / 44 (added 2026-10-03 14:30 CST; no batch API in 2da8150) |
 | effects | `effects/tools/score.py` | pending-1.11 | 2352 / 2378 |
 | graphs | `graphs/run_graphs.py` (serve-stdio) | graphs-round2 db81b8c (`graphs-v0.3`) | 192 / 192 |
 | cap | `cap/run_cap.py` | cap-suite d80cc38 | 150 / 150 |

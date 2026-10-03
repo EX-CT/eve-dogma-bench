@@ -5,13 +5,13 @@
   python3 tools/check_no_regress.py ... --update          # raise the baseline (only if the check passes)
   python3 tools/check_no_regress.py ... --only core,ext   # check just these suites (others in the baseline skipped)
 
-OUT is what tools/run_all_suites.sh writes (core/ graphs/ mutated/ formats/ result dirs, ext.json, ext_rpc.json, effects.json,
+OUT is what tools/run_all_suites.sh writes (core/ graphs/ mutated/ formats/ result dirs, ext.json, ext_rpc.json, batch.json, effects.json,
 cap.json, roots.json with the suite checkouts used to list case ids). Exit 0 = no regression, 1 = regression,
 2 = usage / missing input. See baselines/README.md for the rules."""
 import argparse, csv, json, os, sys, time
 from pathlib import Path
 
-SUITES = ("core", "ext", "ext_rpc", "effects", "graphs", "cap", "mutated", "formats")
+SUITES = ("core", "ext", "ext_rpc", "batch", "effects", "graphs", "cap", "mutated", "formats")
 CASE_GLOBS = {"core": ("cases", "expected"), "mutated": ("mutated/cases", "mutated/expected"),
               "graphs": ("graphs/cases", "graphs/expected")}
 
@@ -41,7 +41,7 @@ def collect_suite(name, run_dir, roots):
         if len(passed) != card["cases_fully_correct"]:
             die(f"{name}: {len(passed)} passing ids but scorecard says {card['cases_fully_correct']}")
         return {"passed": len(passed), "total": len(ids), "passed_ids": passed}
-    if name in ("ext", "ext_rpc", "effects"):
+    if name in ("ext", "ext_rpc", "batch", "effects"):
         p = rd / f"{name}.json"
         if not p.exists():
             return None
