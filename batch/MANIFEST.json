@@ -1,0 +1,394 @@
+{
+ "multi_100_full": {
+  "fits": 100,
+  "kind": "multi",
+  "note": "100 fits, full FitStats",
+  "ops": []
+ },
+ "multi_10_fields": {
+  "fits": 10,
+  "kind": "multi",
+  "note": "10 fits, projection",
+  "ops": [
+   "fields"
+  ]
+ },
+ "multi_25_fields": {
+  "fits": 25,
+  "kind": "multi",
+  "note": "25 fits, projection",
+  "ops": [
+   "fields"
+  ]
+ },
+ "multi_5_full": {
+  "fits": 5,
+  "kind": "multi",
+  "note": "5 fits, full FitStats",
+  "ops": []
+ },
+ "multi_all_core": {
+  "fits": 339,
+  "kind": "multi",
+  "note": "all core fits, projection",
+  "ops": [
+   "fields"
+  ]
+ },
+ "multi_duplicates": {
+  "fits": 9,
+  "kind": "multi",
+  "note": "same fits repeated: identical results, order kept",
+  "ops": []
+ },
+ "multi_error_in_place": {
+  "fits": 8,
+  "kind": "multi",
+  "note": "an unknown ship type errors in place (error code as one-by-one), neighbours unaffected",
+  "ops": [
+   "fields"
+  ]
+ },
+ "multi_ext_mix": {
+  "fits": 30,
+  "kind": "multi",
+  "note": "20 ext + 10 core fits",
+  "ops": [
+   "fields"
+  ]
+ },
+ "multi_filter_fast": {
+  "fits": 60,
+  "kind": "multi",
+  "note": "filter on a field",
+  "ops": [
+   "fields",
+   "filter"
+  ]
+ },
+ "multi_filter_sort_2key": {
+  "fits": 80,
+  "kind": "multi",
+  "note": "two filters (AND) + two sort keys (bool desc, then ehp asc)",
+  "ops": [
+   "fields",
+   "filter",
+   "sort"
+  ]
+ },
+ "multi_single": {
+  "fits": 1,
+  "kind": "multi",
+  "note": "one fit, full FitStats",
+  "ops": []
+ },
+ "multi_sort_dps_top10": {
+  "fits": 60,
+  "kind": "multi",
+  "note": "sort desc + limit",
+  "ops": [
+   "fields",
+   "sort",
+   "limit"
+  ]
+ },
+ "product_full_output": {
+  "fits": 4,
+  "kind": "product",
+  "note": "small product, full FitStats",
+  "ops": []
+ },
+ "product_skill_charge_state_0": {
+  "fits": 12,
+  "kind": "product",
+  "note": "esf_buzzard: skills \u00d7 charge \u00d7 state",
+  "ops": [
+   "fields",
+   "deltas"
+  ]
+ },
+ "product_skill_charge_state_1": {
+  "fits": 24,
+  "kind": "product",
+  "note": "exct_svipul: skills \u00d7 charge \u00d7 state",
+  "ops": [
+   "fields",
+   "deltas",
+   "sort",
+   "limit"
+  ]
+ },
+ "product_skill_charge_state_2": {
+  "fits": 12,
+  "kind": "product",
+  "note": "esf_projection: skills \u00d7 charge \u00d7 state",
+  "ops": [
+   "fields",
+   "deltas"
+  ]
+ },
+ "product_skill_charge_state_3": {
+  "fits": 12,
+  "kind": "product",
+  "note": "exct_raven: skills \u00d7 charge \u00d7 state",
+  "ops": [
+   "fields",
+   "deltas",
+   "sort",
+   "limit"
+  ]
+ },
+ "product_states_dp_0": {
+  "fits": 32,
+  "kind": "product",
+  "note": "esf_caracal: 4 states \u00d7 4 states \u00d7 2 damage patterns",
+  "ops": [
+   "fields",
+   "deltas"
+  ]
+ },
+ "product_states_dp_1": {
+  "fits": 32,
+  "kind": "product",
+  "note": "exct_svipul: 4 states \u00d7 4 states \u00d7 2 damage patterns",
+  "ops": [
+   "fields",
+   "deltas"
+  ]
+ },
+ "product_states_dp_2": {
+  "fits": 32,
+  "kind": "product",
+  "note": "exct_apocalypse_navy: 4 states \u00d7 4 states \u00d7 2 damage patterns",
+  "ops": [
+   "fields",
+   "deltas",
+   "filter"
+  ]
+ },
+ "product_states_dp_3": {
+  "fits": 32,
+  "kind": "product",
+  "note": "exct_damnation: 4 states \u00d7 4 states \u00d7 2 damage patterns",
+  "ops": [
+   "fields",
+   "deltas",
+   "filter"
+  ]
+ },
+ "sweep_charge_0": {
+  "fits": 2,
+  "kind": "sweep",
+  "note": "exct_vargur: module 9 charge sweep, top 3 volley",
+  "ops": [
+   "fields",
+   "deltas",
+   "sort",
+   "limit"
+  ]
+ },
+ "sweep_charge_1": {
+  "fits": 2,
+  "kind": "sweep",
+  "note": "exct_hyperion: module 11 charge sweep, top 3 volley",
+  "ops": [
+   "fields",
+   "deltas",
+   "sort",
+   "limit"
+  ]
+ },
+ "sweep_damage_pattern": {
+  "fits": 5,
+  "kind": "sweep",
+  "note": "damage pattern sweep",
+  "ops": [
+   "fields",
+   "deltas",
+   "sort"
+  ]
+ },
+ "sweep_skill_override_full": {
+  "fits": 3,
+  "kind": "sweep",
+  "note": "per-skill override sweep (Gunnery 3300), full FitStats",
+  "ops": []
+ },
+ "sweep_skills_0": {
+  "fits": 6,
+  "kind": "sweep",
+  "note": "skills4_maelstrom: default skill level 0..5",
+  "ops": [
+   "fields",
+   "deltas"
+  ]
+ },
+ "sweep_skills_1": {
+  "fits": 6,
+  "kind": "sweep",
+  "note": "exct_scythe_rtc: default skill level 0..5",
+  "ops": [
+   "fields",
+   "deltas"
+  ]
+ },
+ "sweep_skills_2": {
+  "fits": 6,
+  "kind": "sweep",
+  "note": "exct_nidhoggur: default skill level 0..5",
+  "ops": [
+   "fields",
+   "deltas"
+  ]
+ },
+ "sweep_skills_3": {
+  "fits": 6,
+  "kind": "sweep",
+  "note": "aoe_damp_track_cerberus: default skill level 0..5",
+  "ops": [
+   "fields",
+   "deltas"
+  ]
+ },
+ "sweep_state_0": {
+  "fits": 4,
+  "kind": "sweep",
+  "note": "esf_vexor: module 9 state sweep, sorted by cap stable (false first) then cpu desc",
+  "ops": [
+   "fields",
+   "deltas",
+   "sort"
+  ]
+ },
+ "sweep_state_1": {
+  "fits": 4,
+  "kind": "sweep",
+  "note": "exct_hyperion: module 0 state sweep, sorted by cap stable (false first) then cpu desc",
+  "ops": [
+   "fields",
+   "deltas",
+   "sort"
+  ]
+ },
+ "sweep_state_2": {
+  "fits": 4,
+  "kind": "sweep",
+  "note": "exct_sabre: module 1 state sweep, sorted by cap stable (false first) then cpu desc",
+  "ops": [
+   "fields",
+   "deltas",
+   "sort"
+  ]
+ },
+ "variants_charges_0": {
+  "fits": 2,
+  "kind": "variants",
+  "note": "esf_omen_t2: every corpus charge of module 9, sorted by dps delta",
+  "ops": [
+   "fields",
+   "deltas",
+   "sort"
+  ]
+ },
+ "variants_charges_1": {
+  "fits": 1,
+  "kind": "variants",
+  "note": "exct_nightmare: every corpus charge of module 7, sorted by dps delta",
+  "ops": [
+   "fields",
+   "deltas",
+   "sort"
+  ]
+ },
+ "variants_charges_2": {
+  "fits": 1,
+  "kind": "variants",
+  "note": "exct_kronos: every corpus charge of module 10, sorted by dps delta",
+  "ops": [
+   "fields",
+   "deltas",
+   "sort"
+  ]
+ },
+ "variants_damage_pattern": {
+  "fits": 5,
+  "kind": "variants",
+  "note": "damage patterns change ehp only",
+  "ops": [
+   "fields",
+   "deltas"
+  ]
+ },
+ "variants_full_output": {
+  "fits": 6,
+  "kind": "variants",
+  "note": "no projection: full FitStats per variant",
+  "ops": []
+ },
+ "variants_states_0": {
+  "fits": 6,
+  "kind": "variants",
+  "note": "exct_harbinger: every other state of 2 modules, deltas vs base",
+  "ops": [
+   "fields",
+   "deltas"
+  ]
+ },
+ "variants_states_1": {
+  "fits": 6,
+  "kind": "variants",
+  "note": "exct_svipul: every other state of 2 modules, deltas vs base",
+  "ops": [
+   "fields",
+   "deltas"
+  ]
+ },
+ "variants_states_2": {
+  "fits": 6,
+  "kind": "variants",
+  "note": "esf_nosferatu_income_1: every other state of 2 modules, deltas vs base",
+  "ops": [
+   "fields",
+   "deltas"
+  ]
+ },
+ "variants_states_3": {
+  "fits": 6,
+  "kind": "variants",
+  "note": "exct_dominix: every other state of 2 modules, deltas vs base",
+  "ops": [
+   "fields",
+   "deltas"
+  ]
+ },
+ "variants_struct_0": {
+  "fits": 6,
+  "kind": "variants",
+  "note": "exct_naga: remove / duplicate modules, skill levels; keep only variants whose ehp changed",
+  "ops": [
+   "fields",
+   "deltas",
+   "filter"
+  ]
+ },
+ "variants_struct_1": {
+  "fits": 6,
+  "kind": "variants",
+  "note": "exct_broadsword_bubble: remove / duplicate modules, skill levels; keep only variants whose ehp changed",
+  "ops": [
+   "fields",
+   "deltas",
+   "filter"
+  ]
+ },
+ "variants_struct_2": {
+  "fits": 6,
+  "kind": "variants",
+  "note": "exct_nidhoggur: remove / duplicate modules, skill levels; keep only variants whose ehp changed",
+  "ops": [
+   "fields",
+   "deltas",
+   "filter"
+  ]
+ }
+}
