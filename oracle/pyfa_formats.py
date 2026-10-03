@@ -305,8 +305,11 @@ def main():
     for path in args:
         req = json.load(open(path))
         name = os.path.splitext(os.path.basename(path))[0]
+        if "fit" in req and "name" in req:  # export edge file: {"name": <fit name>, "fit": FitRequest}
+            name, req = req["name"], req["fit"]
         try:
             fit = build_fit(path, req)
+            fit.name = name
         except Exception as e:
             print(json.dumps({"file": os.path.basename(path), "error": repr(e)}))
             continue

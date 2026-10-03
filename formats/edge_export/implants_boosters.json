@@ -1,0 +1,107 @@
+{
+ "name": "ib",
+ "fit": {
+  "boosters": [
+   {
+    "type_id": 10156
+   }
+  ],
+  "cargo": [],
+  "character": {
+   "security_status": null,
+   "skills": {
+    "default_level": 5,
+    "levels": {}
+   }
+  },
+  "damage_pattern": null,
+  "drones": [],
+  "environment": {
+   "effect_type_ids": [],
+   "system_security": null
+  },
+  "fighters": [],
+  "fleet": {
+   "booster_fits": [],
+   "buffs": []
+  },
+  "implants": [
+   {
+    "type_id": 19685
+   }
+  ],
+  "modules": [
+   {
+    "type_id": 2048,
+    "slot": "low",
+    "state": "online",
+    "charge_type_id": null,
+    "mutation": null,
+    "spool": null
+   },
+   {
+    "type_id": 438,
+    "slot": "mid",
+    "state": "active",
+    "charge_type_id": null,
+    "mutation": null,
+    "spool": null
+   },
+   {
+    "type_id": 2889,
+    "slot": "high",
+    "state": "active",
+    "charge_type_id": 21898,
+    "mutation": null,
+    "spool": null
+   },
+   {
+    "type_id": 2889,
+    "slot": "high",
+    "state": "offline",
+    "charge_type_id": 21898,
+    "mutation": null,
+    "spool": null
+   }
+  ],
+  "options": {
+   "cap_sim": {
+    "max_time_s": null,
+    "reload": false,
+    "stagger": false
+   },
+   "default_spool": null,
+   "factor_reload": false,
+   "include_attributes": null,
+   "nos_no_target_cap": false,
+   "rah": null,
+   "sources": false,
+   "validate": true
+  },
+  "overrides": [],
+  "projected": [
+   {
+    "kind": "module",
+    "module": {
+     "type_id": 40697
+    },
+    "amount": 1,
+    "distance_m": 10000
+   },
+   {
+    "kind": "module",
+    "module": {
+     "type_id": 40699
+    },
+    "amount": 1,
+    "distance_m": 10000
+   }
+  ],
+  "schema_version": 1,
+  "ship": {
+   "type_id": 587,
+   "mode_type_id": null
+  },
+  "target_profile": null
+ }
+}
