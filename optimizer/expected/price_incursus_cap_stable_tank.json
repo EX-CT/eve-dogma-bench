@@ -1,0 +1,443 @@
+{
+ "best_ignoring_all_rules": 350000.0,
+ "constraints_effect": {
+  "cap_stable": {
+   "best_if_relaxed": 525000.0,
+   "binding": true,
+   "rejected": 6161
+  },
+  "min_floor": {
+   "best_if_relaxed": 350000.0,
+   "binding": true,
+   "rejected": 8989
+  },
+  "powergrid": {
+   "best_if_relaxed": null,
+   "binding": false,
+   "rejected": 4
+  },
+  "slots_hardpoints": {
+   "best_if_relaxed": 1075000.0,
+   "binding": false,
+   "rejected": 2800
+  }
+ },
+ "id": "price_incursus_cap_stable_tank",
+ "objective": {
+  "direction": "min",
+  "metric": "price"
+ },
+ "optimal_fits": [
+  {
+   "metrics": {
+    "cap_stable": 42.4907,
+    "dps": 0.0,
+    "ehp": 2994.604676,
+    "price": 750000.0,
+    "speed": 425.0,
+    "tank": 68.571805
+   },
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 1195
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1183
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11267
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11267
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11267
+    }
+   ],
+   "racks": {
+    "low": [
+     "Multispectrum Energized Membrane I",
+     "Multispectrum Energized Membrane I",
+     "Multispectrum Energized Membrane I",
+     "Small Armor Repairer II"
+    ],
+    "mid": [
+     "Cap Recharger I"
+    ]
+   }
+  }
+ ],
+ "optimum": 750000.0,
+ "pyfa_check": {
+  "agree": true,
+  "agree_rel_tolerance": 0.005,
+  "fits": [
+   {
+    "engine": 750000.0,
+    "pyfa": 750000.0,
+    "pyfa_violations": [],
+    "rel_diff": 0.0,
+    "role": "winner"
+   },
+   {
+    "engine": 775000.0,
+    "pyfa": 775000.0,
+    "rel_diff": 0.0,
+    "role": "runner_up"
+   },
+   {
+    "engine": 800000.0,
+    "pyfa": 800000.0,
+    "rel_diff": 0.0,
+    "role": "runner_up"
+   },
+   {
+    "engine": 850000.0,
+    "pyfa": 850000.0,
+    "rel_diff": 0.0,
+    "role": "runner_up"
+   },
+   {
+    "engine": 875000.0,
+    "pyfa": 875000.0,
+    "rel_diff": 0.0,
+    "role": "runner_up"
+   },
+   {
+    "engine": 1025000.0,
+    "pyfa": 1025000.0,
+    "rel_diff": 0.0,
+    "role": "runner_up"
+   }
+  ],
+  "legal": true,
+  "rank": true
+ },
+ "reference": {
+  "dataset": "dataset-3569502.json.gz",
+  "engine": "F-4b8f5f9",
+  "engine_note": "F variant-f-features 4b8f5f9 (EX-CT/eve-dogma-lab)",
+  "generated_s": 2.5,
+  "tie_tolerance_rel": 1e-06
+ },
+ "runners_up": [
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 1195
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 1195
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 523
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1183
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1445
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1445
+    }
+   ],
+   "racks": {
+    "low": [
+     "Capacitor Power Relay I",
+     "Capacitor Power Relay I",
+     "Small Armor Repairer I",
+     "Small Armor Repairer II"
+    ],
+    "mid": [
+     "Cap Recharger I",
+     "Cap Recharger I"
+    ]
+   },
+   "value": 775000.0
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 1195
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 1195
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 1195
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 523
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1183
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1445
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1445
+    }
+   ],
+   "racks": {
+    "low": [
+     "Capacitor Power Relay I",
+     "Capacitor Power Relay I",
+     "Small Armor Repairer I",
+     "Small Armor Repairer II"
+    ],
+    "mid": [
+     "Cap Recharger I",
+     "Cap Recharger I",
+     "Cap Recharger I"
+    ]
+   },
+   "value": 800000.0
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 1195
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 1195
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 523
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 523
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1445
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1445
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31045
+    }
+   ],
+   "racks": {
+    "low": [
+     "Capacitor Power Relay I",
+     "Capacitor Power Relay I",
+     "Small Armor Repairer I",
+     "Small Armor Repairer I"
+    ],
+    "mid": [
+     "Cap Recharger I",
+     "Cap Recharger I"
+    ],
+    "rig": [
+     "Small Auxiliary Nano Pump I"
+    ]
+   },
+   "value": 850000.0
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 1195
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 1195
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 1195
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 523
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 523
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11267
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1445
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31370
+    }
+   ],
+   "racks": {
+    "low": [
+     "Capacitor Power Relay I",
+     "Multispectrum Energized Membrane I",
+     "Small Armor Repairer I",
+     "Small Armor Repairer I"
+    ],
+    "mid": [
+     "Cap Recharger I",
+     "Cap Recharger I",
+     "Cap Recharger I"
+    ],
+    "rig": [
+     "Small Capacitor Control Circuit I"
+    ]
+   },
+   "value": 875000.0
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 2032
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1183
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11267
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11267
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11267
+    }
+   ],
+   "racks": {
+    "low": [
+     "Multispectrum Energized Membrane I",
+     "Multispectrum Energized Membrane I",
+     "Multispectrum Energized Membrane I",
+     "Small Armor Repairer II"
+    ],
+    "mid": [
+     "Cap Recharger II"
+    ]
+   },
+   "value": 1025000.0
+  }
+ ],
+ "second_best": 775000.0,
+ "space": {
+  "engine_evaluated": 14000,
+  "engine_valid": 11200,
+  "engine_violations": {
+   "MAX_GROUP_ACTIVE": 2800,
+   "POWER_OVERLOAD": 4
+  },
+  "feasible": 1452,
+  "pruned_structural": 0,
+  "size": 14000
+ },
+ "ties": 1
+}

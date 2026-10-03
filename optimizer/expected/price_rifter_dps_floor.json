@@ -1,0 +1,491 @@
+{
+ "best_ignoring_all_rules": 375000.0,
+ "constraints_effect": {
+  "calibration": {
+   "best_if_relaxed": 2129500.0,
+   "binding": false,
+   "rejected": 2450
+  },
+  "cpu": {
+   "best_if_relaxed": null,
+   "binding": false,
+   "rejected": 24
+  },
+  "min_floor": {
+   "best_if_relaxed": 375000.0,
+   "binding": true,
+   "rejected": 7265
+  }
+ },
+ "id": "price_rifter_dps_floor",
+ "objective": {
+  "direction": "min",
+  "metric": "price"
+ },
+ "optimal_fits": [
+  {
+   "metrics": {
+    "cap_stable": 95.917024,
+    "dps": 166.207929,
+    "ehp": 2262.180477,
+    "price": 1129500.0,
+    "speed": 1084.066887,
+    "tank": 4.137931
+   },
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 439
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 2889
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 2889
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 520
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 520
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 520
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 5933
+    }
+   ],
+   "racks": {
+    "high": [
+     "200mm AutoCannon II|EMP S",
+     "200mm AutoCannon II|EMP S",
+     "200mm AutoCannon I|EMP S"
+    ],
+    "low": [
+     "Counterbalanced Compact Gyrostabilizer",
+     "Gyrostabilizer I",
+     "Gyrostabilizer I",
+     "Gyrostabilizer I"
+    ]
+   }
+  }
+ ],
+ "optimum": 1129500.0,
+ "pyfa_check": {
+  "agree": true,
+  "agree_rel_tolerance": 0.005,
+  "fits": [
+   {
+    "engine": 1129500.0,
+    "pyfa": 1129500.0,
+    "pyfa_violations": [],
+    "rel_diff": 0.0,
+    "role": "winner"
+   },
+   {
+    "engine": 1154500.0,
+    "pyfa": 1154500.0,
+    "rel_diff": 0.0,
+    "role": "runner_up"
+   },
+   {
+    "engine": 1179500.0,
+    "pyfa": 1179500.0,
+    "rel_diff": 0.0,
+    "role": "runner_up"
+   },
+   {
+    "engine": 1204500.0,
+    "pyfa": 1204500.0,
+    "rel_diff": 0.0,
+    "role": "runner_up"
+   },
+   {
+    "engine": 1354500.0,
+    "pyfa": 1354500.0,
+    "rel_diff": 0.0,
+    "role": "runner_up"
+   },
+   {
+    "engine": 1379500.0,
+    "pyfa": 1379500.0,
+    "rel_diff": 0.0,
+    "role": "runner_up"
+   }
+  ],
+  "legal": true,
+  "rank": true
+ },
+ "reference": {
+  "dataset": "dataset-3569502.json.gz",
+  "engine": "F-4b8f5f9",
+  "engine_note": "F variant-f-features 4b8f5f9 (EX-CT/eve-dogma-lab)",
+  "generated_s": 2.0,
+  "tie_tolerance_rel": 1e-06
+ },
+ "runners_up": [
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 439
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 2889
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 2889
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 520
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 520
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 5933
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 5933
+    }
+   ],
+   "racks": {
+    "high": [
+     "200mm AutoCannon II|EMP S",
+     "200mm AutoCannon II|EMP S",
+     "200mm AutoCannon I|EMP S"
+    ],
+    "low": [
+     "Counterbalanced Compact Gyrostabilizer",
+     "Counterbalanced Compact Gyrostabilizer",
+     "Gyrostabilizer I",
+     "Gyrostabilizer I"
+    ]
+   },
+   "value": 1154500.0
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 439
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 2889
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 519
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 5933
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 5933
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 5933
+    }
+   ],
+   "racks": {
+    "high": [
+     "200mm AutoCannon II|EMP S",
+     "200mm AutoCannon I|EMP S",
+     "200mm AutoCannon I|EMP S"
+    ],
+    "low": [
+     "Counterbalanced Compact Gyrostabilizer",
+     "Counterbalanced Compact Gyrostabilizer",
+     "Counterbalanced Compact Gyrostabilizer",
+     "Gyrostabilizer II"
+    ]
+   },
+   "value": 1179500.0
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 439
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 2889
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 2889
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 5933
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 5933
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 5933
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 5933
+    }
+   ],
+   "racks": {
+    "high": [
+     "200mm AutoCannon II|EMP S",
+     "200mm AutoCannon II|EMP S",
+     "200mm AutoCannon I|EMP S"
+    ],
+    "low": [
+     "Counterbalanced Compact Gyrostabilizer",
+     "Counterbalanced Compact Gyrostabilizer",
+     "Counterbalanced Compact Gyrostabilizer",
+     "Counterbalanced Compact Gyrostabilizer"
+    ]
+   },
+   "value": 1204500.0
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 439
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 2889
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 2889
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 520
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 520
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 519
+    }
+   ],
+   "racks": {
+    "high": [
+     "200mm AutoCannon II|EMP S",
+     "200mm AutoCannon II|EMP S",
+     "200mm AutoCannon I|EMP S"
+    ],
+    "low": [
+     "Gyrostabilizer I",
+     "Gyrostabilizer I",
+     "Gyrostabilizer II"
+    ]
+   },
+   "value": 1354500.0
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 439
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 2889
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 520
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 520
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 519
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 519
+    }
+   ],
+   "racks": {
+    "high": [
+     "200mm AutoCannon II|EMP S",
+     "200mm AutoCannon I|EMP S",
+     "200mm AutoCannon I|EMP S"
+    ],
+    "low": [
+     "Gyrostabilizer I",
+     "Gyrostabilizer I",
+     "Gyrostabilizer II",
+     "Gyrostabilizer II"
+    ]
+   },
+   "value": 1379500.0
+  }
+ ],
+ "second_best": 1154500.0,
+ "space": {
+  "engine_evaluated": 9800,
+  "engine_valid": 7332,
+  "engine_violations": {
+   "CALIBRATION_OVERLOAD": 2450,
+   "CPU_OVERLOAD": 24
+  },
+  "feasible": 1834,
+  "pruned_structural": 0,
+  "size": 9800
+ },
+ "ties": 1
+}

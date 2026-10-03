@@ -1,0 +1,486 @@
+{
+ "best_ignoring_all_rules": 233.308146,
+ "constraints_effect": {
+  "calibration": {
+   "best_if_relaxed": 166.325879,
+   "binding": false,
+   "rejected": 4900
+  },
+  "price": {
+   "best_if_relaxed": 230.835251,
+   "binding": true,
+   "rejected": 8858
+  }
+ },
+ "id": "dps_merlin_hybrid_price",
+ "objective": {
+  "direction": "max",
+  "metric": "dps"
+ },
+ "optimal_fits": [
+  {
+   "metrics": {
+    "cap_stable": 85.315614,
+    "dps": 190.13709,
+    "ehp": 2472.003012,
+    "price": 1629500.0,
+    "speed": 976.152305,
+    "tank": 5.747126
+   },
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 439
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 9944
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 9944
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 10190
+    }
+   ],
+   "racks": {
+    "high": [
+     "Light Neutron Blaster II|Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S"
+    ],
+    "low": [
+     "Magnetic Field Stabilizer I",
+     "Magnetic Field Stabilizer I",
+     "Magnetic Field Stabilizer II"
+    ]
+   }
+  }
+ ],
+ "optimum": 190.13709,
+ "pyfa_check": {
+  "agree": true,
+  "agree_rel_tolerance": 0.005,
+  "fits": [
+   {
+    "engine": 190.13709,
+    "pyfa": 190.13709022723623,
+    "pyfa_violations": [],
+    "rel_diff": 1.1951178386943159e-09,
+    "role": "winner"
+   },
+   {
+    "engine": 188.634003,
+    "pyfa": 188.63400287717167,
+    "rel_diff": 6.51146333884418e-10,
+    "role": "runner_up"
+   },
+   {
+    "engine": 188.183832,
+    "pyfa": 188.18383150540825,
+    "rel_diff": 2.6282371874378003e-09,
+    "role": "runner_up"
+   },
+   {
+    "engine": 187.284815,
+    "pyfa": 187.2848145056317,
+    "rel_diff": 2.639660467289433e-09,
+    "role": "runner_up"
+   },
+   {
+    "engine": 186.53431,
+    "pyfa": 186.53430983230908,
+    "rel_diff": 8.989816822992332e-10,
+    "role": "runner_up"
+   },
+   {
+    "engine": 186.135588,
+    "pyfa": 186.135587849018,
+    "rel_diff": 8.111399083347681e-10,
+    "role": "runner_up"
+   }
+  ],
+  "legal": true,
+  "rank": true
+ },
+ "reference": {
+  "dataset": "dataset-3569502.json.gz",
+  "engine": "F-4b8f5f9",
+  "engine_note": "F variant-f-features 4b8f5f9 (EX-CT/eve-dogma-lab)",
+  "generated_s": 2.9,
+  "tie_tolerance_rel": 1e-06
+ },
+ "runners_up": [
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 439
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 9944
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 9944
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 9944
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31538
+    }
+   ],
+   "racks": {
+    "high": [
+     "Light Neutron Blaster II|Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S"
+    ],
+    "low": [
+     "Magnetic Field Stabilizer I",
+     "Magnetic Field Stabilizer I",
+     "Magnetic Field Stabilizer I"
+    ],
+    "rig": [
+     "Small Hybrid Collision Accelerator I"
+    ]
+   },
+   "value": 188.634003
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 439
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 9944
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 9944
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 9944
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31526
+    }
+   ],
+   "racks": {
+    "high": [
+     "Light Neutron Blaster II|Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S"
+    ],
+    "low": [
+     "Magnetic Field Stabilizer I",
+     "Magnetic Field Stabilizer I",
+     "Magnetic Field Stabilizer I"
+    ],
+    "rig": [
+     "Small Hybrid Burst Aerator I"
+    ]
+   },
+   "value": 188.183832
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 439
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": 23009,
+     "slot": "high",
+     "state": "active",
+     "type_id": 563
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 9944
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 10190
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 10190
+    }
+   ],
+   "racks": {
+    "high": [
+     "Light Ion Blaster I|Caldari Navy Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S"
+    ],
+    "low": [
+     "Magnetic Field Stabilizer I",
+     "Magnetic Field Stabilizer II",
+     "Magnetic Field Stabilizer II"
+    ]
+   },
+   "value": 187.284815
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 439
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": 23009,
+     "slot": "high",
+     "state": "active",
+     "type_id": 563
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 9944
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 9944
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 10190
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31538
+    }
+   ],
+   "racks": {
+    "high": [
+     "Light Ion Blaster I|Caldari Navy Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S"
+    ],
+    "low": [
+     "Magnetic Field Stabilizer I",
+     "Magnetic Field Stabilizer I",
+     "Magnetic Field Stabilizer II"
+    ],
+    "rig": [
+     "Small Hybrid Collision Accelerator I"
+    ]
+   },
+   "value": 186.53431
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 439
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": 23009,
+     "slot": "high",
+     "state": "active",
+     "type_id": 563
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 9944
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 9944
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 10190
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31526
+    }
+   ],
+   "racks": {
+    "high": [
+     "Light Ion Blaster I|Caldari Navy Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S"
+    ],
+    "low": [
+     "Magnetic Field Stabilizer I",
+     "Magnetic Field Stabilizer I",
+     "Magnetic Field Stabilizer II"
+    ],
+    "rig": [
+     "Small Hybrid Burst Aerator I"
+    ]
+   },
+   "value": 186.135588
+  }
+ ],
+ "second_best": 188.634003,
+ "space": {
+  "engine_evaluated": 12250,
+  "engine_valid": 7350,
+  "engine_violations": {
+   "CALIBRATION_OVERLOAD": 4900
+  },
+  "feasible": 2956,
+  "pruned_structural": 0,
+  "size": 12250
+ },
+ "ties": 1
+}

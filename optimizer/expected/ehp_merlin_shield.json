@@ -1,0 +1,601 @@
+{
+ "best_ignoring_all_rules": 29480.22404,
+ "constraints_effect": {
+  "cpu": {
+   "best_if_relaxed": null,
+   "binding": false,
+   "rejected": 280
+  },
+  "powergrid": {
+   "best_if_relaxed": 25330.50616,
+   "binding": true,
+   "rejected": 5950
+  },
+  "slots_hardpoints": {
+   "best_if_relaxed": 25623.337265,
+   "binding": true,
+   "rejected": 9100
+  }
+ },
+ "id": "ehp_merlin_shield",
+ "objective": {
+  "direction": "max",
+  "metric": "ehp"
+ },
+ "optimal_fits": [
+  {
+   "metrics": {
+    "cap_stable": 55.414517,
+    "dps": 0.0,
+    "ehp": 23179.213393,
+    "price": 15750000.0,
+    "speed": 400.0,
+    "tank": 131.976228
+   },
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 3831
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 3831
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 578
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 578
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 2048
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1539
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1539
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31794
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31794
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31794
+    }
+   ],
+   "racks": {
+    "low": [
+     "Damage Control II",
+     "Power Diagnostic System I",
+     "Power Diagnostic System I"
+    ],
+    "mid": [
+     "Medium Shield Extender II",
+     "Medium Shield Extender II",
+     "Multispectrum Shield Hardener I",
+     "Multispectrum Shield Hardener I"
+    ],
+    "rig": [
+     "Small Core Defense Field Extender II",
+     "Small Core Defense Field Extender II",
+     "Small Core Defense Field Extender II"
+    ]
+   }
+  }
+ ],
+ "optimum": 23179.213393,
+ "pyfa_check": {
+  "agree": true,
+  "agree_rel_tolerance": 0.005,
+  "fits": [
+   {
+    "engine": 23179.213393,
+    "pyfa": 23179.213393377657,
+    "pyfa_violations": [],
+    "rel_diff": 1.629282821562156e-11,
+    "role": "winner"
+   },
+   {
+    "engine": 22364.870891,
+    "pyfa": 22364.870890849394,
+    "rel_diff": 6.734000271675557e-12,
+    "role": "runner_up"
+   },
+   {
+    "engine": 22297.009016,
+    "pyfa": 22297.009015638705,
+    "rel_diff": 1.6203740646587727e-11,
+    "role": "runner_up"
+   },
+   {
+    "engine": 21814.686401,
+    "pyfa": 21814.686400907187,
+    "rel_diff": 4.254570229451899e-12,
+    "role": "runner_up"
+   },
+   {
+    "engine": 21581.849254,
+    "pyfa": 21581.849253802986,
+    "rel_diff": 9.128723863249894e-12,
+    "role": "runner_up"
+   },
+   {
+    "engine": 21516.597451,
+    "pyfa": 21516.597450715784,
+    "rel_diff": 1.3209202567984599e-11,
+    "role": "runner_up"
+   }
+  ],
+  "legal": true,
+  "rank": true
+ },
+ "reference": {
+  "dataset": "dataset-3569502.json.gz",
+  "engine": "F-4b8f5f9",
+  "engine_note": "F variant-f-features 4b8f5f9 (EX-CT/eve-dogma-lab)",
+  "generated_s": 4.9,
+  "tie_tolerance_rel": 1e-06
+ },
+ "runners_up": [
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 3831
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 3831
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 578
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 578
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 2048
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1539
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1353
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31794
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31794
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31794
+    }
+   ],
+   "racks": {
+    "low": [
+     "Damage Control II",
+     "Power Diagnostic System I",
+     "Reactor Control Unit I"
+    ],
+    "mid": [
+     "Medium Shield Extender II",
+     "Medium Shield Extender II",
+     "Multispectrum Shield Hardener I",
+     "Multispectrum Shield Hardener I"
+    ],
+    "rig": [
+     "Small Core Defense Field Extender II",
+     "Small Core Defense Field Extender II",
+     "Small Core Defense Field Extender II"
+    ]
+   },
+   "value": 22364.870891
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 3831
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 3831
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 578
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 578
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 2048
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1539
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1539
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31788
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31794
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31794
+    }
+   ],
+   "racks": {
+    "low": [
+     "Damage Control II",
+     "Power Diagnostic System I",
+     "Power Diagnostic System I"
+    ],
+    "mid": [
+     "Medium Shield Extender II",
+     "Medium Shield Extender II",
+     "Multispectrum Shield Hardener I",
+     "Multispectrum Shield Hardener I"
+    ],
+    "rig": [
+     "Small Core Defense Field Extender I",
+     "Small Core Defense Field Extender II",
+     "Small Core Defense Field Extender II"
+    ]
+   },
+   "value": 22297.009016
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 3831
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 3831
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 578
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 578
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 2046
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1539
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1539
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31794
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31794
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31794
+    }
+   ],
+   "racks": {
+    "low": [
+     "Damage Control I",
+     "Power Diagnostic System I",
+     "Power Diagnostic System I"
+    ],
+    "mid": [
+     "Medium Shield Extender II",
+     "Medium Shield Extender II",
+     "Multispectrum Shield Hardener I",
+     "Multispectrum Shield Hardener I"
+    ],
+    "rig": [
+     "Small Core Defense Field Extender II",
+     "Small Core Defense Field Extender II",
+     "Small Core Defense Field Extender II"
+    ]
+   },
+   "value": 21814.686401
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 3831
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 3831
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 578
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 578
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 2048
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1353
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1353
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31794
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31794
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31794
+    }
+   ],
+   "racks": {
+    "low": [
+     "Damage Control II",
+     "Reactor Control Unit I",
+     "Reactor Control Unit I"
+    ],
+    "mid": [
+     "Medium Shield Extender II",
+     "Medium Shield Extender II",
+     "Multispectrum Shield Hardener I",
+     "Multispectrum Shield Hardener I"
+    ],
+    "rig": [
+     "Small Core Defense Field Extender II",
+     "Small Core Defense Field Extender II",
+     "Small Core Defense Field Extender II"
+    ]
+   },
+   "value": 21581.849254
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 3831
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 3831
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 578
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 578
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 2048
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1539
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1353
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31788
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31794
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31794
+    }
+   ],
+   "racks": {
+    "low": [
+     "Damage Control II",
+     "Power Diagnostic System I",
+     "Reactor Control Unit I"
+    ],
+    "mid": [
+     "Medium Shield Extender II",
+     "Medium Shield Extender II",
+     "Multispectrum Shield Hardener I",
+     "Multispectrum Shield Hardener I"
+    ],
+    "rig": [
+     "Small Core Defense Field Extender I",
+     "Small Core Defense Field Extender II",
+     "Small Core Defense Field Extender II"
+    ]
+   },
+   "value": 21516.597451
+  }
+ ],
+ "second_best": 22364.870891,
+ "space": {
+  "engine_evaluated": 24500,
+  "engine_valid": 11740,
+  "engine_violations": {
+   "CPU_OVERLOAD": 280,
+   "MAX_GROUP_FITTED": 9100,
+   "POWER_OVERLOAD": 5950
+  },
+  "feasible": 11740,
+  "pruned_structural": 0,
+  "size": 24500
+ },
+ "ties": 1
+}

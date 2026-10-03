@@ -1,0 +1,121 @@
+{
+ "bench": "optimizer-bench 0.1",
+ "description": "PG binds (medium booster); cap-limited",
+ "id": "tank_merlin_shield_boost",
+ "request": {
+  "base": {
+   "character": {
+    "skills": {
+     "default_level": 5,
+     "levels": {}
+    }
+   },
+   "damage_pattern": null,
+   "modules": [],
+   "ship": {
+    "type_id": 603
+   }
+  },
+  "constraints": {
+   "skills": "character"
+  },
+  "limits": {
+   "max_evaluations": 2100,
+   "results": 1,
+   "seed": 0,
+   "time_ms": 5000
+  },
+  "objective": {
+   "direction": "max",
+   "metric": "tank"
+  },
+  "search": {
+   "candidates": "explicit",
+   "charges": false,
+   "drones": false,
+   "keep": [],
+   "pools": {
+    "low": {
+     "pool": [
+      {
+       "charge_type_id": null,
+       "name": "Damage Control II",
+       "state": "active",
+       "type_id": 2048
+      },
+      {
+       "charge_type_id": null,
+       "name": "Power Diagnostic System I",
+       "state": "active",
+       "type_id": 1539
+      }
+     ],
+     "slots": 3
+    },
+    "mid": {
+     "pool": [
+      {
+       "charge_type_id": null,
+       "name": "Small Shield Booster I",
+       "state": "active",
+       "type_id": 399
+      },
+      {
+       "charge_type_id": null,
+       "name": "Small Shield Booster II",
+       "state": "active",
+       "type_id": 400
+      },
+      {
+       "charge_type_id": null,
+       "name": "Medium Shield Booster I",
+       "state": "active",
+       "type_id": 10836
+      },
+      {
+       "charge_type_id": null,
+       "name": "Shield Boost Amplifier I",
+       "state": "active",
+       "type_id": 11561
+      },
+      {
+       "charge_type_id": null,
+       "name": "Multispectrum Shield Hardener I",
+       "state": "active",
+       "type_id": 578
+      },
+      {
+       "charge_type_id": null,
+       "name": "Cap Recharger I",
+       "state": "active",
+       "type_id": 1195
+      }
+     ],
+     "slots": 4
+    },
+    "rig": {
+     "pool": [
+      {
+       "charge_type_id": null,
+       "name": "Small Core Defense Capacitor Safeguard I",
+       "state": "online",
+       "type_id": 31764
+      },
+      {
+       "charge_type_id": null,
+       "name": "Small Capacitor Control Circuit I",
+       "state": "online",
+       "type_id": 31370
+      }
+     ],
+     "slots": 3
+    }
+   },
+   "slots": [
+    "mid",
+    "low",
+    "rig"
+   ]
+  }
+ }
+}

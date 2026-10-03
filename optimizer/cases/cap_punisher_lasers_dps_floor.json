@@ -1,0 +1,148 @@
+{
+ "bench": "optimizer-bench 0.1",
+ "description": "attribute floor: dps >= median forces heat sinks against cap mods",
+ "id": "cap_punisher_lasers_dps_floor",
+ "request": {
+  "base": {
+   "character": {
+    "skills": {
+     "default_level": 5,
+     "levels": {}
+    }
+   },
+   "damage_pattern": null,
+   "modules": [
+    {
+     "charge_type_id": 246,
+     "slot": "high",
+     "state": "active",
+     "type_id": 453
+    },
+    {
+     "charge_type_id": 246,
+     "slot": "high",
+     "state": "active",
+     "type_id": 453
+    },
+    {
+     "charge_type_id": 246,
+     "slot": "high",
+     "state": "active",
+     "type_id": 453
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 439
+    }
+   ],
+   "ship": {
+    "type_id": 597
+   }
+  },
+  "constraints": {
+   "min": {
+    "dps": 82.299103
+   },
+   "skills": "character"
+  },
+  "limits": {
+   "max_evaluations": 756,
+   "results": 1,
+   "seed": 0,
+   "time_ms": 5000
+  },
+  "objective": {
+   "direction": "max",
+   "metric": "cap_stable"
+  },
+  "search": {
+   "candidates": "explicit",
+   "charges": false,
+   "drones": false,
+   "keep": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "pools": {
+    "low": {
+     "pool": [
+      {
+       "charge_type_id": null,
+       "name": "Capacitor Power Relay I",
+       "state": "active",
+       "type_id": 1445
+      },
+      {
+       "charge_type_id": null,
+       "name": "Capacitor Power Relay II",
+       "state": "active",
+       "type_id": 1447
+      },
+      {
+       "charge_type_id": null,
+       "name": "Heat Sink I",
+       "state": "active",
+       "type_id": 2363
+      },
+      {
+       "charge_type_id": null,
+       "name": "Heat Sink II",
+       "state": "active",
+       "type_id": 2364
+      },
+      {
+       "charge_type_id": null,
+       "name": "Capacitor Flux Coil I",
+       "state": "active",
+       "type_id": 1246
+      }
+     ],
+     "slots": 5
+    },
+    "mid": {
+     "pool": [
+      {
+       "charge_type_id": null,
+       "name": "Cap Recharger I",
+       "state": "active",
+       "type_id": 1195
+      },
+      {
+       "charge_type_id": null,
+       "name": "Cap Recharger II",
+       "state": "active",
+       "type_id": 2032
+      }
+     ],
+     "slots": 1
+    },
+    "rig": {
+     "pool": [
+      {
+       "charge_type_id": null,
+       "name": "Small Capacitor Control Circuit I",
+       "state": "online",
+       "type_id": 31370
+      },
+      {
+       "charge_type_id": null,
+       "name": "Small Energy Collision Accelerator I",
+       "state": "online",
+       "type_id": 31454
+      }
+     ],
+     "slots": 3
+    }
+   },
+   "slots": [
+    "mid",
+    "low",
+    "rig"
+   ]
+  }
+ }
+}

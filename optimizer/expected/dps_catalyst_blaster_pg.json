@@ -1,0 +1,667 @@
+{
+ "best_ignoring_all_rules": 338.64319,
+ "constraints_effect": {
+  "cpu": {
+   "best_if_relaxed": 329.324776,
+   "binding": true,
+   "rejected": 12
+  },
+  "powergrid": {
+   "best_if_relaxed": 322.288264,
+   "binding": true,
+   "rejected": 356
+  }
+ },
+ "id": "dps_catalyst_blaster_pg",
+ "objective": {
+  "direction": "max",
+  "metric": "dps"
+ },
+ "optimal_fits": [
+  {
+   "metrics": {
+    "cap_stable": 77.223341,
+    "dps": 313.419886,
+    "ehp": 7212.310097,
+    "price": 4084000.0,
+    "speed": 331.25,
+    "tank": 21.609195
+   },
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 3829
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 3829
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 563
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 10190
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 10190
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 10190
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31358
+    }
+   ],
+   "racks": {
+    "high": [
+     "Light Ion Blaster I|Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S"
+    ],
+    "low": [
+     "Magnetic Field Stabilizer II",
+     "Magnetic Field Stabilizer II",
+     "Magnetic Field Stabilizer II"
+    ],
+    "rig": [
+     "Small Ancillary Current Router I"
+    ]
+   }
+  }
+ ],
+ "optimum": 313.419886,
+ "pyfa_check": {
+  "agree": true,
+  "agree_rel_tolerance": 0.005,
+  "fits": [
+   {
+    "engine": 313.419886,
+    "pyfa": 313.4198864275427,
+    "pyfa_violations": [],
+    "rel_diff": 1.3641210342788203e-09,
+    "role": "winner"
+   },
+   {
+    "engine": 309.594524,
+    "pyfa": 309.59452375314675,
+    "rel_diff": 7.973436667303736e-10,
+    "role": "runner_up"
+   },
+   {
+    "engine": 306.254274,
+    "pyfa": 306.2542739133947,
+    "rel_diff": 2.827889532659821e-10,
+    "role": "runner_up"
+   },
+   {
+    "engine": 304.219344,
+    "pyfa": 304.219344363578,
+    "rel_diff": 1.1951179881744066e-09,
+    "role": "runner_up"
+   },
+   {
+    "engine": 303.735735,
+    "pyfa": 303.7357354766069,
+    "rel_diff": 1.5691500453732874e-09,
+    "role": "runner_up"
+   },
+   {
+    "engine": 300.113835,
+    "pyfa": 300.11383486444964,
+    "rel_diff": 4.5166312105468926e-10,
+    "role": "runner_up"
+   }
+  ],
+  "legal": true,
+  "rank": true
+ },
+ "reference": {
+  "dataset": "dataset-3569502.json.gz",
+  "engine": "F-4b8f5f9",
+  "engine_note": "F variant-f-features 4b8f5f9 (EX-CT/eve-dogma-lab)",
+  "generated_s": 1.9,
+  "tie_tolerance_rel": 1e-06
+ },
+ "runners_up": [
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 3829
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 3829
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 10190
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 10190
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1353
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31538
+    }
+   ],
+   "racks": {
+    "high": [
+     "Light Neutron Blaster II|Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S"
+    ],
+    "low": [
+     "Magnetic Field Stabilizer II",
+     "Magnetic Field Stabilizer II",
+     "Reactor Control Unit I"
+    ],
+    "rig": [
+     "Small Hybrid Collision Accelerator I"
+    ]
+   },
+   "value": 309.594524
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 3829
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 3829
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 564
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 9944
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 10190
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 10190
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31358
+    }
+   ],
+   "racks": {
+    "high": [
+     "Light Neutron Blaster II|Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S",
+     "Light Neutron Blaster I|Antimatter Charge S"
+    ],
+    "low": [
+     "Magnetic Field Stabilizer I",
+     "Magnetic Field Stabilizer II",
+     "Magnetic Field Stabilizer II"
+    ],
+    "rig": [
+     "Small Ancillary Current Router I"
+    ]
+   },
+   "value": 306.254274
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 3829
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 3829
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 9944
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 9944
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 10190
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31358
+    }
+   ],
+   "racks": {
+    "high": [
+     "Light Neutron Blaster II|Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S"
+    ],
+    "low": [
+     "Magnetic Field Stabilizer I",
+     "Magnetic Field Stabilizer I",
+     "Magnetic Field Stabilizer II"
+    ],
+    "rig": [
+     "Small Ancillary Current Router I"
+    ]
+   },
+   "value": 304.219344
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 3829
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 3829
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 563
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 9944
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 10190
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 10190
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31358
+    }
+   ],
+   "racks": {
+    "high": [
+     "Light Ion Blaster I|Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S"
+    ],
+    "low": [
+     "Magnetic Field Stabilizer I",
+     "Magnetic Field Stabilizer II",
+     "Magnetic Field Stabilizer II"
+    ],
+    "rig": [
+     "Small Ancillary Current Router I"
+    ]
+   },
+   "value": 303.735735
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 3829
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 3829
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 564
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 563
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": 222,
+     "slot": "high",
+     "state": "active",
+     "type_id": 3178
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 10190
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 10190
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 10190
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31358
+    }
+   ],
+   "racks": {
+    "high": [
+     "Light Ion Blaster I|Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S",
+     "Light Neutron Blaster II|Antimatter Charge S",
+     "Light Neutron Blaster I|Antimatter Charge S"
+    ],
+    "low": [
+     "Magnetic Field Stabilizer II",
+     "Magnetic Field Stabilizer II",
+     "Magnetic Field Stabilizer II"
+    ],
+    "rig": [
+     "Small Ancillary Current Router I"
+    ]
+   },
+   "value": 300.113835
+  }
+ ],
+ "second_best": 309.594524,
+ "space": {
+  "engine_evaluated": 8820,
+  "engine_valid": 8460,
+  "engine_violations": {
+   "CPU_OVERLOAD": 12,
+   "POWER_OVERLOAD": 356
+  },
+  "feasible": 8460,
+  "pruned_structural": 0,
+  "size": 8820
+ },
+ "ties": 1
+}

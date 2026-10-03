@@ -1,0 +1,527 @@
+{
+ "best_ignoring_all_rules": 69.637443,
+ "constraints_effect": {
+  "price": {
+   "best_if_relaxed": 69.637443,
+   "binding": true,
+   "rejected": 300
+  }
+ },
+ "id": "cap_incursus_reps_price",
+ "objective": {
+  "direction": "max",
+  "metric": "cap_stable"
+ },
+ "optimal_fits": [
+  {
+   "metrics": {
+    "cap_stable": 57.144776,
+    "dps": 0.0,
+    "ehp": 2455.824327,
+    "price": 1500000.0,
+    "speed": 1024.74231,
+    "tank": 62.469136
+   },
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 523
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 523
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 439
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 1195
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 2032
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1445
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1445
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31370
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31370
+    }
+   ],
+   "racks": {
+    "low": [
+     "Capacitor Power Relay I",
+     "Capacitor Power Relay I"
+    ],
+    "mid": [
+     "Cap Recharger I",
+     "Cap Recharger II"
+    ],
+    "rig": [
+     "Small Capacitor Control Circuit I",
+     "Small Capacitor Control Circuit I"
+    ]
+   }
+  }
+ ],
+ "optimum": 57.144776,
+ "pyfa_check": {
+  "agree": true,
+  "agree_rel_tolerance": 0.005,
+  "fits": [
+   {
+    "engine": 57.144776,
+    "pyfa": 57.1447758848328,
+    "pyfa_violations": [],
+    "rel_diff": 2.0153583903029156e-09,
+    "role": "winner"
+   },
+   {
+    "engine": 56.682569,
+    "pyfa": 56.68256919344504,
+    "rel_diff": 3.4127782659681354e-09,
+    "role": "runner_up"
+   },
+   {
+    "engine": 56.418777,
+    "pyfa": 56.4187770733639,
+    "rel_diff": 1.3003454478289309e-09,
+    "role": "runner_up"
+   },
+   {
+    "engine": 56.339464,
+    "pyfa": 56.3394641273827,
+    "rel_diff": 2.260985269000189e-09,
+    "role": "runner_up"
+   },
+   {
+    "engine": 55.942463,
+    "pyfa": 55.94246334924994,
+    "rel_diff": 6.243020521283175e-09,
+    "role": "runner_up"
+   },
+   {
+    "engine": 55.879931,
+    "pyfa": 55.87993060068265,
+    "rel_diff": 7.145988615144451e-09,
+    "role": "runner_up"
+   }
+  ],
+  "legal": true,
+  "rank": true
+ },
+ "reference": {
+  "dataset": "dataset-3569502.json.gz",
+  "engine": "F-4b8f5f9",
+  "engine_note": "F variant-f-features 4b8f5f9 (EX-CT/eve-dogma-lab)",
+  "generated_s": 0.1,
+  "tie_tolerance_rel": 1e-06
+ },
+ "runners_up": [
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 523
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 523
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 439
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 1195
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 1195
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1445
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1447
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31370
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31370
+    }
+   ],
+   "racks": {
+    "low": [
+     "Capacitor Power Relay I",
+     "Capacitor Power Relay II"
+    ],
+    "mid": [
+     "Cap Recharger I",
+     "Cap Recharger I"
+    ],
+    "rig": [
+     "Small Capacitor Control Circuit I",
+     "Small Capacitor Control Circuit I"
+    ]
+   },
+   "value": 56.682569
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 523
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 523
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 439
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 1195
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 2032
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1445
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1445
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31370
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31406
+    }
+   ],
+   "racks": {
+    "low": [
+     "Capacitor Power Relay I",
+     "Capacitor Power Relay I"
+    ],
+    "mid": [
+     "Cap Recharger I",
+     "Cap Recharger II"
+    ],
+    "rig": [
+     "Small Capacitor Control Circuit I",
+     "Small Semiconductor Memory Cell I"
+    ]
+   },
+   "value": 56.418777
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 523
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 523
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 439
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 1195
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 2032
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1445
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1246
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31370
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31370
+    }
+   ],
+   "racks": {
+    "low": [
+     "Capacitor Flux Coil I",
+     "Capacitor Power Relay I"
+    ],
+    "mid": [
+     "Cap Recharger I",
+     "Cap Recharger II"
+    ],
+    "rig": [
+     "Small Capacitor Control Circuit I",
+     "Small Capacitor Control Circuit I"
+    ]
+   },
+   "value": 56.339464
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 523
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 523
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 439
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 1195
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 1195
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1445
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1447
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31370
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31406
+    }
+   ],
+   "racks": {
+    "low": [
+     "Capacitor Power Relay I",
+     "Capacitor Power Relay II"
+    ],
+    "mid": [
+     "Cap Recharger I",
+     "Cap Recharger I"
+    ],
+    "rig": [
+     "Small Capacitor Control Circuit I",
+     "Small Semiconductor Memory Cell I"
+    ]
+   },
+   "value": 55.942463
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 523
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 523
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 439
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 1195
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 1195
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1447
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1246
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31370
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31370
+    }
+   ],
+   "racks": {
+    "low": [
+     "Capacitor Flux Coil I",
+     "Capacitor Power Relay II"
+    ],
+    "mid": [
+     "Cap Recharger I",
+     "Cap Recharger I"
+    ],
+    "rig": [
+     "Small Capacitor Control Circuit I",
+     "Small Capacitor Control Circuit I"
+    ]
+   },
+   "value": 55.879931
+  }
+ ],
+ "second_best": 56.682569,
+ "space": {
+  "engine_evaluated": 600,
+  "engine_valid": 600,
+  "engine_violations": {},
+  "feasible": 300,
+  "pruned_structural": 0,
+  "size": 600
+ },
+ "ties": 1
+}

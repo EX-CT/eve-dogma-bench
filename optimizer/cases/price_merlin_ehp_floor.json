@@ -1,0 +1,132 @@
+{
+ "bench": "optimizer-bench 0.1",
+ "description": "cheapest fit with ehp >= 70th percentile",
+ "id": "price_merlin_ehp_floor",
+ "request": {
+  "base": {
+   "character": {
+    "skills": {
+     "default_level": 5,
+     "levels": {}
+    }
+   },
+   "damage_pattern": null,
+   "modules": [],
+   "ship": {
+    "type_id": 603
+   }
+  },
+  "constraints": {
+   "min": {
+    "ehp": 11523.549707
+   },
+   "price": {
+    "prices": {
+     "1539": 25000,
+     "2046": 25000,
+     "2048": 300000,
+     "31788": 350000,
+     "31794": 4200000,
+     "377": 25000,
+     "3829": 100000,
+     "3831": 1200000,
+     "578": 25000,
+     "603": 350000
+    }
+   },
+   "skills": "character"
+  },
+  "limits": {
+   "max_evaluations": 1400,
+   "results": 1,
+   "seed": 0,
+   "time_ms": 5000
+  },
+  "objective": {
+   "direction": "min",
+   "metric": "price"
+  },
+  "search": {
+   "candidates": "explicit",
+   "charges": false,
+   "drones": false,
+   "keep": [],
+   "pools": {
+    "low": {
+     "pool": [
+      {
+       "charge_type_id": null,
+       "name": "Damage Control I",
+       "state": "active",
+       "type_id": 2046
+      },
+      {
+       "charge_type_id": null,
+       "name": "Damage Control II",
+       "state": "active",
+       "type_id": 2048
+      },
+      {
+       "charge_type_id": null,
+       "name": "Power Diagnostic System I",
+       "state": "active",
+       "type_id": 1539
+      }
+     ],
+     "slots": 3
+    },
+    "mid": {
+     "pool": [
+      {
+       "charge_type_id": null,
+       "name": "Medium Shield Extender I",
+       "state": "active",
+       "type_id": 3829
+      },
+      {
+       "charge_type_id": null,
+       "name": "Medium Shield Extender II",
+       "state": "active",
+       "type_id": 3831
+      },
+      {
+       "charge_type_id": null,
+       "name": "Small Shield Extender I",
+       "state": "active",
+       "type_id": 377
+      },
+      {
+       "charge_type_id": null,
+       "name": "Multispectrum Shield Hardener I",
+       "state": "active",
+       "type_id": 578
+      }
+     ],
+     "slots": 4
+    },
+    "rig": {
+     "pool": [
+      {
+       "charge_type_id": null,
+       "name": "Small Core Defense Field Extender I",
+       "state": "online",
+       "type_id": 31788
+      },
+      {
+       "charge_type_id": null,
+       "name": "Small Core Defense Field Extender II",
+       "state": "online",
+       "type_id": 31794
+      }
+     ],
+     "slots": 3
+    }
+   },
+   "slots": [
+    "mid",
+    "low",
+    "rig"
+   ]
+  }
+ }
+}

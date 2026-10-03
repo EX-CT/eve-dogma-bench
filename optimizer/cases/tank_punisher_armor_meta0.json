@@ -1,0 +1,118 @@
+{
+ "bench": "optimizer-bench 0.1",
+ "description": "max_meta_level 0: only T1 meta-0 items",
+ "id": "tank_punisher_armor_meta0",
+ "request": {
+  "base": {
+   "character": {
+    "skills": {
+     "default_level": 5,
+     "levels": {}
+    }
+   },
+   "damage_pattern": null,
+   "modules": [],
+   "ship": {
+    "type_id": 597
+   }
+  },
+  "constraints": {
+   "meta": {
+    "max_meta_level": 0
+   },
+   "skills": "character"
+  },
+  "limits": {
+   "max_evaluations": 1512,
+   "results": 1,
+   "seed": 0,
+   "time_ms": 5000
+  },
+  "objective": {
+   "direction": "max",
+   "metric": "tank"
+  },
+  "search": {
+   "candidates": "explicit",
+   "charges": false,
+   "drones": false,
+   "keep": [],
+   "pools": {
+    "low": {
+     "pool": [
+      {
+       "charge_type_id": null,
+       "name": "Small Armor Repairer I",
+       "state": "active",
+       "type_id": 523
+      },
+      {
+       "charge_type_id": null,
+       "name": "Small Armor Repairer II",
+       "state": "active",
+       "type_id": 1183
+      },
+      {
+       "charge_type_id": null,
+       "name": "Multispectrum Energized Membrane I",
+       "state": "active",
+       "type_id": 11267
+      },
+      {
+       "charge_type_id": null,
+       "name": "Damage Control I",
+       "state": "active",
+       "type_id": 2046
+      },
+      {
+       "charge_type_id": null,
+       "name": "Capacitor Power Relay I",
+       "state": "active",
+       "type_id": 1445
+      }
+     ],
+     "slots": 5
+    },
+    "mid": {
+     "pool": [
+      {
+       "charge_type_id": null,
+       "name": "Cap Recharger I",
+       "state": "active",
+       "type_id": 1195
+      },
+      {
+       "charge_type_id": null,
+       "name": "Cap Recharger II",
+       "state": "active",
+       "type_id": 2032
+      }
+     ],
+     "slots": 2
+    },
+    "rig": {
+     "pool": [
+      {
+       "charge_type_id": null,
+       "name": "Small Auxiliary Nano Pump I",
+       "state": "online",
+       "type_id": 31045
+      },
+      {
+       "charge_type_id": null,
+       "name": "Small Nanobot Accelerator I",
+       "state": "online",
+       "type_id": 31063
+      }
+     ],
+     "slots": 3
+    }
+   },
+   "slots": [
+    "mid",
+    "low",
+    "rig"
+   ]
+  }
+ }
+}

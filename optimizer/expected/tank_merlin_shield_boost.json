@@ -1,0 +1,594 @@
+{
+ "best_ignoring_all_rules": 107.714008,
+ "constraints_effect": {
+  "cpu": {
+   "best_if_relaxed": 94.548742,
+   "binding": false,
+   "rejected": 1930
+  },
+  "powergrid": {
+   "best_if_relaxed": null,
+   "binding": false,
+   "rejected": 10
+  },
+  "slots_hardpoints": {
+   "best_if_relaxed": 100.296173,
+   "binding": false,
+   "rejected": 6300
+  }
+ },
+ "id": "tank_merlin_shield_boost",
+ "objective": {
+  "direction": "max",
+  "metric": "tank"
+ },
+ "optimal_fits": [
+  {
+   "metrics": {
+    "cap_stable": -999999834.0,
+    "dps": 0.0,
+    "ehp": 3338.328032,
+    "price": 2400000.0,
+    "speed": 400.0,
+    "tank": 107.714008
+   },
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 400
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 400
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 11561
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 11561
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 2048
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1539
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1539
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31370
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31370
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31370
+    }
+   ],
+   "racks": {
+    "low": [
+     "Damage Control II",
+     "Power Diagnostic System I",
+     "Power Diagnostic System I"
+    ],
+    "mid": [
+     "Shield Boost Amplifier I",
+     "Shield Boost Amplifier I",
+     "Small Shield Booster II",
+     "Small Shield Booster II"
+    ],
+    "rig": [
+     "Small Capacitor Control Circuit I",
+     "Small Capacitor Control Circuit I",
+     "Small Capacitor Control Circuit I"
+    ]
+   }
+  }
+ ],
+ "optimum": 107.714008,
+ "pyfa_check": {
+  "agree": true,
+  "agree_rel_tolerance": 0.005,
+  "fits": [
+   {
+    "engine": 107.714008,
+    "pyfa": 107.7140082379879,
+    "pyfa_violations": [],
+    "rel_diff": 2.20944234781152e-09,
+    "role": "winner"
+   },
+   {
+    "engine": 101.729897,
+    "pyfa": 101.72989666921077,
+    "rel_diff": 3.2516421403189255e-09,
+    "role": "runner_up"
+   },
+   {
+    "engine": 98.902565,
+    "pyfa": 98.90256506538866,
+    "rel_diff": 6.611422221096476e-10,
+    "role": "runner_up"
+   },
+   {
+    "engine": 96.078236,
+    "pyfa": 96.07823574314348,
+    "rel_diff": 2.6734100697485217e-09,
+    "role": "runner_up"
+   },
+   {
+    "engine": 95.803325,
+    "pyfa": 95.80332463474886,
+    "rel_diff": 3.812510051772908e-09,
+    "role": "runner_up"
+   },
+   {
+    "engine": 94.548742,
+    "pyfa": 94.54874221088893,
+    "rel_diff": 2.2304784092653065e-09,
+    "role": "runner_up"
+   }
+  ],
+  "legal": true,
+  "rank": true
+ },
+ "reference": {
+  "dataset": "dataset-3569502.json.gz",
+  "engine": "F-4b8f5f9",
+  "engine_note": "F variant-f-features 4b8f5f9 (EX-CT/eve-dogma-lab)",
+  "generated_s": 3.8,
+  "tie_tolerance_rel": 1e-06
+ },
+ "runners_up": [
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 400
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 400
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 11561
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 11561
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 2048
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1539
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1539
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31764
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31370
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31370
+    }
+   ],
+   "racks": {
+    "low": [
+     "Damage Control II",
+     "Power Diagnostic System I",
+     "Power Diagnostic System I"
+    ],
+    "mid": [
+     "Shield Boost Amplifier I",
+     "Shield Boost Amplifier I",
+     "Small Shield Booster II",
+     "Small Shield Booster II"
+    ],
+    "rig": [
+     "Small Capacitor Control Circuit I",
+     "Small Capacitor Control Circuit I",
+     "Small Core Defense Capacitor Safeguard I"
+    ]
+   },
+   "value": 101.729897
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 400
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 400
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 11561
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 11561
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1539
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1539
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1539
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31764
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31370
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31370
+    }
+   ],
+   "racks": {
+    "low": [
+     "Power Diagnostic System I",
+     "Power Diagnostic System I",
+     "Power Diagnostic System I"
+    ],
+    "mid": [
+     "Shield Boost Amplifier I",
+     "Shield Boost Amplifier I",
+     "Small Shield Booster II",
+     "Small Shield Booster II"
+    ],
+    "rig": [
+     "Small Capacitor Control Circuit I",
+     "Small Capacitor Control Circuit I",
+     "Small Core Defense Capacitor Safeguard I"
+    ]
+   },
+   "value": 98.902565
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 400
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 400
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 11561
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 11561
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 2048
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1539
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1539
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31764
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31764
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31370
+    }
+   ],
+   "racks": {
+    "low": [
+     "Damage Control II",
+     "Power Diagnostic System I",
+     "Power Diagnostic System I"
+    ],
+    "mid": [
+     "Shield Boost Amplifier I",
+     "Shield Boost Amplifier I",
+     "Small Shield Booster II",
+     "Small Shield Booster II"
+    ],
+    "rig": [
+     "Small Capacitor Control Circuit I",
+     "Small Core Defense Capacitor Safeguard I",
+     "Small Core Defense Capacitor Safeguard I"
+    ]
+   },
+   "value": 96.078236
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 400
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 400
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 11561
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 11561
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 2048
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1539
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31370
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31370
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31370
+    }
+   ],
+   "racks": {
+    "low": [
+     "Damage Control II",
+     "Power Diagnostic System I"
+    ],
+    "mid": [
+     "Shield Boost Amplifier I",
+     "Shield Boost Amplifier I",
+     "Small Shield Booster II",
+     "Small Shield Booster II"
+    ],
+    "rig": [
+     "Small Capacitor Control Circuit I",
+     "Small Capacitor Control Circuit I",
+     "Small Capacitor Control Circuit I"
+    ]
+   },
+   "value": 95.803325
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 399
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 400
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 11561
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 11561
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 2048
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1539
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1539
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31370
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31370
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31370
+    }
+   ],
+   "racks": {
+    "low": [
+     "Damage Control II",
+     "Power Diagnostic System I",
+     "Power Diagnostic System I"
+    ],
+    "mid": [
+     "Shield Boost Amplifier I",
+     "Shield Boost Amplifier I",
+     "Small Shield Booster I",
+     "Small Shield Booster II"
+    ],
+    "rig": [
+     "Small Capacitor Control Circuit I",
+     "Small Capacitor Control Circuit I",
+     "Small Capacitor Control Circuit I"
+    ]
+   },
+   "value": 94.548742
+  }
+ ],
+ "second_best": 101.729897,
+ "space": {
+  "engine_evaluated": 21000,
+  "engine_valid": 14170,
+  "engine_violations": {
+   "CPU_OVERLOAD": 1930,
+   "MAX_GROUP_FITTED": 6300,
+   "POWER_OVERLOAD": 10
+  },
+  "feasible": 14170,
+  "pruned_structural": 0,
+  "size": 21000
+ },
+ "ties": 1
+}

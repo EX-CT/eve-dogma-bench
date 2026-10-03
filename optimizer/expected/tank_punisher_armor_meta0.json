@@ -1,0 +1,587 @@
+{
+ "best_ignoring_all_rules": 165.630759,
+ "constraints_effect": {
+  "meta": {
+   "best_if_relaxed": 165.630759,
+   "binding": true,
+   "rejected": 11340
+  },
+  "slots_hardpoints": {
+   "best_if_relaxed": 97.521458,
+   "binding": false,
+   "rejected": 3360
+  }
+ },
+ "id": "tank_punisher_armor_meta0",
+ "objective": {
+  "direction": "max",
+  "metric": "tank"
+ },
+ "optimal_fits": [
+  {
+   "metrics": {
+    "cap_stable": 31.005716,
+    "dps": 0.0,
+    "ehp": 3144.832468,
+    "price": 1575000.0,
+    "speed": 443.75,
+    "tank": 117.838104
+   },
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 1195
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 1195
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 523
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 523
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11267
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11267
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1445
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31045
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31045
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31045
+    }
+   ],
+   "racks": {
+    "low": [
+     "Capacitor Power Relay I",
+     "Multispectrum Energized Membrane I",
+     "Multispectrum Energized Membrane I",
+     "Small Armor Repairer I",
+     "Small Armor Repairer I"
+    ],
+    "mid": [
+     "Cap Recharger I",
+     "Cap Recharger I"
+    ],
+    "rig": [
+     "Small Auxiliary Nano Pump I",
+     "Small Auxiliary Nano Pump I",
+     "Small Auxiliary Nano Pump I"
+    ]
+   }
+  }
+ ],
+ "optimum": 117.838104,
+ "pyfa_check": {
+  "agree": true,
+  "agree_rel_tolerance": 0.005,
+  "fits": [
+   {
+    "engine": 117.838104,
+    "pyfa": 117.8381037531161,
+    "pyfa_violations": [],
+    "rel_diff": 2.0951109327953887e-09,
+    "role": "winner"
+   },
+   {
+    "engine": 110.038428,
+    "pyfa": 110.03842812428589,
+    "rel_diff": 1.129477149783635e-09,
+    "role": "runner_up"
+   },
+   {
+    "engine": 109.594674,
+    "pyfa": 109.59467421079631,
+    "rel_diff": 1.9234175149242825e-09,
+    "role": "runner_up"
+   },
+   {
+    "engine": 108.547774,
+    "pyfa": 108.54777421796221,
+    "rel_diff": 2.0079841532119403e-09,
+    "role": "runner_up"
+   },
+   {
+    "engine": 107.01388,
+    "pyfa": 107.01388047689437,
+    "rel_diff": 4.45637865951789e-09,
+    "role": "runner_up"
+   },
+   {
+    "engine": 106.89274,
+    "pyfa": 106.89274037901997,
+    "rel_diff": 3.5457970825245227e-09,
+    "role": "runner_up"
+   }
+  ],
+  "legal": true,
+  "rank": true
+ },
+ "reference": {
+  "dataset": "dataset-3569502.json.gz",
+  "engine": "F-4b8f5f9",
+  "engine_note": "F variant-f-features 4b8f5f9 (EX-CT/eve-dogma-lab)",
+  "generated_s": 2.4,
+  "tie_tolerance_rel": 1e-06
+ },
+ "runners_up": [
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 1195
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 1195
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 523
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 523
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11267
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11267
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1445
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31045
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31045
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31063
+    }
+   ],
+   "racks": {
+    "low": [
+     "Capacitor Power Relay I",
+     "Multispectrum Energized Membrane I",
+     "Multispectrum Energized Membrane I",
+     "Small Armor Repairer I",
+     "Small Armor Repairer I"
+    ],
+    "mid": [
+     "Cap Recharger I",
+     "Cap Recharger I"
+    ],
+    "rig": [
+     "Small Auxiliary Nano Pump I",
+     "Small Auxiliary Nano Pump I",
+     "Small Nanobot Accelerator I"
+    ]
+   },
+   "value": 110.038428
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 1195
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 1195
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 523
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 523
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11267
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 2046
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1445
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31045
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31045
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31045
+    }
+   ],
+   "racks": {
+    "low": [
+     "Capacitor Power Relay I",
+     "Damage Control I",
+     "Multispectrum Energized Membrane I",
+     "Small Armor Repairer I",
+     "Small Armor Repairer I"
+    ],
+    "mid": [
+     "Cap Recharger I",
+     "Cap Recharger I"
+    ],
+    "rig": [
+     "Small Auxiliary Nano Pump I",
+     "Small Auxiliary Nano Pump I",
+     "Small Auxiliary Nano Pump I"
+    ]
+   },
+   "value": 109.594674
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 1195
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 1195
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 523
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 523
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11267
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11267
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1445
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31045
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31045
+    }
+   ],
+   "racks": {
+    "low": [
+     "Capacitor Power Relay I",
+     "Multispectrum Energized Membrane I",
+     "Multispectrum Energized Membrane I",
+     "Small Armor Repairer I",
+     "Small Armor Repairer I"
+    ],
+    "mid": [
+     "Cap Recharger I",
+     "Cap Recharger I"
+    ],
+    "rig": [
+     "Small Auxiliary Nano Pump I",
+     "Small Auxiliary Nano Pump I"
+    ]
+   },
+   "value": 108.547774
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 1195
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 1195
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 523
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 523
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11267
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11267
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11267
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31045
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31045
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31045
+    }
+   ],
+   "racks": {
+    "low": [
+     "Multispectrum Energized Membrane I",
+     "Multispectrum Energized Membrane I",
+     "Multispectrum Energized Membrane I",
+     "Small Armor Repairer I",
+     "Small Armor Repairer I"
+    ],
+    "mid": [
+     "Cap Recharger I",
+     "Cap Recharger I"
+    ],
+    "rig": [
+     "Small Auxiliary Nano Pump I",
+     "Small Auxiliary Nano Pump I",
+     "Small Auxiliary Nano Pump I"
+    ]
+   },
+   "value": 107.01388
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 1195
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 1195
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 523
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 523
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11267
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1445
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1445
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31045
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31045
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31063
+    }
+   ],
+   "racks": {
+    "low": [
+     "Capacitor Power Relay I",
+     "Capacitor Power Relay I",
+     "Multispectrum Energized Membrane I",
+     "Small Armor Repairer I",
+     "Small Armor Repairer I"
+    ],
+    "mid": [
+     "Cap Recharger I",
+     "Cap Recharger I"
+    ],
+    "rig": [
+     "Small Auxiliary Nano Pump I",
+     "Small Auxiliary Nano Pump I",
+     "Small Nanobot Accelerator I"
+    ]
+   },
+   "value": 106.89274
+  }
+ ],
+ "second_best": 110.038428,
+ "space": {
+  "engine_evaluated": 15120,
+  "engine_valid": 11760,
+  "engine_violations": {
+   "MAX_GROUP_FITTED": 3360
+  },
+  "feasible": 2730,
+  "pruned_structural": 0,
+  "size": 15120
+ },
+ "ties": 1
+}

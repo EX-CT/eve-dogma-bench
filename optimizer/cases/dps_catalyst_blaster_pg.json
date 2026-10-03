@@ -1,0 +1,131 @@
+{
+ "bench": "optimizer-bench 0.1",
+ "description": "PG binds (two kept Medium Shield Extenders + Neutron II); RCU / PDS / ACR trade against damage mods",
+ "id": "dps_catalyst_blaster_pg",
+ "request": {
+  "base": {
+   "character": {
+    "skills": {
+     "default_level": 5,
+     "levels": {}
+    }
+   },
+   "damage_pattern": null,
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 3829
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 3829
+    }
+   ],
+   "ship": {
+    "type_id": 16240
+   }
+  },
+  "constraints": {
+   "skills": "character"
+  },
+  "limits": {
+   "max_evaluations": 882,
+   "results": 1,
+   "seed": 0,
+   "time_ms": 5000
+  },
+  "objective": {
+   "direction": "max",
+   "metric": "dps"
+  },
+  "search": {
+   "candidates": "explicit",
+   "charges": false,
+   "drones": false,
+   "keep": [
+    0,
+    1
+   ],
+   "pools": {
+    "high": {
+     "pool": [
+      {
+       "charge_type_id": 222,
+       "name": "Light Neutron Blaster I|Antimatter Charge S",
+       "state": "active",
+       "type_id": 564
+      },
+      {
+       "charge_type_id": 222,
+       "name": "Light Ion Blaster I|Antimatter Charge S",
+       "state": "active",
+       "type_id": 563
+      },
+      {
+       "charge_type_id": 222,
+       "name": "Light Neutron Blaster II|Antimatter Charge S",
+       "state": "active",
+       "type_id": 3178
+      }
+     ],
+     "slots": 6
+    },
+    "low": {
+     "pool": [
+      {
+       "charge_type_id": null,
+       "name": "Magnetic Field Stabilizer I",
+       "state": "active",
+       "type_id": 9944
+      },
+      {
+       "charge_type_id": null,
+       "name": "Magnetic Field Stabilizer II",
+       "state": "active",
+       "type_id": 10190
+      },
+      {
+       "charge_type_id": null,
+       "name": "Power Diagnostic System I",
+       "state": "active",
+       "type_id": 1539
+      },
+      {
+       "charge_type_id": null,
+       "name": "Reactor Control Unit I",
+       "state": "active",
+       "type_id": 1353
+      }
+     ],
+     "slots": 3
+    },
+    "rig": {
+     "pool": [
+      {
+       "charge_type_id": null,
+       "name": "Small Ancillary Current Router I",
+       "state": "online",
+       "type_id": 31358
+      },
+      {
+       "charge_type_id": null,
+       "name": "Small Hybrid Collision Accelerator I",
+       "state": "online",
+       "type_id": 31538
+      }
+     ],
+     "slots": 1
+    }
+   },
+   "slots": [
+    "high",
+    "low",
+    "rig"
+   ]
+  }
+ }
+}

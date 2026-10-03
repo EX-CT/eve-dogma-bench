@@ -1,0 +1,594 @@
+{
+ "best_ignoring_all_rules": 223.859102,
+ "constraints_effect": {
+  "calibration": {
+   "best_if_relaxed": 152.126468,
+   "binding": true,
+   "rejected": 17640
+  },
+  "cpu": {
+   "best_if_relaxed": null,
+   "binding": false,
+   "rejected": 60
+  },
+  "meta": {
+   "best_if_relaxed": 223.187722,
+   "binding": true,
+   "rejected": 40600
+  }
+ },
+ "id": "dps_rifter_projectile_meta4",
+ "objective": {
+  "direction": "max",
+  "metric": "dps"
+ },
+ "optimal_fits": [
+  {
+   "metrics": {
+    "cap_stable": 95.917024,
+    "dps": 149.762646,
+    "ehp": 2262.180477,
+    "price": 1354500.0,
+    "speed": 1084.066887,
+    "tank": 4.137931
+   },
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 439
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 5933
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 5933
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 5933
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 5933
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31680
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31680
+    }
+   ],
+   "racks": {
+    "high": [
+     "200mm AutoCannon I|EMP S",
+     "200mm AutoCannon I|EMP S",
+     "200mm AutoCannon I|EMP S"
+    ],
+    "low": [
+     "Counterbalanced Compact Gyrostabilizer",
+     "Counterbalanced Compact Gyrostabilizer",
+     "Counterbalanced Compact Gyrostabilizer",
+     "Counterbalanced Compact Gyrostabilizer"
+    ],
+    "rig": [
+     "Small Projectile Collision Accelerator I",
+     "Small Projectile Collision Accelerator I"
+    ]
+   }
+  }
+ ],
+ "optimum": 149.762646,
+ "pyfa_check": {
+  "agree": true,
+  "agree_rel_tolerance": 0.005,
+  "fits": [
+   {
+    "engine": 149.762646,
+    "pyfa": 149.76264594557176,
+    "pyfa_violations": [],
+    "rel_diff": 3.634299253669742e-10,
+    "role": "winner"
+   },
+   {
+    "engine": 149.335292,
+    "pyfa": 149.33529191439783,
+    "rel_diff": 5.732213745117074e-10,
+    "role": "runner_up"
+   },
+   {
+    "engine": 149.067669,
+    "pyfa": 149.0676688868922,
+    "rel_diff": 7.587681688065466e-10,
+    "role": "runner_up"
+   },
+   {
+    "engine": 148.939133,
+    "pyfa": 148.93913292348293,
+    "rel_diff": 5.137472381894477e-10,
+    "role": "runner_up"
+   },
+   {
+    "engine": 147.882033,
+    "pyfa": 147.88203272385235,
+    "rel_diff": 1.8673509810754266e-09,
+    "role": "runner_up"
+   },
+   {
+    "engine": 147.575546,
+    "pyfa": 147.57554619606395,
+    "rel_diff": 1.3285666641035257e-09,
+    "role": "runner_up"
+   }
+  ],
+  "legal": true,
+  "rank": true
+ },
+ "reference": {
+  "dataset": "dataset-3569502.json.gz",
+  "engine": "F-4b8f5f9",
+  "engine_note": "F variant-f-features 4b8f5f9 (EX-CT/eve-dogma-lab)",
+  "generated_s": 9.2,
+  "tie_tolerance_rel": 1e-06
+ },
+ "runners_up": [
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 439
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 5933
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 5933
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 5933
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 5933
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31668
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31680
+    }
+   ],
+   "racks": {
+    "high": [
+     "200mm AutoCannon I|EMP S",
+     "200mm AutoCannon I|EMP S",
+     "200mm AutoCannon I|EMP S"
+    ],
+    "low": [
+     "Counterbalanced Compact Gyrostabilizer",
+     "Counterbalanced Compact Gyrostabilizer",
+     "Counterbalanced Compact Gyrostabilizer",
+     "Counterbalanced Compact Gyrostabilizer"
+    ],
+    "rig": [
+     "Small Projectile Burst Aerator I",
+     "Small Projectile Collision Accelerator I"
+    ]
+   },
+   "value": 149.335292
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 439
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 520
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 5933
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 5933
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 5933
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31680
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31680
+    }
+   ],
+   "racks": {
+    "high": [
+     "200mm AutoCannon I|EMP S",
+     "200mm AutoCannon I|EMP S",
+     "200mm AutoCannon I|EMP S"
+    ],
+    "low": [
+     "Counterbalanced Compact Gyrostabilizer",
+     "Counterbalanced Compact Gyrostabilizer",
+     "Counterbalanced Compact Gyrostabilizer",
+     "Gyrostabilizer I"
+    ],
+    "rig": [
+     "Small Projectile Collision Accelerator I",
+     "Small Projectile Collision Accelerator I"
+    ]
+   },
+   "value": 149.067669
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 439
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 520
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 5933
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 5933
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 5933
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31668
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31680
+    }
+   ],
+   "racks": {
+    "high": [
+     "200mm AutoCannon I|EMP S",
+     "200mm AutoCannon I|EMP S",
+     "200mm AutoCannon I|EMP S"
+    ],
+    "low": [
+     "Counterbalanced Compact Gyrostabilizer",
+     "Counterbalanced Compact Gyrostabilizer",
+     "Counterbalanced Compact Gyrostabilizer",
+     "Gyrostabilizer I"
+    ],
+    "rig": [
+     "Small Projectile Burst Aerator I",
+     "Small Projectile Collision Accelerator I"
+    ]
+   },
+   "value": 148.939133
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 439
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 520
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 520
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 5933
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 5933
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31668
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31680
+    }
+   ],
+   "racks": {
+    "high": [
+     "200mm AutoCannon I|EMP S",
+     "200mm AutoCannon I|EMP S",
+     "200mm AutoCannon I|EMP S"
+    ],
+    "low": [
+     "Counterbalanced Compact Gyrostabilizer",
+     "Counterbalanced Compact Gyrostabilizer",
+     "Gyrostabilizer I",
+     "Gyrostabilizer I"
+    ],
+    "rig": [
+     "Small Projectile Burst Aerator I",
+     "Small Projectile Collision Accelerator I"
+    ]
+   },
+   "value": 147.882033
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 439
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 520
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 520
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 5933
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 5933
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31680
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31680
+    }
+   ],
+   "racks": {
+    "high": [
+     "200mm AutoCannon I|EMP S",
+     "200mm AutoCannon I|EMP S",
+     "200mm AutoCannon I|EMP S"
+    ],
+    "low": [
+     "Counterbalanced Compact Gyrostabilizer",
+     "Counterbalanced Compact Gyrostabilizer",
+     "Gyrostabilizer I",
+     "Gyrostabilizer I"
+    ],
+    "rig": [
+     "Small Projectile Collision Accelerator I",
+     "Small Projectile Collision Accelerator I"
+    ]
+   },
+   "value": 147.575546
+  }
+ ],
+ "second_best": 149.335292,
+ "space": {
+  "engine_evaluated": 44100,
+  "engine_valid": 26424,
+  "engine_violations": {
+   "CALIBRATION_OVERLOAD": 17640,
+   "CPU_OVERLOAD": 60
+  },
+  "feasible": 2100,
+  "pruned_structural": 0,
+  "size": 44100
+ },
+ "ties": 1
+}

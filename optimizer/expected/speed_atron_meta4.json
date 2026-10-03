@@ -1,0 +1,454 @@
+{
+ "best_ignoring_all_rules": 26196.054339,
+ "constraints_effect": {
+  "meta": {
+   "best_if_relaxed": 5183.101985,
+   "binding": true,
+   "rejected": 9760
+  },
+  "slots_hardpoints": {
+   "best_if_relaxed": 24246.896924,
+   "binding": true,
+   "rejected": 8400
+  }
+ },
+ "id": "speed_atron_meta4",
+ "objective": {
+  "direction": "max",
+  "metric": "speed"
+ },
+ "optimal_fits": [
+  {
+   "metrics": {
+    "cap_stable": 70.091388,
+    "dps": 0.0,
+    "ehp": 1819.216055,
+    "price": 1525000.0,
+    "speed": 4874.106646,
+    "tank": 2.758621
+   },
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 434
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1244
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1244
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1244
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31105
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31105
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31105
+    }
+   ],
+   "racks": {
+    "low": [
+     "Overdrive Injector System I",
+     "Overdrive Injector System I",
+     "Overdrive Injector System I"
+    ],
+    "mid": [
+     "5MN Microwarpdrive I"
+    ],
+    "rig": [
+     "Small Auxiliary Thrusters I",
+     "Small Auxiliary Thrusters I",
+     "Small Auxiliary Thrusters I"
+    ]
+   }
+  }
+ ],
+ "optimum": 4874.106646,
+ "pyfa_check": {
+  "agree": true,
+  "agree_rel_tolerance": 0.005,
+  "fits": [
+   {
+    "engine": 4874.106646,
+    "pyfa": 4874.106645646556,
+    "pyfa_violations": [],
+    "rel_diff": 7.251466139220546e-11,
+    "role": "winner"
+   },
+   {
+    "engine": 4871.554043,
+    "pyfa": 4871.554043399755,
+    "rel_diff": 8.205897958130566e-11,
+    "role": "runner_up"
+   },
+   {
+    "engine": 4863.531579,
+    "pyfa": 4863.531579195521,
+    "rel_diff": 4.020133093147102e-11,
+    "role": "runner_up"
+   },
+   {
+    "engine": 4862.586845,
+    "pyfa": 4862.586845412789,
+    "rel_diff": 8.489095310123426e-11,
+    "role": "runner_up"
+   },
+   {
+    "engine": 4854.579148,
+    "pyfa": 4854.579148369963,
+    "rel_diff": 7.620914893207752e-11,
+    "role": "runner_up"
+   },
+   {
+    "engine": 4838.992716,
+    "pyfa": 4838.992716077628,
+    "rel_diff": 1.6042202548424903e-11,
+    "role": "runner_up"
+   }
+  ],
+  "legal": true,
+  "rank": true
+ },
+ "reference": {
+  "dataset": "dataset-3569502.json.gz",
+  "engine": "F-4b8f5f9",
+  "engine_note": "F variant-f-features 4b8f5f9 (EX-CT/eve-dogma-lab)",
+  "generated_s": 2.5,
+  "tie_tolerance_rel": 1e-06
+ },
+ "runners_up": [
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 434
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1244
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1244
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1244
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31105
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31105
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31177
+    }
+   ],
+   "racks": {
+    "low": [
+     "Overdrive Injector System I",
+     "Overdrive Injector System I",
+     "Overdrive Injector System I"
+    ],
+    "mid": [
+     "5MN Microwarpdrive I"
+    ],
+    "rig": [
+     "Small Auxiliary Thrusters I",
+     "Small Auxiliary Thrusters I",
+     "Small Polycarbon Engine Housing I"
+    ]
+   },
+   "value": 4871.554043
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 434
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1244
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1244
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1244
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31105
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31105
+    }
+   ],
+   "racks": {
+    "low": [
+     "Overdrive Injector System I",
+     "Overdrive Injector System I",
+     "Overdrive Injector System I"
+    ],
+    "mid": [
+     "5MN Microwarpdrive I"
+    ],
+    "rig": [
+     "Small Auxiliary Thrusters I",
+     "Small Auxiliary Thrusters I"
+    ]
+   },
+   "value": 4863.531579
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 434
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1244
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1244
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1244
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31105
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31177
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31177
+    }
+   ],
+   "racks": {
+    "low": [
+     "Overdrive Injector System I",
+     "Overdrive Injector System I",
+     "Overdrive Injector System I"
+    ],
+    "mid": [
+     "5MN Microwarpdrive I"
+    ],
+    "rig": [
+     "Small Auxiliary Thrusters I",
+     "Small Polycarbon Engine Housing I",
+     "Small Polycarbon Engine Housing I"
+    ]
+   },
+   "value": 4862.586845
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 434
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1244
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1244
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1244
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31105
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31177
+    }
+   ],
+   "racks": {
+    "low": [
+     "Overdrive Injector System I",
+     "Overdrive Injector System I",
+     "Overdrive Injector System I"
+    ],
+    "mid": [
+     "5MN Microwarpdrive I"
+    ],
+    "rig": [
+     "Small Auxiliary Thrusters I",
+     "Small Polycarbon Engine Housing I"
+    ]
+   },
+   "value": 4854.579148
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 434
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1244
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1244
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 1244
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31177
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31177
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31177
+    }
+   ],
+   "racks": {
+    "low": [
+     "Overdrive Injector System I",
+     "Overdrive Injector System I",
+     "Overdrive Injector System I"
+    ],
+    "mid": [
+     "5MN Microwarpdrive I"
+    ],
+    "rig": [
+     "Small Polycarbon Engine Housing I",
+     "Small Polycarbon Engine Housing I",
+     "Small Polycarbon Engine Housing I"
+    ]
+   },
+   "value": 4838.992716
+  }
+ ],
+ "second_best": 4871.554043,
+ "space": {
+  "engine_evaluated": 11760,
+  "engine_valid": 3360,
+  "engine_violations": {
+   "MAX_GROUP_ACTIVE": 8400
+  },
+  "feasible": 800,
+  "pruned_structural": 0,
+  "size": 11760
+ },
+ "ties": 1
+}

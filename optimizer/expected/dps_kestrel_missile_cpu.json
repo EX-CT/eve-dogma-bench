@@ -1,0 +1,583 @@
+{
+ "best_ignoring_all_rules": 125.685604,
+ "constraints_effect": {
+  "calibration": {
+   "best_if_relaxed": 122.129265,
+   "binding": true,
+   "rejected": 7000
+  },
+  "cpu": {
+   "best_if_relaxed": 122.129265,
+   "binding": true,
+   "rejected": 793
+  }
+ },
+ "id": "dps_kestrel_missile_cpu",
+ "objective": {
+  "direction": "max",
+  "metric": "dps"
+ },
+ "optimal_fits": [
+  {
+   "metrics": {
+    "cap_stable": 35.788358,
+    "dps": 115.536923,
+    "ehp": 2862.918032,
+    "price": 2948000.0,
+    "speed": 406.25,
+    "tank": 7.459054
+   },
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 578
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 578
+    },
+    {
+     "charge_type_id": 27361,
+     "slot": "high",
+     "state": "active",
+     "type_id": 2404
+    },
+    {
+     "charge_type_id": 27361,
+     "slot": "high",
+     "state": "active",
+     "type_id": 2404
+    },
+    {
+     "charge_type_id": 27361,
+     "slot": "high",
+     "state": "active",
+     "type_id": 2404
+    },
+    {
+     "charge_type_id": 27361,
+     "slot": "high",
+     "state": "active",
+     "type_id": 2404
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 22291
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 22291
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31586
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 26929
+    }
+   ],
+   "racks": {
+    "high": [
+     "Light Missile Launcher II|Caldari Navy Scourge Light Missile",
+     "Light Missile Launcher II|Caldari Navy Scourge Light Missile",
+     "Light Missile Launcher II|Caldari Navy Scourge Light Missile",
+     "Light Missile Launcher II|Caldari Navy Scourge Light Missile"
+    ],
+    "low": [
+     "Ballistic Control System II",
+     "Ballistic Control System II"
+    ],
+    "rig": [
+     "Small Bay Loading Accelerator I",
+     "Small Processor Overclocking Unit I"
+    ]
+   }
+  }
+ ],
+ "optimum": 115.536923,
+ "pyfa_check": {
+  "agree": true,
+  "agree_rel_tolerance": 0.005,
+  "fits": [
+   {
+    "engine": 115.536923,
+    "pyfa": 115.53692321836758,
+    "pyfa_violations": [],
+    "rel_diff": 1.890024150021567e-09,
+    "role": "winner"
+   },
+   {
+    "engine": 115.160775,
+    "pyfa": 115.1607752914206,
+    "rel_diff": 2.5305543921607455e-09,
+    "role": "runner_up"
+   },
+   {
+    "engine": 111.888389,
+    "pyfa": 111.88838880094544,
+    "rel_diff": 1.7790457987903624e-09,
+    "role": "runner_up"
+   },
+   {
+    "engine": 111.524119,
+    "pyfa": 111.52411922958626,
+    "rel_diff": 2.0586243132736595e-09,
+    "role": "runner_up"
+   },
+   {
+    "engine": 110.886694,
+    "pyfa": 110.88669435388971,
+    "rel_diff": 3.1914532804044987e-09,
+    "role": "runner_up"
+   },
+   {
+    "engine": 110.650273,
+    "pyfa": 110.65027283344713,
+    "rel_diff": 1.5052187509859506e-09,
+    "role": "runner_up"
+   }
+  ],
+  "legal": true,
+  "rank": true
+ },
+ "reference": {
+  "dataset": "dataset-3569502.json.gz",
+  "engine": "F-4b8f5f9",
+  "engine_note": "F variant-f-features 4b8f5f9 (EX-CT/eve-dogma-lab)",
+  "generated_s": 2.6,
+  "tie_tolerance_rel": 1e-06
+ },
+ "runners_up": [
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 578
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 578
+    },
+    {
+     "charge_type_id": 27361,
+     "slot": "high",
+     "state": "active",
+     "type_id": 2404
+    },
+    {
+     "charge_type_id": 27361,
+     "slot": "high",
+     "state": "active",
+     "type_id": 2404
+    },
+    {
+     "charge_type_id": 27361,
+     "slot": "high",
+     "state": "active",
+     "type_id": 2404
+    },
+    {
+     "charge_type_id": 27361,
+     "slot": "high",
+     "state": "active",
+     "type_id": 2404
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 22291
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 22291
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31620
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 26929
+    }
+   ],
+   "racks": {
+    "high": [
+     "Light Missile Launcher II|Caldari Navy Scourge Light Missile",
+     "Light Missile Launcher II|Caldari Navy Scourge Light Missile",
+     "Light Missile Launcher II|Caldari Navy Scourge Light Missile",
+     "Light Missile Launcher II|Caldari Navy Scourge Light Missile"
+    ],
+    "low": [
+     "Ballistic Control System II",
+     "Ballistic Control System II"
+    ],
+    "rig": [
+     "Small Processor Overclocking Unit I",
+     "Small Warhead Calefaction Catalyst I"
+    ]
+   },
+   "value": 115.160775
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 578
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 578
+    },
+    {
+     "charge_type_id": 210,
+     "slot": "high",
+     "state": "active",
+     "type_id": 2404
+    },
+    {
+     "charge_type_id": 27361,
+     "slot": "high",
+     "state": "active",
+     "type_id": 2404
+    },
+    {
+     "charge_type_id": 27361,
+     "slot": "high",
+     "state": "active",
+     "type_id": 2404
+    },
+    {
+     "charge_type_id": 27361,
+     "slot": "high",
+     "state": "active",
+     "type_id": 2404
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 22291
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 22291
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31586
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 26929
+    }
+   ],
+   "racks": {
+    "high": [
+     "Light Missile Launcher II|Caldari Navy Scourge Light Missile",
+     "Light Missile Launcher II|Caldari Navy Scourge Light Missile",
+     "Light Missile Launcher II|Caldari Navy Scourge Light Missile",
+     "Light Missile Launcher II|Scourge Light Missile"
+    ],
+    "low": [
+     "Ballistic Control System II",
+     "Ballistic Control System II"
+    ],
+    "rig": [
+     "Small Bay Loading Accelerator I",
+     "Small Processor Overclocking Unit I"
+    ]
+   },
+   "value": 111.888389
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 578
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 578
+    },
+    {
+     "charge_type_id": 210,
+     "slot": "high",
+     "state": "active",
+     "type_id": 2404
+    },
+    {
+     "charge_type_id": 27361,
+     "slot": "high",
+     "state": "active",
+     "type_id": 2404
+    },
+    {
+     "charge_type_id": 27361,
+     "slot": "high",
+     "state": "active",
+     "type_id": 2404
+    },
+    {
+     "charge_type_id": 27361,
+     "slot": "high",
+     "state": "active",
+     "type_id": 2404
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 22291
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 22291
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31620
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 26929
+    }
+   ],
+   "racks": {
+    "high": [
+     "Light Missile Launcher II|Caldari Navy Scourge Light Missile",
+     "Light Missile Launcher II|Caldari Navy Scourge Light Missile",
+     "Light Missile Launcher II|Caldari Navy Scourge Light Missile",
+     "Light Missile Launcher II|Scourge Light Missile"
+    ],
+    "low": [
+     "Ballistic Control System II",
+     "Ballistic Control System II"
+    ],
+    "rig": [
+     "Small Processor Overclocking Unit I",
+     "Small Warhead Calefaction Catalyst I"
+    ]
+   },
+   "value": 111.524119
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 578
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 578
+    },
+    {
+     "charge_type_id": 27361,
+     "slot": "high",
+     "state": "active",
+     "type_id": 2404
+    },
+    {
+     "charge_type_id": 27361,
+     "slot": "high",
+     "state": "active",
+     "type_id": 2404
+    },
+    {
+     "charge_type_id": 27361,
+     "slot": "high",
+     "state": "active",
+     "type_id": 2404
+    },
+    {
+     "charge_type_id": 27361,
+     "slot": "high",
+     "state": "active",
+     "type_id": 2404
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 12274
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 22291
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31586
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 26929
+    }
+   ],
+   "racks": {
+    "high": [
+     "Light Missile Launcher II|Caldari Navy Scourge Light Missile",
+     "Light Missile Launcher II|Caldari Navy Scourge Light Missile",
+     "Light Missile Launcher II|Caldari Navy Scourge Light Missile",
+     "Light Missile Launcher II|Caldari Navy Scourge Light Missile"
+    ],
+    "low": [
+     "Ballistic Control System I",
+     "Ballistic Control System II"
+    ],
+    "rig": [
+     "Small Bay Loading Accelerator I",
+     "Small Processor Overclocking Unit I"
+    ]
+   },
+   "value": 110.886694
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 578
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 578
+    },
+    {
+     "charge_type_id": 27361,
+     "slot": "high",
+     "state": "active",
+     "type_id": 2404
+    },
+    {
+     "charge_type_id": 27361,
+     "slot": "high",
+     "state": "active",
+     "type_id": 2404
+    },
+    {
+     "charge_type_id": 27361,
+     "slot": "high",
+     "state": "active",
+     "type_id": 2404
+    },
+    {
+     "charge_type_id": 27361,
+     "slot": "high",
+     "state": "active",
+     "type_id": 2404
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 12274
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 22291
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31620
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 26929
+    }
+   ],
+   "racks": {
+    "high": [
+     "Light Missile Launcher II|Caldari Navy Scourge Light Missile",
+     "Light Missile Launcher II|Caldari Navy Scourge Light Missile",
+     "Light Missile Launcher II|Caldari Navy Scourge Light Missile",
+     "Light Missile Launcher II|Caldari Navy Scourge Light Missile"
+    ],
+    "low": [
+     "Ballistic Control System I",
+     "Ballistic Control System II"
+    ],
+    "rig": [
+     "Small Processor Overclocking Unit I",
+     "Small Warhead Calefaction Catalyst I"
+    ]
+   },
+   "value": 110.650273
+  }
+ ],
+ "second_best": 115.160775,
+ "space": {
+  "engine_evaluated": 14000,
+  "engine_valid": 6607,
+  "engine_violations": {
+   "CALIBRATION_OVERLOAD": 7000,
+   "CPU_OVERLOAD": 793
+  },
+  "feasible": 6607,
+  "pruned_structural": 0,
+  "size": 14000
+ },
+ "ties": 1
+}

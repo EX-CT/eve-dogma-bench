@@ -1,0 +1,505 @@
+{
+ "best_ignoring_all_rules": 13358.175736,
+ "constraints_effect": {
+  "cpu": {
+   "best_if_relaxed": null,
+   "binding": false,
+   "rejected": 30
+  },
+  "powergrid": {
+   "best_if_relaxed": 13237.739372,
+   "binding": true,
+   "rejected": 690
+  },
+  "skills": {
+   "best_if_relaxed": 9917.136775,
+   "binding": true,
+   "rejected": 1750
+  },
+  "slots_hardpoints": {
+   "best_if_relaxed": null,
+   "binding": false,
+   "rejected": 280
+  }
+ },
+ "id": "ehp_rifter_armor_skills3",
+ "objective": {
+  "direction": "max",
+  "metric": "ehp"
+ },
+ "optimal_fits": [
+  {
+   "metrics": {
+    "cap_stable": 91.177409,
+    "dps": 0.0,
+    "ehp": 7718.406442,
+    "price": 13075000.0,
+    "speed": 857.407845,
+    "tank": 3.359026
+   },
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 439
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11295
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11295
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11295
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11267
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31057
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31057
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31057
+    }
+   ],
+   "racks": {
+    "low": [
+     "200mm Steel Plates I",
+     "200mm Steel Plates I",
+     "200mm Steel Plates I",
+     "Multispectrum Energized Membrane I"
+    ],
+    "rig": [
+     "Small Trimark Armor Pump II",
+     "Small Trimark Armor Pump II",
+     "Small Trimark Armor Pump II"
+    ]
+   }
+  }
+ ],
+ "optimum": 7718.406442,
+ "pyfa_check": {
+  "agree": true,
+  "agree_rel_tolerance": 0.005,
+  "fits": [
+   {
+    "engine": 7718.406442,
+    "pyfa": 7718.406441591395,
+    "pyfa_violations": [],
+    "rel_diff": 5.293904250277319e-11,
+    "role": "winner"
+   },
+   {
+    "engine": 7581.310459,
+    "pyfa": 7581.310458967024,
+    "rel_diff": 4.3497043255543625e-12,
+    "role": "runner_up"
+   },
+   {
+    "engine": 7451.578647,
+    "pyfa": 7451.5786470294615,
+    "rel_diff": 3.953694011723482e-12,
+    "role": "runner_up"
+   },
+   {
+    "engine": 7320.194997,
+    "pyfa": 7320.194997014439,
+    "rel_diff": 1.972507274910645e-12,
+    "role": "runner_up"
+   },
+   {
+    "engine": 7195.868677,
+    "pyfa": 7195.868677240941,
+    "rel_diff": 3.348318580072092e-11,
+    "role": "runner_up"
+   },
+   {
+    "engine": 7069.959346,
+    "pyfa": 7069.959345976544,
+    "rel_diff": 3.3176807971313927e-12,
+    "role": "runner_up"
+   }
+  ],
+  "legal": true,
+  "rank": true
+ },
+ "reference": {
+  "dataset": "dataset-3569502.json.gz",
+  "engine": "F-4b8f5f9",
+  "engine_note": "F variant-f-features 4b8f5f9 (EX-CT/eve-dogma-lab)",
+  "generated_s": 0.3,
+  "tie_tolerance_rel": 1e-06
+ },
+ "runners_up": [
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 439
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11297
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11267
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11267
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11267
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31057
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31057
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31057
+    }
+   ],
+   "racks": {
+    "low": [
+     "400mm Steel Plates I",
+     "Multispectrum Energized Membrane I",
+     "Multispectrum Energized Membrane I",
+     "Multispectrum Energized Membrane I"
+    ],
+    "rig": [
+     "Small Trimark Armor Pump II",
+     "Small Trimark Armor Pump II",
+     "Small Trimark Armor Pump II"
+    ]
+   },
+   "value": 7581.310459
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 439
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11295
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11295
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11295
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11267
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 30987
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31057
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31057
+    }
+   ],
+   "racks": {
+    "low": [
+     "200mm Steel Plates I",
+     "200mm Steel Plates I",
+     "200mm Steel Plates I",
+     "Multispectrum Energized Membrane I"
+    ],
+    "rig": [
+     "Small Trimark Armor Pump I",
+     "Small Trimark Armor Pump II",
+     "Small Trimark Armor Pump II"
+    ]
+   },
+   "value": 7451.578647
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 439
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11297
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11267
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11267
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11267
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 30987
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31057
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31057
+    }
+   ],
+   "racks": {
+    "low": [
+     "400mm Steel Plates I",
+     "Multispectrum Energized Membrane I",
+     "Multispectrum Energized Membrane I",
+     "Multispectrum Energized Membrane I"
+    ],
+    "rig": [
+     "Small Trimark Armor Pump I",
+     "Small Trimark Armor Pump II",
+     "Small Trimark Armor Pump II"
+    ]
+   },
+   "value": 7320.194997
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 439
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11295
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11295
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11295
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11267
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 30987
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 30987
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31057
+    }
+   ],
+   "racks": {
+    "low": [
+     "200mm Steel Plates I",
+     "200mm Steel Plates I",
+     "200mm Steel Plates I",
+     "Multispectrum Energized Membrane I"
+    ],
+    "rig": [
+     "Small Trimark Armor Pump I",
+     "Small Trimark Armor Pump I",
+     "Small Trimark Armor Pump II"
+    ]
+   },
+   "value": 7195.868677
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 439
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11297
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11267
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11267
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 11267
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 30987
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 30987
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31057
+    }
+   ],
+   "racks": {
+    "low": [
+     "400mm Steel Plates I",
+     "Multispectrum Energized Membrane I",
+     "Multispectrum Energized Membrane I",
+     "Multispectrum Energized Membrane I"
+    ],
+    "rig": [
+     "Small Trimark Armor Pump I",
+     "Small Trimark Armor Pump I",
+     "Small Trimark Armor Pump II"
+    ]
+   },
+   "value": 7069.959346
+  }
+ ],
+ "second_best": 7581.310459,
+ "space": {
+  "engine_evaluated": 2100,
+  "engine_valid": 180,
+  "engine_violations": {
+   "CPU_OVERLOAD": 30,
+   "MAX_GROUP_FITTED": 280,
+   "MISSING_SKILL": 1750,
+   "POWER_OVERLOAD": 690
+  },
+  "feasible": 180,
+  "pruned_structural": 0,
+  "size": 2100
+ },
+ "ties": 1
+}

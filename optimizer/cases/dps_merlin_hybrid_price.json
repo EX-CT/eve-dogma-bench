@@ -1,0 +1,149 @@
+{
+ "bench": "optimizer-bench 0.1",
+ "description": "price ceiling (40th percentile of legal fits) binds",
+ "id": "dps_merlin_hybrid_price",
+ "request": {
+  "base": {
+   "character": {
+    "skills": {
+     "default_level": 5,
+     "levels": {}
+    }
+   },
+   "damage_pattern": null,
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 439
+    }
+   ],
+   "ship": {
+    "type_id": 603
+   }
+  },
+  "constraints": {
+   "price": {
+    "max_isk": 1761500.0,
+    "prices": {
+     "10190": 300000,
+     "12614": 30000,
+     "1539": 25000,
+     "15895": 1500000,
+     "222": 1500,
+     "23009": 12000,
+     "31526": 350000,
+     "31538": 350000,
+     "3178": 300000,
+     "439": 25000,
+     "563": 25000,
+     "564": 25000,
+     "603": 350000,
+     "9944": 25000
+    }
+   },
+   "skills": "character"
+  },
+  "limits": {
+   "max_evaluations": 1225,
+   "results": 1,
+   "seed": 0,
+   "time_ms": 5000
+  },
+  "objective": {
+   "direction": "max",
+   "metric": "dps"
+  },
+  "search": {
+   "candidates": "explicit",
+   "charges": false,
+   "drones": false,
+   "keep": [
+    0
+   ],
+   "pools": {
+    "high": {
+     "pool": [
+      {
+       "charge_type_id": 222,
+       "name": "Light Neutron Blaster I|Antimatter Charge S",
+       "state": "active",
+       "type_id": 564
+      },
+      {
+       "charge_type_id": 222,
+       "name": "Light Neutron Blaster II|Antimatter Charge S",
+       "state": "active",
+       "type_id": 3178
+      },
+      {
+       "charge_type_id": 12614,
+       "name": "Light Neutron Blaster II|Null S",
+       "state": "active",
+       "type_id": 3178
+      },
+      {
+       "charge_type_id": 23009,
+       "name": "Light Ion Blaster I|Caldari Navy Antimatter Charge S",
+       "state": "active",
+       "type_id": 563
+      }
+     ],
+     "slots": 3
+    },
+    "low": {
+     "pool": [
+      {
+       "charge_type_id": null,
+       "name": "Magnetic Field Stabilizer I",
+       "state": "active",
+       "type_id": 9944
+      },
+      {
+       "charge_type_id": null,
+       "name": "Magnetic Field Stabilizer II",
+       "state": "active",
+       "type_id": 10190
+      },
+      {
+       "charge_type_id": null,
+       "name": "Federation Navy Magnetic Field Stabilizer",
+       "state": "active",
+       "type_id": 15895
+      },
+      {
+       "charge_type_id": null,
+       "name": "Power Diagnostic System I",
+       "state": "active",
+       "type_id": 1539
+      }
+     ],
+     "slots": 3
+    },
+    "rig": {
+     "pool": [
+      {
+       "charge_type_id": null,
+       "name": "Small Hybrid Collision Accelerator I",
+       "state": "online",
+       "type_id": 31538
+      },
+      {
+       "charge_type_id": null,
+       "name": "Small Hybrid Burst Aerator I",
+       "state": "online",
+       "type_id": 31526
+      }
+     ],
+     "slots": 3
+    }
+   },
+   "slots": [
+    "high",
+    "low",
+    "rig"
+   ]
+  }
+ }
+}

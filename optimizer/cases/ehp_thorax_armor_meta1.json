@@ -1,0 +1,100 @@
+{
+ "bench": "optimizer-bench 0.1",
+ "description": "cruiser; max_meta_level 1 removes T2; PG binds (1600mm plates)",
+ "id": "ehp_thorax_armor_meta1",
+ "request": {
+  "base": {
+   "character": {
+    "skills": {
+     "default_level": 5,
+     "levels": {}
+    }
+   },
+   "damage_pattern": null,
+   "modules": [],
+   "ship": {
+    "type_id": 627
+   }
+  },
+  "constraints": {
+   "meta": {
+    "max_meta_level": 1
+   },
+   "skills": "character"
+  },
+  "limits": {
+   "max_evaluations": 500,
+   "results": 1,
+   "seed": 0,
+   "time_ms": 5000
+  },
+  "objective": {
+   "direction": "max",
+   "metric": "ehp"
+  },
+  "search": {
+   "candidates": "explicit",
+   "charges": false,
+   "drones": false,
+   "keep": [],
+   "pools": {
+    "low": {
+     "pool": [
+      {
+       "charge_type_id": null,
+       "name": "800mm Steel Plates I",
+       "state": "active",
+       "type_id": 11299
+      },
+      {
+       "charge_type_id": null,
+       "name": "1600mm Steel Plates I",
+       "state": "active",
+       "type_id": 11279
+      },
+      {
+       "charge_type_id": null,
+       "name": "Multispectrum Energized Membrane I",
+       "state": "active",
+       "type_id": 11267
+      },
+      {
+       "charge_type_id": null,
+       "name": "Multispectrum Energized Membrane II",
+       "state": "active",
+       "type_id": 11269
+      },
+      {
+       "charge_type_id": null,
+       "name": "Damage Control I",
+       "state": "active",
+       "type_id": 2046
+      },
+      {
+       "charge_type_id": null,
+       "name": "Damage Control II",
+       "state": "active",
+       "type_id": 2048
+      }
+     ],
+     "slots": 5
+    },
+    "rig": {
+     "pool": [
+      {
+       "charge_type_id": null,
+       "name": "Medium Trimark Armor Pump I",
+       "state": "online",
+       "type_id": 31055
+      }
+     ],
+     "slots": 3
+    }
+   },
+   "slots": [
+    "low",
+    "rig"
+   ]
+  }
+ }
+}

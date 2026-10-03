@@ -1,0 +1,581 @@
+{
+ "best_ignoring_all_rules": 170.940355,
+ "constraints_effect": {
+  "calibration": {
+   "best_if_relaxed": 131.898422,
+   "binding": true,
+   "rejected": 17640
+  },
+  "cpu": {
+   "best_if_relaxed": 123.226448,
+   "binding": false,
+   "rejected": 480
+  },
+  "skills": {
+   "best_if_relaxed": 170.427685,
+   "binding": true,
+   "rejected": 31500
+  }
+ },
+ "id": "dps_rifter_projectile_skills4",
+ "objective": {
+  "direction": "max",
+  "metric": "dps"
+ },
+ "optimal_fits": [
+  {
+   "metrics": {
+    "cap_stable": 93.843772,
+    "dps": 131.502844,
+    "ehp": 2171.693258,
+    "price": 7154500.0,
+    "speed": 1016.596043,
+    "tank": 3.724138
+   },
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 439
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 15806
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 15806
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 15806
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 15806
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31668
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31680
+    }
+   ],
+   "racks": {
+    "high": [
+     "200mm AutoCannon I|EMP S",
+     "200mm AutoCannon I|EMP S",
+     "200mm AutoCannon I|EMP S"
+    ],
+    "low": [
+     "Republic Fleet Gyrostabilizer",
+     "Republic Fleet Gyrostabilizer",
+     "Republic Fleet Gyrostabilizer",
+     "Republic Fleet Gyrostabilizer"
+    ],
+    "rig": [
+     "Small Projectile Burst Aerator I",
+     "Small Projectile Collision Accelerator I"
+    ]
+   }
+  }
+ ],
+ "optimum": 131.502844,
+ "pyfa_check": {
+  "agree": true,
+  "agree_rel_tolerance": 0.005,
+  "fits": [
+   {
+    "engine": 131.502844,
+    "pyfa": 131.50284366693506,
+    "pyfa_violations": [],
+    "rel_diff": 2.532758502847256e-09,
+    "role": "winner"
+   },
+   {
+    "engine": 130.5924,
+    "pyfa": 130.59239999598782,
+    "rel_diff": 3.0722913687568435e-11,
+    "role": "runner_up"
+   },
+   {
+    "engine": 130.515059,
+    "pyfa": 130.51505873154102,
+    "rel_diff": 2.056919655142295e-09,
+    "role": "runner_up"
+   },
+   {
+    "engine": 130.499222,
+    "pyfa": 130.49922228122415,
+    "rel_diff": 2.1549871476817797e-09,
+    "role": "runner_up"
+   },
+   {
+    "engine": 130.123629,
+    "pyfa": 130.12362884538913,
+    "rel_diff": 1.1881843475678252e-09,
+    "role": "runner_up"
+   },
+   {
+    "engine": 130.10901,
+    "pyfa": 130.10901018203919,
+    "rel_diff": 1.3991281085676945e-09,
+    "role": "runner_up"
+   }
+  ],
+  "legal": true,
+  "rank": true
+ },
+ "reference": {
+  "dataset": "dataset-3569502.json.gz",
+  "engine": "F-4b8f5f9",
+  "engine_note": "F variant-f-features 4b8f5f9 (EX-CT/eve-dogma-lab)",
+  "generated_s": 10.4,
+  "tie_tolerance_rel": 1e-06
+ },
+ "runners_up": [
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 439
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 519
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 15806
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 15806
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 15806
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31668
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31680
+    }
+   ],
+   "racks": {
+    "high": [
+     "200mm AutoCannon I|EMP S",
+     "200mm AutoCannon I|EMP S",
+     "200mm AutoCannon I|EMP S"
+    ],
+    "low": [
+     "Gyrostabilizer II",
+     "Republic Fleet Gyrostabilizer",
+     "Republic Fleet Gyrostabilizer",
+     "Republic Fleet Gyrostabilizer"
+    ],
+    "rig": [
+     "Small Projectile Burst Aerator I",
+     "Small Projectile Collision Accelerator I"
+    ]
+   },
+   "value": 130.5924
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 439
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 15806
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 15806
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 15806
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 15806
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31668
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31668
+    }
+   ],
+   "racks": {
+    "high": [
+     "200mm AutoCannon I|EMP S",
+     "200mm AutoCannon I|EMP S",
+     "200mm AutoCannon I|EMP S"
+    ],
+    "low": [
+     "Republic Fleet Gyrostabilizer",
+     "Republic Fleet Gyrostabilizer",
+     "Republic Fleet Gyrostabilizer",
+     "Republic Fleet Gyrostabilizer"
+    ],
+    "rig": [
+     "Small Projectile Burst Aerator I",
+     "Small Projectile Burst Aerator I"
+    ]
+   },
+   "value": 130.515059
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 439
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 15806
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 15806
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 15806
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 15806
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31680
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31680
+    }
+   ],
+   "racks": {
+    "high": [
+     "200mm AutoCannon I|EMP S",
+     "200mm AutoCannon I|EMP S",
+     "200mm AutoCannon I|EMP S"
+    ],
+    "low": [
+     "Republic Fleet Gyrostabilizer",
+     "Republic Fleet Gyrostabilizer",
+     "Republic Fleet Gyrostabilizer",
+     "Republic Fleet Gyrostabilizer"
+    ],
+    "rig": [
+     "Small Projectile Collision Accelerator I",
+     "Small Projectile Collision Accelerator I"
+    ]
+   },
+   "value": 130.499222
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 439
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 15806
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 15806
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 15806
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 15806
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31668
+    }
+   ],
+   "racks": {
+    "high": [
+     "200mm AutoCannon I|EMP S",
+     "200mm AutoCannon I|EMP S",
+     "200mm AutoCannon I|EMP S"
+    ],
+    "low": [
+     "Republic Fleet Gyrostabilizer",
+     "Republic Fleet Gyrostabilizer",
+     "Republic Fleet Gyrostabilizer",
+     "Republic Fleet Gyrostabilizer"
+    ],
+    "rig": [
+     "Small Projectile Burst Aerator I"
+    ]
+   },
+   "value": 130.123629
+  },
+  {
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 439
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": 185,
+     "slot": "high",
+     "state": "active",
+     "type_id": 486
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 15806
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 15806
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 15806
+    },
+    {
+     "charge_type_id": null,
+     "slot": "low",
+     "state": "active",
+     "type_id": 15806
+    },
+    {
+     "charge_type_id": null,
+     "slot": "rig",
+     "state": "online",
+     "type_id": 31680
+    }
+   ],
+   "racks": {
+    "high": [
+     "200mm AutoCannon I|EMP S",
+     "200mm AutoCannon I|EMP S",
+     "200mm AutoCannon I|EMP S"
+    ],
+    "low": [
+     "Republic Fleet Gyrostabilizer",
+     "Republic Fleet Gyrostabilizer",
+     "Republic Fleet Gyrostabilizer",
+     "Republic Fleet Gyrostabilizer"
+    ],
+    "rig": [
+     "Small Projectile Collision Accelerator I"
+    ]
+   },
+   "value": 130.10901
+  }
+ ],
+ "second_best": 130.5924,
+ "space": {
+  "engine_evaluated": 44100,
+  "engine_valid": 7404,
+  "engine_violations": {
+   "CALIBRATION_OVERLOAD": 17640,
+   "CPU_OVERLOAD": 480,
+   "MISSING_SKILL": 31500
+  },
+  "feasible": 7404,
+  "pruned_structural": 0,
+  "size": 44100
+ },
+ "ties": 1
+}

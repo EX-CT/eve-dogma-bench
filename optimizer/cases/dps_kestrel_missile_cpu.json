@@ -1,0 +1,137 @@
+{
+ "bench": "optimizer-bench 0.1",
+ "description": "CPU binds (two kept shield hardeners + LML II / BCS II); Co-Processor and CPU rig trade against damage",
+ "id": "dps_kestrel_missile_cpu",
+ "request": {
+  "base": {
+   "character": {
+    "skills": {
+     "default_level": 5,
+     "levels": {}
+    }
+   },
+   "damage_pattern": null,
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 578
+    },
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 578
+    }
+   ],
+   "ship": {
+    "type_id": 602
+   }
+  },
+  "constraints": {
+   "skills": "character"
+  },
+  "limits": {
+   "max_evaluations": 1400,
+   "results": 1,
+   "seed": 0,
+   "time_ms": 5000
+  },
+  "objective": {
+   "direction": "max",
+   "metric": "dps"
+  },
+  "search": {
+   "candidates": "explicit",
+   "charges": false,
+   "drones": false,
+   "keep": [
+    0,
+    1
+   ],
+   "pools": {
+    "high": {
+     "pool": [
+      {
+       "charge_type_id": 210,
+       "name": "Light Missile Launcher I|Scourge Light Missile",
+       "state": "active",
+       "type_id": 499
+      },
+      {
+       "charge_type_id": 210,
+       "name": "Light Missile Launcher II|Scourge Light Missile",
+       "state": "active",
+       "type_id": 2404
+      },
+      {
+       "charge_type_id": 27361,
+       "name": "Light Missile Launcher I|Caldari Navy Scourge Light Missile",
+       "state": "active",
+       "type_id": 499
+      },
+      {
+       "charge_type_id": 27361,
+       "name": "Light Missile Launcher II|Caldari Navy Scourge Light Missile",
+       "state": "active",
+       "type_id": 2404
+      }
+     ],
+     "slots": 4
+    },
+    "low": {
+     "pool": [
+      {
+       "charge_type_id": null,
+       "name": "Ballistic Control System I",
+       "state": "active",
+       "type_id": 12274
+      },
+      {
+       "charge_type_id": null,
+       "name": "Ballistic Control System II",
+       "state": "active",
+       "type_id": 22291
+      },
+      {
+       "charge_type_id": null,
+       "name": "Co-Processor I",
+       "state": "active",
+       "type_id": 3887
+      }
+     ],
+     "slots": 2
+    },
+    "rig": {
+     "pool": [
+      {
+       "charge_type_id": null,
+       "name": "Small Warhead Calefaction Catalyst I",
+       "state": "online",
+       "type_id": 31620
+      },
+      {
+       "charge_type_id": null,
+       "name": "Small Bay Loading Accelerator I",
+       "state": "online",
+       "type_id": 31586
+      },
+      {
+       "charge_type_id": null,
+       "name": "Small Processor Overclocking Unit I",
+       "state": "online",
+       "type_id": 26929
+      }
+     ],
+     "slots": 3
+    }
+   },
+   "slots": [
+    "high",
+    "low",
+    "rig"
+   ]
+  }
+ }
+}

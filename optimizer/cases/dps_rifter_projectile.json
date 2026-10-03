@@ -1,0 +1,136 @@
+{
+ "bench": "optimizer-bench 0.1",
+ "description": "PG binds (280mm arty, 200mm II); calibration binds on 3 rigs",
+ "id": "dps_rifter_projectile",
+ "request": {
+  "base": {
+   "character": {
+    "skills": {
+     "default_level": 5,
+     "levels": {}
+    }
+   },
+   "damage_pattern": null,
+   "modules": [
+    {
+     "charge_type_id": null,
+     "slot": "mid",
+     "state": "active",
+     "type_id": 439
+    }
+   ],
+   "ship": {
+    "type_id": 587
+   }
+  },
+  "constraints": {
+   "skills": "character"
+  },
+  "limits": {
+   "max_evaluations": 4410,
+   "results": 1,
+   "seed": 0,
+   "time_ms": 5000
+  },
+  "objective": {
+   "direction": "max",
+   "metric": "dps"
+  },
+  "search": {
+   "candidates": "explicit",
+   "charges": false,
+   "drones": false,
+   "keep": [
+    0
+   ],
+   "pools": {
+    "high": {
+     "pool": [
+      {
+       "charge_type_id": 185,
+       "name": "200mm AutoCannon I|EMP S",
+       "state": "active",
+       "type_id": 486
+      },
+      {
+       "charge_type_id": 185,
+       "name": "200mm AutoCannon II|EMP S",
+       "state": "active",
+       "type_id": 2889
+      },
+      {
+       "charge_type_id": 185,
+       "name": "125mm Gatling AutoCannon II|EMP S",
+       "state": "active",
+       "type_id": 2873
+      },
+      {
+       "charge_type_id": 185,
+       "name": "280mm Howitzer Artillery I|EMP S",
+       "state": "active",
+       "type_id": 488
+      }
+     ],
+     "slots": 3
+    },
+    "low": {
+     "pool": [
+      {
+       "charge_type_id": null,
+       "name": "Gyrostabilizer I",
+       "state": "active",
+       "type_id": 520
+      },
+      {
+       "charge_type_id": null,
+       "name": "Gyrostabilizer II",
+       "state": "active",
+       "type_id": 519
+      },
+      {
+       "charge_type_id": null,
+       "name": "Counterbalanced Compact Gyrostabilizer",
+       "state": "active",
+       "type_id": 5933
+      },
+      {
+       "charge_type_id": null,
+       "name": "Republic Fleet Gyrostabilizer",
+       "state": "active",
+       "type_id": 15806
+      },
+      {
+       "charge_type_id": null,
+       "name": "Overdrive Injector System I",
+       "state": "active",
+       "type_id": 1244
+      }
+     ],
+     "slots": 4
+    },
+    "rig": {
+     "pool": [
+      {
+       "charge_type_id": null,
+       "name": "Small Projectile Burst Aerator I",
+       "state": "online",
+       "type_id": 31668
+      },
+      {
+       "charge_type_id": null,
+       "name": "Small Projectile Collision Accelerator I",
+       "state": "online",
+       "type_id": 31680
+      }
+     ],
+     "slots": 3
+    }
+   },
+   "slots": [
+    "high",
+    "low",
+    "rig"
+   ]
+  }
+ }
+}
