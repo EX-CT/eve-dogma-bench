@@ -187,6 +187,10 @@ Variants: G1 `1c8424c`, G2 `96e612a`, G3 `b8c6ef8`. Disagreements 50, confirmed 
   **online**, so its dps is 0. The same rule explains seed 2 fz0038 and seed 3 fz0518 (overheated Bastion). That corrects the
   earlier note: the oracle's state convention isn't written in CONTRACT.md, and variant-g / variant-c treat such modules as
   active. graphs-g3 aa04330 applies the oracle rule on its graph path. Suggest stating the rule in CONTRACT.md and adding a stats case.
+- **Ruling (eve, 2026-10-03, stats contract; A and H agree):** a state the module can't use (not overheatable / not
+  usable) **keeps the requested value**. So for fz0157 / fz0038 / fz0518 the oracle's "online" values are *not* the
+  contract values, and variant-g / G1 / G2 are right. graphs-g3 610ea6c reverted the aa04330 normalisation. Graph-side
+  statement + case: graphs/draft-0.3 (fd4e8c8).
 - `fuzz_damage_tgt_sig_m_fz0264-fc907b5a` (G3 only: INTERNAL): drone webs vs a target fit crashed under NumPy 2.5. Fixed in aa04330.
 
 ## Differential fuzz 2026-10-03 09:40 CST (seed 5, 800 requests)
