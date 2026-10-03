@@ -1,4 +1,4 @@
-# eve-dogma graphs contract (DRAFT, round 2, revision 0.1)
+# eve-dogma graphs contract (DRAFT, round 2, revision 0.2)
 
 Extension of the eve-dogma request/response contract (`CONTRACT.md`, revision 1.4.3) with **Pyfa's graph
 subsystem** (`graphs/data/*` in Pyfa). Same style and rules as the base contract: stateless, **one JSON
@@ -18,7 +18,7 @@ Status: draft for review. Nothing here is part of 1.x scoring. Field names may s
 
 Variants announce support in `bench.yaml` with any of `graph_cmd`, `graph_batch_cmd`, or (via `rpc_cmd`) the `graph`
 method. Errors use the base contract's `{"error":{"code","message","path"}}`; new codes: `UNKNOWN_GRAPH`,
-`BAD_AXIS` (x axis or y series not valid for the graph).
+`BAD_AXIS` (x axis or y series not valid for the graph). See "Validation and error codes".
 
 ## Design principles
 
@@ -44,7 +44,7 @@ method. Errors use the base contract's `{"error":{"code","message","path"}}`; ne
   "schema_version": 1,
   "graph": "damage",                       // see "Graph types"
   "fit": { /* FitRequest (CONTRACT.md) of the source / attacker */ },
-  "target": {                              // only graphs `damage` and `application_profile`; default = ideal target
+  "target": {                              // graphs `damage`, `application_profile` (profile or fit); `ewar`, `remote_reps` (fit only, 0.2); default = ideal target
     "profile": {"em": 0.0, "thermal": 0.0, "kinetic": 0.0, "explosive": 0.0,   // resist fractions 0..1
                 "max_velocity": 250, "signature_radius": 125, "radius": 150,   // m/s, m (null sig = infinite), m
                 "hp": null}                                                    // total HP (null = infinite); informational
@@ -65,6 +65,27 @@ method. Errors use the base contract's `{"error":{"code","message","path"}}`; ne
 
 The x value `null` is not allowed in `x.values`. Parameters that Pyfa allows to be "not set" (e.g. damage `distance_m`,
 `time_s`) take `null` = not set.
+
+**Empty `x.values` (0.2):** `"values": []` is valid and returns success: `"x": []` and an empty array `[]` for every
+requested y series (application profile: also empty `<y>_charge_type_id`). The request is still fully validated
+(graph, axis, y, fit, target, settings), so an invalid request with empty x is still an error.
+
+### Validation and error codes (0.2)
+
+Checked before any sample is evaluated; the first failing rule determines the code. `path` is a JSON pointer-like
+path (`graph`, `x.axis`, `y[1]`, `x.values[2]`, `target.resist_mode`, …).
+
+| condition | code |
+|---|---|
+| `graph` missing / not a string; `fit` missing / not an object; `x` or `x.values` missing; `x.values` not an array; an x value `null`, non-numeric or non-finite; `y` missing, not an array, or **empty** | `BAD_REQUEST` |
+| `graph` not one of the graph types below | `UNKNOWN_GRAPH` |
+| `x.axis` not valid for the graph, a y not valid for the graph, or an (x, y) pair the graph does not define (e.g. `ecm_burst` `tgt_dps` × `tgt_lock_time_s`) | `BAD_AXIS` |
+| enumerated value not recognised: `target.resist_mode`, `settings.mobile_drone_mode`, `params.ammo_quality` | `BAD_REQUEST` |
+| unknown type id in the source fit or in `target.fit` (base contract rules) | `UNKNOWN_TYPE` |
+
+Out-of-range x values are **not** errors: they yield `null` at that point (per-graph valid ranges). Numeric params
+outside their range are clamped where stated (`time_s` 0 … 2500, `cap_start_pct` / `shield_start_pct` 0 … 100,
+ewar `resist` 0 … 1).
 
 ## GraphResult
 
@@ -93,7 +114,9 @@ Notation: `src` = source fit after a normal `calc` (same FitRequest semantics, i
 | `distance_m` | m | ≥ 0 | surface-to-surface distance |
 | `time_s` | s | 0 … 2500 (else `null`) | |
 | `tgt_speed_mps` | m/s | ≥ 0 | target's current speed (absolute) |
-| `tgt_sig_m` | m | > 0 | target signature radius before the source's TPs |
+| `tgt_speed_pct` | % | ≥ 0 | 0.2: % of the target's max velocity (Pyfa `('tgtSpeed', '%')` normaliser: x/100 × target maxVelocity — profile `max_velocity` or the target fit's calculated speed, before the source's webs), then as `tgt_speed_mps` |
+| `tgt_sig_m` | m | > 0 (else `null`) | target signature radius before the source's TPs |
+| `tgt_sig_pct` | % | > 0 (else `null`) | 0.2: % of the target's signature radius (x/100 × profile `signature_radius` or the target fit's signatureRadius), then as `tgt_sig_m`; `null` at every point for an infinite-signature target (profile `signature_radius: null`) |
 
 | y | unit | definition |
 |---|---|---|
@@ -146,7 +169,8 @@ Sansha) by set iteration order, so the id is not well defined. Params: `tgt_spee
 
 ### `ewar` — Pyfa "Electronic Warfare Stats" (`fitEwarStats`)
 
-x: `distance_m` (≥ 0). Param `resist` (0..1, default 0; target's resistance to the EWAR type).
+x: `distance_m` (≥ 0). Param `resist` (clamped to 0..1, default 0; target's resistance to the EWAR type). Optional
+`target.fit` (0.2, see "Target fits for ewar / remote_reps"); a target profile is ignored.
 Sources: active modules (incl. burst projectors `doomsdayAOE*`, range = maxRange + doomsdayAOERange, no lock
 needed), active drones (need lock + drone control range), active fighter abilities (need lock).
 
@@ -172,7 +196,27 @@ rf = range factor. Range factor = `calculateRangeFactor` (restricted: 0 beyond o
 y: `rps` (HP/s, shield+armor+hull; energy transfers excluded), `total` (HP repaired from t = 0; needs
 `params.time_s` unless x = time). Params: `distance_m`, `time_s` (as for `damage`), `anc_reload` (default true:
 ancillary remote reps include their reload; Pyfa checkbox "Reload ancillary RRs"). Range factor
-`calculateRangeFactor(optimal, falloff, d)`; drones 1 inside drone control range.
+`calculateRangeFactor(optimal, falloff, d)`; drones 1 inside drone control range. Optional `target.fit` (0.2, below).
+
+### Target fits for ewar / remote_reps (0.2, derived — Pyfa's graphs have no target here)
+
+Pyfa's `fitEwarStats` and `fitRemoteReps` graphs take no target, so these values are **derived**, not read from a
+Pyfa graph. The rules mirror how Pyfa applies the same modules when one fit is projected onto another
+(`eos/effects.py` handlers and `ModifiedAttributeDict.getResistance`). `T` = the target fit after a normal `calc`.
+- **ewar:** when `target.fit` is given and `params.resist` is absent, each y uses
+  `resist = clamp(1 − T.ship[attr], 0, 1)` (an attribute value of 0 or missing counts as 1, as in Pyfa's `resist or 1`):
+  `neut_gj_s` energyWarfareResistance (2045), `web_pct` stasisWebifierResistance (2115), `ecm_strength` ECMResistance
+  (2253), `damp_lock_range_pct` sensorDampenerResistance (2112), `td_optimal_pct` and `gd_range_pct`
+  weaponDisruptionResistance (2113), `tp_sig_pct` targetPainterResistance (2114). These are the effects'
+  `resistanceID` / the modules' `remoteResistanceID`. An explicit `params.resist` overrides the target fit. If
+  `T.ship.disallowOffensiveModifiers` is set, every y except `neut_gj_s` is 0 (Pyfa's ewar handlers return early;
+  neutralizers do not).
+- **remote_reps:** `rps` and `total` are multiplied by `T.ship.remoteRepairImpedance` (2116, the `resistanceID` of the
+  remote shield/armor/hull repair effects; e.g. Bastion and structures 1e-5 … 1e-6). They are 0 if
+  `T.ship.disallowAssistance` is set (Pyfa's RR handlers return early). Pyfa's own projected-fit stats skip the
+  impedance (its RR handlers do not pass the effect to `getResistance`). The contract follows the SDE.
+- The oracle builds `T` with Pyfa and reads these attributes (`oracle/pyfa_graph_oracle.py`, `target_ship_attr`).
+  Everything else is Pyfa's graph getter.
 
 ### `capacitor` — Pyfa "Capacitor" (`fitCapacitor`)
 
@@ -218,15 +262,50 @@ fit switched off (Pyfa `SubwarpSpeedCache`). 0 m → 0 s.
 x: `tgt_sig_m` (≥ 1, else `null`). y: `time_s` = `min(40000 / scanResolution / asinh(sig)², 1800)` (if
 scanResolution ≤ 0: scanSpeed/1000).
 
-Not covered: Pyfa's hidden experimental "ECM Burst + Scanres Damps" graph (`fitEcmBurstScanresDamps`).
+### `ecm_burst` — Pyfa "ECM Burst + Scanres Damps" (`fitEcmBurstScanresDamps`, hidden/experimental; 0.2)
+
+Scenario: the source fit ECM-bursts every 30 s and the enemy re-locks after each burst.
+
+| x | unit | valid | y allowed |
+|---|---|---|---|
+| `tgt_scan_res_mm` | mm | ≥ 1 (Pyfa limiter; else `null`) | `src_damage`, `tgt_lock_time_s`, `tgt_lock_uptime_s` |
+| `tgt_dps` | HP/s | > 0 (else `null`) | `src_damage` only (other y → `BAD_AXIS`) |
+
+| param | default | meaning |
+|---|---|---|
+| `tgt_scan_res_mm` | 700 | enemy scan resolution when x ≠ scan res (< 1 → `null` points) |
+| `tgt_dps` | 200 | enemy dps against the source when x ≠ dps (≤ 0 → `src_damage` `null`) |
+| `uptime_adj_s` | 1 | seconds subtracted from each lock uptime (reaction time) |
+| `uptime_amount_limit` | 3 | max number of 30 s burst cycles counted (`int()` truncation) |
+| `apply_damps` | true | apply the source's scan-resolution damps to the enemy scan res |
+| `apply_drones` | true | count the source's drone + fighter dps |
+
+- Damp multiplier `m` (when `apply_damps`): `calculateMultiplier` over one stacking group of `1 + scanResolutionBonus/100`
+  for every active module with `remoteSensorDampFalloff`, `structureModuleEffectRemoteSensorDampener` or
+  `doomsdayAOEDamp`, and `amountActive` copies for active drones with `remoteSensorDampEntity`. Range is ignored. Pyfa `Fit.getDampMultScanRes`.
+- `lock(sr) = min(40000 / (sr·m) / asinh(sig)², 1800)`, with sig = the source ship's signatureRadius.
+  `tgt_lock_time_s = lock(x)`, `tgt_lock_uptime_s = max(0, 30 − lock(x))`.
+- `src_damage` (HP the source deals before it dies): with `L = lock(scan res)`, `up = max(0, 30 − L − uptime_adj_s)`,
+  `down = 30 − up`, `rem = ehp`; repeat `int(uptime_amount_limit)` times: `alive = down + min(up, rem / tgt_dps)`;
+  `rem −= up · tgt_dps`; `dmg += alive · weapon_dps + max(0, alive − 3) · drone_dps`; stop once `rem ≤ 0`.
+  ehp = Σ layers of the source's EHP under its `damage_pattern` (default uniform), the stats-panel value.
+  weapon_dps = the stats-panel module dps (`Fit.getWeaponDps().total`, default spool), drone_dps = drones + fighters
+  (`getDroneDps().total`), or 0 without `apply_drones`.
 
 ## Scoring (bench, branch `graphs-round2`)
 
 `graphs/run_graphs.py` compares every sample value with the corpus tolerance
 (|got − want| ≤ max(1e-3, 1e-4·|want|), or both `null`), grouped by graph type; `*_charge_type_id` series are
-reported separately and not scored. Corpus: `graphs/cases/*.json` (GraphRequests, fits embedded) and
+reported separately and not scored. 0.2: an empty expected series scores one value (the response must have
+`"x": []` and that series `[]`). An error case (`graphs/expected/err_*.json`, `"expect_error": CODE`) scores one value
+in group `errors`, correct when the response is `{"error":{"code":CODE,…}}`. Corpus: `graphs/cases/*.json` (GraphRequests, fits embedded) and
 `graphs/expected/*.json` (Pyfa values).
 
 ## Changelog
 
+- 0.2 (2026-10-03): empty `x.values` → success with empty `x` and empty series. New "Validation and error codes"
+  section (empty `y` → `BAD_REQUEST`; enum values validated). New graph `ecm_burst` (Pyfa's hidden ECM burst graph).
+  Damage x axes `tgt_speed_pct` and `tgt_sig_pct`; `tgt_sig_m` ≤ 0 → `null`. `target.fit` for `ewar` (resistance
+  attributes, `disallowOffensiveModifiers`) and `remote_reps` (`remoteRepairImpedance`, `disallowAssistance`), derived
+  from the effect handlers because Pyfa's graphs have no target there. Corpus: 158 cases + 20 error cases.
 - 0.1 (2026-10-03): first draft; 9 graph types (Pyfa's 9 public graphs), explicit sampling, SI units.
