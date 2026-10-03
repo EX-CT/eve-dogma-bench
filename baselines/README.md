@@ -20,22 +20,22 @@ only go up.
   - Runner exit codes are ignored, because the gate decides.
 - `tools/check_no_regress.py`: the gate.
 
-## Suites (seeded from 2da8150; raised to EX-CT/eve-dogma d990818)
+## Suites (seeded from 2da8150; raised to d990818, then to EX-CT/eve-dogma 8bde0ba)
 | suite | runner | source | passed / total |
 |---|---|---|---|
 | core | `run.py` | pending-1.11 | 339 / 339 |
 | ext | `ext/tools/score.py` | pending-1.11 (incl. the 37 f-missing cases) | 208 / 239 (b34ebb9 expectation fix) |
 | ext_rpc | `ext/tools/score_rpc.py` (serve-stdio) | pending-1.11 `ext/rpc` | 0 / 54 |
-| batch | `batch/run_batch.py` (identity vs one-by-one calc; provisional shape) | pending-1.11 `batch/` | 0 / 93 (44 + 14 price_* + 35 gap/calc_price cases; no batch API in 2da8150 / d990818) |
+| batch | `batch/run_batch.py` (identity vs one-by-one calc; provisional shape) | pending-1.11 `batch/` | 93 / 93 (44 + 14 price_* + 35 gap/calc_price cases; batch API since 8bde0ba) |
 | effects | `effects/tools/score.py` | pending-1.11 | 2378 / 2378 |
 | graphs | `graphs/run_graphs.py` (serve-stdio) | graphs-round2 db81b8c (`graphs-v0.3`) | 192 / 192 |
 | cap | `cap/run_cap.py` | cap-suite d80cc38 | 150 / 150 |
 | mutated | `mutated/run_mutated.py` | mutated-suite 4533dde | 93 / 93 |
 | formats | `tools/evaluate_formats.py` (serve-stdio) | formats-suite 7c716e7 | 4779 / 4779 scored rows |
-| sde | `d22/run_d22.py --suite sde` (provisional docs/22 adapter) | pending-1.11 `d22/` | 0 / 18 (+5 pending without SDE_PACK) |
-| price_inject | `d22/run_d22.py --suite price_inject` | pending-1.11 `d22/` | 0 / 32 (+1 pending) |
+| sde | `d22/run_d22.py --suite sde` (provisional docs/22 adapter) | pending-1.11 `d22/` | 18 / 18 (+5 pending without SDE_PACK) |
+| price_inject | `d22/run_d22.py --suite price_inject` | pending-1.11 `d22/` | 32 / 32 (+1 pending) |
 
-docs/19 (eve-fit-docs 3d99eea) `have` counts: f 104, mcp 97, web 84, formats 10.
+docs/19 `have` counts (raised with 8bde0ba): f 106, mcp 102, web 84, formats 10.
 
 ## Rules (exit 1 = regression)
 1. For each suite in the baseline, `passed` must be at least the baseline value.
