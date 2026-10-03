@@ -5,8 +5,11 @@
 #         jsonl       -> name (glob) equals field <key> of some line of <file> (git_ref as for files)
 #         rust-test   -> crate::path::test_fn; needs --root SUITE=PATH (Rust workspace); matches `fn <last>` in a
 #                        .rs file under PATH (crate dir = first segment, '-' or '_', when it exists)
-#         string      -> quoted test title; needs --root SUITE=PATH; matches the literal title in a file under PATH
-#                        whose name matches `glob`
+#         id          -> stable test id (exact); needs --root SUITE=PATH; ids are parsed from files under PATH matching
+#                        `glob`: `<id_prefix><slug>:` at the start of a string literal (JS `${v}` parts expanded from a
+#                        `for (const v of NAME)` over a literal array); optional `ids_json` cross-checked (warnings).
+#                        An id that is not found is a failure (unknown-id).
+#         string      -> DEPRECATED (unused since 1.11): quoted test title, substring match in files matching `glob`
 schema: inventory-suites/1
 suites:
   bench:     {column: f, kind: files, dir: cases, ext: .json}            # bench core (this branch / main)
@@ -21,8 +24,8 @@ suites:
   fmt-edge:  {column: f, kind: jsonl, git_ref: origin/formats-suite, file: formats/expected/edge.jsonl, key: category}
   graphs:    {column: f, kind: files, git_ref: origin/graphs-round2, dir: graphs/cases, ext: .json}
   unit:      {column: f, kind: rust-test}
-  mcp:       {column: mcp, kind: string, glob: "*.test.*"}   # --root mcp=<EX-CT/eve-fit-mcp checkout>: node --test titles in src/test/
-  web-bench: {column: web, kind: files, git_ref: v1.9.0, dir: cases, ext: .json}   # bench 1.9.0 corpus in headless Chrome vs the site's wasm-worker (F): eve-fit-web Pages CI tools/browser-dogma-bench.py (engines.lock DOGMA_BENCH_SHA d2edf98 = v1.9.0); gates the deploy
-  web-graphs: {column: web, kind: files, git_ref: 8c40921911aed9a7d7f032a2f9d4c43986ca0232, dir: graphs/cases, ext: .json}   # graphs 0.2 suite in headless Chrome vs wasm-worker (F): eve-fit-web Pages CI (engines.lock GRAPHS_BENCH_SHA)
-  web-e2e:   {column: web, kind: string, glob: "e2e*.mjs"}   # --root web-e2e=<EX-CT/eve-fit-web checkout>: check names in tools/e2e.mjs
-  web-unit:  {column: web, kind: string, glob: "*.test.*"}
+  mcp:       {column: mcp, kind: id, id_prefix: "mcp.", glob: "*.test.ts", ids_json: docs/test-ids.json}   # --root mcp=<EX-CT/eve-fit-mcp checkout, >= 8c6b93d>: ids mcp.<file>.<slug> on the node --test titles in src/test/ (guard: mcp.unit.test-ids; table docs/test-ids.{md,json})
+  web-bench: {column: web, kind: files, git_ref: v1.9.0, dir: cases, ext: .json}   # bench 1.9.0 corpus in headless Chrome vs the site's wasm-worker (F): eve-fit-web Pages CI tools/browser-dogma-bench.py (engines.lock DOGMA_BENCH_SHA d2edf98 = v1.9.0); gates the deploy only when the F (wasm) build succeeds (eve4 is making it a hard gate)
+  web-graphs: {column: web, kind: files, git_ref: 8c40921911aed9a7d7f032a2f9d4c43986ca0232, dir: graphs/cases, ext: .json}   # graphs 0.2 suite in headless Chrome vs wasm-worker (F): eve-fit-web Pages CI (engines.lock GRAPHS_BENCH_SHA); like web-bench, gates the deploy only when the F build succeeds (hard gate in progress, eve4)
+  web-e2e:   {column: web, kind: id, id_prefix: "web.e2e.", glob: "e2e*.mjs"}   # --root web-e2e=<EX-CT/eve-fit-web checkout, >= fafa982>: check ids web.e2e.<slug> in tools/e2e.mjs; only the ts-worker and default-engine e2e runs block a release (other engines are informational)
+  # web-unit removed in 1.11: eve-fit-web has no unit tests.
