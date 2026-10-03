@@ -46,3 +46,6 @@ Failure groups:
   `use_gj_s`.
 - **E, `cap_sim.reload` with ancillary repairers** (`so_reload_aar`, `so_reload_stagger_off_aar`): E depletes at
   67.5 s; Pyfa says 71.25 s.
+
+Variant A fix in review: [EX-CT/eve-dogma-rs#1](https://github.com/EX-CT/eve-dogma-rs/pull/1) (branch
+`fix/capsim-cycle-floor-void-bomb` @ 6dc39c6) scores **150/150** here; bench 1.8.0 stays 326/326.
