@@ -1,0 +1,240 @@
+{
+ "fit": {
+  "boosters": [],
+  "cargo": [],
+  "character": {
+   "security_status": null,
+   "skills": {
+    "default_level": 5,
+    "levels": {}
+   }
+  },
+  "damage_pattern": null,
+  "drones": [
+   {
+    "active": 5,
+    "mutation": null,
+    "quantity": 5,
+    "type_id": 23707
+   }
+  ],
+  "environment": {
+   "effect_type_ids": [],
+   "system_security": null
+  },
+  "fighters": [],
+  "fleet": {
+   "booster_fits": [],
+   "buffs": []
+  },
+  "implants": [],
+  "modules": [
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "low",
+    "spool": null,
+    "state": "active",
+    "type_id": 22291
+   },
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "low",
+    "spool": null,
+    "state": "active",
+    "type_id": 22291
+   },
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "low",
+    "spool": null,
+    "state": "active",
+    "type_id": 22291
+   },
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "low",
+    "spool": null,
+    "state": "active",
+    "type_id": 2048
+   },
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "mid",
+    "spool": null,
+    "state": "active",
+    "type_id": 3841
+   },
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "mid",
+    "spool": null,
+    "state": "active",
+    "type_id": 3841
+   },
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "mid",
+    "spool": null,
+    "state": "active",
+    "type_id": 2281
+   },
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "mid",
+    "spool": null,
+    "state": "active",
+    "type_id": 19806
+   },
+   {
+    "charge_type_id": 35795,
+    "mutation": null,
+    "slot": "mid",
+    "spool": null,
+    "state": "active",
+    "type_id": 35790
+   },
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "mid",
+    "spool": null,
+    "state": "active",
+    "type_id": 12084
+   },
+   {
+    "charge_type_id": 2506,
+    "mutation": null,
+    "slot": "high",
+    "spool": null,
+    "state": "active",
+    "type_id": 2420
+   },
+   {
+    "charge_type_id": 2506,
+    "mutation": null,
+    "slot": "high",
+    "spool": null,
+    "state": "active",
+    "type_id": 2420
+   },
+   {
+    "charge_type_id": 2506,
+    "mutation": null,
+    "slot": "high",
+    "spool": null,
+    "state": "active",
+    "type_id": 2420
+   },
+   {
+    "charge_type_id": 2506,
+    "mutation": null,
+    "slot": "high",
+    "spool": null,
+    "state": "active",
+    "type_id": 2420
+   },
+   {
+    "charge_type_id": 2506,
+    "mutation": null,
+    "slot": "high",
+    "spool": null,
+    "state": "active",
+    "type_id": 2420
+   },
+   {
+    "charge_type_id": 2506,
+    "mutation": null,
+    "slot": "high",
+    "spool": null,
+    "state": "active",
+    "type_id": 2420
+   },
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "rig",
+    "spool": null,
+    "state": "online",
+    "type_id": 26420
+   },
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "rig",
+    "spool": null,
+    "state": "online",
+    "type_id": 26414
+   },
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "rig",
+    "spool": null,
+    "state": "online",
+    "type_id": 26448
+   }
+  ],
+  "options": {
+   "cap_sim": {
+    "max_time_s": null,
+    "reload": false,
+    "stagger": false
+   },
+   "default_spool": null,
+   "factor_reload": false,
+   "include_attributes": null,
+   "nos_no_target_cap": false,
+   "rah": null,
+   "sources": false,
+   "validate": true
+  },
+  "overrides": [],
+  "projected": [],
+  "schema_version": 1,
+  "ship": {
+   "mode_type_id": null,
+   "type_id": 638
+  },
+  "target_profile": null
+ },
+ "graph": "damage",
+ "params": {
+  "tgt_speed_pct": 100
+ },
+ "schema_version": 1,
+ "target": {
+  "profile": {
+   "max_velocity": 400,
+   "radius": 40,
+   "signature_radius": 35
+  }
+ },
+ "x": {
+  "axis": "distance_m",
+  "values": [
+   0,
+   2000,
+   5000,
+   10000,
+   20000,
+   30000,
+   40000,
+   50000,
+   60000,
+   75000,
+   100000,
+   150000
+  ]
+ },
+ "y": [
+  "dps"
+ ]
+}

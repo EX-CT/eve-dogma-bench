@@ -1,0 +1,24 @@
+{
+ "case": "shield_pct_drake",
+ "graph": "shield_regen",
+ "oracle": "pyfa-graphs",
+ "series": {
+  "shield_regen_hp_s": [
+   0.0,
+   27.281766135153035,
+   31.542857142857137,
+   26.13095844913697,
+   14.63909094605945,
+   0.0
+  ]
+ },
+ "x": [
+  0,
+  10,
+  25,
+  50,
+  75,
+  100
+ ],
+ "x_axis": "shield_pct"
+}

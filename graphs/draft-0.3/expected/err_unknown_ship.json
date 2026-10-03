@@ -1,0 +1,6 @@
+{
+ "case": "err_unknown_ship",
+ "expect_error": "UNKNOWN_TYPE",
+ "graph": "damage",
+ "oracle": "contract"
+}

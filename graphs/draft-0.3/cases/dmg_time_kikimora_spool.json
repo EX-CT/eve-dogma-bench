@@ -1,0 +1,64 @@
+{
+ "fit": {
+  "character": {
+   "skills": {
+    "default_level": 5
+   }
+  },
+  "drones": [],
+  "modules": [
+   {
+    "charge_type_id": 47924,
+    "state": "active",
+    "type_id": 47914
+   },
+   {
+    "state": "active",
+    "type_id": 47911
+   },
+   {
+    "state": "active",
+    "type_id": 47911
+   }
+  ],
+  "schema_version": 1,
+  "ship": {
+   "type_id": 49710
+  }
+ },
+ "graph": "damage",
+ "params": {
+  "distance_m": 2000,
+  "tgt_speed_pct": 0
+ },
+ "schema_version": 1,
+ "target": {
+  "profile": {
+   "max_velocity": 250,
+   "radius": 150,
+   "signature_radius": 125
+  }
+ },
+ "x": {
+  "axis": "time_s",
+  "values": [
+   0,
+   1,
+   3,
+   5,
+   10,
+   15,
+   20,
+   30,
+   45,
+   60,
+   90,
+   120
+  ]
+ },
+ "y": [
+  "dps",
+  "volley",
+  "damage"
+ ]
+}

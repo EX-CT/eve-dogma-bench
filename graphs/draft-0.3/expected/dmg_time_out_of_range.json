@@ -1,0 +1,22 @@
+{
+ "case": "dmg_time_out_of_range",
+ "graph": "damage",
+ "oracle": "pyfa-graphs",
+ "series": {
+  "dps": [
+   null,
+   262.52181548668347,
+   262.52181548668347,
+   262.5218154866683,
+   null
+  ]
+ },
+ "x": [
+  -5,
+  0,
+  10,
+  2500,
+  3000
+ ],
+ "x_axis": "time_s"
+}

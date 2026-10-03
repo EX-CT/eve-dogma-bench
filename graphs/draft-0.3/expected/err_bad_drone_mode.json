@@ -1,0 +1,6 @@
+{
+ "case": "err_bad_drone_mode",
+ "expect_error": "BAD_REQUEST",
+ "graph": "damage",
+ "oracle": "contract"
+}

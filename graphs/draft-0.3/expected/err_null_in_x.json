@@ -1,0 +1,6 @@
+{
+ "case": "err_null_in_x",
+ "expect_error": "BAD_REQUEST",
+ "graph": "damage",
+ "oracle": "contract"
+}

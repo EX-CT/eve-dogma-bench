@@ -1,0 +1,23 @@
+{
+ "case": "ewar_resist_clamp_high",
+ "graph": "ewar",
+ "oracle": "pyfa-graphs",
+ "series": {
+  "tp_sig_pct": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "web_pct": [
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "x": [
+  0,
+  10000,
+  20000
+ ],
+ "x_axis": "distance_m"
+}

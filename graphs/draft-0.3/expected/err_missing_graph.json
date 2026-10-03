@@ -1,0 +1,6 @@
+{
+ "case": "err_missing_graph",
+ "expect_error": "BAD_REQUEST",
+ "graph": null,
+ "oracle": "contract"
+}

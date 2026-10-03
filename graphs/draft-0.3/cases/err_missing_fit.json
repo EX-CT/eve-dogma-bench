@@ -1,0 +1,14 @@
+{
+ "graph": "damage",
+ "schema_version": 1,
+ "x": {
+  "axis": "distance_m",
+  "values": [
+   0,
+   1000
+  ]
+ },
+ "y": [
+  "dps"
+ ]
+}

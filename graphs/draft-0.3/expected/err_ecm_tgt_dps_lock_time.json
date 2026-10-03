@@ -1,0 +1,6 @@
+{
+ "case": "err_ecm_tgt_dps_lock_time",
+ "expect_error": "BAD_AXIS",
+ "graph": "ecm_burst",
+ "oracle": "contract"
+}

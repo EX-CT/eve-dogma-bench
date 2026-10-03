@@ -1,0 +1,6 @@
+{
+ "case": "err_ecm_bad_axis",
+ "expect_error": "BAD_AXIS",
+ "graph": "ecm_burst",
+ "oracle": "contract"
+}

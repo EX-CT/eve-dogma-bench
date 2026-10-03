@@ -1,0 +1,23 @@
+{
+ "case": "mob_time_zero_bounds",
+ "graph": "mobility",
+ "oracle": "pyfa-graphs",
+ "series": {
+  "distance_m": [
+   0.0,
+   0.0,
+   4130333.767048072
+  ],
+  "speed_mps": [
+   0.0,
+   3.0355338240801336e-07,
+   1148.5220290723812
+  ]
+ },
+ "x": [
+  0,
+  1e-09,
+  3600
+ ],
+ "x_axis": "time_s"
+}

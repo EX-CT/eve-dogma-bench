@@ -1,0 +1,69 @@
+{
+ "fit": {
+  "character": {
+   "skills": {
+    "default_level": 5
+   }
+  },
+  "drones": [],
+  "modules": [
+   {
+    "charge_type_id": 85088,
+    "state": "active",
+    "type_id": 85084
+   },
+   {
+    "charge_type_id": 85088,
+    "state": "active",
+    "type_id": 85084
+   },
+   {
+    "charge_type_id": 85088,
+    "state": "active",
+    "type_id": 85084
+   },
+   {
+    "charge_type_id": 85088,
+    "state": "active",
+    "type_id": 85084
+   }
+  ],
+  "schema_version": 1,
+  "ship": {
+   "type_id": 602
+  }
+ },
+ "graph": "damage",
+ "schema_version": 1,
+ "target": {
+  "profile": {
+   "em": 0.5,
+   "explosive": 0.2,
+   "hp": 5000,
+   "kinetic": 0.3,
+   "max_velocity": 250,
+   "radius": 150,
+   "signature_radius": 125,
+   "thermal": 0.4
+  }
+ },
+ "x": {
+  "axis": "distance_m",
+  "values": [
+   0,
+   2000,
+   4000,
+   5000,
+   6000,
+   7000,
+   8000,
+   9000,
+   10000,
+   12000,
+   15000
+  ]
+ },
+ "y": [
+  "dps"
+ ]
+}

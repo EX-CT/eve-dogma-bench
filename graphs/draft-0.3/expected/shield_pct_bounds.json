@@ -1,0 +1,32 @@
+{
+ "case": "shield_pct_bounds",
+ "graph": "shield_regen",
+ "oracle": "pyfa-graphs",
+ "series": {
+  "shield_hp": [
+   null,
+   null,
+   0.0,
+   13950.0,
+   null,
+   null
+  ],
+  "shield_regen_hp_s": [
+   null,
+   null,
+   0.0,
+   0.0,
+   null,
+   null
+  ]
+ },
+ "x": [
+  -10,
+  -0.001,
+  0,
+  100,
+  100.001,
+  110
+ ],
+ "x_axis": "shield_pct"
+}

@@ -1,0 +1,11 @@
+{
+ "case": "empty_x_damage",
+ "graph": "damage",
+ "oracle": "pyfa-graphs",
+ "series": {
+  "dps": [],
+  "volley": []
+ },
+ "x": [],
+ "x_axis": "distance_m"
+}

@@ -1,0 +1,26 @@
+{
+ "case": "rr_oneiros_time_noreload",
+ "graph": "remote_reps",
+ "oracle": "pyfa-graphs",
+ "series": {
+  "total": [
+   0.0,
+   1203.0,
+   6015.0,
+   11450.0,
+   16015.0,
+   20580.0,
+   47970.0
+  ]
+ },
+ "x": [
+  0,
+  10,
+  30,
+  60,
+  90,
+  120,
+  300
+ ],
+ "x_axis": "time_s"
+}

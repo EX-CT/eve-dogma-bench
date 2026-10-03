@@ -1,0 +1,20 @@
+{
+ "case": "cap_time_bounds",
+ "graph": "capacitor",
+ "oracle": "pyfa-graphs",
+ "series": {
+  "cap_gj": [
+   null,
+   312.5,
+   312.5,
+   null
+  ]
+ },
+ "x": [
+  -1,
+  0,
+  3600,
+  3600.5
+ ],
+ "x_axis": "time_s"
+}

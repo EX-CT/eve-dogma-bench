@@ -1,0 +1,18 @@
+{
+ "case": "dmg_time_param_clamped",
+ "graph": "damage",
+ "oracle": "pyfa-graphs",
+ "series": {
+  "damage": [
+   141735.59631020093,
+   571091.74317311,
+   565746.9787578192
+  ]
+ },
+ "x": [
+  0,
+  1000,
+  5000
+ ],
+ "x_axis": "distance_m"
+}

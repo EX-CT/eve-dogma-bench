@@ -1,0 +1,18 @@
+{
+ "case": "dmg_speedpct_ideal",
+ "graph": "damage",
+ "oracle": "pyfa-graphs",
+ "series": {
+  "dps": [
+   2118.386889211702,
+   2118.386889211702,
+   2118.386889211702
+  ]
+ },
+ "x": [
+  0,
+  50,
+  100
+ ],
+ "x_axis": "tgt_speed_pct"
+}

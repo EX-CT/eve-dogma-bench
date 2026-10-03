@@ -1,0 +1,54 @@
+{
+ "fit": {
+  "character": {
+   "skills": {
+    "default_level": 5
+   }
+  },
+  "drones": [],
+  "modules": [
+   {
+    "state": "active",
+    "type_id": 26913
+   },
+   {
+    "state": "active",
+    "type_id": 26913
+   },
+   {
+    "state": "active",
+    "type_id": 26913
+   },
+   {
+    "charge_type_id": 28668,
+    "state": "active",
+    "type_id": 41477
+   }
+  ],
+  "schema_version": 1,
+  "ship": {
+   "type_id": 11989
+  }
+ },
+ "graph": "remote_reps",
+ "params": {
+  "anc_reload": false,
+  "distance_m": 10000
+ },
+ "schema_version": 1,
+ "x": {
+  "axis": "time_s",
+  "values": [
+   0,
+   10,
+   30,
+   60,
+   90,
+   120,
+   300
+  ]
+ },
+ "y": [
+  "total"
+ ]
+}

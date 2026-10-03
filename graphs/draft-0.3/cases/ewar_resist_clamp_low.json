@@ -1,0 +1,49 @@
+{
+ "fit": {
+  "character": {
+   "skills": {
+    "default_level": 5
+   }
+  },
+  "drones": [],
+  "modules": [
+   {
+    "state": "active",
+    "type_id": 527
+   },
+   {
+    "state": "active",
+    "type_id": 527
+   },
+   {
+    "state": "active",
+    "type_id": 19806
+   },
+   {
+    "state": "active",
+    "type_id": 19806
+   }
+  ],
+  "schema_version": 1,
+  "ship": {
+   "type_id": 11961
+  }
+ },
+ "graph": "ewar",
+ "params": {
+  "resist": -0.5
+ },
+ "schema_version": 1,
+ "x": {
+  "axis": "distance_m",
+  "values": [
+   0,
+   10000,
+   20000
+  ]
+ },
+ "y": [
+  "web_pct",
+  "tp_sig_pct"
+ ]
+}
