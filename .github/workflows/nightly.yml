@@ -1,7 +1,7 @@
 name: nightly
 
 # Nightly regression run of the bench against eve-dogma-rs main (variant A):
-#   bench 1.8.0 (frozen 3da9671), bench 1.9.0 (main, released as v1.9.0 / d2edf98), graphs (branch graphs-round2, if it exists),
+#   bench 1.8.0 (frozen 3da9671), bench 1.9.0 (pinned v1.9.0 = d2edf98), graphs (branch graphs-round2, if it exists),
 #   plus a Pyfa-free fuzz self-consistency check (tools/ci_invariants.py). Pyfa isn't installed here; the oracle side is
 #   the committed expected/ values.
 # On failure: opens an issue titled "Nightly bench failure", or comments on the open one with that title (deduped by title).
@@ -70,8 +70,8 @@ jobs:
           echo "### eve-dogma-rs \`$ENGINE_REF\` @ $(git rev-parse --short HEAD)" >> "$GITHUB_STEP_SUMMARY"
       - name: Stage bench trees (1.8.0, 1.9.0, graphs)
         run: |
-          # bench 1.9.0 is released on main (v1.9.0 = d2edf98); 1.8.0 is the frozen round-1 pin 3da9671.
-          for spec in bench-1.8.0=3da9671da11379de6ae17d3c3285505e95267f29 bench-1.9.0=origin/main graphs-round2=origin/graphs-round2; do
+          # bench 1.9.0 = tag v1.9.0 (d2edf98; main is 1.10.0 since v1.10.0); 1.8.0 is the frozen round-1 pin 3da9671.
+          for spec in bench-1.8.0=3da9671da11379de6ae17d3c3285505e95267f29 bench-1.9.0=d2edf989a7c3ba5afbe54ca6fe85a5a285af8640 graphs-round2=origin/graphs-round2; do
             b=${spec%%=*}; ref=${spec#*=}
             if git rev-parse -q --verify "$ref^{commit}" > /dev/null; then
               mkdir -p "_trees/$b" && git archive "$ref" | tar -x -C "_trees/$b"
