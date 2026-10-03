@@ -76,6 +76,42 @@ def mutated(cls, spec):
     return obj
 
 
+_DBUFF_AGG = None
+
+
+def explicit_buffs(fit, buffs):
+    """Contract `fleet.buffs` (explicit warfare buffs) through Pyfa's own command-boost path, the same one Pyfa's
+    generic command links use (eos/saveddata/commandLink.py: Fit.addCommandBonus -> Fit.__runCommandBoosts).
+    Contract precedence: an explicit entry overrides bursts, booster fits and beacons for its buff id; several entries
+    with one id aggregate by the dbuff's aggregate mode (Minimum -> min, else max). No-op when `buffs` is empty, so
+    requests without fleet.buffs are computed exactly as before."""
+    global _DBUFF_AGG
+    if not buffs:
+        return
+    if _DBUFF_AGG is None:
+        import gzip
+        ds = os.environ.get("EVE_DOGMA_DATASET", "/workspace/exct-eve/data/dataset-3569502.json.gz")
+        _DBUFF_AGG = {int(k): v.get("aggregate") for k, v in json.load(gzip.open(ds)).get("dbuffs", {}).items()}
+    from eos.saveddata.commandLink import _getAfflictor, _BUFF_CATEGORY, _GANG_EFFECT
+    vals = {}
+    for b in buffs:
+        bid, v = int(b["buff_id"]), float(b["value"])
+        if bid in vals:
+            vals[bid] = min(vals[bid], v) if _DBUFF_AGG.get(bid) == "Minimum" else max(vals[bid], v)
+        else:
+            vals[bid] = v
+    orig = fit.addCommandBonus
+
+    def add(warfareBuffID, value, module, effect, runTime="normal"):
+        if warfareBuffID in vals:  # explicit entry wins for this id
+            return
+        orig(warfareBuffID, value, module, effect, runTime)
+    fit.addCommandBonus = add
+    for bid, v in vals.items():
+        afflictor = _getAfflictor(_BUFF_CATEGORY.get(bid, "shield")) or _getAfflictor("shield")
+        fit.commandBonuses[bid] = ("normal", v, afflictor, _GANG_EFFECT)
+
+
 def build(req):
     sh = item(req["ship"]["type_id"])
     ship = Citadel(sh) if sh.category.name == "Structure" else Ship(sh)
@@ -179,6 +215,7 @@ def build(req):
             ci = bf.getCommandInfo(fit.ID)
             ci.active = True
         eos.db.commit()
+    explicit_buffs(fit, req.get("fleet", {}).get("buffs") or [])
     dp = req.get("damage_pattern") or {"em": 25, "thermal": 25, "kinetic": 25, "explosive": 25}
     fit.damagePattern = DamagePattern(dp["em"], dp["thermal"], dp["kinetic"], dp["explosive"])
     fit.factorReload = bool(req.get("options", {}).get("factor_reload", False))
@@ -257,6 +294,114 @@ def weapons(fit):
     return out
 
 
+# ---- opt-in extra outputs (ORACLE_EXTRA="attrs,ext"); unset = output identical to before -----------------------------
+ORACLE_EXTRA = {x.strip() for x in os.environ.get("ORACLE_EXTRA", "").split(",") if x.strip()}
+
+
+def _attrs(obj, charge=False):
+    d = obj.chargeModifiedAttributes if charge else obj.itemModifiedAttributes
+    out = {}
+    for k in list(d.keys()):
+        try:
+            v = d[k]
+        except Exception:
+            continue
+        if isinstance(v, (int, float)) and not isinstance(v, bool) and math.isfinite(v):
+            out[k] = v
+    return out
+
+
+def attr_dump(fit):
+    """Modified attributes by name (Pyfa ModifiedAttributeDict), for the effect suite: ship, every modules[] entry
+    (+ its charge), every drones[] entry, every fighters[] entry."""
+    mods = []
+    for m in ORACLE_MODS.get(id(fit), []):
+        e = {"item": _attrs(m)}
+        if m.charge is not None:
+            e["charge"] = _attrs(m, charge=True)
+        mods.append(e)
+    return {"ship": _attrs(fit.ship), "modules": mods,
+            "drones": [_attrs(d) for d in fit.drones], "fighters": [_attrs(f) for f in fit.fighters]}
+
+
+_THERMO = None
+
+
+def _thermodynamics():
+    """gui/builtinViewColumns/heat.py `Thermodynamics`, loaded from Pyfa's source unmodified (the module itself
+    imports the wx GUI, so only the class body is executed, with the names it uses)."""
+    global _THERMO
+    if _THERMO is None:
+        src = open(os.path.join(PYFA, "gui/builtinViewColumns/heat.py")).read()
+        body = src[src.index("class Thermodynamics"):src.index("class Heat(")]
+        ns = {"math": math, "FittingModuleState": FittingModuleState}
+        exec(compile(body, "heat.py:Thermodynamics", "exec"), ns)
+        _THERMO = ns["Thermodynamics"]
+    return _THERMO
+
+
+def _bombing(fit):
+    """gui/builtinStatsViews/bombingViewFull.py refreshPanel arithmetic: bombs needed per bomb type and Covert Ops
+    level (the panel prints ceil(x*10)/10)."""
+    def ga(a):
+        return fit.ship.getModifiedItemAttr(a)
+    env = 1.0
+    reds = ["Class %d Red Giant Effects" % i for i in range(6, 0, -1)]
+    for e in fit.projectedModules:
+        if e.state == FittingModuleState.ONLINE and e.fullName in reds:
+            env *= e.item.attributes["smartbombDamageMultiplier"].value
+    sig = ga("signatureRadius")
+    hull, armor, shield = ga("hp"), ga("armorHP"), ga("shieldCapacity")
+    out = {}
+    for dt, bomb_id in (("em", 27920), ("thermal", 27916), ("kinetic", 27912), ("explosive", 27918)):
+        D = dt.capitalize()
+        ehp = hull / ga("%sDamageResonance" % dt) + armor / ga("armor%sDamageResonance" % D) + shield / ga("shield%sDamageResonance" % D)
+        bomb = item(bomb_id)
+        base = sum(bomb.attributes[a].value for a in ("emDamage", "thermalDamage", "kineticDamage", "explosiveDamage"))
+        bsig = bomb.attributes["signatureRadius"].value
+        out[dt] = {str(lvl): math.ceil((ehp / (base * (1 + 0.05 * lvl) * env * (min(bsig, sig) / bsig))) * 10) / 10 for lvl in range(6)}
+    return out
+
+
+def ext_stats(fit):
+    """Pyfa values for features beyond bench 1.9.0 (docs/20 P0-3 / P0-4 'stats-ext' and 'heat' suites)."""
+    from eos.utils.spoolSupport import SpoolOptions as SO
+    def rr(o):
+        return {"shield": o.shield, "armor": o.armor, "hull": o.hull, "capacitor": o.capacitor}
+    out = {
+        "mining": {"miner_yield": fit.minerYield, "miner_drain": fit.minerDrain, "drone_yield": fit.droneYield,
+                   "drone_drain": fit.droneDrain},
+        "outgoing": {"current": rr(fit.getRemoteReps(spoolOptions=SPOOL)),
+                     "min": rr(fit.getRemoteReps(spoolOptions=SO(SpoolType.SPOOL_SCALE, 0, True))),
+                     "max": rr(fit.getRemoteReps(spoolOptions=SO(SpoolType.SPOOL_SCALE, 1, True)))},
+        "bombing": _bombing(fit),
+    }
+    dr = []
+    for i, d in enumerate(fit.drones):
+        dr.append({"drone_index": i, "hp": d.hp, "ehp": d.ehp, "shield_regen": d.calculateShieldRecharge()})
+    out["drones"] = dr
+    fr = []
+    for i, f in enumerate(fit.fighters):
+        e = {"fighter_index": i, "hp": f.hp, "ehp": f.ehp}
+        try:
+            e["shield_regen"] = f.calculateShieldRecharge()
+        except Exception:
+            pass
+        fr.append(e)
+    out["fighters"] = fr
+    heat = []
+    th = None
+    for i, m in enumerate(ORACLE_MODS.get(id(fit), [])):
+        if m.state != FittingModuleState.OVERHEATED:
+            continue
+        th = th or _thermodynamics()(fit)
+        cyc = th.calcBurnCycles(m)
+        ct = (m.getModifiedItemAttr("duration") or 0) / 1000 or (m.getModifiedItemAttr("speed") or 0) / 1000
+        heat.append({"module_index": i, "burn_cycles": cyc, "burnout_s": cyc * ct})
+    out["heat"] = heat
+    return out
+
+
 def main():
     for path in sys.argv[1:]:
         req = json.load(open(path))
@@ -275,6 +420,10 @@ def main():
         st["weapons"] = weapons(fit)
         st["drones"], st["fighters"] = drones_fighters(fit)
         st["drone_control_range"] = fit.extraAttributes["droneControlRange"]
+        if "attrs" in ORACLE_EXTRA:
+            st["attrs"] = attr_dump(fit)
+        if "ext" in ORACLE_EXTRA:
+            st["ext"] = ext_stats(fit)
         first = time.perf_counter() - t0
         n = int(os.environ.get("ORACLE_REPEAT", "5"))
         t1 = time.perf_counter()
