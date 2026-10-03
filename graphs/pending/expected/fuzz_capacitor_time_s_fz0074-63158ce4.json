@@ -1,0 +1,29 @@
+{
+ "case": "fuzz_capacitor_time_s_fz0074-63158ce4",
+ "graph": "capacitor",
+ "oracle": "pyfa-graphs",
+ "series": {
+  "cap_gj": [
+   null,
+   null,
+   null,
+   null,
+   null
+  ],
+  "cap_regen_gj_s": [
+   0.6801829635056609,
+   3.875296381181346,
+   13.666911385781436,
+   16.01567994803623,
+   24.292786115140157
+  ]
+ },
+ "x": [
+  0.5,
+  3.0,
+  13.0,
+  16.3,
+  39.9
+ ],
+ "x_axis": "time_s"
+}
