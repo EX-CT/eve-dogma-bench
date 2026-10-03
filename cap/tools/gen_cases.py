@@ -359,6 +359,52 @@ case("edge_mjd_alone", "edge", "only a micro jump drive", fit("Megathron", [M("L
 case("edge_dominix_drones", "edge", "drones never use cap", fit("Dominix", [M("Large Armor Repairer II", "low")], drones=[D("Praetor EV-900", 5)]))
 case("edge_tiny_drain", "edge", "a very small drain on a big capacitor (long stable run)", fit("Revelation", [M("Sensor Booster II", "mid")]))
 
+# ---------------------------------------------------------------- N. hard simulator paths
+def skl(req, **levels):
+    """set individual skill levels by skill name"""
+    req["character"]["skills"]["levels"] = {str(tid(k.replace("_", " "))): v for k, v in levels.items()}
+    return req
+
+
+FR = {"factor_reload": True}
+aar3 = [M("Medium Ancillary Armor Repairer", "low", charge="Nanite Repair Paste") for _ in range(3)]
+case("hard_aar3_clip_offsets", "hard", "three identical ancillary repairers + reload: fractional staggered start times",
+     fit("Maller", aar3 + [M("10MN Afterburner II", "mid")], options=FR))
+case("hard_lcm_period", "hard", "cycle times 5 s / 7.5 s / 12 s / 15 s / 24 s: long period before the repeat check",
+     fit("Armageddon", [M("Heavy Energy Neutralizer II", "high"), M("Large Armor Repairer II", "low"), M("100MN Afterburner II", "mid"),
+                        M("Sensor Booster II", "mid"), M("Large Micro Jump Drive", "mid")]))
+case("hard_injector_topup_mjd", "hard", "booster waits (overshoot) and fires before the MJD's big need",
+     fit("Megathron", [M("Large Micro Jump Drive", "mid"), M("Heavy Capacitor Booster II", "mid", charge="Navy Cap Booster 800"),
+                       M("Large Armor Repairer II", "low")]))
+case("hard_injector_two_sizes_topup", "hard", "two waiting boosters of different sizes: smallest sufficient fires first",
+     fit("Apocalypse", apocalypse + [M("Large Micro Jump Drive", "mid"), M("Heavy Capacitor Booster II", "mid", charge="Navy Cap Booster 800"),
+                                     M("Medium Capacitor Booster II", "mid", charge="Navy Cap Booster 400")]))
+case("hard_void_bomb_bs", "hard", "void bomb on a battleship (survives the first hit)",
+     fit("Apocalypse", apocalypse, projected=[PM("Bomb Launcher I", 1, 10000, charge="Void Bomb")]))
+case("hard_three_void_bombs", "hard", "three identical incoming void bombs (grouped and staggered like local modules)",
+     fit("Apocalypse", apocalypse, projected=[PM("Bomb Launcher I", 3, 10000, charge="Void Bomb")]))
+case("hard_incoming_mixed_cycles", "hard", "incoming heavy neut + medium neut + neut drones (different durations)",
+     fit("Megathron", megathron, projected=[PM("Heavy Energy Neutralizer II", 1, 10000), PM("Medium Energy Neutralizer II", 2, 5000),
+                                            PD("Infiltrator EV-600", 2)]))
+case("hard_command_burst", "hard", "command bursts with charges (cap need per cycle, clip + reload)",
+     fit("Claymore", [M("Shield Command Burst II", "high", charge="Shield Harmonizing Charge"),
+                      M("Skirmish Command Burst II", "high", charge="Rapid Deployment Charge"),
+                      M("Large Shield Booster II", "mid"), M("50MN Microwarpdrive II", "mid")], options=FR))
+case("hard_smartbombs", "hard", "four identical smartbombs (not turrets: staggered)",
+     fit("Armageddon", [M("Large EMP Smartbomb II", "high") for _ in range(4)] + [M("100MN Afterburner II", "mid")]))
+case("hard_smartbombs_oh", "hard", "four overheated smartbombs", fit("Armageddon", oh([M("Large EMP Smartbomb II", "high") for _ in range(4)])))
+case("hard_skill_levels", "hard", "capacitor skills at mixed levels (capacity, recharge, module cap need)",
+     skl(fit("Maller", maller), Capacitor_Management=2, Capacitor_Systems_Operation=1, Energy_Grid_Upgrades=0, Repair_Systems=3))
+case("hard_nos_neut_incoming_vs_own_nos", "hard", "own nos gain while neutralized by heavy neuts",
+     fit("Ashimmu", [M("Medium Energy Nosferatu II", "high"), M("Medium Energy Nosferatu II", "high"), M("Medium Armor Repairer II", "low"),
+                     M("10MN Afterburner II", "mid")], projected=[PM("Heavy Energy Neutralizer II", 2, 10000)]))
+case("hard_rct_fill_injector_waits", "hard", "incoming cap transfer keeps the capacitor full: booster stays postponed",
+     fit("Maller", maller + [M("Medium Capacitor Booster II", "mid", charge="Navy Cap Booster 400")],
+         projected=[PM("Large Remote Capacitor Transmitter II", 2, 5000)]))
+case("hard_turrets_plus_neuts_oh", "hard", "overheated turrets (x n need) and overheated neuts (staggered) together",
+     fit("Armageddon", oh([*[M("Mega Pulse Laser II", "high", charge="Multifrequency L") for _ in range(4)],
+                           *[M("Heavy Energy Neutralizer II", "high") for _ in range(3)], M("Large Armor Repairer II", "low")])))
+
 out = ROOT / "cases"
 out.mkdir(exist_ok=True)
 for p in out.glob("*.json"):

@@ -1,0 +1,58 @@
+{
+ "case": "hard_aar3_clip_offsets",
+ "diagnostics": {
+  "drains": [
+   [
+    9000,
+    160.0,
+    8,
+    false,
+    60000.0,
+    false
+   ],
+   [
+    9000,
+    160.0,
+    8,
+    false,
+    60000.0,
+    false
+   ],
+   [
+    9000,
+    160.0,
+    8,
+    false,
+    60000.0,
+    false
+   ],
+   [
+    7500,
+    22.5,
+    0,
+    false,
+    10000.0,
+    false
+   ]
+  ],
+  "high_gj": 0.0,
+  "low_gj": 0.0,
+  "optimized_repeat": false,
+  "sim_end_ms": 45000
+ },
+ "oracle": "pyfa-eos capSim",
+ "report_only": {
+  "eve_stable_percent": 0.0,
+  "sim_iterations": 22
+ },
+ "values": {
+  "capacity": 2031.25,
+  "delta_gj_s": -17.529977191267516,
+  "depletes_in_s": 45.0,
+  "injected_gj_s": 0.0,
+  "peak_recharge_gj_s": 14.560931899641577,
+  "recharge_time_s": 348.75,
+  "stable": false,
+  "use_gj_s": 32.09090909090909
+ }
+}

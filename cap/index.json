@@ -678,5 +678,75 @@
   "case": "edge_tiny_drain",
   "category": "edge",
   "description": "a very small drain on a big capacitor (long stable run)"
+ },
+ {
+  "case": "hard_aar3_clip_offsets",
+  "category": "hard",
+  "description": "three identical ancillary repairers + reload: fractional staggered start times"
+ },
+ {
+  "case": "hard_lcm_period",
+  "category": "hard",
+  "description": "cycle times 5 s / 7.5 s / 12 s / 15 s / 24 s: long period before the repeat check"
+ },
+ {
+  "case": "hard_injector_topup_mjd",
+  "category": "hard",
+  "description": "booster waits (overshoot) and fires before the MJD's big need"
+ },
+ {
+  "case": "hard_injector_two_sizes_topup",
+  "category": "hard",
+  "description": "two waiting boosters of different sizes: smallest sufficient fires first"
+ },
+ {
+  "case": "hard_void_bomb_bs",
+  "category": "hard",
+  "description": "void bomb on a battleship (survives the first hit)"
+ },
+ {
+  "case": "hard_three_void_bombs",
+  "category": "hard",
+  "description": "three identical incoming void bombs (grouped and staggered like local modules)"
+ },
+ {
+  "case": "hard_incoming_mixed_cycles",
+  "category": "hard",
+  "description": "incoming heavy neut + medium neut + neut drones (different durations)"
+ },
+ {
+  "case": "hard_command_burst",
+  "category": "hard",
+  "description": "command bursts with charges (cap need per cycle, clip + reload)"
+ },
+ {
+  "case": "hard_smartbombs",
+  "category": "hard",
+  "description": "four identical smartbombs (not turrets: staggered)"
+ },
+ {
+  "case": "hard_smartbombs_oh",
+  "category": "hard",
+  "description": "four overheated smartbombs"
+ },
+ {
+  "case": "hard_skill_levels",
+  "category": "hard",
+  "description": "capacitor skills at mixed levels (capacity, recharge, module cap need)"
+ },
+ {
+  "case": "hard_nos_neut_incoming_vs_own_nos",
+  "category": "hard",
+  "description": "own nos gain while neutralized by heavy neuts"
+ },
+ {
+  "case": "hard_rct_fill_injector_waits",
+  "category": "hard",
+  "description": "incoming cap transfer keeps the capacitor full: booster stays postponed"
+ },
+ {
+  "case": "hard_turrets_plus_neuts_oh",
+  "category": "hard",
+  "description": "overheated turrets (x n need) and overheated neuts (staggered) together"
  }
 ]

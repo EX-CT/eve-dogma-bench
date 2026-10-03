@@ -1,0 +1,50 @@
+{
+ "case": "hard_injector_topup_mjd",
+ "diagnostics": {
+  "drains": [
+   [
+    189000,
+    786.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    12000,
+    -800.0,
+    6,
+    false,
+    10000.0,
+    true
+   ],
+   [
+    11250,
+    400.0,
+    0,
+    false,
+    10000.0,
+    false
+   ]
+  ],
+  "high_gj": 5994.3305117441005,
+  "low_gj": 5929.225096595037,
+  "optimized_repeat": false,
+  "sim_end_ms": 21588750
+ },
+ "oracle": "pyfa-eos capSim",
+ "report_only": {
+  "eve_stable_percent": 155.82520408162492,
+  "sim_iterations": 3048
+ },
+ "values": {
+  "capacity": 7500.0,
+  "delta_gj_s": 40.56143008635056,
+  "injected_gj_s": 58.53658536585367,
+  "peak_recharge_gj_s": 21.73913043478261,
+  "recharge_time_s": 862.5,
+  "stable": true,
+  "stable_percent": 79.49037072226093,
+  "use_gj_s": 39.714285714285715
+ }
+}

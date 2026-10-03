@@ -1,0 +1,66 @@
+{
+ "case": "hard_lcm_period",
+ "diagnostics": {
+  "drains": [
+   [
+    24000,
+    375.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    11250,
+    400.0,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    7500,
+    87.5,
+    0,
+    false,
+    10000.0,
+    false
+   ],
+   [
+    10000,
+    12.0,
+    0,
+    false,
+    0.01,
+    false
+   ],
+   [
+    189000,
+    786.0,
+    0,
+    false,
+    10000.0,
+    false
+   ]
+  ],
+  "high_gj": 0.0,
+  "low_gj": 0.0,
+  "optimized_repeat": false,
+  "sim_end_ms": 144000
+ },
+ "oracle": "pyfa-eos capSim",
+ "report_only": {
+  "eve_stable_percent": 0.0,
+  "sim_iterations": 56
+ },
+ "values": {
+  "capacity": 7750.0,
+  "delta_gj_s": -44.7211038961039,
+  "depletes_in_s": 144.0,
+  "injected_gj_s": 0.0,
+  "peak_recharge_gj_s": 23.484848484848484,
+  "recharge_time_s": 825.0,
+  "stable": false,
+  "use_gj_s": 68.20595238095238
+ }
+}
