@@ -5,6 +5,7 @@
   python3 cap/run_cap.py --only A,H [--work-root /path/to/bench/checkout]   # use variants.yaml + already built work/<X>
 
 A case passes when every scored metric of cap/expected/<case>.json is within tolerance (cap/metrics.py).
+Cases requesting cap_sim.stagger=false are PENDING (reported, not in the score) until the stagger ruling (CONTRACT-CAP §9).
 Writes cap/results/<name>.json and prints a summary (cases passed, per-metric, per-category)."""
 import argparse, json, pathlib, subprocess, sys, time
 import yaml
@@ -23,6 +24,10 @@ def load():
     return cases
 
 
+def pending(req):
+    return ((req.get("options") or {}).get("cap_sim") or {}).get("stagger") is False
+
+
 def score(name, batch_cmd, cwd, cases, timeout=600):
     inp = "".join(json.dumps(c[1]) + "\n" for c in cases)
     t0 = time.time()
@@ -39,9 +44,10 @@ def score(name, batch_cmd, cwd, cases, timeout=600):
         for m, want in exp["values"].items():
             g = ptr(got, SCORED[m])
             ok = close(m, g, want)
-            pm = per_metric.setdefault(m, [0, 0])
-            pm[0] += ok
-            pm[1] += 1
+            if not pending(req):
+                pm = per_metric.setdefault(m, [0, 0])
+                pm[0] += ok
+                pm[1] += 1
             if not ok:
                 fails[m] = {"got": g, "want": want}
         for m, want in exp.get("report_only", {}).items():
@@ -50,11 +56,17 @@ def score(name, batch_cmd, cwd, cases, timeout=600):
             pr[0] += close(m, g, want)
             pr[1] += 1
         ok = not fails and "error" not in got
+        if pending(req):
+            rows.append({"case": cname, "category": cat, "pending": True, "ok": ok, "fails": fails})
+            continue
         pc = per_cat.setdefault(cat, [0, 0])
         pc[0] += ok
         pc[1] += 1
         rows.append({"case": cname, "category": cat, "ok": ok, "fails": fails, **({"error": got["error"]} if "error" in got else {})})
-    res = {"name": name, "cases": len(cases), "cases_ok": sum(r["ok"] for r in rows), "per_metric": per_metric,
+    sc = [r for r in rows if not r.get("pending")]
+    pe = [r for r in rows if r.get("pending")]
+    res = {"name": name, "cases": len(sc), "cases_ok": sum(r["ok"] for r in sc),
+           "pending": len(pe), "pending_ok": sum(r["ok"] for r in pe), "per_metric": per_metric,
            "per_category": per_cat, "report_only": rep, "exit": r.returncode, "wall_s": round(wall, 3), "rows": rows}
     out = ROOT / "results"
     out.mkdir(exist_ok=True)
@@ -96,7 +108,7 @@ def main():
             print(f"{name}: run failed {e!r}")
             continue
         pm = " ".join(f"{m} {v[0]}/{v[1]}" for m, v in r["per_metric"].items())
-        print(f"{name}: cases {r['cases_ok']}/{r['cases']} | {pm} | exit {r['exit']} {r['wall_s']}s")
+        print(f"{name}: cases {r['cases_ok']}/{r['cases']} (pending stagger-off {r['pending_ok']}/{r['pending']}) | {pm} | exit {r['exit']} {r['wall_s']}s")
 
 
 if __name__ == "__main__":

@@ -168,6 +168,9 @@ for b in ["exct_hyperion_armor", "exct_rifter", "exct_cerberus", "exct_tengu", "
         for m in r.get("modules", []):
             if m.get("state") in ("active", None) and can_overheat(m["type_id"]):
                 m["state"] = "overheated"
+        # bench cases carry cap_sim.stagger=false, which the main bench oracle ignores (Pyfa always staggers);
+        # use the default here so this category tests overheating only (stagger-off is pending, CONTRACT-CAP §9)
+        r.setdefault("options", {}).setdefault("cap_sim", {})["stagger"] = True
         case(f"oh_bench_{b}", "overheat", f"bench case {b} with every overheatable module overheated", r)
 
 # ---------------------------------------------------------------- D. capacitor boosters (injectors)

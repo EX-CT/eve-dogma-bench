@@ -154,7 +154,7 @@
   "cap_sim": {
    "max_time_s": null,
    "reload": false,
-   "stagger": false
+   "stagger": true
   },
   "default_spool": null,
   "factor_reload": false,
