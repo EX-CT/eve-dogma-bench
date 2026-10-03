@@ -152,5 +152,5 @@
   },
   "target_profile": null
  },
- "note": "a prices_load in one serve-stdio process does not leak into a new one (embedded there)"
+ "note": "a prices_load in one serve-stdio process does not leak into a new one (price_source snapshot there)"
 }

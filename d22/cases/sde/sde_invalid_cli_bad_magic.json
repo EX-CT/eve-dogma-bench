@@ -1,5 +1,6 @@
 {
  "check": "sde_invalid_cli",
- "note": "--sde with a broken pack (magic EDPX instead of EDPK) -> SDE_PACK_INVALID, no fallback to embedded",
- "pack": "d22/data/packs/bad_magic.edp"
+ "note": "--sde with a broken pack (magic EDPX instead of EDPK) -> SDE_LOAD_FAILED reason corrupt, no fallback to embedded",
+ "pack": "d22/data/packs/bad_magic.edp",
+ "reason": "corrupt"
 }

@@ -185,6 +185,6 @@
  ],
  "check": "inject_rpc",
  "note": "request table beats the session snapshot",
- "price_source": "request+file",
+ "price_source": "request",
  "session_file": "d22/data/prices/snap-good.json"
 }

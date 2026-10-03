@@ -167,6 +167,6 @@
   },
   "target_profile": null
  },
- "note": "--prices snapshot: lines injected, provenance = the file's id / market_time / content_hash",
+ "note": "--prices snapshot: lines injected, provenance.snapshot_time = the file's market_time",
  "price_source": "file"
 }

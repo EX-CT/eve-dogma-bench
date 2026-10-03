@@ -272,6 +272,11 @@ def _close_delta(a, b):
     return abs(a - b) <= DELTA_ABS_TOL
 
 
+def _noprov(st):
+    """provenance is a result-level key (eve's ruling), never part of the stats identity"""
+    return {k: v for k, v in st.items() if k != "provenance"} if isinstance(st, dict) else st
+
+
 def compare(exp, got, limit=8):
     bad = []
     if "request_error" in exp:
@@ -307,7 +312,7 @@ def compare(exp, got, limit=8):
             if "error" not in g or g["error"].get("code") != e["error"]["code"]:
                 bad.append(f"[{e['index']}] expected error {e['error']['code']}, got {json.dumps(g)[:120]}")
             continue
-        if json.dumps(g.get("stats"), sort_keys=True) != json.dumps(e["stats"], sort_keys=True):
+        if json.dumps(_noprov(g.get("stats")), sort_keys=True) != json.dumps(_noprov(e["stats"]), sort_keys=True):
             if isinstance(e["stats"], dict) and isinstance(g.get("stats"), dict):
                 diff = sorted(k for k in set(e["stats"]) | set(g["stats"]) if json.dumps(e["stats"].get(k), sort_keys=True) != json.dumps(g["stats"].get(k), sort_keys=True))
                 bad.append(f"[{e['index']}] stats not identical to one-by-one calc (keys {diff[:6]})")

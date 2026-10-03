@@ -2,6 +2,7 @@
  "b64": true,
  "check": "sde_invalid_rpc",
  "fit": "exct_rifter",
- "note": "RPC sde_override {pack_b64} with a hash mismatch -> SDE_PACK_INVALID",
- "pack": "d22/data/packs/hash_mismatch.edp"
+ "note": "RPC sde_override {pack_b64} with a hash mismatch -> SDE_LOAD_FAILED reason hash_mismatch",
+ "pack": "d22/data/packs/hash_mismatch.edp",
+ "reason": "hash_mismatch"
 }

@@ -188,5 +188,5 @@
   "target_profile": null
  },
  "note": "price_overrides > request table > file",
- "price_source": "request+file"
+ "price_source": "request"
 }

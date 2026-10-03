@@ -184,6 +184,6 @@
   },
   "target_profile": null
  },
- "note": "full request table, use_snapshot false: id/time/hash null",
+ "note": "full request table, use_snapshot false: snapshot_time null",
  "price_source": "request"
 }

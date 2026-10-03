@@ -1,7 +1,10 @@
 """docs/22 suites adapter: the ONLY place that knows how the engine / updater is called and what the docs/22 output
 looks like. Schemas are PROVISIONAL (docs/22 DECIDED 2026-10-03, no engine implementation yet): `version` CLI / RPC,
 top-level `provenance`, `--sde FILE` / RPC `sde_override`, `--prices FILE` / RPC `prices_load`, error codes
-SDE_PACK_INVALID / PRICE_SNAPSHOT_VERSION / PRICE_SNAPSHOT_INVALID / BAD_PRICES. When F (engine) or eve4 (updater)
+SDE_LOAD_FAILED {reason} / PRICE_SNAPSHOT_VERSION / PRICE_SNAPSHOT_INVALID / BAD_PRICES.
+eve's rulings (2026-10-03): unified `provenance` {sde_build, sde_hash, price_source, snapshot_time}; sde_hash = pack
+content_sha256 (docs/22 §2.2); price_source = source of the base price table (request > file > snapshot > none);
+any SDE load failure = SDE_LOAD_FAILED with reason not_found | corrupt | hash_mismatch | incompatible_version. When F (engine) or eve4 (updater)
 publish their contract, change this file only; the cases and run_d22.py stay.
 
 price_rule transport (updater, provisional): `PRICE_RULE_CMD` reads {"rule": {...}, "orders": [...]} JSON on stdin
@@ -64,13 +67,29 @@ def err_code(out):
     return None
 
 
+def err_reason(out):
+    """SDE_LOAD_FAILED reason: error.reason, or under error.details / error.data"""
+    e = out.get("error") if isinstance(out, dict) else None
+    if not isinstance(e, dict):
+        return None
+    return e.get("reason") or (e.get("details") or {}).get("reason") or (e.get("data") or {}).get("reason")
+
+
+def provenance(out):
+    return out.get("provenance") if isinstance(out, dict) else None
+
+
 def warnings(out):
     return list((out or {}).get("warnings") or []) if isinstance(out, dict) else []
 
 
 def price_rule(cmd, orders, params):
+    """-> entry dict, None (no price), or {"error": {"code": "RULE_REJECTED"}} when the command exits non-zero
+    (an invalid rule); unparseable output with exit 0 is NO_OUTPUT"""
     r = subprocess.run(cmd, shell=True, input=json.dumps({"rule": params, "orders": orders}), capture_output=True,
                        text=True, timeout=60)
+    if r.returncode != 0:
+        return {"error": {"code": "RULE_REJECTED", "message": f"exit {r.returncode}: {r.stderr.strip()[-200:]}"}}
     j = _json(r.stdout)
     if j is None and r.stdout.strip() != "null":
         return {"error": {"code": "NO_OUTPUT", "message": f"exit {r.returncode}: {(r.stderr or r.stdout)[-200:]}"}}

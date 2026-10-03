@@ -4,7 +4,11 @@ Contract: eve-fit-docs docs/23 (DRAFT 8b1e6cf, 2026-10-03 14:29 CST); cases are 
   rpc (default): `ENGINE serve-stdio`, {"id":1,"method":"batch","params":<BatchRequest>} -> {"id":1,"result":<BatchResponse>}
   cli:           `ENGINE batch --request -` with the BatchRequest JSON on stdin -> BatchResponse JSON on stdout
 Until F ships it, d990818 answers UNKNOWN_METHOD (0 passed).
-When F publishes its contract, change to_engine() / from_engine() / call() here; semantics.py and the cases stay."""
+When F publishes its contract, change to_engine() / from_engine() / call() here; semantics.py and the cases stay.
+eve's rulings (2026-10-03, checked by run_batch.py): `provenance` {sde_build, sde_hash, price_source, snapshot_time} at
+the batch top level and on every result (a result without its own takes the top-level one; a variant with a different
+price table must carry its own); price_source = base price table only, request > file > snapshot > none; global
+flags (`--prices FILE`, `--sde FILE`) go before the subcommand."""
 import json, subprocess
 
 METHOD, CLI_ARGS = "batch", ["batch", "--request", "-"]

@@ -179,5 +179,5 @@
   "target_profile": null
  },
  "note": "mode override = use_snapshot true (alias)",
- "price_source": "request+file"
+ "price_source": "request"
 }

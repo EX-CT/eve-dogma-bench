@@ -1,6 +1,7 @@
 {
  "check": "sde_invalid_rpc",
  "fit": "exct_rifter",
- "note": "RPC sde_override {path} with bad_magic -> SDE_PACK_INVALID; the session stays on the embedded pack",
- "pack": "d22/data/packs/bad_magic.edp"
+ "note": "RPC sde_override {path} with bad_magic -> SDE_LOAD_FAILED reason corrupt; the session stays on the embedded pack",
+ "pack": "d22/data/packs/bad_magic.edp",
+ "reason": "corrupt"
 }

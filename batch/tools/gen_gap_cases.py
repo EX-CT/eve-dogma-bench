@@ -136,6 +136,13 @@ add("gap_use_snapshot_false", {"fits": [one("a", BASE)], "prices": {"isk": {"288
 add("gap_use_snapshot_false_fit", {"fits": [one("a", dict(BASE, prices={"isk": {"2889": 5.0}, "use_snapshot": False})), one("b", BASE)],
                                    "fields": PF},
     "a FitRequest's own use_snapshot false only affects that fit", eargs=A_MAP, price=True)
+add("gap_variant_own_price_table", {"base": BASE, "variants": [
+    {"id": "file", "label": "--prices file"},
+    {"id": "own", "label": "own table", "patch": [{"op": "add", "path": "/prices", "value": {"isk": {"2889": 4321.0}}}]},
+    {"id": "none", "label": "no table", "patch": [{"op": "add", "path": "/prices", "value": {"use_snapshot": False}}]}],
+    "fields": PF},
+    "variants with their own price table carry their own provenance (price_source request / none) under a top-level file",
+    eargs=A_MAP, price=True)
 # ---- calc's own price block (kind calc_price: ENGINE [--prices F] calc <fit with price inputs>)
 add("calcprice_request_table", {"fit": dict(BASE, prices={"isk": MAP})}, "calc with prices.isk: the price block", kind="calc_price")
 add("calcprice_overrides", {"fit": dict(BASE, prices={"isk": MAP}, price_overrides=[{"group_id": 55, "multiplier": 0.9},

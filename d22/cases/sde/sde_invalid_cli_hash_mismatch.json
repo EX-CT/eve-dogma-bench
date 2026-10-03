@@ -1,5 +1,6 @@
 {
  "check": "sde_invalid_cli",
- "note": "--sde with a broken pack (one body byte flipped; header content_sha256 stale) -> SDE_PACK_INVALID, no fallback to embedded",
- "pack": "d22/data/packs/hash_mismatch.edp"
+ "note": "--sde with a broken pack (one body byte flipped; header content_sha256 stale) -> SDE_LOAD_FAILED reason hash_mismatch, no fallback to embedded",
+ "pack": "d22/data/packs/hash_mismatch.edp",
+ "reason": "hash_mismatch"
 }

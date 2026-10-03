@@ -1,6 +1,7 @@
 {
  "check": "sde_invalid_rpc",
  "fit": "exct_rifter",
- "note": "RPC sde_override {path} with hash_mismatch -> SDE_PACK_INVALID; the session stays on the embedded pack",
- "pack": "d22/data/packs/hash_mismatch.edp"
+ "note": "RPC sde_override {path} with hash_mismatch -> SDE_LOAD_FAILED reason hash_mismatch; the session stays on the embedded pack",
+ "pack": "d22/data/packs/hash_mismatch.edp",
+ "reason": "hash_mismatch"
 }

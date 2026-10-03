@@ -51,12 +51,70 @@ def with_price(out, fit, req, l1, engine_args=()):
 
 
 STRIP_OUT = ("price", "provenance")
+SDE_BUILD = 3569502
+
+
+def expected_prov(req, fit, engine_args):
+    """eve's ruling: provenance {sde_build, sde_hash, price_source, snapshot_time}; price_source = the source of the
+    base price table only, request > file > snapshot > none (overrides do not count). -> (allowed price_source set,
+    snapshot_time check: "null" | "set" | <exact value> | None = unchecked)"""
+    isk = dict((req.get("prices") or {}).get("isk") or {})
+    isk.update((fit.get("prices") or {}).get("isk") or {})
+    pr = dict(req.get("prices") or {}, **(fit.get("prices") or {}))
+    use = pr.get("use_snapshot", {"replace": False, "override": True}.get(pr.get("mode"), True)) is not False
+    if isk:
+        return {"request"}, (None if use else "null")
+    if not use:
+        return {"none"}, "null"
+    if "--prices" in engine_args:
+        f = prices.load_l4(SUITE.parent / engine_args[engine_args.index("--prices") + 1])
+        return {"file"}, f["time"] if f["time"] else "null"
+    return {"snapshot", "none"}, "by_source"
+
+
+def check_prov(pv, req, fit, engine_args, where):
+    if not isinstance(pv, dict):
+        return [f"{where}no provenance"]
+    bad = [f"{where}provenance.{k} missing" for k in ("sde_build", "sde_hash", "price_source", "snapshot_time") if k not in pv]
+    if pv.get("sde_build") != SDE_BUILD or not str(pv.get("sde_hash", "")).startswith("sha256:"):
+        bad.append(f"{where}provenance sde_build/sde_hash {pv.get('sde_build')!r} {pv.get('sde_hash')!r}")
+    srcs, st = expected_prov(req, fit, engine_args)
+    if pv.get("price_source") not in srcs:
+        bad.append(f"{where}provenance.price_source {pv.get('price_source')!r} not in {sorted(srcs)}")
+    g = pv.get("snapshot_time")
+    if st == "by_source":
+        st = "set" if pv.get("price_source") == "snapshot" else "null"
+    if st == "null" and g is not None or st == "set" and not g or st not in (None, "null", "set") and g != st:
+        bad.append(f"{where}provenance.snapshot_time {g!r} (want {st})")
+    return bad
+
+
+def synth_prov(req, fit, engine_args):
+    srcs, st = expected_prov(req, fit, engine_args)
+    src = sorted(srcs)[0] if len(srcs) == 1 else "none"
+    t = None if st in (None, "null", "by_source") else "2026-10-03T00:00:00Z" if st == "set" else st
+    return {"sde_build": SDE_BUILD, "sde_hash": "sha256:" + "0" * 64, "price_source": src, "snapshot_time": t}
+
+
+def batch_provenance(req, got, engine_args):
+    """top-level provenance (batch-level tables) + each result's effective provenance (its own, else the top one)"""
+    if not isinstance(got, dict) or "results" not in got:
+        return []
+    bad = check_prov(got.get("provenance"), req, {}, engine_args, "top: ")
+    fits = {i: f for i, (_, f) in enumerate(semantics.expand(req))}
+    for r in got["results"]:
+        if "error" in r or r.get("index") not in fits:
+            continue
+        bad += check_prov(r.get("provenance") or got.get("provenance"), req, fits[r["index"]], engine_args, f"[{r['index']}] ")
+        if len(bad) > 6:
+            break
+    return bad
 
 
 def calc_price_embedded_case(engine, case, self_test):
     """kind calc_price_embedded: calc with no price inputs; structural only (embedded snapshot values unknown):
     every priced line has source / layer snapshot, multiplier 1, base_source snapshot, snapshot_time ==
-    provenance.price_time; lines + missing cover every item (docs/22 §3, docs/23 §5)"""
+    provenance.snapshot_time, provenance.price_source snapshot; lines + missing cover every item (docs/22 §3, docs/23 §5)"""
     if self_test:
         return []
     fit = case["fit"]
@@ -67,16 +125,18 @@ def calc_price_embedded_case(engine, case, self_test):
     if not isinstance(blk, dict):
         return ["no price block without price inputs (embedded snapshot expected)"]
     bad = []
-    pt = prov.get("price_time")
+    pt = prov.get("snapshot_time")
     if not pt:
-        bad.append("provenance.price_time missing")
+        bad.append("provenance.snapshot_time missing")
+    if prov.get("price_source") != "snapshot":
+        bad.append(f"provenance.price_source {prov.get('price_source')!r} != 'snapshot'")
     lines = [(sec, l) for sec, s in (blk.get("sections") or {}).items() for l in s.get("items", [])]
     for sec, l in lines:
         for k, v in (("source", "snapshot"), ("layer", "snapshot"), ("base_source", "snapshot"), ("multiplier", 1)):
             if l.get(k) != v:
                 bad.append(f"{sec}[{l.get('index')}] {k}={l.get(k)!r} != {v!r}")
         if l.get("snapshot_time") != pt:
-            bad.append(f"{sec}[{l.get('index')}] snapshot_time {l.get('snapshot_time')!r} != price_time {pt!r}")
+            bad.append(f"{sec}[{l.get('index')}] snapshot_time {l.get('snapshot_time')!r} != provenance.snapshot_time {pt!r}")
     want = sorted((sec, i, t, q) for sec, i, t, q in prices.items(fit))
     have = sorted([(sec, l.get("index"), l.get("type_id"), l.get("quantity")) for sec, l in lines]
                   + [(m.get("section"), m.get("index"), m.get("type_id"), m.get("quantity")) for m in blk.get("missing", [])])
@@ -99,6 +159,8 @@ def calc_price_case(engine, case, engine_args, self_test):
     b = {k: v for k, v in plain.items() if k not in STRIP_OUT}
     if json.dumps(a, sort_keys=True) != json.dumps(b, sort_keys=True):
         bad.append("calc stats with price inputs differ from calc without them")
+    if not self_test:
+        bad += check_prov(got.get("provenance"), {}, fit, list(engine_args), "")
     return bad + prices.compare_block(exp["price"], got.get("price"), "price: ")
 
 
@@ -185,6 +247,12 @@ def main():
                 js = [with_price(o, f, r, l1, eargs[c]) for o, (_, f), l1 in zip(js, fits, semantics.l1_overrides(r))]
                 jb = with_price(jb, r["base"], r, [], eargs[c]) if jb is not None else None
             got = semantics.expected(r, js, jb)
+            got["provenance"] = synth_prov(r, {}, eargs[c])
+            fx = dict(enumerate(f for _, f in fits))
+            for x in got["results"]:
+                p = synth_prov(r, fx[x["index"]], eargs[c])
+                if p != got["provenance"]:
+                    x["provenance"] = p
         else:
             try:
                 got = adapter.call(a.cmd, r, a.transport, engine_args=eargs[c])
@@ -192,6 +260,7 @@ def main():
                 got = {"error": {"code": "ADAPTER_EXCEPTION", "message": repr(e)[:200]}}
         t_batch += time.time() - t1
         bad = semantics.compare(exp, got)
+        bad += batch_provenance(r, got, eargs[c])
         res[c] = {"pass": not bad, "kind": m["kind"], "fits": m["fits"], "ops": m["ops"], "first": bad[:5]}
     np = sum(v["pass"] for v in res.values())
     by = {}

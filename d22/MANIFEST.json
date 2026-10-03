@@ -21,7 +21,7 @@
  },
  "price_inject/embedded_only": {
   "check": "inject_calc",
-  "note": "options.price, no inputs: embedded snapshot (structural); id/time/hash set",
+  "note": "options.price, no inputs: embedded snapshot (structural); provenance.snapshot_time = its time",
   "suite": "price_inject"
  },
  "price_inject/file_map": {
@@ -76,7 +76,7 @@
  },
  "price_inject/file_snapshot": {
   "check": "inject_calc",
-  "note": "--prices snapshot: lines injected, provenance = the file's id / market_time / content_hash",
+  "note": "--prices snapshot: lines injected, provenance.snapshot_time = the file's market_time",
   "suite": "price_inject"
  },
  "price_inject/file_snapshot_gz": {
@@ -86,7 +86,7 @@
  },
  "price_inject/overrides_only_file": {
   "check": "inject_calc",
-  "note": "overrides over the file only: price_source stays file (overrides are not a price source)",
+  "note": "overrides + --prices: price_source file (eve's ruling; overrides are not a price table)",
   "suite": "price_inject"
  },
  "price_inject/overrides_request_file": {
@@ -96,7 +96,7 @@
  },
  "price_inject/request_full": {
   "check": "inject_calc",
-  "note": "full request table, use_snapshot false: id/time/hash null",
+  "note": "full request table, use_snapshot false: snapshot_time null",
   "suite": "price_inject"
  },
  "price_inject/request_full_mode_replace": {
@@ -111,7 +111,7 @@
  },
  "price_inject/request_partial_embedded": {
   "check": "inject_calc",
-  "note": "partial table over the embedded snapshot",
+  "note": "partial table over the embedded snapshot: price_source request (base table only)",
   "suite": "price_inject"
  },
  "price_inject/request_partial_file": {
@@ -156,7 +156,7 @@
  },
  "price_inject/rpc_session_isolated": {
   "check": "inject_rpc_isolated",
-  "note": "a prices_load in one serve-stdio process does not leak into a new one (embedded there)",
+  "note": "a prices_load in one serve-stdio process does not leak into a new one (price_source snapshot there)",
   "suite": "price_inject"
  },
  "price_inject/sde_and_prices": {
@@ -282,67 +282,72 @@
  },
  "sde/provenance_calc_cli": {
   "check": "provenance_calc",
-  "note": "cli calc: provenance present; sde_* and engine equal version's; sde_source embedded",
+  "note": "cli calc: provenance {sde_build, sde_hash, price_source, snapshot_time}; sde_build / sde_hash = version's; price_source snapshot or none without price inputs",
   "suite": "sde"
  },
  "sde/provenance_calc_rpc": {
   "check": "provenance_calc",
-  "note": "rpc calc: provenance present; sde_* and engine equal version's; sde_source embedded",
+  "note": "rpc calc: provenance {sde_build, sde_hash, price_source, snapshot_time}; sde_build / sde_hash = version's; price_source snapshot or none without price inputs",
   "suite": "sde"
  },
  "sde/sde_invalid_cli_bad_magic": {
   "check": "sde_invalid_cli",
-  "note": "--sde with a broken pack (magic EDPX instead of EDPK) -> SDE_PACK_INVALID, no fallback to embedded",
+  "note": "--sde with a broken pack (magic EDPX instead of EDPK) -> SDE_LOAD_FAILED reason corrupt, no fallback to embedded",
   "suite": "sde"
  },
  "sde/sde_invalid_cli_empty": {
   "check": "sde_invalid_cli",
-  "note": "--sde with a broken pack (zero-byte file) -> SDE_PACK_INVALID, no fallback to embedded",
+  "note": "--sde with a broken pack (zero-byte file) -> SDE_LOAD_FAILED reason corrupt, no fallback to embedded",
   "suite": "sde"
  },
  "sde/sde_invalid_cli_format_major_2": {
   "check": "sde_invalid_cli",
-  "note": "--sde with a broken pack (unknown format_major 2) -> SDE_PACK_INVALID, no fallback to embedded",
+  "note": "--sde with a broken pack (unknown format_major 2) -> SDE_LOAD_FAILED reason incompatible_version, no fallback to embedded",
   "suite": "sde"
  },
  "sde/sde_invalid_cli_hash_mismatch": {
   "check": "sde_invalid_cli",
-  "note": "--sde with a broken pack (one body byte flipped; header content_sha256 stale) -> SDE_PACK_INVALID, no fallback to embedded",
+  "note": "--sde with a broken pack (one body byte flipped; header content_sha256 stale) -> SDE_LOAD_FAILED reason hash_mismatch, no fallback to embedded",
   "suite": "sde"
  },
  "sde/sde_invalid_cli_missing_file": {
   "check": "sde_invalid_cli",
-  "note": "--sde with a path that does not exist -> a structured error JSON (any code), no fallback",
+  "note": "--sde with a path that does not exist -> SDE_LOAD_FAILED reason not_found, no fallback",
   "suite": "sde"
  },
  "sde/sde_invalid_cli_section_out_of_range": {
   "check": "sde_invalid_cli",
-  "note": "--sde with a broken pack (META directory entry runs past EOF (hash consistent)) -> SDE_PACK_INVALID, no fallback to embedded",
+  "note": "--sde with a broken pack (META directory entry runs past EOF (hash consistent)) -> SDE_LOAD_FAILED reason corrupt, no fallback to embedded",
   "suite": "sde"
  },
  "sde/sde_invalid_cli_truncated_header": {
   "check": "sde_invalid_cli",
-  "note": "--sde with a broken pack (file shorter than the 64-byte header) -> SDE_PACK_INVALID, no fallback to embedded",
+  "note": "--sde with a broken pack (file shorter than the 64-byte header) -> SDE_LOAD_FAILED reason corrupt, no fallback to embedded",
   "suite": "sde"
  },
  "sde/sde_invalid_rpc_b64": {
   "check": "sde_invalid_rpc",
-  "note": "RPC sde_override {pack_b64} with a hash mismatch -> SDE_PACK_INVALID",
+  "note": "RPC sde_override {pack_b64} with a hash mismatch -> SDE_LOAD_FAILED reason hash_mismatch",
   "suite": "sde"
  },
  "sde/sde_invalid_rpc_bad_magic": {
   "check": "sde_invalid_rpc",
-  "note": "RPC sde_override {path} with bad_magic -> SDE_PACK_INVALID; the session stays on the embedded pack",
+  "note": "RPC sde_override {path} with bad_magic -> SDE_LOAD_FAILED reason corrupt; the session stays on the embedded pack",
   "suite": "sde"
  },
  "sde/sde_invalid_rpc_format_major_2": {
   "check": "sde_invalid_rpc",
-  "note": "RPC sde_override {path} with format_major_2 -> SDE_PACK_INVALID; the session stays on the embedded pack",
+  "note": "RPC sde_override {path} with format_major_2 -> SDE_LOAD_FAILED reason incompatible_version; the session stays on the embedded pack",
   "suite": "sde"
  },
  "sde/sde_invalid_rpc_hash_mismatch": {
   "check": "sde_invalid_rpc",
-  "note": "RPC sde_override {path} with hash_mismatch -> SDE_PACK_INVALID; the session stays on the embedded pack",
+  "note": "RPC sde_override {path} with hash_mismatch -> SDE_LOAD_FAILED reason hash_mismatch; the session stays on the embedded pack",
+  "suite": "sde"
+ },
+ "sde/sde_invalid_rpc_missing_file": {
+  "check": "sde_invalid_rpc",
+  "note": "RPC sde_override {path} that does not exist -> SDE_LOAD_FAILED reason not_found",
   "suite": "sde"
  },
  "sde/sde_valid_cli_identical": {

@@ -307,6 +307,18 @@
    "fields"
   ]
  },
+ "gap_variant_own_price_table": {
+  "engine_args": [
+   "--prices",
+   "batch/data/prices-map.json"
+  ],
+  "fits": 3,
+  "kind": "gap",
+  "note": "variants with their own price table carry their own provenance (price_source request / none) under a top-level file",
+  "ops": [
+   "fields"
+  ]
+ },
  "multi_100_full": {
   "fits": 100,
   "kind": "multi",

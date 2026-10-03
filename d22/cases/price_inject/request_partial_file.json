@@ -178,5 +178,5 @@
   "target_profile": null
  },
  "note": "partial table over --prices: request wins per type",
- "price_source": "request+file"
+ "price_source": "request"
 }

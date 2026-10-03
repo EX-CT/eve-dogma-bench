@@ -153,6 +153,6 @@
   },
   "target_profile": null
  },
- "note": "options.price, no inputs: embedded snapshot (structural); id/time/hash set",
- "price_source": "embedded"
+ "note": "options.price, no inputs: embedded snapshot (structural); provenance.snapshot_time = its time",
+ "price_source": "snapshot"
 }

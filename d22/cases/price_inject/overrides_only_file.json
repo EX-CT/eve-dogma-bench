@@ -173,6 +173,6 @@
   },
   "target_profile": null
  },
- "note": "overrides over the file only: price_source stays file (overrides are not a price source)",
+ "note": "overrides + --prices: price_source file (eve's ruling; overrides are not a price table)",
  "price_source": "file"
 }

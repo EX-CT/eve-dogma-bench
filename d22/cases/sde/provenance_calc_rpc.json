@@ -7,6 +7,6 @@
   "booster_strongblue",
   "dmgpattern_rah_hyperion"
  ],
- "note": "rpc calc: provenance present; sde_* and engine equal version's; sde_source embedded",
+ "note": "rpc calc: provenance {sde_build, sde_hash, price_source, snapshot_time}; sde_build / sde_hash = version's; price_source snapshot or none without price inputs",
  "transport": "rpc"
 }

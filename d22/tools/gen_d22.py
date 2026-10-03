@@ -4,7 +4,7 @@
   d22/cases/sde/*.json          `version` / `provenance` / `--sde` / RPC `sde_override` (engine, F)
   d22/cases/price_inject/*.json price precedence request > --prices / prices_load > embedded, `provenance.price_*`,
                                 snapshot / map validation errors (engine, F)
-  d22/data/packs/*.edp          synthetic edp v1 packs, each broken in exactly one way (SDE_PACK_INVALID)
+  d22/data/packs/*.edp          synthetic edp v1 packs, each broken in exactly one way (SDE_LOAD_FAILED + reason)
   d22/data/prices/*             eve-price-snapshot v1 files (good, gz, other SDE build, broken) and plain maps
 and d22/MANIFEST.json. Deterministic. usage: python3 d22/tools/gen_d22.py"""
 import copy, gzip, hashlib, io, json, math, struct, sys
@@ -107,16 +107,16 @@ def pack(magic=b"EDPK", major=1, build=3569502, rev=5, sections=None, dir_overri
 
 good = pack()
 flip = bytearray(good); flip[-3] ^= 0xFF
-PACKS = {
-    "bad_magic": (pack(magic=b"EDPX"), "magic EDPX instead of EDPK"),
-    "format_major_2": (pack(major=2), "unknown format_major 2"),
-    "hash_mismatch": (bytes(flip), "one body byte flipped; header content_sha256 stale"),
-    "truncated_header": (good[:40], "file shorter than the 64-byte header"),
+PACKS = {   # name: (bytes, why, SDE_LOAD_FAILED reason)
+    "bad_magic": (pack(magic=b"EDPX"), "magic EDPX instead of EDPK", "corrupt"),
+    "format_major_2": (pack(major=2), "unknown format_major 2", "incompatible_version"),
+    "hash_mismatch": (bytes(flip), "one body byte flipped; header content_sha256 stale", "hash_mismatch"),
+    "truncated_header": (good[:40], "file shorter than the 64-byte header", "corrupt"),
     "section_out_of_range": (pack(dir_override=lambda ds: ds[0].__setitem__(3, 1 << 20)),
-                             "META directory entry runs past EOF (hash consistent)"),
-    "empty": (b"", "zero-byte file"),
+                             "META directory entry runs past EOF (hash consistent)", "corrupt"),
+    "empty": (b"", "zero-byte file", "corrupt"),
 }
-for k, (b, _) in PACKS.items():
+for k, (b, _, _) in PACKS.items():
     (D / "data" / "packs" / f"{k}.edp").write_bytes(b)
 
 # ============================================================ price files (docs/22 §4, docs/23 §5.3)
@@ -181,17 +181,20 @@ write("sde", "version_matches_meta", {"check": "version_matches_meta",
       "note": "version.sde_build / sde_release == meta.sde_build / sde_release_date (meta keeps its fields)"})
 for t in ("cli", "rpc"):
     write("sde", f"provenance_calc_{t}", {"check": "provenance_calc", "transport": t, "fits": FITS,
-          "note": f"{t} calc: provenance present; sde_* and engine equal version's; sde_source embedded"})
-for k, (_, why) in PACKS.items():
-    write("sde", f"sde_invalid_cli_{k}", {"check": "sde_invalid_cli", "pack": f"d22/data/packs/{k}.edp",
-          "note": f"--sde with a broken pack ({why}) -> SDE_PACK_INVALID, no fallback to embedded"})
-write("sde", "sde_invalid_cli_missing_file", {"check": "sde_invalid_cli", "pack": "d22/data/packs/does-not-exist.edp", "any_error": True,
-      "note": "--sde with a path that does not exist -> a structured error JSON (any code), no fallback"})
+          "note": f"{t} calc: provenance {{sde_build, sde_hash, price_source, snapshot_time}}; sde_build / sde_hash = version's; "
+                  "price_source snapshot or none without price inputs"})
+for k, (_, why, rsn) in PACKS.items():
+    write("sde", f"sde_invalid_cli_{k}", {"check": "sde_invalid_cli", "pack": f"d22/data/packs/{k}.edp", "reason": rsn,
+          "note": f"--sde with a broken pack ({why}) -> SDE_LOAD_FAILED reason {rsn}, no fallback to embedded"})
+write("sde", "sde_invalid_cli_missing_file", {"check": "sde_invalid_cli", "pack": "d22/data/packs/does-not-exist.edp", "reason": "not_found",
+      "note": "--sde with a path that does not exist -> SDE_LOAD_FAILED reason not_found, no fallback"})
 for k in ("bad_magic", "hash_mismatch", "format_major_2"):
-    write("sde", f"sde_invalid_rpc_{k}", {"check": "sde_invalid_rpc", "pack": f"d22/data/packs/{k}.edp", "fit": FITS[0],
-          "note": f"RPC sde_override {{path}} with {k} -> SDE_PACK_INVALID; the session stays on the embedded pack"})
+    write("sde", f"sde_invalid_rpc_{k}", {"check": "sde_invalid_rpc", "pack": f"d22/data/packs/{k}.edp", "fit": FITS[0], "reason": PACKS[k][2],
+          "note": f"RPC sde_override {{path}} with {k} -> SDE_LOAD_FAILED reason {PACKS[k][2]}; the session stays on the embedded pack"})
+write("sde", "sde_invalid_rpc_missing_file", {"check": "sde_invalid_rpc", "pack": "d22/data/packs/does-not-exist.edp", "fit": FITS[0],
+      "reason": "not_found", "note": "RPC sde_override {path} that does not exist -> SDE_LOAD_FAILED reason not_found"})
 write("sde", "sde_invalid_rpc_b64", {"check": "sde_invalid_rpc", "pack": "d22/data/packs/hash_mismatch.edp", "b64": True, "fit": FITS[0],
-      "note": "RPC sde_override {pack_b64} with a hash mismatch -> SDE_PACK_INVALID"})
+      "reason": "hash_mismatch", "note": "RPC sde_override {pack_b64} with a hash mismatch -> SDE_LOAD_FAILED reason hash_mismatch"})
 NEEDS = ["SDE_PACK"]
 write("sde", "sde_valid_cli_version", {"check": "sde_valid_cli_version", "needs": NEEDS,
       "note": "--sde PACK version: sde_source override, sde_override_path, sde_hash = sha256:<header content_sha256>, sde_build/revision from the header"})
@@ -211,21 +214,21 @@ SNAP, MAPF = "d22/data/prices/snap-good.json", "d22/data/prices/map-good.json"
 fit = lambda **kw: dict(copy.deepcopy(BASE), **kw)  # noqa: E731
 OPT = {"options": {"price": True}}
 INJ = [
-    ("embedded_only", fit(**OPT), [], "embedded", "options.price, no inputs: embedded snapshot (structural); id/time/hash set"),
-    ("file_snapshot", fit(), ["--prices", SNAP], "file", "--prices snapshot: lines injected, provenance = the file's id / market_time / content_hash"),
+    ("embedded_only", fit(**OPT), [], "snapshot", "options.price, no inputs: embedded snapshot (structural); provenance.snapshot_time = its time"),
+    ("file_snapshot", fit(), ["--prices", SNAP], "file", "--prices snapshot: lines injected, provenance.snapshot_time = the file's market_time"),
     ("file_snapshot_gz", fit(), ["--prices", SNAP + ".gz"], "file", "--prices .json.gz (gzip, mtime 0)"),
     ("file_map", fit(), ["--prices", MAPF], "file", "--prices plain map (one rig unpriced -> missing)"),
-    ("request_full", fit(prices={"isk": FULL, "use_snapshot": False}), [], "request", "full request table, use_snapshot false: id/time/hash null"),
+    ("request_full", fit(prices={"isk": FULL, "use_snapshot": False}), [], "request", "full request table, use_snapshot false: snapshot_time null"),
     ("request_full_mode_replace", fit(prices={"isk": FULL, "mode": "replace"}), [], "request", "mode replace = use_snapshot false (alias)"),
     ("request_full_over_file", fit(prices={"isk": FULL, "use_snapshot": False}), ["--prices", SNAP], "request", "use_snapshot false ignores --prices"),
-    ("request_partial_embedded", fit(prices={"isk": PART}), [], "request+embedded", "partial table over the embedded snapshot"),
-    ("request_partial_file", fit(prices={"isk": PART}), ["--prices", SNAP], "request+file", "partial table over --prices: request wins per type"),
-    ("request_partial_mode_override", fit(prices={"isk": PART, "mode": "override"}), ["--prices", SNAP], "request+file", "mode override = use_snapshot true (alias)"),
+    ("request_partial_embedded", fit(prices={"isk": PART}), [], "request", "partial table over the embedded snapshot: price_source request (base table only)"),
+    ("request_partial_file", fit(prices={"isk": PART}), ["--prices", SNAP], "request", "partial table over --prices: request wins per type"),
+    ("request_partial_mode_override", fit(prices={"isk": PART, "mode": "override"}), ["--prices", SNAP], "request", "mode override = use_snapshot true (alias)"),
     ("request_partial_no_snapshot", fit(prices={"isk": PART, "use_snapshot": False}), ["--prices", SNAP], "request", "partial + use_snapshot false: the rest missing"),
     ("overrides_request_file", fit(prices={"isk": PART}, price_overrides=[{"group_id": 55, "multiplier": 0.5}, {"type_id": 587, "price": 1}]),
-     ["--prices", SNAP], "request+file", "price_overrides > request table > file"),
+     ["--prices", SNAP], "request", "price_overrides > request table > file"),
     ("overrides_only_file", fit(price_overrides=[{"category_id": 7, "multiplier": 2}]), ["--prices", SNAP], "file",
-     "overrides over the file only: price_source stays file (overrides are not a price source)"),
+     "overrides + --prices: price_source file (eve's ruling; overrides are not a price table)"),
 ]
 for cid, f, gargs, src, note in INJ:
     write("price_inject", cid, {"check": "inject_calc", "fit": f, "args": gargs, "price_source": src, "note": note})
@@ -236,9 +239,9 @@ write("price_inject", "rpc_prices_load_isk", {"check": "inject_rpc", "calls": [[
 write("price_inject", "rpc_prices_load_snapshot", {"check": "inject_rpc", "calls": [["prices_load", {"snapshot": FILES["snap-good.json"]}], ["calc", fit()]],
       "session_file": SNAP, "price_source": "file", "note": "RPC prices_load {snapshot} (inline object)"})
 write("price_inject", "rpc_request_over_session", {"check": "inject_rpc", "calls": [["prices_load", {"path": SNAP}], ["calc", fit(prices={"isk": PART})]],
-      "session_file": SNAP, "price_source": "request+file", "note": "request table beats the session snapshot"})
+      "session_file": SNAP, "price_source": "request", "note": "request table beats the session snapshot"})
 write("price_inject", "rpc_session_isolated", {"check": "inject_rpc_isolated", "fit": fit(**OPT),
-      "note": "a prices_load in one serve-stdio process does not leak into a new one (embedded there)"})
+      "note": "a prices_load in one serve-stdio process does not leak into a new one (price_source snapshot there)"})
 for cid, pr, note in [("bad_prices_negative", {"isk": {str(TYPES[0]): -5.0}}, "negative value"),
                       ("bad_prices_string", {"isk": {str(TYPES[0]): "5"}}, "non-numeric value"),
                       ("bad_prices_key", {"isk": {"rifter": 5.0}}, "non-integer key"),

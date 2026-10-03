@@ -1,0 +1,7 @@
+{
+ "check": "sde_invalid_rpc",
+ "fit": "exct_rifter",
+ "note": "RPC sde_override {path} that does not exist -> SDE_LOAD_FAILED reason not_found",
+ "pack": "d22/data/packs/does-not-exist.edp",
+ "reason": "not_found"
+}

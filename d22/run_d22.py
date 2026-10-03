@@ -20,7 +20,9 @@ import adapter as A, rule as R, prices as P  # noqa: E402
 SDE_BUILD = 3569502
 HASH_RE = re.compile(r"^sha256:[0-9a-f]{64}$")
 TIME_RE = re.compile(r"^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\dZ$")
-SDE_KEYS = ("engine", "sde_build", "sde_revision", "sde_release", "sde_hash", "sde_source")
+SDE_KEYS = ("sde_build", "sde_hash")                       # provenance keys that must equal `version`
+PROV_KEYS = ("sde_build", "sde_hash", "price_source", "snapshot_time")
+REASONS = ("not_found", "corrupt", "hash_mismatch", "incompatible_version")
 
 
 def path(p):
@@ -112,6 +114,13 @@ def version_fields(v, want_source="embedded"):
     return bad
 
 
+def load_failed(o, reason):
+    code, why = A.err_code(o), A.err_reason(o)
+    if code != "SDE_LOAD_FAILED":
+        return [f"got {code or 'success'}, want SDE_LOAD_FAILED ({reason})"]
+    return [] if why == reason else [f"SDE_LOAD_FAILED reason {why!r} != {reason!r}"]
+
+
 def ck_sde(c, eng):
     k = c["check"]
     if k == "version_fields":
@@ -140,18 +149,18 @@ def ck_sde(c, eng):
                 bad.append(f"{f}: no provenance")
                 continue
             bad += [f"{f}: provenance.{x} {pv.get(x)!r} != version {v.get(x)!r}" for x in SDE_KEYS if pv.get(x) != v.get(x)]
+            bad += [f"{f}: provenance.{x} missing" for x in PROV_KEYS if x not in pv]
+            if pv.get("price_source") not in ("snapshot", "none"):
+                bad.append(f"{f}: provenance.price_source {pv.get('price_source')!r} without price inputs (want snapshot / none)")
         return bad
     if k == "sde_invalid_cli":
         o = A.calc(eng, fitfile("exct_rifter"), ["--sde", path(c["pack"])])
-        code = A.err_code(o)
-        if c.get("any_error"):
-            return [] if code and code not in ("NO_OUTPUT", "EXIT") else [f"want a structured error JSON, got {code or 'success'}"]
-        return [] if code == "SDE_PACK_INVALID" else [f"got {code or 'success'}, want SDE_PACK_INVALID"]
+        return load_failed(o, c["reason"])
     if k == "sde_invalid_rpc":
         p = path(c["pack"])
         prm = {"pack_b64": base64.b64encode(Path(p).read_bytes()).decode()} if c.get("b64") else {"path": p}
         r = A.rpc(eng, [("sde_override", prm), ("version", {}), ("calc", A.rpc_calc_params(fitfile(c["fit"])))])
-        bad = [] if A.err_code(r[0]) == "SDE_PACK_INVALID" else [f"sde_override: got {A.err_code(r[0]) or 'success'}, want SDE_PACK_INVALID"]
+        bad = ["sde_override: " + x for x in load_failed(r[0], c["reason"])]
         if A.err_code(r[1]) or r[1].get("sde_source") != "embedded":
             bad.append(f"after the failed override version is {json.dumps(r[1])[:120]}")
         if A.err_code(r[2]):
@@ -196,10 +205,13 @@ def ck_sde(c, eng):
 
 
 # ------------------------------------------------------------------ price_inject checks
-def l4_of(fit, files):
+def use_snapshot(fit):
     pr = fit.get("prices") or {}
-    use = pr.get("use_snapshot", {"replace": False, "override": True}.get(pr.get("mode"), True))
-    return None if use is False or not files else P.load_l4(files[-1])
+    return pr.get("use_snapshot", {"replace": False, "override": True}.get(pr.get("mode"), True)) is not False
+
+
+def l4_of(fit, files):
+    return None if not use_snapshot(fit) or not files else P.load_l4(files[-1])
 
 
 def expected_block(fit, files):
@@ -212,22 +224,25 @@ def check_price_out(o, fit, files, src, embedded):
     if A.err_code(o) or not isinstance(o, dict):
         return [f"error {json.dumps(o)[:200]}"]
     bad = []
-    pv, blk = o.get("provenance") or {}, o.get("price")
+    pv, blk = o.get("provenance"), o.get("price")
+    if not isinstance(pv, dict):
+        return ["no provenance"]
+    bad += [f"provenance.{x} missing" for x in PROV_KEYS if x not in pv]
+    if pv.get("sde_build") != SDE_BUILD or not HASH_RE.match(str(pv.get("sde_hash"))):
+        bad.append(f"provenance sde_build/sde_hash {pv.get('sde_build')!r} {pv.get('sde_hash')!r}")
     if pv.get("price_source") != src:
         bad.append(f"provenance.price_source {pv.get('price_source')!r} != {src!r}")
-    ids = ("price_snapshot_id", "price_time", "price_hash")
-    if src == "request":
-        bad += [f"provenance.{x} {pv.get(x)!r} != null" for x in ids if pv.get(x) is not None]
-    elif files and l4_of(fit, files):
+    st = pv.get("snapshot_time")
+    if not use_snapshot(fit):
+        if st is not None:
+            bad.append(f"provenance.snapshot_time {st!r} != null (use_snapshot false)")
+    elif files:
         d = load_any(files[-1])
-        if d.get("schema") == "eve-price-snapshot":
-            for x, w in zip(ids, (d["snapshot_id"], d["market_time"], d["content_hash"])):
-                if pv.get(x) != w:
-                    bad.append(f"provenance.{x} {pv.get(x)!r} != {w!r}")
-    elif embedded:
-        for x in ids:
-            if not pv.get(x):
-                bad.append(f"provenance.{x} missing (embedded snapshot)")
+        w = d["market_time"] if d.get("schema") == "eve-price-snapshot" else None
+        if st != w:
+            bad.append(f"provenance.snapshot_time {st!r} != {w!r}")
+    elif embedded and not (isinstance(st, str) and TIME_RE.match(st)):
+        bad.append(f"provenance.snapshot_time {st!r} (embedded snapshot: want its time)")
     if not isinstance(blk, dict):
         return bad + ["no price block"]
     exp = expected_block(fit, files)
@@ -246,8 +261,8 @@ def check_price_out(o, fit, files, src, embedded):
         g = got.get((m["section"], m["index"], m["type_id"]))
         if g and (g.get("base_source") or g.get("source")) != "snapshot":
             bad.append(f"{m['section']}[{m['index']}] {m['type_id']}: source {g.get('source')!r}, want snapshot-based")
-        if g and g.get("snapshot_time") != pv.get("price_time"):
-            bad.append(f"{m['section']}[{m['index']}]: snapshot_time {g.get('snapshot_time')!r} != price_time {pv.get('price_time')!r}")
+        if g and g.get("snapshot_time") != pv.get("snapshot_time"):
+            bad.append(f"{m['section']}[{m['index']}]: snapshot_time {g.get('snapshot_time')!r} != provenance {pv.get('snapshot_time')!r}")
     return bad
 
 
@@ -257,7 +272,7 @@ def ck_inject(c, eng):
         args = gargs(c["args"])
         files = [args[i + 1] for i, a in enumerate(args) if a == "--prices"]
         o = A.calc(eng, c["fit"], args)
-        bad = check_price_out(o, c["fit"], files, c["price_source"], embedded=not files and c["price_source"] != "request")
+        bad = check_price_out(o, c["fit"], files, c["price_source"], embedded=not files and use_snapshot(c["fit"]))
         if c.get("warning") and not any(c["warning"] in w for w in A.warnings(o)):
             bad.append(f"warning {c['warning']!r} not in {A.warnings(o)}")
         return bad
@@ -272,7 +287,7 @@ def ck_inject(c, eng):
             return [f"prices_load: {json.dumps(r1[0])[:160]}"]
         o = A.rpc(eng, [("calc", A.rpc_calc_params(c["fit"]))])[0]
         src = ((o or {}).get("provenance") or {}).get("price_source") if isinstance(o, dict) else None
-        return [] if src == "embedded" else [f"new process price_source {src!r} != 'embedded'"]
+        return [] if src == "snapshot" else [f"new process price_source {src!r} != 'snapshot' (embedded)"]
     if k == "inject_error":
         code = A.err_code(A.calc(eng, c["fit"], gargs(c["args"])))
         return [] if code == c["code"] else [f"got {code or 'success'}, want {c['code']}"]
@@ -286,6 +301,8 @@ def ck_inject(c, eng):
 # ------------------------------------------------------------------ price_rule
 def ck_rule(c, cmd):
     got = A.price_rule(cmd, c["orders"], dict(R.DEFAULT, **c["params"]))
+    if c.get("expected_error"):
+        return [] if A.err_code(got) == "RULE_REJECTED" else [f"want the rule rejected (non-zero exit), got {json.dumps(got)[:160]}"]
     exp = c["expected"]
     if exp is None:
         return [] if got is None else [f"want no price (missing), got {json.dumps(got)[:160]}"]
@@ -306,7 +323,11 @@ def ck_rule(c, cmd):
 # ------------------------------------------------------------------ self-test: the bench's own data
 def self_check(suite, c):
     if suite == "price_rule":
-        return [] if R.rule(c["orders"], c["params"]) == c["expected"] else ["expected != reference rule"]
+        try:
+            got = R.rule(c["orders"], c["params"])
+        except ValueError:
+            return [] if c.get("expected_error") else ["reference rule rejected the rule"]
+        return [] if not c.get("expected_error") and got == c["expected"] else ["expected != reference rule"]
     if c["check"] in ("sde_invalid_cli", "sde_invalid_rpc"):
         p = Path(path(c["pack"]))
         return [] if not p.exists() or not pack_ok(p.read_bytes()) else ["pack unexpectedly valid"]
