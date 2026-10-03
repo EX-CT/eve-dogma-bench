@@ -1,7 +1,7 @@
 name: nightly
 
 # Nightly regression run of the bench against eve-dogma-rs main (variant A):
-#   bench 1.8.0 (this branch), bench 1.9.0 (branch bench-1.9.0, if it exists), graphs (branch graphs-round2, if it exists),
+#   bench 1.8.0 (frozen 3da9671), bench 1.9.0 (main, released as v1.9.0 / d2edf98), graphs (branch graphs-round2, if it exists),
 #   plus a Pyfa-free fuzz self-consistency check (tools/ci_invariants.py). Pyfa isn't installed here; the oracle side is
 #   the committed expected/ values.
 # On failure: opens an issue titled "Nightly bench failure", or comments on the open one with that title (deduped by title).
@@ -68,22 +68,25 @@ jobs:
           cargo build --release --locked
           echo "ENGINE=$PWD/target/release/eve-dogma" >> "$GITHUB_ENV"
           echo "### eve-dogma-rs \`$ENGINE_REF\` @ $(git rev-parse --short HEAD)" >> "$GITHUB_STEP_SUMMARY"
-      - name: Stage bench trees (1.9.0, graphs)
+      - name: Stage bench trees (1.8.0, 1.9.0, graphs)
         run: |
-          for b in bench-1.9.0 graphs-round2; do
-            if git rev-parse -q --verify "origin/$b" > /dev/null; then
-              mkdir -p "_trees/$b" && git archive "origin/$b" | tar -x -C "_trees/$b"
-              echo "$b @ $(git rev-parse --short origin/$b)"
+          # bench 1.9.0 is released on main (v1.9.0 = d2edf98); 1.8.0 is the frozen round-1 pin 3da9671.
+          for spec in bench-1.8.0=3da9671da11379de6ae17d3c3285505e95267f29 bench-1.9.0=origin/main graphs-round2=origin/graphs-round2; do
+            b=${spec%%=*}; ref=${spec#*=}
+            if git rev-parse -q --verify "$ref^{commit}" > /dev/null; then
+              mkdir -p "_trees/$b" && git archive "$ref" | tar -x -C "_trees/$b"
+              echo "$b @ $(git rev-parse --short "$ref")"
             else
-              echo "::notice::branch $b not found, skipped"
+              echo "::notice::$b ($ref) not found, skipped"
             fi
           done
       - name: Bench 1.8.0
         id: b18
         if: always()
         run: |
+          cd _trees/bench-1.8.0
           python3 run.py --name nightly --cmd "$ENGINE calc" --batch-cmd "$ENGINE batch"
-          python3 tools/ci_gate.py "bench $(cat VERSION)" results/nightly/scorecard.json
+          python3 "$GITHUB_WORKSPACE/tools/ci_gate.py" "bench $(cat VERSION)" results/nightly/scorecard.json
       - name: Bench 1.9.0
         id: b19
         if: always()
