@@ -4,6 +4,33 @@ Variants: compare scores only at the same bench version (`VERSION`, shown in res
 Expected values always come from the Pyfa oracle (`oracle/pyfa_oracle.py`). Re-run `python3 bench.py --only <X>` after
 pulling.
 
+## 1.10.0 (2026-10-03 12:30 CST, tag v1.10.0)
+- Released from branch pending-1.10. `tools/evaluate.py` stays pinned to 1.8.0 (`3da9671`). CONTRACT.md = revision
+  1.4.5 plus the "Draft 1.10: stats-ext" section (proposed fields, scored only by `ext/`).
+- Core corpus: 339 cases, 22 513 values (+8 `e_fz_*` cases from the differential fuzz, +9 `warp_scramble_status`
+  values, below). F 4b8f5f9 339/339, eve-dogma-rs d6043a7 325/339 (README "Current results").
+- New suite `effects/` (docs/20 P0-2): 2 378 Pyfa micro-fits, one per dogma effect Pyfa implements (2 266 with SDE
+  modifierInfo, 112 handler-only, incl. the 37 docs/19 ENG-CORE-003 unverified ones), scored on the full modified
+  attribute dump (382 231 attribute values) plus the bench metrics. `effects/README.md`.
+- New suite `ext/` (docs/20 P0-3 / P0-4): 116 cases. Pyfa values for mining yield/drain, outgoing remote reps / cap
+  transfer (with spool), drone and fighter HP / EHP / shield recharge, the bombing panel, heat (burn cycles,
+  burnout time), keyed to the proposed FitStats fields; explicit `fleet.buffs` (now modelled by the oracle); and 6
+  hand-derived, non-Pyfa `overrides` cases. `ext/README.md`.
+- Oracle: `fleet.buffs` modelled through Pyfa's command bonuses (explicit id wins over bursts, booster fits and
+  beacons; duplicates aggregate per the dbuff's Minimum / Maximum). Opt-in `ORACLE_EXTRA=attrs,ext` dumps; default
+  output unchanged (expected values regenerate byte-identical).
+- `tools/check_inventory.py` (docs/20 §5.1 gate) with `inventory/suites.yaml` (suite registry: bench, state, effects,
+  ext, cap, mut, fmt-export, fmt-edge, graphs, unit, mcp, web-e2e, web-unit) and `inventory/tests.yaml` (docs/19 item
+  → tests, F column).
+- Fuzz: `oracle/fuzz/gen_legal.py` / `check_legal.py` (legal random fits by Pyfa's fitting rules), `compare.py`
+  `expected_diffs.json` → `expected_drift` category.
+- Contract revision 1.4.5: module state correction (ruling reversed 2026-10-03 11:19 CST): impossible requested
+  `active`/`overheated` → `online`, corrected state reported in `modules[].state`, one `warnings[]` entry per
+  correction (`/modules/N: state '<requested>' not possible for this module, using online`). No scored value changes;
+  informational check `tools/check_module_state.py` (`pending/state/`).
+- `warp_scramble_status` follows Pyfa: the 9 Networked Sensor Array known divergences (SDE +100, Pyfa omits) are
+  removed and their expected values regenerated from the oracle (+9 scored values).
+
 ## 1.9.0 (2026-10-03 11:00 CST, tag v1.9.0)
 - Released after the round-1 unified evaluation, which used 1.8.0 (`tools/evaluate.py` keeps pinning `3da9671`).
 - CONTRACT.md = contract revision 1.4.4: additive `pure` damage key (breacher pods) and `weapons[].kind = "breacher"`;
