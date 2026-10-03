@@ -19,7 +19,7 @@ Rows (all expectations are Pyfa output, see formats/README.md):
 
 Scoring (CONTRACT-FORMATS section 7): a row passes or fails. Error rows are scored on reject-vs-accept agreement
 with Pyfa only; codes are reported ("code ok"), not scored. Rows marked "scored": false (Pyfa crashes, merged
-multi-fit EFT pastes, legacy rename) are report-only. Score = mean of the four group pass rates (export,
+multi-fit EFT pastes, legacy rename; shipstats rows listed in MANIFEST.json export_unscored) are report-only. Score = mean of the four group pass rates (export,
 import, edge_export, edge; 25 % each, per row within a group); total scored rows are reported too. Gate = 100 %
 of scored rows. A not-implemented format counts as failed and is marked.
 Results: results/formats/<name>/{scorecard.md, scorecard.json, failures.json}.
@@ -214,9 +214,13 @@ def load_rows(only):
     def base_fmt(f):
         return f.replace("_min", "").replace("_formatted", "")
 
+    unscored_export = json.load(open(os.path.join(ROOT, "formats", "edge", "MANIFEST.json"))).get("export_unscored", {})
     for line in open(os.path.join(EXP, "export.jsonl"), encoding="utf-8"):
         r = json.loads(line)
         cat = "export:" + r["format"]
+        if "%s@%s" % (r["case"], cat) in unscored_export:
+            r["scored"] = False
+            r["unscored_reason"] = unscored_export["%s@%s" % (r["case"], cat)]
         rows.append(dict(cat=cat, id="%s@%s" % (r["case"], cat), kind="export", fmt=r["format"], exp=r,
                          req=("format_export", {"fit": case(r["case"]), "name": r["case"].rsplit(".", 1)[0],
                                                 "format": base_fmt(r["format"]), "options": r["options"]})))

@@ -337,5 +337,11 @@
   "eft_multi.eft.txt": "ruling 3: two EFT fits pasted together - Pyfa merges them (quirk); engines may merge or reject; report-only",
   "eft_multi_three.eft.txt": "ruling 3: three EFT fits pasted together - Pyfa merges them (quirk); report-only",
   "eft_renamed_item.eft.txt": "legacy item name ('Drone Control Unit I') resolved by Pyfa's rename table; SDE 3569502 only has 'Fighter Support Unit I' (scored control: eft_current_name.eft.txt); report-only"
+ },
+ "export_unscored": {
+  "_rule": "shipstats export rows whose text prints a stat that the main bench (1.8.0) excludes for that case in expected/known_divergences.json are report-only (eve, 2026-10-03). shipstats prints EHP/HP/resists, speed, signature, capacitor, targeting range, scan resolution, sensor strength, DPS/volley and repairs; it does not print align time or warp scramble status.",
+  "esf_items_4.json@export:shipstats": "known divergence max_velocity (two prop mods active at once, invalid fit; Pyfa re-reads mass per handler) -> 'Speed' line",
+  "esf_items_7.json@export:shipstats": "known divergence cap_capacity (structure module on a ship, invalid fit; Pyfa applies it, SDE domain says no) -> 'Capacitor' line",
+  "esf_structure_bonus_1.json@export:shipstats": "known divergence hp.armor / ehp.armor (SDE: unpowered structure zeroes the plating bonus; Pyfa's hand-written handler ignores power state) -> 'EHP' and 'Armor' lines"
  }
 }

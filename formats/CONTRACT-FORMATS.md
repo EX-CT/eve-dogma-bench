@@ -228,7 +228,22 @@ by the first matching additions type (drones, then fighters, implants, boosters,
 - **Names are scored (ruling 4)**, for exports (byte-exact) and imports alike.
 - **Report-only rows** (`"scored": false`) are evaluated and listed, but never count toward the score or the gate.
 
-### 5.1 Dataset note
+### 5.1 Ship stats rows excluded with the main bench (eve, 2026-10-03)
+
+A `shipstats` export row is report-only when its text prints a stat that the main bench (1.8.0) excludes for that
+case in `expected/known_divergences.json`. Those differences come from the engine's stat values, not from the
+format. The list is fixed in `formats/edge/MANIFEST.json` → `export_unscored`.
+
+| row | excluded stat → shipstats line | reason (main bench) |
+|---|---|---|
+| `esf_items_4@export:shipstats` | `max_velocity` → `Speed` | two prop mods active at once (invalid fit); Pyfa re-reads mass per handler |
+| `esf_items_7@export:shipstats` | `cap_capacity` → `Capacitor` | structure module on a ship (invalid fit): Pyfa applies it, the SDE domain says no |
+| `esf_structure_bonus_1@export:shipstats` | `hp.armor`, `ehp.armor` → `EHP`, `Armor` | SDE: an unpowered structure zeroes the plating bonus; Pyfa's hand-written handler ignores power state |
+
+The other known divergences (`align_time_s` of `esf_projection_18`, and `warp_scramble_status` of the
+Networked Sensor Array cases) are not printed by `shipstats`, so those rows stay scored.
+
+### 5.2 Dataset note
 
 SDE 3569502 gives T3 cruisers `maxSubSystems` = 5, and Pyfa's db gives 4. One extra `[Empty Subsystem slot]` line in
 an EFT export is accepted (`info_known_divergence_subsystem_slot`).
@@ -237,7 +252,7 @@ an EFT export is accepted (`info_known_divergence_subsystem_slot`).
 
 | group | file | rows | content |
 |---|---|---|---|
-| `export:<fmt>` | `expected/export.jsonl` | **3260** | 326 bench fits (`cases/*.json`, name = file stem) × 10 export rows. 2 expected errors (`esi_min` of an item-less fit). |
+| `export:<fmt>` | `expected/export.jsonl` | **3260** (3257 scored) | 326 bench fits (`cases/*.json`, name = file stem) × 10 export rows. 2 expected errors (`esi_min` of an item-less fit). |
 | `import:<fmt>` | `expected/import.jsonl` | **1304** | Pyfa's import of its own export: 326 × {eft, dna, esi, xml}. 194 legal fits and 132 over-fitted (Pyfa drops the excess modules). 1 expected error (DNA of a mutated drone: Pyfa crash). |
 | `edge_export:*` | `expected/edge_export.jsonl` + `edge_export/*.json` (`{"name","fit"}`) | **125** | 9 hand-written fits × 10 export rows (90, 2 errors) + 35 round-trip imports (1 error). Covers names with `& < > " [ ] , ; :`, unicode, a newline, 120 chars and empty; ship-only, cargo-only, mixed drone stacks, implants + boosters. |
 | `edge:<category>` | `expected/edge.jsonl` + `edge/*` + `edge/MANIFEST.json` | **104** (93 scored) | 87 inputs imported with `auto`, plus 17 forced-format rows. 11 rows are report-only: 8 `pyfa_crash`, 2 merged EFT pastes, 1 legacy rename. 28 scored rows are expected rejections. |
@@ -257,7 +272,8 @@ Edge categories (scored rows / of which rejections; + report-only rows):
 | `autodetect` | 6 | 6 | empty, whitespace, prose, a bare number, a JSON array, `[Ship]` without a comma |
 | `forced` | 14 (+3) | 6 | an explicit `format` on other formats' text or garbage, plus forced controls that succeed |
 
-**Total: 4793 rows, of which 4782 are scored.** The single import.jsonl error (DNA of a mutated drone, Pyfa
+**Total: 4793 rows, of which 4779 are scored.** The 14 report-only rows are 11 edge rows and 3 `shipstats` rows
+(§5.1). The single import.jsonl error (DNA of a mutated drone, Pyfa
 `ValueError: Passed item is not a Drone`) is a deliberate Pyfa validation, not a crash, so it stays scored.
 
 Regenerate everything with `tools/gen_formats_edge.sh <ref>` (edge + edge_export). The bench-case rows are
@@ -294,6 +310,7 @@ contains no Pyfa code, and variants must re-implement the behaviour from this de
    rows are reported. Gate = 100 % of scored rows.
 6. `format-batch` is optional, and RPC is mandatory.
 - Item names follow the current SDE. A legacy name that only Pyfa's rename table resolves is report-only.
+- `shipstats` rows that print a stat the main bench excludes for that case are report-only (§5.1, 3 rows).
 
 ### Former open questions (answered above)
 
@@ -311,6 +328,8 @@ contains no Pyfa code, and variants must re-implement the behaviour from this de
 
 ## Changelog
 
+- 0.1 (2026-10-03, draft, rulings 2): 3 `shipstats` rows that depend on main-bench exclusions are report-only
+  (§5.1). 4779 rows are scored.
 - 0.1 (2026-10-03, draft, rulings): eve's rulings 1–6 and the SDE-name rule; `scored: false` rows; group
   weighting; +1 edge input (`eft_current_name`).
 - 0.1 (2026-10-03, draft): first revision, built from `formats-suite` dcd9e89 (3260 export / 1304 import / 16 edge
