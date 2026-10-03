@@ -168,7 +168,7 @@ def snapshot(build=3569502, version=1, schema="eve-price-snapshot", tweak=None, 
     types = {}
     for t in TYPES:
         p0 = isk(t, 3)
-        types[str(t)] = {"price": round(p0 * 1.03, 2), "p0": p0, "band_max": p0 * 1.05, "units": 75, "orders": 3,
+        types[str(t)] = {"price": round(p0 * 1.03, 2), "p0": p0, "band_max": float(f"{p0 * 1.05:.12g}"), "units": 75, "orders": 3,
                          "units_considered": 400, "orders_considered": 8, "orders_total": 11}
     s = {"schema": schema, "schema_version": version, "snapshot_id": "jita44-20261003T053000Z", "market": "jita44",
          "market_time": "2026-10-03T05:30:00Z", "generated_at": "2026-10-03T05:31:07Z",

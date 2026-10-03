@@ -193,11 +193,51 @@ def compare_block(exp, got, where=""):
     return bad
 
 
+def _es_num(x):
+    """ECMAScript Number.prototype.toString (JCS / RFC 8785 §3.2.2.3)"""
+    from decimal import Decimal
+    if isinstance(x, bool) or not math.isfinite(x):
+        raise ValueError(f"not a JCS number: {x!r}")
+    if x == 0:
+        return "0"
+    if x < 0:
+        return "-" + _es_num(-x)
+    t = Decimal(repr(float(x))).normalize().as_tuple() if isinstance(x, float) else Decimal(int(x)).normalize().as_tuple()
+    if isinstance(x, int) and abs(x) >= 2 ** 53:
+        t = Decimal(repr(float(x))).normalize().as_tuple()
+    digits = "".join(map(str, t.digits))
+    k, n = len(digits), len(t.digits) + t.exponent
+    if k <= n <= 21:
+        return digits + "0" * (n - k)
+    if 0 < n <= 21:
+        return digits[:n] + "." + digits[n:]
+    if -6 < n <= 0:
+        return "0." + "0" * (-n) + digits
+    e = n - 1
+    return digits[0] + ("." + digits[1:] if k > 1 else "") + "e" + ("+" if e > 0 else "-") + str(abs(e))
+
+
+def jcs(v):
+    """RFC 8785 canonical JSON (keys sorted by UTF-16 code units, ES number form)"""
+    if v is None or isinstance(v, bool):
+        return json.dumps(v)
+    if isinstance(v, (int, float)):
+        return _es_num(v)
+    if isinstance(v, str):
+        return json.dumps(v, ensure_ascii=False)
+    if isinstance(v, list):
+        return "[" + ",".join(jcs(x) for x in v) + "]"
+    if isinstance(v, dict):
+        ks = sorted(v, key=lambda k: k.encode("utf-16-be"))
+        return "{" + ",".join(json.dumps(k, ensure_ascii=False) + ":" + jcs(v[k]) for k in ks) + "}"
+    raise TypeError(type(v))
+
+
 def canonical_hash(obj):
-    """docs/22 §4.6 content_hash: sha256 over canonical JSON without content_hash"""
+    """docs/22 §4.6 (eccf455) content_hash: "sha256:" + SHA-256 of the RFC 8785 JCS form without content_hash"""
     import hashlib
     o = {k: v for k, v in obj.items() if k != "content_hash"}
-    return "sha256:" + hashlib.sha256(json.dumps(o, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode()).hexdigest()
+    return "sha256:" + hashlib.sha256(jcs(o).encode("utf-8")).hexdigest()
 
 
 def load_l4(path):

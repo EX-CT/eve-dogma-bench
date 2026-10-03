@@ -30,7 +30,7 @@ MAP = {str(t): isk(t, 1) for t in TYPES if t != 31015}          # one rig unpric
 types = {}
 for t in TYPES:
     p0 = isk(t, 2)
-    types[str(t)] = {"price": round(p0 * 1.02, 2), "p0": p0, "band_max": p0 * 1.05, "units": 120, "orders": 4,
+    types[str(t)] = {"price": round(p0 * 1.02, 2), "p0": p0, "band_max": float(f"{p0 * 1.05:.12g}"), "units": 120, "orders": 4,
                      "units_considered": 900, "orders_considered": 15, "orders_total": 19}
 SNAP = {"schema": "eve-price-snapshot", "schema_version": 1, "snapshot_id": "jita44-20261003T060000Z", "market": "jita44",
         "market_time": "2026-10-03T06:00:00Z", "generated_at": "2026-10-03T06:04:12Z",

@@ -75,7 +75,8 @@ def snapshot_code(d):
         if P.canonical_hash(d) != d.get("content_hash"):
             return "PRICE_SNAPSHOT_INVALID"
         for e in d["types"].values():
-            if not (e["p0"] <= e["price"] <= e["band_max"] and 0 < e["units"] <= e["units_considered"]
+            tol = max(0.005, 1e-9 * e["band_max"])         # docs/22 §4.5 (eccf455)
+            if not (e["p0"] - tol <= e["price"] <= e["band_max"] + tol and 0 < e["units"] <= e["units_considered"]
                     and 0 < e["orders"] <= e["orders_considered"] <= e["orders_total"]):
                 return "PRICE_SNAPSHOT_INVALID"
         return None
