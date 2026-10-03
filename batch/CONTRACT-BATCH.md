@@ -38,12 +38,21 @@ What `semantics.py` checks (docs/23 §2–§4, §7):
 - Layers: L1 is the variant / fit entry / axis options (concatenated); L2 is the BatchRequest plus the FitRequest's
   own `price_overrides`; L3 is `prices.isk`; L4 is empty.
 
-Interpretation points for F to confirm (docs/23 does not spell them out):
-- A line's `source` / `layer` is the highest-layer entry for the type. `multiplier` is the product applied, and
-  `base_source` is the source of the fixed price it applies to (`null` without a multiplier).
-- Charge quantity = floor(capacity / volume).
+Rulings (eve, 2026-10-03; docs/23):
+- `source` / `layer`: the highest layer that has an entry for the type.
+- `multiplier`: the product of all stacked multipliers, and 1 when none apply.
+- `base_source`: the source that supplied the base price (`injected`, `snapshot` or a fixed-price
+  `override:*`). It equals `source` when no multiplier applies.
+- Charges: floor(capacity / volume).
 - The ship line has index 0.
-- Booster lines are priced; `name` is not compared.
+- L3: the request `prices.isk`; the FitRequest's own table wins per type over the batch-wide one.
+- L4: the `--prices` file or the embedded snapshot.
+
+Bench interpretation, not ruled:
+- A `--prices` file line has `source` "injected" and `layer` "snapshot" (the L4 position).
+- Line and block `snapshot_time` is the L4 `market_time`; it is null for plain-map files.
+
+**F's contract wins** wherever it differs from these cases. Only `adapter.py` changes then.
 
 Not covered yet: the `in` and `not_null` filter ops, `delta_ref` (form 1), numeric sweeps `from`/`to`/`step` (the
 expansion supports them), `swap_type`, `BATCH_TOO_LARGE`, `BAD_PRICE_OVERRIDE`, `--prices` files, `calc`'s own

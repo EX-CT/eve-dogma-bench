@@ -36,8 +36,8 @@ def with_price(out, fit, req, l1):
     """merge the bench reference price block into a one-by-one output (price cases)"""
     if not isinstance(out, dict) or "error" in out:
         return out
-    inj = dict((fit.get("prices") or {}).get("isk", {}))
-    inj.update((req.get("prices") or {}).get("isk", {}))
+    inj = dict((req.get("prices") or {}).get("isk", {}))
+    inj.update((fit.get("prices") or {}).get("isk", {}))      # the FitRequest's own table wins per type (docs/23 §5.2)
     l2 = list(req.get("price_overrides", [])) + list(fit.get("price_overrides", []))
     return dict(out, price=prices.price_block(fit, prices.layers_for(l2, l1, inj)))
 

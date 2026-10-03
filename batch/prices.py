@@ -2,12 +2,14 @@
 Pure function of: the fit's items, the override layers, the injected table, and SDE metadata (type -> group ->
 category, market group tree from dataset r5). L4 (embedded snapshot) is empty in the first implementation (§5.2).
 
-Interpretation points (flagged for F, docs/23 does not spell them out):
-  - line `source` / `layer` = the entry that decided the price: the highest layer with an entry for the type (an
-    override, else injected). With multipliers, `multiplier` = product of the multipliers on the way down, and
-    `base_source` = source of the fixed price they apply to (None when no multiplier applied).
-  - charge quantity = floor(module capacity / charge volume) (Pyfa getNumCharges), with a 1e-9 guard against FP.
-  - ship line index 0; module / charge lines index = module index; other sections index = list index."""
+Rulings (eve, 2026-10-03, docs/23):
+  - line `source` / `layer` = the highest layer with an entry for the type; `multiplier` = product of all stacked
+    multipliers (1 when none); `base_source` = source of the base price (injected, snapshot or a fixed-price
+    override; = source when no multiplier applied).
+  - charge quantity = floor(module capacity / charge volume) (Pyfa getNumCharges), 1e-9 guard against FP.
+  - ship line index 0; module / charge lines index = module index; other sections index = list index.
+Bench interpretation (not ruled): a `--prices` file is L4 with `source` "injected" and `layer` "snapshot";
+line / block `snapshot_time` = the L4 market_time (null for a plain map file or non-L4 lines)."""
 import gzip, json, math, os
 from functools import lru_cache
 
@@ -59,28 +61,34 @@ def kind(e):
 
 
 def resolve(t, layers):
-    """layers: [("variant", [...]), ("request", [...]), ("injected", {tid: isk})] -> dict or None (+reason)"""
-    mult, top = 1.0, None
-    applied = False
+    """layers: [("variant", [..]), ("request", [..]), ("injected", {tid: isk}), ("snapshot", L4 or None)]
+    L4 = {"isk": {tid: isk}, "label": "injected" (--prices file / prices_load) | "snapshot" (embedded), "time": str|None}.
+    Rulings (eve, docs/23): source/layer = highest layer with an entry for the type; multiplier = product of all stacked
+    multipliers (1 when none); base_source = source of the base price (injected, snapshot or a fixed-price override);
+    with no multiplier base_source = source."""
+    mult, top, applied = 1.0, None, False
+
+    def done(unit, src, layer, stime=None):
+        s0, l0 = top if top else (src, layer)
+        return {"unit_isk": mult * unit, "source": s0, "layer": l0, "multiplier": mult,
+                "base_source": src, "snapshot_time": stime}
     for name, layer in layers:
         if name == "injected":
-            p = layer.get(str(t))
-            if p is None:
-                break
-            src = "injected"
-            if top is None:
-                return {"unit_isk": float(p), "source": src, "layer": "injected", "multiplier": None, "base_source": None}
-            return {"unit_isk": mult * p, "source": top[0], "layer": top[1], "multiplier": mult if applied else None,
-                    "base_source": src if applied else None}
+            p = (layer or {}).get(str(t))
+            if p is not None:
+                return done(float(p), "injected", "injected")
+            continue
+        if name == "snapshot":
+            if layer and str(t) in layer["isk"]:
+                return done(float(layer["isk"][str(t)]), layer["label"], "snapshot", layer.get("time"))
+            continue
         e = entry_for(t, layer)
         if e is None:
             continue
         if top is None:
             top = (KIND_SOURCE[kind(e)], name)
         if "price" in e:
-            src = KIND_SOURCE[kind(e)]
-            return {"unit_isk": mult * e["price"], "source": top[0], "layer": top[1],
-                    "multiplier": mult if applied else None, "base_source": src if applied else None}
+            return done(float(e["price"]), KIND_SOURCE[kind(e)], name)
         mult *= e["multiplier"]
         applied = True
     return {"missing": "multiplier_without_base" if applied else "no_price"}
@@ -114,18 +122,21 @@ def price_block(fit, layers):
             missing.append({"section": sec, "index": i, "type_id": t, "quantity": q, "reason": r["missing"]})
             continue
         line = dict(index=i, type_id=t, quantity=q, unit_isk=r["unit_isk"], total_isk=r["unit_isk"] * q,
-                    source=r["source"], layer=r["layer"], multiplier=r["multiplier"], base_source=r["base_source"])
+                    source=r["source"], layer=r["layer"], multiplier=r["multiplier"], base_source=r["base_source"],
+                    snapshot_time=r["snapshot_time"])
         s = secs.setdefault(sec, {"total_isk": 0.0, "items": []})
         s["items"].append(line)
         s["total_isk"] += line["total_isk"]
         sources[r["source"]] = sources.get(r["source"], 0) + 1
+    times = sorted({l["snapshot_time"] for s in secs.values() for l in s["items"] if l["snapshot_time"]})
     return {"total_isk": sum(s["total_isk"] for s in secs.values()), "complete": not missing, "sections": secs,
-            "missing": missing, "sources": sources}
+            "missing": missing, "sources": sources, "snapshot_time": times[0] if times else None}
 
 
-def layers_for(req_level, variant_level, injected):
-    """batch: L1 = variant/fit-entry/axis-option overrides, L2 = BatchRequest + FitRequest own overrides, L3 = injected"""
-    return [("variant", variant_level or []), ("request", req_level or []), ("injected", injected or {})]
+def layers_for(req_level, variant_level, injected, l4=None):
+    """L1 = variant / fit-entry / axis-option overrides, L2 = BatchRequest + FitRequest own overrides,
+    L3 = request prices.isk (fit's own table wins per type), L4 = --prices file or embedded snapshot (None = empty)"""
+    return [("variant", variant_level or []), ("request", req_level or []), ("injected", injected or {}), ("snapshot", l4)]
 
 
 REL = 1e-9
@@ -151,6 +162,8 @@ def compare_block(exp, got, where=""):
         bad.append(f"{where}missing {gm[:4]} != {em[:4]}")
     if {k: v for k, v in (got.get("sources") or {}).items() if v} != exp["sources"]:
         bad.append(f"{where}sources {got.get('sources')} != {exp['sources']}")
+    if got.get("snapshot_time") != exp["snapshot_time"]:
+        bad.append(f"{where}snapshot_time {got.get('snapshot_time')!r} != {exp['snapshot_time']!r}")
     gs = got.get("sections") or {}
     for sec in SECTIONS:
         e, g = exp["sections"].get(sec), gs.get(sec)
@@ -171,7 +184,7 @@ def compare_block(exp, got, where=""):
             if x is None:
                 bad.append(f"{where}{sec}[{l['index']}] type {l['type_id']} line missing")
                 continue
-            for k in ("quantity", "source", "layer", "base_source"):
+            for k in ("quantity", "source", "layer", "base_source", "snapshot_time"):
                 if x.get(k) != l[k]:
                     bad.append(f"{where}{sec}[{l['index']}].{k} {x.get(k)!r} != {l[k]!r}")
             for k in ("unit_isk", "total_isk", "multiplier"):
