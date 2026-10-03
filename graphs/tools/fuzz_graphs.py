@@ -5,7 +5,8 @@ Pyfa graph oracle (oracle/pyfa_graph_oracle.py, GPL test tool).
   python3 graphs/tools/fuzz_graphs.py [--n 400] [--seed 1] [--variants G1,G2,G3,G4] [--work-dir work/graphs-eval]
                                       [--out results/graphs-fuzz] [--record]
 
-1. Generates random GraphRequests (graphs/CONTRACT-GRAPHS.md): fits drawn from the graph corpus and the 1.8.0 stats
+1. Generates random GraphRequests over the contract-0.1 feature set (9 graphs, mps/m axes; the 0.2 additions are
+   covered by the corpus and not implemented by every variant yet, so they would only measure missing features): fits drawn from the graph corpus and the 1.8.0 stats
    corpus (cases/*.json, 326 FitRequests), random graph / x axis / y series, random x samples (incl. limiter edges),
    random params, settings and targets (ideal, random profile, random target fit with a resist mode).
 2. Runs every request through each variant's graph-batch command. Variants are the read-only worktrees that
@@ -54,8 +55,9 @@ GRAPH_FITS = {}  # graph -> fits from the graph corpus that exercise it (biases 
 
 def fit_pool():
     graph_fits, stats_fits = [], []
-    for p in sorted((ROOT / "graphs/cases").glob("*.json")):
-        r = json.loads(p.read_text())
+    for r in EG.corpus():  # value cases only (error cases carry deliberately broken requests)
+        if r["graph"] not in AXES:
+            continue
         graph_fits.append(r["fit"])
         GRAPH_FITS.setdefault(r["graph"], []).append(r["fit"])
         t = (r.get("target") or {}).get("fit")
@@ -276,7 +278,7 @@ def main():
             print(f"{g}: no worktree in {work} (run tools/evaluate_graphs.py first); skipped")
             continue
         vd, y, src = EG.variant_dir(wt, g)
-        m, notes = EG.resolve(vd, y, src, json.loads(sorted((ROOT / "graphs/cases").glob("*.json"))[0].read_text()), built=True)
+        m, notes = EG.resolve(vd, y, src, next(r for r in EG.corpus() if r["graph"] == "damage"), built=True)
         if not m.get("graph_batch_cmd"):
             print(f"{g}: no graph-batch command; skipped")
             continue

@@ -40,7 +40,7 @@ SCORING RULES (round 2, plan docs/10-round-2-graphs-plan.md §8)
   Maintainability = 0.30·Tests + 0.30·Size + 0.20·Docs + 0.20·Deps
         Tests/Docs/Deps as round 1; Size = L(round-2 core LOC added, min, 10).
         (round 1's DataDriven sub-score is reported for information only: graph code legitimately names effects.)
-  Features = 0.6·(graphs with all cases correct / 9) + 0.3·(interfaces offered of batch/single/rpc, each passing
+  Features = 0.6·(graphs with all cases correct / graphs in the corpus) + 0.3·(interfaces offered of batch/single/rpc, each passing
         the corpus) + 0.1·(empty x.values -> empty series, contract ruling 2026-10-03)
   Portability = round-1 heuristic (1 WASM/browser build in code, 0.5 documented, 0 none).
 Outputs: <out>/evaluation.md, <out>/evaluation.json (+ <out>/raw/<G>/ scorecards and logs)."""
@@ -58,7 +58,6 @@ VARIANTS = {"G1": ("graphs-g1", "variant-e", "Pyfa-faithful graph port (Rust, on
 W = dict(speed=0.40, maint=0.35, feat=0.15, port=0.10)
 SPEED_W = dict(throughput=0.4, latency=0.4, cold=0.2)
 MAINT_W = dict(tests=0.30, size=0.30, docs=0.20, deps=0.20)
-N_GRAPHS = 9
 
 ENV = dict(os.environ)
 _dn = pathlib.Path.home() / ".dotnet"
@@ -530,7 +529,25 @@ def stats_cmds(vd, m, wt):
 
 # ---------------------------------------------------------------- corpus helpers
 def corpus():
-    return [json.loads(p.read_text()) for p in sorted((ROOT / "graphs/cases").glob("*.json"))]
+    """value cases with at least one x sample (error cases and empty-x cases are scored, but not used for perf)"""
+    out = []
+    for p in sorted((ROOT / "graphs/cases").glob("*.json")):
+        e = ROOT / "graphs/expected" / p.name
+        exp = json.loads(e.read_text()) if e.exists() else {}
+        r = json.loads(p.read_text())
+        if "expect_error" in exp or not isinstance(r.get("x"), dict) or not r["x"].get("values"):
+            continue
+        out.append(r)
+    return out
+
+
+def corpus_graphs():
+    gs = []
+    for p in sorted((ROOT / "graphs/expected").glob("*.json")):
+        g = json.loads(p.read_text()).get("graph")
+        if g and g not in gs:
+            gs.append(g)
+    return gs
 
 
 def dense_requests(cases, n=500):
@@ -746,10 +763,11 @@ def features(row):
     ifs = row.get("interfaces", {})
     good = [k for k, v in ifs.items() if v.get("cases_ok") == v.get("cases") and v.get("cases")]
     pref = row.get("primary") or {}
-    graphs_ok = sum(1 for g in (pref.get("groups") or {}).values() if g["ok"] == g["total"] and g["total"])
+    groups = pref.get("groups") or {}
+    graphs_ok = sum(1 for k, g in groups.items() if k in GRAPH_NAMES and g["ok"] == g["total"] and g["total"])
     ex = row.get("empty_x") or {}
     empty = 1.0 if ex and ex["ok"] == ex["total"] else 0.0
-    sc = 0.6 * graphs_ok / N_GRAPHS + 0.3 * len(good) / 3 + 0.1 * empty
+    sc = 0.6 * graphs_ok / len(GRAPH_NAMES) + 0.3 * len(good) / 3 + 0.1 * empty
     return {"graphs_fully_correct": graphs_ok, "interfaces_passing": sorted(good), "empty_x": ex, "score": round(sc, 4)}
 
 
@@ -769,7 +787,7 @@ RULES_MD = """## Scoring rules (round 2)
 - **Total = 0.40·Speed + 0.35·Maintainability + 0.15·Features + 0.10·Portability**, `L(x, best, span) = clamp(1 − log10(x/best)/log10(span), 0, 1)`.
 - **Speed** = 0.4·L(1/points·s⁻¹ batch, start-up excluded) + 0.4·L(dense 500-point damage latency, distinct fits) + 0.2·L(cold start + one request); medians over runs.
 - **Maintainability** = 0.3·Tests + 0.3·Size (L(round-2 core lines added on the branch since the round-1 merge-base, min, 10)) + 0.2·Docs + 0.2·Deps (round-1 definitions).
-- **Features** = 0.6·graphs fully correct/9 + 0.3·interfaces passing (graph-batch, graph, RPC)/3 + 0.1·empty `x.values` → empty series.
+- **Features** = 0.6·graphs fully correct/(graphs in the corpus) + 0.3·interfaces passing (graph-batch, graph, RPC)/3 + 0.1·empty `x.values` → empty series.
 - **Portability** = round-1 heuristic (WASM/browser build in code 1, documented 0.5).
 - Commands not declared in `bench.yaml` are inferred (variant's own `score*.sh`, or `batch`→`graph-batch` / RPC `graph` with a probe) and flagged in the table.
 """
@@ -799,13 +817,14 @@ def write(rows, a, meta):
                   f"{p.get('cases_ok', '–')}/{p.get('cases', '–')} | {p.get('values_ok', '–')}/{p.get('values_total', '–')} | {sg} | "
                   f"{f2(r.get('points_per_s'), '{:.0f}')} | {f2(r.get('dense_latency_ms'), '{:.2f}')} | {f2(r.get('cold_ms'), '{:.0f}')} | "
                   f"{f2(s.get('speed'))} | {f2(s.get('maint'))} | {f2(s.get('feat'))} | {f2(s.get('port'))} | **{f2(s.get('total'), '{:.3f}')}** | {lo} |")
-    md += ["", "## Correctness per graph (primary interface)", "",
-           "| variant | interface | " + " | ".join(GRAPH_NAMES) + " |", "|---|---|" + "---|" * len(GRAPH_NAMES)]
+    cols = GRAPH_NAMES + ["errors"]
+    md += ["", f"## Correctness per graph (primary interface; corpus {meta['corpus']['graph_cases']} cases, contract: {meta.get('contract', '')})", "",
+           "| variant | interface | " + " | ".join(cols) + " |", "|---|---|" + "---|" * len(cols)]
     for r in order:
         p = r.get("primary") or {}
         gr = p.get("groups") or {}
         md.append(f"| {r['variant']} | {p.get('interface', '–')} | " + " | ".join(
-            (f"{gr[g]['ok']}/{gr[g]['total']}" if g in gr else "–") for g in GRAPH_NAMES) + " |")
+            (f"{gr[g]['ok']}/{gr[g]['total']}" if g in gr else "–") for g in cols) + " |")
     md += ["", "## Interfaces, perf details, maintainability", "",
            "| variant | dir | commands | interfaces (cases ok) | pts/s incl. start-up | dense via | dense repeat ms | cold via | empty x | round-2 core lines added | core LOC (dir) | tests (own suite) | deps | README/DESIGN/LICENSE | portability |",
            "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
@@ -842,7 +861,7 @@ def write(rows, a, meta):
     return "\n".join(md)
 
 
-GRAPH_NAMES = ["damage", "application_profile", "ewar", "remote_reps", "capacitor", "shield_regen", "mobility", "warp_time", "lock_time"]
+GRAPH_NAMES = []  # filled from graphs/expected at start-up (contract 0.1: 9 graphs, 0.2: + ecm_burst)
 
 
 def main():
@@ -880,6 +899,11 @@ def main():
     n_mod = sum(1 for e in ds["effects"].values() if e.get("mods"))
     del ds
     cases = corpus()
+    GRAPH_NAMES[:] = corpus_graphs()
+    meta["contract"] = next((l.strip() for l in (ROOT / "graphs/CONTRACT-GRAPHS.md").read_text().splitlines()
+                             if "revision" in l.lower() or l.lower().startswith("status")), "")
+    meta["corpus"] = {"graph_cases": len(list((ROOT / "graphs/cases").glob("*.json"))), "perf_cases": len(cases),
+                      "graphs": list(GRAPH_NAMES)}
     rows = []
     for g in (a.only.upper().split(",") if a.only else list(VARIANTS)):
         log(f"== {g}")
@@ -898,7 +922,8 @@ def main():
             row["gate_reason"] = "no variant directory"
             continue
         row["dir"] = vd.name
-        m, notes = resolve(vd, y, src, cases[0], built=False)
+        probe = next(r for r in cases if r["graph"] == "damage")
+        m, notes = resolve(vd, y, src, probe, built=False)
         if m.get("build") and not a.no_build:
             rc, dt, out = sh(m["build"], str(vd), a.build_timeout)
             row["build_s"] = round(dt, 1)
@@ -907,7 +932,7 @@ def main():
                 row["gate_reason"] = f"build failed ({'timeout' if rc is None else rc}): {out[-300:]}"
                 row["static"] = static_metrics(g, vd, names, n_mod)
                 continue
-        m, notes = resolve(vd, y, src, cases[0], built=True)
+        m, notes = resolve(vd, y, src, probe, built=True)
         row["cmd_notes"] = notes or ["bench.yaml"]
         row["manifest"] = {k: v for k, v in m.items() if k.startswith(("graph", "build", "cmd", "batch", "rpc"))}
         # correctness over every interface
