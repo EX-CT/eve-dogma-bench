@@ -1,7 +1,8 @@
 # docs/19 item -> tests (docs/20 §5.1), read by tools/check_inventory.py together with any `tests:` in the YAML.
 # Suites: inventory/suites.yaml. Bootstrapped from docs/19 f_evidence (tools/bootstrap_inventory_tests.py) and curated
 # by hand: a ref is listed only when that suite actually scores the item's values (e.g. bench scores warp_speed but
-# not max_warp_distance_au; no bench suite scores validation codes, so ENG-VAL-* have no tests here).
+# not max_warp_distance_au). Validation codes, vs_target_profile and probe_size are scored by ext/ (bench 1.11 draft:
+# val_*, tp_*, probe_*); ext-unit = hand-derived ext/unit cases (no Pyfa equivalent).
 schema: inventory-tests/1
 inventory: EX-CT/eve-fit-docs docs/19-pyfa-feature-inventory.yaml
 items:
@@ -49,7 +50,12 @@ items:
   ENG-ENV-002: ['bench:weather_*', 'effects:eff_70*_weather_*']
   ENG-ENV-003: ['bench:cloud_*', 'bench:incursion_*', 'effects:eff_70*_aoe_beacon_*']
   ENG-ENV-004: ['bench:esf_beacons', 'bench:esf_location_bonus_not_on_*']
-  ENG-VAL-001: ['bench:e_fz_cpu_round_tie_*']
+  ENG-VAL-001: ['bench:e_fz_cpu_round_tie_*', 'ext:val_cpu_power_overload', 'ext:val_drone_bandwidth', 'ext:val_slots_mid_low_rig']
+  ENG-VAL-002: ['ext:val_slots_*', 'ext:val_turret_hardpoints', 'ext:val_launcher_hardpoints']
+  ENG-VAL-003: ['ext:val_ship_restriction_burst', 'ext:val_capital_module_subcap', 'ext:val_rig_size', 'ext:val_max_group_*', 'ext-unit:unit_val_max_type_fitted']
+  ENG-VAL-004: ['ext:val_missing_skills_*']
+  ENG-VAL-005: ['ext:val_disable_restrictions_stats', 'ext-unit:unit_val_validate_false']
+  ENG-VAL-006: ['ext:val_charge_*']
   GRF-DMG-001: ['graphs:dmg_*']
   GRF-APP-001: ['graphs:app_*']
   GRF-CAP-001: ['graphs:cap_*']
@@ -78,10 +84,12 @@ items:
   ENG-DEF-006: ['bench:exct_*']
   ENG-OFF-001: ['bench:exct_*']
   ENG-OFF-002: ['bench:drones_*', 'bench:fighters_*']
+  ENG-OFF-003: ['ext:tp_*']
   ENG-NAV-001: ['bench:exct_*']
   ENG-NAV-002: ['bench:exct_*']
   ENG-NAV-003: ['bench:proj_*']
   ENG-TGT-001: ['bench:exct_*']
+  ENG-TGT-004: ['ext:probe_*']
   ENG-TGT-005: ['bench:drones_*']
   ENG-PROJ-004: ['bench:*_falloff*']
   CHR-001: ['bench:skills0_*']
@@ -98,7 +106,7 @@ items:
   UI-STAT-CAP: ['cap:base_*']
   ENG-MISC-001: ['bench:exct_hyperion_smartbomb']
   ENG-CORE-003: ['effects:eff_*']
-  ENG-CORE-005: ['ext:ovr_*']
+  ENG-CORE-005: ['ext:ovr_*', 'ext-unit:unit_ovr_*']
   ENG-CORE-006: ['effects:eff_*']
   ENG-OFF-006: ['ext:mining_*']
   UI-STAT-MIN: ['ext:mining_*']
