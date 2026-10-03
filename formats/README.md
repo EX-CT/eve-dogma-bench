@@ -1,5 +1,12 @@
 # Import/export format suite (branch `formats-suite`, not part of the frozen 1.8.0 scoring)
 
+> **Round 3:** this suite is now the **FORMATS contract 0.1 (DRAFT)**: `formats/CONTRACT-FORMATS.md`. It is
+> scored with `tools/evaluate_formats.py`:
+> `python3 tools/evaluate_formats.py --rpc "<variant> serve-stdio" --name X`. The suite has 4792 rows: 3260
+> export, 1304 round-trip import, 125 export-edge and 103 import-edge (malformed and abnormal) rows. Edge inputs
+> and their expectations are regenerated with `tools/gen_formats_edge.sh <ref>`. It is not frozen or published
+> until the round-1 archive. The older `tools/check_formats.py` (16 edge rows) is kept for comparison.
+
 Pyfa-generated expectations for every fit format in Pyfa's `service/port/` package, built from the 326 bench
 cases plus hand-written edge inputs. Everything in `formats/expected/` is Pyfa output (client db 3532181) produced
 by `oracle/pyfa_formats.py`, which loads Pyfa's own `service/port/*.py` unmodified (GPL-3.0 test tool, see
@@ -44,7 +51,7 @@ XML × 326), **16 edge rows** (auto-detect + import of hand-written inputs).
   EFT config multi-fit, XML multi-fit incl. mutation attributes, DNA chat link / alt / unknown id, ESI with
   unpublished/wrong-flag items, additions list, single mutated item.
 
-## Checker
+## Checker (pre-contract; superseded by `tools/evaluate_formats.py`)
 
 ```
 python3 tools/check_formats.py --rpc "<variant> serve-stdio" --name F
