@@ -582,7 +582,7 @@
  {
   "case": "so_stagger_off_reps",
   "category": "sim_options",
-  "description": "cap_sim.stagger false: identical repairers fire together"
+  "description": "cap_sim.stagger false: identical repairers (deprecated field, ignored: still staggered)"
  },
  {
   "case": "so_stagger_on_reps",
@@ -592,22 +592,22 @@
  {
   "case": "so_stagger_off_neuts",
   "category": "sim_options",
-  "description": "stagger false, three neuts"
+  "description": "stagger false, three neuts (deprecated field, ignored: still staggered)"
  },
  {
   "case": "so_stagger_off_maller",
   "category": "sim_options",
-  "description": "stagger false, dual rep cruiser"
+  "description": "stagger false, dual rep cruiser (deprecated field, ignored: still staggered)"
  },
  {
   "case": "so_stagger_off_light",
   "category": "sim_options",
-  "description": "stagger false on a stable fit (stable % changes)"
+  "description": "stagger false on a stable fit (deprecated field, ignored: still staggered)"
  },
  {
   "case": "so_stagger_off_injectors",
   "category": "sim_options",
-  "description": "stagger false with two cap boosters"
+  "description": "stagger false with two cap boosters (deprecated field, ignored: still staggered)"
  },
  {
   "case": "so_reload_thorax",
@@ -622,7 +622,7 @@
  {
   "case": "so_reload_stagger_off_aar",
   "category": "sim_options",
-  "description": "reload on, stagger off"
+  "description": "reload on, stagger off (deprecated field, ignored: still staggered)"
  },
  {
   "case": "so_maxtime_60_unstable",
@@ -652,12 +652,12 @@
  {
   "case": "so_all_options_incoming",
   "category": "sim_options",
-  "description": "stagger off + reload + max time, with incoming neut drones"
+  "description": "stagger off + reload + max time, with incoming neut drones (deprecated field, ignored: still staggered)"
  },
  {
   "case": "so_factor_reload_stagger_off",
   "category": "sim_options",
-  "description": "factor_reload with stagger off"
+  "description": "factor_reload with stagger off (deprecated field, ignored: still staggered)"
  },
  {
   "case": "edge_mjd",

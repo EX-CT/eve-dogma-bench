@@ -5,7 +5,7 @@
   python3 cap/run_cap.py --only A,H [--work-root /path/to/bench/checkout]   # use variants.yaml + already built work/<X>
 
 A case passes when every scored metric of cap/expected/<case>.json is within tolerance (cap/metrics.py).
-Cases requesting cap_sim.stagger=false are PENDING (reported, not in the score) until the stagger ruling (CONTRACT-CAP §9).
+cap_sim.stagger is deprecated and ignored (always staggered); every case is scored.
 Writes cap/results/<name>.json and prints a summary (cases passed, per-metric, per-category)."""
 import argparse, json, pathlib, subprocess, sys, time
 import yaml
@@ -25,7 +25,8 @@ def load():
 
 
 def pending(req):
-    return ((req.get("options") or {}).get("cap_sim") or {}).get("stagger") is False
+    """no pending cases since the stagger ruling (kept so result files keep their shape)"""
+    return False
 
 
 def score(name, batch_cmd, cwd, cases, timeout=600):
@@ -108,7 +109,7 @@ def main():
             print(f"{name}: run failed {e!r}")
             continue
         pm = " ".join(f"{m} {v[0]}/{v[1]}" for m, v in r["per_metric"].items())
-        print(f"{name}: cases {r['cases_ok']}/{r['cases']} (pending stagger-off {r['pending_ok']}/{r['pending']}) | {pm} | exit {r['exit']} {r['wall_s']}s")
+        print(f"{name}: cases {r['cases_ok']}/{r['cases']} | {pm} | exit {r['exit']} {r['wall_s']}s")
 
 
 if __name__ == "__main__":

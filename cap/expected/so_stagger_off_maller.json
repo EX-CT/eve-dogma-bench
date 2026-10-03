@@ -75,7 +75,7 @@
  "oracle": "pyfa-eos capSim",
  "report_only": {
   "eve_stable_percent": 0.0,
-  "sim_iterations": 35
+  "sim_iterations": 38
  },
  "values": {
   "capacity": 2031.25,

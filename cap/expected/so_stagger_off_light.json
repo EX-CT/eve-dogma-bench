@@ -19,15 +19,15 @@
     false
    ]
   ],
-  "high_gj": 1818.3083447425183,
-  "low_gj": 1498.3414683770104,
+  "high_gj": 1743.7007755911388,
+  "low_gj": 1583.7471143231005,
   "optimized_repeat": true,
-  "sim_end_ms": 693000
+  "sim_end_ms": 607500
  },
  "oracle": "pyfa-eos capSim",
  "report_only": {
   "eve_stable_percent": 45.91604799432996,
-  "sim_iterations": 78
+  "sim_iterations": 136
  },
  "values": {
   "capacity": 3625.0,
@@ -36,7 +36,7 @@
   "peak_recharge_gj_s": 40.69010416666665,
   "recharge_time_s": 222.72000000000008,
   "stable": true,
-  "stable_percent": 45.746893974062466,
+  "stable_percent": 45.89583296433434,
   "use_gj_s": 35.55555555555556
  }
 }

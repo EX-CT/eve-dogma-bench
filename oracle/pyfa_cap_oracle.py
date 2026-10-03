@@ -36,8 +36,8 @@ def cap(fit, opts=None):
     drains = fit._Fit__generateDrain()[0]
     cs = (opts or {}).get("cap_sim") or {}
     if cs and drains:
-        # request options.cap_sim (CONTRACT-CAP 0.1): stagger default true, reload = cap_sim.reload or factor_reload
-        sim, stable, state = run_sim(fit, drains, bool(cs.get("stagger", True)), bool(cs.get("reload")) or fit.factorReload,
+        # request options.cap_sim (CONTRACT-CAP 0.1): stagger is deprecated and ignored (always staggered, ruling 2026-10-03), reload = cap_sim.reload or factor_reload
+        sim, stable, state = run_sim(fit, drains, True, bool(cs.get("reload")) or fit.factorReload,
                                      (cs.get("max_time_s") or 6 * 3600) * 1000)
     else:
         sim = fit._Fit__runCapSim(drains=drains)  # same run again, to read the simulator's details

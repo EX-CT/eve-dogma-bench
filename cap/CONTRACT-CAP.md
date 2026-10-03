@@ -1,6 +1,6 @@
 # CONTRACT-CAP 0.1 (draft) — capacitor simulation
 
-Status: **draft for review**, informational suite on branch `cap-suite` (not part of the main bench score).
+Status: **draft for review** (rulings of 2026-10-03 applied: §6, §9), informational suite on branch `cap-suite` (not part of the main bench score).
 Extends the main contract (CONTRACT.md, revision 1.4.x): same FitRequest, same dataset, same `capacitor` output
 block. The reference is Pyfa's capacitor simulator run as a black box (oracle/pyfa_cap_oracle.py); this document
 describes the behaviour engines must reproduce, in our own words.
@@ -14,7 +14,7 @@ neutralizer drones, void bombs, remote capacitor transmitters, projected fits), 
 "options": {
   "factor_reload": false,          // reload in averages AND in the simulation (main contract)
   "cap_sim": {
-    "stagger": true,               // stagger identical non-turret modules (Pyfa's behaviour); see §6 (default)
+    "stagger": true,               // DEPRECATED, ignored: the simulation always staggers (§6)
     "reload": false,               // reload in the simulation only (averages unchanged)
     "max_time_s": null             // simulated time limit; null = 6 h (21 600 s)
   }
@@ -62,11 +62,11 @@ No drain at all → `stable` true, `stable_percent` 100, no simulation.
 2. Identical entries are grouped (all six fields equal); `n` = group size.
 3. Per group:
    - capacitor boosters: `n` independent events at t = 0, never staggered;
-   - staggering on and not a turret, no clip: **one** event with duration ⌊duration / n⌋ (integer division) and the
+   - not a turret, no clip: **one** event with duration ⌊duration / n⌋ (integer division) and the
      unchanged `need`;
-   - staggering on and not a turret, with clip: `n` events, the i-th (i = 0…n−1) first firing at
+   - not a turret, with clip: `n` events, the i-th (i = 0…n−1) first firing at
      i × (duration × clip + reload) / (n × clip);
-   - otherwise (turret, or staggering off): one event with `need × n`.
+   - turrets: one event with `need × n`.
 4. Period = least common multiple of the event durations; when any event has a clip, there is no period (the run
    only ends by failure, the time limit or an empty queue).
 
@@ -85,8 +85,8 @@ injector) — earliest first, ties broken by the following fields in that order.
    waiting boosters fire first — each time the one with the smallest bonus that still covers
    min(need − cap, C − cap) — until the need is covered or the capacitor is full; a booster fired this way is
    rescheduled from the current time (plus reload after its last charge). If no waiting booster covers the shortfall,
-   Pyfa's simulator raises an error (its fallback picks from an empty list); this is **undefined** in 0.1 and no
-   case exercises it (proposal: fire the largest waiting booster).
+   Pyfa's simulator raises an error (its fallback picks from an empty list); this is **undefined** (ruling §9.2):
+   no case exercises it and it is not scored.
 5. Apply the event: cap −= need, capped at C. If cap < 0 → stop, **unstable** at this event's time. Otherwise track the
    lowest cap after activations.
 6. Top up: while boosters wait and the capacitor is not full, fire the largest waiting booster that does not overfill
@@ -99,8 +99,9 @@ injector) — earliest first, ties broken by the following fields in that order.
 - Stable: `stable_percent` = min(100, 100 × (lowest after + lowest before) / (2 × C)).
 - `sim_iterations` = events processed. `eve_stable_percent` = 100 × ¼(1 + √(1 − 2·τ·Σ(need/duration)/C))² over the
   final event set (0 if the root is imaginary) — report-only.
-- **Default of `cap_sim.stagger`:** this draft proposes **true** when omitted (Pyfa's behaviour, and what every engine
-  does today). The main contract's example shows `false`; needs a ruling (§9).
+- **`cap_sim.stagger` is deprecated and ignored** (eve's ruling): identical non-turret modules are always staggered,
+  as Pyfa does. Engines must accept the field and must not change behaviour on it. The main bench 1.8.0 stays
+  frozen; its cases send `false` and its expected values are already staggered.
 
 ## 7. Tolerances and scoring
 
@@ -108,9 +109,7 @@ injector) — earliest first, ties broken by the following fields in that order.
   `stable`: equal.
 - A case passes when every scored metric passes. Suite score = cases passed / scored cases; reported per category
   and per metric.
-- Cases that request `cap_sim.stagger: false` are **pending**: reported, not scored, until §9.1 is ruled. The main
-  bench's 317 cases all send `stagger: false`, yet its oracle (Pyfa's `Fit.simulateCap`) always staggers. So scoring
-  "false = no staggering" here would contradict the main bench's expected values. Informational until adopted; proposed weight if adopted: its own problem score, gated on the main bench.
+- Every case is scored, including those sending `cap_sim.stagger: false` (ignored, §6).
 
 ## 8. The "34 all-overheated" differences (H vs A)
 
@@ -119,12 +118,13 @@ Checked against Pyfa (oracle/pyfa_cap_oracle.py): **H matches Pyfa on 34/34, A o
 bonuses make cycle times like 7649.999… ms in double arithmetic; Pyfa (and H) floor that to 7649, A computes 7650.
 The suite keeps such cases (category `overheat`); they are now scored.
 
-## 9. Open questions
+## 9. Rulings (2026-10-03)
 
-1. `cap_sim.stagger`. Either (a) absent = true and explicit false = no staggering: the main bench's expected values
-   would then have to be regenerated, because its cases send false; or (b) drop the field and always stagger, which
-   is what Pyfa's own fit path and every engine do today. This draft scores neither; stagger-off cases are pending.
-2. Booster shortfall fallback (§5 step 4) — Pyfa errors; proposal: largest waiting booster.
-3. `options.nos_no_target_cap` is not covered (Pyfa has no such switch).
-4. Starting capacitor below 100 % is not in the request; the graphs suite covers capacitor over time.
-5. `max_time_s` < the first failure → stable, with stable % from the lowest levels inside the window (as Pyfa).
+1. `cap_sim.stagger`: deprecated and ignored. The simulation always staggers (§6). Main bench 1.8.0 is not
+   regenerated.
+2. No waiting booster covers a shortfall (§5 step 4): **undefined**. No case exercises it and it is not scored.
+3. `options.nos_no_target_cap`: out of scope for CONTRACT-CAP.
+
+Still open: starting capacitor below 100 % (not in the request; the graphs suite covers capacitor over time).
+`max_time_s` shorter than the first failure gives stable, with stable % taken from the lowest levels inside the window
+(as Pyfa does).

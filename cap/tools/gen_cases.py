@@ -168,8 +168,8 @@ for b in ["exct_hyperion_armor", "exct_rifter", "exct_cerberus", "exct_tengu", "
         for m in r.get("modules", []):
             if m.get("state") in ("active", None) and can_overheat(m["type_id"]):
                 m["state"] = "overheated"
-        # bench cases carry cap_sim.stagger=false, which the main bench oracle ignores (Pyfa always staggers);
-        # use the default here so this category tests overheating only (stagger-off is pending, CONTRACT-CAP §9)
+        # bench cases carry cap_sim.stagger=false; the field is deprecated and ignored (always staggered) -- set
+        # true here only so this category reads as an overheat test
         r.setdefault("options", {}).setdefault("cap_sim", {})["stagger"] = True
         case(f"oh_bench_{b}", "overheat", f"bench case {b} with every overheatable module overheated", r)
 
@@ -330,18 +330,18 @@ four_reps = [*[M("Large Armor Repairer II", "low") for _ in range(4)], M("100MN 
 three_neuts = [*[M("Heavy Energy Neutralizer II", "high") for _ in range(3)], M("Large Armor Repairer II", "low")]
 aar2 = [M("Medium Ancillary Armor Repairer", "low", charge="Nanite Repair Paste"), M("Medium Ancillary Armor Repairer", "low", charge="Nanite Repair Paste"),
         M("10MN Afterburner II", "mid")]
-case("so_stagger_off_reps", "sim_options", "cap_sim.stagger false: identical repairers fire together", fit("Armageddon", four_reps, options={"cap_sim": {"stagger": False}}))
+case("so_stagger_off_reps", "sim_options", "cap_sim.stagger false: identical repairers (deprecated field, ignored: still staggered)", fit("Armageddon", four_reps, options={"cap_sim": {"stagger": False}}))
 case("so_stagger_on_reps", "sim_options", "cap_sim.stagger true (explicit; same as default)", fit("Armageddon", four_reps, options={"cap_sim": {"stagger": True}}))
-case("so_stagger_off_neuts", "sim_options", "stagger false, three neuts", fit("Armageddon", three_neuts, options={"cap_sim": {"stagger": False}}))
-case("so_stagger_off_maller", "sim_options", "stagger false, dual rep cruiser", fit("Maller", maller, options={"cap_sim": {"stagger": False}}))
-case("so_stagger_off_light", "sim_options", "stagger false on a stable fit (stable % changes)", fit("Myrmidon", [M("Medium Armor Repairer II", "low"), M("Medium Armor Repairer II", "low"),
+case("so_stagger_off_neuts", "sim_options", "stagger false, three neuts (deprecated field, ignored: still staggered)", fit("Armageddon", three_neuts, options={"cap_sim": {"stagger": False}}))
+case("so_stagger_off_maller", "sim_options", "stagger false, dual rep cruiser (deprecated field, ignored: still staggered)", fit("Maller", maller, options={"cap_sim": {"stagger": False}}))
+case("so_stagger_off_light", "sim_options", "stagger false on a stable fit (deprecated field, ignored: still staggered)", fit("Myrmidon", [M("Medium Armor Repairer II", "low"), M("Medium Armor Repairer II", "low"),
      M("Cap Recharger II", "mid", "online"), M("Cap Recharger II", "mid", "online"), M("Cap Recharger II", "mid", "online"), M("Cap Recharger II", "mid", "online")],
      options={"cap_sim": {"stagger": False}}))
-case("so_stagger_off_injectors", "sim_options", "stagger false with two cap boosters", fit("Apocalypse", apocalypse + [
+case("so_stagger_off_injectors", "sim_options", "stagger false with two cap boosters (deprecated field, ignored: still staggered)", fit("Apocalypse", apocalypse + [
     M("Heavy Capacitor Booster II", "mid", charge="Navy Cap Booster 800"), M("Heavy Capacitor Booster II", "mid", charge="Navy Cap Booster 800")], options={"cap_sim": {"stagger": False}}))
 case("so_reload_thorax", "sim_options", "cap_sim.reload true without factor_reload (reload only in the simulation)", fit("Thorax", thorax, options={"cap_sim": {"reload": True}}))
 case("so_reload_aar", "sim_options", "cap_sim.reload, ancillary repairers (staggered by clip)", fit("Maller", aar2, options={"cap_sim": {"reload": True}}))
-case("so_reload_stagger_off_aar", "sim_options", "reload on, stagger off", fit("Maller", aar2, options={"cap_sim": {"reload": True, "stagger": False}}))
+case("so_reload_stagger_off_aar", "sim_options", "reload on, stagger off (deprecated field, ignored: still staggered)", fit("Maller", aar2, options={"cap_sim": {"reload": True, "stagger": False}}))
 case("so_maxtime_60_unstable", "sim_options", "cap_sim.max_time_s 60 on a fit that empties later (stable within the window)", fit("Megathron", megathron, options={"cap_sim": {"max_time_s": 60}}))
 case("so_maxtime_30_drake", "sim_options", "max_time_s 30, drake", fit("Drake", drake, options={"cap_sim": {"max_time_s": 30}}))
 case("so_maxtime_long", "sim_options", "max_time_s 3600 on a fit that empties at 88 s (no effect)", fit("Drake", drake, options={"cap_sim": {"max_time_s": 3600}}))
@@ -349,9 +349,9 @@ case("so_maxtime_600_slow", "sim_options", "max_time_s 600 vs a 4300 s depletion
      options={"cap_sim": {"max_time_s": 600}}))
 case("so_maxtime_stable_fit", "sim_options", "max_time_s 120 on a stable fit", fit("Raven", [M("Multispectrum Shield Hardener II", "mid"), M("Multispectrum Shield Hardener II", "mid")],
      options={"cap_sim": {"max_time_s": 120}}))
-case("so_all_options_incoming", "sim_options", "stagger off + reload + max time, with incoming neut drones", fit("Thorax", thorax, projected=[PD("Acolyte EV-300", 3)],
+case("so_all_options_incoming", "sim_options", "stagger off + reload + max time, with incoming neut drones (deprecated field, ignored: still staggered)", fit("Thorax", thorax, projected=[PD("Acolyte EV-300", 3)],
      options={"cap_sim": {"stagger": False, "reload": True, "max_time_s": 1800}}))
-case("so_factor_reload_stagger_off", "sim_options", "factor_reload with stagger off", fit("Maller", aar2, options={"factor_reload": True, "cap_sim": {"stagger": False}}))
+case("so_factor_reload_stagger_off", "sim_options", "factor_reload with stagger off (deprecated field, ignored: still staggered)", fit("Maller", aar2, options={"factor_reload": True, "cap_sim": {"stagger": False}}))
 
 # ---------------------------------------------------------------- M. edge cases
 case("edge_mjd", "edge", "micro jump drive (long cycle, big cap need)", fit("Megathron", megathron + [M("Large Micro Jump Drive", "mid")]))
