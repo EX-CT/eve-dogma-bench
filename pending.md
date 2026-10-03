@@ -43,8 +43,14 @@ Pyfa's `eve.db` is client build 3532181. The engines' dataset follows SDE 356950
   Siege/Triage/Bastion/Industrial Core, gives class (a) diffs on `cap_stable` / `cap_stable_percent`.
 - `t3c-max-subsystems` (1367: Pyfa forces 4, SDE 5): decision is no pipeline patch, informational only (no metric).
 
-Not wired in yet: `compare.py` / `drift.py` don't read the file (owner TODO: drop `diffs.json` entries whose
-`(ship or projected target, metric)` matches an entry and count them as `expected_drift` in `summary.json`). No
+`compare.py` reads it (default: next to the script, or `--expected-diffs FILE`): a diff whose metric is listed by an
+`expected_difference` entry whose `match` holds for the fit goes to `expected_drift.json` and `summary.expected_drift`
+(fits, values, by_entry, per-engine fits) instead of `diffs.json` / `*_diff_fits`. New `--no-engines` reuses saved
+`<engine>.jsonl`. Test 2026-10-03 11:45 CST on the saved 200 fits (`fz-e/work/out`, m19 metrics): before A 10 / E 2 / J 10
+diff fits; now A 8 / E 0 / J 8 real + expected_drift 2 fits / 2 values (`paladin-agility`, lf10_123/197). The
+`remote-capacitor-impedance` matcher (transmitter projected onto a listed capital, or onto a ship with an active
+Siege/Triage/Bastion/Industrial Core) was checked on 3 synthetic fits (Revelation, Revelation + Siege → drift;
+Cyclone control → real). `drift.py` does not read it yet. No
 scored case is affected. The only corpus case on these hulls is `esf_projection_18`, already in
 `expected/known_divergences.json`.
 
