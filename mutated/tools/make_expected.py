@@ -23,6 +23,7 @@ def main(files):
     if out.returncode:
         print(out.stderr[-3000:], file=sys.stderr)
     (SUITE / "expected").mkdir(exist_ok=True)
+    known = json.loads((ROOT / "expected/known_divergences.json").read_text())
     n, bad = 0, 0
     for line in out.stdout.splitlines():
         if not line.startswith("{"):
@@ -34,7 +35,11 @@ def main(files):
             bad += 1
             continue
         vals = from_pyfa(r["stats"])
-        exp = {"case": name, "oracle": "pyfa-eos", "values": {k: v for k, v in sorted(vals.items()) if k in METRICS}, "excluded": {}}
+        # metrics the main corpus excludes for the source fit (known SDE-vs-Pyfa divergences) stay excluded here
+        src = max((s for s in known if name.endswith("_" + s)), key=len, default=None)
+        skip = known.get(src, {})
+        exp = {"case": name, "oracle": "pyfa-eos", "values": {k: v for k, v in sorted(vals.items()) if k in METRICS and k not in skip},
+               "excluded": skip}
         (SUITE / "expected" / f"{name}.json").write_text(json.dumps(exp, indent=1, sort_keys=True, default=str) + "\n")
         n += 1
     print(f"wrote {n} expected files, {bad} oracle errors")

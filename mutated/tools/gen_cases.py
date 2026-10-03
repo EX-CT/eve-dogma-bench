@@ -227,7 +227,8 @@ def build(g):
         ("crash_bcs", None, 0, [10152], True, 22291), ("frentix_mfs", None, 0, [15462], True, 10190),
         ("soothsayer_web", None, 0, [10166], True, 527), ("mindflood_capbat", None, 0, [15465], True, 4871),
         ("bluepill_lse", None, 0, [10156], True, 3841), ("exile_mar_se", None, 0, [25349], True, 3530),
-        ("crystal_only", "crystal", 6, [], False, None), ("snake_only_xinstinct", "snake", 6, [15459], True, None),
+        ("crystal_only", "crystal", 6, [], False, None), ("mindflood_ham_se", None, 0, [15464], True, 12076),
+        ("exile_ham_se", None, 0, [15480], True, 3530), ("snake_only_xinstinct", "snake", 6, [15459], True, None),
         ("halo_amulet_mixed", "halo", 3, [], False, 20347), ("two_boosters_dda", None, 0, [15466, 15460], True, 4405),
     ]
     for label, st, n, boosters, se, base in combos:
@@ -252,12 +253,32 @@ def build(g):
               f"{' with side effects' if se else ''}{', mutated ' + g.name(base) if base else ''}")
 
 
+def conflicts(g):
+    """Pyfa HandledImplantList/HandledBoosterList.append: an entry whose slot is already taken is dropped (first wins)"""
+    r0 = g.corpus["exct_rifter"]
+    for label, imps, boosters in (
+            ("implant_slot_first_wins", [19540, 33947], []),          # Snake Alpha then Nomad Alpha (both slot 1)
+            ("implant_slot_first_wins_rev", [33947, 19540], []),
+            ("booster_slot_first_wins", [], [15466, 15460]),          # Drop then Frentix (both booster slot 2)
+            ("booster_slot_first_wins_rev", [], [15460, 15466]),
+            ("booster_three_slots", [], [15459, 15466, 10156])):
+        r = copy.deepcopy(r0)
+        hit = next(i for i, m in enumerate(r["modules"]) if m["type_id"] in g.inp)
+        out, mu = g.mutation(r["modules"][hit]["type_id"], len(g.cases))
+        r["modules"][hit]["type_id"], r["modules"][hit]["mutation"] = out, mu
+        r["implants"] = imps
+        r["boosters"] = [{"type_id": b, "side_effects": g.side_effects(b)} for b in boosters]
+        g.add(f"slot_{label}_exct_rifter", r, f"implants {[g.name(x) for x in imps]}, boosters {[g.name(b) for b in boosters]} "
+              "(all side effects); a later entry for an occupied slot is ignored")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--dataset", default="/workspace/exct-eve/data/dataset-3569502.json.gz")
     a = ap.parse_args()
     g = G(a.dataset)
     build(g)
+    conflicts(g)
     OUT.mkdir(parents=True, exist_ok=True)
     for p in OUT.glob("*.json"):
         p.unlink()

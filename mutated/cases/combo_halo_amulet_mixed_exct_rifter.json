@@ -55,13 +55,13 @@
    "charge_type_id": null,
    "mutation": {
     "attributes": {
-     "1159": 623.277,
-     "30": 13.6591,
-     "50": 18.5872,
-     "796": 129809.0
+     "1159": 560.73,
+     "30": 16.7403,
+     "50": 18.7541,
+     "796": 113664.0
     },
     "base_type_id": 20347,
-    "mutaplasmid_type_id": 47809
+    "mutaplasmid_type_id": 47810
    },
    "slot": "low",
    "spool": null,

@@ -30,16 +30,10 @@
  "damage_pattern": null,
  "drones": [
   {
-   "active": 5,
+   "active": 2,
    "mutation": null,
-   "quantity": 5,
-   "type_id": 28211
-  },
-  {
-   "active": 5,
-   "mutation": null,
-   "quantity": 5,
-   "type_id": 2446
+   "quantity": 2,
+   "type_id": 2488
   }
  ],
  "environment": {
@@ -57,16 +51,19 @@
    "charge_type_id": null,
    "mutation": {
     "attributes": {
-     "1255": 19.8692,
-     "50": 32.8905
+     "50": 31.3584,
+     "974": 0.594551,
+     "975": 0.606835,
+     "976": 0.626144,
+     "977": 0.586731
     },
-    "base_type_id": 4405,
-    "mutaplasmid_type_id": 60476
+    "base_type_id": 2048,
+    "mutaplasmid_type_id": 52224
    },
    "slot": "low",
    "spool": null,
    "state": "active",
-   "type_id": 60482
+   "type_id": 52227
   },
   {
    "charge_type_id": null,
@@ -74,7 +71,7 @@
    "slot": "low",
    "spool": null,
    "state": "active",
-   "type_id": 4405
+   "type_id": 519
   },
   {
    "charge_type_id": null,
@@ -82,39 +79,7 @@
    "slot": "low",
    "spool": null,
    "state": "active",
-   "type_id": 4405
-  },
-  {
-   "charge_type_id": null,
-   "mutation": null,
-   "slot": "low",
-   "spool": null,
-   "state": "active",
-   "type_id": 3540
-  },
-  {
-   "charge_type_id": null,
-   "mutation": null,
-   "slot": "low",
-   "spool": null,
-   "state": "active",
-   "type_id": 3540
-  },
-  {
-   "charge_type_id": null,
-   "mutation": null,
-   "slot": "low",
-   "spool": null,
-   "state": "active",
-   "type_id": 11269
-  },
-  {
-   "charge_type_id": null,
-   "mutation": null,
-   "slot": "low",
-   "spool": null,
-   "state": "active",
-   "type_id": 2048
+   "type_id": 20347
   },
   {
    "charge_type_id": null,
@@ -122,7 +87,7 @@
    "slot": "mid",
    "spool": null,
    "state": "active",
-   "type_id": 3504
+   "type_id": 438
   },
   {
    "charge_type_id": null,
@@ -130,55 +95,47 @@
    "slot": "mid",
    "spool": null,
    "state": "active",
-   "type_id": 2032
+   "type_id": 448
   },
   {
-   "charge_type_id": 29001,
+   "charge_type_id": null,
    "mutation": null,
    "slot": "mid",
    "spool": null,
    "state": "active",
-   "type_id": 24438
+   "type_id": 527
   },
   {
-   "charge_type_id": 28999,
-   "mutation": null,
-   "slot": "mid",
-   "spool": null,
-   "state": "active",
-   "type_id": 24438
-  },
-  {
-   "charge_type_id": null,
+   "charge_type_id": 21898,
    "mutation": null,
    "slot": "high",
    "spool": null,
    "state": "active",
-   "type_id": 24427
+   "type_id": 2889
   },
   {
-   "charge_type_id": null,
+   "charge_type_id": 21898,
    "mutation": null,
    "slot": "high",
    "spool": null,
    "state": "active",
-   "type_id": 24427
+   "type_id": 2889
   },
   {
-   "charge_type_id": null,
+   "charge_type_id": 21898,
    "mutation": null,
    "slot": "high",
    "spool": null,
    "state": "active",
-   "type_id": 12271
+   "type_id": 2889
   },
   {
-   "charge_type_id": null,
+   "charge_type_id": 24473,
    "mutation": null,
    "slot": "high",
    "spool": null,
    "state": "active",
-   "type_id": 12271
+   "type_id": 10631
   },
   {
    "charge_type_id": null,
@@ -186,7 +143,7 @@
    "slot": "rig",
    "spool": null,
    "state": "online",
-   "type_id": 26294
+   "type_id": 31674
   },
   {
    "charge_type_id": null,
@@ -194,7 +151,7 @@
    "slot": "rig",
    "spool": null,
    "state": "online",
-   "type_id": 26294
+   "type_id": 31686
   },
   {
    "charge_type_id": null,
@@ -202,7 +159,7 @@
    "slot": "rig",
    "spool": null,
    "state": "online",
-   "type_id": 26338
+   "type_id": 31015
   }
  ],
  "options": {
@@ -224,7 +181,7 @@
  "schema_version": 1,
  "ship": {
   "mode_type_id": null,
-  "type_id": 645
+  "type_id": 587
  },
  "target_profile": null
 }
