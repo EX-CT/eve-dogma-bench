@@ -68,6 +68,22 @@ def _sweep_values(sw):
         k += 1
 
 
+def _jn(v):
+    """JSON-number canonical form for identity checks: 1.0 and 1 are the same JSON number (a JS transport such as
+    eve-fit-mcp prints integral floats without '.0'); everything else compares exactly."""
+    if isinstance(v, float) and v.is_integer() and abs(v) < 2 ** 53:
+        return int(v)
+    if isinstance(v, dict):
+        return {k: _jn(x) for k, x in v.items()}
+    if isinstance(v, list):
+        return [_jn(x) for x in v]
+    return v
+
+
+def _same(a, b):
+    return json.dumps(_jn(a), sort_keys=True) == json.dumps(_jn(b), sort_keys=True)
+
+
 def _cj(v):
     """sweep id / label value: compact JSON, keys sorted (docs/23 §2.3)"""
     return json.dumps(v, separators=(",", ":"), sort_keys=True)
@@ -300,7 +316,7 @@ def compare(exp, got, limit=8):
     er, gr = exp["results"], got["results"]
     if [r["index"] for r in gr] != [r["index"] for r in er]:
         bad.append(f"result order/indices {[r['index'] for r in gr][:12]} != {[r['index'] for r in er][:12]}")
-    if "base" in exp and json.dumps((got.get("base") or {}).get("stats"), sort_keys=True) != json.dumps(exp["base"]["stats"], sort_keys=True):
+    if "base" in exp and not _same((got.get("base") or {}).get("stats"), exp["base"]["stats"]):
         bad.append("base.stats differs from the one-by-one base fit")
     if "price" in exp.get("base", {}):
         import prices
@@ -317,9 +333,9 @@ def compare(exp, got, limit=8):
             if "error" not in g or g["error"].get("code") != e["error"]["code"]:
                 bad.append(f"[{e['index']}] expected error {e['error']['code']}, got {json.dumps(g)[:120]}")
             continue
-        if json.dumps(_noprov(g.get("stats")), sort_keys=True) != json.dumps(_noprov(e["stats"]), sort_keys=True):
+        if not _same(_noprov(g.get("stats")), _noprov(e["stats"])):
             if isinstance(e["stats"], dict) and isinstance(g.get("stats"), dict):
-                diff = sorted(k for k in set(e["stats"]) | set(g["stats"]) if json.dumps(e["stats"].get(k), sort_keys=True) != json.dumps(g["stats"].get(k), sort_keys=True))
+                diff = sorted(k for k in set(e["stats"]) | set(g["stats"]) if not _same(e["stats"].get(k), g["stats"].get(k)))
                 bad.append(f"[{e['index']}] stats not identical to one-by-one calc (keys {diff[:6]})")
             else:
                 bad.append(f"[{e['index']}] stats not identical to one-by-one calc")
