@@ -29,6 +29,22 @@ What `semantics.py` checks (docs/23 §2–§4, §7):
     exact.
 - **Per-fit errors** (§8): an error stays in place with the same `code` as when the fit is computed on its own.
 
+**Prices** (§5–§6, `price_*` cases, `price: true`): each result's `price` block (and `base.price`) is compared with
+`prices.py`:
+- `total_isk`, `complete`, per-section totals, per line `quantity` / `unit_isk` / `total_isk` / `source` / `layer` /
+  `multiplier` / `base_source`, the `missing` list (section, index, type_id, quantity, reason) and `sources` counts.
+  Amounts are compared within 1e-9 relative.
+- `stats` must still equal `calc` of the fit run on its own **without** price inputs.
+- Layers: L1 is the variant / fit entry / axis options (concatenated); L2 is the BatchRequest plus the FitRequest's
+  own `price_overrides`; L3 is `prices.isk`; L4 is empty.
+
+Interpretation points for F to confirm (docs/23 does not spell them out):
+- A line's `source` / `layer` is the highest-layer entry for the type. `multiplier` is the product applied, and
+  `base_source` is the source of the fixed price it applies to (`null` without a multiplier).
+- Charge quantity = floor(capacity / volume).
+- The ship line has index 0.
+- Booster lines are priced; `name` is not compared.
+
 Not covered yet: the `in` and `not_null` filter ops, `delta_ref` (form 1), numeric sweeps `from`/`to`/`step` (the
-expansion supports them), `swap_type`, `BATCH_TOO_LARGE`, and the price block and `price_overrides` (§5/§6: next
-step, `price_*` cases).
+expansion supports them), `swap_type`, `BATCH_TOO_LARGE`, `BAD_PRICE_OVERRIDE`, `--prices` files, `calc`'s own
+price block, `use_snapshot`, and L4 snapshot lines.
