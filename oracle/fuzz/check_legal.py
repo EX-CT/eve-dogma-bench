@@ -97,6 +97,8 @@ def check(req):
         st = STATES[r.get("state", "online")]
         if st >= S.ONLINE and not m.isValidState(st):
             notes.append(f"mod[{i}] {m.item.name}: state {r.get('state')} above max (contract clamps)")
+        if m.slot == FittingSlot.RIG and st < S.ONLINE:
+            bad.append(f"mod[{i}] {m.item.name}: offline rig (rigs cannot be offlined in EVE)")
         g = m.item.groupID
         if st >= S.ONLINE:
             on[g] = on.get(g, 0) + 1

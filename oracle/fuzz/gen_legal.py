@@ -139,6 +139,8 @@ def gen_one(k):
         mon = m.getModifiedItemAttr("maxGroupOnline", None); mac = m.getModifiedItemAttr("maxGroupActive", None)
         want = rnd.choices([S.OFFLINE, S.ONLINE, S.ACTIVE, S.OVERHEATED], [1, 3, 8, 2])[0]
         stt = S.OFFLINE
+        if m.slot == FittingSlot.RIG:
+            want = S.ONLINE  # EVE: rigs cannot be offlined (Pyfa allows it; out of scope here)
         for cand in (S.OVERHEATED, S.ACTIVE, S.ONLINE):
             if cand > want or not m.isValidState(cand):
                 continue
