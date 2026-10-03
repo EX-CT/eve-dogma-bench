@@ -79,6 +79,12 @@ def main(paths):
             if f.endswith(".cfg"):
                 row["path"] = f
             exp = expect(r)
+            if f in man.get("unscored", {}):
+                exp["scored"] = False
+                exp["unscored_reason"] = man["unscored"][f]
+            elif exp.get("pyfa_crash"):
+                exp["scored"] = False
+                exp["unscored_reason"] = "ruling 1: Pyfa itself crashes (oracle invalid); report-only"
             if fmt != "auto" and exp.get("kind") is None:
                 exp["kind"] = FORCED_KIND[fmt]
             row.update(exp)

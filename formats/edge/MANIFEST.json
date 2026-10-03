@@ -1,5 +1,5 @@
 {
- "note": "Edge inputs for CONTRACT-FORMATS 0.1. Every file is imported with format=auto (path = file name for .cfg files); 'forced' rows import a file with an explicit format. Expected values: Pyfa via oracle/pyfa_formats.py.",
+ "note": "Edge inputs for CONTRACT-FORMATS 0.1. Every file is imported with format=auto (path = file name for .cfg files); 'forced' rows import a file with an explicit format. Expected values: Pyfa via oracle/pyfa_formats.py. 'unscored' files (any format) and rows where Pyfa itself crashes (pyfa_crash) are report-only (rulings 1 and 3).",
  "files": {
   "NotAShip.cfg": {
    "category": "eftcfg"
@@ -104,6 +104,9 @@
    "category": "eft"
   },
   "eft_crlf_unknown.eft.txt": {
+   "category": "eft"
+  },
+  "eft_current_name.eft.txt": {
    "category": "eft"
   },
   "eft_drone_qty_zero.eft.txt": {
@@ -329,5 +332,10 @@
    "file": "dna_chatlink.dna.txt",
    "format": "dna"
   }
- ]
+ ],
+ "unscored": {
+  "eft_multi.eft.txt": "ruling 3: two EFT fits pasted together - Pyfa merges them (quirk); engines may merge or reject; report-only",
+  "eft_multi_three.eft.txt": "ruling 3: three EFT fits pasted together - Pyfa merges them (quirk); report-only",
+  "eft_renamed_item.eft.txt": "legacy item name ('Drone Control Unit I') resolved by Pyfa's rename table; SDE 3569502 only has 'Fighter Support Unit I' (scored control: eft_current_name.eft.txt); report-only"
+ }
 }

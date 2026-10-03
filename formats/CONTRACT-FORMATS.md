@@ -2,6 +2,7 @@
 
 > **Status: draft, not frozen, not published.** It lives on eve-dogma-bench branch `formats-suite` and is not part
 > of the frozen 1.8.0 scoring. It will be frozen after the round-1 archive. Until then, cases and wording may change.
+> eve's rulings of 2026-10-03 (§9) are incorporated.
 
 Round 3 scores **fit import and export** against Pyfa's actual behaviour (Pyfa `service/port/`, client db 3532181).
 It is a black-box contract. Every expected value is Pyfa output, produced by `oracle/pyfa_formats.py`, which loads
@@ -30,11 +31,11 @@ killmail and ESI network fetches, the `[n]` mutation references inside additions
 
 ## 2. Transport
 
-**Required:** the base contract's line RPC (`<variant> serve-stdio`). Each line `{"id","method","params"}` gets one
+**Required (ruling 6):** the base contract's line RPC (`<variant> serve-stdio`). Each line `{"id","method","params"}` gets one
 line `{"id","result"}` back. Errors are returned as `"result": {"error": {"code","message"}}` (a top-level
 `"error"` is accepted as well).
 
-**Optional:** a batch CLI (`<variant> format-batch`). It reads one `{"method","params"}` per stdin line and writes
+**Optional (ruling 6):** a batch CLI (`<variant> format-batch`). It reads one `{"method","params"}` per stdin line and writes
 exactly one result object per line, in the same order.
 
 Text is UTF-8 inside JSON strings. Variants must not change the input text (BOM, CR, tabs and trailing whitespace
@@ -97,6 +98,9 @@ that format.
 
 ### 4.1 Outcomes and error codes
 
+**Ruling 2:** only the outcome is scored: whether the variant rejects (any error) or accepts, the same as Pyfa.
+The codes below are **recommended**, not scored; agreement is reported.
+
 | Pyfa outcome | contract result |
 |---|---|
 | a fit kind with ≥ 1 fit | `{"kind","fits"}`. Pyfa's `None` fits are left out, keeping the order (XML with one bad `<fitting>`). |
@@ -107,8 +111,8 @@ that format.
 | request shape wrong (`text` not a string, …) | `BAD_REQUEST` |
 
 Rows where Pyfa fails with an internal exception (AttributeError, KeyError, TypeError, IndexError, ValueError
-"substring not found") are marked `"pyfa_crash": true` in `edge.jsonl`. They are scored as `IMPORT_ERROR` in 0.1
-(see §9, open question 1).
+"substring not found") are marked `"pyfa_crash": true` and `"scored": false` in `edge.jsonl`. **Ruling 1:** the
+oracle is invalid there, so these 8 rows are report-only. A variant may accept or reject that input.
 
 ### 4.2 Auto-detection order (Pyfa `importAuto`; "first line" = first non-blank line, stripped)
 
@@ -134,8 +138,9 @@ unrecognised under `auto` (a forced `xml` imports it).
   Leading and trailing whitespace on the line is ignored.
 - **Header failures (→ `IMPORT_ERROR`):** an empty name (`[Rifter,]`), an unknown ship, or a type that is not a
   ship. Ship names are **case-sensitive**: a lower-case hull name is unknown.
-- **Renamed items:** old names are resolved through Pyfa's rename table (e.g. `Drone Control Unit I` → `Fighter
-  Support Unit I`).
+- **Item names follow the current SDE** (dataset 3569502). Pyfa also resolves some legacy names through its own
+  rename table (e.g. `Drone Control Unit I` → `Fighter Support Unit I`). That table isn't in the SDE, so the
+  legacy-name row (`eft_renamed_item`) is report-only. The scored control `eft_current_name` uses the SDE name.
 - **Sections:** sections are separated by blank lines. Modules are placed by their slot type, in input order.
   - `[Empty X slot]` lines are skipped.
   - `/offline` or `/OFFLINE` sets the module offline. A mixed-case `/Offline` makes the whole line unknown (the
@@ -151,8 +156,10 @@ unrecognised under `auto` (a forced `xml` imports it).
   - If the block is missing, the plain base item is fitted.
 - **T3D:** a mode line is not read, and the fit gets the hull's first mode. `mode_type_id` null counts as equal.
 - **Line ends and whitespace:** CRLF, CR and mixed line ends are accepted, and so are tabs as whitespace.
-- **Multi-fit paste:** a second `[Ship, name]` header in the same text does **not** start a new fit. Its modules
-  are merged into the first fit (the first header wins).
+- **Multi-fit paste (known divergence, ruling 3):** Pyfa doesn't start a new fit at a second `[Ship, name]`
+  header in the same text. It merges the second fit's modules into the first, and the first header wins. This is
+  a Pyfa quirk and is **not scored** (`eft_multi`, `eft_multi_three` are report-only). Engines may merge the fits
+  the same way or reject the text. Multi-fit input is scored through `.cfg` and XML.
 - **EFT config (`eftcfg`):** each `[name]` starts a fit for the ship named by the file stem. An unknown stem, or a
   file with no fit lines, gives `IMPORT_ERROR`.
 
@@ -189,6 +196,9 @@ unrecognised under `auto` (a forced `xml` imports it).
   order (`low slot 3` before `low slot 0` stays first), and an unknown slot name still fits the module. Unknown types
   are skipped, and a drone bay `qty="0"` is kept with quantity 0.
 - **Entities:** they are decoded once, so `&amp;amp;` becomes `&amp;`.
+- **Attribute values are normalised as XML requires:** a literal newline or tab in `name="…"` becomes a space.
+  Pyfa's XML export writes a newline in a fit name as is, so the round trip of `line one\nline two` gives the name
+  `line one line two` (ruling 4: follow Pyfa's actual result).
 - **Export:** escapes `& < > "` in attributes. The description is limited to 400 characters and newlines become
   `<br>`.
 
@@ -214,8 +224,9 @@ by the first matching additions type (drones, then fighters, implants, boosters,
 
   Reported but **not scored:** drone `active` counts and `notes`.
 - **Import with items:** `kind` and the ordered (type_id, amount, mutation) list.
-- **Error rows:** pass when the variant returns any error. Whether the code matches is reported (informational in
-  0.1).
+- **Error rows:** pass when the variant returns any error. Whether the code matches is reported only (ruling 2).
+- **Names are scored (ruling 4)**, for exports (byte-exact) and imports alike.
+- **Report-only rows** (`"scored": false`) are evaluated and listed, but never count toward the score or the gate.
 
 ### 5.1 Dataset note
 
@@ -229,24 +240,25 @@ an EFT export is accepted (`info_known_divergence_subsystem_slot`).
 | `export:<fmt>` | `expected/export.jsonl` | **3260** | 326 bench fits (`cases/*.json`, name = file stem) × 10 export rows. 2 expected errors (`esi_min` of an item-less fit). |
 | `import:<fmt>` | `expected/import.jsonl` | **1304** | Pyfa's import of its own export: 326 × {eft, dna, esi, xml}. 194 legal fits and 132 over-fitted (Pyfa drops the excess modules). 1 expected error (DNA of a mutated drone: Pyfa crash). |
 | `edge_export:*` | `expected/edge_export.jsonl` + `edge_export/*.json` (`{"name","fit"}`) | **125** | 9 hand-written fits × 10 export rows (90, 2 errors) + 35 round-trip imports (1 error). Covers names with `& < > " [ ] , ; :`, unicode, a newline, 120 chars and empty; ship-only, cargo-only, mixed drone stacks, implants + boosters. |
-| `edge:<category>` | `expected/edge.jsonl` + `edge/*` + `edge/MANIFEST.json` | **103** | 86 inputs imported with `auto`, plus 17 forced-format rows; 36 expected errors, 8 of them `pyfa_crash`. |
+| `edge:<category>` | `expected/edge.jsonl` + `edge/*` + `edge/MANIFEST.json` | **104** (93 scored) | 87 inputs imported with `auto`, plus 17 forced-format rows. 11 rows are report-only: 8 `pyfa_crash`, 2 merged EFT pastes, 1 legacy rename. 28 scored rows are expected rejections. |
 
-Edge categories (rows / of which errors):
+Edge categories (scored rows / of which rejections; + report-only rows):
 
 | category | rows | errors | covers |
 |---|---|---|---|
-| `eft` | 29 | 5 | sections, `/offline` case variants, CRLF/mixed line ends, tabs, comments, BOM, empty and comma names, unknown and non-ship hulls, case-sensitivity, renamed item, unknown and wrong-size charges, `x0`/huge quantities, `Module xN`, overfit, wrong-hull subsystem, T3D mode lines, T3C order, structure |
+| `eft` | 29 (+1) | 5 | sections, `/offline` case variants, CRLF/mixed line ends, tabs, comments, BOM, empty and comma names, unknown and non-ship hulls, case-sensitivity, renamed item, unknown and wrong-size charges, `x0`/huge quantities, `Module xN`, overfit, wrong-hull subsystem, T3D mode lines, T3C order, structure |
 | `mutated` | 4 | 0 | mutated module and drone, unknown attribute, out-of-range values (clamped), missing block |
-| `multi` | 7 | 0 | EFT 2- and 3-fit pastes (merged), `.cfg` with 2 fits, XML with 2 fits and a mutation, XML with one bad fitting, DNA on two lines, two chat links |
+| `multi` | 5 (+2) | 0 | EFT 2- and 3-fit pastes (merged), `.cfg` with 2 fits, XML with 2 fits and a mutation, XML with one bad fitting, DNA on two lines, two chat links |
 | `eftcfg` | 2 | 2 | empty `.cfg`, unknown ship stem |
-| `dna` | 12 | 5 | chat link (alone and inside text), alt form, unknown ids, non-ship hull, `;0`, huge quantities, ship only, leading spaces, missing `::` |
-| `esi` | 11 | 5 | wrong/unknown flags, unknown item/ship, quantity 0, long name, pretty-printed, string ids, missing ship/description, invalid JSON, empty items |
-| `xml` | 7 | 4 | entities, slot gaps and unknown slot names, unknown module, `qty="0"`, no fittings, no description, malformed, no declaration |
+| `dna` | 9 (+3) | 2 | chat link (alone and inside text), alt form, unknown ids, non-ship hull, `;0`, huge quantities, ship only, leading spaces, missing `::` |
+| `esi` | 10 (+1) | 4 | wrong/unknown flags, unknown item/ship, quantity 0, long name, pretty-printed, string ids, missing ship/description, invalid JSON, empty items |
+| `xml` | 6 (+1) | 3 | entities, slot gaps and unknown slot names, unknown module, `qty="0"`, no fittings, no description, malformed, no declaration |
 | `items` | 8 | 0 | mutated item, an item without a mutaplasmid, drone/fighter/cargo lists, implant/booster lists (→ `FittingItem`), mixed lists |
 | `autodetect` | 6 | 6 | empty, whitespace, prose, a bare number, a JSON array, `[Ship]` without a comma |
-| `forced` | 17 | 9 | an explicit `format` on other formats' text or garbage, plus forced controls that succeed |
+| `forced` | 14 (+3) | 6 | an explicit `format` on other formats' text or garbage, plus forced controls that succeed |
 
-**Total: 4792 rows.**
+**Total: 4793 rows, of which 4782 are scored.** The single import.jsonl error (DNA of a mutated drone, Pyfa
+`ValueError: Passed item is not a Drone`) is a deliberate Pyfa validation, not a crash, so it stays scored.
 
 Regenerate everything with `tools/gen_formats_edge.sh <ref>` (edge + edge_export). The bench-case rows are
 regenerated as described in `formats/README.md`.
@@ -256,7 +268,10 @@ regenerated as described in `formats/README.md`.
 `python3 tools/evaluate_formats.py --rpc "<variant> serve-stdio" --name X` (or `--batch-cmd`). Results go to
 `results/formats/X/{scorecard.md, scorecard.json, failures.json}`.
 
-- **Headline:** rows passed / 4792. Each row counts 1. Not-implemented formats count as failed and are marked.
+- **Headline score (ruling 5):** the mean of the four group pass rates. `export`, `import` (round trip),
+  `edge_export` and `edge` (import edge) each weigh **25 %**, and rows count equally within a group. Total scored
+  rows passed are reported too. Not-implemented formats count as failed and are marked.
+- **Correctness gate:** 100 % of scored rows.
 - **Breakdown:** per group (`export`, `import`, `edge_export`, `edge`) and per category, plus legal-fit passes for
   round-trip imports, error-code agreement and `pyfa_crash` rows.
 - **Tie-break proposal for ranking:** export and import groups first, then edge, then wall time of the full run.
@@ -268,7 +283,19 @@ Inputs in `edge/` and `edge_export/` are hand-written for this suite. Expected v
 (`oracle/pyfa_formats.py`, unmodified `service/port/*`) on them. This document describes observed behaviour. It
 contains no Pyfa code, and variants must re-implement the behaviour from this description and the cases.
 
-## 9. Open questions (for the freeze)
+## 9. Rulings (eve, 2026-10-03)
+
+1. The 8 rows where Pyfa itself crashes are report-only (oracle invalid).
+2. Errors: only reject-vs-accept agreement with Pyfa is scored. Codes are recommended (§4.1) and not scored.
+3. Two or more EFT fits pasted together: a Pyfa quirk, not scored, listed as a known divergence. Engines may merge
+   or reject.
+4. Fit names are scored. XML names with a newline follow Pyfa's actual result.
+5. Weighting: export / round-trip import / export edge / import edge are 25 % each, per row within a group. Total
+   rows are reported. Gate = 100 % of scored rows.
+6. `format-batch` is optional, and RPC is mandatory.
+- Item names follow the current SDE. A legacy name that only Pyfa's rename table resolves is report-only.
+
+### Former open questions (answered above)
 
 1. **Pyfa crashes as truth:** should the 8 `pyfa_crash` rows (missing ESI `description`, XML without
    `<description>`, unknown DNA id, …) stay scored as `IMPORT_ERROR`, or become informational? A lenient importer
@@ -284,6 +311,8 @@ contains no Pyfa code, and variants must re-implement the behaviour from this de
 
 ## Changelog
 
+- 0.1 (2026-10-03, draft, rulings): eve's rulings 1–6 and the SDE-name rule; `scored: false` rows; group
+  weighting; +1 edge input (`eft_current_name`).
 - 0.1 (2026-10-03, draft): first revision, built from `formats-suite` dcd9e89 (3260 export / 1304 import / 16 edge
   rows). Adds 70 edge inputs, 17 forced rows, 9 export edge fits, outcome → error-code mapping,
   `tools/evaluate_formats.py`.

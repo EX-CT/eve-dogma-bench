@@ -17,15 +17,18 @@ Rows (all expectations are Pyfa output, see formats/README.md):
   edge_export:<fmt>  formats/expected/edge_export.jsonl hand-written export fits (+ their round trips as import)
   edge:<category>    formats/expected/edge.jsonl        hand-written / malformed inputs, auto-detect + forced format
 
-Scoring (section 6): a row passes or fails; score = passed rows / all rows (a not-implemented format counts as
-failed and is marked). Error codes are reported (column "code ok") but not scored in 0.1.
+Scoring (CONTRACT-FORMATS section 7): a row passes or fails. Error rows are scored on reject-vs-accept agreement
+with Pyfa only; codes are reported ("code ok"), not scored. Rows marked "scored": false (Pyfa crashes, merged
+multi-fit EFT pastes, legacy rename) are report-only. Score = mean of the four group pass rates (export,
+import, edge_export, edge; 25 % each, per row within a group); total scored rows are reported too. Gate = 100 %
+of scored rows. A not-implemented format counts as failed and is marked.
 Results: results/formats/<name>/{scorecard.md, scorecard.json, failures.json}.
 """
 import argparse, collections, json, os, subprocess, sys, time
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 EXP = os.path.join(ROOT, "formats", "expected")
-CONTRACT = "CONTRACT-FORMATS 0.1"
+CONTRACT = "CONTRACT-FORMATS 0.1 (rulings 2026-10-03)"
 NOT_IMPL = ("UNKNOWN_METHOD", "UNSUPPORTED_FORMAT", "NOT_IMPLEMENTED")
 
 
@@ -273,7 +276,17 @@ def main():
     fails = []
     for row, res in zip(rows, results):
         res, err = split(res)
+        scored = row["exp"].get("scored", True)
         c = st[row["cat"]]
+        if not scored:
+            ok = (err is not None) == ("error" in row["exp"]) if row["kind"] == "import" and "error" in row["exp"] else None
+            if ok is None:
+                ok = judge_import(row["exp"], res, err)[0] if row["kind"] == "import" else judge_export(row["exp"], res, err, row["fmt"])[0]
+            c["unscored_rows"] += 1
+            c["unscored_agree"] += bool(ok)
+            fails.append({"id": row["id"], "category": row["cat"], "scored": False, "agrees_with_pyfa": bool(ok),
+                          "reason": row["exp"].get("unscored_reason")}) if not ok else None
+            continue
         c["total"] += 1
         if not_impl(err, row["fmt"]):
             c["not_implemented"] += 1
@@ -284,9 +297,6 @@ def main():
         else:
             ok, reasons, info, code_ok = judge_import(row["exp"], res, err)
         c["pass"] += ok
-        if row["exp"].get("pyfa_crash"):
-            c["pyfa_crash_rows"] += 1
-            c["pyfa_crash_pass"] += ok
         if "legal" in row:
             c["legal_total"] += row["legal"]
             c["legal_pass"] += ok and row["legal"]
@@ -304,35 +314,42 @@ def main():
     groups = collections.defaultdict(collections.Counter)
     for cat, c in st.items():
         groups[group(cat)]["total"] += c["total"]
+        groups[group(cat)]["unscored"] += c["unscored_rows"]
         groups[group(cat)]["pass"] += c["pass"]
     tot = sum(c["total"] for c in st.values())
     ok = sum(c["pass"] for c in st.values())
+    rates = [g["pass"] / g["total"] for g in groups.values() if g["total"]]
+    weighted = 100.0 * sum(rates) / len(rates) if rates else 0.0
     lines = ["# Formats scorecard: %s" % a.name, "",
              "- contract: %s (DRAFT)" % CONTRACT,
-             "- rows passed: **%d/%d** (%.2f %%)" % (ok, tot, 100.0 * ok / max(tot, 1)),
+             "- **score (4 groups x 25 %%): %.2f %%**" % weighted,
+             "- scored rows passed: **%d/%d** (%.2f %%)%s" % (ok, tot, 100.0 * ok / max(tot, 1),
+                                                              " - gate PASSED" if ok == tot else " - gate not met"),
              "- error codes matching (informational): %d/%d" % (sum(c["code_ok"] for c in st.values()),
                                                                 sum(c["error_rows"] for c in st.values())),
-             "- rows where Pyfa crashes (flagged, scored in 0.1): %d/%d passed" % (
-                 sum(c["pyfa_crash_pass"] for c in st.values()), sum(c["pyfa_crash_rows"] for c in st.values())),
+             "- report-only rows (not scored) agreeing with Pyfa: %d/%d" % (
+                 sum(c["unscored_agree"] for c in st.values()), sum(c["unscored_rows"] for c in st.values())),
              "- wall time: %.2f s" % wall, "",
-             "| group | pass | total | % |", "|---|---|---|---|"]
+             "| group | weight | pass | scored rows | % | report-only rows |", "|---|---|---|---|---|---|"]
     for gname in ("export", "import", "edge_export", "edge"):
         if gname in groups:
             gg = groups[gname]
-            lines.append("| %s | %d | %d | %.1f |" % (gname, gg["pass"], gg["total"], 100.0 * gg["pass"] / gg["total"]))
+            lines.append("| %s | 25 %% | %d | %d | %.2f | %d |" % (gname, gg["pass"], gg["total"],
+                                                               100.0 * gg["pass"] / max(gg["total"], 1), gg["unscored"]))
     lines += ["", "| category | pass | total | legal-fit pass | error code ok | notes |", "|---|---|---|---|---|---|"]
     for cat in sorted(st):
         c = st[cat]
         legal = "%d/%d" % (c["legal_pass"], c["legal_total"]) if c["legal_total"] else ""
         code = "%d/%d" % (c["code_ok"], c["error_rows"]) if c["error_rows"] else ""
         notes = ", ".join("%s %d" % (k, v) for k, v in sorted(c.items())
-                          if k.startswith(("diff_", "info_", "pyfa_crash")) or k == "not_implemented")
+                          if k.startswith(("diff_", "info_", "unscored")) or k == "not_implemented")
         lines.append("| %s | %d | %d | %s | %s | %s |" % (cat, c["pass"], c["total"], legal, code, notes))
     md = "\n".join(lines) + "\n"
     out = a.out or os.path.join(ROOT, "results", "formats", a.name)
     os.makedirs(out, exist_ok=True)
     open(os.path.join(out, "scorecard.md"), "w").write(md)
-    json.dump({"variant": a.name, "contract": CONTRACT, "rows": tot, "rows_passed": ok, "wall_s": round(wall, 3),
+    json.dump({"variant": a.name, "contract": CONTRACT, "rows": tot, "rows_passed": ok, "score_pct": round(weighted, 4),
+               "gate": ok == tot, "wall_s": round(wall, 3),
                "groups": {k: dict(v) for k, v in groups.items()},
                "categories": {k: dict(v) for k, v in sorted(st.items())}},
               open(os.path.join(out, "scorecard.json"), "w"), indent=1, sort_keys=True)
