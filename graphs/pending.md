@@ -30,7 +30,7 @@ python3 graphs/pending/check_pending.py --batch-cmd "..." --file <graphs-g2>/tes
 | engine | G2 probes (7493) | pending 0.3 probes (1367) |
 |---|---|---|
 | G1 graphs-g1 df21693 | 7493 | 1367 (all 6 items) |
-| G2 (lab-g2 working copy a633bcd, run read-only) | 7493 (its own claim; 7486 at 40ef83c per its DESIGN) | 1278: app_grid 790/874, navy_tier 155/160, others full |
+| G2 (lab-g2 working copy a633bcd, run read-only) | 7486 (the 7 crossover misses its DESIGN lists) | 1278: app_grid 790/874, navy_tier 155/160, others full |
 
 ## Per-item verdicts
 
