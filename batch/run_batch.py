@@ -20,6 +20,26 @@ from pathlib import Path
 SUITE = Path(__file__).resolve().parent
 sys.path.insert(0, str(SUITE))
 import adapter, semantics  # noqa: E402
+import prices  # noqa: E402
+PRICE_KEYS = ("price_overrides", "prices")
+
+
+def strip_price(fit):
+    """the one-by-one reference fit: price inputs removed (stats must not depend on them)"""
+    f = {k: v for k, v in fit.items() if k not in PRICE_KEYS}
+    if isinstance(f.get("options"), dict) and "price" in f["options"]:
+        f["options"] = {k: v for k, v in f["options"].items() if k != "price"}
+    return f
+
+
+def with_price(out, fit, req, l1):
+    """merge the bench reference price block into a one-by-one output (price cases)"""
+    if not isinstance(out, dict) or "error" in out:
+        return out
+    inj = dict((fit.get("prices") or {}).get("isk", {}))
+    inj.update((req.get("prices") or {}).get("isk", {}))
+    l2 = list(req.get("price_overrides", [])) + list(fit.get("price_overrides", []))
+    return dict(out, price=prices.price_block(fit, prices.layers_for(l2, l1, inj)))
 
 
 def calc_one(engine, fit):
@@ -53,9 +73,11 @@ def main():
     todo = {}
     for r in reqs.values():
         for _, f in semantics.expand(r):
+            f = strip_price(f)
             todo.setdefault(json.dumps(f, sort_keys=True), f)
         if "base" in r:
-            todo.setdefault(json.dumps(r["base"], sort_keys=True), r["base"])
+            b = strip_price(r["base"])
+            todo.setdefault(json.dumps(b, sort_keys=True), b)
     t0 = time.time()
     keys = list(todo)
     with ThreadPoolExecutor(a.jobs) as ex:
@@ -66,12 +88,20 @@ def main():
     for c in ids:
         r = reqs[c]
         fits = semantics.expand(r)
-        singles = [single[json.dumps(f, sort_keys=True)] for _, f in fits]
-        base = single[json.dumps(r["base"], sort_keys=True)] if "base" in r else None
+        singles = [single[json.dumps(strip_price(f), sort_keys=True)] for _, f in fits]
+        base = single[json.dumps(strip_price(r["base"]), sort_keys=True)] if "base" in r else None
+        if r.get("price"):
+            singles = [with_price(o, f, r, l1) for o, (_, f), l1 in zip(singles, fits, semantics.l1_overrides(r))]
+            base = with_price(base, r["base"], r, []) if base is not None else None
         exp = semantics.expected(r, singles, base)
         t1 = time.time()
         if a.self_test:
-            got = semantics.expected(r, calc_jsonl(a.cmd, [f for _, f in fits]), calc_jsonl(a.cmd, [r["base"]])[0] if "base" in r else None)
+            js = calc_jsonl(a.cmd, [strip_price(f) for _, f in fits])
+            jb = calc_jsonl(a.cmd, [strip_price(r["base"])])[0] if "base" in r else None
+            if r.get("price"):
+                js = [with_price(o, f, r, l1) for o, (_, f), l1 in zip(js, fits, semantics.l1_overrides(r))]
+                jb = with_price(jb, r["base"], r, []) if jb is not None else None
+            got = semantics.expected(r, js, jb)
         else:
             try:
                 got = adapter.call(a.cmd, r, a.transport)

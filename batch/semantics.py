@@ -92,6 +92,21 @@ def expand3(req):
     return [("|".join(i), " × ".join(l), apply_patch(base, p)) for i, l, p in combos]
 
 
+def l1_overrides(req):
+    """docs/23 §5.2 L1 per expanded fit: fit entry / variant / axis option price_overrides (axis order)."""
+    if "fits" in req:
+        return [it.get("price_overrides", []) for it in req["fits"]]
+    if "variants" in req:
+        return [v.get("price_overrides", []) for v in req["variants"]]
+    if "sweep" in req:
+        return [[] for _ in _sweep_values(req["sweep"])]
+    combos = [[]]
+    for ax in req["product"]["axes"]:
+        opts = _sweep_options(ax["sweep"]) if "sweep" in ax else ax["options"]
+        combos = [c + o.get("price_overrides", []) for c in combos for o in opts]
+    return combos
+
+
 def expand(req):
     return [(label, fit) for _, label, fit in expand3(req)]
 
@@ -152,6 +167,8 @@ def expected(req, singles, base_single=None):
             r["error"] = {"code": out["error"].get("code")}
         else:
             r["stats"] = project(out, fields)
+            if req.get("price") and "price" in out:
+                r["price"] = out["price"]
             if want_delta:
                 r["delta"] = delta(out, base_single, fields)
                 r["delta_pct"] = delta_pct(r["delta"], base_single, fields)
@@ -176,6 +193,8 @@ def expected(req, singles, base_single=None):
     resp = {"total": len(singles), "matched": matched, "results": rows}
     if want_delta:
         resp["base"] = {"stats": project(base_single, fields)}
+        if req.get("price") and "price" in base_single:
+            resp["base"]["price"] = base_single["price"]
     return resp
 
 
@@ -199,6 +218,9 @@ def compare(exp, got, limit=8):
         bad.append(f"result order/indices {[r['index'] for r in gr][:12]} != {[r['index'] for r in er][:12]}")
     if "base" in exp and json.dumps((got.get("base") or {}).get("stats"), sort_keys=True) != json.dumps(exp["base"]["stats"], sort_keys=True):
         bad.append("base.stats differs from the one-by-one base fit")
+    if "price" in exp.get("base", {}):
+        import prices
+        bad += prices.compare_block(exp["base"]["price"], (got.get("base") or {}).get("price"), "base.price: ")
     gmap = {r["index"]: r for r in gr}
     for e in er:
         g = gmap.get(e["index"])
@@ -217,6 +239,9 @@ def compare(exp, got, limit=8):
                 bad.append(f"[{e['index']}] stats not identical to one-by-one calc (keys {diff[:6]})")
             else:
                 bad.append(f"[{e['index']}] stats not identical to one-by-one calc")
+        if "price" in e:
+            import prices
+            bad += prices.compare_block(e["price"], g.get("price"), f"[{e['index']}] price: ")
         if "delta" in e:
             gd = g.get("delta") or {}
             wrong = [k for k in e["delta"] if not _close_delta(e["delta"][k], gd.get(k))]

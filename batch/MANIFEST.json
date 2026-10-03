@@ -92,6 +92,125 @@
    "top_n"
   ]
  },
+ "price_chain_variant_over_request": {
+  "fits": 3,
+  "kind": "price",
+  "note": "L1 x0.9 over L2 x0.5 over injected (stacked 0.45); fixed L1 stops the chain; deltas on price",
+  "ops": [
+   "fields",
+   "deltas"
+  ]
+ },
+ "price_fit_level_overrides": {
+  "fits": 1,
+  "kind": "price",
+  "note": "the FitRequest's own price_overrides are layer L2 (request)",
+  "ops": [
+   "fields"
+  ]
+ },
+ "price_fits_entries": {
+  "fits": 3,
+  "kind": "price",
+  "note": "form 1 entries with their own L1 overrides over a batch-wide L2",
+  "ops": [
+   "fields",
+   "sort_by"
+  ]
+ },
+ "price_injected_complete": {
+  "fits": 1,
+  "kind": "price",
+  "note": "injected table prices every item: sources injected, complete, sections sum to total",
+  "ops": [
+   "fields"
+  ]
+ },
+ "price_market_group_children": {
+  "fits": 1,
+  "kind": "price",
+  "note": "market group 9 (Ship Equipment) matches modules in child market groups (deepest-first walk)",
+  "ops": [
+   "fields"
+  ]
+ },
+ "price_market_group_deepest": {
+  "fits": 1,
+  "kind": "price",
+  "note": "parent vs child market groups: the deepest matching group wins",
+  "ops": [
+   "fields"
+  ]
+ },
+ "price_missing_list": {
+  "fits": 1,
+  "kind": "price",
+  "note": "3 types unpriced -> missing (no_price) with section/index/quantity; not in totals",
+  "ops": [
+   "fields"
+  ]
+ },
+ "price_multiplier_without_base": {
+  "fits": 1,
+  "kind": "price",
+  "note": "multiplier over an unpriced type -> missing reason multiplier_without_base",
+  "ops": [
+   "fields"
+  ]
+ },
+ "price_product_options": {
+  "fits": 6,
+  "kind": "price",
+  "note": "axis options carry overrides (concatenated in axis order = one L1 layer)",
+  "ops": [
+   "fields",
+   "deltas",
+   "sort_by"
+  ]
+ },
+ "price_specificity_order": {
+  "fits": 1,
+  "kind": "price",
+  "note": "type > market group > group > category within one layer (2889 -> mg 574; 448 -> type; 527 -> category)",
+  "ops": [
+   "fields"
+  ]
+ },
+ "price_type_beats_injected": {
+  "fits": 1,
+  "kind": "price",
+  "note": "request type override beats injected",
+  "ops": [
+   "fields"
+  ]
+ },
+ "price_variant_fixed_beats_request_fixed": {
+  "fits": 2,
+  "kind": "price",
+  "note": "variant layer beats request layer even when less specific",
+  "ops": [
+   "fields"
+  ]
+ },
+ "price_variants_sort_filter": {
+  "fits": 6,
+  "kind": "price",
+  "note": "variants with their own overrides; filter + sort by price.total_isk; a patched variant with a type missing from the injected table",
+  "ops": [
+   "fields",
+   "deltas",
+   "filter",
+   "sort_by"
+  ]
+ },
+ "price_zero_self_made": {
+  "fits": 1,
+  "kind": "price",
+  "note": "price 0 (self-made): line kept with 0 ISK",
+  "ops": [
+   "fields"
+  ]
+ },
  "product_full_output": {
   "fits": 4,
   "kind": "product",
