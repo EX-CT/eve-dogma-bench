@@ -1,4 +1,4 @@
-# eve-dogma request/response contract (v1, revision 1.4.3)
+# eve-dogma request/response contract (v1, revision 1.4.4)
 
 Stateless: **one JSON `FitRequest` in → one JSON `FitStats` out.** No hidden state, no clocks, no network.
 The same request with the same dataset must give byte-identical output. Unknown request fields are ignored.
@@ -70,7 +70,7 @@ Library (Rust): `eve_dogma::calc(&Dataset, &FitRequest) -> serde_json::Value`, `
 `options` omitted entirely is the same as `"options": {}`: every option takes its default, so **`validate` defaults to
 true** either way (violations are reported unless `validate: false` is given).
 
-## Semantics (precise definitions, revisions 1.4.2–1.4.3)
+## Semantics (precise definitions, revisions 1.4.2–1.4.4)
 
 **`capacitor.use_gj_s` / `injected_gj_s` / `delta_gj_s`** (GJ/s, averages, not the simulation):
 - `use_gj_s` = Σ over the fit's own modules with state ≥ active and capacitorNeed > 0 of
@@ -127,6 +127,18 @@ target like the single-target modules; the neutralization burst adds a drain (`e
 resistance) to the jam chance; the warp-disruption burst has no stat effect. The Standup Weapon Disruptor uses the
 range factor (maxRange / falloffEffectiveness).
 
+**Breacher pods** (revision 1.4.4): a launcher loaded with a breacher pod (charge effect `dotMissileLaunching`) deals
+damage over time, `dotMaxDamagePerTick` every second for floor(`dotDuration` / 1 s) ticks. Its `offense.weapons[]`
+entry has `kind: "breacher"` and `volley` = `dps` = one tick, reported as `pure` damage (no damage type, resistance
+independent: counted fully in `total` and `vs_target_profile`). In the fit totals only the strongest pod counts
+(Pyfa `DmgTypes.pure` keeps the max per tick), so two identical pods give the same `weapon_dps` as one. The `pure`
+key is optional and may be omitted when it is 0; the scorer reads an absent `pure` as 0.
+
+**Overheat order** (revision 1.4.4): Pyfa applies effects module by module in `modules[]` order, so an overheat
+effect reads its module's `overload*` attribute (e.g. `overloadHardeningBonus`) before modules listed later in the
+list have applied their modifiers. Example: a Tengu with its Defensive subsystem listed after an overheated shield
+hardener gets the hardener's base overload bonus; with the subsystem listed first it gets the boosted one.
+
 **Module state correction** (draft revision 1.4.5, pending-1.10; coordinator ruling 2026-10-03 11:19 CST, reverses the
 earlier "unusable state keeps requested value" ruling; principle: align with Pyfa). For each entry of `modules[]`:
 - `rig` and `subsystem` modules are always `online` unless requested `offline` (no warning).
@@ -174,7 +186,7 @@ charges, mutations), for the fit as Pyfa's GUI holds it (after `fill()`):
 `meta` {engine, schema_version, sde_build, dataset_sha256} · `ship` {type_id, name, group} ·
 `resources` (cpu/power/calibration/drone_bandwidth/drone_bay/fighter_bay/cargo `{used,total}`, `slots.{high,mid,low,rig,subsystem,service}`,
 `hardpoints.{turret,launcher}`, `fighter_tubes.{light,support,heavy,total}`) · `modules[]` (per module: cpu, power, cycle_time_ms, cap_use_gj_s) ·
-`offense` (`weapons[]`, `drones[]`, `fighters[]`, `total.{weapon_dps, weapon_volley, drone_dps, drone_volley, fighter_dps, fighter_volley, dps{em,thermal,kinetic,explosive,total}, volley{…}}`, `vs_target_profile`) ·
+`offense` (`weapons[]`, `drones[]`, `fighters[]`, `total.{weapon_dps, weapon_volley, drone_dps, drone_volley, fighter_dps, fighter_volley, dps{em,thermal,kinetic,explosive,pure?,total}, volley{…}}`, `vs_target_profile`) ·
 `defense` (`hp`, `ehp`, `resonance.{shield,armor,hull}.{em,thermal,kinetic,explosive}`, `tank.{raw,effective}.{shield_repair,armor_repair,hull_repair,passive_shield}` HP/s, `damage_pattern`) ·
 `capacitor` {capacity, recharge_time_s, peak_recharge_gj_s, use_gj_s, injected_gj_s, delta_gj_s, stable, stable_percent | depletes_in_s, eve_stable_percent, sim_iterations} ·
 `navigation` {max_velocity, align_time_s, mass, agility, signature_radius, warp_speed_au_s, max_warp_distance_au, warp_scramble_status} ·
@@ -226,6 +238,8 @@ Conventions matching Pyfa (deliberate): volley is spooled; local nosferatu is ca
   booster fits per buff id), see "Semantics". Engine: projected Tracking Disruptors and Guidance Disruptors (Pyfa
   Effect6424 / Effect6423: target's Gunnery modules / Missile Launcher Operation charges, range factor, resistance) are
   now applied (they were a warning before). Oracle-verified, incl. new amount>1 projected-fit cases.
+- v1.4.4 (bench 1.9.0, released 2026-10-03 11:00 CST): additive `pure` key in offense
+  `dps`/`volley` objects and `weapons[].kind = "breacher"`; "Semantics" defines breacher pods and overheat order.
 - v1.4.3 (2026-10-03 06:05 CST): no request/response field changes. "Semantics" now also defines abyssal weather /
   AoE cloud environment beacons (warfare buffs in the fleet-buff pool, drone scope, penalties), incursion system
   effects and burst projectors (full strength, no range factor). Doomsday / lance DPS = subcycles × volley / cycle
