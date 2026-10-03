@@ -1,0 +1,7 @@
+[Rifter, edge header base differs from line]
+
+Damage Control II [1]
+
+[1] Damage Control I
+  Decayed Damage Control Mutaplasmid
+  cpu 28, hullEmDamageResonance 0.6

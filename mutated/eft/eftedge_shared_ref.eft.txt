@@ -1,0 +1,8 @@
+[Rifter, edge two modules share one reference]
+
+Gyrostabilizer II [1]
+Gyrostabilizer II [1]
+
+[1] Gyrostabilizer II
+  Gravid Gyrostabilizer Mutaplasmid
+  cpu 31, damageMultiplier 1.12, speedMultiplier 0.88

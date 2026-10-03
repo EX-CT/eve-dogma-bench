@@ -1,0 +1,14 @@
+[Rifter, edge implant and booster slot conflicts]
+
+Damage Control II [1]
+
+High-grade Snake Alpha
+Low-grade Nomad Alpha
+High-grade Snake Beta
+
+Standard Drop Booster
+Standard Frentix Booster
+
+[1] Damage Control II
+  Gravid Damage Control Mutaplasmid
+  cpu 31, hullEmDamageResonance 0.55

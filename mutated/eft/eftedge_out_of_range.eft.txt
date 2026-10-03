@@ -1,0 +1,7 @@
+[Damnation, edge out of range]
+
+50MN Microwarpdrive II [1]
+
+[1] 50MN Microwarpdrive II
+  Decayed 50MN Microwarpdrive Mutaplasmid
+  capacitorNeed 9999, cpu 1, maxVelocity 99999, power 165, signatureRadiusBonus 475

@@ -1,0 +1,8 @@
+[Rifter, edge reference without block]
+
+Damage Control II [7]
+Gyrostabilizer II [1]
+
+[1] Gyrostabilizer II
+  Decayed Gyrostabilizer Mutaplasmid
+  cpu 29, damageMultiplier 1.1, speedMultiplier 0.9

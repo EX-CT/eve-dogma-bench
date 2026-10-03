@@ -1,0 +1,8 @@
+[Vexor, edge mutated drone stack]
+
+Hammerhead II x3 [1]
+Hammerhead II x2
+
+[1] Hammerhead II
+  Exigent Medium Drone Firepower Mutaplasmid
+  damageMultiplier 2.5, maxVelocity 1900

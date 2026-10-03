@@ -1,0 +1,7 @@
+[Rifter, edge unknown attribute names]
+
+Warp Scrambler II [1]
+
+[1] Warp Scrambler II
+  Gravid Warp Scrambler Mutaplasmid
+  cpu 30, notAnAttribute 5, hp 999, maxRange 7800, capacitorNeed 9
