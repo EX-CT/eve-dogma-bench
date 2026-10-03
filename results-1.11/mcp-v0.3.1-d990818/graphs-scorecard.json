@@ -1,0 +1,71 @@
+{
+ "variant": "mcp-d990818",
+ "cases": 192,
+ "cases_fully_correct": 189,
+ "values_correct": 2691,
+ "values_total": 2694,
+ "accuracy": 0.9988864142538976,
+ "info_charge_ids": {
+  "ok": 126,
+  "total": 161
+ },
+ "groups": {
+  "application_profile": {
+   "ok": 161,
+   "total": 161,
+   "cases": 14
+  },
+  "capacitor": {
+   "ok": 173,
+   "total": 173,
+   "cases": 14
+  },
+  "damage": {
+   "ok": 1134,
+   "total": 1134,
+   "cases": 70
+  },
+  "ecm_burst": {
+   "ok": 218,
+   "total": 218,
+   "cases": 11
+  },
+  "errors": {
+   "ok": 17,
+   "total": 20,
+   "cases": 20
+  },
+  "ewar": {
+   "ok": 337,
+   "total": 337,
+   "cases": 22
+  },
+  "lock_time": {
+   "ok": 82,
+   "total": 82,
+   "cases": 7
+  },
+  "mobility": {
+   "ok": 259,
+   "total": 259,
+   "cases": 10
+  },
+  "remote_reps": {
+   "ok": 151,
+   "total": 151,
+   "cases": 11
+  },
+  "shield_regen": {
+   "ok": 66,
+   "total": 66,
+   "cases": 5
+  },
+  "warp_time": {
+   "ok": 93,
+   "total": 93,
+   "cases": 8
+  }
+ },
+ "wall_s": 1.3671752310037846,
+ "time": "2026-10-03T14:57:19+0800"
+}
