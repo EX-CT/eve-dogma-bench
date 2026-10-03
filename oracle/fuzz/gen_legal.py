@@ -31,7 +31,6 @@ pub = {int(k): v for k, v in DS.items() if v.get("published")}
 def a(t, aid, d=0.0):
     return pub[t]["attrs"].get(str(aid), d)
 ships = [t for t, v in pub.items() if v["category"] == 6 and v["group"] not in (29,)]
-ship_groups = [sorted(t for t in ships if pub[t]["group"] == g) for g in sorted({pub[t]["group"] for t in ships})]
 mods = [t for t, v in pub.items() if v["category"] == 7]
 subs = [t for t, v in pub.items() if v["category"] == 32]
 drones = [t for t, v in pub.items() if v["category"] == 18 and "Mutated" not in v["name"]]
@@ -39,6 +38,11 @@ fighters = [t for t, v in pub.items() if v["category"] == 87]
 implants = [t for t, v in pub.items() if v["category"] == 20 and a(t, 331)]
 boosters = [t for t, v in pub.items() if v["category"] == 20 and a(t, 1087)]
 modes = [t for t, v in pub.items() if v["group"] == 1306]
+item = eos.db.getItem
+# only types the oracle's eve.db knows (Pyfa data build can lag the engines' dataset)
+drones, fighters, implants, boosters = ([t for t in L if item(t) is not None] for L in (drones, fighters, implants, boosters))
+ships = [t for t in ships if item(t) is not None]
+ship_groups = [sorted(t for t in ships if pub[t]["group"] == g) for g in sorted({pub[t]["group"] for t in ships})]
 char = Character("fz", 5)
 SLOTN = {FittingSlot.HIGH: "high", FittingSlot.MED: "mid", FittingSlot.LOW: "low", FittingSlot.RIG: "rig",
          FittingSlot.SUBSYSTEM: "subsystem", FittingSlot.SERVICE: "service"}
