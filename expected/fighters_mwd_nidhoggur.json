@@ -1,8 +1,6 @@
 {
  "case": "fighters_mwd_nidhoggur",
- "excluded": {
-  "warp_scramble_status": "SDE: Networked Sensor Array ModAdd warpScrambleStatus += warpScrambleStrength (+100); Pyfa's hand-written moduleBonusNetworkedSensorArray omits it"
- },
+ "excluded": {},
  "oracle": "pyfa-eos",
  "values": {
   "align_time_s": 25.24942397220288,
@@ -59,6 +57,7 @@
   "tank.hull": 0,
   "tank.passive": 18.61111111111111,
   "tank.shield": 0,
+  "warp_scramble_status": 0.0,
   "warp_speed": 1.5,
   "weapon_dps": 0.0,
   "weapon_volley": 0.0

@@ -84,3 +84,11 @@ response reports the corrected `modules[].state`, and `warnings[]` gets
   values were made with the Bastion *active*; under the reversed ruling Pyfa corrects `overheated` Bastion to
   `online`), and `graphs/pending` notes on fz0157 / fz0038 / fz0518 (eda48f2). The graphs owner must regenerate that
   case from the plain oracle (`rulings/make_ruling_cases.py` no longer applies) and update the notes there.
+
+## `warp_scramble_status`: follow Pyfa (eve, 2026-10-03 11:19 CST)
+The 9 `known_divergences` entries "SDE: Networked Sensor Array ModAdd warpScrambleStatus += warpScrambleStrength (+100);
+Pyfa's hand-written moduleBonusNetworkedSensorArray omits it" are removed (exct_hel, exct_nidhoggur,
+fighters_mwd_nidhoggur, skills{0,2,4}_{hel,nidhoggur}). Their expected files were regenerated from the Pyfa oracle
+(`tools/make_expected.py`): the only change per file is the added `warp_scramble_status` value (e.g. exct_hel −25.0) and
+an empty `excluded`. 9 more values scored. Check 2026-10-03 11:35 CST (pending-1.10 corpus, bench-1.9.0 metrics.py):
+F bc84e2b 334/334 cases; eve-dogma-rs d6043a7 320/334 (fails the 9 NSA cases + 5 `e_fz_*`).

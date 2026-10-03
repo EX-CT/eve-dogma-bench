@@ -9,6 +9,8 @@ pulling.
   `active`/`overheated` → `online`, corrected state reported in `modules[].state`, one `warnings[]` entry per
   correction (`/modules/N: state '<requested>' not possible for this module, using online`). No scored value changes;
   informational check `tools/check_module_state.py` (`pending/state/`).
+- `warp_scramble_status` follows Pyfa: the 9 Networked Sensor Array known divergences (SDE +100, Pyfa omits) are
+  removed and their expected values regenerated from the oracle (+9 scored values).
 
 ## 1.8.0 (2026-10-03 06:10 CST)
 - CONTRACT.md = contract revision 1.4.3. No field changes; "Semantics" now also defines weather/cloud beacons,

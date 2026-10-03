@@ -11,32 +11,5 @@
  "esf_structure_bonus_1": {
   "ehp.armor": "same as hp.armor",
   "hp.armor": "SDE: unpowered structure zeroes plating bonus (ESF agrees); Pyfa hand-written handler ignores power state"
- },
- "exct_hel": {
-  "warp_scramble_status": "SDE: Networked Sensor Array ModAdd warpScrambleStatus += warpScrambleStrength (+100); Pyfa's hand-written moduleBonusNetworkedSensorArray omits it"
- },
- "exct_nidhoggur": {
-  "warp_scramble_status": "SDE: Networked Sensor Array ModAdd warpScrambleStatus += warpScrambleStrength (+100); Pyfa's hand-written moduleBonusNetworkedSensorArray omits it"
- },
- "fighters_mwd_nidhoggur": {
-  "warp_scramble_status": "SDE: Networked Sensor Array ModAdd warpScrambleStatus += warpScrambleStrength (+100); Pyfa's hand-written moduleBonusNetworkedSensorArray omits it"
- },
- "skills0_hel": {
-  "warp_scramble_status": "SDE: Networked Sensor Array ModAdd warpScrambleStatus += warpScrambleStrength (+100); Pyfa's hand-written moduleBonusNetworkedSensorArray omits it"
- },
- "skills0_nidhoggur": {
-  "warp_scramble_status": "SDE: Networked Sensor Array ModAdd warpScrambleStatus += warpScrambleStrength (+100); Pyfa's hand-written moduleBonusNetworkedSensorArray omits it"
- },
- "skills2_hel": {
-  "warp_scramble_status": "SDE: Networked Sensor Array ModAdd warpScrambleStatus += warpScrambleStrength (+100); Pyfa's hand-written moduleBonusNetworkedSensorArray omits it"
- },
- "skills2_nidhoggur": {
-  "warp_scramble_status": "SDE: Networked Sensor Array ModAdd warpScrambleStatus += warpScrambleStrength (+100); Pyfa's hand-written moduleBonusNetworkedSensorArray omits it"
- },
- "skills4_hel": {
-  "warp_scramble_status": "SDE: Networked Sensor Array ModAdd warpScrambleStatus += warpScrambleStrength (+100); Pyfa's hand-written moduleBonusNetworkedSensorArray omits it"
- },
- "skills4_nidhoggur": {
-  "warp_scramble_status": "SDE: Networked Sensor Array ModAdd warpScrambleStatus += warpScrambleStrength (+100); Pyfa's hand-written moduleBonusNetworkedSensorArray omits it"
  }
 }
