@@ -208,7 +208,7 @@ def main():
     ap.add_argument("--tests", default=os.path.join(REPO, "inventory", "tests.yaml"))
     ap.add_argument("--suites", default=os.path.join(REPO, "inventory", "suites.yaml"))
     ap.add_argument("--bench-repo", default=REPO, help="git repo holding the suite branches (default: this repo)")
-    ap.add_argument("--columns", default="f,mcp,web")
+    ap.add_argument("--columns", default="f,mcp,web,formats")
     ap.add_argument("--root", action="append", default=[], metavar="SUITE=PATH")
     ap.add_argument("--release", action="store_true", help="also require deferred: on missing/partial items")
     ap.add_argument("--strict", action="store_true", help="unverifiable references are failures")

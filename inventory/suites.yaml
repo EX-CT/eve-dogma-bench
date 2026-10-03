@@ -1,5 +1,7 @@
 # Suite registry for tools/check_inventory.py (docs/20 §5.1). A docs/19 test reference is "suite:name".
-# column: which docs/19 status column the suite evidences (f = engine, mcp, web).
+# column: which docs/19 status column the suite evidences (f = engine, mcp, web, formats = eve-fit-formats crate).
+# The fmt* suites (bench formats-suite, CONTRACT-FORMATS 0.1) score the formats layer through `eve-fit serve-stdio`
+# (EX-CT/eve-dogma crates/eve-fit-formats, outside the engine since the 2026-10-03 crate split), so they evidence `formats`.
 # kind:   files       -> name (glob allowed, must match >=1) is a file stem in <dir> (git_ref: read via `git ls-tree`
 #                        in the bench repo unless --root SUITE=PATH gives a checkout whose <dir> is used)
 #         jsonl       -> name (glob) equals field <key> of some line of <file> (git_ref as for files)
@@ -19,13 +21,14 @@ suites:
   ext-unit:  {column: f, kind: files, dir: ext/unit/cases, ext: .json}   # 1.11 hand-derived (non-Pyfa) overrides / validity unit cases
   cap:       {column: f, kind: files, git_ref: origin/cap-suite, dir: cap/cases, ext: .json}
   mut:       {column: f, kind: files, git_ref: origin/mutated-suite, dir: mutated/cases, ext: .json}
-  fmt:       {column: f, kind: files, git_ref: origin/formats-suite, dir: formats/edge, ext: ""}
-  fmt-export: {column: f, kind: jsonl, git_ref: origin/formats-suite, file: formats/expected/export.jsonl, key: format}
-  fmt-edge:  {column: f, kind: jsonl, git_ref: origin/formats-suite, file: formats/expected/edge.jsonl, key: category}
+  fmt:       {column: formats, kind: files, git_ref: origin/formats-suite, dir: formats/edge, ext: ""}
+  fmt-export: {column: formats, kind: jsonl, git_ref: origin/formats-suite, file: formats/expected/export.jsonl, key: format}
+  fmt-edge:  {column: formats, kind: jsonl, git_ref: origin/formats-suite, file: formats/expected/edge.jsonl, key: category}
   graphs:    {column: f, kind: files, git_ref: origin/graphs-round2, dir: graphs/cases, ext: .json}
   unit:      {column: f, kind: rust-test}
   mcp:       {column: mcp, kind: id, id_prefix: "mcp.", glob: "*.test.ts", ids_json: docs/test-ids.json}   # --root mcp=<EX-CT/eve-fit-mcp checkout, >= 8c6b93d>: ids mcp.<file>.<slug> on the node --test titles in src/test/ (guard: mcp.unit.test-ids; table docs/test-ids.{md,json})
   web-bench: {column: web, kind: files, git_ref: v1.9.0, dir: cases, ext: .json}   # bench 1.9.0 corpus in headless Chrome vs the site's wasm-worker (F): eve-fit-web Pages CI tools/browser-dogma-bench.py (engines.lock DOGMA_BENCH_SHA d2edf98 = v1.9.0); gates the deploy only when the F (wasm) build succeeds (eve4 is making it a hard gate)
   web-graphs: {column: web, kind: files, git_ref: 8c40921911aed9a7d7f032a2f9d4c43986ca0232, dir: graphs/cases, ext: .json}   # graphs 0.2 suite in headless Chrome vs wasm-worker (F): eve-fit-web Pages CI (engines.lock GRAPHS_BENCH_SHA); like web-bench, gates the deploy only when the F build succeeds (hard gate in progress, eve4)
   web-e2e:   {column: web, kind: id, id_prefix: "web.e2e.", glob: "e2e*.mjs"}   # --root web-e2e=<EX-CT/eve-fit-web checkout, >= fafa982>: check ids web.e2e.<slug> in tools/e2e.mjs; only the ts-worker and default-engine e2e runs block a release (other engines are informational)
-  # web-unit removed in 1.11: eve-fit-web has no unit tests.
+  web-unit:  {column: web, kind: id, id_prefix: "web.unit.", glob: "*.test.ts"}   # --root web-unit=<EX-CT/eve-fit-web checkout, >= 40e6044>: vitest names web.unit.<slug> in src/**/*.test.ts (npm test in Pages CI, REQUIRE_FORMATS_WASM=1)
+  formats-rust: {column: formats, kind: rust-test}   # --root formats-rust=<EX-CT/eve-dogma checkout>: Rust tests touching eve-fit-formats (crates/eve-fit-formats has none of its own at 2da8150; eve-cli/tests/formats_static_fit.rs)
