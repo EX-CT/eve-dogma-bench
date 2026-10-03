@@ -116,9 +116,12 @@ same shape as CONTRACT.md 1.x and as the result of Pyfa importing EFT `[Mutated]
 |---|---|---|---|
 | stats | 93 cases, 6,184 values, same metrics and tolerances as the main corpus | `mutated/run_mutated.py` | cases fully correct, values |
 | EFT export | Pyfa export text of every case | `mutated/tools/check_eft.py` | texts byte-identical / 93 |
-| EFT import | Pyfa import of the 93 exports plus 8 edge texts | `mutated/tools/check_eft.py` | fits equal / 101 |
+| EFT import | Pyfa import of 91 of the 93 exports plus 8 edge texts | `mutated/tools/check_eft.py` | fits equal / 99 |
 | regression | bench 1.8.0 corpus | `run.py` | must stay 326/326, byte-identical |
 
+* Two exports are excluded from the import check (`expected_extra/eft_import_excluded.json`). In this oracle setup,
+  Pyfa's `importEft` drops the mutated module from its own export text, and the cause is not yet understood:
+  `combo_mindflood_ham_se_exct_ishtar` and `state_web_overheated_exct_tengu`.
 * The import check compares only the ship, the mutated modules (in order), all drones, implants and boosters.
   General EFT import fidelity for unmutated modules belongs to the formats suite.
 * Known SDE-vs-Pyfa divergences that the main corpus excludes for a source fit stay excluded in every case built from
@@ -126,4 +129,4 @@ same shape as CONTRACT.md 1.x and as the result of Pyfa importing EFT `[Mutated]
 
 ## Changelog
 
-* 0.1 (2026-10-03): first draft, with 93 stats cases, 93 export texts and 101 import texts.
+* 0.1 (2026-10-03): first draft, with 93 stats cases, 93 export texts and 99 import texts.

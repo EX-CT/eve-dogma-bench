@@ -40,3 +40,10 @@ The oracle is used as a black box. `oracle/pyfa_oracle.py`, `oracle/pyfa_eft_exp
 unmodified Pyfa checkout and run as separate processes; see `oracle/LICENSE-GPL-NOTE`. No Pyfa code is copied into
 the bench. The generator, the scorers and the case and expected files contain no Pyfa code. The generator reads only
 the EXCT dataset and the bench's own cases.
+
+## Results (reference implementation)
+
+| engine | stats | EFT export | EFT import | 1.8.0 regression |
+|---|---|---|---|---|
+| Variant I `variant-i` @ 349c6fd | 93/93 cases, 6,184/6,184 values | 93/93 | 99/99 | 326/326, byte-identical |
+| Variant I before the port (9a4844a) | 81/86 at the first 86-case draft | 73/93 | 66/101 | — |
