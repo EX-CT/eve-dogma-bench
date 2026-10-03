@@ -63,6 +63,66 @@
   "feature": "drone_ehp",
   "source": "hand-built (Pyfa oracle)"
  },
+ "fehp_aeon_ametat_templar": {
+  "feature": "fighter_ehp",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fehp_archon_em_thermal_pattern": {
+  "feature": "fighter_ehp",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fehp_archon_templar_cenobite": {
+  "feature": "fighter_ehp",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fehp_chimera_dragonfly_scarab": {
+  "feature": "fighter_ehp",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fehp_chimera_inactive_squadron": {
+  "feature": "fighter_ehp",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fehp_hel_fsu3_mantis": {
+  "feature": "fighter_ehp",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fehp_hel_mantis_einherji": {
+  "feature": "fighter_ehp",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fehp_nidhoggur_einherji_siren": {
+  "feature": "fighter_ehp",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fehp_nyx_explosive_pattern": {
+  "feature": "fighter_ehp",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fehp_nyx_malleus_firbolg": {
+  "feature": "fighter_ehp",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fehp_thanatos_firbolg": {
+  "feature": "fighter_ehp",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fehp_thanatos_fsu2": {
+  "feature": "fighter_ehp",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fehp_thanatos_skills0": {
+  "feature": "fighter_ehp",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fehp_thanatos_skills_fighters1": {
+  "feature": "fighter_ehp",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fehp_wyvern_cyclops_dromi": {
+  "feature": "fighter_ehp",
+  "source": "hand-built (Pyfa oracle)"
+ },
  "fleet_booster_claymore_only": {
   "feature": "fleet.buffs",
   "source": "hand-built (Pyfa oracle)"

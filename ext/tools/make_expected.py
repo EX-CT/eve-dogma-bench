@@ -26,7 +26,7 @@ def ext_pointers(feature, x):
         for k, kk in (("current", "current"), ("min", "spool_min"), ("max", "spool_max")):
             for l, v in x["outgoing"][k].items():
                 out[f"/outgoing/{kk}/{l}_per_s"] = v
-    if feature == "drone_ehp":
+    if feature in ("drone_ehp", "fighter_ehp"):
         for arr, key, lst in (("drones", "drone_index", x["drones"]), ("fighters", "fighter_index", x["fighters"])):
             for d in lst:
                 i = d[key]
