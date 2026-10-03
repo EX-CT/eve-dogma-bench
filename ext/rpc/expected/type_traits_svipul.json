@@ -1,0 +1,11 @@
+{
+ "case": "type_traits_svipul",
+ "feature": "type",
+ "item": "ENG-SHIP-006",
+ "oracle": "pyfa-service",
+ "result": {
+  "traits_html": "<b>Minmatar Tactical Destroyer bonuses (per skill level):</b><br />\n7.5% bonus to Small Projectile Turret damage<br />\n10% bonus to Small Projectile Turret optimal range<br />\n5% reduction in module heat damage amount taken<br />\n<br />\n<b>Misc bonus:</b><br />\n33% bonus to Small Projectile Turret damage<br />\n95% reduction in Scan Probe Launcher and Survey Probe Launcher CPU requirements<br />\n\u2022 Additional bonuses are available while one of three Tactical Destroyer Modes are active. Modes may be switched no more than once every 10 seconds.<br />\n\u2022 Defense Mode<br />\n33.3% bonus to all shield and armor resistances while Defense Mode is enabled<br />\n66.6% reduction in Microwarpdrive signature radius penalty while Defense Mode is active<br />\n33.3% bonus to Remote Shield Booster repair amount and reduction in activation cost while Defense Mode is enabled<br />\n\u2022 Propulsion Mode<br />\n66.6% bonus to Afterburner and Microwarpdrive speed boost while Propulsion Mode is enabled<br />\n33.3% bonus to ship inertia modifier while Propulsion Mode is enabled<br />\n\u2022 Sharpshooter Mode<br />\n33.3% bonus to Small Projectile Turret tracking speed while Sharpshooter Mode is enabled<br />\n33.3% bonus to Small Projectile Turret damage while Sharpshooter Mode is enabled<br />\n100% bonus to sensor strength and targeting range while Sharpshooter Mode is enabled<br />\n66.6% increased resistances against hostile Sensor Dampeners and Weapon Disruptors while Sharpshooter Mode is enabled",
+  "type_id": 34562
+ },
+ "source": "hand-built (Pyfa lookup oracle)"
+}

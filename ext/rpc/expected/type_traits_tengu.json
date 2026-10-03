@@ -1,0 +1,11 @@
+{
+ "case": "type_traits_tengu",
+ "feature": "type",
+ "item": "ENG-SHIP-006",
+ "oracle": "pyfa-service",
+ "result": {
+  "traits_html": "<b>Caldari Core Systems bonuses (per skill level):</b><br />\n\u2022 bonus to all Caldari Core Systems effectiveness<br />\n<br />\n<b>Caldari Defensive Systems bonuses (per skill level):</b><br />\n\u2022 bonus to all Caldari Defensive Systems effectiveness<br />\n<br />\n<b>Caldari Offensive Systems bonuses (per skill level):</b><br />\n\u2022 bonus to all Caldari Offensive Systems effectiveness<br />\n<br />\n<b>Caldari Propulsion Systems bonuses (per skill level):</b><br />\n\u2022 bonus to all Caldari Propulsion Systems effectiveness<br />\n<br />\n<b>Caldari Strategic Cruiser bonuses (per skill level):</b><br />\n5% reduction in module damage from overheating<br />\n10% bonus to nanite repair paste repair speed<br />\n<br />\n<b>Role Bonus:</b><br />\n99% reduction in Scan Probe Launcher CPU requirements<br />\n\u2022 Rigs may be removed from this ship without being destroyed",
+  "type_id": 29984
+ },
+ "source": "hand-built (Pyfa lookup oracle)"
+}

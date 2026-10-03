@@ -1,0 +1,11 @@
+{
+ "case": "type_desc_ishtar",
+ "feature": "type",
+ "item": "MKT-003",
+ "oracle": "pyfa-service",
+ "result": {
+  "description": "While not endowed with as much pure firepower as other ships of its category, the Ishtar is more than able to hold its own by virtue of its tremendous capacity for drones and its unique hard-coded drone-control subroutines. \r\n\r\nTouted as \"the Ishkur's big brother,\" the Ishtar design is the furthest CreoDron have ever gone towards creating a completely dedicated drone carrier. At various stages in its development process plans were made to strengthen the vessel in other areas, but ultimately the CreoDron engineers' fascination with pushing the drone carrier envelope overrode all other concerns.",
+  "type_id": 12005
+ },
+ "source": "hand-built (Pyfa lookup oracle)"
+}

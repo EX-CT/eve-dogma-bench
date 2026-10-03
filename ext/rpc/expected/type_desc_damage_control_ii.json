@@ -1,0 +1,11 @@
+{
+ "case": "type_desc_damage_control_ii",
+ "feature": "type",
+ "item": "MKT-003",
+ "oracle": "pyfa-service",
+ "result": {
+  "description": "Utilizes a combination of containment field emitters and redundancy systems to mitigate the impact of critical system damage. \r\n\r\nGrants a bonus to resistance for shield, armor and hull.\r\n\r\nOnly one Damage Control can be fit at a given time.",
+  "type_id": 2048
+ },
+ "source": "hand-built (Pyfa lookup oracle)"
+}

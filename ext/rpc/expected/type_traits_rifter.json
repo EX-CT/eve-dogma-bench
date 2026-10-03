@@ -1,0 +1,11 @@
+{
+ "case": "type_traits_rifter",
+ "feature": "type",
+ "item": "ENG-SHIP-006",
+ "oracle": "pyfa-service",
+ "result": {
+  "traits_html": "<b>Minmatar Frigate bonuses (per skill level):</b><br />\n7.5% bonus to Small Projectile Turret rate of fire<br />\n10% bonus to Small Projectile Turret falloff",
+  "type_id": 587
+ },
+ "source": "hand-built (Pyfa lookup oracle)"
+}

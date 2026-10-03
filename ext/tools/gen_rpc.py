@@ -67,6 +67,16 @@ C("backup_three", "DB-003", "fits.backup", {"fits": [
     {"name": "Vexor drones", "fit": fitreq("Vexor", [("Drone Damage Amplifier II", None)], [("Hammerhead II", 5)])},
     {"name": "Thorax plate", "fit": fitreq("Thorax", [("800mm Steel Plates II", None), ("Damage Control II", None)])}]})
 
+# MKT-003 item stats / ENG-SHIP-006 traits / CHR-008 required skills: F's `type` method ({id}); `_fields` names the
+# fields a case scores (an engine ignores it)
+for n in ("Rifter", "Ishtar", "Svipul", "Damage Control II", "Hammerhead II", "Large Shield Extender II"):
+    s = n.lower().replace(" ", "_")
+    C("type_attr_" + s, "MKT-003", "type", {"id": tid(n), "_fields": ["name", "attributes", "effects"]})
+    C("type_desc_" + s, "MKT-003", "type", {"id": tid(n), "_fields": ["description"]})
+    C("type_reqskills_" + s, "CHR-008", "type", {"id": tid(n), "_fields": ["required_skills"]})
+for n in ("Rifter", "Ishtar", "Svipul", "Nyx", "Tengu"):
+    C("type_traits_" + n.lower(), "ENG-SHIP-006", "type", {"id": tid(n), "_fields": ["traits_html"]})
+
 man = {}
 for n, (it, c) in cases.items():
     (SUITE / "cases" / f"{n}.json").write_text(json.dumps(c, indent=1, sort_keys=True) + "\n")

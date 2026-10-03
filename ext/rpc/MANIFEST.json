@@ -124,6 +124,121 @@
   "item": "MKT-002",
   "source": "hand-built (Pyfa lookup oracle)"
  },
+ "type_attr_damage_control_ii": {
+  "feature": "type",
+  "item": "MKT-003",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "type_attr_hammerhead_ii": {
+  "feature": "type",
+  "item": "MKT-003",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "type_attr_ishtar": {
+  "feature": "type",
+  "item": "MKT-003",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "type_attr_large_shield_extender_ii": {
+  "feature": "type",
+  "item": "MKT-003",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "type_attr_rifter": {
+  "feature": "type",
+  "item": "MKT-003",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "type_attr_svipul": {
+  "feature": "type",
+  "item": "MKT-003",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "type_desc_damage_control_ii": {
+  "feature": "type",
+  "item": "MKT-003",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "type_desc_hammerhead_ii": {
+  "feature": "type",
+  "item": "MKT-003",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "type_desc_ishtar": {
+  "feature": "type",
+  "item": "MKT-003",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "type_desc_large_shield_extender_ii": {
+  "feature": "type",
+  "item": "MKT-003",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "type_desc_rifter": {
+  "feature": "type",
+  "item": "MKT-003",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "type_desc_svipul": {
+  "feature": "type",
+  "item": "MKT-003",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "type_reqskills_damage_control_ii": {
+  "feature": "type",
+  "item": "CHR-008",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "type_reqskills_hammerhead_ii": {
+  "feature": "type",
+  "item": "CHR-008",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "type_reqskills_ishtar": {
+  "feature": "type",
+  "item": "CHR-008",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "type_reqskills_large_shield_extender_ii": {
+  "feature": "type",
+  "item": "CHR-008",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "type_reqskills_rifter": {
+  "feature": "type",
+  "item": "CHR-008",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "type_reqskills_svipul": {
+  "feature": "type",
+  "item": "CHR-008",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "type_traits_ishtar": {
+  "feature": "type",
+  "item": "ENG-SHIP-006",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "type_traits_nyx": {
+  "feature": "type",
+  "item": "ENG-SHIP-006",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "type_traits_rifter": {
+  "feature": "type",
+  "item": "ENG-SHIP-006",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "type_traits_svipul": {
+  "feature": "type",
+  "item": "ENG-SHIP-006",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
+ "type_traits_tengu": {
+  "feature": "type",
+  "item": "ENG-SHIP-006",
+  "source": "hand-built (Pyfa lookup oracle)"
+ },
  "var_200mm_autocannon_ii": {
   "feature": "item.variations",
   "item": "ENG-MOD-013",

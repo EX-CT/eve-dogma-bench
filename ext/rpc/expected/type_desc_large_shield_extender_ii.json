@@ -1,0 +1,11 @@
+{
+ "case": "type_desc_large_shield_extender_ii",
+ "feature": "type",
+ "item": "MKT-003",
+ "oracle": "pyfa-service",
+ "result": {
+  "description": "Increases the maximum strength of the shield.",
+  "type_id": 3841
+ },
+ "source": "hand-built (Pyfa lookup oracle)"
+}

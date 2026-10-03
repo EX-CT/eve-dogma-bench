@@ -1,0 +1,11 @@
+{
+ "case": "type_desc_hammerhead_ii",
+ "feature": "type",
+ "item": "MKT-003",
+ "oracle": "pyfa-service",
+ "result": {
+  "description": "Medium Scout Drone",
+  "type_id": 2185
+ },
+ "source": "hand-built (Pyfa lookup oracle)"
+}

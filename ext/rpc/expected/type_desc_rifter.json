@@ -1,0 +1,11 @@
+{
+ "case": "type_desc_rifter",
+ "feature": "type",
+ "item": "MKT-003",
+ "oracle": "pyfa-service",
+ "result": {
+  "description": "The Rifter is a very powerful combat frigate and can easily tackle the best frigates out there. It has gone through many radical design phases since its inauguration during the Minmatar Rebellion. The Rifter has a wide variety of offensive capabilities, making it an unpredictable and deadly adversary.",
+  "type_id": 587
+ },
+ "source": "hand-built (Pyfa lookup oracle)"
+}

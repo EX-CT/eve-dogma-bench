@@ -1,0 +1,13 @@
+{
+ "case": "type_reqskills_rifter",
+ "feature": "type",
+ "item": "CHR-008",
+ "oracle": "pyfa-service",
+ "result": {
+  "required_skills": {
+   "3329": 1
+  },
+  "type_id": 587
+ },
+ "source": "hand-built (Pyfa lookup oracle)"
+}

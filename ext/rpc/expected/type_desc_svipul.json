@@ -1,0 +1,11 @@
+{
+ "case": "type_desc_svipul",
+ "feature": "type",
+ "item": "MKT-003",
+ "oracle": "pyfa-service",
+ "result": {
+  "description": "Released in YC 117 as the result of the first Republic Fleet joint research project to include engineers from all seven Minmatar tribes, the Svipul is a powerful symbol of inter-tribal unity for many Republic citizens.\r\n\r\nAlthough the contributions of engineers from the Nefantar and Starkmanir tribes were fairly minor, a large delegation from the Vo-Lakat Thukker caravan and donations from Republic loyalist capsuleers across the cluster were invaluable to the development of this incredibly adaptable warship.",
+  "type_id": 34562
+ },
+ "source": "hand-built (Pyfa lookup oracle)"
+}

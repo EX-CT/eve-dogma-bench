@@ -310,7 +310,10 @@ Pyfa-backed cases for docs/19 items whose f status is `missing` (no engine imple
   {grade: [type_ids]}}}` (ENG-IMP-005); `character.import_evemon {xml}` → `{name, security_status, skills}` or an
   error for a non-EVEMon root (CHR-004); `names.resolve {names}` → `{resolved: {name: type_id | null}}` incl. Pyfa's
   renamed-item conversions (SVC-005); `fits.backup {fits: [{name, fit}]}` → `{xml}` (Pyfa XML backup of all fits,
-  compared after parsing; DB-003).
+  compared after parsing; DB-003); existing `type {id}` scored for Pyfa's item stats fields `attributes` (base,
+incl. Pyfa's mass / capacity / volume / radius attributes), `effects` [{id, name}], `description`, `traits_html`
+(Pyfa Traits tab HTML), `required_skills` {skill id: level} (cases `type_*`; MKT-003, ENG-SHIP-006, CHR-008; a
+case's `_fields` param lists the fields it scores).
 
 ## Changelog
 - v1 (2026-10-03): initial contract.

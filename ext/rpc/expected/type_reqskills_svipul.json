@@ -1,0 +1,13 @@
+{
+ "case": "type_reqskills_svipul",
+ "feature": "type",
+ "item": "CHR-008",
+ "oracle": "pyfa-service",
+ "result": {
+  "required_skills": {
+   "34533": 1
+  },
+  "type_id": 34562
+ },
+ "source": "hand-built (Pyfa lookup oracle)"
+}

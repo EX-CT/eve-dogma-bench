@@ -15,6 +15,8 @@ Methods (result shapes are the draft contract):
   character.import_evemon {xml}         -> {name, security_status, skills{type_id: level}}
                                            CharacterImportThread.run (EVEMon XML)          CHR-004
   names.resolve {names}                 -> {resolved: {name: type_id|null}}  Market.getItem(str) (conversions)  SVC-005
+  type {id, _fields}                    -> Pyfa item stats: attributes, effects, description, traits_html,
+                                           required_skills (only the `_fields` asked)      MKT-003, ENG-SHIP-006, CHR-008
   fits.backup {fits: [{name, fit}]}     -> {xml}  Port.backupFits = exportXml of all fits        DB-003
 """
 import json, os, sys, tempfile
@@ -133,7 +135,21 @@ def backup(p):
     return {"xml": _export_xml()(fits, None, None)}
 
 
-METHODS = {"item.variations": variations, "item.compare": compare, "market.group": market_group,
+def type_info(p):
+    """`type` (F's existing method, params {id}); Pyfa item stats window data. Each case asks for some fields:
+    attributes (base, Item.attributes), effects [{id, name}] (Item.effects), description, traits_html
+    (Item.traits.display, the Traits tab), required_skills {skill type id: level} (Item.requiredSkills)."""
+    it = eos.db.getItem(int(p["id"]))
+    full = {"type_id": it.ID, "name": it.name,
+            "attributes": {k: v.value for k, v in it.attributes.items()},
+            "effects": sorted(({"id": e.ID, "name": e.name} for e in it.effects.values()), key=lambda x: x["id"]),
+            "description": it.description,
+            "traits_html": it.traits.display if it.traits is not None else None,
+            "required_skills": {str(s.ID): l for s, l in it.requiredSkills.items()}}
+    return {k: full[k] for k in ["type_id"] + p.get("_fields", list(full))}
+
+
+METHODS = {"type": type_info, "item.variations": variations, "item.compare": compare, "market.group": market_group,
            "market.search": search, "implant_sets.list": implant_sets, "character.import_evemon": import_evemon,
            "names.resolve": resolve, "fits.backup": backup}
 

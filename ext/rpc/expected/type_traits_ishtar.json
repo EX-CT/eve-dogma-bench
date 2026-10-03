@@ -1,0 +1,11 @@
+{
+ "case": "type_traits_ishtar",
+ "feature": "type",
+ "item": "ENG-SHIP-006",
+ "oracle": "pyfa-service",
+ "result": {
+  "traits_html": "<b>Gallente Cruiser bonuses (per skill level):</b><br />\n7.5% bonus to Heavy Drone max velocity and tracking speed<br />\n10% bonus to Light Drone, Medium Drone, and Heavy Drone hitpoints and damage<br />\n5% bonus to Sentry Drone hitpoints and damage<br />\n<br />\n<b>Heavy Assault Cruisers bonuses (per skill level):</b><br />\n5000m bonus to Drone operation range<br />\n5% bonus to Sentry Drone optimal range and tracking speed<br />\n<br />\n<b>Role Bonus:</b><br />\n50% reduction in Microwarpdrive signature radius penalty<br />\n\u2022 Can fit Assault Damage Controls",
+  "type_id": 12005
+ },
+ "source": "hand-built (Pyfa lookup oracle)"
+}

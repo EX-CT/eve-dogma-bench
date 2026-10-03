@@ -1,0 +1,44 @@
+{
+ "case": "type_attr_large_shield_extender_ii",
+ "feature": "type",
+ "item": "MKT-003",
+ "oracle": "pyfa-service",
+ "result": {
+  "attributes": {
+   "capacity": 0.0,
+   "capacityBonus": 2600.0,
+   "cpu": 45.0,
+   "hp": 40.0,
+   "mass": 0.0,
+   "metaLevelOld": 5.0,
+   "power": 160.0,
+   "radius": 1.0,
+   "requiredSkill1": 3425.0,
+   "requiredSkill1Level": 4.0,
+   "signatureRadiusAdd": 25.0,
+   "techLevel": 2.0,
+   "volume": 20.0
+  },
+  "effects": [
+   {
+    "id": 13,
+    "name": "medPower"
+   },
+   {
+    "id": 16,
+    "name": "online"
+   },
+   {
+    "id": 21,
+    "name": "shieldCapacityBonusOnline"
+   },
+   {
+    "id": 2029,
+    "name": "addToSignatureRadius2"
+   }
+  ],
+  "name": "Large Shield Extender II",
+  "type_id": 3841
+ },
+ "source": "hand-built (Pyfa lookup oracle)"
+}

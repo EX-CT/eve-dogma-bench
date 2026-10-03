@@ -1,0 +1,9 @@
+{
+ "method": "type",
+ "params": {
+  "_fields": [
+   "required_skills"
+  ],
+  "id": 2185
+ }
+}

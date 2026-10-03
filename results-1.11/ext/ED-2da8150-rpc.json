@@ -175,6 +175,167 @@
    "not_implemented": true,
    "pass": false
   },
+  "type_attr_damage_control_ii": {
+   "feature": "type",
+   "got": "{\"attributes\": {\"armorEmDamageResonance\": 0.85, \"armorExplosiveDamageResonance\": 0.85, \"armorKineticDamageResonance\": 0.85, \"armorThermalDamageResonance\": 0.85, \"cpu\": 30.0, \"hp\": 40.0, \"hullEmDamageResonance\": 0.6, \"hullExplosiveDamageResonance\": 0.6, \"hullKineticDamageResonance\": 0.6, \"hullThermal",
+   "item": "MKT-003",
+   "not_implemented": false,
+   "pass": false
+  },
+  "type_attr_hammerhead_ii": {
+   "feature": "type",
+   "got": "{\"attributes\": {\"agility\": 100.0, \"armorEmDamageResonance\": 0.5, \"armorExplosiveDamageResonance\": 0.9, \"armorHP\": 216.0, \"armorKineticDamageResonance\": 0.65, \"armorThermalDamageResonance\": 0.65, \"armorUniformity\": 0.75, \"capacitorCapacity\": 1.0, \"damageMultiplier\": 1.92, \"droneBandwidthUsed\": 10.0, ",
+   "item": "MKT-003",
+   "not_implemented": false,
+   "pass": false
+  },
+  "type_attr_ishtar": {
+   "feature": "type",
+   "got": "{\"attributes\": {\"MWDSignatureRadiusBonus\": -50.0, \"agility\": 0.565, \"armorEmDamageResonance\": 0.5, \"armorExplosiveDamageResonance\": 0.9, \"armorHP\": 1600.0, \"armorKineticDamageResonance\": 0.1625, \"armorThermalDamageResonance\": 0.325, \"armorUniformity\": 0.75, \"baseJumpBridgeCapacitorCost\": 11500.0, \"b",
+   "item": "MKT-003",
+   "not_implemented": false,
+   "pass": false
+  },
+  "type_attr_large_shield_extender_ii": {
+   "feature": "type",
+   "got": "{\"attributes\": {\"capacityBonus\": 2600.0, \"cpu\": 45.0, \"hp\": 40.0, \"metaLevelOld\": 5.0, \"power\": 160.0, \"requiredSkill1\": 3425.0, \"requiredSkill1Level\": 4.0, \"signatureRadiusAdd\": 25.0, \"techLevel\": 2.0}, \"capacity\": 0.0, \"category_id\": 7, \"effects\": [{\"default\": false, \"id\": 13, \"name\": \"medPower\"},",
+   "item": "MKT-003",
+   "not_implemented": false,
+   "pass": false
+  },
+  "type_attr_rifter": {
+   "feature": "type",
+   "got": "{\"attributes\": {\"agility\": 3.2, \"armorEmDamageResonance\": 0.4, \"armorExplosiveDamageResonance\": 0.9, \"armorHP\": 450.0, \"armorKineticDamageResonance\": 0.75, \"armorThermalDamageResonance\": 0.65, \"armorUniformity\": 0.75, \"baseJumpBridgeCapacitorCost\": 4000.0, \"baseWarpSpeed\": 1.0, \"capacitorCapacity\": ",
+   "item": "MKT-003",
+   "not_implemented": false,
+   "pass": false
+  },
+  "type_attr_svipul": {
+   "feature": "type",
+   "got": "{\"attributes\": {\"agility\": 3.8, \"armorEmDamageResonance\": 0.2, \"armorExplosiveDamageResonance\": 0.9, \"armorHP\": 700.0, \"armorKineticDamageResonance\": 0.75, \"armorThermalDamageResonance\": 0.4875, \"armorUniformity\": 0.75, \"baseJumpBridgeCapacitorCost\": 9000.0, \"baseWarpSpeed\": 1.0, \"capacitorCapacity\"",
+   "item": "MKT-003",
+   "not_implemented": false,
+   "pass": false
+  },
+  "type_desc_damage_control_ii": {
+   "feature": "type",
+   "got": "{\"attributes\": {\"armorEmDamageResonance\": 0.85, \"armorExplosiveDamageResonance\": 0.85, \"armorKineticDamageResonance\": 0.85, \"armorThermalDamageResonance\": 0.85, \"cpu\": 30.0, \"hp\": 40.0, \"hullEmDamageResonance\": 0.6, \"hullExplosiveDamageResonance\": 0.6, \"hullKineticDamageResonance\": 0.6, \"hullThermal",
+   "item": "MKT-003",
+   "not_implemented": false,
+   "pass": false
+  },
+  "type_desc_hammerhead_ii": {
+   "feature": "type",
+   "got": "{\"attributes\": {\"agility\": 100.0, \"armorEmDamageResonance\": 0.5, \"armorExplosiveDamageResonance\": 0.9, \"armorHP\": 216.0, \"armorKineticDamageResonance\": 0.65, \"armorThermalDamageResonance\": 0.65, \"armorUniformity\": 0.75, \"capacitorCapacity\": 1.0, \"damageMultiplier\": 1.92, \"droneBandwidthUsed\": 10.0, ",
+   "item": "MKT-003",
+   "not_implemented": false,
+   "pass": false
+  },
+  "type_desc_ishtar": {
+   "feature": "type",
+   "got": "{\"attributes\": {\"MWDSignatureRadiusBonus\": -50.0, \"agility\": 0.565, \"armorEmDamageResonance\": 0.5, \"armorExplosiveDamageResonance\": 0.9, \"armorHP\": 1600.0, \"armorKineticDamageResonance\": 0.1625, \"armorThermalDamageResonance\": 0.325, \"armorUniformity\": 0.75, \"baseJumpBridgeCapacitorCost\": 11500.0, \"b",
+   "item": "MKT-003",
+   "not_implemented": false,
+   "pass": false
+  },
+  "type_desc_large_shield_extender_ii": {
+   "feature": "type",
+   "got": "{\"attributes\": {\"capacityBonus\": 2600.0, \"cpu\": 45.0, \"hp\": 40.0, \"metaLevelOld\": 5.0, \"power\": 160.0, \"requiredSkill1\": 3425.0, \"requiredSkill1Level\": 4.0, \"signatureRadiusAdd\": 25.0, \"techLevel\": 2.0}, \"capacity\": 0.0, \"category_id\": 7, \"effects\": [{\"default\": false, \"id\": 13, \"name\": \"medPower\"},",
+   "item": "MKT-003",
+   "not_implemented": false,
+   "pass": false
+  },
+  "type_desc_rifter": {
+   "feature": "type",
+   "got": "{\"attributes\": {\"agility\": 3.2, \"armorEmDamageResonance\": 0.4, \"armorExplosiveDamageResonance\": 0.9, \"armorHP\": 450.0, \"armorKineticDamageResonance\": 0.75, \"armorThermalDamageResonance\": 0.65, \"armorUniformity\": 0.75, \"baseJumpBridgeCapacitorCost\": 4000.0, \"baseWarpSpeed\": 1.0, \"capacitorCapacity\": ",
+   "item": "MKT-003",
+   "not_implemented": false,
+   "pass": false
+  },
+  "type_desc_svipul": {
+   "feature": "type",
+   "got": "{\"attributes\": {\"agility\": 3.8, \"armorEmDamageResonance\": 0.2, \"armorExplosiveDamageResonance\": 0.9, \"armorHP\": 700.0, \"armorKineticDamageResonance\": 0.75, \"armorThermalDamageResonance\": 0.4875, \"armorUniformity\": 0.75, \"baseJumpBridgeCapacitorCost\": 9000.0, \"baseWarpSpeed\": 1.0, \"capacitorCapacity\"",
+   "item": "MKT-003",
+   "not_implemented": false,
+   "pass": false
+  },
+  "type_reqskills_damage_control_ii": {
+   "feature": "type",
+   "got": "{\"attributes\": {\"armorEmDamageResonance\": 0.85, \"armorExplosiveDamageResonance\": 0.85, \"armorKineticDamageResonance\": 0.85, \"armorThermalDamageResonance\": 0.85, \"cpu\": 30.0, \"hp\": 40.0, \"hullEmDamageResonance\": 0.6, \"hullExplosiveDamageResonance\": 0.6, \"hullKineticDamageResonance\": 0.6, \"hullThermal",
+   "item": "CHR-008",
+   "not_implemented": false,
+   "pass": false
+  },
+  "type_reqskills_hammerhead_ii": {
+   "feature": "type",
+   "got": "{\"attributes\": {\"agility\": 100.0, \"armorEmDamageResonance\": 0.5, \"armorExplosiveDamageResonance\": 0.9, \"armorHP\": 216.0, \"armorKineticDamageResonance\": 0.65, \"armorThermalDamageResonance\": 0.65, \"armorUniformity\": 0.75, \"capacitorCapacity\": 1.0, \"damageMultiplier\": 1.92, \"droneBandwidthUsed\": 10.0, ",
+   "item": "CHR-008",
+   "not_implemented": false,
+   "pass": false
+  },
+  "type_reqskills_ishtar": {
+   "feature": "type",
+   "got": "{\"attributes\": {\"MWDSignatureRadiusBonus\": -50.0, \"agility\": 0.565, \"armorEmDamageResonance\": 0.5, \"armorExplosiveDamageResonance\": 0.9, \"armorHP\": 1600.0, \"armorKineticDamageResonance\": 0.1625, \"armorThermalDamageResonance\": 0.325, \"armorUniformity\": 0.75, \"baseJumpBridgeCapacitorCost\": 11500.0, \"b",
+   "item": "CHR-008",
+   "not_implemented": false,
+   "pass": false
+  },
+  "type_reqskills_large_shield_extender_ii": {
+   "feature": "type",
+   "got": "{\"attributes\": {\"capacityBonus\": 2600.0, \"cpu\": 45.0, \"hp\": 40.0, \"metaLevelOld\": 5.0, \"power\": 160.0, \"requiredSkill1\": 3425.0, \"requiredSkill1Level\": 4.0, \"signatureRadiusAdd\": 25.0, \"techLevel\": 2.0}, \"capacity\": 0.0, \"category_id\": 7, \"effects\": [{\"default\": false, \"id\": 13, \"name\": \"medPower\"},",
+   "item": "CHR-008",
+   "not_implemented": false,
+   "pass": false
+  },
+  "type_reqskills_rifter": {
+   "feature": "type",
+   "got": "{\"attributes\": {\"agility\": 3.2, \"armorEmDamageResonance\": 0.4, \"armorExplosiveDamageResonance\": 0.9, \"armorHP\": 450.0, \"armorKineticDamageResonance\": 0.75, \"armorThermalDamageResonance\": 0.65, \"armorUniformity\": 0.75, \"baseJumpBridgeCapacitorCost\": 4000.0, \"baseWarpSpeed\": 1.0, \"capacitorCapacity\": ",
+   "item": "CHR-008",
+   "not_implemented": false,
+   "pass": false
+  },
+  "type_reqskills_svipul": {
+   "feature": "type",
+   "got": "{\"attributes\": {\"agility\": 3.8, \"armorEmDamageResonance\": 0.2, \"armorExplosiveDamageResonance\": 0.9, \"armorHP\": 700.0, \"armorKineticDamageResonance\": 0.75, \"armorThermalDamageResonance\": 0.4875, \"armorUniformity\": 0.75, \"baseJumpBridgeCapacitorCost\": 9000.0, \"baseWarpSpeed\": 1.0, \"capacitorCapacity\"",
+   "item": "CHR-008",
+   "not_implemented": false,
+   "pass": false
+  },
+  "type_traits_ishtar": {
+   "feature": "type",
+   "got": "{\"attributes\": {\"MWDSignatureRadiusBonus\": -50.0, \"agility\": 0.565, \"armorEmDamageResonance\": 0.5, \"armorExplosiveDamageResonance\": 0.9, \"armorHP\": 1600.0, \"armorKineticDamageResonance\": 0.1625, \"armorThermalDamageResonance\": 0.325, \"armorUniformity\": 0.75, \"baseJumpBridgeCapacitorCost\": 11500.0, \"b",
+   "item": "ENG-SHIP-006",
+   "not_implemented": false,
+   "pass": false
+  },
+  "type_traits_nyx": {
+   "feature": "type",
+   "got": "{\"attributes\": {\"advancedAgility\": 1.0, \"advancedCapitalAgility\": 1.0, \"agility\": 0.036, \"armorEmDamageResonance\": 0.5, \"armorExplosiveDamageResonance\": 0.9, \"armorHP\": 470000.0, \"armorKineticDamageResonance\": 0.65, \"armorThermalDamageResonance\": 0.65, \"armorUniformity\": 0.75, \"baseWarpSpeed\": 1.0, ",
+   "item": "ENG-SHIP-006",
+   "not_implemented": false,
+   "pass": false
+  },
+  "type_traits_rifter": {
+   "feature": "type",
+   "got": "{\"attributes\": {\"agility\": 3.2, \"armorEmDamageResonance\": 0.4, \"armorExplosiveDamageResonance\": 0.9, \"armorHP\": 450.0, \"armorKineticDamageResonance\": 0.75, \"armorThermalDamageResonance\": 0.65, \"armorUniformity\": 0.75, \"baseJumpBridgeCapacitorCost\": 4000.0, \"baseWarpSpeed\": 1.0, \"capacitorCapacity\": ",
+   "item": "ENG-SHIP-006",
+   "not_implemented": false,
+   "pass": false
+  },
+  "type_traits_svipul": {
+   "feature": "type",
+   "got": "{\"attributes\": {\"agility\": 3.8, \"armorEmDamageResonance\": 0.2, \"armorExplosiveDamageResonance\": 0.9, \"armorHP\": 700.0, \"armorKineticDamageResonance\": 0.75, \"armorThermalDamageResonance\": 0.4875, \"armorUniformity\": 0.75, \"baseJumpBridgeCapacitorCost\": 9000.0, \"baseWarpSpeed\": 1.0, \"capacitorCapacity\"",
+   "item": "ENG-SHIP-006",
+   "not_implemented": false,
+   "pass": false
+  },
+  "type_traits_tengu": {
+   "feature": "type",
+   "got": "{\"attributes\": {\"agility\": 0.52, \"armorEmDamageResonance\": 0.5, \"armorExplosiveDamageResonance\": 0.9, \"armorHP\": 2100.0, \"armorKineticDamageResonance\": 0.5625, \"armorThermalDamageResonance\": 0.275, \"armorUniformity\": 0.75, \"baseJumpBridgeCapacitorCost\": 13000.0, \"baseWarpSpeed\": 1.0, \"capacitorCapac",
+   "item": "ENG-SHIP-006",
+   "not_implemented": false,
+   "pass": false
+  },
   "var_200mm_autocannon_ii": {
    "feature": "item.variations",
    "got": "{\"code\": \"UNKNOWN_METHOD\", \"message\": \"item.variations\"}",
@@ -220,5 +381,5 @@
  },
  "name": "ED-2da8150",
  "pass": 0,
- "total": 31
+ "total": 54
 }

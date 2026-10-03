@@ -2,7 +2,8 @@
 """Score an engine on the ext/rpc lookup suite (bench 1.11 draft "lookups", CONTRACT.md).
 usage: python3 ext/tools/score_rpc.py --cmd "ENGINE serve-stdio" [--name X] [--out results.json] [cases...]
 Each case is sent as one JSON-RPC 2.0 request line; the response `result` must equal the Pyfa expectation
-(numbers within the bench tolerance, lists of scalars compared as sorted sets of values, dict key order ignored).
+(numbers within the bench tolerance, lists of scalars compared sorted, lists of {id...} objects sorted by id;
+dicts: the expected keys must match, extra engine keys are ignored).
 Expected {"error": ...}: passes when the engine answers with an error (JSON-RPC `error` or `result.error`), other
 than UNKNOWN_METHOD. fits.backup: the returned XML is
 compared after parsing (fit name, ship, hardware (slot, type, qty)), not byte for byte. An UNKNOWN_METHOD /
@@ -26,11 +27,14 @@ def parse_backup(text):
 
 
 def same(g, e):
-    if isinstance(e, dict):
-        return isinstance(g, dict) and set(g) == set(e) and all(same(g[k], e[k]) for k in e)
+    if isinstance(e, dict):  # expected keys only (an engine may return more fields)
+        return isinstance(g, dict) and all(k in g and same(g[k], e[k]) for k in e)
     if isinstance(e, list):
         if not isinstance(g, list) or len(g) != len(e):
             return False
+        if e and all(isinstance(x, dict) and "id" in x for x in e) and all(isinstance(x, dict) for x in g):
+            g = sorted(g, key=lambda x: str(x.get("id")))
+            e = sorted(e, key=lambda x: str(x.get("id")))
         if all(not isinstance(x, (dict, list)) for x in e):
             try:
                 return all(close(a, b) for a, b in zip(sorted(g, key=str), sorted(e, key=str)))

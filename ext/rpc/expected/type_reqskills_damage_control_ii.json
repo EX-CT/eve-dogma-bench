@@ -1,0 +1,13 @@
+{
+ "case": "type_reqskills_damage_control_ii",
+ "feature": "type",
+ "item": "CHR-008",
+ "oracle": "pyfa-service",
+ "result": {
+  "required_skills": {
+   "3394": 4
+  },
+  "type_id": 2048
+ },
+ "source": "hand-built (Pyfa lookup oracle)"
+}

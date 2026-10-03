@@ -1,0 +1,11 @@
+{
+ "method": "type",
+ "params": {
+  "_fields": [
+   "name",
+   "attributes",
+   "effects"
+  ],
+  "id": 2185
+ }
+}

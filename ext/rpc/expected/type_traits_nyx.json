@@ -1,0 +1,11 @@
+{
+ "case": "type_traits_nyx",
+ "feature": "type",
+ "item": "ENG-SHIP-006",
+ "oracle": "pyfa-service",
+ "result": {
+  "traits_html": "<b>Gallente Carrier bonuses (per skill level):</b><br />\n10% bonus to Fighter damage<br />\n5% bonus to Fighter hitpoints<br />\n5+ bonus to ship warp core strength<br />\n5% reduction in Sensor Dampening Burst Projector cycle time<br />\n2% bonus to Armored Command and Skirmish Command burst strength and duration<br />\n<br />\n<b>Role Bonus:</b><br />\n\u2022 Can fit Networked Sensor Array<br />\n\u2022 Can fit Burst Projectors<br />\n\u2022 Can use two Command Burst modules<br />\n200% bonus to Command Burst area of effect range<br />\n\u2022 Can launch Light and Heavy Fighters<br />\n\u2022 Can lock at extended ranges<br />\n400% bonus to Armor Plates and Shield Extenders<br />\n50% bonus to Remote Sensor Dampener resistance<br />\n50% bonus to Stasis effect resistance<br />\n50% increase to Remote Electronic Assistance impedance<br />\n\u2022 Conduit Jump capable<br />\n5x penalty to Entosis Link duration",
+  "type_id": 23913
+ },
+ "source": "hand-built (Pyfa lookup oracle)"
+}

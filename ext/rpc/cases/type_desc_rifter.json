@@ -1,0 +1,9 @@
+{
+ "method": "type",
+ "params": {
+  "_fields": [
+   "description"
+  ],
+  "id": 587
+ }
+}
