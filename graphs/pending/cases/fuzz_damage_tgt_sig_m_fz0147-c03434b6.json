@@ -1,0 +1,192 @@
+{
+ "fit": {
+  "boosters": [],
+  "cargo": [],
+  "character": {
+   "security_status": null,
+   "skills": {
+    "default_level": 5,
+    "levels": {}
+   }
+  },
+  "damage_pattern": null,
+  "drones": [],
+  "environment": {
+   "effect_type_ids": [],
+   "system_security": null
+  },
+  "fighters": [
+   {
+    "abilities": null,
+    "active": true,
+    "quantity": 3,
+    "type_id": 40560
+   },
+   {
+    "abilities": null,
+    "active": true,
+    "quantity": 3,
+    "type_id": 40560
+   },
+   {
+    "abilities": null,
+    "active": true,
+    "quantity": 3,
+    "type_id": 40560
+   },
+   {
+    "abilities": null,
+    "active": true,
+    "quantity": 3,
+    "type_id": 40560
+   },
+   {
+    "abilities": null,
+    "active": true,
+    "quantity": 3,
+    "type_id": 40567
+   }
+  ],
+  "fleet": {
+   "booster_fits": [],
+   "buffs": []
+  },
+  "implants": [],
+  "modules": [
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "high",
+    "spool": null,
+    "state": "active",
+    "type_id": 41415
+   },
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "high",
+    "spool": null,
+    "state": "active",
+    "type_id": 41415
+   },
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "high",
+    "spool": null,
+    "state": "active",
+    "type_id": 41415
+   },
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "low",
+    "spool": null,
+    "state": "active",
+    "type_id": 2048
+   },
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "mid",
+    "spool": null,
+    "state": "active",
+    "type_id": 41507
+   },
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "mid",
+    "spool": null,
+    "state": "active",
+    "type_id": 2281
+   },
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "mid",
+    "spool": null,
+    "state": "active",
+    "type_id": 2281
+   },
+   {
+    "charge_type_id": 41490,
+    "mutation": null,
+    "slot": "mid",
+    "spool": null,
+    "state": "active",
+    "type_id": 41493
+   },
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "high",
+    "spool": null,
+    "state": "active",
+    "type_id": 41411
+   },
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "rig",
+    "spool": null,
+    "state": "online",
+    "type_id": 31792
+   }
+  ],
+  "options": {
+   "cap_sim": {
+    "max_time_s": null,
+    "reload": false,
+    "stagger": false
+   },
+   "default_spool": null,
+   "factor_reload": false,
+   "include_attributes": null,
+   "nos_no_target_cap": false,
+   "rah": null,
+   "sources": false,
+   "validate": true
+  },
+  "overrides": [],
+  "projected": [],
+  "schema_version": 1,
+  "ship": {
+   "mode_type_id": null,
+   "type_id": 22852
+  },
+  "target_profile": null
+ },
+ "graph": "damage",
+ "params": {
+  "atk_angle_deg": 45,
+  "tgt_angle_deg": 0,
+  "time_s": 4000
+ },
+ "schema_version": 1,
+ "settings": {
+  "ignore_drone_control_range": false,
+  "ignore_resists": true,
+  "mobile_drone_mode": "follow_target"
+ },
+ "x": {
+  "axis": "tgt_sig_m",
+  "values": [
+   402.7,
+   843.0,
+   2448.6,
+   2660.252,
+   3465.98,
+   9200.0,
+   9730.966,
+   11743.102,
+   12914.0,
+   13693.0,
+   15074.0,
+   17613.3
+  ]
+ },
+ "y": [
+  "damage"
+ ]
+}

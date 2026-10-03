@@ -1,0 +1,228 @@
+{
+ "fit": {
+  "boosters": [],
+  "cargo": [],
+  "character": {
+   "security_status": null,
+   "skills": {
+    "default_level": 5,
+    "levels": {}
+   }
+  },
+  "damage_pattern": null,
+  "drones": [],
+  "environment": {
+   "effect_type_ids": [],
+   "system_security": null
+  },
+  "fighters": [],
+  "fleet": {
+   "booster_fits": [],
+   "buffs": []
+  },
+  "implants": [],
+  "modules": [
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "low",
+    "spool": null,
+    "state": "active",
+    "type_id": 10190
+   },
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "low",
+    "spool": null,
+    "state": "active",
+    "type_id": 10190
+   },
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "low",
+    "spool": null,
+    "state": "active",
+    "type_id": 10190
+   },
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "low",
+    "spool": null,
+    "state": "active",
+    "type_id": 3540
+   },
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "low",
+    "spool": null,
+    "state": "active",
+    "type_id": 3540
+   },
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "low",
+    "spool": null,
+    "state": "active",
+    "type_id": 11269
+   },
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "low",
+    "spool": null,
+    "state": "active",
+    "type_id": 2048
+   },
+   {
+    "charge_type_id": 32014,
+    "mutation": null,
+    "slot": "mid",
+    "spool": null,
+    "state": "active",
+    "type_id": 3578
+   },
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "mid",
+    "spool": null,
+    "state": "active",
+    "type_id": 527
+   },
+   {
+    "charge_type_id": 29001,
+    "mutation": null,
+    "slot": "mid",
+    "spool": null,
+    "state": "active",
+    "type_id": 1978
+   },
+   {
+    "charge_type_id": 12787,
+    "mutation": null,
+    "slot": "high",
+    "spool": null,
+    "state": "active",
+    "type_id": 3186
+   },
+   {
+    "charge_type_id": 12787,
+    "mutation": null,
+    "slot": "high",
+    "spool": null,
+    "state": "online",
+    "type_id": 3186
+   },
+   {
+    "charge_type_id": 12787,
+    "mutation": null,
+    "slot": "high",
+    "spool": null,
+    "state": "active",
+    "type_id": 3186
+   },
+   {
+    "charge_type_id": 12787,
+    "mutation": null,
+    "slot": "high",
+    "spool": null,
+    "state": "active",
+    "type_id": 3186
+   },
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "high",
+    "spool": null,
+    "state": "overheated",
+    "type_id": 33400
+   },
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "rig",
+    "spool": null,
+    "state": "online",
+    "type_id": 26396
+   },
+   {
+    "charge_type_id": null,
+    "mutation": null,
+    "slot": "rig",
+    "spool": null,
+    "state": "online",
+    "type_id": 26394
+   }
+  ],
+  "options": {
+   "cap_sim": {
+    "max_time_s": null,
+    "reload": false,
+    "stagger": false
+   },
+   "default_spool": null,
+   "factor_reload": false,
+   "include_attributes": null,
+   "nos_no_target_cap": false,
+   "rah": null,
+   "sources": false,
+   "validate": true
+  },
+  "overrides": [],
+  "projected": [],
+  "schema_version": 1,
+  "ship": {
+   "mode_type_id": null,
+   "type_id": 28661
+  },
+  "target_profile": null
+ },
+ "graph": "application_profile",
+ "params": {
+  "ammo_quality": "t1",
+  "atk_speed_pct": 0
+ },
+ "schema_version": 1,
+ "settings": {
+  "ignore_drone_control_range": false,
+  "ignore_resists": true
+ },
+ "target": {
+  "profile": {
+   "em": 0.477,
+   "explosive": 0,
+   "hp": 5000,
+   "kinetic": 0.697,
+   "max_velocity": 1200,
+   "radius": 400,
+   "signature_radius": 40000,
+   "thermal": 0
+  }
+ },
+ "x": {
+  "axis": "distance_m",
+  "values": [
+   28074.0,
+   28082.0,
+   29174.03,
+   43760.0,
+   80855.9,
+   84647.5,
+   95560.4,
+   103970.211,
+   107223.0,
+   110078.0,
+   122830.8,
+   129831.9
+  ]
+ },
+ "y": [
+  "dps",
+  "volley"
+ ]
+}
