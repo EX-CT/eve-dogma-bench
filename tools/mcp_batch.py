@@ -6,6 +6,9 @@ written as {"error": {...}}. Null-valued request keys are dropped (see drop_null
   python3 run.py --name mcp --batch-cmd "python3 tools/mcp_batch.py --mcp-dir DIR" ...
   python3 ext/tools/score.py --batch-cmd "python3 tools/mcp_batch.py --mcp-dir DIR"
   python3 graphs/run_graphs.py --batch-cmd "python3 tools/mcp_batch.py --mcp-dir DIR --tool compute_graph"  (graph requests)
+  python3 batch/run_batch.py --transport cli --cmd "python3 tools/mcp_batch.py --mcp-dir DIR --tool compute_batch"
+    (CLI emulation: `[--prices FILE] batch --request -` -> compute_batch {request}; `calc` -> compute_fit with the
+    FitRequest's price inputs as tool arguments; --prices FILE has no MCP equivalent -> error UNSUPPORTED)
 env: EVE_DOGMA_BIN (engine binary the MCP spawns), EVE_DOGMA_DATASET (required by the MCP index)."""
 import argparse, json, os, re, subprocess, sys
 
@@ -44,7 +47,12 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--mcp-dir", required=True, help="eve-fit-mcp checkout with dist/ built (npm ci && npm run build)")
     ap.add_argument("--tool", default="compute_fit")
-    a = ap.parse_args()
+    a, rest = ap.parse_known_args()
+    if a.tool == "compute_batch" and "--prices" in rest:
+        sys.stdin.read()
+        print(json.dumps({"error": {"code": "UNSUPPORTED", "message": "eve-fit-mcp has no --prices FILE input (engine global option)"}}))
+        return
+    calc = a.tool == "compute_batch" and "calc" in rest
     p = subprocess.Popen(["node", "dist/main.js"], cwd=a.mcp_dir, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                          stderr=subprocess.DEVNULL, text=True, bufsize=1)
     nid = [0]
@@ -74,8 +82,17 @@ def main():
     except ValueError:  # batch mode: JSONL
         reqs = [json.loads(l) for l in data.splitlines() if l.strip()]
     for req in reqs:
-        r = call("tools/call", {"name": a.tool, "arguments": graph_args(req) if a.tool == "compute_graph" else
-                                {"fit": drop_nulls(req), "detail": "full"}})
+        if calc:
+            req = dict(req)
+            args = {k: req.pop(k) for k in ("price_overrides", "prices") if k in req}
+            if (req.get("options") or {}).get("price") is not None:
+                args["price"] = req["options"]["price"]
+            r = call("tools/call", {"name": "compute_fit", "arguments": {"fit": drop_nulls(req), "detail": "full", **args}})
+        elif a.tool == "compute_batch":
+            r = call("tools/call", {"name": "compute_batch", "arguments": {"request": req}})
+        else:
+            r = call("tools/call", {"name": a.tool, "arguments": graph_args(req) if a.tool == "compute_graph" else
+                                    {"fit": drop_nulls(req), "detail": "full"}})
         res = r.get("result") or {}
         if "error" in r or res.get("isError"):
             msg = (r.get("error") or {}).get("message") or " ".join(c.get("text", "") for c in res.get("content", []))
