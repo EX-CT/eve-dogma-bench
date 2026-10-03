@@ -106,8 +106,11 @@ injector) — earliest first, ties broken by the following fields in that order.
 
 - Numbers: |got − want| ≤ max(1e-3, 1e-4 × |want|) (main bench). `depletes_in_s`: ≤ 0.0005 s (the same millisecond).
   `stable`: equal.
-- A case passes when every scored metric passes. Suite score = cases passed / cases; reported per category and per
-  metric. Informational until adopted; proposed weight if adopted: its own problem score, gated on the main bench.
+- A case passes when every scored metric passes. Suite score = cases passed / scored cases; reported per category
+  and per metric.
+- Cases that request `cap_sim.stagger: false` are **pending**: reported, not scored, until §9.1 is ruled. The main
+  bench's 317 cases all send `stagger: false`, yet its oracle (Pyfa's `Fit.simulateCap`) always staggers. So scoring
+  "false = no staggering" here would contradict the main bench's expected values. Informational until adopted; proposed weight if adopted: its own problem score, gated on the main bench.
 
 ## 8. The "34 all-overheated" differences (H vs A)
 
@@ -118,7 +121,9 @@ The suite keeps such cases (category `overheat`); they are now scored.
 
 ## 9. Open questions
 
-1. `cap_sim.stagger` default (proposed true, §6).
+1. `cap_sim.stagger`. Either (a) absent = true and explicit false = no staggering: the main bench's expected values
+   would then have to be regenerated, because its cases send false; or (b) drop the field and always stagger, which
+   is what Pyfa's own fit path and every engine do today. This draft scores neither; stagger-off cases are pending.
 2. Booster shortfall fallback (§5 step 4) — Pyfa errors; proposal: largest waiting booster.
 3. `options.nos_no_target_cap` is not covered (Pyfa has no such switch).
 4. Starting capacitor below 100 % is not in the request; the graphs suite covers capacitor over time.
