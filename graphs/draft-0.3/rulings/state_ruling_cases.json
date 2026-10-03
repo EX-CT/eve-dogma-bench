@@ -1,13 +1,6 @@
 {
  "dmg_dist_vargur_bastion_overheated_state": {
-  "oracle_state_overrides": [
-   {
-    "module_index": 14,
-    "state": "active",
-    "type_id": 33400,
-    "why": "Bastion Module I has no overheat effects; requested 'overheated' is kept and equals active (Pyfa's graph oracle would downgrade it to online)"
-   }
-  ],
+  "oracle_state_overrides": [],
   "request": {
    "fit": {
     "boosters": [],
@@ -218,6 +211,7 @@
     "volley"
    ]
   },
+  "ruling": "contract 1.4.5 draft (pending-1.10 49f7555, 2026-10-03 11:19 CST): Bastion Module I (type 33400, module_index 14) has no overload effect; requested 'overheated' is corrected to 'online' with a warning. The Pyfa oracle applies the same correction, so no override. (Superseded 09:49 ruling: requested state kept, override to 'active'.)",
   "source": "bench fuzz fz0038-7ba04408 (graphs/pending/seed4); eve ruling 2026-10-03"
  }
 }

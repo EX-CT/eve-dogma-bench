@@ -191,6 +191,13 @@ Variants: G1 `1c8424c`, G2 `96e612a`, G3 `b8c6ef8`. Disagreements 50, confirmed 
   usable) **keeps the requested value**. So for fz0157 / fz0038 / fz0518 the oracle's "online" values are *not* the
   contract values, and variant-g / G1 / G2 are right. graphs-g3 610ea6c reverted the aa04330 normalisation. Graph-side
   statement + case: graphs/draft-0.3 (fd4e8c8).
+- **Ruling reversed (coordinator, 2026-10-03 11:19 CST; contract draft 1.4.5, pending-1.10 `49f7555`):** an impossible
+  `active` / `overheated` state is **corrected to `online`** (as Pyfa), the stats response reports the corrected state
+  and warns `/modules/N: state '<requested>' not possible for this module, using online`. So for **fz0157** (overheated
+  'Holy Destiny' lance → online, dps 0), **fz0038** and **fz0518** (overheated Bastion Module → online) the oracle's
+  values **are** the contract values: G1 / G4 (and the oracle) are right; G2 / G3 (variant-g / variant-c treating the
+  module as active) are wrong. The 09:49 note above is superseded. Graph-side statement + case: graphs 0.3
+  (`dmg_dist_vargur_bastion_overheated_state`, expected regenerated with the oracle, Bastion online).
 - `fuzz_damage_tgt_sig_m_fz0264-fc907b5a` (G3 only: INTERNAL): drone webs vs a target fit crashed under NumPy 2.5. Fixed in aa04330.
 
 ## Differential fuzz 2026-10-03 09:40 CST (seed 5, 800 requests)
