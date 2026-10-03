@@ -67,9 +67,11 @@ SCORING RULES (round 1)
 Bench pin: run.py, tools/metrics.py, cases/ and expected/ come from bench commit 3da9671 (1.8.0, 326 cases, cases
   identical to 0969967), extracted with `git archive` into <work-dir>/bench-<sha>, regardless of upstream main
   (--bench-ref to override). The pinned SHA, version and case count are recorded in the output.
-Licensing (informational, not scored): effective license = package metadata > LICENSE file > README "License"
-  section; "mergeable into LGPL-3.0-or-later mainline" = yes (LGPL-3 / permissive), no (GPL), unknown (none found or
-  conflicting), with the reason.
+Licensing (informational, not scored), judged at the evaluated (--as-of) commit like the code: the actual LICENSE*/
+  COPYING* texts in the variant dir AND the branch root decide (LGPL header, with or without the companion GPL text
+  => LGPL; GPL header and no LGPL text => GPL; MIT/Apache/BSD/MPL by text). SPDX metadata / README "License"
+  section only refine -only vs -or-later and reveal conflicts. "Mergeable into LGPL-3.0-or-later mainline" = yes
+  (LGPL-3 / permissive), no (GPL), unknown (no LICENSE file, unrecognised text, or file vs metadata conflict).
 Outputs: <out>/evaluation.md and <out>/evaluation.json (+ <out>/raw/<X>/ per-run scorecards and logs).
 --dry-run writes to results/dryrun/ by default and marks every output DRY RUN (not final results)."""
 import argparse, gzip, json, math, os, pathlib, re, shutil, signal, statistics, subprocess, sys, time
@@ -520,8 +522,8 @@ def static_metrics(letter, vd, effect_names, n_mod_effects):
     # docs / license
     docs_dir = vd / "docs"
     design = (vd / "DESIGN.md").exists() or any(docs_dir.glob("design*")) or any(docs_dir.glob("architecture*")) if docs_dir.exists() else (vd / "DESIGN.md").exists()
-    lic_files = sorted(x.name for x in vd.glob("LICENSE*")) + sorted(x.name for x in vd.glob("COPYING*"))
-    lic = license_id(vd, lic_files)
+    lic = license_id(vd)
+    lic_files = lic["files"]
     return {"loc": loc, "core_loc": core, "test_count_static": tests_static,
             "hardcoded_effects": len(hard), "hardcoded_effect_names_sample": hard[:40],
             "data_driven_ratio": round(1 - len(hard) / n_mod_effects, 4),
@@ -533,54 +535,122 @@ SPDX_RE = re.compile(r"\b((?:L?GPL|AGPL)-[23]\.[01](?:-or-later|-only|\+)?|MIT|A
 PERMISSIVE = ("MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC", "Zlib", "Unlicense", "MPL-2.0")
 
 
-def license_id(vd, files):
-    ids = []
-    lgpl_present = any("GNU LESSER GENERAL PUBLIC" in (vd / f).read_text(errors="replace")[:3000] for f in files)
-    for f in files:
-        t = (vd / f).read_text(errors="replace")[:3000]
-        if "GNU LESSER GENERAL PUBLIC" in t: ids.append("LGPL-3.0")
-        elif "GNU GENERAL PUBLIC LICENSE" in t and lgpl_present and re.search(r"GPL", f): ids.append("(GPL-3.0 text shipped with LGPL)")
-        elif "GNU GENERAL PUBLIC LICENSE" in t: ids.append("GPL-3.0")
-        elif "Permission is hereby granted" in t: ids.append("MIT")
-        elif "Apache License" in t: ids.append("Apache-2.0")
-        else: ids.append(f"{f}?")
+def license_files(vd):
+    """LICENSE*/COPYING* in the variant dir and, for lab variants, the branch root (vd's git top level)."""
+    dirs = [vd]
+    top = subprocess.run("git rev-parse --show-toplevel", shell=True, cwd=vd, capture_output=True, text=True).stdout.strip()
+    if top and pathlib.Path(top).resolve() != vd.resolve():
+        dirs.append(pathlib.Path(top))
+    out = []
+    for d in dirs:
+        for x in sorted(list(d.glob("LICENSE*")) + list(d.glob("COPYING*"))):
+            if x.is_file():
+                out.append(x)
+    return out
+
+
+def _kind(text):
+    head = text[:1500].upper()
+    if "GNU LESSER GENERAL PUBLIC LICENSE" in head:
+        return "LGPL-3" if "VERSION 3" in head else "LGPL-2.1" if "VERSION 2.1" in head else "LGPL"
+    if "GNU AFFERO GENERAL PUBLIC LICENSE" in head:
+        return "AGPL-3"
+    if "GNU GENERAL PUBLIC LICENSE" in head:
+        return "GPL-3" if "VERSION 3" in head else "GPL-2" if "VERSION 2" in head else "GPL"
+    if "PERMISSION IS HEREBY GRANTED, FREE OF CHARGE" in text.upper():
+        return "MIT"
+    if "APACHE LICENSE" in head and "VERSION 2.0" in head:
+        return "Apache-2.0"
+    if "MOZILLA PUBLIC LICENSE" in head:
+        return "MPL-2.0"
+    if "REDISTRIBUTION AND USE IN SOURCE AND BINARY FORMS" in text.upper():
+        return "BSD"
+    return "unrecognised"
+
+
+def license_id(vd, files=None):
+    """Judge the license by the actual LICENSE texts (variant dir + branch root, full text): an LGPL header (+ the
+    companion GPL text LGPLv3 requires) => LGPL; a GPL header without any LGPL text => GPL; MIT/Apache/... by text.
+    SPDX package metadata / README "License" section are used ONLY to refine the version qualifier (-only/-or-later)
+    and to detect conflicts."""
+    fl = license_files(vd)
+    root = vd
+    kinds = {}
+    for x in fl:
+        try:
+            rel = x.relative_to(vd).as_posix()
+        except ValueError:
+            rel = "<branch root>/" + x.name
+        kinds[rel] = _kind(x.read_text(errors="replace"))
+    ks = set(kinds.values())
+    lgpl = sorted(k for k in ks if k.startswith("LGPL"))
+    gpl = sorted(k for k in ks if k.startswith(("GPL", "AGPL")))
+    if lgpl:
+        base, companion = lgpl[0], bool(gpl)
+    elif gpl:
+        base, companion = gpl[0], False
+    else:
+        perm = sorted(k for k in ks if k != "unrecognised")
+        base, companion = (perm[0] if perm else ("unrecognised" if ks else None)), False
     decl = []
     for mf, pat in (("Cargo.toml", r'^license\s*=\s*"([^"]+)"'), ("package.json", r'"license"\s*:\s*"([^"]+)"')):
-        if (vd / mf).exists():
-            decl += re.findall(pat, (vd / mf).read_text(), re.M)
-    for x in vd.rglob("*.csproj"):
-        decl += re.findall(r"<PackageLicenseExpression>([^<]+)<", x.read_text())
+        if (root / mf).exists():
+            decl += re.findall(pat, (root / mf).read_text(), re.M)
+    for x in root.rglob("*.csproj"):
+        if not any(s in x.parts for s in SKIP_DIRS):
+            decl += re.findall(r"<PackageLicenseExpression>([^<]+)<", x.read_text())
     readme = None
-    if (vd / "README.md").exists():
-        mt = re.search(r"^#+\s*Licen[cs]e.*?$(.*?)(?=^#|\Z)", (vd / "README.md").read_text(errors="replace"), re.M | re.S | re.I)
+    if (root / "README.md").exists():
+        mt = re.search(r"^#+\s*Licen[cs]e.*?$(.*?)(?=^#|\Z)", (root / "README.md").read_text(errors="replace"), re.M | re.S | re.I)
         if mt:
             rm = SPDX_RE.search(mt.group(1)); readme = rm.group(1) if rm else None
-    return mergeable({"files": files, "detected": sorted(set(ids)), "declared": sorted(set(decl)), "readme": readme})
+    lic = {"files": [f"{k} ({v})" for k, v in kinds.items()], "file_license": base, "gpl_companion_text": companion,
+           "declared": sorted(set(decl)), "readme": readme}
+    # refine qualifier
+    eff, qual_src = base, None
+    if base and base not in ("unrecognised",) and re.match(r"(A?L?GPL)-\d", base):
+        stem = base  # e.g. LGPL-3
+        for src, cands in (("package metadata", lic["declared"]), ("README", [readme] if readme else [])):
+            for c in cands:
+                c2 = c.replace("+", "-or-later")
+                if c2.startswith(stem + ".") and c2.split(".")[0] == stem.split(".")[0]:
+                    if c2.startswith(stem):
+                        eff, qual_src = c2, src; break
+            if qual_src:
+                break
+        if not qual_src:
+            eff = stem + ".0" if not stem.endswith(".1") else stem
+    lic["effective"], lic["qualifier_source"] = eff, qual_src
+    # conflicts between files and metadata/README
+    claims = [c for c in lic["declared"] + ([readme] if readme else [])]
+    fam = lambda x: re.match(r"(AGPL|LGPL|GPL|MIT|Apache|BSD|MPL)", x).group(1) if x and re.match(r"(AGPL|LGPL|GPL|MIT|Apache|BSD|MPL)", x) else None  # noqa: E731
+    lic["conflicts"] = sorted({c for c in claims if base and fam(c) and fam(base) and fam(c) != fam(base)})
+    return mergeable(lic)
 
 
 def mergeable(lic):
-    """Effective license (package metadata > LICENSE file > README 'License' section) and whether the code can be
-    merged into the LGPL-3.0-or-later mainline (eve-dogma-rs)."""
-    det = [x for x in lic["detected"] if not x.startswith("(")]
-    src, eff = None, None
-    if lic["declared"]:
-        src, eff = "package metadata", lic["declared"][0]
-    elif det:
-        src, eff = "LICENSE file", det[0]
-        if lic["readme"] and lic["readme"] != eff and lic["readme"].startswith(eff):  # e.g. file LGPL-3.0, README "-or-later"
-            src, eff = "LICENSE file + README", lic["readme"]
-    elif lic["readme"]:
-        src, eff = "README only", lic["readme"]
-    lic["effective"], lic["source"] = eff, src
+    """Mergeable into the LGPL-3.0-or-later mainline (eve-dogma-rs)?"""
+    eff = lic["effective"]
     if not eff:
-        lic["mergeable"], lic["reason"] = "unknown", "no LICENSE file, package metadata or README license statement"
+        lic["mergeable"] = "unknown"
+        lic["reason"] = "no LICENSE file in variant dir or branch root" + (f" (README says {lic['readme']})" if lic.get("readme") else "")
+    elif eff == "unrecognised":
+        lic["mergeable"], lic["reason"] = "unknown", "LICENSE text not recognised"
+    elif lic["conflicts"]:
+        lic["mergeable"], lic["reason"] = "unknown", f"LICENSE file is {eff} but metadata/README claim {', '.join(lic['conflicts'])}"
     elif re.match(r"A?GPL", eff):
-        lic["mergeable"], lic["reason"] = "no", f"{eff} is stronger copyleft than LGPL; cannot be relicensed into LGPL-3.0-or-later"
-    elif eff.startswith("LGPL-3") or eff.startswith("LGPL-2.1-or-later") or eff in PERMISSIVE:
+        lic["mergeable"], lic["reason"] = "no", f"{eff} (LICENSE text, no LGPL) is stronger copyleft; cannot be relicensed into LGPL-3.0-or-later"
+    elif eff.startswith("LGPL-3"):
+        q = "" if lic["qualifier_source"] else " (no -only/-or-later statement in metadata/README; treated as LGPL-3.0)"
+        only = "; -only: the combined work would be LGPL-3.0-only" if eff.endswith("-only") else ""
         lic["mergeable"] = "yes"
-        lic["reason"] = f"{eff} ({src})" + ("; add a LICENSE file before merging" if src == "README only" else "")
-        if det and any(x.startswith("GPL") for x in det):
-            lic["mergeable"], lic["reason"] = "unknown", f"declared {eff} but a GPL LICENSE file is present"
+        lic["reason"] = f"LGPL v3 LICENSE text{' + GPL companion text' if lic['gpl_companion_text'] else ''}{q}{only}"
+    elif eff.startswith("LGPL-2.1"):
+        lic["mergeable"], lic["reason"] = "yes", "LGPL-2.1 (or-later) can be upgraded to LGPL-3" if "later" in eff else "unknown: LGPL-2.1-only"
+        if "later" not in eff:
+            lic["mergeable"] = "unknown"
+    elif eff in PERMISSIVE or eff == "BSD":
+        lic["mergeable"], lic["reason"] = "yes", f"permissive ({eff})"
     else:
         lic["mergeable"], lic["reason"] = "unknown", f"unrecognised license {eff}"
     return lic
@@ -778,7 +848,7 @@ RULES_MD = """## Scoring rules
 - `L(x, best, span) = clamp(1 − log10(x/best)/log10(span), 0, 1)` for lower-is-better `x` (1 = best ranked variant, 0 = `span`× worse).
 - **Bench pin:** cases/expected/run.py from bench `3da9671` (1.8.0, 326 cases; = 0969967 cases), whatever upstream main is.
 - **Latency** = own measurement (not run.py's): batch command pinned to one CPU (taskset), (t_N − t_1)/(N − 1) with N sized for ≈0.5 s of calcs; ≥5 independent samples, median; samples ≤0, < 0.002 ms, or > t_N/N are invalid; spread > 50 % ⇒ re-measure (≤3 extra), then flagged.
-- **Licensing:** effective license = package metadata > LICENSE file > README "License" section; mergeable into LGPL-3.0-or-later mainline: LGPL-3/permissive yes, GPL no, none unknown. Informational, not scored.
+- **Licensing** (at the evaluated commit): judged by the LICENSE texts in the variant dir and branch root (LGPL header ± companion GPL text ⇒ LGPL; GPL header without LGPL ⇒ GPL); SPDX metadata/README only refine -only/-or-later. Mergeable into LGPL-3.0-or-later mainline: LGPL-3/permissive yes, GPL no, no file / conflict unknown. Informational, not scored.
 - **Speed** = 0.5·L(latency ms/calc, 100) + 0.3·L(1/batch fits·s⁻¹, 100) + 0.2·L(cold-start ms, 100); medians over runs.
 - **Maintainability** = 0.25·Tests + 0.20·DataDriven + 0.20·Size + 0.15·Docs + 0.10·Deps + 0.10·Build.
   Tests: passed → 0.6 + 0.4·min(1, log10(1+n)/2); failed → 0.2; timed out → 0.3; none → 0.
@@ -840,11 +910,11 @@ def write(rows, a, meta):
                   f"{yn(d['readme'])}{yn(d['design'])}{yn(d['license_file'])} | {lic} | {st['hardcoded_effects']} | {st['data_driven_ratio']:.3f} | "
                   f"{ex.get('ok', '–')}/{ex.get('total', '–')} | {ep.get('ok', '–')}/{ep.get('total', '–')} | {f2(fe.get('rpc'))} | {f2(fe.get('search'))} | {f2(fe.get('type'))} | {r.get('portability', {}).get('level', '–')} |")
     md += ["", "## Licensing (mainline eve-dogma-rs is LGPL-3.0-or-later)", "",
-           "| variant | license | source | LICENSE files | mergeable into LGPL-3.0-or-later mainline | reason |", "|---|---|---|---|---|---|"]
+           "| variant | license | -only/-or-later from | LICENSE files (kind) | mergeable into LGPL-3.0-or-later mainline | reason |", "|---|---|---|---|---|---|"]
     for r in order:
         li = (r.get("static") or {}).get("license")
         if li:
-            md.append(f"| {r['letter']} | {li.get('effective') or 'none'} | {li.get('source') or '–'} | {', '.join(li['files']) or '–'} | "
+            md.append(f"| {r['letter']} | {li.get('effective') or 'none'} | {li.get('qualifier_source') or '–'} | {'; '.join(li['files']) or '–'} | "
                       f"**{li['mergeable']}** | {li['reason']} |")
     md += ["", "## Latency measurement (single CPU, own measurement)", "",
            "| variant | ms/calc (median) | min | max | spread | valid/samples | N per sample | startup ms | flags |", "|---|---|---|---|---|---|---|---|---|"]
