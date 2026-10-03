@@ -27,7 +27,11 @@ MCP-only batch differences (bench 1fd7e37, 10 cases where the engine passes and 
 
 Files: `mcp-v0.4.0-197223f/` (core-*, ext, effects, graphs-* incl. `-na`, batch-bench-<rev> and batch-engine-bench-<rev>).
 
-# F eve-dogma 8bde0ba (native), bench 1fdcf61
-batch 77/93 (calc_price 3/6, gap 13/16, price 6/14, sweep 9/11; the rest full), d22 sde 18/18 (+5 pending without
-SDE_PACK), price_inject 21/32 (+1 pending). F reported batch 78/92, sde 7/17, price_inject 17/32 on bench d151cb3; the
-bench has since moved to F's contract (eccf455 rulings, JCS content_hash df587f0). Files: `F-8bde0ba/`.
+# F eve-dogma 8bde0ba (native), bench 05ae5a1 (re-run 2026-10-03 15:45 CST)
+batch 93/93, d22 sde 18/18 (+5 pending without SDE_PACK), price_inject 32/32 (+1 pending). Files: `F-8bde0ba/`.
+
+Correction: the earlier 8bde0ba numbers in this file (batch 77/93, price_inject 21/32 on bench 1fdcf61) came from a
+local build that compiled in dataset-3569502 r1 (EVE_DOGMA_DATASET leaked from the 197223f build; `version` said
+sde_revision 1). The price cases need the r5 market-group tables. Rebuilt with dataset r5 (sde_revision 5).
+The engine 197223f binary used for the v0.4.0 MCP run above had the same r1 problem, so its batch price numbers are
+not representative; the v0.4.1 re-run (mcp-v0.4.1.md) uses r5 builds.
