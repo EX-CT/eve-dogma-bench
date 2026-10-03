@@ -4,8 +4,8 @@
 * export: `eft_export {fit, name}` for every case must equal Pyfa's exportEft text (mutated/expected_extra/eft_export.jsonl,
   all options on, after fill(); the T3C extra "[Empty Subsystem slot]" line is accepted as in tools/check_eft_export.py).
 * import: `eft_parse {text}` for Pyfa's export of every case plus the hand-written edge texts in mutated/eft/ must give
-  the fit Pyfa's importEft gives (mutated/expected_extra/eft_import.jsonl). Compared: ship, modules in order
-  (type_id, charge, mutation), drones (type_id, quantity, mutation), implants and boosters (type ids, in order).
+  the fit Pyfa's importEft gives (mutated/expected_extra/eft_import.jsonl). Compared: ship, mutated modules in order
+  (type_id, charge, mutation; unmutated modules are left to the formats suite), drones (type_id, quantity, mutation), implants and boosters (type ids, in order).
   Mutations are compared by their *effective* values (§2: only mutaplasmid attributes, omitted = base value, clamped),
   so an importer may clamp at parse time or leave it to calc. Implant/booster lists are compared after the §3 slot
   rule (first entry per slot wins), so an importer may keep or drop conflicting entries.
@@ -81,7 +81,9 @@ def tid(x):
 
 
 def canon(ds, fit):
-    mods = [(m["type_id"], m.get("charge_type_id"), ds.effective(m.get("mutation"))) for m in fit.get("modules", [])]
+    # only mutated modules (in order); unmutated module import fidelity is the formats suite's job
+    mods = [(m["type_id"], m.get("charge_type_id"), ds.effective(m.get("mutation"))) for m in fit.get("modules", [])
+            if m.get("mutation")]
     drones = sorted(((d["type_id"], d.get("quantity", 1), ds.effective(d.get("mutation"))) for d in fit.get("drones", [])),
                     key=lambda x: (x[0], x[1], json.dumps(x[2], sort_keys=True)))
     return {"ship": fit.get("ship", {}).get("type_id"), "modules": mods, "drones": drones,
