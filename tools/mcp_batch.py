@@ -5,8 +5,9 @@ to an eve-fit-mcp stdio server, writes the returned engine output (FitStats) as 
 written as {"error": {...}}. Null-valued request keys are dropped (see drop_nulls).
   python3 run.py --name mcp --batch-cmd "python3 tools/mcp_batch.py --mcp-dir DIR" ...
   python3 ext/tools/score.py --batch-cmd "python3 tools/mcp_batch.py --mcp-dir DIR"
+  python3 graphs/run_graphs.py --batch-cmd "python3 tools/mcp_batch.py --mcp-dir DIR --tool compute_graph"  (graph requests)
 env: EVE_DOGMA_BIN (engine binary the MCP spawns), EVE_DOGMA_DATASET (required by the MCP index)."""
-import argparse, json, os, subprocess, sys
+import argparse, json, os, re, subprocess, sys
 
 
 def drop_nulls(x):
@@ -17,6 +18,26 @@ def drop_nulls(x):
     if isinstance(x, list):
         return [drop_nulls(v) for v in x]
     return x
+
+
+def graph_args(g):
+    """CONTRACT-GRAPHS request -> compute_graph arguments (graphs suite: --tool compute_graph)."""
+    x = g.get("x") or {}
+    args = {"graph": g.get("graph"), "table": False}
+    if g.get("fit") is not None:
+        args["fit"] = drop_nulls(g["fit"])
+    if x.get("axis"):
+        args["x_axis"] = x["axis"]
+    if "values" in x:
+        args["x"] = {"values": x["values"]}
+    for k in ("y", "params", "settings"):
+        if g.get(k) is not None:
+            args[k] = drop_nulls(g[k])
+    t = g.get("target")
+    if t:
+        # target.profile keeps its nulls (signature_radius null = ideal application; the MCP accepts nullable values)
+        args["target"] = {k: (drop_nulls(v) if k == "fit" else v) for k, v in t.items() if v is not None}
+    return args
 
 
 def main():
@@ -53,10 +74,13 @@ def main():
     except ValueError:  # batch mode: JSONL
         reqs = [json.loads(l) for l in data.splitlines() if l.strip()]
     for req in reqs:
-        r = call("tools/call", {"name": a.tool, "arguments": {"fit": drop_nulls(req), "detail": "full"}})
+        r = call("tools/call", {"name": a.tool, "arguments": graph_args(req) if a.tool == "compute_graph" else
+                                {"fit": drop_nulls(req), "detail": "full"}})
         res = r.get("result") or {}
         if "error" in r or res.get("isError"):
-            out = {"error": r.get("error") or {"message": " ".join(c.get("text", "") for c in res.get("content", []))[:500]}}
+            msg = (r.get("error") or {}).get("message") or " ".join(c.get("text", "") for c in res.get("content", []))
+            m = re.match(r"(?:Error: )?([A-Z][A-Z_]+): ", msg)  # tool errors carry the contract code as a prefix
+            out = {"error": {"code": m.group(1), "message": msg[:500]} if m else {"message": msg[:500]}}
         else:
             out = res.get("structuredContent")
             if out is None:

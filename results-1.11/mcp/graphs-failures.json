@@ -1,0 +1,386 @@
+{
+ "empty_x_capacitor": {
+  "error": null,
+  "mismatches": [
+   {
+    "y": "cap_gj",
+    "x": "<empty>",
+    "got": [
+     6449.45,
+     5488.266946022493,
+     5068.750805918029,
+     3814.266947631092,
+     2688.2181527311723,
+     1806.7232213746502,
+     393.884515294983,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "want": []
+   }
+  ]
+ },
+ "empty_x_damage": {
+  "error": null,
+  "mismatches": [
+   {
+    "y": "dps",
+    "x": "<empty>",
+    "got": [
+     58.27197884812548,
+     238.68932428281818,
+     125.4080947305572,
+     67.03661402391225,
+     45.39450630325954,
+     39.49324892406952,
+     33.814623271037064,
+     32.76933356355508,
+     32.66647821070931,
+     32.659562907977666,
+     32.65924407739619,
+     32.659233973753686,
+     32.6592337533477,
+     3.4587588526999544e-11,
+     2.4677109008850813e-13,
+     1.2158176507783033e-15,
+     4.136604338020184e-18,
+     9.718982061761103e-21,
+     1.5768836055289478e-23,
+     1.766772307529338e-26,
+     1.366985313907537e-29
+    ],
+    "want": []
+   },
+   {
+    "y": "volley",
+    "x": "<empty>",
+    "got": [
+     201.17443500011248,
+     436.3443642555827,
+     251.94247361814124,
+     175.44707267010986,
+     147.2370747381345,
+     139.54491921373793,
+     132.14295910910184,
+     130.78044761682966,
+     130.64637799068583,
+     130.6373640499793,
+     130.63694846152737,
+     130.6369352916579,
+     130.63693500436366,
+     4.508413937370629e-11,
+     3.2166053468188574e-13,
+     1.584790809509965e-15,
+     5.3919701965807544e-18,
+     1.266847330223516e-20,
+     2.055432115259607e-23,
+     2.302947743583766e-26,
+     1.7818344394235035e-29
+    ],
+    "want": []
+   }
+  ]
+ },
+ "empty_x_ecm_burst": {
+  "error": null,
+  "mismatches": [
+   {
+    "y": "src_damage",
+    "x": "<empty>",
+    "got": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "want": []
+   },
+   {
+    "y": "tgt_lock_time_s",
+    "x": "<empty>",
+    "got": [
+     567.1963687931093,
+     51.79875514092323,
+     27.13858223890475,
+     18.38561973397437,
+     13.901871784144838,
+     11.176283128928263,
+     9.344256487530632,
+     8.028257166215276,
+     7.037175791477783,
+     6.263902471486574,
+     5.643744963115515,
+     5.135322487941234,
+     4.710933295623831,
+     4.351333861090214,
+     4.042739620763432,
+     3.7750174295714434,
+     3.5405516154376366,
+     3.3335078976967925,
+     3.149341303681895,
+     2.9844586624209906,
+     2.8359818439655466
+    ],
+    "want": []
+   },
+   {
+    "y": "tgt_lock_uptime_s",
+    "x": "<empty>",
+    "got": [
+     0,
+     0,
+     2.8614177610952503,
+     11.61438026602563,
+     16.098128215855162,
+     18.82371687107174,
+     20.655743512469368,
+     21.971742833784724,
+     22.962824208522218,
+     23.736097528513426,
+     24.356255036884484,
+     24.864677512058766,
+     25.289066704376168,
+     25.648666138909785,
+     25.95726037923657,
+     26.22498257042856,
+     26.459448384562364,
+     26.66649210230321,
+     26.850658696318106,
+     27.01554133757901,
+     27.16401815603445
+    ],
+    "want": []
+   }
+  ]
+ },
+ "empty_x_ewar_vs_fit": {
+  "error": null,
+  "mismatches": [
+   {
+    "y": "web_pct",
+    "x": "<empty>",
+    "got": [
+     21.177906997252204,
+     21.177906997252204,
+     21.177906997252204,
+     21.177906997252204,
+     21.177906997252204,
+     21.177906997252204,
+     21.177906997252204,
+     21.177906997252204,
+     21.177906997252204,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "want": []
+   }
+  ]
+ },
+ "err_bad_resist_mode": {
+  "error": {
+   "message": "MCP error -32602: Input validation error: Invalid arguments for tool compute_graph: Invalid option: expected one of \"auto\"|\"shield\"|\"armor\"|\"hull\"|\"weighted_average\" at target.resist_mode"
+  },
+  "mismatches": [
+   {
+    "want_error": "BAD_REQUEST",
+    "got_error": null,
+    "got": {
+     "error": {
+      "message": "MCP error -32602: Input validation error: Invalid arguments for tool compute_graph: Invalid option: expected one of \"auto\"|\"shield\"|\"armor\"|\"hull\"|\"weighted_average\" at target.resist_mode"
+     }
+    }
+   }
+  ]
+ },
+ "err_empty_y": {
+  "error": null,
+  "mismatches": [
+   {
+    "want_error": "BAD_REQUEST",
+    "got_error": null,
+    "got": "<success>"
+   }
+  ]
+ },
+ "err_missing_fit": {
+  "error": {
+   "message": "Error: give exactly one of `fit` (FitRequest JSON, names allowed), `eft` (EFT text) or `dna` (ship DNA)"
+  },
+  "mismatches": [
+   {
+    "want_error": "BAD_REQUEST",
+    "got_error": null,
+    "got": {
+     "error": {
+      "message": "Error: give exactly one of `fit` (FitRequest JSON, names allowed), `eft` (EFT text) or `dna` (ship DNA)"
+     }
+    }
+   }
+  ]
+ },
+ "err_missing_graph": {
+  "error": {
+   "message": "MCP error -32602: Input validation error: Invalid arguments for tool compute_graph: Invalid input: expected string, received null at graph"
+  },
+  "mismatches": [
+   {
+    "want_error": "BAD_REQUEST",
+    "got_error": null,
+    "got": {
+     "error": {
+      "message": "MCP error -32602: Input validation error: Invalid arguments for tool compute_graph: Invalid input: expected string, received null at graph"
+     }
+    }
+   }
+  ]
+ },
+ "err_missing_x": {
+  "error": null,
+  "mismatches": [
+   {
+    "want_error": "BAD_REQUEST",
+    "got_error": null,
+    "got": "<success>"
+   }
+  ]
+ },
+ "err_missing_x_values": {
+  "error": null,
+  "mismatches": [
+   {
+    "want_error": "BAD_REQUEST",
+    "got_error": null,
+    "got": "<success>"
+   }
+  ]
+ },
+ "err_missing_y": {
+  "error": null,
+  "mismatches": [
+   {
+    "want_error": "BAD_REQUEST",
+    "got_error": null,
+    "got": "<success>"
+   }
+  ]
+ },
+ "err_null_in_x": {
+  "error": {
+   "message": "MCP error -32602: Input validation error: Invalid arguments for tool compute_graph: Invalid input: expected number, received null at x.values[1]"
+  },
+  "mismatches": [
+   {
+    "want_error": "BAD_REQUEST",
+    "got_error": null,
+    "got": {
+     "error": {
+      "message": "MCP error -32602: Input validation error: Invalid arguments for tool compute_graph: Invalid input: expected number, received null at x.values[1]"
+     }
+    }
+   }
+  ]
+ },
+ "err_string_in_x": {
+  "error": {
+   "message": "MCP error -32602: Input validation error: Invalid arguments for tool compute_graph: Invalid input: expected number, received string at x.values[1]"
+  },
+  "mismatches": [
+   {
+    "want_error": "BAD_REQUEST",
+    "got_error": null,
+    "got": {
+     "error": {
+      "message": "MCP error -32602: Input validation error: Invalid arguments for tool compute_graph: Invalid input: expected number, received string at x.values[1]"
+     }
+    }
+   }
+  ]
+ },
+ "err_unknown_ship": {
+  "error": {
+   "message": "Error: unknown type id 999999999"
+  },
+  "mismatches": [
+   {
+    "want_error": "UNKNOWN_TYPE",
+    "got_error": null,
+    "got": {
+     "error": {
+      "message": "Error: unknown type id 999999999"
+     }
+    }
+   }
+  ]
+ },
+ "err_unknown_type_in_ewar_target_fit": {
+  "error": {
+   "message": "Error: unknown type id 999999999"
+  },
+  "mismatches": [
+   {
+    "want_error": "UNKNOWN_TYPE",
+    "got_error": null,
+    "got": {
+     "error": {
+      "message": "Error: unknown type id 999999999"
+     }
+    }
+   }
+  ]
+ },
+ "err_unknown_type_in_target_fit": {
+  "error": {
+   "message": "Error: unknown type id 999999999"
+  },
+  "mismatches": [
+   {
+    "want_error": "UNKNOWN_TYPE",
+    "got_error": null,
+    "got": {
+     "error": {
+      "message": "Error: unknown type id 999999999"
+     }
+    }
+   }
+  ]
+ }
+}
