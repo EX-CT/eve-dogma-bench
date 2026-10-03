@@ -127,6 +127,21 @@ target like the single-target modules; the neutralization burst adds a drain (`e
 resistance) to the jam chance; the warp-disruption burst has no stat effect. The Standup Weapon Disruptor uses the
 range factor (maxRange / falloffEffectiveness).
 
+**Module state correction** (draft revision 1.4.5, pending-1.10; coordinator ruling 2026-10-03 11:19 CST, reverses the
+earlier "unusable state keeps requested value" ruling; principle: align with Pyfa). For each entry of `modules[]`:
+- `rig` and `subsystem` modules are always `online` unless requested `offline` (no warning).
+- A requested `active` or `overheated` state the module cannot use is **corrected to `online`**, exactly like the Pyfa
+  oracle (`mod.state = st if mod.isValidState(st) else ONLINE`): `active` needs an activatable effect (Pyfa effect
+  category active/target) and `activationBlocked` ≤ 0; `overheated` additionally needs an overload effect. So an
+  `overheated` module with no overload effect (e.g. Bastion Module, doomsdays) becomes `online`, not `active`.
+- The module then gets exactly the effects of the corrected state. The response reports the **corrected** state in
+  `modules[N].state`.
+- Each correction emits one entry in `warnings[]`, in request order, with the exact text
+  `/modules/N: state '<requested>' not possible for this module, using online` (N = index in the request's
+  `modules[]`, `<requested>` = `active` | `overheated`).
+- Projected modules (`projected[kind=module]` and modules inside projected / booster fits) follow the same correction;
+  warnings for them are optional.
+
 ## Search (`search` RPC / CLI), interim
 
 Not part of dogma scoring; the formal spec is deferred to the MCP round. Interim behaviour:
@@ -215,3 +230,8 @@ Conventions matching Pyfa (deliberate): volley is spooled; local nosferatu is ca
   AoE cloud environment beacons (warfare buffs in the fleet-buff pool, drone scope, penalties), incursion system
   effects and burst projectors (full strength, no range factor). Doomsday / lance DPS = subcycles × volley / cycle
   (Pyfa `getVolleyParameters`). `cpu_used` / `pg_used` round like Python `round(v, 2)`. Oracle-verified (bench 1.8.0).
+- v1.4.5 (draft, pending-1.10, not released; applies on top of 1.4.4): module state correction (see "Semantics"):
+  an impossible requested `active`/`overheated` state is corrected to `online`, `modules[].state` reports the
+  corrected state, and a `warnings[]` entry `/modules/N: state '<requested>' not possible for this module, using online`
+  is emitted. Reverses the 2026-10-03 ruling that kept the requested value. Values are unchanged for every scored case
+  (the Pyfa oracle already corrects the state); only `modules[].state` / `warnings[]` change for engines that echoed it.

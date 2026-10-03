@@ -20,5 +20,6 @@ Adjudication (resolved: out of contract, see status above):
   fitting legality; E's generator does. If the bench only scores legal fits, drop the case or keep it as an
   unscored note. If calc must follow Pyfa on any fit, A and G need the effect 7027 handler (a single `capacitorBonus`
   → ship `capacitorCapacity` modAdd, as Pyfa does).
-- State: per eve's 2026-10-03 ruling the requested `active` is kept. The battery has only passive and online effects,
-  so this doesn't change any value.
+- State: under the reversed module-state ruling (contract draft 1.4.5, 2026-10-03 11:19 CST) the requested `active` is
+  corrected to `online` with a warning, as Pyfa does. The battery has only passive and online effects, so this doesn't
+  change any value.

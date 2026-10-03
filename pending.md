@@ -68,3 +68,19 @@ Notes for adjudication:
   plain PostMul. The bench scores Pyfa parity, so they are listed as A bugs. If eve rules SDE semantics instead,
   move them to `known_divergences` (a).
 - E4 and E5 are float-order artefacts, at most 0.03 percentage points of cap and 0.01 tf of CPU. They are real A ≠ Pyfa values at the bench tolerance.
+
+## Module-state ruling reversed (eve, 2026-10-03 11:19 CST; contract draft 1.4.5)
+Principle (user): align with Pyfa; engines may do more than Pyfa, never less. Adopts Variant F's behaviour, which
+already equals the Pyfa oracle: an impossible requested `active`/`overheated` state is corrected to `online`, the
+response reports the corrected `modules[].state`, and `warnings[]` gets
+`/modules/N: state '<requested>' not possible for this module, using online` (CONTRACT.md "Module state correction").
+- Scored values are unchanged (the oracle always corrected the state); A/J/E-style engines that echoed the requested
+  state now differ only in `modules[].state` / `warnings[]`.
+- Check (informational, not scored): `python3 tools/check_module_state.py --batch-cmd "<engine> batch"` on
+  `pending/state/state_rifter_*.json` (expected states from Pyfa `isValidState` via `oracle/state_oracle.py`).
+  2026-10-03 11:30 CST: F bc84e2b 3/3, eve-dogma-rs d6043a7 1/3 (echoes the requested state, no warnings).
+- **Not on this branch, still encodes the old "keeps requested value" ruling:** eve-dogma-bench `graphs-round2`
+  `graphs/draft-0.3` (fd4e8c8: contract section + case `dmg_dist_vargur_bastion_overheated_state`, whose expected
+  values were made with the Bastion *active*; under the reversed ruling Pyfa corrects `overheated` Bastion to
+  `online`), and `graphs/pending` notes on fz0157 / fz0038 / fz0518 (eda48f2). The graphs owner must regenerate that
+  case from the plain oracle (`rulings/make_ruling_cases.py` no longer applies) and update the notes there.

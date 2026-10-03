@@ -4,6 +4,12 @@ Variants: compare scores only at the same bench version (`VERSION`, shown in res
 Expected values always come from the Pyfa oracle (`oracle/pyfa_oracle.py`). Re-run `python3 bench.py --only <X>` after
 pulling.
 
+## 1.10.0 (draft, branch pending-1.10; not released)
+- Contract draft 1.4.5: module state correction (ruling reversed 2026-10-03 11:19 CST): impossible requested
+  `active`/`overheated` → `online`, corrected state reported in `modules[].state`, one `warnings[]` entry per
+  correction (`/modules/N: state '<requested>' not possible for this module, using online`). No scored value changes;
+  informational check `tools/check_module_state.py` (`pending/state/`).
+
 ## 1.8.0 (2026-10-03 06:10 CST)
 - CONTRACT.md = contract revision 1.4.3. No field changes; "Semantics" now also defines weather/cloud beacons,
   incursion system effects and burst projectors (below).
