@@ -116,6 +116,15 @@ for cid, params, note in RULE_ERR:
         pass
     write("price_rule", cid, {"note": note + ": the updater rejects the rule (non-zero exit)", "params": params,
                               "orders": [o(100.0, 50)], "expected_error": True})
+RULE_LATE = [   # appended after RULE_ERR so the order ids of the earlier cases stay unchanged
+    ("round_11_integer_digits", [o(55174443703.65, 50)], {},
+     "(a) > 10 integer digits: the double 55174443703.65 is 55174443703.65000152587890625; 12 significant digits "
+     "half-even -> 55174443703.7, then 0.01 -> 55174443703.70 (eve4; trim(v*100) gives .65)", 55174443703.7),
+]
+for cid, orders, params, note, want in RULE_LATE:
+    exp = R.rule(orders, params)
+    assert exp and exp["price"] == want, (cid, exp, want)
+    write("price_rule", cid, {"note": note, "params": params, "orders": orders, "expected": exp})
 
 # ============================================================ synthetic edp v1 packs (docs/22 §2.2), one fault each
 HDR = struct.Struct("<4sHHIHHq32sQ")      # 64 bytes

@@ -317,6 +317,11 @@
   "note": "min_units 100 drops the 99-unit order at 90: (10000+31200)/400 = 103",
   "suite": "price_rule"
  },
+ "price_rule/round_11_integer_digits": {
+  "check": "rule",
+  "note": "(a) > 10 integer digits: the double 55174443703.65 is 55174443703.65000152587890625; 12 significant digits half-even -> 55174443703.7, then 0.01 -> 55174443703.70 (eve4; trim(v*100) gives .65)",
+  "suite": "price_rule"
+ },
  "price_rule/round_4085": {
   "check": "rule",
   "note": "(a) mean 4.085 (binary 4.0849999..) -> 4.08 (half to even)",

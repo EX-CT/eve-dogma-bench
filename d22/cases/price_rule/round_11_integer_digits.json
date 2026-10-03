@@ -1,0 +1,25 @@
+{
+ "expected": {
+  "band_max": 57933165888.8,
+  "orders": 1,
+  "orders_considered": 1,
+  "orders_total": 1,
+  "p0": 55174443703.65,
+  "price": 55174443703.7,
+  "units": 50,
+  "units_considered": 50
+ },
+ "note": "(a) > 10 integer digits: the double 55174443703.65 is 55174443703.65000152587890625; 12 significant digits half-even -> 55174443703.7, then 0.01 -> 55174443703.70 (eve4; trim(v*100) gives .65)",
+ "orders": [
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1146,
+   "price": 55174443703.65,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 50
+  }
+ ],
+ "params": {}
+}

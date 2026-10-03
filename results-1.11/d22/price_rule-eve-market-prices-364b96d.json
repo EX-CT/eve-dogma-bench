@@ -1,0 +1,216 @@
+{
+ "cases": {
+  "all_small_missing": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "bad_prices_dropped": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "bad_prices_only": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "band_above_ignored": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "band_edge_inclusive": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "band_edge_just_above": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "band_edge_p0_100": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "band_max_12_digits_edge": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "band_max_12_digits_output": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "buy_orders_ignored": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "clamp_high": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "clamp_low": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "invalid_band_negative": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "invalid_band_too_large": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "invalid_min_units_0": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "invalid_min_units_fraction": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "invalid_name": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "invalid_order_side": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "invalid_version": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "invalid_weighting": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "min_units_exact_kept": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "mixed_book_60": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "no_orders": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "no_sell_orders": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "other_station_ignored": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "outlier_low_large": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "outlier_low_small": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "params_band0_min1": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "params_band10": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "params_min_units_100": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "round_11_integer_digits": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "round_4085": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "round_below_p0_clamped": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "round_half_even_2675": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "round_half_even_decimal": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "round_half_even_down": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "round_half_even_mean": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "rounding_cents": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "single_order": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "small_orders_dropped": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "ties_at_p0": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  },
+  "weighted_mean": {
+   "check": "rule",
+   "first": [],
+   "pass": true
+  }
+ },
+ "name": "emp-364b96d",
+ "suite": "price_rule"
+}
