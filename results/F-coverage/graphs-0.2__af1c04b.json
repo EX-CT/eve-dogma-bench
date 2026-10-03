@@ -1,0 +1,1263 @@
+{
+ "crashes": [],
+ "distinct_errors": [
+  "{\"code\": \"UNKNOWN_METHOD\", \"message\": \"graph\"}"
+ ],
+ "f_ref": "af1c04b",
+ "failing": [
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "app_harbinger"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "app_hyperion"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "app_hyperion_navy"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "app_kronos"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "app_maelstrom"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "app_nightmare"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "app_raven"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "app_rifter"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "app_rifter_volley_t1"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "app_tengu"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "cap_bounds"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "cap_pct_kronos"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "cap_pct_rifter"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "cap_time_bhaalgorn_start50"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "cap_time_bounds"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "cap_time_damnation"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "cap_time_guardian"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "cap_time_hyperion"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "cap_time_hyperion_nosim"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "cap_time_kronos"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "cap_time_reload_hyperion"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "cap_time_rifter"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "cap_time_tengu"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_dist_cerberus_resists"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_dist_dominix_sentries"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_dist_hel_fighters"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_dist_hyperion_cruiser"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_dist_hyperion_vs_fit_armor"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_dist_hyperion_web_vs_fit"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_dist_ishtar_drones"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_dist_ishtar_sentries"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_dist_ishtar_sentries_dcr"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_dist_kikimora_disintegrator"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_dist_kronos_ideal"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_dist_maelstrom_bs"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_dist_manticore_bomb"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_dist_naga_bs"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_dist_nidhoggur_fighters"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_dist_raven_small"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_dist_rifter_dmg_at_t"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_dist_rifter_lockrange"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_dist_rifter_noproj"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_dist_rifter_scram_vs_mwd_fit"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_dist_rifter_small"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_dist_rifter_vs_fit"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_dist_skybreaker_vorton"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_dist_smartbomb"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_dist_tengu_cruiser"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_dist_thanatos_templar"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_dist_thanatos_templar_slow_tgt"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_dist_vargur_moving_atk"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_dist_vexor_drones_atk_follow"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_dist_vexor_drones_follow"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_sig_bounds"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_sig_cerberus_time"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_sig_dominix_drones"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_sig_hyperion"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_sig_raven"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_sigpct_cerberus_time"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_sigpct_hyperion_vs_fit"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_sigpct_ideal_null"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_sigpct_raven"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_speed_maelstrom_angle"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_speed_rifter"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_speed_tengu"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_speed_vexor_drones"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_speedpct_hyperion_web_vs_fit"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_speedpct_ideal"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_speedpct_rifter"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_speedpct_tengu"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_time_avatar_lance"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_time_bounds"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_time_hyperion_reload"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_time_ishtar_drones"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_time_kestrel_breacher"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_time_kikimora_spool"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_time_nidhoggur"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_time_out_of_range"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_time_param_clamped"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_time_rifter"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_time_tengu"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "dmg_time_thanatos_templar"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "ecm_dps_hyperion_damage_pattern"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "ecm_dps_hyperion_scanres_bad"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "ecm_dps_rifter_limit1"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "ecm_dps_vexor_drones"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "ecm_dps_vexor_nodrones"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "ecm_scanres_griffin_damps"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "ecm_scanres_griffin_nodamps"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "ecm_scanres_maulus_drones"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "ecm_scanres_rifter"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "ecm_scanres_vexor_params"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "empty_x_capacitor"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "empty_x_damage"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "empty_x_ecm_burst"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "empty_x_ewar_vs_fit"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "err_bad_ammo_quality"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "err_bad_drone_mode"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "err_bad_resist_mode"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "err_bad_x_axis"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "err_bad_y"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "err_ecm_bad_axis"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "err_ecm_tgt_dps_lock_time"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "err_empty_y"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "err_missing_fit"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "err_missing_graph"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "err_missing_x"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "err_missing_x_values"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "err_missing_y"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "err_null_in_x"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "err_string_in_x"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "err_unknown_graph"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "err_unknown_ship"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "err_unknown_type_in_ewar_target_fit"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "err_unknown_type_in_target_fit"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "err_x_axis_other_graph"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "ewar_arbitrator_td_gd"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "ewar_arbitrator_td_neut_vs_avatar"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "ewar_bhaalgorn_neut"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "ewar_bhaalgorn_neut_resist"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "ewar_bhaalgorn_neut_vs_avatar"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "ewar_curse"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "ewar_curse_vs_astrahus"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "ewar_griffin_ecm"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "ewar_griffin_ecm_vs_astrahus"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "ewar_huginn_explicit_resist_wins"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "ewar_huginn_web_tp"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "ewar_huginn_web_tp_vs_avatar"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "ewar_maulus_damp"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "ewar_maulus_damp_vs_hel"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "ewar_resist_clamp_high"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "ewar_resist_clamp_low"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "ewar_vexor_drones_vs_hel"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "ewar_vexor_ecm_drones"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "ewar_vigil_tp"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "ewar_vigil_tp_resist"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "ewar_vigil_tp_vs_rifter"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "lock_avatar_lance"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "lock_crucifier"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "lock_hyperion"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "lock_rattlesnake"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "lock_rifter"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "lock_sabre"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "lock_sig_bounds"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "mob_avatar_doomsday_active"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "mob_broadsword_bubble"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "mob_bump_machariel"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "mob_bump_rifter_default"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "mob_hyperion"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "mob_rifter"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "mob_stiletto"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "mob_time_zero_bounds"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "mob_vargur"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "mob_venture"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "rr_guardian_dist"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "rr_guardian_vs_vargur_bastion"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "rr_oneiros_dist"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "rr_oneiros_time"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "rr_oneiros_time_noreload"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "rr_oneiros_time_vs_kronos"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "rr_oneiros_vs_astrahus"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "rr_scimitar_dist"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "rr_scimitar_time"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "rr_scimitar_vs_rifter"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "rr_time_bounds"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "shield_pct_bounds"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "shield_pct_drake"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "shield_pct_vargur_eff"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "shield_time_rattlesnake_eff"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "shield_time_tengu"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "warp_avatar_lance"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "warp_hyperion"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "warp_max_bounds"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "warp_orca"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "warp_rifter"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "warp_stiletto"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "warp_vargur"
+  },
+  {
+   "error": {
+    "code": "UNKNOWN_METHOD",
+    "message": "graph"
+   },
+   "id": "warp_venture"
+  }
+ ],
+ "passed": 0,
+ "rc": 0,
+ "suite": "graphs-0.2",
+ "suite_ref": "graphs-round2 84f7c2e, contract 0.2, 178 cases (rpc method graph)",
+ "timeouts": [],
+ "total": 178,
+ "values": "0/2437",
+ "wall_s": 0.1
+}
