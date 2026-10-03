@@ -6,12 +6,12 @@
   python3 tools/check_no_regress.py ... --only core,ext   # check just these suites (others in the baseline skipped)
 
 OUT is what tools/run_all_suites.sh writes (core/ graphs/ mutated/ formats/ result dirs, ext.json, ext_rpc.json, batch.json, effects.json,
-cap.json, roots.json with the suite checkouts used to list case ids). Exit 0 = no regression, 1 = regression,
+cap.json, sde.json, price_inject.json, price_rule.json (only with PRICE_RULE_CMD; not in the engine baseline), roots.json with the suite checkouts used to list case ids). Exit 0 = no regression, 1 = regression,
 2 = usage / missing input. See baselines/README.md for the rules."""
 import argparse, csv, json, os, sys, time
 from pathlib import Path
 
-SUITES = ("core", "ext", "ext_rpc", "batch", "effects", "graphs", "cap", "mutated", "formats")
+SUITES = ("core", "ext", "ext_rpc", "batch", "effects", "graphs", "cap", "mutated", "formats", "sde", "price_inject", "price_rule")
 CASE_GLOBS = {"core": ("cases", "expected"), "mutated": ("mutated/cases", "mutated/expected"),
               "graphs": ("graphs/cases", "graphs/expected")}
 
@@ -41,13 +41,14 @@ def collect_suite(name, run_dir, roots):
         if len(passed) != card["cases_fully_correct"]:
             die(f"{name}: {len(passed)} passing ids but scorecard says {card['cases_fully_correct']}")
         return {"passed": len(passed), "total": len(ids), "passed_ids": passed}
-    if name in ("ext", "ext_rpc", "batch", "effects"):
+    if name in ("ext", "ext_rpc", "batch", "effects", "sde", "price_inject", "price_rule"):
         p = rd / f"{name}.json"
         if not p.exists():
             return None
         d = json.loads(p.read_text())
-        passed = sorted(k for k, v in d["cases"].items() if v.get("pass"))
-        return {"passed": len(passed), "total": len(d["cases"]), "passed_ids": passed}
+        cases = {k: v for k, v in d["cases"].items() if not v.get("pending")}   # d22: pending = needs an input (SDE_PACK)
+        passed = sorted(k for k, v in cases.items() if v.get("pass"))
+        return {"passed": len(passed), "total": len(cases), "passed_ids": passed}
     if name == "cap":
         p = rd / "cap.json"
         if not p.exists():

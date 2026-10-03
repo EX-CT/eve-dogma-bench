@@ -1,8 +1,8 @@
 {
  "schema": "no-regress/1",
- "note": "ext re-raised 2026-10-03 15:25 CST: eve-dogma d990818 on bench b34ebb9 (b34ebb9 brdc_rifter_online expectation fix)",
+ "note": "eve-dogma d990818: batch 0/92 (bench dfb4f49 gap cases), d22 sde 0/17 and price_inject 0/32 added (bench 04f9ba5); pending SDE_PACK cases not scored",
  "created": "2026-10-03T14:07:47+0800",
- "updated": "2026-10-03T14:40:30+0800",
+ "updated": "2026-10-03T14:53:49+0800",
  "suites": {
   "core": {
    "passed": 339,
@@ -3420,9 +3420,21 @@
   },
   "batch": {
    "passed": 0,
-   "total": 44,
+   "total": 92,
    "passed_ids": [],
-   "ref": "c2229b2194b21a8b73a4fd394704203f25d45816"
+   "ref": "04f9ba547aa2b6235df77e91f1b77485aded0f25"
+  },
+  "sde": {
+   "passed": 0,
+   "total": 17,
+   "passed_ids": [],
+   "ref": "04f9ba547aa2b6235df77e91f1b77485aded0f25"
+  },
+  "price_inject": {
+   "passed": 0,
+   "total": 32,
+   "passed_ids": [],
+   "ref": "04f9ba547aa2b6235df77e91f1b77485aded0f25"
   }
  },
  "inventory": {

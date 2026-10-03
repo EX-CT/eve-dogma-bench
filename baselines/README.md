@@ -11,24 +11,29 @@ only go up.
   - `inventory.columns.<col>`: `have` (count) and `ids` for every docs/19 column (`f`, `mcp`, `web`, `formats`).
     Only the 200 parity items count, the same as the docs/19 counts table; `extra: true` items are excluded.
 - `tools/run_all_suites.sh ENGINE OUT [NAME]`: runs every suite on one binary and writes OUT.
-  - core, ext, ext_rpc, batch and effects run from this checkout.
+  - core, ext, ext_rpc, batch, effects, sde and price_inject run from this checkout. price_rule (docs/22 pricing rule;
+    it tests the price updater, not the engine) runs only when `PRICE_RULE_CMD` is set and is not in `f.json`.
+  - `SDE_PACK=/path/sde-<build>-r<rev>.edp` enables the d22 cases that need a real pack; without it they are
+    `pending` and not scored.
   - graphs, cap, mutated and formats run from the pinned commits in the script. They are fetched and checked out as
     worktrees under `OUT/suites`.
   - Runner exit codes are ignored, because the gate decides.
 - `tools/check_no_regress.py`: the gate.
 
-## Suites (seeded from 2da8150 at 14:10 CST; raised to EX-CT/eve-dogma d990818 at 14:40 CST)
+## Suites (seeded from 2da8150; raised to EX-CT/eve-dogma d990818)
 | suite | runner | source | passed / total |
 |---|---|---|---|
 | core | `run.py` | pending-1.11 | 339 / 339 |
 | ext | `ext/tools/score.py` | pending-1.11 (incl. the 37 f-missing cases) | 208 / 239 (b34ebb9 expectation fix) |
 | ext_rpc | `ext/tools/score_rpc.py` (serve-stdio) | pending-1.11 `ext/rpc` | 0 / 54 |
-| batch | `batch/run_batch.py` (identity vs one-by-one calc; provisional shape) | pending-1.11 `batch/` | 0 / 58 (44 + 14 price_* cases; no batch API in 2da8150 / d990818) |
+| batch | `batch/run_batch.py` (identity vs one-by-one calc; provisional shape) | pending-1.11 `batch/` | 0 / 92 (44 + 14 price_* + 34 gap/calc_price cases; no batch API in 2da8150 / d990818) |
 | effects | `effects/tools/score.py` | pending-1.11 | 2378 / 2378 |
 | graphs | `graphs/run_graphs.py` (serve-stdio) | graphs-round2 db81b8c (`graphs-v0.3`) | 192 / 192 |
 | cap | `cap/run_cap.py` | cap-suite d80cc38 | 150 / 150 |
 | mutated | `mutated/run_mutated.py` | mutated-suite 4533dde | 93 / 93 |
 | formats | `tools/evaluate_formats.py` (serve-stdio) | formats-suite 7c716e7 | 4779 / 4779 scored rows |
+| sde | `d22/run_d22.py --suite sde` (provisional docs/22 adapter) | pending-1.11 `d22/` | 0 / 17 (+5 pending without SDE_PACK) |
+| price_inject | `d22/run_d22.py --suite price_inject` | pending-1.11 `d22/` | 0 / 32 (+1 pending) |
 
 docs/19 (eve-fit-docs 3d99eea) `have` counts: f 104, mcp 97, web 84, formats 10.
 
