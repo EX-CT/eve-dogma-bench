@@ -3,7 +3,13 @@
 differs between A and Pyfa. usage: minimize.py FIT.json METRIC OUT.json"""
 import copy, json, os, pathlib, subprocess, sys, tempfile
 W = pathlib.Path(__file__).resolve().parent
-sys.path.insert(0, str(W / "m19"))
+M19 = W / "m19"  # bench-1.9.0 tools/metrics.py + oracle/pyfa_oracle.py; falls back to this checkout's
+if not M19.exists():
+    M19 = W.parent.parent
+    sys.path.insert(0, str(M19 / "tools")); ORACLE = str(M19 / "oracle/pyfa_oracle.py")
+else:
+    ORACLE = str(M19 / "pyfa_oracle.py")
+sys.path.insert(0, str(M19))
 from metrics import from_pyfa, METRICS, extract, close  # noqa
 REF = "/workspace/exct-eve/ref"
 A = ["/workspace/exct-eve/fz-e/bin/A-e4c42db"]
@@ -17,7 +23,7 @@ def evaluate(reqs):
     paths = []
     for i, r in enumerate(reqs):
         p = tmp / f"c{i:03d}.json"; p.write_text(json.dumps(r)); paths.append(p)
-    o = subprocess.run([REF + "/pyfa-venv/bin/python", str(W / "m19/pyfa_oracle.py"), *map(str, paths)],
+    o = subprocess.run([REF + "/pyfa-venv/bin/python", ORACLE, *map(str, paths)],
                        capture_output=True, text=True, cwd=REF + "/pyfa", env=env)
     orc = {}
     for l in o.stdout.splitlines():

@@ -51,4 +51,4 @@ Notes for adjudication:
 - E2 and E3 come from Pyfa hand-written effect modelling, not SDE modifiers: effect 854 has SDE category 0 and
   plain PostMul. The bench scores Pyfa parity, so they are listed as A bugs. If eve rules SDE semantics instead,
   move them to `known_divergences` (a).
-- E4 and E5 are float-order artefacts, ≤ 0.03 pp and 0.01 tf. They are real A ≠ Pyfa values at the bench tolerance.
+- E4 and E5 are float-order artefacts, at most 0.03 percentage points of cap and 0.01 tf of CPU. They are real A ≠ Pyfa values at the bench tolerance.
