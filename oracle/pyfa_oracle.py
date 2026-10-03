@@ -112,6 +112,39 @@ def explicit_buffs(fit, buffs):
         fit.commandBonuses[bid] = ("normal", v, afflictor, _GANG_EFFECT)
 
 
+def apply_overrides(req):
+    """`overrides` through Pyfa's Attribute Overrides (eos/saveddata/override.py; gamedata Item.overrides, read by
+    ModifiedAttributeDict.getOriginal while overrides are enabled). Pyfa semantics: per type and global for the
+    whole request (own fit, projected fits, booster fits); only attributes the type itself has (Item.overrides
+    never loads others); a mutated attribute's rolled value wins over an override (getOriginal reads mutators
+    after overrides); the last entry for a (type, attribute) wins. Returns a function removing them again
+    (gamedata items are cached across requests). No-op without overrides: default output unchanged."""
+    ovs = req.get("overrides") or []
+    if not ovs:
+        return lambda: None
+    from eos.saveddata.override import Override
+    from eos.modifiedAttributeDict import ModifiedAttributeDict
+    touched = []
+    for o in ovs:
+        it = eos.db.getItem(int(o["type_id"]))
+        at = eos.db.getAttributeInfo(int(o["attribute_id"]))
+        if it is None or at is None or at.name not in it.attributes:
+            continue
+        d = it.overrides
+        touched.append((d, at.name, d.get(at.name)))
+        d[at.name] = Override(it, at, float(o["value"]))
+    ModifiedAttributeDict.overrides_enabled = True
+
+    def restore():
+        for d, n, old in reversed(touched):
+            if old is None:
+                d.pop(n, None)
+            else:
+                d[n] = old
+        ModifiedAttributeDict.overrides_enabled = False
+    return restore
+
+
 def build(req):
     sh = item(req["ship"]["type_id"])
     ship = Citadel(sh) if sh.category.name == "Structure" else Ship(sh)
@@ -405,6 +438,15 @@ def ext_stats(fit):
 def main():
     for path in sys.argv[1:]:
         req = json.load(open(path))
+        restore = apply_overrides(req)
+        try:
+            run_one(path, req)
+        finally:
+            restore()
+
+
+def run_one(path, req):
+    if True:
         try:
             fit = build(req)
         except Exception as e:  # e.g. type missing from Pyfa's (older) eve.db
@@ -413,7 +455,7 @@ def main():
             except Exception:
                 pass
             print(json.dumps({"file": os.path.basename(path), "error": repr(e)}))
-            continue
+            return
         t0 = time.perf_counter()
         fit.calculateModifiedAttributes()
         st = stats(fit)
