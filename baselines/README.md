@@ -21,7 +21,7 @@ only go up.
 | suite | runner | source | passed / total |
 |---|---|---|---|
 | core | `run.py` | pending-1.11 | 339 / 339 |
-| ext | `ext/tools/score.py` | pending-1.11 (incl. the 37 f-missing cases) | 207 / 239 |
+| ext | `ext/tools/score.py` | pending-1.11 (incl. the 37 f-missing cases) | 208 / 239 (b34ebb9 expectation fix) |
 | ext_rpc | `ext/tools/score_rpc.py` (serve-stdio) | pending-1.11 `ext/rpc` | 0 / 54 |
 | batch | `batch/run_batch.py` (identity vs one-by-one calc; provisional shape) | pending-1.11 `batch/` | 0 / 58 (44 at 14:30 CST + 14 price_* at 15:10 CST; no batch API in 2da8150 / d990818) |
 | effects | `effects/tools/score.py` | pending-1.11 | 2378 / 2378 |

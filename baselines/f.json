@@ -1,8 +1,8 @@
 {
  "schema": "no-regress/1",
- "note": "Raised 2026-10-03 14:40 CST to EX-CT/eve-dogma d990818 (CI green, run 06:21Z) on bench pending-1.11 c2229b2 + pinned suite refs; inventory eve-fit-docs 3d99eea (seeded from 2da8150 at 14:10 CST).",
+ "note": "ext re-raised 2026-10-03 15:25 CST: eve-dogma d990818 on bench b34ebb9 (b34ebb9 brdc_rifter_online expectation fix)",
  "created": "2026-10-03T14:07:47+0800",
- "updated": "2026-10-03T14:28:50+0800",
+ "updated": "2026-10-03T14:40:30+0800",
  "suites": {
   "core": {
    "passed": 339,
@@ -351,7 +351,7 @@
    "ref": "c2229b2194b21a8b73a4fd394704203f25d45816"
   },
   "ext": {
-   "passed": 207,
+   "passed": 208,
    "total": 239,
    "passed_ids": [
     "bomb_basilisk",
@@ -366,6 +366,7 @@
     "bomb_rorqual",
     "bomb_vexor",
     "brdc_rifter_active",
+    "brdc_rifter_online",
     "brdc_rifter_skills0",
     "brdc_thorax_active",
     "cimp_rifter_default_fit",
@@ -562,13 +563,13 @@
     "val_slots_mid_low_rig",
     "val_turret_hardpoints"
    ],
-   "ref": "c2229b2194b21a8b73a4fd394704203f25d45816"
+   "ref": "b34ebb986867d9de2e2addc22d74bd40d27571e4"
   },
   "ext_rpc": {
    "passed": 0,
    "total": 54,
    "passed_ids": [],
-   "ref": "c2229b2194b21a8b73a4fd394704203f25d45816"
+   "ref": "b34ebb986867d9de2e2addc22d74bd40d27571e4"
   },
   "effects": {
    "passed": 2378,
