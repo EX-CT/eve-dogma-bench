@@ -34,3 +34,16 @@ python3 batch/run_batch.py --cmd target/release/eve-fit --self-test   # referenc
 An engine without batch support scores 0/58 without crashing (rpc answers UNKNOWN_METHOD). EX-CT/eve-dogma 2da8150 and d990818:
 0/58. Self-test with the same binary: 58/58. The no-regression gate (`baselines/f.json`) records the suite as
 `batch` at 0/44, so it can only go up.
+
+## Gap cases (gen_gap_cases.py)
+`python3 batch/tools/gen_gap_cases.py` (run after gen_batch.py and gen_price_cases.py) writes 34 more cases and
+`batch/data/` (a plain `--prices` map and a synthetic eve-price-snapshot v1 file with a valid `content_hash`):
+- `gap` (15): filter `in` / `not_null` (incl. `on: delta`), form-1 `delta_ref`, int / float numeric sweeps
+  (`from + k*step`, `to` inclusive), a product of two sweep axes, `swap_type`, `--prices` map / snapshot files,
+  request table over file, `use_snapshot: false` (request-wide and per FitRequest).
+- `gap_error` (12): BATCH_TOO_LARGE `{count, limit}` (default 2000, ceiling 100000, lowered `max_combinations`) and
+  BAD_PRICE_OVERRIDE variants; the whole request must fail.
+- `calc_price` (6): `ENGINE [--prices F] calc` with price inputs; the price block must equal the bench resolver and
+  every other key (except `provenance`) must equal calc without price inputs.
+- `calc_price_embedded` (1): no price inputs; structural check of lines priced from the embedded snapshot.
+MANIFEST `engine_args` are global options placed before the subcommand (`batch/...` paths made absolute).

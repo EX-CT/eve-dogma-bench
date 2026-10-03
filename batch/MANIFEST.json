@@ -1,4 +1,312 @@
 {
+ "calcprice_embedded_snapshot": {
+  "fits": 1,
+  "kind": "calc_price_embedded",
+  "note": "no price inputs: lines priced from the embedded snapshot carry source/layer snapshot and snapshot_time == provenance.price_time (structural; values unknown)",
+  "ops": []
+ },
+ "calcprice_file_map": {
+  "engine_args": [
+   "--prices",
+   "batch/data/prices-map.json"
+  ],
+  "fits": 1,
+  "kind": "calc_price",
+  "note": "calc --prices map",
+  "ops": []
+ },
+ "calcprice_file_snapshot": {
+  "engine_args": [
+   "--prices",
+   "batch/data/prices-jita44-20261003T060000Z.json"
+  ],
+  "fits": 1,
+  "kind": "calc_price",
+  "note": "calc --prices snapshot + an override",
+  "ops": []
+ },
+ "calcprice_overrides": {
+  "fits": 1,
+  "kind": "calc_price",
+  "note": "calc with prices + price_overrides",
+  "ops": []
+ },
+ "calcprice_request_over_file": {
+  "engine_args": [
+   "--prices",
+   "batch/data/prices-jita44-20261003T060000Z.json"
+  ],
+  "fits": 1,
+  "kind": "calc_price",
+  "note": "request > file",
+  "ops": []
+ },
+ "calcprice_request_table": {
+  "fits": 1,
+  "kind": "calc_price",
+  "note": "calc with prices.isk: the price block",
+  "ops": []
+ },
+ "calcprice_use_snapshot_false": {
+  "engine_args": [
+   "--prices",
+   "batch/data/prices-jita44-20261003T060000Z.json"
+  ],
+  "fits": 1,
+  "kind": "calc_price",
+  "note": "use_snapshot false ignores the file",
+  "ops": []
+ },
+ "gap_bad_override_both_values": {
+  "fits": 1,
+  "kind": "gap_error",
+  "note": "BAD_PRICE_OVERRIDE: price and multiplier",
+  "ops": [
+   "fields"
+  ]
+ },
+ "gap_bad_override_duplicate": {
+  "fits": 1,
+  "kind": "gap_error",
+  "note": "BAD_PRICE_OVERRIDE: duplicate target in one list",
+  "ops": [
+   "fields"
+  ]
+ },
+ "gap_bad_override_in_variant": {
+  "fits": 2,
+  "kind": "gap_error",
+  "note": "BAD_PRICE_OVERRIDE inside one variant fails the whole batch",
+  "ops": [
+   "fields"
+  ]
+ },
+ "gap_bad_override_negative": {
+  "fits": 1,
+  "kind": "gap_error",
+  "note": "BAD_PRICE_OVERRIDE: negative price",
+  "ops": [
+   "fields"
+  ]
+ },
+ "gap_bad_override_negative_mult": {
+  "fits": 1,
+  "kind": "gap_error",
+  "note": "BAD_PRICE_OVERRIDE: negative multiplier",
+  "ops": [
+   "fields"
+  ]
+ },
+ "gap_bad_override_no_target": {
+  "fits": 1,
+  "kind": "gap_error",
+  "note": "BAD_PRICE_OVERRIDE: no target",
+  "ops": [
+   "fields"
+  ]
+ },
+ "gap_bad_override_no_value": {
+  "fits": 1,
+  "kind": "gap_error",
+  "note": "BAD_PRICE_OVERRIDE: neither price nor multiplier",
+  "ops": [
+   "fields"
+  ]
+ },
+ "gap_bad_override_string": {
+  "fits": 1,
+  "kind": "gap_error",
+  "note": "BAD_PRICE_OVERRIDE: non-number price",
+  "ops": [
+   "fields"
+  ]
+ },
+ "gap_bad_override_two_targets": {
+  "fits": 1,
+  "kind": "gap_error",
+  "note": "BAD_PRICE_OVERRIDE: two targets in one entry",
+  "ops": [
+   "fields"
+  ]
+ },
+ "gap_delta_ref": {
+  "fits": 5,
+  "kind": "gap",
+  "note": "form 1 delta_ref: deltas against the fit with id s3; no base block",
+  "ops": [
+   "fields",
+   "deltas",
+   "sort_by"
+  ]
+ },
+ "gap_delta_ref_pct_filter": {
+  "fits": 5,
+  "kind": "gap",
+  "note": "delta_ref + filter on delta_pct",
+  "ops": [
+   "fields",
+   "deltas",
+   "filter"
+  ]
+ },
+ "gap_filter_in": {
+  "fits": 5,
+  "kind": "gap",
+  "note": "filter op in (bool list) + not_null; booleans never equal 1/0",
+  "ops": [
+   "fields",
+   "filter"
+  ]
+ },
+ "gap_filter_in_numbers": {
+  "fits": 5,
+  "kind": "gap",
+  "note": "not_null on delta: every fit has a delta against s5 (incl. s5 itself, delta 0)",
+  "ops": [
+   "fields",
+   "deltas",
+   "filter"
+  ]
+ },
+ "gap_filter_not_null_drops": {
+  "fits": 6,
+  "kind": "gap",
+  "note": "not_null drops fits where the field is null/absent",
+  "ops": [
+   "fields",
+   "filter"
+  ]
+ },
+ "gap_prices_file_map": {
+  "engine_args": [
+   "--prices",
+   "batch/data/prices-map.json"
+  ],
+  "fits": 2,
+  "kind": "gap",
+  "note": "--prices plain map = L4 source injected; one rig unpriced -> missing",
+  "ops": [
+   "fields"
+  ]
+ },
+ "gap_prices_file_snapshot": {
+  "engine_args": [
+   "--prices",
+   "batch/data/prices-jita44-20261003T060000Z.json"
+  ],
+  "fits": 3,
+  "kind": "gap",
+  "note": "--prices eve-price-snapshot v1: source injected, snapshot_time = market_time; overrides stack over it",
+  "ops": [
+   "fields",
+   "deltas"
+  ]
+ },
+ "gap_prices_request_over_file": {
+  "engine_args": [
+   "--prices",
+   "batch/data/prices-jita44-20261003T060000Z.json"
+  ],
+  "fits": 1,
+  "kind": "gap",
+  "note": "request prices.isk beats the --prices file per type; others still from the file",
+  "ops": [
+   "fields"
+  ]
+ },
+ "gap_product_sweep_axis": {
+  "fits": 9,
+  "kind": "gap",
+  "note": "product of two numeric sweep axes",
+  "ops": [
+   "fields",
+   "deltas",
+   "sort_by"
+  ]
+ },
+ "gap_swap_type": {
+  "fits": 4,
+  "kind": "gap",
+  "note": "swap_type replaces every module with type from; no match = unchanged fit",
+  "ops": [
+   "fields",
+   "deltas"
+  ]
+ },
+ "gap_sweep_float": {
+  "fits": 9,
+  "kind": "gap",
+  "note": "float sweep 0..100 step 12.5 (9 values, labels path=value)",
+  "ops": [
+   "fields",
+   "deltas"
+  ]
+ },
+ "gap_sweep_float_inexact": {
+  "fits": 3,
+  "kind": "gap",
+  "note": "float sweep with an inexact step: 0.1, 0.4, 0.7 (from + k*step; to inclusive)",
+  "ops": [
+   "fields"
+  ]
+ },
+ "gap_sweep_int": {
+  "fits": 3,
+  "kind": "gap",
+  "note": "int sweep 1,3,5",
+  "ops": [
+   "fields",
+   "deltas"
+  ]
+ },
+ "gap_too_large_ceiling": {
+  "fits": 200001,
+  "kind": "gap_error",
+  "note": "200001 > ceiling 100000 even with max_combinations 1e6 -> limit 100000",
+  "ops": [
+   "fields"
+  ]
+ },
+ "gap_too_large_default": {
+  "fits": 2406,
+  "kind": "gap_error",
+  "note": "6 x 401 = 2406 > default 2000 -> BATCH_TOO_LARGE {count 2406, limit 2000}",
+  "ops": [
+   "fields"
+  ]
+ },
+ "gap_too_large_lowered": {
+  "fits": 6,
+  "kind": "gap_error",
+  "note": "6 fits > max_combinations 5 -> BATCH_TOO_LARGE {6, 5}",
+  "ops": [
+   "fields"
+  ]
+ },
+ "gap_use_snapshot_false": {
+  "engine_args": [
+   "--prices",
+   "batch/data/prices-jita44-20261003T060000Z.json"
+  ],
+  "fits": 1,
+  "kind": "gap",
+  "note": "use_snapshot false disables L4 (the file): only 2889 priced, the rest missing",
+  "ops": [
+   "fields"
+  ]
+ },
+ "gap_use_snapshot_false_fit": {
+  "engine_args": [
+   "--prices",
+   "batch/data/prices-map.json"
+  ],
+  "fits": 2,
+  "kind": "gap",
+  "note": "a FitRequest's own use_snapshot false only affects that fit",
+  "ops": [
+   "fields"
+  ]
+ },
  "multi_100_full": {
   "fits": 100,
   "kind": "multi",

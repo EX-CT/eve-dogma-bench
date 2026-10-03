@@ -191,3 +191,18 @@ def compare_block(exp, got, where=""):
                 if not _close(l[k], x.get(k)):
                     bad.append(f"{where}{sec}[{l['index']}].{k} {x.get(k)} != {l[k]}")
     return bad
+
+
+def canonical_hash(obj):
+    """docs/22 §4.6 content_hash: sha256 over canonical JSON without content_hash"""
+    import hashlib
+    o = {k: v for k, v in obj.items() if k != "content_hash"}
+    return "sha256:" + hashlib.sha256(json.dumps(o, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode()).hexdigest()
+
+
+def load_l4(path):
+    """--prices FILE -> L4 dict: eve-price-snapshot v1 (label injected, time = market_time) or a plain map"""
+    d = json.load(gzip.open(path) if str(path).endswith(".gz") else open(path))
+    if d.get("schema") == "eve-price-snapshot":
+        return {"isk": {k: v["price"] for k, v in d["types"].items()}, "label": "injected", "time": d["market_time"]}
+    return {"isk": {k: float(v) for k, v in d.items()}, "label": "injected", "time": None}

@@ -8,7 +8,7 @@ The request/response *shape* lives in adapter.py; only adapter.py changes when t
 import copy, json, math
 
 DELTA_ABS_TOL = 1e-6   # deltas: round6(value - ref) from the emitted (6-dp) values; delta_pct = round6(delta/|ref|*100); within 1e-6
-OPS = {"<": lambda a, b: a < b, "<=": lambda a, b: a <= b, ">": lambda a, b: a > b, ">=": lambda a, b: a >= b,
+OPS = {"in": lambda a, b: a in b, "<": lambda a, b: a < b, "<=": lambda a, b: a <= b, ">": lambda a, b: a > b, ">=": lambda a, b: a >= b,
        "==": lambda a, b: a == b, "!=": lambda a, b: a != b}
 
 
@@ -23,6 +23,11 @@ def _parse(ptr):
 def apply_patch(doc, ops):
     doc = copy.deepcopy(doc)
     for op in ops:
+        if op["op"] == "swap_type":          # docs/23 §2.2 engine extension: every module with type_id == from
+            for m in doc.get("modules", []):
+                if m.get("type_id") == op["from"]:
+                    m["type_id"] = op["to"]
+            continue
         parts = _parse(op["path"])
         parent = doc
         for p in parts[:-1]:
@@ -107,6 +112,47 @@ def l1_overrides(req):
     return combos
 
 
+MAX_COMB_DEFAULT, MAX_COMB_CEILING = 2000, 100000
+
+
+def count(req):
+    """expansion size without expanding (docs/23 §2.3 cap)"""
+    if "fits" in req:
+        return len(req["fits"])
+    if "variants" in req:
+        return len(req["variants"])
+    axes = req["product"]["axes"] if "product" in req else [{"sweep": req["sweep"]}]
+    n = 1
+    for ax in axes:
+        n *= len(_sweep_values(ax["sweep"])) if "sweep" in ax else len(ax["options"])
+    return n
+
+
+def request_error(req):
+    """whole-request error the engine must return instead of results, or None (docs/23 §2.3, §5.1, §8)"""
+    n, lim = count(req), min(req.get("max_combinations", MAX_COMB_DEFAULT), MAX_COMB_CEILING)
+    if n > lim:
+        return {"code": "BATCH_TOO_LARGE", "count": n, "limit": lim}
+    lists = [req.get("price_overrides", [])]
+    lists += [it.get("price_overrides", []) for it in req.get("fits", []) + req.get("variants", [])]
+    lists += [it["fit"].get("price_overrides", []) for it in req.get("fits", [])]
+    if "base" in req:
+        lists.append(req["base"].get("price_overrides", []))
+    for ax in (req.get("product") or {}).get("axes", []):
+        lists += [o.get("price_overrides", []) for o in ax.get("options", [])]
+    targets = ("type_id", "market_group_id", "group_id", "category_id")
+    for lst in lists:
+        seen = set()
+        for e in lst:
+            tk = [k for k in targets if k in e]
+            vk = [k for k in ("price", "multiplier") if k in e]
+            if len(tk) != 1 or len(vk) != 1 or not isinstance(e[vk[0]], (int, float)) or isinstance(e[vk[0]], bool) \
+                    or e[vk[0]] < 0 or (tk[0], e[tk[0]]) in seen:
+                return {"code": "BAD_PRICE_OVERRIDE"}
+            seen.add((tk[0], e[tk[0]]))
+    return None
+
+
 def expand(req):
     return [(label, fit) for _, label, fit in expand3(req)]
 
@@ -160,6 +206,9 @@ def expected(req, singles, base_single=None):
     """singles: one-by-one engine outputs for expand(req), in order. base_single: output for req['base'] (deltas)."""
     fields = req.get("fields")
     want_delta = bool(req.get("deltas"))
+    if want_delta and "fits" in req:      # form 1: reference = the fit with id == delta_ref (docs/23 §4.2)
+        ids = [fid for fid, _, _ in expand3(req)]
+        base_single = singles[ids.index(req["delta_ref"])]
     rows = []
     for i, ((fid, label, _), out) in enumerate(zip(expand3(req), singles)):
         r = {"index": i, "id": fid, "label": label}
@@ -181,8 +230,26 @@ def expected(req, singles, base_single=None):
         src = r["delta"] if on == "delta" else r["delta_pct"] if on == "delta_pct" else r["stats"]
         return _cmp(src.get(spec["field"]) if fields is not None else get_path(src, spec["field"]))
 
+    def raw_val(r, spec):
+        if "error" in r:
+            return None
+        on = spec.get("on", "value")
+        src = r["delta"] if on == "delta" else r["delta_pct"] if on == "delta_pct" else r["stats"]
+        return src.get(spec["field"]) if fields is not None else get_path(src, spec["field"])
+
+    def passes(r, flt):
+        if "error" in r:
+            return False
+        if flt["op"] == "not_null":
+            return raw_val(r, flt) is not None
+        if flt["op"] == "in":
+            v = raw_val(r, flt)
+            return v is not None and any(v == x and isinstance(v, bool) == isinstance(x, bool) for x in flt["value"])
+        v = key_val(r, flt)
+        return v is not None and OPS[flt["op"]](v, flt["value"])
+
     for flt in req.get("filter", []):
-        rows = [r for r in rows if key_val(r, flt) is not None and OPS[flt["op"]](key_val(r, flt), flt["value"])]
+        rows = [r for r in rows if passes(r, flt)]
     matched = len(rows)
     for spec in reversed(req.get("sort_by", req.get("sort", []))):   # stable multi-key sort; nulls / errors last
         desc = spec.get("order", "asc") == "desc"
@@ -191,7 +258,7 @@ def expected(req, singles, base_single=None):
     if n is not None:
         rows = rows[:n]
     resp = {"total": len(singles), "matched": matched, "results": rows}
-    if want_delta:
+    if want_delta and "fits" not in req:
         resp["base"] = {"stats": project(base_single, fields)}
         if req.get("price") and "price" in base_single:
             resp["base"]["price"] = base_single["price"]
@@ -207,6 +274,13 @@ def _close_delta(a, b):
 
 def compare(exp, got, limit=8):
     bad = []
+    if "request_error" in exp:
+        e = exp["request_error"]
+        g = (got or {}).get("error") if isinstance(got, dict) else None
+        if not isinstance(g, dict) or g.get("code") != e["code"]:
+            return [f"expected request error {e['code']}, got {json.dumps(got)[:160]}"]
+        det = dict(g, **(g.get("details") or {}), **(g.get("data") or {}))
+        return [f"{e['code']}.{k} {det.get(k)} != {e[k]}" for k in ("count", "limit") if k in e and det.get(k) != e[k]]
     if not isinstance(got, dict) or "results" not in got:
         err = got.get("error") if isinstance(got, dict) else None
         return [f"no batch result: {json.dumps(err)[:200] if err else repr(got)[:200]}"]

@@ -32,14 +32,78 @@ def strip_price(fit):
     return f
 
 
-def with_price(out, fit, req, l1):
+def l4_for(fit, req, engine_args):
+    """L4 = the --prices file unless use_snapshot is false (fit's own flag wins over the batch's)"""
+    use = (fit.get("prices") or {}).get("use_snapshot", (req.get("prices") or {}).get("use_snapshot", True))
+    if "--prices" not in engine_args or use is False:
+        return None
+    return prices.load_l4(SUITE.parent / engine_args[engine_args.index("--prices") + 1])
+
+
+def with_price(out, fit, req, l1, engine_args=()):
     """merge the bench reference price block into a one-by-one output (price cases)"""
     if not isinstance(out, dict) or "error" in out:
         return out
     inj = dict((req.get("prices") or {}).get("isk", {}))
     inj.update((fit.get("prices") or {}).get("isk", {}))      # the FitRequest's own table wins per type (docs/23 §5.2)
     l2 = list(req.get("price_overrides", [])) + list(fit.get("price_overrides", []))
-    return dict(out, price=prices.price_block(fit, prices.layers_for(l2, l1, inj)))
+    return dict(out, price=prices.price_block(fit, prices.layers_for(l2, l1, inj, l4_for(fit, req, list(engine_args)))))
+
+
+STRIP_OUT = ("price", "provenance")
+
+
+def calc_price_embedded_case(engine, case, self_test):
+    """kind calc_price_embedded: calc with no price inputs; structural only (embedded snapshot values unknown):
+    every priced line has source / layer snapshot, multiplier 1, base_source snapshot, snapshot_time ==
+    provenance.price_time; lines + missing cover every item (docs/22 §3, docs/23 §5)"""
+    if self_test:
+        return []
+    fit = case["fit"]
+    got = calc_one(engine, fit)
+    if not isinstance(got, dict) or "error" in got:
+        return [f"calc error {json.dumps(got)[:160]}"]
+    blk, prov = got.get("price"), got.get("provenance") or {}
+    if not isinstance(blk, dict):
+        return ["no price block without price inputs (embedded snapshot expected)"]
+    bad = []
+    pt = prov.get("price_time")
+    if not pt:
+        bad.append("provenance.price_time missing")
+    lines = [(sec, l) for sec, s in (blk.get("sections") or {}).items() for l in s.get("items", [])]
+    for sec, l in lines:
+        for k, v in (("source", "snapshot"), ("layer", "snapshot"), ("base_source", "snapshot"), ("multiplier", 1)):
+            if l.get(k) != v:
+                bad.append(f"{sec}[{l.get('index')}] {k}={l.get(k)!r} != {v!r}")
+        if l.get("snapshot_time") != pt:
+            bad.append(f"{sec}[{l.get('index')}] snapshot_time {l.get('snapshot_time')!r} != price_time {pt!r}")
+    want = sorted((sec, i, t, q) for sec, i, t, q in prices.items(fit))
+    have = sorted([(sec, l.get("index"), l.get("type_id"), l.get("quantity")) for sec, l in lines]
+                  + [(m.get("section"), m.get("index"), m.get("type_id"), m.get("quantity")) for m in blk.get("missing", [])])
+    if want != have:
+        bad.append(f"lines+missing {len(have)} != items {len(want)}")
+    return bad
+
+
+def calc_price_case(engine, case, engine_args, self_test):
+    """kind calc_price: `ENGINE [--prices F] calc` with price inputs; price block vs bench resolver, the rest identical
+    to calc without price inputs (price / provenance keys aside)"""
+    fit = case["fit"]
+    plain = calc_one(engine, strip_price(fit))
+    exp = with_price(plain, fit, {}, [], engine_args)
+    got = exp if self_test else calc_one(" ".join([engine] + list(engine_args)), fit)
+    if not isinstance(got, dict) or "error" in got:
+        return [f"calc error {json.dumps(got)[:160]}"]
+    bad = []
+    a = {k: v for k, v in got.items() if k not in STRIP_OUT}
+    b = {k: v for k, v in plain.items() if k not in STRIP_OUT}
+    if json.dumps(a, sort_keys=True) != json.dumps(b, sort_keys=True):
+        bad.append("calc stats with price inputs differ from calc without them")
+    return bad + prices.compare_block(exp["price"], got.get("price"), "price: ")
+
+
+def semantics_error(r):
+    return None if "fit" in r and "batch_version" not in r else semantics.request_error(r)
 
 
 def calc_one(engine, fit):
@@ -69,9 +133,13 @@ def main():
     man = json.loads((SUITE / "MANIFEST.json").read_text())
     ids = a.cases or sorted(man)
     reqs = {c: json.loads((SUITE / "cases" / f"{c}.json").read_text()) for c in ids}
+    eargs = {c: [str(SUITE.parent / x) if x.startswith("batch/") else x for x in man[c].get("engine_args", [])] for c in ids}
+    special = {c for c in ids if man[c]["kind"].startswith("calc_price") or semantics_error(reqs[c])}
     # one-by-one reference outputs (distinct fits computed once)
     todo = {}
-    for r in reqs.values():
+    for c, r in reqs.items():
+        if c in special:
+            continue
         for _, f in semantics.expand(r):
             f = strip_price(f)
             todo.setdefault(json.dumps(f, sort_keys=True), f)
@@ -87,29 +155,43 @@ def main():
     res, t_batch = {}, 0.0
     for c in ids:
         r = reqs[c]
+        m = man[c]
+        if m["kind"] == "calc_price_embedded":
+            bad = calc_price_embedded_case(a.cmd, r, a.self_test)
+            res[c] = {"pass": not bad, "kind": m["kind"], "fits": 1, "ops": m["ops"], "first": bad[:5]}
+            continue
+        if m["kind"].startswith("calc_price"):
+            bad = calc_price_case(a.cmd, r, eargs[c], a.self_test)
+            res[c] = {"pass": not bad, "kind": m["kind"], "fits": 1, "ops": m["ops"], "first": bad[:5]}
+            continue
+        if semantics_error(r):
+            exp = {"request_error": semantics_error(r)}
+            got = {"error": exp["request_error"]} if a.self_test else adapter.call(a.cmd, r, a.transport, engine_args=eargs[c])
+            bad = semantics.compare(exp, got)
+            res[c] = {"pass": not bad, "kind": m["kind"], "fits": m["fits"], "ops": m["ops"], "first": bad[:5]}
+            continue
         fits = semantics.expand(r)
         singles = [single[json.dumps(strip_price(f), sort_keys=True)] for _, f in fits]
         base = single[json.dumps(strip_price(r["base"]), sort_keys=True)] if "base" in r else None
         if r.get("price"):
-            singles = [with_price(o, f, r, l1) for o, (_, f), l1 in zip(singles, fits, semantics.l1_overrides(r))]
-            base = with_price(base, r["base"], r, []) if base is not None else None
+            singles = [with_price(o, f, r, l1, eargs[c]) for o, (_, f), l1 in zip(singles, fits, semantics.l1_overrides(r))]
+            base = with_price(base, r["base"], r, [], eargs[c]) if base is not None else None
         exp = semantics.expected(r, singles, base)
         t1 = time.time()
         if a.self_test:
             js = calc_jsonl(a.cmd, [strip_price(f) for _, f in fits])
             jb = calc_jsonl(a.cmd, [strip_price(r["base"])])[0] if "base" in r else None
             if r.get("price"):
-                js = [with_price(o, f, r, l1) for o, (_, f), l1 in zip(js, fits, semantics.l1_overrides(r))]
-                jb = with_price(jb, r["base"], r, []) if jb is not None else None
+                js = [with_price(o, f, r, l1, eargs[c]) for o, (_, f), l1 in zip(js, fits, semantics.l1_overrides(r))]
+                jb = with_price(jb, r["base"], r, [], eargs[c]) if jb is not None else None
             got = semantics.expected(r, js, jb)
         else:
             try:
-                got = adapter.call(a.cmd, r, a.transport)
+                got = adapter.call(a.cmd, r, a.transport, engine_args=eargs[c])
             except Exception as e:  # noqa: BLE001
                 got = {"error": {"code": "ADAPTER_EXCEPTION", "message": repr(e)[:200]}}
         t_batch += time.time() - t1
         bad = semantics.compare(exp, got)
-        m = man[c]
         res[c] = {"pass": not bad, "kind": m["kind"], "fits": m["fits"], "ops": m["ops"], "first": bad[:5]}
     np = sum(v["pass"] for v in res.values())
     by = {}
