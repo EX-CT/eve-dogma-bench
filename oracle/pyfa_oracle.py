@@ -116,7 +116,7 @@ def apply_overrides(req):
     """`overrides` through Pyfa's Attribute Overrides (eos/saveddata/override.py; gamedata Item.overrides, read by
     ModifiedAttributeDict.getOriginal while overrides are enabled). Pyfa semantics: per type and global for the
     whole request (own fit, projected fits, booster fits); only attributes the type itself has (Item.overrides
-    never loads others); a mutated attribute's rolled value wins over an override (getOriginal reads mutators
+    never loads others; for a mutated item: base + mutated type attributes); a mutated attribute's rolled value wins over an override (getOriginal reads mutators
     after overrides); the last entry for a (type, attribute) wins. Returns a function removing them again
     (gamedata items are cached across requests). No-op without overrides: default output unchanged."""
     ovs = req.get("overrides") or []
@@ -124,23 +124,35 @@ def apply_overrides(req):
         return lambda: None
     from eos.saveddata.override import Override
     from eos.modifiedAttributeDict import ModifiedAttributeDict
-    touched = []
+    by_type = {}
     for o in ovs:
         it = eos.db.getItem(int(o["type_id"]))
         at = eos.db.getAttributeInfo(int(o["attribute_id"]))
-        if it is None or at is None or at.name not in it.attributes:
+        if it is None or at is None:
             continue
-        d = it.overrides
-        touched.append((d, at.name, d.get(at.name)))
-        d[at.name] = Override(it, at, float(o["value"]))
+        by_type.setdefault(it.ID, {})[at.name] = Override(it, at, float(o["value"]))
+    # Serve eos.db.getOverrides (the saveddata lookup behind the lazy gamedata Item.overrides) from the request and
+    # drop the items' loaded tables, so Item.overrides applies its own filter (the type's attributes; for a mutated
+    # item the fresh getItemWithBaseItemAttribute copy, i.e. base + mutated type attributes).
+    orig_get, orig_mut = eos.db.getOverrides, eos.db.getItemWithBaseItemAttribute
+    seen = [eos.db.getItem(t) for t in by_type]
+
+    def get_mut(*a, **k):
+        item = orig_mut(*a, **k)
+        item._Item__overrides = None
+        seen.append(item)
+        return item
+
+    eos.db.getOverrides = lambda item_id, eager=None: list(by_type.get(item_id, {}).values())
+    eos.db.getItemWithBaseItemAttribute = get_mut
+    for it in seen:
+        it._Item__overrides = None
     ModifiedAttributeDict.overrides_enabled = True
 
     def restore():
-        for d, n, old in reversed(touched):
-            if old is None:
-                d.pop(n, None)
-            else:
-                d[n] = old
+        eos.db.getOverrides, eos.db.getItemWithBaseItemAttribute = orig_get, orig_mut
+        for it in seen:
+            it._Item__overrides = None  # reloads from the (empty) saveddata DB on next use
         ModifiedAttributeDict.overrides_enabled = False
     return restore
 
