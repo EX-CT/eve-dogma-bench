@@ -33,7 +33,10 @@ suites:
   mcp-ext:   {column: mcp, kind: files, dir: ext/cases, ext: .json}
   mcp-ext-unit: {column: mcp, kind: files, dir: ext/unit/cases, ext: .json}
   mcp-cap:   {column: mcp, kind: files, git_ref: origin/cap-suite, dir: cap/cases, ext: .json}
-  mcp-graphs: {column: mcp, kind: files, git_ref: origin/graphs-round2, dir: graphs/cases, ext: .json}   # graphs suite through compute_graph (tools/mcp_batch.py --tool compute_graph)
+  mcp-graphs: {column: mcp, kind: files, git_ref: origin/graphs-round2, dir: graphs/cases, ext: .json,   # graphs suite through compute_graph (tools/mcp_batch.py --tool compute_graph)
+    na: {err_missing_x: "MCP auto-fills defaults (x axis) before the engine; n/a for MCP (eve 2026-10-03)",
+         err_missing_x_values: "MCP auto-fills defaults (default x range) before the engine; n/a for MCP (eve 2026-10-03)",
+         err_missing_y: "MCP auto-fills defaults (y series) before the engine; n/a for MCP (eve 2026-10-03)"}}
   mcp-effects: {column: mcp, kind: files, dir: effects/cases, ext: .json}   # effects suite through compute_fit (include_attributes)
   mcp-mut:   {column: mcp, kind: files, git_ref: origin/mutated-suite, dir: mutated/cases, ext: .json}
   mcp:       {column: mcp, kind: id, id_prefix: "mcp.", glob: "*.test.ts", ids_json: docs/test-ids.json}   # --root mcp=<EX-CT/eve-fit-mcp checkout, >= e7b794a (v0.3.1) for the mcp.unit.empty-nested-arrays / projected-fighter-default-quantity / mcp.features.contract-error-codes ids>: ids mcp.<file>.<slug> on the node --test titles in src/test/ (guard: mcp.unit.test-ids; table docs/test-ids.{md,json})

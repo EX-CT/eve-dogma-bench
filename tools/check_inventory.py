@@ -30,6 +30,8 @@ cover `have` (strict gate, eve 2026-10-03); partial and weak refs are evidence f
 docs/19 `have` is a problem). An item's `tests:` in docs/19 may be a list of refs or a {column: [refs]} mapping; both
 sources are merged.
 
+A files suite may list `na: {case: reason}`: cases that are n/a for its column (excluded from the suite's names, so a
+glob never counts them; citing one is a problem `na-case`; tools/apply_na.py drops them from a scorecard).
 Suite kinds (inventory/suites.yaml): files, jsonl, rust-test, id (stable test ids parsed from the suite's sources:
 `id_prefix`, files matching `glob`; an id is `<prefix><slug>` directly followed by ':' at the start of a string
 literal; JS template parts `${v}` are expanded from `for (const v of NAME)` over a literal `const NAME = [...]`;
@@ -102,6 +104,7 @@ class Resolver:
         if files is not None:
             ext = s.get("ext", "")
             files = {f[:len(f) - len(ext)] if ext and f.endswith(ext) else f for f in files if not ext or f.endswith(ext)}
+            files -= set(s.get("na") or {})  # n/a cases for this column: not citable, not scored
         self.cache[suite] = files
         return files
 
@@ -266,6 +269,9 @@ def main():
             if suite not in suites:
                 problems.append(("bad-ref", iid, f"{r}: unknown suite"))
                 continue
+            if name in (suites[suite].get("na") or {}):
+                problems.append(("na-case", iid, f"{r}: case is n/a for column {suites[suite]['column']}: {suites[suite]['na'][name]}"))
+                continue
             ok = res.exists(suite, name)
             if ok is False:
                 problems.append(("unknown-id" if suites[suite]["kind"] == "id" else "missing-test", iid, r))
@@ -304,6 +310,9 @@ def main():
         problems += [("unverified", i, r) for i, r in unverified]
     names = {it["id"]: it["name"] for it in inv["items"]}
     if not a.quiet:
+        for sn, sv in suites.items():
+            for case, why in (sv.get("na") or {}).items():
+                print(f"info n/a case       {sn}:{case} ({why})")
         for kind, iid, msg in problems:
             print(f"FAIL {kind:15s} {iid:14s} {msg}" + (f"  ({names[iid]})" if kind == "uncovered-have" else ""))
         for w in res.warnings:

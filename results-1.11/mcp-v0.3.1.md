@@ -24,3 +24,8 @@ Graphs, the 3 remaining failures (contract error cases, not Pyfa): `err_missing_
 proposes treating them as n/a for MCP; that is eve's decision, so they are left as failures here.
 
 Files: `mcp-v0.3.1-d990818/`, `mcp-v0.3.1-2da8150/` (core-*, ext, effects, graphs-*).
+
+## n/a ruling (eve, 2026-10-03 15:09 CST)
+err_missing_x, err_missing_x_values and err_missing_y are n/a in the MCP column (the MCP fills in defaults before the
+engine sees the request). inventory/suites.yaml `mcp-graphs.na` lists them; `tools/apply_na.py` writes
+`graphs-scorecard-na.json` / `graphs-failures-na.json`: mcp-graphs 189/189 on both engines (192 run, 3 n/a).
