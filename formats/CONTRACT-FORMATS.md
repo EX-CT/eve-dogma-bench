@@ -133,20 +133,21 @@ unrecognised under `auto` (a forced `xml` imports it).
 - **Header:** `[Ship, name]`. The name is everything after the first comma, stripped, and may contain commas.
   Leading and trailing whitespace on the line is ignored.
 - **Header failures (→ `IMPORT_ERROR`):** an empty name (`[Rifter,]`), an unknown ship, or a type that is not a
-  ship. Ship and item names are **case-sensitive**.
+  ship. Ship names are **case-sensitive**: a lower-case hull name is unknown.
 - **Renamed items:** old names are resolved through Pyfa's rename table (e.g. `Drone Control Unit I` → `Fighter
   Support Unit I`).
 - **Sections:** sections are separated by blank lines. Modules are placed by their slot type, in input order.
   - `[Empty X slot]` lines are skipped.
-  - `/offline` (any case) sets the module offline. Other modules get their highest allowed state (`activeStateLimit`).
+  - `/offline` or `/OFFLINE` sets the module offline. A mixed-case `/Offline` makes the whole line unknown (the
+    module is dropped). Other modules get their highest allowed state (`activeStateLimit`).
   - `module, charge` loads the charge only if it fits the module; otherwise the module is loaded with no charge.
   - Unknown lines are ignored, including comments (`#`, `//`) and an unknown item or charge.
   - Modules beyond the hull's slots or hardpoints, and subsystems that don't fit the hull, are dropped.
 - **`Name xN` lines:** these are drones, fighters or cargo by category. A module written as `Module xN` goes to
   **cargo**. `x0` drones are kept with quantity 0, and drone stacks of the same type are merged.
 - **Mutations:** `Item [n]` references a trailing `[n] Base` block (base type, mutaplasmid, then `attrName value, …`).
-  - Unknown attribute names are skipped.
-  - Values are taken as written, with no clamping to the mutaplasmid range.
+  - Unknown attribute names are skipped. Attributes that are not listed keep the base item's value (multiplier 1).
+  - Values outside the mutaplasmid's range are **clamped** to the range (e.g. cpu 999 → 54).
   - If the block is missing, the plain base item is fitted.
 - **T3D:** a mode line is not read, and the fit gets the hull's first mode. `mode_type_id` null counts as equal.
 - **Line ends and whitespace:** CRLF, CR and mixed line ends are accepted, and so are tabs as whitespace.
@@ -184,7 +185,9 @@ unrecognised under `auto` (a forced `xml` imports it).
 - **Fits:** every `<fitting>` is a fit. A fitting with an unknown ship is skipped and the others are kept. If no fit
   is left (`<fittings count="0">`), the result is `IMPORT_ERROR`.
 - **`<description>` is required:** without it, Pyfa crashes (→ `IMPORT_ERROR`).
-- **Slots:** slot indices only order the modules within a rack. Unknown slot names and unknown types are skipped.
+- **Slots:** the `slot` attribute is not used for placement. Modules are placed by their type's slot, in document
+  order (`low slot 3` before `low slot 0` stays first), and an unknown slot name still fits the module. Unknown types
+  are skipped, and a drone bay `qty="0"` is kept with quantity 0.
 - **Entities:** they are decoded once, so `&amp;amp;` becomes `&amp;`.
 - **Export:** escapes `& < > "` in attributes. The description is limited to 400 characters and newlines become
   `<br>`.
@@ -232,8 +235,8 @@ Edge categories (rows / of which errors):
 
 | category | rows | errors | covers |
 |---|---|---|---|
-| `eft` | 29 | 5 | sections, `/offline` variants, CRLF/mixed line ends, tabs, comments, BOM, empty and comma names, unknown and non-ship hulls, case-sensitivity, renamed item, unknown and wrong-size charges, `x0`/huge quantities, `Module xN`, overfit, wrong-hull subsystem, T3D mode lines, T3C order, structure |
-| `mutated` | 4 | 0 | mutated module and drone, unknown attribute, out-of-range values, missing block |
+| `eft` | 29 | 5 | sections, `/offline` case variants, CRLF/mixed line ends, tabs, comments, BOM, empty and comma names, unknown and non-ship hulls, case-sensitivity, renamed item, unknown and wrong-size charges, `x0`/huge quantities, `Module xN`, overfit, wrong-hull subsystem, T3D mode lines, T3C order, structure |
+| `mutated` | 4 | 0 | mutated module and drone, unknown attribute, out-of-range values (clamped), missing block |
 | `multi` | 7 | 0 | EFT 2- and 3-fit pastes (merged), `.cfg` with 2 fits, XML with 2 fits and a mutation, XML with one bad fitting, DNA on two lines, two chat links |
 | `eftcfg` | 2 | 2 | empty `.cfg`, unknown ship stem |
 | `dna` | 12 | 5 | chat link (alone and inside text), alt form, unknown ids, non-ship hull, `;0`, huge quantities, ship only, leading spaces, missing `::` |
