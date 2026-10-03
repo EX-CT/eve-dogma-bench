@@ -1,6 +1,6 @@
 {
  "crashes": [],
- "f_ref": "6e2ebf1",
+ "f_ref": "af1c04b",
  "failing": [
   {
    "error": "no response",
@@ -394,6 +394,210 @@
   },
   {
    "error": "no response",
+   "id": "app_maelstrom_arty_web_tp_off_edge",
+   "mismatches": [
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 0,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 3.4268051072315595e-12,
+     "x": 2000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 1.0503175376077083,
+     "x": 5000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 14.258421777822912,
+     "x": 8000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 4.7419767495144916,
+     "x": 15000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 12.882000213851194,
+     "x": 20000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 42.996025768779006,
+     "x": 30000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 67.81973695032993,
+     "x": 40000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 99.38856303711104,
+     "x": 60000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 100.25277710005017,
+     "x": 80000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 78.99179520187191,
+     "x": 100000,
+     "y": "dps"
+    }
+   ]
+  },
+  {
+   "error": "no response",
+   "id": "app_moros_navy_xl",
+   "mismatches": [
+    {
+     "got": "<missing>",
+     "want": 265.153898625,
+     "x": 0,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 265.153898625,
+     "x": 5000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 202.44710865668304,
+     "x": 10000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 137.69145412351963,
+     "x": 20000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 64.7716258847151,
+     "x": 30000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 21.323097295886715,
+     "x": 40000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 7.566175692576613,
+     "x": 50000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.07247029881327961,
+     "x": 75000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 1.5100566767277778e-05,
+     "x": 100000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 1.3507595916273358e-16,
+     "x": 150000,
+     "y": "dps"
+    }
+   ]
+  },
+  {
+   "error": "no response",
+   "id": "app_naglfar_navy_xl",
+   "mismatches": [
+    {
+     "got": "<missing>",
+     "want": 314.69340212673603,
+     "x": 0,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 314.69340212673603,
+     "x": 5000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 314.69340212673603,
+     "x": 10000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 314.69340212673603,
+     "x": 20000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 314.69340212673603,
+     "x": 30000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 313.2023139482487,
+     "x": 40000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 306.8907594180734,
+     "x": 50000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 294.15591531851663,
+     "x": 75000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 268.50202764420015,
+     "x": 100000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 191.09333926459254,
+     "x": 150000,
+     "y": "dps"
+    }
+   ]
+  },
+  {
+   "error": "no response",
    "id": "app_nightmare",
    "mismatches": [
     {
@@ -543,6 +747,72 @@
     {
      "got": "<missing>",
      "want": 0.0,
+     "x": 150000,
+     "y": "dps"
+    }
+   ]
+  },
+  {
+   "error": "no response",
+   "id": "app_revelation_navy_xl",
+   "mismatches": [
+    {
+     "got": "<missing>",
+     "want": 830.0855866552731,
+     "x": 0,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 830.0855866552731,
+     "x": 5000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 830.0855866552731,
+     "x": 10000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 830.0855866552731,
+     "x": 20000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 828.377291246712,
+     "x": 30000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 680.5321241593006,
+     "x": 40000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 515.872398486328,
+     "x": 50000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 515.872398486328,
+     "x": 75000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 291.20259401512874,
+     "x": 100000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 8.716885356294265,
      "x": 150000,
      "y": "dps"
     }
@@ -2050,6 +2320,180 @@
   },
   {
    "error": "no response",
+   "id": "dmg_dist_dominix_sentries_follow_target",
+   "mismatches": [
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 0,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 1.314646853869654e-37,
+     "x": 2000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 2.129604449020493e-05,
+     "x": 5000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 13.160220465307084,
+     "x": 10000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 49.72473885978983,
+     "x": 15000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 120.48879348879201,
+     "x": 20000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 202.15705418487073,
+     "x": 25000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 276.05186375581326,
+     "x": 30000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 384.798534969699,
+     "x": 40000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 452.3031541946239,
+     "x": 50000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 494.90269715276753,
+     "x": 60000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 522.9159857987792,
+     "x": 70000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 541.8135052292189,
+     "x": 80000,
+     "y": "dps"
+    }
+   ]
+  },
+  {
+   "error": "no response",
+   "id": "dmg_dist_hel_fast_target",
+   "mismatches": [
+    {
+     "got": "<missing>",
+     "want": 16.936668625513743,
+     "x": 0,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 16.936668625513743,
+     "x": 1000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 16.934342769856286,
+     "x": 2000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 16.766697686762065,
+     "x": 5000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 16.396488412510227,
+     "x": 10000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 15.83733351146798,
+     "x": 15000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 15.83287621348811,
+     "x": 20000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 15.83287621348811,
+     "x": 25000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 15.83287621348811,
+     "x": 30000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 15.83287621348811,
+     "x": 40000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 14.00554336697725,
+     "x": 50000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 2.287646456009908,
+     "x": 60000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 80000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 100000,
+     "y": "dps"
+    }
+   ]
+  },
+  {
+   "error": "no response",
    "id": "dmg_dist_hel_fighters",
    "mismatches": [
     {
@@ -2722,6 +3166,408 @@
   },
   {
    "error": "no response",
+   "id": "dmg_dist_ishtar_sentries_follow_target",
+   "mismatches": [
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 0,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 6.698186840272334e-19,
+     "x": 2000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.1827080532612698,
+     "x": 5000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 40.042772714589184,
+     "x": 10000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 134.44499879172412,
+     "x": 15000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 236.0492905263629,
+     "x": 20000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 314.48652174732666,
+     "x": 25000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 370.23061516861947,
+     "x": 30000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 421.21373345923803,
+     "x": 40000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 386.95913718478687,
+     "x": 50000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 303.86497581067096,
+     "x": 60000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 211.44108835048348,
+     "x": 70000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 134.84801118391067,
+     "x": 80000,
+     "y": "dps"
+    }
+   ]
+  },
+  {
+   "error": "no response",
+   "id": "dmg_dist_kestrel_breacher_fine",
+   "mismatches": [
+    {
+     "got": "<missing>",
+     "want": 7177.5,
+     "x": 5000,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 7177.5,
+     "x": 5250,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 7177.5,
+     "x": 5500,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 7177.5,
+     "x": 5750,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 110.00954250000001,
+     "x": 6000,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 110.00954250000001,
+     "x": 6250,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 110.00954250000001,
+     "x": 6500,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 110.00954250000001,
+     "x": 6750,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 110.00954250000001,
+     "x": 7000,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 110.00954250000001,
+     "x": 7250,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 110.00954250000001,
+     "x": 7500,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 110.00954250000001,
+     "x": 7750,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 110.00954250000001,
+     "x": 8000,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 110.00954250000001,
+     "x": 8250,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 110.00954250000001,
+     "x": 8500,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 110.00954250000001,
+     "x": 8750,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 9000,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 9250,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 9500,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 9750,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 10000,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 10250,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 10500,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 10750,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 11000,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 247.5,
+     "x": 5000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 247.5,
+     "x": 5250,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 247.5,
+     "x": 5500,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 247.5,
+     "x": 5750,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 3.7934325,
+     "x": 6000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 3.7934325,
+     "x": 6250,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 3.7934325,
+     "x": 6500,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 3.7934325,
+     "x": 6750,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 3.7934325,
+     "x": 7000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 3.7934325,
+     "x": 7250,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 3.7934325,
+     "x": 7500,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 3.7934325,
+     "x": 7750,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 3.7934325,
+     "x": 8000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 3.7934325,
+     "x": 8250,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 3.7934325,
+     "x": 8500,
+     "y": "dps"
+    }
+   ]
+  },
+  {
+   "error": "no response",
+   "id": "dmg_dist_kestrel_breacher_profile",
+   "mismatches": [
+    {
+     "got": "<missing>",
+     "want": 37.5,
+     "x": 0,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 37.5,
+     "x": 2000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 37.5,
+     "x": 4000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 37.5,
+     "x": 5000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.5747625,
+     "x": 6000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.5747625,
+     "x": 7000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.5747625,
+     "x": 8000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 9000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 10000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 12000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 15000,
+     "y": "dps"
+    }
+   ]
+  },
+  {
+   "error": "no response",
    "id": "dmg_dist_kikimora_disintegrator",
    "mismatches": [
     {
@@ -3286,6 +4132,96 @@
      "got": "<missing>",
      "want": 508.47482305938087,
      "x": 150000,
+     "y": "dps"
+    }
+   ]
+  },
+  {
+   "error": "no response",
+   "id": "dmg_dist_nidhoggur_fast_target",
+   "mismatches": [
+    {
+     "got": "<missing>",
+     "want": 138.3541819486267,
+     "x": 0,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 138.3541819486267,
+     "x": 1000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 138.3541819486267,
+     "x": 2000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 138.3541819486267,
+     "x": 5000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 116.40346803127872,
+     "x": 10000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 61.322943815328046,
+     "x": 15000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 30.473448303523146,
+     "x": 20000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 13.12505964595676,
+     "x": 25000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 4.5815914416495005,
+     "x": 30000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.271190174761416,
+     "x": 40000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 50000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 60000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 80000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 100000,
      "y": "dps"
     }
    ]
@@ -4630,6 +5566,96 @@
   },
   {
    "error": "no response",
+   "id": "dmg_dist_thanatos_templar_fast_target",
+   "mismatches": [
+    {
+     "got": "<missing>",
+     "want": 121.62942158900204,
+     "x": 0,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 121.62942158900204,
+     "x": 1000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 121.62942158900204,
+     "x": 2000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 121.62942158900204,
+     "x": 5000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 121.62942158900204,
+     "x": 10000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 71.10283820138926,
+     "x": 15000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 11.410063955049665,
+     "x": 20000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.4577511235010743,
+     "x": 25000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 30000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 40000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 50000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 60000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 80000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 100000,
+     "y": "dps"
+    }
+   ]
+  },
+  {
+   "error": "no response",
    "id": "dmg_dist_thanatos_templar_slow_tgt",
    "mismatches": [
     {
@@ -4703,6 +5729,96 @@
      "want": 1856.0650463123966,
      "x": 150000,
      "y": "dps"
+    }
+   ]
+  },
+  {
+   "error": "no response",
+   "id": "dmg_dist_vargur_bastion_overheated_state",
+   "mismatches": [
+    {
+     "got": "<missing>",
+     "want": 43.92133842070712,
+     "x": 0,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 1079.409190167649,
+     "x": 2000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 1303.8228959616176,
+     "x": 5000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 1286.3564837786116,
+     "x": 10000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 987.4360664164411,
+     "x": 20000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 612.6067307584069,
+     "x": 30000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 163.1350473619578,
+     "x": 50000,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 175.46424547952114,
+     "x": 0,
+     "y": "volley"
+    },
+    {
+     "got": "<missing>",
+     "want": 4312.202813635892,
+     "x": 2000,
+     "y": "volley"
+    },
+    {
+     "got": "<missing>",
+     "want": 5208.727896392421,
+     "x": 5000,
+     "y": "volley"
+    },
+    {
+     "got": "<missing>",
+     "want": 5138.950176834573,
+     "x": 10000,
+     "y": "volley"
+    },
+    {
+     "got": "<missing>",
+     "want": 3944.773328477218,
+     "x": 20000,
+     "y": "volley"
+    },
+    {
+     "got": "<missing>",
+     "want": 2447.3429465783897,
+     "x": 30000,
+     "y": "volley"
+    },
+    {
+     "got": "<missing>",
+     "want": 651.7189372156438,
+     "x": 50000,
+     "y": "volley"
     }
    ]
   },
@@ -6977,6 +8093,390 @@
      "want": 1348.947132856083,
      "x": 120,
      "y": "volley"
+    }
+   ]
+  },
+  {
+   "error": "no response",
+   "id": "dmg_time_manticore_bomb",
+   "mismatches": [
+    {
+     "got": "<missing>",
+     "want": 7250.0,
+     "x": 0,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 7250.0,
+     "x": 0.5,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 7250.0,
+     "x": 1,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 7250.0,
+     "x": 2,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 7250.0,
+     "x": 5,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 7250.0,
+     "x": 9,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 7250.0,
+     "x": 10,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 7250.0,
+     "x": 11,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 7250.0,
+     "x": 12,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 7250.0,
+     "x": 13,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 7250.0,
+     "x": 15,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 7250.0,
+     "x": 20,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 7250.0,
+     "x": 25,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 7250.0,
+     "x": 30,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 7250.0,
+     "x": 40,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 7250.0,
+     "x": 60,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 14500.0,
+     "x": 120,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 725.0,
+     "x": 0,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 725.0,
+     "x": 0.5,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 725.0,
+     "x": 1,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 725.0,
+     "x": 2,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 725.0,
+     "x": 5,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 725.0,
+     "x": 9,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 10,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 11,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 12,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 13,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 15,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 20,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 25,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 30,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 40,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 60,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 120,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 7250.0,
+     "x": 0,
+     "y": "volley"
+    },
+    {
+     "got": "<missing>",
+     "want": 7250.0,
+     "x": 0.5,
+     "y": "volley"
+    },
+    {
+     "got": "<missing>",
+     "want": 7250.0,
+     "x": 1,
+     "y": "volley"
+    },
+    {
+     "got": "<missing>",
+     "want": 7250.0,
+     "x": 2,
+     "y": "volley"
+    },
+    {
+     "got": "<missing>",
+     "want": 7250.0,
+     "x": 5,
+     "y": "volley"
+    },
+    {
+     "got": "<missing>",
+     "want": 7250.0,
+     "x": 9,
+     "y": "volley"
+    }
+   ]
+  },
+  {
+   "error": "no response",
+   "id": "dmg_time_manticore_bomb_reload",
+   "mismatches": [
+    {
+     "got": "<missing>",
+     "want": 7250.0,
+     "x": 0,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 7250.0,
+     "x": 30,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 7250.0,
+     "x": 60,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 14500.0,
+     "x": 90,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 14500.0,
+     "x": 120,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 14500.0,
+     "x": 150,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 21750.0,
+     "x": 180,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 21750.0,
+     "x": 240,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 29000.0,
+     "x": 300,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 36250.0,
+     "x": 400,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 50750.0,
+     "x": 600,
+     "y": "damage"
+    },
+    {
+     "got": "<missing>",
+     "want": 725.0,
+     "x": 0,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 30,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 60,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 725.0,
+     "x": 90,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 120,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 150,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 725.0,
+     "x": 180,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 240,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 300,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 400,
+     "y": "dps"
+    },
+    {
+     "got": "<missing>",
+     "want": 0.0,
+     "x": 600,
+     "y": "dps"
     }
    ]
   },
@@ -16011,6 +17511,210 @@
     },
     {
      "error": "no response",
+     "id": "app_maelstrom_arty_web_tp_off_edge",
+     "mismatches": [
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 0,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 3.4268051072315595e-12,
+       "x": 2000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 1.0503175376077083,
+       "x": 5000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 14.258421777822912,
+       "x": 8000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 4.7419767495144916,
+       "x": 15000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 12.882000213851194,
+       "x": 20000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 42.996025768779006,
+       "x": 30000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 67.81973695032993,
+       "x": 40000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 99.38856303711104,
+       "x": 60000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 100.25277710005017,
+       "x": 80000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 78.99179520187191,
+       "x": 100000,
+       "y": "dps"
+      }
+     ]
+    },
+    {
+     "error": "no response",
+     "id": "app_moros_navy_xl",
+     "mismatches": [
+      {
+       "got": "<missing>",
+       "want": 265.153898625,
+       "x": 0,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 265.153898625,
+       "x": 5000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 202.44710865668304,
+       "x": 10000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 137.69145412351963,
+       "x": 20000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 64.7716258847151,
+       "x": 30000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 21.323097295886715,
+       "x": 40000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 7.566175692576613,
+       "x": 50000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.07247029881327961,
+       "x": 75000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 1.5100566767277778e-05,
+       "x": 100000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 1.3507595916273358e-16,
+       "x": 150000,
+       "y": "dps"
+      }
+     ]
+    },
+    {
+     "error": "no response",
+     "id": "app_naglfar_navy_xl",
+     "mismatches": [
+      {
+       "got": "<missing>",
+       "want": 314.69340212673603,
+       "x": 0,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 314.69340212673603,
+       "x": 5000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 314.69340212673603,
+       "x": 10000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 314.69340212673603,
+       "x": 20000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 314.69340212673603,
+       "x": 30000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 313.2023139482487,
+       "x": 40000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 306.8907594180734,
+       "x": 50000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 294.15591531851663,
+       "x": 75000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 268.50202764420015,
+       "x": 100000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 191.09333926459254,
+       "x": 150000,
+       "y": "dps"
+      }
+     ]
+    },
+    {
+     "error": "no response",
      "id": "app_nightmare",
      "mismatches": [
       {
@@ -16160,6 +17864,72 @@
       {
        "got": "<missing>",
        "want": 0.0,
+       "x": 150000,
+       "y": "dps"
+      }
+     ]
+    },
+    {
+     "error": "no response",
+     "id": "app_revelation_navy_xl",
+     "mismatches": [
+      {
+       "got": "<missing>",
+       "want": 830.0855866552731,
+       "x": 0,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 830.0855866552731,
+       "x": 5000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 830.0855866552731,
+       "x": 10000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 830.0855866552731,
+       "x": 20000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 828.377291246712,
+       "x": 30000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 680.5321241593006,
+       "x": 40000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 515.872398486328,
+       "x": 50000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 515.872398486328,
+       "x": 75000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 291.20259401512874,
+       "x": 100000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 8.716885356294265,
        "x": 150000,
        "y": "dps"
       }
@@ -17667,6 +19437,180 @@
     },
     {
      "error": "no response",
+     "id": "dmg_dist_dominix_sentries_follow_target",
+     "mismatches": [
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 0,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 1.314646853869654e-37,
+       "x": 2000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 2.129604449020493e-05,
+       "x": 5000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 13.160220465307084,
+       "x": 10000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 49.72473885978983,
+       "x": 15000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 120.48879348879201,
+       "x": 20000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 202.15705418487073,
+       "x": 25000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 276.05186375581326,
+       "x": 30000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 384.798534969699,
+       "x": 40000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 452.3031541946239,
+       "x": 50000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 494.90269715276753,
+       "x": 60000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 522.9159857987792,
+       "x": 70000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 541.8135052292189,
+       "x": 80000,
+       "y": "dps"
+      }
+     ]
+    },
+    {
+     "error": "no response",
+     "id": "dmg_dist_hel_fast_target",
+     "mismatches": [
+      {
+       "got": "<missing>",
+       "want": 16.936668625513743,
+       "x": 0,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 16.936668625513743,
+       "x": 1000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 16.934342769856286,
+       "x": 2000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 16.766697686762065,
+       "x": 5000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 16.396488412510227,
+       "x": 10000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 15.83733351146798,
+       "x": 15000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 15.83287621348811,
+       "x": 20000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 15.83287621348811,
+       "x": 25000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 15.83287621348811,
+       "x": 30000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 15.83287621348811,
+       "x": 40000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 14.00554336697725,
+       "x": 50000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 2.287646456009908,
+       "x": 60000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 80000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 100000,
+       "y": "dps"
+      }
+     ]
+    },
+    {
+     "error": "no response",
      "id": "dmg_dist_hel_fighters",
      "mismatches": [
       {
@@ -18339,6 +20283,408 @@
     },
     {
      "error": "no response",
+     "id": "dmg_dist_ishtar_sentries_follow_target",
+     "mismatches": [
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 0,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 6.698186840272334e-19,
+       "x": 2000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.1827080532612698,
+       "x": 5000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 40.042772714589184,
+       "x": 10000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 134.44499879172412,
+       "x": 15000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 236.0492905263629,
+       "x": 20000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 314.48652174732666,
+       "x": 25000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 370.23061516861947,
+       "x": 30000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 421.21373345923803,
+       "x": 40000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 386.95913718478687,
+       "x": 50000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 303.86497581067096,
+       "x": 60000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 211.44108835048348,
+       "x": 70000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 134.84801118391067,
+       "x": 80000,
+       "y": "dps"
+      }
+     ]
+    },
+    {
+     "error": "no response",
+     "id": "dmg_dist_kestrel_breacher_fine",
+     "mismatches": [
+      {
+       "got": "<missing>",
+       "want": 7177.5,
+       "x": 5000,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7177.5,
+       "x": 5250,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7177.5,
+       "x": 5500,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7177.5,
+       "x": 5750,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 110.00954250000001,
+       "x": 6000,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 110.00954250000001,
+       "x": 6250,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 110.00954250000001,
+       "x": 6500,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 110.00954250000001,
+       "x": 6750,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 110.00954250000001,
+       "x": 7000,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 110.00954250000001,
+       "x": 7250,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 110.00954250000001,
+       "x": 7500,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 110.00954250000001,
+       "x": 7750,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 110.00954250000001,
+       "x": 8000,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 110.00954250000001,
+       "x": 8250,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 110.00954250000001,
+       "x": 8500,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 110.00954250000001,
+       "x": 8750,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 9000,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 9250,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 9500,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 9750,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 10000,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 10250,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 10500,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 10750,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 11000,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 247.5,
+       "x": 5000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 247.5,
+       "x": 5250,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 247.5,
+       "x": 5500,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 247.5,
+       "x": 5750,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 3.7934325,
+       "x": 6000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 3.7934325,
+       "x": 6250,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 3.7934325,
+       "x": 6500,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 3.7934325,
+       "x": 6750,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 3.7934325,
+       "x": 7000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 3.7934325,
+       "x": 7250,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 3.7934325,
+       "x": 7500,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 3.7934325,
+       "x": 7750,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 3.7934325,
+       "x": 8000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 3.7934325,
+       "x": 8250,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 3.7934325,
+       "x": 8500,
+       "y": "dps"
+      }
+     ]
+    },
+    {
+     "error": "no response",
+     "id": "dmg_dist_kestrel_breacher_profile",
+     "mismatches": [
+      {
+       "got": "<missing>",
+       "want": 37.5,
+       "x": 0,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 37.5,
+       "x": 2000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 37.5,
+       "x": 4000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 37.5,
+       "x": 5000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.5747625,
+       "x": 6000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.5747625,
+       "x": 7000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.5747625,
+       "x": 8000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 9000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 10000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 12000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 15000,
+       "y": "dps"
+      }
+     ]
+    },
+    {
+     "error": "no response",
      "id": "dmg_dist_kikimora_disintegrator",
      "mismatches": [
       {
@@ -18903,6 +21249,96 @@
        "got": "<missing>",
        "want": 508.47482305938087,
        "x": 150000,
+       "y": "dps"
+      }
+     ]
+    },
+    {
+     "error": "no response",
+     "id": "dmg_dist_nidhoggur_fast_target",
+     "mismatches": [
+      {
+       "got": "<missing>",
+       "want": 138.3541819486267,
+       "x": 0,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 138.3541819486267,
+       "x": 1000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 138.3541819486267,
+       "x": 2000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 138.3541819486267,
+       "x": 5000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 116.40346803127872,
+       "x": 10000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 61.322943815328046,
+       "x": 15000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 30.473448303523146,
+       "x": 20000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 13.12505964595676,
+       "x": 25000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 4.5815914416495005,
+       "x": 30000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.271190174761416,
+       "x": 40000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 50000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 60000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 80000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 100000,
        "y": "dps"
       }
      ]
@@ -20247,6 +22683,96 @@
     },
     {
      "error": "no response",
+     "id": "dmg_dist_thanatos_templar_fast_target",
+     "mismatches": [
+      {
+       "got": "<missing>",
+       "want": 121.62942158900204,
+       "x": 0,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 121.62942158900204,
+       "x": 1000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 121.62942158900204,
+       "x": 2000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 121.62942158900204,
+       "x": 5000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 121.62942158900204,
+       "x": 10000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 71.10283820138926,
+       "x": 15000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 11.410063955049665,
+       "x": 20000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.4577511235010743,
+       "x": 25000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 30000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 40000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 50000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 60000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 80000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 100000,
+       "y": "dps"
+      }
+     ]
+    },
+    {
+     "error": "no response",
      "id": "dmg_dist_thanatos_templar_slow_tgt",
      "mismatches": [
       {
@@ -20320,6 +22846,96 @@
        "want": 1856.0650463123966,
        "x": 150000,
        "y": "dps"
+      }
+     ]
+    },
+    {
+     "error": "no response",
+     "id": "dmg_dist_vargur_bastion_overheated_state",
+     "mismatches": [
+      {
+       "got": "<missing>",
+       "want": 43.92133842070712,
+       "x": 0,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 1079.409190167649,
+       "x": 2000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 1303.8228959616176,
+       "x": 5000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 1286.3564837786116,
+       "x": 10000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 987.4360664164411,
+       "x": 20000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 612.6067307584069,
+       "x": 30000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 163.1350473619578,
+       "x": 50000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 175.46424547952114,
+       "x": 0,
+       "y": "volley"
+      },
+      {
+       "got": "<missing>",
+       "want": 4312.202813635892,
+       "x": 2000,
+       "y": "volley"
+      },
+      {
+       "got": "<missing>",
+       "want": 5208.727896392421,
+       "x": 5000,
+       "y": "volley"
+      },
+      {
+       "got": "<missing>",
+       "want": 5138.950176834573,
+       "x": 10000,
+       "y": "volley"
+      },
+      {
+       "got": "<missing>",
+       "want": 3944.773328477218,
+       "x": 20000,
+       "y": "volley"
+      },
+      {
+       "got": "<missing>",
+       "want": 2447.3429465783897,
+       "x": 30000,
+       "y": "volley"
+      },
+      {
+       "got": "<missing>",
+       "want": 651.7189372156438,
+       "x": 50000,
+       "y": "volley"
       }
      ]
     },
@@ -22594,6 +25210,390 @@
        "want": 1348.947132856083,
        "x": 120,
        "y": "volley"
+      }
+     ]
+    },
+    {
+     "error": "no response",
+     "id": "dmg_time_manticore_bomb",
+     "mismatches": [
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 0,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 0.5,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 1,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 2,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 5,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 9,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 10,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 11,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 12,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 13,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 15,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 20,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 25,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 30,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 40,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 60,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 14500.0,
+       "x": 120,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 725.0,
+       "x": 0,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 725.0,
+       "x": 0.5,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 725.0,
+       "x": 1,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 725.0,
+       "x": 2,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 725.0,
+       "x": 5,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 725.0,
+       "x": 9,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 10,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 11,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 12,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 13,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 15,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 20,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 25,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 30,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 40,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 60,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 120,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 0,
+       "y": "volley"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 0.5,
+       "y": "volley"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 1,
+       "y": "volley"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 2,
+       "y": "volley"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 5,
+       "y": "volley"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 9,
+       "y": "volley"
+      }
+     ]
+    },
+    {
+     "error": "no response",
+     "id": "dmg_time_manticore_bomb_reload",
+     "mismatches": [
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 0,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 30,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 60,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 14500.0,
+       "x": 90,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 14500.0,
+       "x": 120,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 14500.0,
+       "x": 150,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 21750.0,
+       "x": 180,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 21750.0,
+       "x": 240,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 29000.0,
+       "x": 300,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 36250.0,
+       "x": 400,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 50750.0,
+       "x": 600,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 725.0,
+       "x": 0,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 30,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 60,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 725.0,
+       "x": 90,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 120,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 150,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 725.0,
+       "x": 180,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 240,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 300,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 400,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 600,
+       "y": "dps"
       }
      ]
     },
@@ -31232,12 +34232,12 @@
    ],
    "info_charge_ids": {
     "ok": 0,
-    "total": 120
+    "total": 161
    },
    "passed": 0,
    "timeouts": [],
-   "total": 178,
-   "values": "0/2437"
+   "total": 192,
+   "values": "0/2694"
   },
   "rpc": {
    "distinct_errors": [
@@ -31654,6 +34654,219 @@
       "code": "UNKNOWN_METHOD",
       "message": "graph"
      },
+     "id": "app_maelstrom_arty_web_tp_off_edge",
+     "mismatches": [
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 0,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 3.4268051072315595e-12,
+       "x": 2000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 1.0503175376077083,
+       "x": 5000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 14.258421777822912,
+       "x": 8000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 4.7419767495144916,
+       "x": 15000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 12.882000213851194,
+       "x": 20000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 42.996025768779006,
+       "x": 30000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 67.81973695032993,
+       "x": 40000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 99.38856303711104,
+       "x": 60000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 100.25277710005017,
+       "x": 80000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 78.99179520187191,
+       "x": 100000,
+       "y": "dps"
+      }
+     ]
+    },
+    {
+     "error": {
+      "code": "UNKNOWN_METHOD",
+      "message": "graph"
+     },
+     "id": "app_moros_navy_xl",
+     "mismatches": [
+      {
+       "got": "<missing>",
+       "want": 265.153898625,
+       "x": 0,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 265.153898625,
+       "x": 5000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 202.44710865668304,
+       "x": 10000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 137.69145412351963,
+       "x": 20000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 64.7716258847151,
+       "x": 30000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 21.323097295886715,
+       "x": 40000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 7.566175692576613,
+       "x": 50000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.07247029881327961,
+       "x": 75000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 1.5100566767277778e-05,
+       "x": 100000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 1.3507595916273358e-16,
+       "x": 150000,
+       "y": "dps"
+      }
+     ]
+    },
+    {
+     "error": {
+      "code": "UNKNOWN_METHOD",
+      "message": "graph"
+     },
+     "id": "app_naglfar_navy_xl",
+     "mismatches": [
+      {
+       "got": "<missing>",
+       "want": 314.69340212673603,
+       "x": 0,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 314.69340212673603,
+       "x": 5000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 314.69340212673603,
+       "x": 10000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 314.69340212673603,
+       "x": 20000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 314.69340212673603,
+       "x": 30000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 313.2023139482487,
+       "x": 40000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 306.8907594180734,
+       "x": 50000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 294.15591531851663,
+       "x": 75000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 268.50202764420015,
+       "x": 100000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 191.09333926459254,
+       "x": 150000,
+       "y": "dps"
+      }
+     ]
+    },
+    {
+     "error": {
+      "code": "UNKNOWN_METHOD",
+      "message": "graph"
+     },
      "id": "app_nightmare",
      "mismatches": [
       {
@@ -31806,6 +35019,75 @@
       {
        "got": "<missing>",
        "want": 0.0,
+       "x": 150000,
+       "y": "dps"
+      }
+     ]
+    },
+    {
+     "error": {
+      "code": "UNKNOWN_METHOD",
+      "message": "graph"
+     },
+     "id": "app_revelation_navy_xl",
+     "mismatches": [
+      {
+       "got": "<missing>",
+       "want": 830.0855866552731,
+       "x": 0,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 830.0855866552731,
+       "x": 5000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 830.0855866552731,
+       "x": 10000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 830.0855866552731,
+       "x": 20000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 828.377291246712,
+       "x": 30000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 680.5321241593006,
+       "x": 40000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 515.872398486328,
+       "x": 50000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 515.872398486328,
+       "x": 75000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 291.20259401512874,
+       "x": 100000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 8.716885356294265,
        "x": 150000,
        "y": "dps"
       }
@@ -33370,6 +36652,186 @@
       "code": "UNKNOWN_METHOD",
       "message": "graph"
      },
+     "id": "dmg_dist_dominix_sentries_follow_target",
+     "mismatches": [
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 0,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 1.314646853869654e-37,
+       "x": 2000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 2.129604449020493e-05,
+       "x": 5000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 13.160220465307084,
+       "x": 10000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 49.72473885978983,
+       "x": 15000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 120.48879348879201,
+       "x": 20000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 202.15705418487073,
+       "x": 25000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 276.05186375581326,
+       "x": 30000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 384.798534969699,
+       "x": 40000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 452.3031541946239,
+       "x": 50000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 494.90269715276753,
+       "x": 60000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 522.9159857987792,
+       "x": 70000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 541.8135052292189,
+       "x": 80000,
+       "y": "dps"
+      }
+     ]
+    },
+    {
+     "error": {
+      "code": "UNKNOWN_METHOD",
+      "message": "graph"
+     },
+     "id": "dmg_dist_hel_fast_target",
+     "mismatches": [
+      {
+       "got": "<missing>",
+       "want": 16.936668625513743,
+       "x": 0,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 16.936668625513743,
+       "x": 1000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 16.934342769856286,
+       "x": 2000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 16.766697686762065,
+       "x": 5000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 16.396488412510227,
+       "x": 10000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 15.83733351146798,
+       "x": 15000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 15.83287621348811,
+       "x": 20000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 15.83287621348811,
+       "x": 25000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 15.83287621348811,
+       "x": 30000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 15.83287621348811,
+       "x": 40000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 14.00554336697725,
+       "x": 50000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 2.287646456009908,
+       "x": 60000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 80000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 100000,
+       "y": "dps"
+      }
+     ]
+    },
+    {
+     "error": {
+      "code": "UNKNOWN_METHOD",
+      "message": "graph"
+     },
      "id": "dmg_dist_hel_fighters",
      "mismatches": [
       {
@@ -34063,6 +37525,417 @@
       "code": "UNKNOWN_METHOD",
       "message": "graph"
      },
+     "id": "dmg_dist_ishtar_sentries_follow_target",
+     "mismatches": [
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 0,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 6.698186840272334e-19,
+       "x": 2000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.1827080532612698,
+       "x": 5000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 40.042772714589184,
+       "x": 10000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 134.44499879172412,
+       "x": 15000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 236.0492905263629,
+       "x": 20000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 314.48652174732666,
+       "x": 25000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 370.23061516861947,
+       "x": 30000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 421.21373345923803,
+       "x": 40000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 386.95913718478687,
+       "x": 50000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 303.86497581067096,
+       "x": 60000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 211.44108835048348,
+       "x": 70000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 134.84801118391067,
+       "x": 80000,
+       "y": "dps"
+      }
+     ]
+    },
+    {
+     "error": {
+      "code": "UNKNOWN_METHOD",
+      "message": "graph"
+     },
+     "id": "dmg_dist_kestrel_breacher_fine",
+     "mismatches": [
+      {
+       "got": "<missing>",
+       "want": 7177.5,
+       "x": 5000,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7177.5,
+       "x": 5250,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7177.5,
+       "x": 5500,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7177.5,
+       "x": 5750,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 110.00954250000001,
+       "x": 6000,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 110.00954250000001,
+       "x": 6250,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 110.00954250000001,
+       "x": 6500,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 110.00954250000001,
+       "x": 6750,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 110.00954250000001,
+       "x": 7000,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 110.00954250000001,
+       "x": 7250,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 110.00954250000001,
+       "x": 7500,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 110.00954250000001,
+       "x": 7750,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 110.00954250000001,
+       "x": 8000,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 110.00954250000001,
+       "x": 8250,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 110.00954250000001,
+       "x": 8500,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 110.00954250000001,
+       "x": 8750,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 9000,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 9250,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 9500,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 9750,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 10000,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 10250,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 10500,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 10750,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 11000,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 247.5,
+       "x": 5000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 247.5,
+       "x": 5250,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 247.5,
+       "x": 5500,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 247.5,
+       "x": 5750,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 3.7934325,
+       "x": 6000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 3.7934325,
+       "x": 6250,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 3.7934325,
+       "x": 6500,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 3.7934325,
+       "x": 6750,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 3.7934325,
+       "x": 7000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 3.7934325,
+       "x": 7250,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 3.7934325,
+       "x": 7500,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 3.7934325,
+       "x": 7750,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 3.7934325,
+       "x": 8000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 3.7934325,
+       "x": 8250,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 3.7934325,
+       "x": 8500,
+       "y": "dps"
+      }
+     ]
+    },
+    {
+     "error": {
+      "code": "UNKNOWN_METHOD",
+      "message": "graph"
+     },
+     "id": "dmg_dist_kestrel_breacher_profile",
+     "mismatches": [
+      {
+       "got": "<missing>",
+       "want": 37.5,
+       "x": 0,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 37.5,
+       "x": 2000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 37.5,
+       "x": 4000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 37.5,
+       "x": 5000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.5747625,
+       "x": 6000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.5747625,
+       "x": 7000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.5747625,
+       "x": 8000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 9000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 10000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 12000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 15000,
+       "y": "dps"
+      }
+     ]
+    },
+    {
+     "error": {
+      "code": "UNKNOWN_METHOD",
+      "message": "graph"
+     },
      "id": "dmg_dist_kikimora_disintegrator",
      "mismatches": [
       {
@@ -34639,6 +38512,99 @@
        "got": "<missing>",
        "want": 508.47482305938087,
        "x": 150000,
+       "y": "dps"
+      }
+     ]
+    },
+    {
+     "error": {
+      "code": "UNKNOWN_METHOD",
+      "message": "graph"
+     },
+     "id": "dmg_dist_nidhoggur_fast_target",
+     "mismatches": [
+      {
+       "got": "<missing>",
+       "want": 138.3541819486267,
+       "x": 0,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 138.3541819486267,
+       "x": 1000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 138.3541819486267,
+       "x": 2000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 138.3541819486267,
+       "x": 5000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 116.40346803127872,
+       "x": 10000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 61.322943815328046,
+       "x": 15000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 30.473448303523146,
+       "x": 20000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 13.12505964595676,
+       "x": 25000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 4.5815914416495005,
+       "x": 30000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.271190174761416,
+       "x": 40000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 50000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 60000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 80000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 100000,
        "y": "dps"
       }
      ]
@@ -36022,6 +39988,99 @@
       "code": "UNKNOWN_METHOD",
       "message": "graph"
      },
+     "id": "dmg_dist_thanatos_templar_fast_target",
+     "mismatches": [
+      {
+       "got": "<missing>",
+       "want": 121.62942158900204,
+       "x": 0,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 121.62942158900204,
+       "x": 1000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 121.62942158900204,
+       "x": 2000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 121.62942158900204,
+       "x": 5000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 121.62942158900204,
+       "x": 10000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 71.10283820138926,
+       "x": 15000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 11.410063955049665,
+       "x": 20000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.4577511235010743,
+       "x": 25000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 30000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 40000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 50000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 60000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 80000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 100000,
+       "y": "dps"
+      }
+     ]
+    },
+    {
+     "error": {
+      "code": "UNKNOWN_METHOD",
+      "message": "graph"
+     },
      "id": "dmg_dist_thanatos_templar_slow_tgt",
      "mismatches": [
       {
@@ -36095,6 +40154,99 @@
        "want": 1856.0650463123966,
        "x": 150000,
        "y": "dps"
+      }
+     ]
+    },
+    {
+     "error": {
+      "code": "UNKNOWN_METHOD",
+      "message": "graph"
+     },
+     "id": "dmg_dist_vargur_bastion_overheated_state",
+     "mismatches": [
+      {
+       "got": "<missing>",
+       "want": 43.92133842070712,
+       "x": 0,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 1079.409190167649,
+       "x": 2000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 1303.8228959616176,
+       "x": 5000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 1286.3564837786116,
+       "x": 10000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 987.4360664164411,
+       "x": 20000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 612.6067307584069,
+       "x": 30000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 163.1350473619578,
+       "x": 50000,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 175.46424547952114,
+       "x": 0,
+       "y": "volley"
+      },
+      {
+       "got": "<missing>",
+       "want": 4312.202813635892,
+       "x": 2000,
+       "y": "volley"
+      },
+      {
+       "got": "<missing>",
+       "want": 5208.727896392421,
+       "x": 5000,
+       "y": "volley"
+      },
+      {
+       "got": "<missing>",
+       "want": 5138.950176834573,
+       "x": 10000,
+       "y": "volley"
+      },
+      {
+       "got": "<missing>",
+       "want": 3944.773328477218,
+       "x": 20000,
+       "y": "volley"
+      },
+      {
+       "got": "<missing>",
+       "want": 2447.3429465783897,
+       "x": 30000,
+       "y": "volley"
+      },
+      {
+       "got": "<missing>",
+       "want": 651.7189372156438,
+       "x": 50000,
+       "y": "volley"
       }
      ]
     },
@@ -38447,6 +42599,396 @@
        "want": 1348.947132856083,
        "x": 120,
        "y": "volley"
+      }
+     ]
+    },
+    {
+     "error": {
+      "code": "UNKNOWN_METHOD",
+      "message": "graph"
+     },
+     "id": "dmg_time_manticore_bomb",
+     "mismatches": [
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 0,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 0.5,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 1,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 2,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 5,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 9,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 10,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 11,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 12,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 13,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 15,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 20,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 25,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 30,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 40,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 60,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 14500.0,
+       "x": 120,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 725.0,
+       "x": 0,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 725.0,
+       "x": 0.5,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 725.0,
+       "x": 1,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 725.0,
+       "x": 2,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 725.0,
+       "x": 5,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 725.0,
+       "x": 9,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 10,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 11,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 12,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 13,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 15,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 20,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 25,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 30,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 40,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 60,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 120,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 0,
+       "y": "volley"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 0.5,
+       "y": "volley"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 1,
+       "y": "volley"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 2,
+       "y": "volley"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 5,
+       "y": "volley"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 9,
+       "y": "volley"
+      }
+     ]
+    },
+    {
+     "error": {
+      "code": "UNKNOWN_METHOD",
+      "message": "graph"
+     },
+     "id": "dmg_time_manticore_bomb_reload",
+     "mismatches": [
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 0,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 30,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 7250.0,
+       "x": 60,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 14500.0,
+       "x": 90,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 14500.0,
+       "x": 120,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 14500.0,
+       "x": 150,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 21750.0,
+       "x": 180,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 21750.0,
+       "x": 240,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 29000.0,
+       "x": 300,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 36250.0,
+       "x": 400,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 50750.0,
+       "x": 600,
+       "y": "damage"
+      },
+      {
+       "got": "<missing>",
+       "want": 725.0,
+       "x": 0,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 30,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 60,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 725.0,
+       "x": 90,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 120,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 150,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 725.0,
+       "x": 180,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 240,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 300,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 400,
+       "y": "dps"
+      },
+      {
+       "got": "<missing>",
+       "want": 0.0,
+       "x": 600,
+       "y": "dps"
       }
      ]
     },
@@ -47491,20 +52033,20 @@
    ],
    "info_charge_ids": {
     "ok": 0,
-    "total": 120
+    "total": 161
    },
    "passed": 0,
    "timeouts": [],
-   "total": 178,
-   "values": "0/2437"
+   "total": 192,
+   "values": "0/2694"
   }
  },
  "passed": 0,
  "rc": 0,
- "suite": "graphs-0.2",
- "suite_ref": "graphs-round2 84f7c2e, contract 0.2, 178 cases (interfaces: rpc method graph; graph-batch)",
+ "suite": "graphs-0.3",
+ "suite_ref": "graphs-round2 db81b8c = tag graphs-v0.3, contract 0.3, 192 cases (interfaces: rpc method graph; graph-batch)",
  "timeouts": [],
- "total": 178,
- "values": "0/2437",
+ "total": 192,
+ "values": "0/2694",
  "wall_s": null
 }

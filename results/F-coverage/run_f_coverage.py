@@ -69,16 +69,30 @@ for ref in REFS:
              groups=sc["groups"], failing=[{"id": f["id"], "category": f.get("category"), "detail": {k: v for k, v in f.items() if k not in ("id", "category")}} for f in scored],
              report_only_disagreeing=[f["id"] for f in fl if not f.get("scored", True) and not f.get("agrees_with_pyfa", False)],
              crashes=crashes, timeouts=[], wall_s=s, rc=r.returncode))
-    if not ONLY or "graphs-0.2" in ONLY:
-        cwd = W / "s-gr"; name = f"F-{ref}"
-        r, s = sh(f"python3 graphs/run_graphs.py --name {name} --rpc-cmd '{B} serve-stdio --dataset {D}' --timeout 10", cwd)
-        sc = json.load(open(cwd / "results" / f"graphs-{name}" / "scorecard.json"))
-        fl = json.load(open(cwd / "results" / f"graphs-{name}" / "failures.json"))
-        errs = sorted({json.dumps(f.get("error"), sort_keys=True) for f in fl.values() if f.get("error")})
-        save("graphs-0.2", ref, dict(suite_ref="graphs-round2 84f7c2e, contract 0.2, 178 cases (rpc method graph)",
-             passed=sc["cases_fully_correct"], total=sc["cases"], values=f'{sc["values_correct"]}/{sc["values_total"]}',
-             distinct_errors=errs, failing=[{"id": c, "error": f.get("error")} for c, f in sorted(fl.items())],
-             crashes=[], timeouts=[c for c, f in fl.items() if "timeout" in json.dumps(f).lower()], wall_s=s, rc=r.returncode))
+    for gs, gdir, gref in (("graphs-0.2", "s-gr", "graphs-round2 84f7c2e, contract 0.2, 178 cases"),
+                           ("graphs-0.3", "s-gr3", "graphs-round2 db81b8c = tag graphs-v0.3, contract 0.3, 192 cases")):
+        if ONLY and gs not in ONLY: continue
+        cwd = W / gdir; ifaces = {}
+        for iface, flag in (("rpc", f"--rpc-cmd '{B} serve-stdio --dataset {D}'"), ("batch", f"--batch-cmd '{B} graph-batch --dataset {D}'")):
+            name = f"F-{ref}-{iface}"
+            r, s = sh(f"python3 graphs/run_graphs.py --name {name} {flag} --timeout 10", cwd)
+            sc = json.load(open(cwd / "results" / f"graphs-{name}" / "scorecard.json"))
+            fl = json.load(open(cwd / "results" / f"graphs-{name}" / "failures.json"))
+            ifaces[iface] = dict(passed=sc["cases_fully_correct"], total=sc["cases"], values=f'{sc["values_correct"]}/{sc["values_total"]}',
+                                 info_charge_ids=sc.get("info_charge_ids"),
+                                 distinct_errors=sorted({json.dumps(f.get("error"), sort_keys=True) for f in fl.values() if f.get("error")}),
+                                 failing=[{"id": c, "error": f.get("error"), "mismatches": f.get("mismatches")} for c, f in sorted(fl.items())],
+                                 timeouts=[c for c, f in fl.items() if "timeout" in json.dumps(f).lower()])
+        best = ifaces["rpc"]
+        save(gs, ref, dict(suite_ref=gref + " (interfaces: rpc method graph; graph-batch)", interfaces=ifaces,
+             passed=min(v["passed"] for v in ifaces.values()), total=best["total"], values=best["values"],
+             failing=sorted({x["id"]: x for v in ifaces.values() for x in v["failing"]}.values(), key=lambda x: x["id"]),
+             crashes=[], timeouts=sorted({t for v in ifaces.values() for t in v["timeouts"]}), wall_s=None, rc=0))
+    if not ONLY or "pending-1.10-head" in ONLY:
+        rec = stats_run("pending-1.10-head", ref, W / "s-p110h", "pending-1.10 head 6b10d26 (11:38 CST), full corpus 339 cases (= ed8deaa's 334 + 5 from the 1.9.0 merge)")
+        r, s = sh(f"python3 tools/check_module_state.py --batch-cmd '{B} batch --dataset {D}'", W / "s-p110h")
+        rec["module_state_1_4_5"] = dict(rc=r.returncode, summary=r.stdout.strip().splitlines()[-1] if r.stdout.strip() else r.stderr[-300:], output=r.stdout[-3000:])
+        save("pending-1.10-head", ref, rec)
     if not ONLY or "pending-1.10" in ONLY:
         rec = stats_run("pending-1.10", ref, W / "s-p110x", "pending-1.10 3193689 e_fz_* (8 cases, scored with bench-1.9.0 run.py/metrics)")
         # 200 legal fuzz fits vs stored Pyfa oracle output
