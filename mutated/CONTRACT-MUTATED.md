@@ -33,8 +33,10 @@ same shape as CONTRACT.md 1.x and as the result of Pyfa importing EFT `[Mutated]
 
 1. **Attributes.** Start from the base type's attributes and lay the resulting type's own attributes over them
    (`{**base.attributes, **resulting.attributes}`). Mass (attribute 4) comes from the type's `mass` field.
-2. **Effects** are those of the resulting type. In the current SDE every abyssal type carries its base family's
-   effects, so engines that also merge the base type's effects get identical results.
+2. **Effects** are those of the resulting type. In SDE 3569502 every resulting type carries all of its bases'
+   effects except in one pair: Naiyon's Modified Stasis Webifier (15419) has effect 586 (`decreaseTargetSpeed`), and the
+   Abyssal Stasis Webifier (47702) does not. For every other pair, an engine that also merges the base type's
+   effects gets identical results. No 0.1 case uses 15419.
 3. **Required skills** are those of the resulting type. If it has none, fall back to the base type's.
 4. **Mutated attributes.** These are exactly the attributes listed for the mutaplasmid
    (dataset `mutaplasmids[<id>].attrs`, i.e. SDE `dynamicItemAttributes`, as `[min, max]` multipliers). For each one:
