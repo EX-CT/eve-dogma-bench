@@ -42,8 +42,16 @@ suites:
   mcp-batch: {column: mcp, kind: files, dir: batch/cases, ext: .json}   # batch suite through compute_batch (tools/mcp_batch.py --tool compute_batch, run_batch.py --transport cli)
   mcp-mut:   {column: mcp, kind: files, git_ref: origin/mutated-suite, dir: mutated/cases, ext: .json}
   mcp:       {column: mcp, kind: id, id_prefix: "mcp.", glob: "*.test.ts", ids_json: docs/test-ids.json}   # --root mcp=<EX-CT/eve-fit-mcp checkout, = v0.4.0 d3786eb (docs/test-ids.json 89 ids, 36 with inventory refs)>: ids mcp.<file>.<slug> on the node --test titles in src/test/ (guard: mcp.unit.test-ids; table docs/test-ids.{md,json})
-  web-bench: {column: web, kind: files, git_ref: v1.9.0, dir: cases, ext: .json}   # bench 1.9.0 corpus in headless Chrome vs the site's wasm-worker (F): eve-fit-web Pages CI tools/browser-dogma-bench.py (engines.lock DOGMA_BENCH_SHA d2edf98 = v1.9.0); gates the deploy only when the F (wasm) build succeeds (eve4 is making it a hard gate)
-  web-graphs: {column: web, kind: files, git_ref: 8c40921911aed9a7d7f032a2f9d4c43986ca0232, dir: graphs/cases, ext: .json}   # graphs 0.2 suite in headless Chrome vs wasm-worker (F): eve-fit-web Pages CI (engines.lock GRAPHS_BENCH_SHA); like web-bench, gates the deploy only when the F build succeeds (hard gate in progress, eve4)
+  # web-* (bench-suites run): eve-fit-web CI runs the pending-1.11 suites at c2229b2 in headless Chrome through the site's F wasm worker
+  # (tools/browser-engine.mjs; F = eve-dogma 20aa425 per engines.lock ENGINE_F_SRC), run 37104154159 (eve-fit-web fdbb014, 2026-10-03
+  # 14:46 CST), artifact bench-suites-wasm-worker; per-case results verified in results-1.11/web-fdbb014.md; gate baselines/web.json
+  web-bench: {column: web, kind: files, git_ref: c2229b2194b21a8b73a4fd394704203f25d45816, dir: cases, ext: .json}   # core 339/339 (was the bench 1.9.0 corpus, tools/browser-dogma-bench.py)
+  web-ext:   {column: web, kind: files, git_ref: c2229b2194b21a8b73a4fd394704203f25d45816, dir: ext/cases, ext: .json}   # ext 207/239
+  web-ext-unit: {column: web, kind: files, git_ref: c2229b2194b21a8b73a4fd394704203f25d45816, dir: ext/unit/cases, ext: .json}
+  web-effects: {column: web, kind: files, git_ref: c2229b2194b21a8b73a4fd394704203f25d45816, dir: effects/cases, ext: .json}   # 2353/2378
+  web-cap:   {column: web, kind: files, git_ref: d80cc38093416bda0f2f271a5f3b439c45648f1b, dir: cap/cases, ext: .json}   # 150/150
+  web-mut:   {column: web, kind: files, git_ref: 4533dde70a624a0850bdf43ead198b42d99c5832, dir: mutated/cases, ext: .json}   # 93/93
+  web-graphs: {column: web, kind: files, git_ref: db81b8c565c86fae5964b76db7932a0cbf177edb, dir: graphs/cases, ext: .json}   # graphs-v0.3 192/192 in the bench-suites run (was graphs 0.2 8c40921 in the Pages CI)
   web-e2e:   {column: web, kind: id, id_prefix: "web.e2e.", glob: "e2e*.mjs"}   # --root web-e2e=<EX-CT/eve-fit-web checkout, >= fafa982>: check ids web.e2e.<slug> in tools/e2e.mjs; only the ts-worker and default-engine e2e runs block a release (other engines are informational)
   web-unit:  {column: web, kind: id, id_prefix: "web.unit.", glob: "*.test.ts"}   # --root web-unit=<EX-CT/eve-fit-web checkout, >= 40e6044>: vitest names web.unit.<slug> in src/**/*.test.ts (npm test in Pages CI, REQUIRE_FORMATS_WASM=1)
   formats-rust: {column: formats, kind: rust-test}   # --root formats-rust=<EX-CT/eve-dogma checkout>: Rust tests touching eve-fit-formats (crates/eve-fit-formats has none of its own at 2da8150; eve-cli/tests/formats_static_fit.rs)

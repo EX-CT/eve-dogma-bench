@@ -1,0 +1,12 @@
+core: 339/339 (baseline 339/339)
+ext: 207/239 (baseline 204/239)
+ext_rpc: 0/54 (baseline 0/31)
+batch: 0/44 (baseline 0/44)
+effects: 2353/2378 (baseline 2352/2378)
+graphs: 192/192 (baseline 192/192)
+cap: 150/150 (baseline 150/150)
+mutated: 93/93 (baseline 93/93)
+formats: 4779/4779 (baseline 4779/4779)
+note: ext: improved 204 -> 207 (run --update to raise the baseline)
+note: effects: improved 2352 -> 2353 (run --update to raise the baseline)
+no regression
