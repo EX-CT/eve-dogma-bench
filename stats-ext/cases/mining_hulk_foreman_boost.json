@@ -1,0 +1,73 @@
+{
+ "character": {
+  "skills": {
+   "default_level": 5,
+   "levels": {}
+  }
+ },
+ "drones": [
+  {
+   "active": 2,
+   "quantity": 2,
+   "type_id": 10250
+  }
+ ],
+ "fleet": {
+  "booster_fits": [
+   {
+    "character": {
+     "skills": {
+      "default_level": 5,
+      "levels": {}
+     }
+    },
+    "drones": [],
+    "implants": [],
+    "modules": [
+     {
+      "charge_type_id": 42830,
+      "slot": "high",
+      "state": "active",
+      "type_id": 43551
+     },
+     {
+      "charge_type_id": 42829,
+      "slot": "high",
+      "state": "active",
+      "type_id": 43551
+     }
+    ],
+    "projected": [],
+    "ship": {
+     "type_id": 28606
+    }
+   }
+  ],
+  "buffs": []
+ },
+ "implants": [],
+ "modules": [
+  {
+   "charge_type_id": 60281,
+   "slot": "high",
+   "state": "active",
+   "type_id": 17912
+  },
+  {
+   "charge_type_id": 60281,
+   "slot": "high",
+   "state": "active",
+   "type_id": 17912
+  },
+  {
+   "charge_type_id": 60281,
+   "slot": "high",
+   "state": "active",
+   "type_id": 17912
+  }
+ ],
+ "projected": [],
+ "ship": {
+  "type_id": 22544
+ }
+}

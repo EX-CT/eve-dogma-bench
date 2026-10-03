@@ -1,0 +1,130 @@
+[
+ {
+  "case": "mining_covetor_msm2_nocrystal",
+  "category": "mining"
+ },
+ {
+  "case": "mining_covetor_msm2_simple_a1_reload",
+  "category": "mining"
+ },
+ {
+  "case": "mining_covetor_msm2_simple_a2",
+  "category": "mining"
+ },
+ {
+  "case": "mining_covetor_msm2_simple_b2",
+  "category": "mining"
+ },
+ {
+  "case": "mining_covetor_msm2_simple_c2",
+  "category": "mining"
+ },
+ {
+  "case": "mining_endurance_ice_laser1_off",
+  "category": "mining"
+ },
+ {
+  "case": "mining_endurance_ice_laser2",
+  "category": "mining"
+ },
+ {
+  "case": "mining_hulk_foreman_boost",
+  "category": "mining"
+ },
+ {
+  "case": "mining_hulk_msm2_b2_mlu_drones",
+  "category": "mining"
+ },
+ {
+  "case": "mining_hulk_msm2_mixed_states",
+  "category": "mining"
+ },
+ {
+  "case": "mining_mackinaw_ice1",
+  "category": "mining"
+ },
+ {
+  "case": "mining_mackinaw_ice2_ihu",
+  "category": "mining"
+ },
+ {
+  "case": "mining_mixed_drones_skills0",
+  "category": "mining"
+ },
+ {
+  "case": "mining_orca_aug_drones_core",
+  "category": "mining"
+ },
+ {
+  "case": "mining_orca_ice_excavators",
+  "category": "mining"
+ },
+ {
+  "case": "mining_pioneer_ore_miner",
+  "category": "mining"
+ },
+ {
+  "case": "mining_porpoise_excavator_core",
+  "category": "mining"
+ },
+ {
+  "case": "mining_porpoise_md2_dma",
+  "category": "mining"
+ },
+ {
+  "case": "mining_procurer_ice1",
+  "category": "mining"
+ },
+ {
+  "case": "mining_procurer_strip1",
+  "category": "mining"
+ },
+ {
+  "case": "mining_prospect_gas2",
+  "category": "mining"
+ },
+ {
+  "case": "mining_prospect_miner2_mlu",
+  "category": "mining"
+ },
+ {
+  "case": "mining_retriever_drones_inactive",
+  "category": "mining"
+ },
+ {
+  "case": "mining_retriever_strip1_mlu",
+  "category": "mining"
+ },
+ {
+  "case": "mining_rorqual_excavators_core",
+  "category": "mining"
+ },
+ {
+  "case": "mining_rorqual_excavators_nocore",
+  "category": "mining"
+ },
+ {
+  "case": "mining_skiff_mdcsm2_merc_a2",
+  "category": "mining"
+ },
+ {
+  "case": "mining_venture_gas1",
+  "category": "mining"
+ },
+ {
+  "case": "mining_venture_miner1_skills0",
+  "category": "mining"
+ },
+ {
+  "case": "mining_venture_miner2",
+  "category": "mining"
+ },
+ {
+  "case": "mining_venture_miner2_online",
+  "category": "mining"
+ },
+ {
+  "case": "mining_venture_miner2_skills_mixed",
+  "category": "mining"
+ }
+]

@@ -1,0 +1,46 @@
+{
+ "character": {
+  "skills": {
+   "default_level": 5,
+   "levels": {}
+  }
+ },
+ "drones": [
+  {
+   "active": 5,
+   "quantity": 5,
+   "type_id": 43700
+  }
+ ],
+ "implants": [],
+ "modules": [
+  {
+   "charge_type_id": null,
+   "slot": "high",
+   "state": "active",
+   "type_id": 22229
+  },
+  {
+   "charge_type_id": null,
+   "slot": "low",
+   "state": "active",
+   "type_id": 28578
+  },
+  {
+   "charge_type_id": null,
+   "slot": "low",
+   "state": "active",
+   "type_id": 28578
+  },
+  {
+   "charge_type_id": null,
+   "slot": "rig",
+   "state": "active",
+   "type_id": 32819
+  }
+ ],
+ "projected": [],
+ "ship": {
+  "type_id": 22548
+ }
+}
