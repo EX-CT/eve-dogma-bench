@@ -1,0 +1,36 @@
+{
+ "case": "fuzz_damage_tgt_sig_m_fz0264-fc907b5a",
+ "graph": "damage",
+ "oracle": "pyfa-graphs",
+ "series": {
+  "damage": [
+   null,
+   null,
+   null,
+   null,
+   null
+  ],
+  "dps": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "volley": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "x": [
+  40.3,
+  47.0,
+  64.0,
+  80.574,
+  98.0
+ ],
+ "x_axis": "tgt_sig_m"
+}

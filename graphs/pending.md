@@ -167,3 +167,24 @@ Variants: G1 `1c8424c`, G2 `96e612a`, G3 `61ad5ae`. Disagreements 37, confirmed 
 - `fuzz_application_profile_distance_m_fz0518-4c500b6c` (G2 + G3 wrong): the same **overheated Bastion Module** stats-engine
   difference as seed 2 fz0038 (variant-g / variant-c rate of fire vs Pyfa). This is a stats candidate, not a graph one.
 - G4 wasn't in this run: its branch moved to e1f448d and wasn't rebuilt.
+
+## Differential fuzz 2026-10-03 09:39 CST (seed 4, 800 requests)
+
+Variants: G1 `1c8424c`, G2 `96e612a`, G3 `b8c6ef8`. Disagreements 50, confirmed by the oracle 50, oracle errors 0. Wrong answers by variant: {'G2': 49, 'G3': 2}.
+
+- **fuzz_capacitor_time_s_fz0059-bf100425**: capacitor / time_s; features `tgt-ideal use_capsim`; wrong: **G2**; matches oracle: G1, G3; 27 fuzz request(s) in this cluster. Example: `{"G2": [{"y": "cap_regen_gj_s", "x": 493.0, "got": 13.625794466076561, "want": 0.0}, {"y": "cap_regen_gj_s", "x": 846.404, "got": 13.463850356785779, "want": 0.0}, {"y": "cap_regen_gj_s", "x": 1684.4, "got": 13.465932832687642, "want": 0.0}]}`
+- **fuzz_application_profile_distance_m_fz0078-d3ea67e2**: application_profile / distance_m; features `tgt-profile mobile_drone_mode=follow_target ammo_quality atk_angle_deg tgt_angle_deg`; wrong: **G2**; matches oracle: G1, G3; 12 fuzz request(s) in this cluster. Example: `{"G2": [{"y": "volley", "x": 3690.0, "got": 328.60277072171164, "want": 312.95502114181073}, {"y": "volley", "x": 4009.626, "got": 316.5734025912115, "want": 301.49848004181666}, {"y": "volley", "x": 4846.698, "got": 282.3051103773297, "want": 268.86201111103594}]}`
+- **fuzz_damage_tgt_sig_m_fz0107-161848ae**: damage / tgt_sig_m; features `tgt-fit apply_projected=False ignore_drone_control_range=True ignore_resists=True atk_angle_deg distance_m tgt_angle_deg time_s`; wrong: **G2**; matches oracle: G1, G3; 1 fuzz request(s) in this cluster. Example: `{"G2": [{"y": "damage", "x": 2139.5, "got": 727591.5798248476, "want": 728755.7259800162}, {"y": "damage", "x": 7075.512, "got": 727591.5798248476, "want": 728755.7259800162}, {"y": "damage", "x": 10192.0, "got": 727591.5798248476, "want": 728755.7259800162}]}`
+- **fuzz_damage_tgt_speed_mps_fz0157-0919616b**: damage / tgt_speed_mps; features `tgt-profile ignore_lock_range=False atk_angle_deg atk_speed_pct tgt_angle_deg tgt_speed_pct`; wrong: **G2, G3**; matches oracle: G1; 1 fuzz request(s) in this cluster. Example: `{"G2": [{"y": "dps", "x": 196.0, "got": 3222.65625, "want": 0.0}, {"y": "dps", "x": 303.0, "got": 3222.65625, "want": 0.0}, {"y": "dps", "x": 312.0, "got": 3222.65625, "want": 0.0}], "G3": [{"y": "dps", "x": 196.0, "got": 3222.65625, "want": 0.0}, {"y": "dps", "x": 303.0, "got": 3222.65625, "want": 0.0}, {"y": "dps", "x": 312.0, "got": 3222.65625, "want": 0.0}]}`
+- **fuzz_damage_time_s_fz0210-45ea18fc**: damage / time_s; features `tgt-fit ignore_drone_control_range=False atk_angle_deg tgt_angle_deg`; wrong: **G2**; matches oracle: G1, G3; 5 fuzz request(s) in this cluster. Example: `{"G2": [{"y": "damage", "x": 292.0, "got": 426494.62339809013, "want": 429235.5360625772}]}`
+- **fuzz_damage_tgt_speed_mps_fz0229-9aec0c0d**: damage / tgt_speed_mps; features `tgt-ideal apply_projected=True tgt_speed_pct time_s`; wrong: **G2**; matches oracle: G1, G3; 3 fuzz request(s) in this cluster. Example: `{"G2": [{"y": "damage", "x": 60.1, "got": 3628359.703105718, "want": 3631100.615880763}, {"y": "damage", "x": 84.0, "got": 3628359.703105718, "want": 3631100.615880763}, {"y": "damage", "x": 303.0, "got": 3628359.703105718, "want": 3631100.615880763}]}`
+- **fuzz_damage_tgt_sig_m_fz0264-fc907b5a**: damage / tgt_sig_m; features `tgt-fit mobile_drone_mode=auto tgt_speed_pct`; wrong: **G3**; matches oracle: G1, G2; 1 fuzz request(s) in this cluster. Example: `{"G3": {"code": "INTERNAL", "message": "TypeError: only 0-dimensional arrays can be converted to Python scalars", "path": ""}}`
+
+### Adjudication notes, seed 4 (G3 maintainer, 2026-10-03 09:40 CST)
+
+- `fuzz_damage_tgt_speed_mps_fz0157-0919616b` (G2 + G3 wrong): an Avatar with an **overheated** 'Holy Destiny' lance. The
+  bench oracle (`oracle/pyfa_oracle.py` line 96, Pyfa `isValidState`) sets a module whose type has no overheat effect to
+  **online**, so its dps is 0. The same rule explains seed 2 fz0038 and seed 3 fz0518 (overheated Bastion). That corrects the
+  earlier note: the oracle's state convention isn't written in CONTRACT.md, and variant-g / variant-c treat such modules as
+  active. graphs-g3 aa04330 applies the oracle rule on its graph path. Suggest stating the rule in CONTRACT.md and adding a stats case.
+- `fuzz_damage_tgt_sig_m_fz0264-fc907b5a` (G3 only: INTERNAL): drone webs vs a target fit crashed under NumPy 2.5. Fixed in aa04330.
