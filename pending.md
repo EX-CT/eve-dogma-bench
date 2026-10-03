@@ -98,3 +98,29 @@ fighters_mwd_nidhoggur, skills{0,2,4}_{hel,nidhoggur}). Their expected files wer
 (`tools/make_expected.py`): the only change per file is the added `warp_scramble_status` value (e.g. exct_hel −25.0) and
 an empty `excluded`. 9 more values scored. Check 2026-10-03 11:35 CST (pending-1.10 corpus, bench-1.9.0 metrics.py):
 F bc84e2b 334/334 cases; eve-dogma-rs d6043a7 320/334 (fails the 9 NSA cases + 5 `e_fz_*`).
+
+## F/A-vs-Pyfa root-cause triage on valid fits (2026-10-03 11:35–12:05 CST)
+Question: the metrics where both Variant F (bc84e2b) and A disagreed with Pyfa in the random-fit arbitration
+(`cap_stable_percent`, `max_velocity`, `scan_resolution`, `ehp.{shield,armor,hull}`, `stank.armor`). Pool: every fit that
+passes `oracle/fuzz/check_legal.py` from J's random generator (51 of 4 000) and F's module sweeps (13 398 of 20 312), plus 900
+new `gen_legal.py` fits (seeds 31–33, 300 each), then CPU / PG / calibration within limits per the oracle → **13 347 valid
+fits** (194 oracle errors: types missing from Pyfa's eve.db; 808 over CPU/PG/calibration). Also the 200 fz-e fits above.
+Engines: F bc84e2b, A = eve-dogma-rs d6043a7. Oracle: this branch's `pyfa_oracle.py`, metrics = this branch's `tools/metrics.py`.
+
+| metric | F and A ≠ Pyfa on valid fits | F ≠ Pyfa only | cause of the earlier F-and-A disagreements | F bug? |
+|---|---|---|---|---|
+| cap_stable_percent | 0 | 0 | all 5 were illegal fits (wrong-class modules, T3D without mode, …) | no |
+| max_velocity | 0 | 0 | all 3 illegal fits | no |
+| scan_resolution | 0 | 0 | all 3 illegal fits | no |
+| ehp.shield / armor / hull | 0 / 0 / 0 | 0 | all illegal fits (2 / 3 / 3) | no |
+| stank.armor | 0 | 0 | all 2 illegal fits | no |
+| (other) align_time_s | 6 | 0 | Paladin 28659 / Golem 28710 agility: Pyfa data drift (`expected_diffs.json`) | no |
+| (other) signature_radius | 1 (jrand00544) | 0 | request uses explicit `fleet.buffs`; the oracle doesn't model them (contract does more than Pyfa) | no |
+| (other) cap_capacity | 1 (jrand03574) | 0 | request uses `overrides`; the oracle ignores them | no |
+
+The 14 sampled fits behind the 21 earlier "neither" values were all rejected by `check_legal.py`. On every valid fit
+F matches Pyfa on all scored metrics (F-only mismatches: 0; on the 200 fz-e fits F has 0 diff fits). A-only mismatches
+on the pool: cap_stable_percent 75, drone_dps 24, max_velocity 20, scan_resolution 14, warp_scramble_status 9,
+signature_radius 7, scan_strength 6, tank/stank.armor 1 each (the E1–E5 classes above and the NSA ruling).
+No F repro case is needed. Fuzz note: requests with `fleet.buffs` or `overrides` are outside the oracle's model and
+should be excluded from oracle triage (or the oracle extended).
