@@ -1,0 +1,25 @@
+{
+ "expected": {
+  "band_max": 3.15,
+  "orders": 1,
+  "orders_considered": 1,
+  "orders_total": 1,
+  "p0": 3.0,
+  "price": 3.0,
+  "units": 10,
+  "units_considered": 10
+ },
+ "note": "(d) band_max output 3.15 (not 3.1500000000000004)",
+ "orders": [
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1129,
+   "price": 3.0,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 10
+  }
+ ],
+ "params": {}
+}

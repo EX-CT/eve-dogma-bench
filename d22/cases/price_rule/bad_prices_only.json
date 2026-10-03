@@ -1,0 +1,25 @@
+{
+ "expected": null,
+ "note": "(b) only non-positive prices -> missing",
+ "orders": [
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1121,
+   "price": 0.0,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 100
+  },
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1122,
+   "price": -1.0,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 100
+  }
+ ],
+ "params": {}
+}

@@ -172,6 +172,16 @@
   "note": "every order below min_units -> no price (missing)",
   "suite": "price_rule"
  },
+ "price_rule/bad_prices_dropped": {
+  "check": "rule",
+  "note": "(b) orders with price <= 0 are dropped (with the min_units filter); orders_total still counts them",
+  "suite": "price_rule"
+ },
+ "price_rule/bad_prices_only": {
+  "check": "rule",
+  "note": "(b) only non-positive prices -> missing",
+  "suite": "price_rule"
+ },
  "price_rule/band_above_ignored": {
   "check": "rule",
   "note": "1000 units above the band ignored for the mean, counted in units_considered",
@@ -192,9 +202,69 @@
   "note": "p0 100: band_max = 100*(1+0.05) = 105.0; 105 included -> 102.5",
   "suite": "price_rule"
  },
+ "price_rule/band_max_12_digits_edge": {
+  "check": "rule",
+  "note": "(d) p0*1.05 = 1057.9379999999999 in binary; band_max at 12 significant digits = 1057.938, so the order at 1057.938 is in",
+  "suite": "price_rule"
+ },
+ "price_rule/band_max_12_digits_output": {
+  "check": "rule",
+  "note": "(d) band_max output 3.15 (not 3.1500000000000004)",
+  "suite": "price_rule"
+ },
  "price_rule/buy_orders_ignored": {
   "check": "rule",
   "note": "Jita buy orders (above and below) ignored; orders_total counts sell orders only",
+  "suite": "price_rule"
+ },
+ "price_rule/clamp_high": {
+  "check": "rule",
+  "note": "(c) mean 0.006297 rounds to 0.01 > band_max 0.0063 -> clamped to 0.0063",
+  "suite": "price_rule"
+ },
+ "price_rule/clamp_low": {
+  "check": "rule",
+  "note": "(c) mean 0.00405 rounds to 0.00 -> clamped up to p0 0.004",
+  "suite": "price_rule"
+ },
+ "price_rule/invalid_band_negative": {
+  "check": "rule",
+  "note": "(e) band < 0: the updater rejects the rule (non-zero exit)",
+  "suite": "price_rule"
+ },
+ "price_rule/invalid_band_too_large": {
+  "check": "rule",
+  "note": "(e) band > 10: the updater rejects the rule (non-zero exit)",
+  "suite": "price_rule"
+ },
+ "price_rule/invalid_min_units_0": {
+  "check": "rule",
+  "note": "(e) min_units 0: the updater rejects the rule (non-zero exit)",
+  "suite": "price_rule"
+ },
+ "price_rule/invalid_min_units_fraction": {
+  "check": "rule",
+  "note": "(e) min_units 2.5 (not an integer): the updater rejects the rule (non-zero exit)",
+  "suite": "price_rule"
+ },
+ "price_rule/invalid_name": {
+  "check": "rule",
+  "note": "(e) unknown rule name: the updater rejects the rule (non-zero exit)",
+  "suite": "price_rule"
+ },
+ "price_rule/invalid_order_side": {
+  "check": "rule",
+  "note": "(e) order_side buy: the updater rejects the rule (non-zero exit)",
+  "suite": "price_rule"
+ },
+ "price_rule/invalid_version": {
+  "check": "rule",
+  "note": "(e) unknown rule version: the updater rejects the rule (non-zero exit)",
+  "suite": "price_rule"
+ },
+ "price_rule/invalid_weighting": {
+  "check": "rule",
+  "note": "(e) weighting orders: the updater rejects the rule (non-zero exit)",
   "suite": "price_rule"
  },
  "price_rule/min_units_exact_kept": {
@@ -245,6 +315,36 @@
  "price_rule/params_min_units_100": {
   "check": "rule",
   "note": "min_units 100 drops the 99-unit order at 90: (10000+31200)/400 = 103",
+  "suite": "price_rule"
+ },
+ "price_rule/round_4085": {
+  "check": "rule",
+  "note": "(a) mean 4.085 (binary 4.0849999..) -> 4.08 (half to even)",
+  "suite": "price_rule"
+ },
+ "price_rule/round_below_p0_clamped": {
+  "check": "rule",
+  "note": "(a)+(c) one order at 100.345 rounds to 100.34 < p0 -> clamped to p0 100.345",
+  "suite": "price_rule"
+ },
+ "price_rule/round_half_even_2675": {
+  "check": "rule",
+  "note": "(a) 2.675 -> 2.68 (round(2.675, 2) on the double gives 2.67)",
+  "suite": "price_rule"
+ },
+ "price_rule/round_half_even_decimal": {
+  "check": "rule",
+  "note": "(a) 100.335 (binary 100.33499..) -> 12-digit decimal 100.335 -> half to even -> 100.34 (Python round on the double: 100.33)",
+  "suite": "price_rule"
+ },
+ "price_rule/round_half_even_down": {
+  "check": "rule",
+  "note": "(a) mean 100.345 -> half to even -> 100.34",
+  "suite": "price_rule"
+ },
+ "price_rule/round_half_even_mean": {
+  "check": "rule",
+  "note": "(a) mean of 100.33 / 100.34 = 100.335 -> 100.34",
   "suite": "price_rule"
  },
  "price_rule/rounding_cents": {

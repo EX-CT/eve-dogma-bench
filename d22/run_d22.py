@@ -311,9 +311,8 @@ def ck_rule(c, cmd):
     bad = []
     for k, w in exp.items():
         g = got.get(k)
-        if isinstance(w, float):
-            tol = 1e-9 * max(1.0, abs(w)) if k != "price" else 1e-9 * max(1.0, abs(w))
-            if not isinstance(g, (int, float)) or abs(g - w) > tol:
+        if isinstance(w, float):        # exact: price is a 0.01 decimal, band_max 12 significant digits, p0 as given
+            if not isinstance(g, (int, float)) or isinstance(g, bool) or float(g) != w:
                 bad.append(f"{k} {g!r} != {w!r}")
         elif g != w:
             bad.append(f"{k} {g!r} != {w!r}")

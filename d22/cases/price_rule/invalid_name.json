@@ -1,0 +1,18 @@
+{
+ "expected_error": true,
+ "note": "(e) unknown rule name: the updater rejects the rule (non-zero exit)",
+ "orders": [
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1139,
+   "price": 100.0,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 50
+  }
+ ],
+ "params": {
+  "name": "jita_sell_min"
+ }
+}

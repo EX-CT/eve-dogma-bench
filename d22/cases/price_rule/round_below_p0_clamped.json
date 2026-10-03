@@ -1,0 +1,25 @@
+{
+ "expected": {
+  "band_max": 105.36225,
+  "orders": 1,
+  "orders_considered": 1,
+  "orders_total": 1,
+  "p0": 100.345,
+  "price": 100.345,
+  "units": 50,
+  "units_considered": 50
+ },
+ "note": "(a)+(c) one order at 100.345 rounds to 100.34 < p0 -> clamped to p0 100.345",
+ "orders": [
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1111,
+   "price": 100.345,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 50
+  }
+ ],
+ "params": {}
+}

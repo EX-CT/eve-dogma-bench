@@ -1,0 +1,25 @@
+{
+ "expected": {
+  "band_max": 2.80875,
+  "orders": 1,
+  "orders_considered": 1,
+  "orders_total": 1,
+  "p0": 2.675,
+  "price": 2.68,
+  "units": 50,
+  "units_considered": 50
+ },
+ "note": "(a) 2.675 -> 2.68 (round(2.675, 2) on the double gives 2.67)",
+ "orders": [
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1112,
+   "price": 2.675,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 50
+  }
+ ],
+ "params": {}
+}

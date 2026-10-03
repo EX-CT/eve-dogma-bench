@@ -1,0 +1,25 @@
+{
+ "expected": {
+  "band_max": 105.35175,
+  "orders": 1,
+  "orders_considered": 1,
+  "orders_total": 1,
+  "p0": 100.335,
+  "price": 100.34,
+  "units": 50,
+  "units_considered": 50
+ },
+ "note": "(a) 100.335 (binary 100.33499..) -> 12-digit decimal 100.335 -> half to even -> 100.34 (Python round on the double: 100.33)",
+ "orders": [
+  {
+   "is_buy_order": false,
+   "location_id": 60003760,
+   "order_id": 1108,
+   "price": 100.335,
+   "region_id": 10000002,
+   "type_id": 34,
+   "volume_remain": 50
+  }
+ ],
+ "params": {}
+}

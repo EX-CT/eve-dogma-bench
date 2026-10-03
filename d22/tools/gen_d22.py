@@ -76,11 +76,46 @@ RULE = [
 book = [o(round(5000 + 37 * ((i * 7919) % 101), 2), [3, 12, 40, 250, 9, 1000][i % 6], J if i % 7 else AMARR, i % 5 == 0)
         for i in range(60)]
 RULE.append(("mixed_book_60", book, {}, "60 mixed orders (sells/buys, Jita/Amarr, small/large)", "ref"))
+RULE += [   # eve4's updater behaviour adopted as the reference (eve-market-prices e9781a5)
+    ("round_half_even_decimal", [o(100.335, 50)], {},
+     "(a) 100.335 (binary 100.33499..) -> 12-digit decimal 100.335 -> half to even -> 100.34 (Python round on the double: 100.33)", 100.34),
+    ("round_half_even_down", [o(100.34, 10), o(100.35, 10)], {}, "(a) mean 100.345 -> half to even -> 100.34", 100.34),
+    ("round_below_p0_clamped", [o(100.345, 50)], {}, "(a)+(c) one order at 100.345 rounds to 100.34 < p0 -> clamped to p0 100.345", 100.345),
+    ("round_half_even_2675", [o(2.675, 50)], {}, "(a) 2.675 -> 2.68 (round(2.675, 2) on the double gives 2.67)", 2.68),
+    ("round_half_even_mean", [o(100.33, 10), o(100.34, 10)], {}, "(a) mean of 100.33 / 100.34 = 100.335 -> 100.34", 100.34),
+    ("round_4085", [o(4.08, 10), o(4.09, 10)], {}, "(a) mean 4.085 (binary 4.0849999..) -> 4.08 (half to even)", 4.08),
+    ("bad_prices_dropped", [o(0.0, 1000), o(-5.0, 1000), o(100.0, 10), o(102.0, 10)], {},
+     "(b) orders with price <= 0 are dropped (with the min_units filter); orders_total still counts them", 101.0),
+    ("bad_prices_only", [o(0.0, 100), o(-1.0, 100)], {}, "(b) only non-positive prices -> missing", None),
+    ("clamp_low", [o(0.004, 10), o(0.0041, 10)], {}, "(c) mean 0.00405 rounds to 0.00 -> clamped up to p0 0.004", 0.004),
+    ("clamp_high", [o(0.006, 10), o(0.0063, 1000)], {}, "(c) mean 0.006297 rounds to 0.01 > band_max 0.0063 -> clamped to 0.0063", 0.0063),
+    ("band_max_12_digits_edge", [o(1007.56, 10), o(1057.938, 10)], {},
+     "(d) p0*1.05 = 1057.9379999999999 in binary; band_max at 12 significant digits = 1057.938, so the order at 1057.938 is in", 1032.75),
+    ("band_max_12_digits_output", [o(3.0, 10)], {}, "(d) band_max output 3.15 (not 3.1500000000000004)", 3.0),
+]
+RULE_ERR = [
+    ("invalid_min_units_0", {"min_units": 0}, "(e) min_units 0"),
+    ("invalid_min_units_fraction", {"min_units": 2.5}, "(e) min_units 2.5 (not an integer)"),
+    ("invalid_band_negative", {"band": -0.01}, "(e) band < 0"),
+    ("invalid_band_too_large", {"band": 11}, "(e) band > 10"),
+    ("invalid_name", {"name": "jita_sell_min"}, "(e) unknown rule name"),
+    ("invalid_version", {"version": 2}, "(e) unknown rule version"),
+    ("invalid_order_side", {"order_side": "buy"}, "(e) order_side buy"),
+    ("invalid_weighting", {"weighting": "orders"}, "(e) weighting orders"),
+]
 for cid, orders, params, note, want in RULE:
     exp = R.rule(orders, params)
     if want != "ref":
         assert (exp is None and want is None) or (exp and exp["price"] == want), (cid, exp, want)
     write("price_rule", cid, {"note": note, "params": params, "orders": orders, "expected": exp})
+for cid, params, note in RULE_ERR:
+    try:
+        R.rule([o(100.0, 50)], params)
+        raise AssertionError(cid)
+    except ValueError:
+        pass
+    write("price_rule", cid, {"note": note + ": the updater rejects the rule (non-zero exit)", "params": params,
+                              "orders": [o(100.0, 50)], "expected_error": True})
 
 # ============================================================ synthetic edp v1 packs (docs/22 §2.2), one fault each
 HDR = struct.Struct("<4sHHIHHq32sQ")      # 64 bytes
