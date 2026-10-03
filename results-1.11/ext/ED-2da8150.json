@@ -1,7 +1,7 @@
 {
  "name": "ED-2da8150",
- "pass": 187,
- "total": 187,
+ "pass": 202,
+ "total": 202,
  "cases": {
   "bomb_basilisk": {
    "pass": true,
@@ -175,6 +175,171 @@
    "feature": "drone_ehp",
    "source": "hand-built (Pyfa oracle)",
    "checks": 68,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "fehp_aeon_ametat_templar": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fighter_ehp",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 74,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "fehp_archon_em_thermal_pattern": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fighter_ehp",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 65,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "fehp_archon_templar_cenobite": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fighter_ehp",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 72,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "fehp_chimera_dragonfly_scarab": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fighter_ehp",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 72,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "fehp_chimera_inactive_squadron": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fighter_ehp",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 70,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "fehp_hel_fsu3_mantis": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fighter_ehp",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 65,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "fehp_hel_mantis_einherji": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fighter_ehp",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 74,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "fehp_nidhoggur_einherji_siren": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fighter_ehp",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 72,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "fehp_nyx_explosive_pattern": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fighter_ehp",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 65,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "fehp_nyx_malleus_firbolg": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fighter_ehp",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 74,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "fehp_thanatos_firbolg": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fighter_ehp",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 65,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "fehp_thanatos_fsu2": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fighter_ehp",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 65,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "fehp_thanatos_skills0": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fighter_ehp",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 65,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "fehp_thanatos_skills_fighters1": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fighter_ehp",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 72,
+   "mismatches": 0,
+   "not_implemented": 0,
+   "first": []
+  },
+  "fehp_wyvern_cyclops_dromi": {
+   "pass": true,
+   "draft_pass": true,
+   "draft_first": [],
+   "feature": "fighter_ehp",
+   "source": "hand-built (Pyfa oracle)",
+   "checks": 72,
    "mismatches": 0,
    "not_implemented": 0,
    "first": []
