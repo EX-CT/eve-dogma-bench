@@ -567,6 +567,8 @@ def mergeable(lic):
         src, eff = "package metadata", lic["declared"][0]
     elif det:
         src, eff = "LICENSE file", det[0]
+        if lic["readme"] and lic["readme"] != eff and lic["readme"].startswith(eff):  # e.g. file LGPL-3.0, README "-or-later"
+            src, eff = "LICENSE file + README", lic["readme"]
     elif lic["readme"]:
         src, eff = "README only", lic["readme"]
     lic["effective"], lic["source"] = eff, src
