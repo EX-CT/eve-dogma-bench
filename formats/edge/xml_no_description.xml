@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<fittings count="1">
+  <fitting name="no description">
+    <shipType value="Rifter"/>
+    <hardware slot="low slot 0" type="Damage Control II"/>
+  </fitting>
+</fittings>

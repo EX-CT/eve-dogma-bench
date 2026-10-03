@@ -1,0 +1,7 @@
+[Tristan, mutation out of range]
+
+Warp Scrambler II [1]
+
+[1] Warp Scrambler II
+  Unstable Warp Scrambler Mutaplasmid
+  capacitorNeed 0.1, cpu 999.0, maxRange 99999.0

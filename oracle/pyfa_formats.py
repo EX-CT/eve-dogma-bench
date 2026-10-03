@@ -208,13 +208,23 @@ def importers():
 def _auto(text, path=None):
     """Pyfa's own Port.importAuto (service/port/port.py, unmodified). activeFit is a sentinel so the
     single-item / additions-panel branches are reachable; those return non-fit payloads."""
-    kind, makesNew, data = Port.importAuto(text, path=path, activeFit=_ACTIVE)
+    if not any(line.strip() for line in text.splitlines()):
+        # Pyfa's importAuto indexes the first non-blank line and raises IndexError on blank input
+        raise Unrecognized("blank input (Pyfa: IndexError in importAuto)")
+    res = Port.importAuto(text, path=path, activeFit=_ACTIVE)
+    if res is None:
+        raise Unrecognized("importAuto matched no format")
+    kind, makesNew, data = res
     if makesNew:
         return kind, [norm(f) for f in data]
     return kind, [_describe(x) for x in data]
 
 
 _ACTIVE = object()
+
+
+class Unrecognized(Exception):
+    """importAuto found no format (contract code UNRECOGNIZED_INPUT)."""
 
 
 def _describe(x):

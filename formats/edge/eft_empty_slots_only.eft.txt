@@ -1,0 +1,8 @@
+[Rifter, empty]
+
+[Empty Low slot]
+[Empty Low slot]
+
+[Empty Med slot]
+
+[Empty High slot]

@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<fittings count="1">
+  <fitting name="unknown module">
+    <description value=""/>
+    <shipType value="Rifter"/>
+    <hardware slot="low slot 0" type="Not A Module"/>
+    <hardware slot="low slot 1" type="Damage Control II"/>
+    <hardware qty="0" slot="drone bay" type="Warrior II"/>
+  </fitting>
+</fittings>

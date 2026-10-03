@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<fittings count="2">
+  <fitting name="bad">
+    <description value=""/>
+    <shipType value="Not A Ship"/>
+    <hardware slot="low slot 0" type="Damage Control II"/>
+  </fitting>
+  <fitting name="good">
+    <description value=""/>
+    <shipType value="Rifter"/>
+    <hardware slot="low slot 0" type="Damage Control II"/>
+  </fitting>
+</fittings>

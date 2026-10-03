@@ -1,0 +1,333 @@
+{
+ "note": "Edge inputs for CONTRACT-FORMATS 0.1. Every file is imported with format=auto (path = file name for .cfg files); 'forced' rows import a file with an explicit format. Expected values: Pyfa via oracle/pyfa_formats.py.",
+ "files": {
+  "NotAShip.cfg": {
+   "category": "eftcfg"
+  },
+  "Rifter.cfg": {
+   "category": "multi"
+  },
+  "Rifter_empty.cfg": {
+   "category": "eftcfg"
+  },
+  "additions_boosters.txt": {
+   "category": "items"
+  },
+  "additions_cargo.txt": {
+   "category": "items"
+  },
+  "additions_drones.txt": {
+   "category": "items"
+  },
+  "additions_fighters.txt": {
+   "category": "items"
+  },
+  "additions_implants.txt": {
+   "category": "items"
+  },
+  "additions_mixed.txt": {
+   "category": "items"
+  },
+  "auto_brackets_no_comma.txt": {
+   "category": "autodetect"
+  },
+  "auto_empty.txt": {
+   "category": "autodetect"
+  },
+  "auto_garbage.txt": {
+   "category": "autodetect"
+  },
+  "auto_json_array.txt": {
+   "category": "autodetect"
+  },
+  "auto_number.txt": {
+   "category": "autodetect"
+  },
+  "auto_whitespace.txt": {
+   "category": "autodetect"
+  },
+  "dna_alt.dna.txt": {
+   "category": "dna"
+  },
+  "dna_alt_unknown.dna.txt": {
+   "category": "dna"
+  },
+  "dna_chatlink.dna.txt": {
+   "category": "dna"
+  },
+  "dna_chatlink_in_text.dna.txt": {
+   "category": "dna"
+  },
+  "dna_chatlink_two.dna.txt": {
+   "category": "multi"
+  },
+  "dna_huge_qty.dna.txt": {
+   "category": "dna"
+  },
+  "dna_leading_space.dna.txt": {
+   "category": "dna"
+  },
+  "dna_module_ids_only.dna.txt": {
+   "category": "dna"
+  },
+  "dna_multiline.dna.txt": {
+   "category": "multi"
+  },
+  "dna_no_terminator.dna.txt": {
+   "category": "dna"
+  },
+  "dna_qty_zero.dna.txt": {
+   "category": "dna"
+  },
+  "dna_ship_not_ship.dna.txt": {
+   "category": "dna"
+  },
+  "dna_unknown_overfit.dna.txt": {
+   "category": "dna"
+  },
+  "dna_unknown_ship.dna.txt": {
+   "category": "dna"
+  },
+  "eft_bom.eft.txt": {
+   "category": "eft"
+  },
+  "eft_cargo_unknown.eft.txt": {
+   "category": "eft"
+  },
+  "eft_case_names.eft.txt": {
+   "category": "eft"
+  },
+  "eft_comment_lines.eft.txt": {
+   "category": "eft"
+  },
+  "eft_crlf_blank_mixed.eft.txt": {
+   "category": "eft"
+  },
+  "eft_crlf_unknown.eft.txt": {
+   "category": "eft"
+  },
+  "eft_drone_qty_zero.eft.txt": {
+   "category": "eft"
+  },
+  "eft_empty_slots_only.eft.txt": {
+   "category": "eft"
+  },
+  "eft_header_commas.eft.txt": {
+   "category": "eft"
+  },
+  "eft_header_empty_name.eft.txt": {
+   "category": "eft"
+  },
+  "eft_header_only.eft.txt": {
+   "category": "eft"
+  },
+  "eft_header_whitespace.eft.txt": {
+   "category": "eft"
+  },
+  "eft_huge_quantities.eft.txt": {
+   "category": "eft"
+  },
+  "eft_module_qty_suffix.eft.txt": {
+   "category": "eft"
+  },
+  "eft_multi.eft.txt": {
+   "category": "multi"
+  },
+  "eft_multi_three.eft.txt": {
+   "category": "multi"
+  },
+  "eft_mutated.eft.txt": {
+   "category": "mutated"
+  },
+  "eft_mutated_bad_attr.eft.txt": {
+   "category": "mutated"
+  },
+  "eft_mutated_missing_block.eft.txt": {
+   "category": "mutated"
+  },
+  "eft_mutated_out_of_range.eft.txt": {
+   "category": "mutated"
+  },
+  "eft_offline.eft.txt": {
+   "category": "eft"
+  },
+  "eft_offline_variants.eft.txt": {
+   "category": "eft"
+  },
+  "eft_renamed_item.eft.txt": {
+   "category": "eft"
+  },
+  "eft_sections.eft.txt": {
+   "category": "eft"
+  },
+  "eft_ship_is_module.eft.txt": {
+   "category": "eft"
+  },
+  "eft_structure.eft.txt": {
+   "category": "eft"
+  },
+  "eft_subsystem_wrong_ship.eft.txt": {
+   "category": "eft"
+  },
+  "eft_t3c_order.eft.txt": {
+   "category": "eft"
+  },
+  "eft_t3d_bad_mode.eft.txt": {
+   "category": "eft"
+  },
+  "eft_t3d_mode.eft.txt": {
+   "category": "eft"
+  },
+  "eft_tabs.eft.txt": {
+   "category": "eft"
+  },
+  "eft_too_many_modules.eft.txt": {
+   "category": "eft"
+  },
+  "eft_unknown_charge.eft.txt": {
+   "category": "eft"
+  },
+  "eft_unknown_ship.eft.txt": {
+   "category": "eft"
+  },
+  "eft_wrong_size_charge.eft.txt": {
+   "category": "eft"
+  },
+  "esi_bad_flag.esi.json": {
+   "category": "esi"
+  },
+  "esi_edge.esi.json": {
+   "category": "esi"
+  },
+  "esi_empty_items.esi.json": {
+   "category": "esi"
+  },
+  "esi_invalid_json.esi.json": {
+   "category": "esi"
+  },
+  "esi_missing_description.esi.json": {
+   "category": "esi"
+  },
+  "esi_missing_ship.esi.json": {
+   "category": "esi"
+  },
+  "esi_pretty_long_name.esi.json": {
+   "category": "esi"
+  },
+  "esi_qty_zero.esi.json": {
+   "category": "esi"
+  },
+  "esi_string_numbers.esi.json": {
+   "category": "esi"
+  },
+  "esi_unknown_item.esi.json": {
+   "category": "esi"
+  },
+  "esi_unknown_ship.esi.json": {
+   "category": "esi"
+  },
+  "multi.xml": {
+   "category": "multi"
+  },
+  "single_mutant.txt": {
+   "category": "items"
+  },
+  "single_mutant_bad.txt": {
+   "category": "items"
+  },
+  "xml_entities.xml": {
+   "category": "xml"
+  },
+  "xml_malformed.xml": {
+   "category": "xml"
+  },
+  "xml_no_declaration.xml": {
+   "category": "xml"
+  },
+  "xml_no_description.xml": {
+   "category": "xml"
+  },
+  "xml_no_fittings.xml": {
+   "category": "xml"
+  },
+  "xml_slot_gaps.xml": {
+   "category": "xml"
+  },
+  "xml_unknown_module.xml": {
+   "category": "xml"
+  },
+  "xml_unknown_ship.xml": {
+   "category": "multi"
+  }
+ },
+ "forced": [
+  {
+   "file": "auto_brackets_no_comma.txt",
+   "format": "eft"
+  },
+  {
+   "file": "eft_bom.eft.txt",
+   "format": "eft"
+  },
+  {
+   "file": "dna_alt.dna.txt",
+   "format": "eft"
+  },
+  {
+   "file": "auto_garbage.txt",
+   "format": "eft"
+  },
+  {
+   "file": "dna_no_terminator.dna.txt",
+   "format": "dna"
+  },
+  {
+   "file": "dna_leading_space.dna.txt",
+   "format": "dna"
+  },
+  {
+   "file": "dna_qty_zero.dna.txt",
+   "format": "dna"
+  },
+  {
+   "file": "auto_garbage.txt",
+   "format": "dna"
+  },
+  {
+   "file": "xml_no_declaration.xml",
+   "format": "xml"
+  },
+  {
+   "file": "auto_garbage.txt",
+   "format": "xml"
+  },
+  {
+   "file": "auto_json_array.txt",
+   "format": "esi"
+  },
+  {
+   "file": "auto_garbage.txt",
+   "format": "esi"
+  },
+  {
+   "file": "esi_edge.esi.json",
+   "format": "esi"
+  },
+  {
+   "file": "Rifter.cfg",
+   "format": "eftcfg"
+  },
+  {
+   "file": "eft_sections.eft.txt",
+   "format": "eft"
+  },
+  {
+   "file": "multi.xml",
+   "format": "xml"
+  },
+  {
+   "file": "dna_chatlink.dna.txt",
+   "format": "dna"
+  }
+ ]
+}

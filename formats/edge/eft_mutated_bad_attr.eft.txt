@@ -1,0 +1,7 @@
+[Tristan, bad mutation attr]
+
+Warp Scrambler II [1]
+
+[1] Warp Scrambler II
+  Unstable Warp Scrambler Mutaplasmid
+  capacitorNeed 7.5, notAnAttribute 3.0, maxRange 10500.0

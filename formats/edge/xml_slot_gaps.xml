@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<fittings count="1">
+  <fitting name="slot gaps">
+    <description value=""/>
+    <shipType value="Rifter"/>
+    <hardware slot="low slot 3" type="Damage Control II"/>
+    <hardware slot="low slot 0" type="Overdrive Injector System II"/>
+    <hardware slot="hi slot 2" type="200mm AutoCannon II"/>
+    <hardware slot="weird slot 0" type="1MN Afterburner II"/>
+  </fitting>
+</fittings>

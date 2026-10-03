@@ -1,0 +1,17 @@
+{
+  "name": "NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN",
+  "ship_type_id": 587,
+  "description": "d",
+  "items": [
+    {
+      "flag": 11,
+      "quantity": 1,
+      "type_id": 2048
+    },
+    {
+      "flag": 27,
+      "quantity": 1,
+      "type_id": 2889
+    }
+  ]
+}
