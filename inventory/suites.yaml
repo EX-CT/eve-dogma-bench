@@ -21,6 +21,8 @@ suites:
   fmt-edge:  {column: f, kind: jsonl, git_ref: origin/formats-suite, file: formats/expected/edge.jsonl, key: category}
   graphs:    {column: f, kind: files, git_ref: origin/graphs-round2, dir: graphs/cases, ext: .json}
   unit:      {column: f, kind: rust-test}
-  mcp:       {column: mcp, kind: string, glob: "*.test.*"}
-  web-e2e:   {column: web, kind: string, glob: "e2e*.mjs"}
+  mcp:       {column: mcp, kind: string, glob: "*.test.*"}   # --root mcp=<EX-CT/eve-fit-mcp checkout>: node --test titles in src/test/
+  web-bench: {column: web, kind: files, git_ref: v1.9.0, dir: cases, ext: .json}   # bench 1.9.0 corpus in headless Chrome vs the site's wasm-worker (F): eve-fit-web Pages CI tools/browser-dogma-bench.py (engines.lock DOGMA_BENCH_SHA d2edf98 = v1.9.0); gates the deploy
+  web-graphs: {column: web, kind: files, git_ref: 8c40921911aed9a7d7f032a2f9d4c43986ca0232, dir: graphs/cases, ext: .json}   # graphs 0.2 suite in headless Chrome vs wasm-worker (F): eve-fit-web Pages CI (engines.lock GRAPHS_BENCH_SHA)
+  web-e2e:   {column: web, kind: string, glob: "e2e*.mjs"}   # --root web-e2e=<EX-CT/eve-fit-web checkout>: check names in tools/e2e.mjs
   web-unit:  {column: web, kind: string, glob: "*.test.*"}
