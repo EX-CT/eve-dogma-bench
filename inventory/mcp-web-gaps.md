@@ -1,5 +1,9 @@
 # mcp / web column coverage gaps (draft, for eve4)
 
+**2026-10-03 13:50:** docs/19 (eve-fit-docs) now marks every item listed below as `partial` in that column (have needs
+a non-weak test), so check_inventory passes. The lists stay as the work list: an item goes back to `have` when its
+test lands and is mapped in tests.yaml. Web items now covered by eve-fit-web 40e6044 (e2e/unit ids) are mapped.
+
 From `tools/check_inventory.py --columns f,mcp,web --root mcp=<eve-fit-mcp> --root web-e2e=<eve-fit-web>` on pending-1.11
 (docs/19 = eve-fit-docs a30d016, eve-fit-mcp 8c6b93d, eve-fit-web fafa982). References are exact stable test ids
 (`mcp.<file>.<slug>`, `web.e2e.<slug>`), resolved by suite kind `id`; an unknown id fails the gate.
